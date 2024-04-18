@@ -1,3 +1,8 @@
+.sec{
+  padding: 0 120px;
+  position: ;
+}
+
 .product-list {
   background-color: #ffffff;
   display: flex;
@@ -8,17 +13,35 @@
 
 .product-list .div {
   background-color: #ffffff;
+  height: 2441px;
+  width: 1956px;
 }
 
 .product-list .product-wrap {
+  height: 1134px;
+  left: 66px;
+  overflow: hidden;
+  position: absolute;
+  top: 744px;
+  width: 1823px;
 }
 
 .product-list .product {
   background-color: #eeeeee;
+  height: 447px;
+  left: 1354px;
+  position: absolute;
+  top: 606px;
+  width: 410px;
 }
 
 .product-list .image {
   background-color: #ffffff;
+  height: 252px;
+  left: 48px;
+  position: absolute;
+  top: 28px;
+  width: 313px;
 }
 
 .product-list .text-wrapper {
@@ -26,18 +49,32 @@
   font-family: "Inter-Regular", Helvetica;
   font-size: 20px;
   font-weight: 400;
+  left: 54px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
   text-align: center;
+  top: 55px;
   white-space: nowrap;
+  width: 209px;
 }
 
 .product-list .info-box {
   background-color: #ffffff;
+  height: 117px;
+  left: 48px;
+  position: absolute;
+  top: 302px;
+  width: 313px;
 }
 
 .product-list .product-name {
   background-color: #eeeeee;
+  height: 44px;
+  left: 27px;
+  position: absolute;
+  top: 5px;
+  width: 257px;
 }
 
 .product-list .text-wrapper-2 {
@@ -45,13 +82,22 @@
   font-family: "Inter-Regular", Helvetica;
   font-size: 20px;
   font-weight: 400;
+  left: 47px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
   text-align: center;
+  top: 7px;
+  width: 164px;
 }
 
 .product-list .product-info {
   background-color: #eeeeee;
+  height: 39px;
+  left: 27px;
+  position: absolute;
+  top: 68px;
+  width: 257px;
 }
 
 .product-list .text-wrapper-3 {
@@ -59,61 +105,130 @@
   font-family: "Inter-Regular", Helvetica;
   font-size: 20px;
   font-weight: 400;
+  left: 65px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
   text-align: center;
+  top: 7px;
+  width: 128px;
 }
 
 .product-list .product-2 {
   background-color: #eeeeee;
+  height: 447px;
+  left: 886px;
+  position: absolute;
+  top: 606px;
+  width: 410px;
 }
 
 .product-list .product-3 {
   background-color: #eeeeee;
+  height: 447px;
+  left: 435px;
+  position: absolute;
+  top: 606px;
+  width: 411px;
 }
 
 .product-list .div-wrapper {
   background-color: #ffffff;
+  height: 252px;
+  left: 49px;
+  position: absolute;
+  top: 28px;
+  width: 313px;
 }
 
 .product-list .info-box-2 {
   background-color: #ffffff;
+  height: 117px;
+  left: 49px;
+  position: absolute;
+  top: 302px;
+  width: 313px;
 }
 
 .product-list .product-4 {
   background-color: #eeeeee;
+  height: 447px;
+  left: -15px;
+  position: absolute;
+  top: 606px;
+  width: 410px;
 }
 
 .product-list .product-5 {
   background-color: #eeeeee;
+  height: 447px;
+  left: 1354px;
+  position: absolute;
+  top: 0;
+  width: 410px;
 }
 
 .product-list .product-6 {
   background-color: #eeeeee;
+  height: 447px;
+  left: 886px;
+  position: absolute;
+  top: 0;
+  width: 410px;
 }
 
 .product-list .product-7 {
   background-color: #eeeeee;
+  height: 447px;
+  left: 435px;
+  position: absolute;
+  top: 0;
+  width: 411px;
 }
 
 .product-list .product-8 {
   background-color: #eeeeee;
+  height: 447px;
+  left: -15px;
+  position: absolute;
+  top: 0;
+  width: 410px;
 }
 
 .product-list .image-2 {
   background-color: #ffffff;
+  height: 252px;
+  left: 57px;
+  position: absolute;
+  top: 28px;
+  width: 313px;
 }
 
 .product-list .info-box-3 {
   background-color: #ffffff;
+  height: 117px;
+  left: 57px;
+  position: absolute;
+  top: 302px;
+  width: 313px;
 }
 
 .product-list .detail {
   background-color: #eeeeee;
+  height: 177px;
+  left: 51px;
+  position: absolute;
+  top: 506px;
+  width: 1799px;
 }
 
 .product-list .div-wrapper-2 {
   background-color: #ffffff;
+  height: 108px;
+  left: 28px;
+  position: absolute;
+  top: 32px;
+  width: 278px;
 }
 
 .product-list .text-wrapper-4 {
@@ -121,12 +236,21 @@
   font-family: "Inter-Regular", Helvetica;
   font-size: 60px;
   font-weight: 400;
+  left: 39px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  top: 16px;
+  width: 200px;
 }
 
 .product-list .div-wrapper-3 {
   background-color: #ffffff;
+  height: 108px;
+  left: 770px;
+  position: absolute;
+  top: 32px;
+  width: 278px;
 }
 
 .product-list .text-wrapper-5 {
@@ -134,18 +258,101 @@
   font-family: "Inter-Regular", Helvetica;
   font-size: 60px;
   font-weight: 400;
+  left: 60px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  top: 16px;
 }
 
 .product-list .div-wrapper-4 {
   background-color: #ffffff;
+  height: 108px;
+  left: 1130px;
+  position: absolute;
+  top: 32px;
+  width: 278px;
 }
 
 .product-list .div-wrapper-5 {
   background-color: #ffffff;
+  height: 108px;
+  left: 1490px;
+  position: absolute;
+  top: 34px;
+  width: 278px;
 }
 
 .product-list .div-wrapper-6 {
   background-color: #ffffff;
+  height: 108px;
+  left: 399px;
+  position: absolute;
+  top: 32px;
+  width: 278px;
+}
+
+.product-list .category {
+  background-color: #eeeeee;
+  height: 177px;
+  left: 51px;
+  position: absolute;
+  top: 268px;
+  width: 1799px;
+}
+
+.product-list .text-wrapper-6 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 60px;
+  font-weight: 400;
+  left: 11px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 15px;
+}
+
+.product-list .nav {
+  background-color: #eeeeee;
+  height: 177px;
+  left: 51px;
+  position: absolute;
+  top: 53px;
+  width: 1799px;
+}
+
+.product-list .user {
+  background-color: #ffffff;
+  height: 94px;
+  left: 1441px;
+  position: absolute;
+  top: 46px;
+  width: 328px;
+}
+
+.product-list .text-wrapper-7 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 60px;
+  font-weight: 400;
+  left: 53px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 9px;
+  width: 275px;
+}
+
+.product-list .text-wrapper-8 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 60px;
+  font-weight: 400;
+  left: 87px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 13px;
+  width: 191px;
 }

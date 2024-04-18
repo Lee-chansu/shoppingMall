@@ -1,5 +1,5 @@
 .main-notlogin {
-    background-color: #ffffff;
+    background-color: hsl(0, 0%, 100%);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -8,48 +8,21 @@
   
   .main-notlogin .div {
     background-color: #ffffff;
-    height: 2592px;
-    overflow: hidden;
-    position: relative;
-    width: 1956px;
   }
   
   .main-notlogin .visual {
     background-color: #eeeeee;
-    height: 824px;
-    left: 0;
-    position: absolute;
-    top: 524px;
-    width: 1956px;
   }
   
-  
-  
   .main-notlogin .wrap {
-    height: 1212px;
-    left: 66px;
-    overflow: hidden;
-    position: absolute;
-    top: 1433px;
-    width: 1823px;
   }
   
   .main-notlogin .product {
     background-color: #eeeeee;
-    height: 447px;
-    left: 1207px;
-    position: absolute;
-    top: 0;
-    width: 580px;
   }
   
   .main-notlogin .image {
     background-color: #ffffff;
-    height: 252px;
-    left: 40px;
-    position: absolute;
-    top: 21px;
-    width: 500px;
   }
   
   .main-notlogin .text-wrapper-4 {
@@ -57,32 +30,18 @@
     font-family: "Inter-Regular", Helvetica;
     font-size: 20px;
     font-weight: 400;
-    left: 145px;
     letter-spacing: 0;
     line-height: normal;
-    position: absolute;
     text-align: center;
-    top: 113px;
     white-space: nowrap;
-    width: 209px;
   }
   
   .main-notlogin .info-box {
     background-color: #ffffff;
-    height: 131px;
-    left: 40px;
-    position: absolute;
-    top: 295px;
-    width: 500px;
   }
   
   .main-notlogin .product-name {
     background-color: #eeeeee;
-    height: 44px;
-    left: 23px;
-    position: absolute;
-    top: 14px;
-    width: 454px;
   }
   
   .main-notlogin .text-wrapper-5 {
@@ -90,22 +49,13 @@
     font-family: "Inter-Regular", Helvetica;
     font-size: 20px;
     font-weight: 400;
-    left: 145px;
     letter-spacing: 0;
     line-height: normal;
-    position: absolute;
     text-align: center;
-    top: 7px;
-    width: 164px;
   }
   
   .main-notlogin .product-info {
     background-color: #eeeeee;
-    height: 39px;
-    left: 23px;
-    position: absolute;
-    top: 78px;
-    width: 454px;
   }
   
   .main-notlogin .text-wrapper-6 {
@@ -113,57 +63,28 @@
     font-family: "Inter-Regular", Helvetica;
     font-size: 20px;
     font-weight: 400;
-    left: 163px;
     letter-spacing: 0;
     line-height: normal;
-    position: absolute;
     text-align: center;
-    top: 7px;
-    width: 128px;
   }
   
   .main-notlogin .product-2 {
     background-color: #eeeeee;
-    height: 447px;
-    left: 596px;
-    position: absolute;
-    top: 0;
-    width: 580px;
   }
   
   .main-notlogin .product-3 {
     background-color: #eeeeee;
-    height: 447px;
-    left: -15px;
-    position: absolute;
-    top: 0;
-    width: 580px;
   }
   
   .main-notlogin .product-4 {
     background-color: #eeeeee;
-    height: 447px;
-    left: 1207px;
-    position: absolute;
-    top: 606px;
-    width: 580px;
   }
   
   .main-notlogin .product-5 {
     background-color: #eeeeee;
-    height: 447px;
-    left: 596px;
-    position: absolute;
-    top: 606px;
-    width: 580px;
   }
   
   .main-notlogin .product-6 {
     background-color: #eeeeee;
-    height: 447px;
-    left: -15px;
-    position: absolute;
-    top: 606px;
-    width: 580px;
   }
   

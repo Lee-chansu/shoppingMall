@@ -7,12 +7,12 @@ import { Main } from "./main";
 
 function App() {
   return (
-    <section className="sec">
+    <>
       <Routes>
         <Route index path="" element={<Main></Main>}></Route>
         <Route path="productList" element={<ProductList />}></Route>
       </Routes>
-    </section>
+    </>
   );
 }
 

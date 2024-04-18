@@ -1,62 +1,37 @@
-.nav {
-  background-color: #eeeeee;
-}
-
-.user {
-  background-color: #ffffff;
-}
-
-.nav .text-wrapper {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 60px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
 .div-wrapper {
+  padding: 10px;
   background-color: #ffffff;
+  text-align: center;
 }
 
-.nav .text-wrapper-2 {
+.text-wrapper {
+  padding: 10px;
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 60px;
   font-weight: 400;
   letter-spacing: 0;
   line-height: normal;
+}
+
+.nav {
+  padding: 20px 30px;
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
 }
 
 .category {
+  padding: 20px 20px;
   background-color: #eeeeee;
-}
-
-.category .div-wrapper{
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
 }
 
-.category .text-wrapper-3 {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 60px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.category .category-2 {
-  background-color: #ffffff;
-}
-
-.category .category-3 {
-  background-color: #ffffff;
-}
-
-.category .category-4 {
-  background-color: #ffffff;
-}
-
-.category .category-5 {
-  background-color: #ffffff;
+.category .div-wrapper {
+  margin: 0 10px;
 }
