@@ -5,11 +5,11 @@ export const Nav = () => {
   return (
     <>
       <div className="nav">
-        <div className="user">
-          <div className="text-wrapper">로그인</div>
-        </div>
         <div className="div-wrapper">
-          <div className="text-wrapper-2">logo</div>
+          <div className="text-wrapper logo">logo</div>
+        </div>
+        <div className="user">
+          <div className="text-wrapper-2">로그인</div>
         </div>
       </div>
       <div className="category">

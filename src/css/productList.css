@@ -287,3 +287,68 @@
   top: 32px;
   width: 278px;
 }
+
+.product-list .category {
+  background-color: #eeeeee;
+  height: 177px;
+  left: 51px;
+  position: absolute;
+  top: 268px;
+  width: 1799px;
+}
+
+.product-list .text-wrapper-6 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 60px;
+  font-weight: 400;
+  left: 11px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 15px;
+}
+
+.product-list .nav {
+  background-color: #eeeeee;
+  height: 177px;
+  left: 51px;
+  position: absolute;
+  top: 53px;
+  width: 1799px;
+}
+
+.product-list .user {
+  background-color: #ffffff;
+  height: 94px;
+  left: 1441px;
+  position: absolute;
+  top: 46px;
+  width: 328px;
+}
+
+.product-list .text-wrapper-7 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 60px;
+  font-weight: 400;
+  left: 53px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 9px;
+  width: 275px;
+}
+
+.product-list .text-wrapper-8 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 60px;
+  font-weight: 400;
+  left: 87px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 13px;
+  width: 191px;
+}

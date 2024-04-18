@@ -1,109 +1,62 @@
 .nav {
   background-color: #eeeeee;
-  height: 177px;
-  left: 92px;
-  position: absolute;
-  top: 63px;
-  width: 1799px;
 }
 
 .user {
   background-color: #ffffff;
-  height: 94px;
-  left: 1441px;
-  position: absolute;
-  top: 46px;
-  width: 328px;
 }
 
-.text-wrapper {
+.nav .text-wrapper {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 60px;
   font-weight: 400;
-  left: 81px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
-  top: 9px;
-  width: 200px;
 }
 
 .div-wrapper {
   background-color: #ffffff;
-  height: 108px;
-  left: 28px;
-  position: absolute;
-  top: 32px;
-  width: 278px;
 }
 
-.text-wrapper-2 {
+.nav .text-wrapper-2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 60px;
   font-weight: 400;
-  left: 87px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
-  top: 13px;
-  width: 191px;
 }
 
 .category {
   background-color: #eeeeee;
-  height: 177px;
-  left: 92px;
-  position: absolute;
-  top: 280px;
-  width: 1799px;
 }
 
-.text-wrapper-3 {
+.category .div-wrapper{
+  display: flex;
+}
+
+.category .text-wrapper-3 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 60px;
   font-weight: 400;
-  left: 11px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
-  top: 15px;
 }
 
-.category-2 {
+.category .category-2 {
   background-color: #ffffff;
-  height: 108px;
-  left: 770px;
-  position: absolute;
-  top: 32px;
-  width: 278px;
 }
 
-.category-3 {
+.category .category-3 {
   background-color: #ffffff;
-  height: 108px;
-  left: 1130px;
-  position: absolute;
-  top: 32px;
-  width: 278px;
 }
 
-.category-4 {
+.category .category-4 {
   background-color: #ffffff;
-  height: 108px;
-  left: 1490px;
-  position: absolute;
-  top: 34px;
-  width: 278px;
 }
 
-.category-5 {
+.category .category-5 {
   background-color: #ffffff;
-  height: 108px;
-  left: 399px;
-  position: absolute;
-  top: 32px;
-  width: 278px;
 }
