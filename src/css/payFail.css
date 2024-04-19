@@ -1,0 +1,304 @@
+.pay-fail {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.pay-fail .div {
+  background-color: #ffffff;
+  width: 830.69px;
+  height: 862.97px;
+  position: relative;
+}
+
+.pay-fail .overlap {
+  position: absolute;
+  width: 609px;
+  height: 674px;
+  top: 53px;
+  left: 111px;
+}
+
+.pay-fail .inner-box {
+  position: absolute;
+  width: 609px;
+  height: 674px;
+  top: 0;
+  left: 0;
+  background-color: #eeeeee;
+}
+
+.pay-fail .overlap-group {
+  position: absolute;
+  width: 543px;
+  height: 56px;
+  top: 33px;
+  left: 21px;
+}
+
+.pay-fail .price {
+  position: absolute;
+  width: 532px;
+  height: 56px;
+  top: 0;
+  left: 11px;
+  background-color: #ffffff;
+}
+
+.pay-fail .text-wrapper {
+  width: 543px;
+  top: 13px;
+  left: 0;
+  color: #aa0000;
+  font-size: 25.5px;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .overlap-group-2 {
+  position: absolute;
+  width: 532px;
+  height: 527px;
+  top: 110px;
+  left: 32px;
+  background-color: #ffffff;
+}
+
+.pay-fail .text-wrapper-2 {
+  top: 22px;
+  left: 219px;
+  color: #000000;
+  font-size: 25.5px;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .text-wrapper-3 {
+  top: 80px;
+  left: 32px;
+  color: #000000;
+  font-size: 21.2px;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .text-wrapper-4 {
+  top: 360px;
+  left: 32px;
+  color: #000000;
+  font-size: 21.2px;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .text-wrapper-5 {
+  top: 360px;
+  left: 147px;
+  color: #000000;
+  font-size: 21.2px;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .text-wrapper-6 {
+  top: 420px;
+  left: 147px;
+  color: #000000;
+  font-size: 21.2px;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .text-wrapper-7 {
+  top: 420px;
+  left: 32px;
+  color: #000000;
+  font-size: 21.2px;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .text-wrapper-8 {
+  top: 80px;
+  position: absolute;
+  left: 147px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 21.2px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .text-wrapper-9 {
+  top: 170px;
+  position: absolute;
+  left: 147px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 21.2px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .text-wrapper-10 {
+  top: 260px;
+  position: absolute;
+  left: 147px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 21.2px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .p {
+  position: absolute;
+  top: 110px;
+  left: 154px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #00000070;
+  font-size: 19.1px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .text-wrapper-11 {
+  top: 460px;
+  left: 26px;
+  color: #00000070;
+  font-size: 17px;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .text-wrapper-12 {
+  top: 200px;
+  position: absolute;
+  left: 154px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #00000070;
+  font-size: 19.1px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .text-wrapper-13 {
+  top: 290px;
+  position: absolute;
+  left: 154px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #00000070;
+  font-size: 19.1px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .vector {
+  width: 532px;
+  height: 2px;
+  top: 185px;
+  position: absolute;
+  left: 32px;
+}
+
+.pay-fail .img {
+  width: 531px;
+  height: 1px;
+  top: 592px;
+  position: absolute;
+  left: 32px;
+}
+
+.pay-fail .div-wrapper {
+  left: 199px;
+  position: absolute;
+  width: 197px;
+  height: 56px;
+  top: 769px;
+  background-color: #eeeeee;
+}
+
+.pay-fail .text-wrapper-14 {
+  width: 136px;
+  height: 51px;
+  top: 4px;
+  left: 31px;
+  color: #000000;
+  font-size: 25.5px;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-fail .inner-box-2 {
+  left: 435px;
+  position: absolute;
+  width: 197px;
+  height: 56px;
+  top: 769px;
+  background-color: #eeeeee;
+}
+
+.pay-fail .text-wrapper-15 {
+  width: 162px;
+  height: 51px;
+  top: 4px;
+  left: 17px;
+  color: #000000;
+  font-size: 25.5px;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}

@@ -1,0 +1,306 @@
+.pay-buy-list {
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.pay-buy-list .div {
+  background-color: #fff;
+  width: 830.69px;
+  height: 1138.59;
+  position: relative;
+}
+
+.pay-buy-list .pay-item {
+  position: absolute;
+  width: 759px;
+  height: 272px;
+  top: 218px;
+  left: 36px;
+  background-color: #eee;
+}
+
+.pay-buy-list .item-info {
+  position: absolute;
+  width: 627px;
+  height: 228px;
+  top: 24px;
+  left: 62px;
+  background-color: #fff;
+}
+
+.pay-buy-list .overlap {
+  position: absolute;
+  width: 332px;
+  height: 45px;
+  top: 64px;
+  left: 22px;
+  background-color: #d9d9d9;
+}
+
+.pay-buy-list .text-wrapper {
+  width: 134px;
+  top: 6px;
+  left: 6px;
+  white-space: nowrap;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000;
+  font-size: 25.5px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-buy-list .overlap-group {
+  position: absolute;
+  width: 332px;
+  height: 45px;
+  top: 120px;
+  left: 22px;
+  background-color: #d9d9d9;
+}
+
+.pay-buy-list .div-wrapper {
+  position: absolute;
+  width: 332px;
+  height: 45px;
+  top: 176px;
+  left: 22px;
+  background-color: #d9d9d9;
+}
+
+.pay-buy-list .overlap-2 {
+  position: absolute;
+  width: 332px;
+  height: 45px;
+  top: 8px;
+  left: 20px;
+  background-color: #d9d9d9;
+}
+
+.pay-buy-list .text-wrapper-2 {
+  width: 134px;
+  top: 6px;
+  left: 8px;
+  white-space: nowrap;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000;
+  font-size: 25.5px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-buy-list .image-box {
+  position: absolute;
+  width: 211px;
+  height: 211px;
+  top: 9px;
+  left: 395px;
+  background-color: #d6d6d6;
+}
+
+.pay-buy-list .overlap-3 {
+  position: absolute;
+  width: 26px;
+  height: 33px;
+  top: 24px;
+  left: 711px;
+  background-color: #fff;
+}
+
+.pay-buy-list .text-wrapper-3 {
+  position: absolute;
+  width: 23px;
+  top: 0;
+  left: 4px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000;
+  font-size: 25.5px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-buy-list .text-wrapper-4 {
+  top: 1px;
+  position: absolute;
+  width: 23px;
+  left: 4px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000;
+  font-size: 25.5px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-buy-list .pay-item-2 {
+  position: absolute;
+  width: 759px;
+  height: 272px;
+  top: 538px;
+  left: 36px;
+  background-color: #eee;
+}
+
+.pay-buy-list .overlap-5 {
+  position: absolute;
+  width: 26px;
+  height: 33px;
+  top: 25px;
+  left: 19px;
+  background-color: #fff;
+}
+
+.pay-buy-list .overlap-6 {
+  position: absolute;
+  width: 683px;
+  height: 45px;
+  top: 946px;
+  left: 69px;
+}
+
+.pay-buy-list .price {
+  left: 15px;
+  position: absolute;
+  width: 201px;
+  height: 45px;
+  top: 0;
+  background-color: #d9d9d9;
+}
+
+.pay-buy-list .price-2 {
+  left: 241px;
+  position: absolute;
+  width: 201px;
+  height: 45px;
+  top: 0;
+  background-color: #d9d9d9;
+}
+
+.pay-buy-list .price-3 {
+  left: 467px;
+  position: absolute;
+  width: 201px;
+  height: 45px;
+  top: 0;
+  background-color: #d9d9d9;
+}
+
+.pay-buy-list .text-wrapper-5 {
+  width: 231px;
+  top: 7px;
+  left: 0;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000;
+  font-size: 25.5px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-buy-list .text-wrapper-6 {
+  width: 231px;
+  top: 7px;
+  left: 226px;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000;
+  font-size: 25.5px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-buy-list .text-wrapper-7 {
+  width: 231px;
+  top: 7px;
+  left: 452px;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000;
+  font-size: 25.5px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-buy-list .text-wrapper-8 {
+  width: 170px;
+  top: 141px;
+  left: 375px;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000;
+  font-size: 25.5px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-buy-list .nav {
+  position: absolute;
+  width: 764px;
+  height: 75px;
+  top: 19px;
+  left: 33px;
+  background-color: #eee;
+}
+
+.pay-buy-list .user {
+  position: absolute;
+  width: 139px;
+  height: 40px;
+  top: 20px;
+  left: 612px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.pay-buy-list .text-wrapper-9 {
+  width: 117px;
+  top: 4px;
+  left: 23px;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000;
+  font-size: 25.5px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.pay-buy-list .logo {
+  position: absolute;
+  width: 118px;
+  height: 46px;
+  top: 14px;
+  left: 12px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.pay-buy-list .text-wrapper-10 {
+  position: absolute;
+  width: 81px;
+  top: 6px;
+  left: 37px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000;
+  font-size: 25.5px;
+  letter-spacing: 0;
+  line-height: normal;
+}
