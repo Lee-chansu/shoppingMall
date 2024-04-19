@@ -6,7 +6,7 @@ export const Nav = () => {
     <>
       <div className="nav">
         <div className="div-wrapper">
-          <div className="text-wrapper logo">logo</div>
+          <div className="text-wrapper logo">shopping mall</div>
         </div>
         <div className="div-wrapper">
           <div className="text-wrapper">로그인</div>

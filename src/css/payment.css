@@ -1,0 +1,374 @@
+.payment {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.payment .payment-inner-wrapper {
+  background-color: #ffffff;
+  height: 1632.14px;
+  width: 1440px;
+}
+
+.payment .payment-inner {
+  background-color: #eeeeee;
+  height: 1195px;
+  left: 249px;
+  position: relative;
+  top: 218px;
+  width: 942px;
+}
+
+.payment .pay-box {
+  background-color: #ffffff;
+  height: 915px;
+  left: 34px;
+  position: absolute;
+  top: 188px;
+  width: 881px;
+}
+
+.payment .user-info-box {
+  background-color: #eeeeee;
+  height: 679px;
+  left: 31px;
+  position: absolute;
+  top: 52px;
+  width: 385px;
+}
+
+.payment .email {
+  background-color: #ffffff;
+  height: 111px;
+  left: 27px;
+  position: absolute;
+  top: 18px;
+  width: 331px;
+}
+
+.payment .text-wrapper {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 36.9px;
+  font-weight: 400;
+  left: 42px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 33px;
+  width: 248px;
+}
+
+.payment .carry-req {
+  background-color: #ffffff;
+  height: 111px;
+  left: 27px;
+  position: absolute;
+  top: 292px;
+  width: 331px;
+}
+
+.payment .div {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 36.9px;
+  font-weight: 400;
+  left: 39px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 36px;
+  width: 254px;
+}
+
+.payment .how-pay-box {
+  background-color: #ffffff;
+  height: 203px;
+  left: 27px;
+  position: absolute;
+  top: 441px;
+  width: 331px;
+}
+
+.payment .title {
+  background-color: #eeeeee;
+  height: 72px;
+  left: 20px;
+  position: absolute;
+  top: 28px;
+  width: 291px;
+}
+
+.payment .text-wrapper-2 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 36.9px;
+  font-weight: 400;
+  left: 34px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 9px;
+  width: 228px;
+}
+
+.payment .check-box {
+  background-color: #eeeeee;
+  height: 60px;
+  left: 17px;
+  position: absolute;
+  top: 122px;
+  width: 294px;
+}
+
+.payment .ex {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 18.4px;
+  font-weight: 400;
+  left: 19px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 18px;
+  width: 73px;
+}
+
+.payment .text-wrapper-3 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 18.4px;
+  font-weight: 400;
+  left: 109px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 18px;
+  width: 73px;
+}
+
+.payment .ex-2 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 18.4px;
+  font-weight: 400;
+  left: 199px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 18px;
+  width: 73px;
+}
+
+.payment .address {
+  background-color: #ffffff;
+  height: 111px;
+  left: 27px;
+  position: absolute;
+  top: 155px;
+  width: 331px;
+}
+
+.payment .text-wrapper-4 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 36.9px;
+  font-weight: 400;
+  left: 57px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 33px;
+  width: 219px;
+}
+
+.payment .pay-list {
+  background-color: #eeeeee;
+  height: 679px;
+  left: 473px;
+  position: absolute;
+  top: 52px;
+  width: 381px;
+}
+
+.payment .pay-info {
+  background-color: #ffffff;
+  height: 304px;
+  left: 18px;
+  position: absolute;
+  top: 18px;
+  width: 331px;
+}
+
+.payment .div-wrapper {
+  background-color: #eeeeee;
+  height: 61px;
+  left: 34px;
+  overflow: hidden;
+  position: absolute;
+  top: 19px;
+  width: 264px;
+}
+
+.payment .text-wrapper-5 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 36.9px;
+  font-weight: 400;
+  left: -15px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 9px;
+  width: 293px;
+}
+
+.payment .title-2 {
+  background-color: #eeeeee;
+  height: 61px;
+  left: 34px;
+  overflow: hidden;
+  position: absolute;
+  top: 87px;
+  width: 264px;
+}
+
+.payment .title-3 {
+  background-color: #eeeeee;
+  height: 61px;
+  left: 34px;
+  overflow: hidden;
+  position: absolute;
+  top: 154px;
+  width: 264px;
+}
+
+.payment .title-4 {
+  background-color: #eeeeee;
+  height: 61px;
+  left: 34px;
+  overflow: hidden;
+  position: absolute;
+  top: 222px;
+  width: 264px;
+}
+
+.payment .product-box {
+  background-color: #ffffff;
+  height: 288px;
+  left: 18px;
+  position: absolute;
+  top: 352px;
+  width: 331px;
+}
+
+.payment .product {
+  background-color: #eeeeee;
+  height: 117px;
+  left: 17px;
+  position: absolute;
+  top: 17px;
+  width: 297px;
+}
+
+.payment .info {
+  background-color: #ffffff;
+  height: 97px;
+  left: 139px;
+  position: absolute;
+  top: 10px;
+  width: 136px;
+}
+
+.payment .text-wrapper-6 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 19.7px;
+  font-weight: 400;
+  height: 47px;
+  left: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 25px;
+  width: 113px;
+}
+
+.payment .image {
+  background-color: #ffffff;
+  height: 97px;
+  left: 18px;
+  position: absolute;
+  top: 10px;
+  width: 105px;
+}
+
+.payment .text-wrapper-7 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 19.7px;
+  font-weight: 400;
+  left: 19px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 37px;
+  width: 66px;
+}
+
+.payment .product-2 {
+  background-color: #eeeeee;
+  height: 117px;
+  left: 17px;
+  position: absolute;
+  top: 153px;
+  width: 297px;
+}
+
+.payment .buy-button {
+  background-color: #eeeeee;
+  height: 71px;
+  left: 283px;
+  position: absolute;
+  top: 789px;
+  width: 314px;
+}
+
+.payment .buy {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 36.9px;
+  font-weight: 400;
+  left: 17px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 12px;
+  width: 280px;
+}
+
+.payment .text-wrapper-8 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 36.9px;
+  font-weight: 400;
+  left: 419px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 63px;
+  width: 246px;
+}
