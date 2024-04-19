@@ -8,297 +8,298 @@
 
 .pay-fail .div {
   background-color: #ffffff;
-  width: 830.69px;
-  height: 862.97px;
+  height: 1513.02px;
   position: relative;
+  width: 1440px;
 }
 
 .pay-fail .overlap {
+  height: 1181px;
+  left: 194px;
   position: absolute;
-  width: 609px;
-  height: 674px;
-  top: 53px;
-  left: 111px;
+  top: 93px;
+  width: 1068px;
 }
 
 .pay-fail .inner-box {
-  position: absolute;
-  width: 609px;
-  height: 674px;
-  top: 0;
-  left: 0;
   background-color: #eeeeee;
+  height: 1181px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1068px;
 }
 
 .pay-fail .overlap-group {
+  height: 98px;
+  left: 36px;
   position: absolute;
-  width: 543px;
-  height: 56px;
-  top: 33px;
-  left: 21px;
+  top: 58px;
+  width: 952px;
 }
 
 .pay-fail .price {
-  position: absolute;
-  width: 532px;
-  height: 56px;
-  top: 0;
-  left: 11px;
   background-color: #ffffff;
+  height: 98px;
+  left: 20px;
+  position: absolute;
+  top: 0;
+  width: 932px;
 }
 
 .pay-fail .text-wrapper {
-  width: 543px;
-  top: 13px;
-  left: 0;
   color: #aa0000;
-  font-size: 25.5px;
-  position: absolute;
   font-family: "Inter-Regular", Helvetica;
+  font-size: 44.7px;
   font-weight: 400;
-  text-align: center;
+  left: 0;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 22px;
+  width: 952px;
 }
 
 .pay-fail .overlap-group-2 {
-  position: absolute;
-  width: 532px;
-  height: 527px;
-  top: 110px;
-  left: 32px;
   background-color: #ffffff;
+  height: 925px;
+  left: 57px;
+  position: absolute;
+  top: 192px;
+  width: 932px;
 }
 
 .pay-fail .text-wrapper-2 {
-  top: 22px;
-  left: 219px;
   color: #000000;
-  font-size: 25.5px;
-  position: absolute;
   font-family: "Inter-Regular", Helvetica;
+  font-size: 44.7px;
   font-weight: 400;
-  text-align: center;
+  left: 383px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 39px;
 }
 
 .pay-fail .text-wrapper-3 {
-  top: 80px;
-  left: 32px;
   color: #000000;
-  font-size: 21.2px;
-  position: absolute;
   font-family: "Inter-Regular", Helvetica;
+  font-size: 37.2px;
   font-weight: 400;
-  text-align: center;
+  left: 56px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 190px;
 }
 
 .pay-fail .text-wrapper-4 {
-  top: 360px;
-  left: 32px;
   color: #000000;
-  font-size: 21.2px;
-  position: absolute;
   font-family: "Inter-Regular", Helvetica;
+  font-size: 37.2px;
   font-weight: 400;
-  text-align: center;
+  left: 56px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 663px;
 }
 
 .pay-fail .text-wrapper-5 {
-  top: 360px;
-  left: 147px;
   color: #000000;
-  font-size: 21.2px;
-  position: absolute;
   font-family: "Inter-Regular", Helvetica;
+  font-size: 37.2px;
   font-weight: 400;
-  text-align: center;
+  left: 258px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 663px;
 }
 
 .pay-fail .text-wrapper-6 {
-  top: 420px;
-  left: 147px;
   color: #000000;
-  font-size: 21.2px;
-  position: absolute;
   font-family: "Inter-Regular", Helvetica;
+  font-size: 37.2px;
   font-weight: 400;
-  text-align: center;
+  left: 258px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 745px;
 }
 
 .pay-fail .text-wrapper-7 {
-  top: 420px;
-  left: 32px;
   color: #000000;
-  font-size: 21.2px;
-  position: absolute;
   font-family: "Inter-Regular", Helvetica;
+  font-size: 37.2px;
   font-weight: 400;
-  text-align: center;
+  left: 56px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 745px;
 }
 
 .pay-fail .text-wrapper-8 {
-  top: 80px;
-  position: absolute;
-  left: 147px;
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
   color: #000000;
-  font-size: 21.2px;
-  text-align: center;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 37.2px;
+  font-weight: 400;
+  left: 258px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 190px;
 }
 
 .pay-fail .text-wrapper-9 {
-  top: 170px;
-  position: absolute;
-  left: 147px;
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
   color: #000000;
-  font-size: 21.2px;
-  text-align: center;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 37.2px;
+  font-weight: 400;
+  left: 258px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 346px;
 }
 
 .pay-fail .text-wrapper-10 {
-  top: 260px;
-  position: absolute;
-  left: 147px;
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
   color: #000000;
-  font-size: 21.2px;
-  text-align: center;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 37.2px;
+  font-weight: 400;
+  left: 258px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 503px;
 }
 
 .pay-fail .p {
-  position: absolute;
-  top: 110px;
-  left: 154px;
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
   color: #00000070;
-  font-size: 19.1px;
-  text-align: center;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 33.5px;
+  font-weight: 400;
+  left: 270px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 253px;
 }
 
 .pay-fail .text-wrapper-11 {
-  top: 460px;
-  left: 26px;
   color: #00000070;
-  font-size: 17px;
-  position: absolute;
   font-family: "Inter-Regular", Helvetica;
+  font-size: 29.8px;
   font-weight: 400;
-  text-align: center;
+  left: 46px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 865px;
 }
 
 .pay-fail .text-wrapper-12 {
-  top: 200px;
-  position: absolute;
-  left: 154px;
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
   color: #00000070;
-  font-size: 19.1px;
-  text-align: center;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 33.5px;
+  font-weight: 400;
+  left: 270px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 410px;
 }
 
 .pay-fail .text-wrapper-13 {
-  top: 290px;
-  position: absolute;
-  left: 154px;
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
   color: #00000070;
-  font-size: 19.1px;
-  text-align: center;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 33.5px;
+  font-weight: 400;
+  left: 270px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 566px;
 }
 
 .pay-fail .vector {
-  width: 532px;
-  height: 2px;
-  top: 185px;
+  height: 4px;
+  left: 56px;
   position: absolute;
-  left: 32px;
+  top: 324px;
+  width: 933px;
 }
 
 .pay-fail .img {
-  width: 531px;
-  height: 1px;
-  top: 592px;
+  height: 2px;
+  left: 57px;
   position: absolute;
-  left: 32px;
+  top: 1038px;
+  width: 931px;
 }
 
 .pay-fail .div-wrapper {
-  left: 199px;
-  position: absolute;
-  width: 197px;
-  height: 56px;
-  top: 769px;
   background-color: #eeeeee;
+  height: 98px;
+  left: 348px;
+  overflow: hidden;
+  position: absolute;
+  top: 1348px;
+  width: 345px;
 }
 
 .pay-fail .text-wrapper-14 {
-  width: 136px;
-  height: 51px;
-  top: 4px;
-  left: 31px;
   color: #000000;
-  font-size: 25.5px;
-  position: absolute;
   font-family: "Inter-Regular", Helvetica;
+  font-size: 44.7px;
   font-weight: 400;
-  text-align: center;
+  height: 90px;
+  left: 0;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 7px;
+  width: 345px;
 }
 
 .pay-fail .inner-box-2 {
-  left: 435px;
-  position: absolute;
-  width: 197px;
-  height: 56px;
-  top: 769px;
   background-color: #eeeeee;
+  height: 98px;
+  left: 762px;
+  position: absolute;
+  top: 1348px;
+  width: 345px;
 }
 
 .pay-fail .text-wrapper-15 {
-  width: 162px;
-  height: 51px;
-  top: 4px;
-  left: 17px;
   color: #000000;
-  font-size: 25.5px;
-  position: absolute;
   font-family: "Inter-Regular", Helvetica;
+  font-size: 44.7px;
   font-weight: 400;
-  text-align: center;
+  height: 90px;
+  left: 31px;
   letter-spacing: 0;
   line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 7px;
+  width: 284px;
 }
