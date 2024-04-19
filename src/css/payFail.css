@@ -1,4 +1,4 @@
-.pay-fail {
+.payFail {
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -6,14 +6,14 @@
   width: 100%;
 }
 
-.pay-fail .div {
+.payFail .div {
   background-color: #ffffff;
   height: 1513.02px;
   position: relative;
   width: 1440px;
 }
 
-.pay-fail .overlap {
+.payFail .overlap {
   height: 1181px;
   left: 194px;
   position: absolute;
@@ -21,7 +21,7 @@
   width: 1068px;
 }
 
-.pay-fail .inner-box {
+.payFail .innerBox {
   background-color: #eeeeee;
   height: 1181px;
   left: 0;
@@ -30,7 +30,7 @@
   width: 1068px;
 }
 
-.pay-fail .overlap-group {
+.payFail .overlapGroup {
   height: 98px;
   left: 36px;
   position: absolute;
@@ -38,7 +38,7 @@
   width: 952px;
 }
 
-.pay-fail .price {
+.payFail .price {
   background-color: #ffffff;
   height: 98px;
   left: 20px;
@@ -47,7 +47,7 @@
   width: 932px;
 }
 
-.pay-fail .text-wrapper {
+.payFail .textWrapper {
   color: #aa0000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.7px;
@@ -61,7 +61,7 @@
   width: 952px;
 }
 
-.pay-fail .overlap-group-2 {
+.payFail .overlapGroup2 {
   background-color: #ffffff;
   height: 925px;
   left: 57px;
@@ -70,7 +70,7 @@
   width: 932px;
 }
 
-.pay-fail .text-wrapper-2 {
+.payFail .textWrapper2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.7px;
@@ -83,7 +83,7 @@
   top: 39px;
 }
 
-.pay-fail .text-wrapper-3 {
+.payFail .textWrapper3 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37.2px;
@@ -96,7 +96,7 @@
   top: 190px;
 }
 
-.pay-fail .text-wrapper-4 {
+.payFail .textWrapper4 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37.2px;
@@ -109,7 +109,7 @@
   top: 663px;
 }
 
-.pay-fail .text-wrapper-5 {
+.payFail .textWrapper5 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37.2px;
@@ -122,7 +122,7 @@
   top: 663px;
 }
 
-.pay-fail .text-wrapper-6 {
+.payFail .textWrapper6 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37.2px;
@@ -135,7 +135,7 @@
   top: 745px;
 }
 
-.pay-fail .text-wrapper-7 {
+.payFail .textWrapper7 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37.2px;
@@ -148,7 +148,7 @@
   top: 745px;
 }
 
-.pay-fail .text-wrapper-8 {
+.payFail .textWrapper8 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37.2px;
@@ -161,7 +161,7 @@
   top: 190px;
 }
 
-.pay-fail .text-wrapper-9 {
+.payFail .textWrapper9 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37.2px;
@@ -174,7 +174,7 @@
   top: 346px;
 }
 
-.pay-fail .text-wrapper-10 {
+.payFail .textWrapper10 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37.2px;
@@ -187,7 +187,7 @@
   top: 503px;
 }
 
-.pay-fail .p {
+.payFail .p {
   color: #00000070;
   font-family: "Inter-Regular", Helvetica;
   font-size: 33.5px;
@@ -200,7 +200,7 @@
   top: 253px;
 }
 
-.pay-fail .text-wrapper-11 {
+.payFail .textWrapper11 {
   color: #00000070;
   font-family: "Inter-Regular", Helvetica;
   font-size: 29.8px;
@@ -213,7 +213,7 @@
   top: 865px;
 }
 
-.pay-fail .text-wrapper-12 {
+.payFail .textWrapper12 {
   color: #00000070;
   font-family: "Inter-Regular", Helvetica;
   font-size: 33.5px;
@@ -226,7 +226,7 @@
   top: 410px;
 }
 
-.pay-fail .text-wrapper-13 {
+.payFail .textWrapper13 {
   color: #00000070;
   font-family: "Inter-Regular", Helvetica;
   font-size: 33.5px;
@@ -239,7 +239,7 @@
   top: 566px;
 }
 
-.pay-fail .vector {
+.payFail .vector {
   height: 4px;
   left: 56px;
   position: absolute;
@@ -247,7 +247,7 @@
   width: 933px;
 }
 
-.pay-fail .img {
+.payFail .img {
   height: 2px;
   left: 57px;
   position: absolute;
@@ -255,7 +255,7 @@
   width: 931px;
 }
 
-.pay-fail .div-wrapper {
+.payFail .divWrapper {
   background-color: #eeeeee;
   height: 98px;
   left: 348px;
@@ -263,33 +263,21 @@
   position: absolute;
   top: 1348px;
   width: 345px;
-}
-
-.pay-fail .text-wrapper-14 {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
   font-size: 44.7px;
-  font-weight: 400;
-  height: 90px;
-  left: 0;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 7px;
-  width: 345px;
 }
 
-.pay-fail .inner-box-2 {
+.payFail .innerBox2 {
   background-color: #eeeeee;
   height: 98px;
   left: 762px;
   position: absolute;
   top: 1348px;
   width: 345px;
+  font-size: 44.7px;
+  text-align: center;
 }
 
-.pay-fail .text-wrapper-15 {
+.payFail .textWrapper15 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.7px;

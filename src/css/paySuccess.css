@@ -1,4 +1,4 @@
-.pay-success {
+.paySuccess {
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -6,14 +6,14 @@
   width: 100%;
 }
 
-.pay-success .div {
+.paySuccess .div {
   background-color: #ffffff;
   height: 1502.12px;
   position: relative;
   width: 1440px;
 }
 
-.pay-success .overlap {
+.paySuccess .overlap {
   height: 1172px;
   left: 193px;
   position: absolute;
@@ -21,7 +21,7 @@
   width: 1060px;
 }
 
-.pay-success .inner-box {
+.paySuccess .innerBox {
   background-color: #eeeeee;
   height: 1172px;
   left: 0;
@@ -30,7 +30,7 @@
   width: 1060px;
 }
 
-.pay-success .overlap-group {
+.paySuccess .overlapGroup {
   height: 97px;
   left: 36px;
   position: absolute;
@@ -38,7 +38,7 @@
   width: 945px;
 }
 
-.pay-success .price {
+.paySuccess .price {
   background-color: #ffffff;
   height: 97px;
   left: 20px;
@@ -47,7 +47,7 @@
   width: 926px;
 }
 
-.pay-success .text-wrapper {
+.paySuccess .textWrapper {
   color: #aa0000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.4px;
@@ -61,7 +61,7 @@
   width: 945px;
 }
 
-.pay-success .overlap-group-2 {
+.paySuccess .overlapGroup2 {
   background-color: #ffffff;
   height: 918px;
   left: 56px;
@@ -70,7 +70,7 @@
   width: 926px;
 }
 
-.pay-success .text-wrapper-2 {
+.paySuccess .textWrapper2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.4px;
@@ -83,7 +83,7 @@
   top: 38px;
 }
 
-.pay-success .text-wrapper-3 {
+.paySuccess .textWrapper3 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37px;
@@ -96,7 +96,7 @@
   top: 189px;
 }
 
-.pay-success .text-wrapper-4 {
+.paySuccess .textWrapper4 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37px;
@@ -109,7 +109,7 @@
   top: 659px;
 }
 
-.pay-success .text-wrapper-5 {
+.paySuccess .textWrapper5 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37px;
@@ -122,7 +122,7 @@
   top: 659px;
 }
 
-.pay-success .text-wrapper-6 {
+.paySuccess .textWrapper6 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37px;
@@ -135,7 +135,7 @@
   top: 740px;
 }
 
-.pay-success .text-wrapper-7 {
+.paySuccess .textWrapper7 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37px;
@@ -148,7 +148,7 @@
   top: 740px;
 }
 
-.pay-success .text-wrapper-8 {
+.paySuccess .textWrapper8 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37px;
@@ -161,7 +161,7 @@
   top: 189px;
 }
 
-.pay-success .text-wrapper-9 {
+.paySuccess .textWrapper9 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37px;
@@ -174,7 +174,7 @@
   top: 344px;
 }
 
-.pay-success .text-wrapper-10 {
+.paySuccess .textWrapper10 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 37px;
@@ -187,7 +187,7 @@
   top: 499px;
 }
 
-.pay-success .p {
+.paySuccess .p {
   color: #00000070;
   font-family: "Inter-Regular", Helvetica;
   font-size: 33.3px;
@@ -200,7 +200,7 @@
   top: 251px;
 }
 
-.pay-success .text-wrapper-11 {
+.paySuccess .textWrapper11 {
   color: #00000070;
   font-family: "Inter-Regular", Helvetica;
   font-size: 29.6px;
@@ -213,7 +213,7 @@
   top: 859px;
 }
 
-.pay-success .text-wrapper-12 {
+.paySuccess .textWrapper12 {
   color: #00000070;
   font-family: "Inter-Regular", Helvetica;
   font-size: 33.3px;
@@ -226,7 +226,7 @@
   top: 407px;
 }
 
-.pay-success .text-wrapper-13 {
+.paySuccess .textWrapper13 {
   color: #00000070;
   font-family: "Inter-Regular", Helvetica;
   font-size: 33.3px;
@@ -239,7 +239,7 @@
   top: 562px;
 }
 
-.pay-success .vector {
+.paySuccess .vector {
   height: 4px;
   left: 56px;
   position: absolute;
@@ -247,7 +247,7 @@
   width: 926px;
 }
 
-.pay-success .img {
+.paySuccess .img {
   height: 2px;
   left: 57px;
   position: absolute;
@@ -255,50 +255,13 @@
   width: 925px;
 }
 
-.pay-success .div-wrapper {
+.paySuccess .divWrapper {
   background-color: #eeeeee;
   height: 97px;
-  left: 346px;
+  left: 546px;
   position: absolute;
   top: 1338px;
   width: 342px;
-}
-
-.pay-success .text-wrapper-14 {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
   font-size: 44.4px;
-  font-weight: 400;
-  height: 89px;
-  left: 53px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
   text-align: center;
-  top: 7px;
-  width: 237px;
-}
-
-.pay-success .inner-box-2 {
-  background-color: #eeeeee;
-  height: 97px;
-  left: 757px;
-  position: absolute;
-  top: 1338px;
-  width: 342px;
-}
-
-.pay-success .text-wrapper-15 {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 44.4px;
-  font-weight: 400;
-  height: 89px;
-  left: 30px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 7px;
-  width: 282px;
 }

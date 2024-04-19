@@ -1,4 +1,4 @@
-.pay-buy-list {
+.payBuyList {
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -6,14 +6,14 @@
   width: 100%;
 }
 
-.pay-buy-list .div {
+.payBuyList .div {
   background-color: #ffffff;
   height: 1975.16px;
   position: relative;
   width: 1440px;
 }
 
-.pay-buy-list .pay-item {
+.payBuyList .payItem {
   background-color: #eeeeeeee;
   height: 472px;
   left: 62px;
@@ -22,7 +22,7 @@
   width: 1317px;
 }
 
-.pay-buy-list .item-info {
+.payBuyList .itemInfo {
   background-color: #ffffff;
   height: 396px;
   left: 108px;
@@ -31,7 +31,7 @@
   width: 1088px;
 }
 
-.pay-buy-list .overlap {
+.payBuyList .overlap {
   background-color: #d9d9d9;
   height: 77px;
   left: 38px;
@@ -40,7 +40,7 @@
   width: 575px;
 }
 
-.pay-buy-list .text-wrapper {
+.payBuyList .textWrapper {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.2px;
@@ -54,7 +54,7 @@
   width: 233px;
 }
 
-.pay-buy-list .overlap-group {
+.payBuyList .overlapGroup {
   background-color: #d9d9d9;
   height: 77px;
   left: 38px;
@@ -63,7 +63,7 @@
   width: 575px;
 }
 
-.pay-buy-list .div-wrapper {
+.payBuyList .divWrapper {
   background-color: #d9d9d9;
   height: 77px;
   left: 38px;
@@ -72,7 +72,7 @@
   width: 575px;
 }
 
-.pay-buy-list .text-wrapper-2 {
+.payBuyList .textWrapper2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.2px;
@@ -86,7 +86,7 @@
   width: 233px;
 }
 
-.pay-buy-list .overlap-2 {
+.payBuyList .overlap2 {
   background-color: #d9d9d9;
   height: 77px;
   left: 35px;
@@ -95,7 +95,7 @@
   width: 575px;
 }
 
-.pay-buy-list .text-wrapper-3 {
+.payBuyList .textWrapper3 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.2px;
@@ -109,7 +109,7 @@
   width: 233px;
 }
 
-.pay-buy-list .image-box {
+.payBuyList .imageBox {
   background-color: #d6d6d6;
   height: 366px;
   left: 686px;
@@ -118,7 +118,7 @@
   width: 366px;
 }
 
-.pay-buy-list .overlap-3 {
+.payBuyList .overlap3 {
   background-color: #ffffff;
   height: 57px;
   left: 1233px;
@@ -127,7 +127,7 @@
   width: 46px;
 }
 
-.pay-buy-list .text-wrapper-4 {
+.payBuyList .textWrapper4 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.2px;
@@ -140,7 +140,7 @@
   width: 39px;
 }
 
-.pay-buy-list .overlap-4 {
+.payBuyList .overlap4 {
   height: 57px;
   left: 32px;
   position: absolute;
@@ -148,7 +148,7 @@
   width: 46px;
 }
 
-.pay-buy-list .delete-button {
+.payBuyList .deleteButton {
   background-color: #ffffff;
   height: 57px;
   left: 0;
@@ -157,7 +157,7 @@
   width: 46px;
 }
 
-.pay-buy-list .text-wrapper-5 {
+.payBuyList .textWrapper5 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.2px;
@@ -170,7 +170,7 @@
   width: 39px;
 }
 
-.pay-buy-list .pay-item-2 {
+.payBuyList .payItem2 {
   background-color: #eeeeeeee;
   height: 472px;
   left: 62px;
@@ -179,7 +179,7 @@
   width: 1317px;
 }
 
-.pay-buy-list .overlap-5 {
+.payBuyList .overlap5 {
   height: 57px;
   left: 32px;
   position: absolute;
@@ -187,7 +187,7 @@
   width: 46px;
 }
 
-.pay-buy-list .overlap-6 {
+.payBuyList .overlap6 {
   height: 69px;
   left: 186px;
   position: absolute;
@@ -195,7 +195,7 @@
   width: 1053px;
 }
 
-.pay-buy-list .price {
+.payBuyList .price {
   background-color: #d9d9d9;
   height: 69px;
   left: 24px;
@@ -205,7 +205,7 @@
   font-size: 30px;
 }
 
-.pay-buy-list .price-2 {
+.payBuyList .price2 {
   background-color: #d9d9d9;
   height: 69px;
   left: 372px;
@@ -215,7 +215,7 @@
   font-size: 30px;
 }
 
-.pay-buy-list .price-3 {
+.payBuyList .price3 {
   background-color: #d9d9d9;
   height: 69px;
   left: 720px;
@@ -225,7 +225,7 @@
   font-size: 30px;
 }
 
-.pay-buy-list .text-wrapper-6 {
+.payBuyList .textWrapper6 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 39.3px;
@@ -240,7 +240,7 @@
   width: 357px;
 }
 
-.pay-buy-list .text-wrapper-7 {
+.payBuyList .textWrapper7 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 39.3px;
@@ -255,7 +255,7 @@
   width: 357px;
 }
 
-.pay-buy-list .text-wrapper-8 {
+.payBuyList .textWrapper8 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 39.3px;
@@ -270,7 +270,7 @@
   width: 357px;
 }
 
-.pay-buy-list .text-wrapper-9 {
+.payBuyList .textWrapper9 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.2px;
@@ -283,7 +283,7 @@
   width: 295px;
 }
 
-.pay-buy-list .nav {
+.payBuyList .nav {
   background-color: #eeeeee;
   height: 130px;
   left: 57px;
@@ -292,7 +292,7 @@
   width: 1325px;
 }
 
-.pay-buy-list .user {
+.payBuyList .user {
   background-color: #ffffff;
   height: 69px;
   left: 1062px;
@@ -302,7 +302,7 @@
   width: 242px;
 }
 
-.pay-buy-list .text-wrapper-10 {
+.payBuyList .textWrapper10 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.2px;
@@ -315,7 +315,7 @@
   width: 203px;
 }
 
-.pay-buy-list .logo {
+.payBuyList .logo {
   background-color: #ffffff;
   height: 80px;
   left: 21px;
@@ -325,7 +325,7 @@
   width: 205px;
 }
 
-.pay-buy-list .text-wrapper-11 {
+.payBuyList .textWrapper11 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.2px;
