@@ -1,23 +1,27 @@
-
+import { useNavigate } from "react-router-dom";
 import "../css/findPassword.css";
 
 export const FindPassword = () => {
+  const navigate = useNavigate()
+  const goback = ()=>{
+    navigate(-1)
+  }
   return (
-    <div className="find-password">
+    <div className="findPassword">
       <div className="div">
-        <div className="text-wrapper">비밀번호 찾기</div>
-        <form className="find-password-box">
-          <div className="input-box">
-            <div className="input-userid">
-              <input className="text-wrapper-2" placeholder="사용자 아이디 입력"></input>
+        <div className="textWrapper">비밀번호 찾기</div>
+        <form className="findPasswordBox">
+          <div className="inputBox">
+            <div className="inputUserid">
+              <input className="textWrapper2" placeholder="사용자 아이디 입력"></input>
             </div>
-            <div className="input-userphonenum">
-              <input className="text-wrapper-3" placeholder="사용자 이메일 입력"></input>
+            <div className="inputUserPhoneNumber">
+              <input className="textWrapper3" placeholder="사용자 이메일 입력"></input>
             </div>
           </div>
-          <div className="botton-box">
-            <button className="submit-button">제출</button>
-            <button className="cancle-button" type="reset">취소</button>
+          <div className="buttonBox">
+            <button className="submitButton">제출</button>
+            <button className="cancelButton" type="button" onClick={goback}>취소</button>
           </div>
         </form>
       </div>

@@ -1,210 +1,210 @@
-.user-edit {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .user-edit .div {
-    background-color: #ffffff;
-    height: 1024px;
-    overflow: hidden;
-    position: relative;
-    width: 1440px;
-  }
-  
-  .user-edit .profile-image {
-    background-color: #d9d9d9;
-    border-radius: 109.48px;
-    height: 219px;
-    left: 611px;
-    position: absolute;
-    top:20px;
-    width: 219px;
-    z-index: 1;
-  }
-  
-  .user-edit .user-edit-box {
-    background-color: #eeeeee;
-    height: 845px;
-    left: 524px;
-    position: absolute;
-    top: 219px;
-    width: 391px;
-  }
-  
-  .user-edit .box-password {
-    height: 87px;
-    left: 10px;
-    position: absolute;
-    top: 83px;
-    width: 359px;
-  }
-  
-  .user-edit .input {
-    background-color: #ffffff;
-    height: 43px;
-    left: 4px;
-    position: absolute;
-    top: 39px;
-    width: 352px;
-  }
-  
-  .user-edit .txt {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 12.9px;
-    font-weight: 400;
-    left: 4px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 10px;
-    width: 190px;
-  }
-  
-  .user-edit .box-password-check {
-    height: 87px;
-    left: 10px;
-    position: absolute;
-    top: 170px;
-    width: 359px;
-  }
-  
-  .user-edit .box-email {
-    height: 87px;
-    left: 10px;
-    position: absolute;
-    top: 267px;
-    width: 359px;
-  }
-  
-  .user-edit .box-phone {
-    height: 87px;
-    left: 7px;
-    position: absolute;
-    top: 371px;
-    width: 359px;
-  }
-  
-  .user-edit .box-address {
-    height: 87px;
-    left: 3px;
-    position: absolute;
-    top: 492px;
-    width: 359px;
-  }
-  
-  .user-edit .select-gender {
-    height: 87px;
-    left: 0;
-    position: absolute;
-    top: 612px;
-    width: 359px;
-  }
-  
-  .user-edit .input-radio {
-    height: 43px;
-    left: 4px;
-    position: absolute;
-    top: 39px;
-    width: 352px;
-  }
-  
-  .user-edit .text-wrapper {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 12.9px;
-    font-weight: 400;
-    left: 192px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 13px;
-    width: 27px;
-  }
-  
-  .user-edit .text-wrapper-2 {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 12.9px;
-    font-weight: 400;
-    left: 18px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 13px;
-    width: 27px;
-  }
-  
-  .user-edit .radio-female {
-    background-color: #ffffff;
-    height: 25px;
-    left: 269px;
-    position: absolute;
-    top: 9px;
-    width: 35px;
-  }
-  
-  .user-edit .radio-male {
-    background-color: #ffffff;
-    height: 25px;
-    left: 64px;
-    position: absolute;
-    top: 9px;
-    width: 35px;
-  }
-  
-  .user-edit .edit-form {
-    height: 60px;
-    left: 10px;
-    position: absolute;
-    top: 749px;
-    width: 352px;
-  }
-  
-  .user-edit .submit-button {
-    background-color: #ffffff;
-    height: 43px;
-    left: 24px;
-    position: absolute;
-    top: 3px;
-    width: 131px;
-  }
-  
-  .user-edit .text-wrapper-3 {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 12.9px;
-    font-weight: 400;
-    left: 21px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 7px;
-    width: 89px;
-  }
-  
-  .user-edit .cancle-button {
-    background-color: #ffffff;
-    height: 43px;
-    left: 221px;
-    overflow: hidden;
-    position: absolute;
-    top: 3px;
-    width: 107px;
-  }
-  
-  .user-edit .text-wrapper-4 {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 12.9px;
-    font-weight: 400;
-    left: 31px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 10px;
-    width: 63px;
-  }
+.userEdit {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.userEdit .div {
+  background-color: #ffffff;
+  height: 1024px;
+  overflow: hidden;
+  position: relative;
+  width: 1440px;
+}
+
+.userEdit .profileImage {
+  background-color: #d9d9d9;
+  border-radius: 109.48px;
+  height: 219px;
+  left: 611px;
+  position: absolute;
+  top: 20px;
+  width: 219px;
+  z-index: 1;
+}
+
+.userEdit .userEditBox {
+  background-color: #eeeeee;
+  height: 845px;
+  left: 524px;
+  position: absolute;
+  top: 219px;
+  width: 391px;
+}
+
+.userEdit .boxPassword {
+  height: 87px;
+  left: 10px;
+  position: absolute;
+  top: 83px;
+  width: 359px;
+}
+
+.userEdit .input {
+  background-color: #ffffff;
+  height: 43px;
+  left: 4px;
+  position: absolute;
+  top: 39px;
+  width: 352px;
+}
+
+.userEdit .txt {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12.9px;
+  font-weight: 400;
+  left: 4px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 10px;
+  width: 190px;
+}
+
+.userEdit .boxPasswordCheck {
+  height: 87px;
+  left: 10px;
+  position: absolute;
+  top: 170px;
+  width: 359px;
+}
+
+.userEdit .boxEmail {
+  height: 87px;
+  left: 10px;
+  position: absolute;
+  top: 267px;
+  width: 359px;
+}
+
+.userEdit .boxPhone {
+  height: 87px;
+  left: 7px;
+  position: absolute;
+  top: 371px;
+  width: 359px;
+}
+
+.userEdit .boxAddress {
+  height: 87px;
+  left: 3px;
+  position: absolute;
+  top: 492px;
+  width: 359px;
+}
+
+.userEdit .selectGender {
+  height: 87px;
+  left: 0;
+  position: absolute;
+  top: 612px;
+  width: 359px;
+}
+
+.userEdit .inputRadio {
+  height: 43px;
+  left: 4px;
+  position: absolute;
+  top: 39px;
+  width: 352px;
+}
+
+.userEdit .textWrapper {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12.9px;
+  font-weight: 400;
+  left: 192px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 13px;
+  width: 27px;
+}
+
+.userEdit .textWrapper2 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12.9px;
+  font-weight: 400;
+  left: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 13px;
+  width: 27px;
+}
+
+.userEdit .radioFemale {
+  background-color: #ffffff;
+  height: 25px;
+  left: 269px;
+  position: absolute;
+  top: 9px;
+  width: 35px;
+}
+
+.userEdit .radioMale {
+  background-color: #ffffff;
+  height: 25px;
+  left: 64px;
+  position: absolute;
+  top: 9px;
+  width: 35px;
+}
+
+.userEdit .editForm {
+  height: 60px;
+  left: 10px;
+  position: absolute;
+  top: 749px;
+  width: 352px;
+}
+
+.userEdit .submitButton {
+  background-color: #ffffff;
+  height: 43px;
+  left: 24px;
+  position: absolute;
+  top: 3px;
+  width: 131px;
+}
+
+.userEdit .textWrapper3 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12.9px;
+  font-weight: 400;
+  left: 21px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 7px;
+  width: 89px;
+}
+
+.userEdit .cancelButton {
+  background-color: #ffffff;
+  height: 43px;
+  left: 221px;
+  overflow: hidden;
+  position: absolute;
+  top: 3px;
+  width: 107px;
+}
+
+.userEdit .textWrapper4 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12.9px;
+  font-weight: 400;
+  left: 31px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 10px;
+  width: 63px;
+}

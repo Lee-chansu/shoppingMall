@@ -1,48 +1,52 @@
-
+import { useNavigate } from "react-router-dom";
 import "../css/join.css";
 
 export const Join = () => {
+  const navigate = useNavigate()
+  const goback = ()=>{
+    navigate(-1)
+  }
   return (
     <div className="join">
-      <div className="join-box-wrapper">
-        <div className="join-box">
-          <div className="text-wrapper">회원가입</div>
-          <div className="box-id">
-            <label for="id" className="txt">Id를 입력해주세요</label>
+      <div className="joinBoxWrapper">
+        <div className="joinBox">
+          <div className="textWrapper">회원가입</div>
+          <div className="boxId">
+            <label htmlFor="id" className="txt">Id를 입력해주세요</label>
             <input className="input" id="id" type="email"/>
           </div>
-          <div className="box-password">
-            <label for="password" className="txt">비밀번호를 입력해주세요</label>
+          <div className="boxPassword">
+            <label htmlFor="password" className="txt">비밀번호를 입력해주세요</label>
             <input className="input" id="password" type="password"/>
           </div>
-          <div className="box-password-check">
-            <label for="passwordCheck" className="txt">비밀번호 재확인</label>
+          <div className="boxPasswordCheck">
+            <label htmlFor="passwordCheck" className="txt">비밀번호 재확인</label>
             <input className="input" id="passwordCheck" type="password"/>
           </div>
-          <div className="box-email">
-            <label for="email" className="txt">이메일을 입력해주세요</label>
+          <div className="boxEmail">
+            <label htmlFor="email" className="txt">이메일을 입력해주세요</label>
             <input className="input" id="email" type="email"/>
           </div>
-          <div className="box-phone">
-            <label for="phone" className="txt">전화번호를 입력해주세요</label>
+          <div className="boxPhone">
+            <label htmlFor="phone" className="txt">전화번호를 입력해주세요</label>
             <input className="input" id="phone"/>
           </div>
-          <div className="box-address">
-            <label for="address" className="txt">주소를 입력해주세요</label>
+          <div className="boxAddress">
+            <label htmlFor="address" className="txt">주소를 입력해주세요</label>
             <input className="input" id="address"/>
           </div>
-          <div className="select-gender">
+          <div className="selectGender">
             <div className="txt">성별을 선택해주세요</div>
-            <div className="input-radio">
-              <label for="male" className="div">남</label>
-              <input type="radio" name="gender" className="radio-male" id="male"/>
-              <label for="female"className="text-wrapper-2">여</label>
-              <input type="radio" name="gender" className="radio-female" id="female" />
+            <div className="inputRadio">
+              <label htmlFor="male" className="div">남</label>
+              <input type="radio" name="gender" className="radioMale" id="male"/>
+              <label htmlFor="female" className="textWrapper2">여</label>
+              <input type="radio" name="gender" className="radioFemale" id="female" />
             </div>
           </div>
-          <div className="edit-form">
-            <button className="submit-button">제출</button>
-            <button className="cancle-button" type="reset">취소</button>
+          <div className="editForm">
+            <button className="submitButton">제출</button>
+            <button className="cancelButton" type="button" onClick={goback}>취소</button>
           </div>
         </div>
       </div>

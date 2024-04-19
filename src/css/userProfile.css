@@ -1,235 +1,233 @@
+.userProfile {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
 
-.user-profile {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .user-profile .overlap-group-wrapper {
-    background-color: #ffffff;
-    height: 1024px;
-    overflow: hidden;
-    width: 1440px;
-  }
-  
-  .user-profile .overlap-group {
-    height: 1035px;
-    left: 503px;
-    position: relative;
-    width: 434px;
-  }
-  
-  .user-profile .profile-image {
-    background-color: #d9d9d9;
-    border-radius: 121.63px;
-    height: 243px;
-    left: 94px;
-    position: absolute;
-    top: 0;
-    width: 243px;
-    z-index: 1;
-  }
-  
-  .user-profile .user-edit-box {
-    background-color: #eeeeee;
-    height: 824px;
-    left: 0;
-    position: absolute;
-    top: 211px;
-    width: 434px;
-  }
-  
-  .user-profile .box-id {
-    height: 103px;
-    left: 11px;
-    position: absolute;
-    top: 23px;
-    width: 399px;
-  }
+.userProfile .overlapGroupWrapper {
+  background-color: #ffffff;
+  height: 1024px;
+  overflow: hidden;
+  width: 1440px;
+}
 
-  .user-profile .box-username {
-    height: 103px;
-    left: 11px;
-    position: absolute;
-    top: 123px;
-    width: 399px;
-  }
-  
-  .user-profile .div-wrapper {
-    background-color: #ffffff;
-    height: 48px;
-    left: 4px;
-    position: relative;
-    top: 44px;
-    width: 391px;
-  }
-  
-  .user-profile .text-wrapper {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 14.3px;
-    font-weight: 400;
-    left: 167px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 15px;
-    width: 57px;
-  }
-  
-  .user-profile .user-name-box {
-    height: 97px;
-    left: 18px;
-    position: absolute;
-    top: 126px;
-    width: 399px;
-  }
-  
-  .user-profile .input {
-    background-color: #ffffff;
-    border: none;
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 14.3px;
-    font-weight: 400;
-    height: 48px;
-    left: 4px;
-    letter-spacing: 0;
-    line-height: normal;
-    padding: 0;
-    padding-left: 150px;
-    position: relative;
-    top: 44px;
-    width: 391px;
-  }
-  
-  .user-profile .box-email {
-    height: 97px;
-    left: 18px;
-    position: absolute;
-    top: 236px;
-    width: 391px;
-  }
-  
-  .user-profile .div {
-    background-color: #ffffff;
-    border: none;
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 14.3px;
-    font-weight: 400;
-    height: 48px;
-    left: 4px;
-    letter-spacing: 0;
-    line-height: normal;
-    padding: 0;
-    padding-left: 172px;
-    position: relative;
-    top: 44px;
-    width: 391px;
-  }
-  
-  .user-profile .box-phone {
-    height: 97px;
-    left: 18px;
-    position: absolute;
-    top: 345px;
-    width: 399px;
-  }
-  
-  .user-profile .phone-num {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 14.3px;
-    font-weight: 400;
-    left: 139px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 12px;
-    width: 127px;
-  }
-  
-  .user-profile .box-address {
-    height: 97px;
-    left: 18px;
-    position: absolute;
-    top: 442px;
-    width: 399px;
-  }
-  
-  .user-profile .text-wrapper-2 {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 14.3px;
-    font-weight: 400;
-    left: 165px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 12px;
-    width: 60px;
-  }
-  
-  .user-profile .box-gender {
-    height: 97px;
-    left: 18px;
-    position: absolute;
-    top: 552px;
-    width: 399px;
-  }
-  
-  .user-profile .edit-form {
-    height: 66px;
-    left: 22px;
-    position: absolute;
-    top: 735px;
-    width: 391px;
-  }
-  
-  .user-profile .cancle-button {
-    background-color: #ffffff;
-    height: 48px;
-    left: 231px;
-    position: absolute;
-    top: 4px;
-    width: 145px;
-  }
-  
-  .user-profile .text-wrapper-3 {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 14.3px;
-    font-weight: 400;
-    left: 45px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 14px;
-    width: 55px;
-  }
-  
-  .user-profile .to-submit-button {
-    background-color: #ffffff;
-    height: 48px;
-    left: 26px;
-    position: absolute;
-    top: 4px;
-    width: 145px;
-  }
-  
-  .user-profile .text-wrapper-4 {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 14.3px;
-    font-weight: 400;
-    left: 44px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 14px;
-    width: 58px;
-  }
-  
+.userProfile .overlapGroup {
+  height: 1035px;
+  left: 503px;
+  position: relative;
+  width: 434px;
+}
+
+.userProfile .profileImage {
+  background-color: #d9d9d9;
+  border-radius: 121.63px;
+  height: 243px;
+  left: 94px;
+  position: absolute;
+  top: 0;
+  width: 243px;
+  z-index: 1;
+}
+
+.userProfile .userEditBox {
+  background-color: #eeeeee;
+  height: 824px;
+  left: 0;
+  position: absolute;
+  top: 211px;
+  width: 434px;
+}
+
+.userProfile .boxId {
+  height: 103px;
+  left: 11px;
+  position: absolute;
+  top: 23px;
+  width: 399px;
+}
+
+.userProfile .boxUsername {
+  height: 103px;
+  left: 11px;
+  position: absolute;
+  top: 123px;
+  width: 399px;
+}
+
+.userProfile .divWrapper {
+  background-color: #ffffff;
+  height: 48px;
+  left: 4px;
+  position: relative;
+  top: 44px;
+  width: 391px;
+}
+
+.userProfile .textWrapper {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 14.3px;
+  font-weight: 400;
+  left: 167px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 15px;
+  width: 57px;
+}
+
+.userProfile .userNameBox {
+  height: 97px;
+  left: 18px;
+  position: absolute;
+  top: 126px;
+  width: 399px;
+}
+
+.userProfile .input {
+  background-color: #ffffff;
+  border: none;
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 14.3px;
+  font-weight: 400;
+  height: 48px;
+  left: 4px;
+  letter-spacing: 0;
+  line-height: normal;
+  padding: 0;
+  padding-left: 150px;
+  position: relative;
+  top: 44px;
+  width: 391px;
+}
+
+.userProfile .boxEmail {
+  height: 97px;
+  left: 18px;
+  position: absolute;
+  top: 236px;
+  width: 391px;
+}
+
+.userProfile .box {
+  background-color: #ffffff;
+  border: none;
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 14.3px;
+  font-weight: 400;
+  height: 48px;
+  left: 4px;
+  letter-spacing: 0;
+  line-height: normal;
+  padding: 0;
+  padding-left: 172px;
+  position: relative;
+  top: 44px;
+  width: 391px;
+}
+
+.userProfile .boxPhone {
+  height: 97px;
+  left: 18px;
+  position: absolute;
+  top: 345px;
+  width: 399px;
+}
+
+.userProfile .phoneNum {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 14.3px;
+  font-weight: 400;
+  left: 139px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 12px;
+  width: 127px;
+}
+
+.userProfile .boxAddress {
+  height: 97px;
+  left: 18px;
+  position: absolute;
+  top: 442px;
+  width: 399px;
+}
+
+.userProfile .textWrapper2 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 14.3px;
+  font-weight: 400;
+  left: 165px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 12px;
+  width: 60px;
+}
+
+.userProfile .boxGender {
+  height: 97px;
+  left: 18px;
+  position: absolute;
+  top: 552px;
+  width: 399px;
+}
+
+.userProfile .editForm {
+  height: 66px;
+  left: 22px;
+  position: absolute;
+  top: 735px;
+  width: 391px;
+}
+
+.userProfile .cancelButton {
+  background-color: #ffffff;
+  height: 48px;
+  left: 231px;
+  position: absolute;
+  top: 4px;
+  width: 145px;
+}
+
+.userProfile .textWrapper3 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 14.3px;
+  font-weight: 400;
+  left: 45px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 14px;
+  width: 55px;
+}
+
+.userProfile .toSubmitButton {
+  background-color: #ffffff;
+  height: 48px;
+  left: 26px;
+  position: absolute;
+  top: 4px;
+  width: 145px;
+}
+
+.userProfile .textWrapper4 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 14.3px;
+  font-weight: 400;
+  left: 44px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 14px;
+  width: 58px;
+}

@@ -4,15 +4,15 @@ import "../css/userInfo.css";
 
 export const UserInfo = () => {
   return (
-    <div className="user-info">
-      <div className="overlap-group-wrapper">
-        <div className="overlap-group">
-          <div className="profile-image" />
-          <div className="user-select">
-            <div className="user-buy-list">
-              <Link to="#"className="text-wrapper">userBuyList</Link>
+    <div className="userInfo">
+      <div className="overlapGroupWrapper">
+        <div className="overlapGroup">
+          <div className="profileImage" />
+          <div className="userSelect">
+            <div className="userBuyList">
+              <Link to="#" className="textWrapper">payBuyList</Link>
             </div>
-            <div className="user-profile">
+            <div className="userProfile">
               <Link to="/userProfile" className="div">userProfile</Link>
             </div>
           </div>
