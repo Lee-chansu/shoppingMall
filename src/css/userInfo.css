@@ -1,0 +1,86 @@
+.user-info {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .user-info .overlap-group-wrapper {
+    background-color: #ffffff;
+    height: 1024px;
+    width: 1440px;
+  }
+  
+  .user-info .overlap-group {
+    height: 803px;
+    left: 354px;
+    position: relative;
+    top: 110px;
+    width: 731px;
+  }
+  
+  .user-info .profile-image {
+    background-color: #d9d9d9;
+    border-radius: 204.77px;
+    height: 410px;
+    left: 159px;
+    position: absolute;
+    top: 0;
+    width: 410px;
+    z-index: 1;
+  }
+  
+  .user-info .user-select {
+    background-color: #eeeeee;
+    height: 448px;
+    left: 0;
+    position: absolute;
+    top: 355px;
+    width: 731px;
+  }
+  
+  .user-info .user-buy-list {
+    background-color: #ffffff;
+    height: 107px;
+    left: 30px;
+    position: absolute;
+    top: 97px;
+    width: 672px;
+  }
+  
+  .user-info .text-wrapper {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 48.1px;
+    font-weight: 400;
+    left: 192px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 19px;
+    width: 288px;
+  }
+  
+  .user-info .user-profile {
+    background-color: #ffffff;
+    height: 81px;
+    left: 30px;
+    position: absolute;
+    top: 285px;
+    width: 672px;
+  }
+  
+  .user-info .div {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 48.1px;
+    font-weight: 400;
+    left: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 12px;
+    white-space: nowrap;
+    width: 246px;
+  }

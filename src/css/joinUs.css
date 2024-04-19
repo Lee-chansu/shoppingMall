@@ -1,0 +1,141 @@
+.join-us {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .join-us .join-box-wrapper {
+    background-color: #ffffff;
+    height: 1024px;
+    width: 1440px;
+  }
+  
+  .join-us .join-box {
+    background-color: #eeeeee;
+    height: 998px;
+    left: 433px;
+    position: relative;
+    top: 13px;
+    width: 574px;
+  }
+  
+  .join-us .txt {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 18.9px;
+    font-weight: 400;
+    left: 251px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 68px;
+    width: 80px;
+  }
+  
+  .join-us .overlap-group {
+    height: 248px;
+    left: 20px;
+    position: absolute;
+    top: 184px;
+    width: 528px;
+  }
+  
+  .join-us .all-check {
+    height: 128px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 527px;
+  }
+  
+  .join-us .rectangle {
+    background-color: #ffffff;
+    height: 19px;
+    left: 17px;
+    position: absolute;
+    top: 18px;
+    width: 21px;
+  }
+  
+  .join-us .text-wrapper {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 18.9px;
+    font-weight: 400;
+    left: 51px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 15px;
+    width: 110px;
+  }
+  
+  .join-us .vector {
+    height: 1px;
+    left: 3px;
+    position: absolute;
+    top: 82px;
+    width: 518px;
+    background-color: #000;
+  }
+  
+  .join-us .check {
+    height: 128px;
+    left: 0;
+    position: absolute;
+    top: 119px;
+    width: 527px;
+  }
+  
+  .join-us .div {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 18.9px;
+    font-weight: 400;
+    left: 48px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 15px;
+    width: 330px;
+  }
+  
+  .join-us .input {
+    background-color: #ffffff;
+    height: 64px;
+    left: 5px;
+    position: absolute;
+    top: 58px;
+    width: 517px;
+  }
+  
+  .join-us .check-2 {
+    height: 128px;
+    left: 20px;
+    position: absolute;
+    top: 451px;
+    width: 527px;
+  }
+  
+  .join-us .submit-button {
+    background-color: #ffffff;
+    height: 64px;
+    left: 191px;
+    position: absolute;
+    top: 893px;
+    width: 192px;
+  }
+  
+  .join-us .text-wrapper-2 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 18.9px;
+    font-weight: 400;
+    left: 21px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 22px;
+  }

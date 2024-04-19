@@ -1,0 +1,137 @@
+.find-id {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .find-id .div {
+    background-color: #ffffff;
+    height: 1024px;
+    position: relative;
+    width: 1440px;
+  }
+  
+  .find-id .text-wrapper {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 44.1px;
+    font-weight: 400;
+    height: 129px;
+    left: 406px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 39px;
+    width: 633px;
+  }
+  
+  .find-id .find-user-id-box {
+    background-color: #eeeeee;
+    height: 622px;
+    left: 300px;
+    position: absolute;
+    top: 201px;
+    width: 840px;
+  }
+  
+  .find-id .input-box {
+    background-color: #ffffff;
+    height: 289px;
+    left: 13px;
+    position: absolute;
+    top: 72px;
+    width: 812px;
+  }
+  
+  .find-id .input-username {
+    background-color: #eeeeee;
+    height: 93px;
+    left: 28px;
+    position: absolute;
+    top: 25px;
+    width: 756px;
+  }
+  
+  .find-id .text-wrapper-2 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 27.6px;
+    font-weight: 400;
+    height: 58px;
+    left: 110px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 16px;
+    width: 532px;
+  }
+  
+  .find-id .input-userphonenum {
+    background-color: #eeeeee;
+    height: 93px;
+    left: 28px;
+    position: absolute;
+    top: 167px;
+    width: 756px;
+  }
+  
+  .find-id .button-box {
+    background-color: #ffffff;
+    height: 160px;
+    left: 11px;
+    position: absolute;
+    top: 380px;
+    width: 815px;
+  }
+  
+  .find-id .submit-button {
+    background-color: #eeeeee;
+    height: 93px;
+    left: 47px;
+    position: absolute;
+    top: 29px;
+    width: 281px;
+  }
+  
+  .find-id .text-wrapper-3 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 27.6px;
+    font-weight: 400;
+    height: 58px;
+    left: 67px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 17px;
+    width: 134px;
+  }
+  
+  .find-id .cancle-button {
+    background-color: #eeeeee;
+    height: 93px;
+    left: 512px;
+    position: absolute;
+    top: 29px;
+    width: 230px;
+  }
+  
+  .find-id .text-wrapper-4 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 27.6px;
+    font-weight: 400;
+    height: 58px;
+    left: 32px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 17px;
+    width: 170px;
+  }
