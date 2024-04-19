@@ -1,2 +1,78 @@
-.product-add{}
-.product-add .div{}
+.product-add {
+  margin-top: 20px;
+}
+.product-add .div {
+  padding: 20px 0;
+}
+.product-add .div .checkBoxWrapper {
+  display: flex;
+  justify-content: space-around;
+  background-color: #eee;
+}
+.product-add .div .checkBoxWrapper h2 {
+  font-size: 40px;
+}
+.product-add .div .checkBoxWrapper .categorySelect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-add .div .checkBoxWrapper .categorySelect .checkBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 50px;
+}
+.product-add .div .checkBoxWrapper .categorySelect .checkBox label {
+  font-size: 32px;
+}
+.product-add .div .checkBoxWrapper .categorySelect:nth-of-type(1) .checkBox {
+  padding-left: 20px;
+}
+.product-add .div .name {
+    margin: 10px 0;
+    font-size: 32px;
+}
+.product-add .div .name .input{}
+
+.product-add .div .price {
+    margin: 10px 0;
+    font-size: 32px;
+}
+.product-add .div .price .input {}
+
+.product-add .div .created-at {
+    margin: 10px 0;
+    font-size: 32px;
+}
+.product-add .div .created-at .input {}
+
+
+.product-add .div .main-image {
+    display: flex; align-items: center;
+    margin: 50px 0;
+}
+.product-add .div .main-image .imageAddWrapper{
+    font-size: 32px;
+    padding: 20px 0;
+}
+.product-add .div .main-image .imageAddWrapper label{}
+.product-add .div .main-image .imageAddWrapper label::after{
+    content: '+';
+    display: inline-block;
+    width: 50px; height: 50px;
+    background-color: #fff;
+    border: 1px solid rgb(77,77,77);
+    border-radius: 50%;
+    text-align: center;
+}
+.product-add .div .main-image .imageAddWrapper label:hover label::after{
+    cursor: pointer;
+    background-color: rgb(77, 77, 77);
+}
+
+.product-add .div .main-image .imageAddWrapper .imageAdd {
+    display: none;
+}
+
+
