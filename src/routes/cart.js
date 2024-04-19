@@ -3,63 +3,99 @@ import "../css/cart.css";
 
 export const Cart = () => {
   return (
-    <div class="cart">
-      <div class="div">
-        <div class="overlap">
-          <div class="text-wrapper">취소하기</div>
-        </div>
-        <div class="overlap-group">
-          <div class="text-wrapper-2">결제하기</div>
-        </div>
-        <div class="cart-item">
-          <div class="image-box"></div>
-          <div class="item-info">
-            <div class="div-wrapper">
-              <div class="text-wrapper-3">상품가격</div>
+    <div className="cart">
+      <div className="div">
+        <button className="overlap">
+          <span className="text-wrapper">취소하기</span>
+        </button>
+        <button className="overlap-group">
+          <span className="text-wrapper-2">결제하기</span>
+        </button>
+        <div className="cart-item">
+          <div className="image-box" />
+          <div className="overlap-2">
+            <div className="image-box-2">
+              <div className="text-wrapper-3">1</div>
+              <div className="overlap-group-2">
+                <button className="text-wrapper-4">▲</button>
+                <button className="text-wrapper-5">▼</button>
+              </div>
             </div>
-            <div class="overlap-group-2">
-              <div class="text-wrapper-4">상품명</div>
+            <div className="text-wrapper-6">50,000원</div>
+          </div>
+          <input type="check" className="is-buy-check-box" />
+          <div className="text-wrapper-7">
+            상품명
+            <br />
+            어쩌구
+            <br />
+            저쩌구
+          </div>
+          <div className="overlap-3">
+            <div className="text-wrapper-8">3,000원</div>
+            <div className="text-wrapper-9">53,000원</div>
+          </div>
+        </div>
+        <div className="cart-item-2">
+          <div className="image-box" />
+          <input type="check" className="is-buy-check-box" />
+          <div className="overlap-2">
+            <div className="text-wrapper-6">50,000원</div>
+            <div className="image-box-2">
+              <div className="text-wrapper-3">1</div>
+              <div className="overlap-group-2">
+                <button className="text-wrapper-4">▲</button>
+                <button className="text-wrapper-5">▼</button>
+              </div>
             </div>
           </div>
-          <div class="is-buy-check-box"></div>
+          <div className="overlap-3">
+            <div className="text-wrapper-8">3,000원</div>
+            <div className="text-wrapper-9">53,000원</div>
+          </div>
+          <div className="text-wrapper-10">
+            상품명
+            <br />
+            어쩌구
+            <br />
+            저쩌구
+          </div>
         </div>
-        <div class="cart-item-2">
-          <div class="image-box"></div>
-          <div class="item-info">
-            <div class="div-wrapper">
-              <div class="text-wrapper-3">상품가격</div>
-            </div>
-            <div class="overlap-group-2">
-              <div class="text-wrapper-4">상품명</div>
+        <div className="cart-item-3">
+          <div className="image-box" />
+          <input type="check" className="is-buy-check-box" />
+          <div className="overlap-2">
+            <div className="text-wrapper-6">50,000원</div>
+            <div className="image-box-4">
+              <div className="text-wrapper-3">1</div>
+              <div className="overlap-group-2">
+                <button className="text-wrapper-4">▲</button>
+                <button className="text-wrapper-5">▼</button>
+              </div>
             </div>
           </div>
-          <div class="is-buy-check-box"></div>
-        </div>
-        <div class="cart-item-3">
-          <div class="image-box"></div>
-          <div class="item-info">
-            <div class="div-wrapper">
-              <div class="text-wrapper-3">상품가격</div>
-            </div>
-            <div class="overlap-group-2">
-              <div class="text-wrapper-4">상품명</div>
-            </div>
+          <div className="overlap-3">
+            <div className="text-wrapper-8">3,000원</div>
+            <div className="text-wrapper-9">53,000원</div>
           </div>
-          <div class="is-buy-check-box"></div>
-        </div>
-        <div class="cart-item-4">
-          <div class="image-box"></div>
-          <div class="item-info">
-            <div class="div-wrapper">
-              <div class="text-wrapper-3">상품가격</div>
-            </div>
-            <div class="overlap-group-2">
-              <div class="text-wrapper-4">상품명</div>
-            </div>
+          <div className="text-wrapper-10">
+            상품명
+            <br />
+            어쩌구
+            <br />
+            저쩌구
           </div>
-          <div class="is-buy-check-box"></div>
         </div>
-        <div class="text-wrapper-5">장바구니</div>
+        <div className="text-wrapper-11">장바구니</div>
+        <div className="navbar">
+          <div className="text-wrapper-12">이미지</div>
+          <div className="text-wrapper-13">상품명</div>
+          <div className="text-wrapper-14">판매가</div>
+          <div className="text-wrapper-15">수량</div>
+          <div className="text-wrapper-16">배송비</div>
+          <div className="text-wrapper-17">총 합계</div>
+          <input type="check" className="is-buy-check-box-2" />
+        </div>
       </div>
     </div>
   );

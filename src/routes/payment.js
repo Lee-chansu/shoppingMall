@@ -24,7 +24,7 @@ export const Payment = () => {
                   <div class="ex-2">ex 3</div>
                 </div>
               </div>
-              <div class="address">
+              <div className="address">
                 <div class="text-wrapper-4">주소</div>
               </div>
             </div>
