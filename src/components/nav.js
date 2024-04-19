@@ -3,7 +3,7 @@ import "../css/nav.css";
 
 export const Nav = () => {
   return (
-    <>
+    <header className="header">
       <div className="nav">
         <div className="div-wrapper">
           <div className="text-wrapper logo">logo</div>
@@ -29,6 +29,6 @@ export const Nav = () => {
           <div className="text-wrapper">category</div>
         </div>
       </div>
-    </>
+    </header>
   );
 };
