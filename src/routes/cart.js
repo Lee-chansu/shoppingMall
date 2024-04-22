@@ -4,8 +4,8 @@ import { CartItem } from "../components/CartItem";
 
 const cartItemList = [
   { id: 1, price: 50000, name: "상품명1", carryPrice: 3000, count: 3 },
-  { id: 2, price: 20000, name: "상품명2", carryPrice: 1000, count: 1 },
-  { id: 3, price: 40000, name: "상품명3", carryPrice: 2000, count: 2 },
+  // { id: 2, price: 20000, name: "상품명2", carryPrice: 1000, count: 1 },
+  // { id: 3, price: 40000, name: "상품명3", carryPrice: 2000, count: 2 },
 ];
 
 export const Cart = () => {
@@ -21,7 +21,7 @@ export const Cart = () => {
         {cartItemList.map((val, idx) => {
           return <CartItem name={"이름"} val={val} key={val.id}></CartItem>;
         })}
-        <div className="cart-item">
+        {/* <div className="cart-item">
           <div className="image-box" />
           <div className="overlap-2">
             <div className="image-box-2">
@@ -45,7 +45,7 @@ export const Cart = () => {
             <div className="text-wrapper-8">3,000원</div>
             <div className="text-wrapper-9">53,000원</div>
           </div>
-        </div>
+        </div> */}
         <div className="cart-item-2">
           <div className="image-box" />
           <input type="check" className="is-buy-check-box" />
