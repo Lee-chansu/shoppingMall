@@ -7,8 +7,6 @@
   margin: 10px 0;
 }
 
-
-
 .category {
   padding: 20px 20px;
   background-color: #eeeeee;
@@ -34,3 +32,6 @@
   line-height: normal;
 }
 
+.link{
+  text-decoration: none;
+}
