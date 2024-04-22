@@ -1,5 +1,12 @@
 import React from "react";
 import "../css/cart.css";
+import { CartItem } from "../components/CartItem";
+
+const cartItemList = [
+  { id: 1, price: 50000, name: "상품명1", carryPrice: 3000, count: 3 },
+  { id: 2, price: 20000, name: "상품명2", carryPrice: 1000, count: 1 },
+  { id: 3, price: 40000, name: "상품명3", carryPrice: 2000, count: 2 },
+];
 
 export const Cart = () => {
   return (
@@ -11,6 +18,9 @@ export const Cart = () => {
         <button className="overlap-group">
           <span className="text-wrapper-2">결제하기</span>
         </button>
+        {cartItemList.map((val, idx) => {
+          return <CartItem name={"이름"} val={val} key={val.id}></CartItem>;
+        })}
         <div className="cart-item">
           <div className="image-box" />
           <div className="overlap-2">
