@@ -1,0 +1,220 @@
+.join {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.join .joinBoxWrapper {
+  background-color: #ffffff;
+  height: 1024px;
+  width: 1440px;
+}
+
+.join .joinBox {
+  background-color: #eeeeee;
+  height: 1004px;
+  left: 515px;
+  position: relative;
+  top: 10px;
+  width: 410px;
+}
+
+.join .textWrapper {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 13.5px;
+  font-weight: 400;
+  height: 37px;
+  left: 120px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 11px;
+  width: 176px;
+}
+
+.join .boxId {
+  height: 92px;
+  left: 14px;
+  position: absolute;
+  top: 59px;
+  width: 377px;
+}
+
+.join .txt {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 13.5px;
+  font-weight: 400;
+  left: 4px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  width: 199px;
+}
+
+.join .input {
+  background-color: #ffffff;
+  height: 46px;
+  left: 4px;
+  position: absolute;
+  top: 41px;
+  width: 369px;
+}
+
+.join .boxPassword {
+  height: 92px;
+  left: 14px;
+  position: absolute;
+  top: 169px;
+  width: 377px;
+}
+
+.join .boxPasswordCheck {
+  height: 92px;
+  left: 11px;
+  position: absolute;
+  top: 294px;
+  width: 377px;
+}
+
+.join .boxEmail {
+  height: 92px;
+  left: 15px;
+  position: absolute;
+  top: 419px;
+  width: 377px;
+}
+
+.join .boxPhone {
+  height: 92px;
+  left: 15px;
+  position: absolute;
+  top: 528px;
+  width: 377px;
+}
+
+.join .boxAddress {
+  height: 92px;
+  left: 15px;
+  position: absolute;
+  top: 638px;
+  width: 377px;
+}
+
+.join .selectGender {
+  height: 92px;
+  left: 14px;
+  position: absolute;
+  top: 762px;
+  width: 377px;
+}
+
+.join .inputRadio {
+  height: 46px;
+  left: 4px;
+  position: absolute;
+  top: 41px;
+  width: 369px;
+}
+
+.join .div {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 13.5px;
+  font-weight: 400;
+  left: 19px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 14px;
+  width: 28px;
+}
+
+.join .radioMale {
+  background-color: #ffffff;
+  height: 26px;
+  left: 67px;
+  position: absolute;
+  top: 10px;
+  width: 37px;
+}
+
+.join .textWrapper2 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 13.5px;
+  font-weight: 400;
+  left: 202px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 14px;
+  width: 28px;
+}
+
+.join .radioFemale {
+  background-color: #ffffff;
+  height: 26px;
+  left: 282px;
+  position: absolute;
+  top: 10px;
+  width: 37px;
+}
+
+.join .editForm {
+  height: 63px;
+  left: 14px;
+  position: absolute;
+  top: 906px;
+  width: 369px;
+}
+
+.join .submitButton {
+  background-color: #ffffff;
+  height: 46px;
+  left: 25px;
+  position: absolute;
+  top: 3px;
+  width: 137px;
+}
+
+.join .textWrapper3 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 13.5px;
+  font-weight: 400;
+  left: 22px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 7px;
+  width: 93px;
+}
+
+.join .cancelButton {
+  background-color: #ffffff;
+  height: 46px;
+  left: 232px;
+  overflow: hidden;
+  position: absolute;
+  top: 3px;
+  width: 112px;
+}
+
+.join .textWrapper4 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 13.5px;
+  font-weight: 400;
+  left: 33px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  width: 66px;
+}
