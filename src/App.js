@@ -16,6 +16,11 @@ import { FindPassword } from "./routes/findPassword";
 import { PasswordCheck } from "./routes/passwordCheck";
 import { Login } from "./routes/login";
 
+import { Cart } from "./routes/cart";
+import { Payment } from "./routes/payment";
+import { PaySuccess } from "./routes/paySuccess";
+import { PayFail } from "./routes/payFail";
+import { PayBuyList } from "./routes/payBuyList";
 
 function App() {
   return (
@@ -33,10 +38,16 @@ function App() {
         <Route path="findId" element={<FindId />}></Route>
         <Route path="findPassword" element={<FindPassword />}></Route>
 
+        <Route path="passwordCheck" element={<PasswordCheck />}></Route>
         <Route path="userInfo" element={<UserInfo />}></Route>
         <Route path="userProfile" element={<UserProfile />}></Route>
         <Route path="userEdit" element={<UserEdit />}></Route>
-        <Route path="passwordCheck" element={<PasswordCheck />}></Route>
+        
+        <Route path="cart" element={<Cart />}></Route>
+        <Route path="payment" element={<Payment />}></Route>
+        <Route path="paySuccess" element={<PaySuccess />}></Route>
+        <Route path="payFail" element={<PayFail />}></Route>
+        <Route path="payBuyList" element={<PayBuyList />}></Route>
       </Routes>
   );
 }
