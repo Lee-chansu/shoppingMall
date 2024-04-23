@@ -13,16 +13,6 @@
   width: 1440px;
 }
 
-.cart .overlap {
-  background-color: #eeeeeeee;
-  height: 89px;
-  left: 798px;
-  position: absolute;
-  top: 1358px;
-  width: 281px;
-  border: none;
-}
-
 .cart .text-wrapper {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
@@ -39,16 +29,29 @@
 }
 
 .cart .overlap-group {
-  background-color: #eeeeeeee;
+  /* background-color: #eeeeeeee; */
   height: 89px;
-  left: 356px;
-  position: absolute;
-  top: 1358px;
-  width: 281px;
+  /* position: absolute; */
+  /* top: 1358px; */
+  width: 1004px;
   border: none;
+  margin: 40px auto 0;
+  display: flex;
+  justify-content: space-between;
 }
 
-.cart .text-wrapper-2 {
+.cart .overlap {
+  background-color: #eeeeeeee;
+  height: 89px;
+  /* left: 798px;
+  position: absolute;
+  top: 1358px; */
+  width: 281px;
+  border: none;
+  position: relative;
+}
+
+.cart .text-wrapper {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.2px;
@@ -66,11 +69,20 @@
 .cart .cart-item {
   background-color: #eeeeeeee;
   height: 241px;
-  left: 32px;
   overflow: hidden;
-  position: absolute;
-  top: 401px;
+  /* position: absolute;
+  left: 32px;
+  top: 401px; */
   width: 1377px;
+  margin: 40px auto 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.cart .cart-item > * {
 }
 
 .cart .image-box {
@@ -88,6 +100,7 @@
   position: absolute;
   top: 101px;
   width: 352px;
+  /*사용하는 css*/
 }
 
 .cart .image-box-2 {
@@ -106,12 +119,14 @@
   font-family: "Inter-Regular", Helvetica;
   font-size: 41.6px;
   font-weight: 400;
-  left: 17px;
+  /* left: 17px; */
+  right: 8px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   top: 2px;
   width: 42px;
+  text-align: right;
 }
 
 .cart .vector {
@@ -122,13 +137,13 @@
   width: 2px;
 }
 
-.cart .overlap-group-2 {
+/* .cart .overlap-group-2 {
   height: 56px;
   left: 90px;
   position: absolute;
   top: 0;
   width: 45px;
-}
+} */
 
 .cart .img {
   height: 28px;
@@ -216,6 +231,7 @@
   position: absolute;
   top: 102px;
   width: 428px;
+  /*사용하는 css*/
 }
 
 .cart .text-wrapper-8 {
@@ -244,7 +260,7 @@
   width: 225px;
 }
 
-.cart .cart-item-2 {
+/* .cart .cart-item-2 {
   background-color: #eeeeeeee;
   height: 241px;
   left: 32px;
@@ -252,7 +268,7 @@
   position: absolute;
   top: 682px;
   width: 1377px;
-}
+} */
 
 .cart .text-wrapper-10 {
   color: #000000;
@@ -267,7 +283,7 @@
   width: 149px;
 }
 
-.cart .cart-item-3 {
+/* .cart .cart-item-3 {
   background-color: #eeeeeeee;
   height: 241px;
   left: 32px;
@@ -275,7 +291,7 @@
   position: absolute;
   top: 963px;
   width: 1377px;
-}
+} */
 
 .cart .image-box-4 {
   background-color: #ffffff;
@@ -297,19 +313,38 @@
   left: 636px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
-  top: 121px;
+  padding-top: 121px;
+
+  /* position: absolute;
+  top: 121px; */
+
+  margin: 0 auto;
   width: 295px;
 }
 
 .cart .navbar {
   background-color: #eeeeeeee;
+  /* left: 31px; */
+
+  /* position: absolute; */
+  /* top: 250px; */
+
+  margin: 80px auto 0;
   height: 92px;
-  left: 31px;
-  position: absolute;
-  top: 250px;
   width: 1377px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
 }
+
+/* .cart .navbar > * {
+  color: #000000;
+  font-family: 'Inter-Light', Helvetica;
+  font-size: 38.2px;
+  font-weight: 300;
+} */
 
 .cart .text-wrapper-12 {
   color: #000000;
@@ -400,7 +435,7 @@
   height: 43px;
   left: 42px;
   position: absolute;
-  top: 24px;
+  /* top: 24px; */
   transform: rotate(180deg);
   width: 43px;
 }
