@@ -19,6 +19,8 @@ module.exports = (sequelize) => {
     productStock: {
       type: DataTypes.INTEGER
     }
+  }, {
+    timestamps: false
   });
 
   ProductOption.associate = (models) => {

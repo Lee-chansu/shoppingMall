@@ -25,6 +25,8 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.STRING(255)
     }
+  }, {
+    timestamps: false
   });
 
   BuyList.associate = (models) => {
