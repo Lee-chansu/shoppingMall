@@ -16,13 +16,22 @@
   text-align: center;
 }
 
-.div-wrapper {
+.category-2 {
+  padding: 20px 20px;
+  background-color: #eeeeee;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.wrapper {
   padding: 0px;
   background-color: #ffffff;
   text-align: center;
 }
 
-.text-wrapper {
+.text {
   padding: 10px;
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
@@ -32,6 +41,35 @@
   line-height: normal;
 }
 
-.link{
+.category .wrapper {
+  margin: 0 20px;
+}
+
+.link {
   text-decoration: none;
+}
+
+@media screen and (max-width: 1400px) {
+  .nav {
+    display: flex;
+  }
+  .category {
+    display: none;
+  }
+  .category-2 {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .category-2 {
+    overflow-x: scroll;
+  }
+  .category-2 .wrapper{
+    width: 20%;
+    margin: 0 10px;
+  }
+  .category-2 .wrapper .text{
+    font-size: 20px;
+  }
 }

@@ -19,7 +19,6 @@ import { Login } from "./routes/login";
 
 function App() {
   return (
-    <div className="inner">
       <Routes>
         <Route index path="" element={<Main></Main>}></Route>
         <Route path="productList">
@@ -39,7 +38,6 @@ function App() {
         <Route path="userEdit" element={<UserEdit />}></Route>
         <Route path="passwordCheck" element={<PasswordCheck />}></Route>
       </Routes>
-    </div>
   );
 }
 
