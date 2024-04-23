@@ -13,7 +13,7 @@ export const Main = () => {
           <div className="wrap">
             <div className="product">
               <div className="image">
-                <div className="text-wrapper">사진</div>
+                <img className="productImg" src="" alt="제품 사진" />
               </div>
               <div className="info-box">
                 <div className="product-name">
@@ -26,7 +26,7 @@ export const Main = () => {
             </div>
             <div className="product">
               <div className="image">
-                <div className="text-wrapper">사진</div>
+                <img className="productImg" src="" alt="제품 사진" />
               </div>
               <div className="info-box">
                 <div className="product-name">
@@ -39,7 +39,7 @@ export const Main = () => {
             </div>
             <div className="product">
               <div className="image">
-                <div className="text-wrapper">사진</div>
+                <img className="productImg" src="" alt="제품 사진" />
               </div>
               <div className="info-box">
                 <div className="product-name">
@@ -52,7 +52,7 @@ export const Main = () => {
             </div>
             <div className="product">
               <div className="image">
-                <div className="text-wrapper">사진</div>
+                <img className="productImg" src="" alt="제품 사진" />
               </div>
               <div className="info-box">
                 <div className="product-name">
@@ -65,7 +65,7 @@ export const Main = () => {
             </div>
             <div className="product">
               <div className="image">
-                <div className="text-wrapper">사진</div>
+                <img className="productImg" src="" alt="제품 사진" />
               </div>
               <div className="info-box">
                 <div className="product-name">
@@ -78,7 +78,7 @@ export const Main = () => {
             </div>
             <div className="product">
               <div className="image">
-                <div className="text-wrapper">사진</div>
+                <img className="productImg" src="" alt="제품 사진" />
               </div>
               <div className="info-box">
                 <div className="product-name">
