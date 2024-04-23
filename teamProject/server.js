@@ -5,7 +5,7 @@ const app = express()
 
 //db
 const db = require("./models")
-const {User} = db
+const {User,Product} = db
 
 //미들웨어
 app.use(cors())
@@ -13,6 +13,11 @@ app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 
 //api
-app.listen(3000,()=>{
-  console.log('접속성공 - http://localhost:3000')
+app.listen(5000,()=>{
+  console.log('접속성공 - http://localhost:5000')
+})
+
+app.get('/',async(req,res)=>{
+  const result = await Product.findAll()
+  res.json(result)
 })
