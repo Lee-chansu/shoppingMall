@@ -13,10 +13,12 @@ module.exports = (sequelize) => {
     detailCategory: {
       type: DataTypes.STRING(255)
     }
+  }, {
+    timestamps: false
   });
 
   ProductDetail.associate = (models) => {
-    ProductDetail.belongsTo(models.Product, { foreignKey: 'productId' });
+    ProductDetail.belongsTo(models.Product, { foreignKey: 'product_id' });
   };
 
   return ProductDetail;

@@ -25,11 +25,13 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.STRING(255)
     }
+  }, {
+    timestamps: false
   });
 
   BuyList.associate = (models) => {
-    BuyList.belongsTo(models.User, { foreignKey: 'userId' });
-    BuyList.belongsTo(models.Product, { foreignKey: 'productId' });
+    BuyList.belongsTo(models.User, { foreignKey: 'user_id' });
+    BuyList.belongsTo(models.Product, { foreignKey: 'product_id' });
   };
 
   return BuyList;

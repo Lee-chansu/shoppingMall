@@ -17,6 +17,12 @@ app.listen(5000,()=>{
   console.log('접속성공 - http://localhost:5000')
 })
 
+// 회원가입
+app.post('/join',async(req,res)=>{
+  
+})
+
+
 app.get('/',async(req,res)=>{
   const result = await Product.findAll()
   res.json(result)

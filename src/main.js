@@ -28,7 +28,27 @@ export const Main = () => {
         <div className="div">
           <div className="visual" />
           <div className="wrap">
+            {
+              products.map((e)=>{
+                return(
+                  <div className="product" key={e.id}>
+                    <div className="image">
+                      <img className="productImg" src="" alt="제품 사진" />
+                    </div>
+                    <div className="info-box">
+                      <div className="product-name">
+                        <div className="text-wrapper">{e.name}</div>
+                      </div>
+                      <div className="product-info">
+                        <div className="text-wrapper">{e.detail}</div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })
+            }
             <div className="product">
+
               <div className="image">
                 <img className="productImg" src="" alt="제품 사진" />
               </div>
