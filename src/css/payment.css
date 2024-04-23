@@ -6,13 +6,13 @@
   width: 100%;
 }
 
-.payment .payment-inner-wrapper {
+.payment .paymentInnerWrapperr {
   background-color: #ffffff;
   height: 1632.14px;
   width: 1440px;
 }
 
-.payment .payment-inner {
+.payment .paymentInner {
   background-color: #eeeeee;
   height: 1195px;
   left: 249px;
@@ -21,7 +21,7 @@
   width: 942px;
 }
 
-.payment .pay-box {
+.payment .payBox {
   background-color: #ffffff;
   height: 915px;
   left: 34px;
@@ -30,7 +30,7 @@
   width: 881px;
 }
 
-.payment .user-info-box {
+.payment .userInfoBox {
   background-color: #eeeeee;
   height: 679px;
   left: 31px;
@@ -48,7 +48,7 @@
   width: 331px;
 }
 
-.payment .text-wrapper {
+.payment .textWrapper {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 36.9px;
@@ -62,7 +62,7 @@
   width: 248px;
 }
 
-.payment .carry-req {
+.payment .carryReq {
   background-color: #ffffff;
   height: 111px;
   left: 27px;
@@ -85,7 +85,7 @@
   width: 254px;
 }
 
-.payment .how-pay-box {
+.payment .howPayBox {
   background-color: #ffffff;
   height: 203px;
   left: 27px;
@@ -103,7 +103,7 @@
   width: 291px;
 }
 
-.payment .text-wrapper-2 {
+.payment .textWrapper2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 36.9px;
@@ -117,7 +117,7 @@
   width: 228px;
 }
 
-.payment .check-box {
+.payment .checkBox {
   background-color: #eeeeee;
   height: 60px;
   left: 17px;
@@ -140,7 +140,7 @@
   width: 73px;
 }
 
-.payment .text-wrapper-3 {
+.payment .textWrapper3 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 18.4px;
@@ -154,7 +154,7 @@
   width: 73px;
 }
 
-.payment .ex-2 {
+.payment .ex2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 18.4px;
@@ -177,7 +177,7 @@
   width: 331px;
 }
 
-.payment .text-wrapper-4 {
+.payment .textWrapper4 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 36.9px;
@@ -191,7 +191,7 @@
   width: 219px;
 }
 
-.payment .pay-list {
+.payment .payList {
   background-color: #eeeeee;
   height: 679px;
   left: 473px;
@@ -200,7 +200,7 @@
   width: 381px;
 }
 
-.payment .pay-info {
+.payment .payInfo {
   background-color: #ffffff;
   height: 304px;
   left: 18px;
@@ -209,7 +209,7 @@
   width: 331px;
 }
 
-.payment .div-wrapper {
+.payment .divWrapper {
   background-color: #eeeeee;
   height: 61px;
   left: 34px;
@@ -219,7 +219,7 @@
   width: 264px;
 }
 
-.payment .text-wrapper-5 {
+.payment .textWrapper5 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 36.9px;
@@ -233,7 +233,7 @@
   width: 293px;
 }
 
-.payment .title-2 {
+.payment .title2 {
   background-color: #eeeeee;
   height: 61px;
   left: 34px;
@@ -243,7 +243,7 @@
   width: 264px;
 }
 
-.payment .title-3 {
+.payment .title3 {
   background-color: #eeeeee;
   height: 61px;
   left: 34px;
@@ -253,7 +253,7 @@
   width: 264px;
 }
 
-.payment .title-4 {
+.payment .title4 {
   background-color: #eeeeee;
   height: 61px;
   left: 34px;
@@ -263,7 +263,7 @@
   width: 264px;
 }
 
-.payment .product-box {
+.payment .productBox {
   background-color: #ffffff;
   height: 288px;
   left: 18px;
@@ -290,7 +290,7 @@
   width: 136px;
 }
 
-.payment .text-wrapper-6 {
+.payment .textWrapper6 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 19.7px;
@@ -314,7 +314,7 @@
   width: 105px;
 }
 
-.payment .text-wrapper-7 {
+.payment .textWrapper7 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 19.7px;
@@ -328,7 +328,7 @@
   width: 66px;
 }
 
-.payment .product-2 {
+.payment .product2 {
   background-color: #eeeeee;
   height: 117px;
   left: 17px;
@@ -337,7 +337,7 @@
   width: 297px;
 }
 
-.payment .buy-button {
+.payment .buyButton {
   background-color: #eeeeee;
   height: 71px;
   left: 283px;
@@ -360,7 +360,7 @@
   width: 280px;
 }
 
-.payment .text-wrapper-8 {
+.payment .textWrapper8 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 36.9px;

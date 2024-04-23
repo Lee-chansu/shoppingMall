@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/payBuyList.css";
 import { Link } from "react-router-dom";
-import { PayItem } from "../components/PayItem";
+import { PayItem } from "../components/PayBuyListItem";
 
 export const PayBuyList = () => {
   //리네임 리팩토링

@@ -8,7 +8,6 @@
 
 .payBuyList .div {
   background-color: #ffffff;
-  /* height: 1975.16px; */
   position: relative;
   width: 1440px;
 }
@@ -16,22 +15,10 @@
 .payBuyList .payItem {
   background-color: #eeeeeeee;
   height: 472px;
-  /* left: 62px;
-  position: absolute;
-  top: 448px; */
   margin: 40px auto 0;
   width: 1317px;
   position: relative;
 }
-
-/* .payBuyList .payItem2 {
-  background-color: #eeeeeeee;
-  height: 472px;
-  left: 62px;
-  position: absolute;
-  top: 1003px;
-  width: 1317px;
-} */
 
 .payBuyList .itemInfo {
   background-color: #ffffff;
@@ -191,62 +178,22 @@
 
 .payBuyList .overlap6 {
   height: 69px;
-  /* left: 186px;
-  position: absolute;
-  top: 1611px; */
-
   margin: 40px auto 40px;
   width: 1053px;
   position: relative;
   display: flex;
   justify-content: space-between;
-  /* padding-bottom: 40px; */
   box-sizing: border-box;
 }
 
 .payBuyList .overlap6 > * {
   background-color: #d9d9d9;
   height: 69px;
-  /* left: 24px;
-  position: absolute;
-  top: 0; */
   width: 310px;
   font-size: 30px;
   text-align: center;
   line-height: 69px;
-  /* align-self: center; */
-  /* margin-bottom: 40px; */
 }
-/* 
-.payBuyList .price {
-  background-color: #d9d9d9;
-  height: 69px;
-  left: 24px;
-  position: absolute;
-  top: 0;
-  width: 310px;
-  font-size: 30px;
-}
-
-.payBuyList .price2 {
-  background-color: #d9d9d9;
-  height: 69px;
-  left: 372px;
-  position: absolute;
-  top: 0;
-  width: 310px;
-  font-size: 30px;
-}
-
-.payBuyList .price3 {
-  background-color: #d9d9d9;
-  height: 69px;
-  left: 720px;
-  position: absolute;
-  top: 0;
-  width: 310px;
-  font-size: 30px;
-} */
 
 .payBuyList .textWrapper6 {
   color: #000000;
