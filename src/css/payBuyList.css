@@ -197,30 +197,33 @@
 
 .payBuyList .price {
   background-color: #d9d9d9;
-  height: 69px;
+  height: 70px;
   left: 24px;
   position: absolute;
-  top: 0;
+  padding-top: 15px;
+  text-align: center;
   width: 310px;
   font-size: 30px;
 }
 
 .payBuyList .price2 {
   background-color: #d9d9d9;
-  height: 69px;
+  height: 70px;
   left: 372px;
   position: absolute;
-  top: 0;
+  padding-top: 15px;
+  text-align: center;
   width: 310px;
   font-size: 30px;
 }
 
 .payBuyList .price3 {
   background-color: #d9d9d9;
-  height: 69px;
+  height: 70px;
   left: 720px;
   position: absolute;
-  top: 0;
+  padding-top: 15px;
+  text-align: center;
   width: 310px;
   font-size: 30px;
 }
@@ -258,16 +261,13 @@
 .payBuyList .textWrapper8 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 39.3px;
+  font-size: 40px;
   font-weight: 400;
-  left: 697px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
   text-align: center;
-  top: 11px;
   white-space: nowrap;
-  width: 357px;
+  /* top 거리 조정 필요 */
 }
 
 .payBuyList .textWrapper9 {
@@ -290,6 +290,7 @@
   position: absolute;
   top: 103px;
   width: 1325px;
+  /* base nav 적용하기 */
 }
 
 .payBuyList .user {
