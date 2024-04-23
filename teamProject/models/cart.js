@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
   });
 
   Cart.associate = (models) => {
-    Cart.belongsTo(models.User, { foreignKey: 'userId' });
+    Cart.belongsTo(models.User, { foreignKey: 'user_id' });
   };
 
   return Cart;

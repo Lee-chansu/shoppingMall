@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
   });
 
   ProductOption.associate = (models) => {
-    ProductOption.belongsTo(models.Product, { foreignKey: 'productId' });
+    ProductOption.belongsTo(models.Product, { foreignKey: 'product_id' });
   };
 
   return ProductOption;

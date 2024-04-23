@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
   });
 
   ProductDetail.associate = (models) => {
-    ProductDetail.belongsTo(models.Product, { foreignKey: 'productId' });
+    ProductDetail.belongsTo(models.Product, { foreignKey: 'product_id' });
   };
 
   return ProductDetail;

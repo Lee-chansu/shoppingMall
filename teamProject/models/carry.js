@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
   });
 
   Carry.associate = (models) => {
-    Carry.belongsTo(models.BuyList, { foreignKey: 'orderId' });
+    Carry.belongsTo(models.BuyList, { foreignKey: 'order_id' });
   };
 
   return Carry;

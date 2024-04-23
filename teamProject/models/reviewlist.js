@@ -20,8 +20,8 @@ module.exports = (sequelize) => {
   });
 
   ReviewList.associate = (models) => {
-    ReviewList.belongsTo(models.Product, { foreignKey: 'productId' });
-    ReviewList.belongsTo(models.User, { foreignKey: 'userId' });
+    ReviewList.belongsTo(models.Product, { foreignKey: 'product_id' });
+    ReviewList.belongsTo(models.User, { foreignKey: 'user_id' });
   };
 
   return ReviewList;
