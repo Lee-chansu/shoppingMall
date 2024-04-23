@@ -4,6 +4,7 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  overflow-y: hidden;
 }
 
 .productDetail .div {
@@ -11,6 +12,7 @@
   height: 2484px;
   position: relative;
   width: 1440px;
+  top: -350px;
 }
 
 .productDetail .productInfo {
@@ -335,6 +337,12 @@
   position: absolute;
   top: 2px;
   width: 245px;
+}
+
+.productDetail .overlap2 .select,
+.productDetail .overlap .select {
+  font-size: 32px;
+  font-weight: 400;
 }
 
 .productDetail .textWrapper8 {

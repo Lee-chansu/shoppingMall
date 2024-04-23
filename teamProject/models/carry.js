@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  const Carry = sequelize.define('Carry', {
+  const Carrys = sequelize.define('Carrys', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -19,11 +19,13 @@ module.exports = (sequelize) => {
     carryEnd: {
       type: DataTypes.DATE
     }
+  }, {
+    timestamps: false
   });
 
-  Carry.associate = (models) => {
-    Carry.belongsTo(models.BuyList, { foreignKey: 'orderId' });
+  Carrys.associate = (models) => {
+    Carrys.belongsTo(models.BuyList, { foreignKey: 'order_id' });
   };
 
-  return Carry;
+  return Carrys;
 };

@@ -15,22 +15,23 @@ import { FindId } from "./routes/findId";
 import { FindPassword } from "./routes/findPassword";
 import { PasswordCheck } from "./routes/passwordCheck";
 import { Login } from "./routes/login";
-import { MainLogin } from "./routes/mainLogin";
-import { MainNotLogin } from "./routes/mainNotLogin";
+import { Nav } from "./components/nav";
 import { ProductDetailDescription } from "./routes/productDetailDescription";
 
 
 function App() {
   return (
-    <div className="inner">
       <Routes>
         <Route index path="" element={<Main></Main>}></Route>
         <Route path="productList">
           <Route index element={<ProductList />}></Route>
-          <Route path="detail" element={<ProductDetail />}></Route>
+          <Route path="detail">
+            <Route path="description" element={<ProductDetailDescription />}></Route>
+          </Route>
           <Route path="add" element={<ProductAdd />}></Route>
         </Route>
-
+        <Route path="description" element={<ProductDetailDescription />}></Route>
+        
         <Route path="login" element={<Login />}></Route>
         <Route path="joinUs" element={<JoinUs />}></Route>
         <Route path="join" element={<Join />}></Route>
@@ -41,14 +42,8 @@ function App() {
         <Route path="userProfile" element={<UserProfile />}></Route>
         <Route path="userEdit" element={<UserEdit />}></Route>
         <Route path="passwordCheck" element={<PasswordCheck />}></Route>
-        <Route path="mainNotLogin" element={<MainNotLogin />}></Route>
-        <Route path="mainLogin" element={<MainLogin />}></Route>
-        <Route path="Productdetail">
-          <Route path="description" element={<ProductDetailDescription />}></Route>
-          <Route path="" element></Route>
-        </Route>
+        <Route path="nav" element={<Nav />}></Route>
       </Routes>
-    </div>
   );
 }
 

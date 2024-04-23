@@ -20,6 +20,9 @@ module.exports = (sequelize) => {
         isIn: [['M', 'F']]
       }
     },
+    userId: {
+      type: DataTypes.STRING(255)
+    },
     email: {
       type: DataTypes.STRING(255)
     },
@@ -38,7 +41,7 @@ module.exports = (sequelize) => {
     },
     createdAt: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
+      defaultValue: sequelize.fn('now')
     }
   }, {
     timestamps: false
