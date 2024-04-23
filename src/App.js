@@ -17,6 +17,7 @@ import { PasswordCheck } from "./routes/passwordCheck";
 import { Login } from "./routes/login";
 import { MainLogin } from "./routes/mainLogin";
 import { MainNotLogin } from "./routes/mainNotLogin";
+import { ProductDetailDescription } from "./routes/productDetailDescription";
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
           <Route path="detail" element={<ProductDetail />}></Route>
           <Route path="add" element={<ProductAdd />}></Route>
         </Route>
-        
+
         <Route path="login" element={<Login />}></Route>
         <Route path="joinUs" element={<JoinUs />}></Route>
         <Route path="join" element={<Join />}></Route>
@@ -42,6 +43,10 @@ function App() {
         <Route path="passwordCheck" element={<PasswordCheck />}></Route>
         <Route path="mainNotLogin" element={<MainNotLogin />}></Route>
         <Route path="mainLogin" element={<MainLogin />}></Route>
+        <Route path="Productdetail">
+          <Route path="description" element={<ProductDetailDescription />}></Route>
+          <Route path="" element></Route>
+        </Route>
       </Routes>
     </div>
   );
