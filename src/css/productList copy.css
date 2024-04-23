@@ -1,4 +1,4 @@
-.productList {
+.product-list {
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -6,7 +6,7 @@
   width: 100%;
 }
 
-.productList .div {
+.product-list .div {
   background-color: #ffffff;
   height: 1622.69px;
   overflow: hidden;
@@ -14,7 +14,7 @@
   width: 1440px;
 }
 
-.productList .productWrap {
+.product-list .product-wrap {
   height: 1037px;
   left: 119px;
   overflow: hidden;
@@ -23,7 +23,7 @@
   width: 1212px;
 }
 
-.productList .product {
+.product-list .product {
   background-color: #eeeeee;
   height: 297px;
   left: 900px;
@@ -32,7 +32,7 @@
   width: 273px;
 }
 
-.productList .image {
+.product-list .image {
   background-color: #ffffff;
   height: 168px;
   left: 32px;
@@ -41,7 +41,7 @@
   width: 208px;
 }
 
-.productList .textWrapper {
+.product-list .text-wrapper {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 13.3px;
@@ -56,7 +56,7 @@
   width: 139px;
 }
 
-.productList .infoBox {
+.product-list .info-box {
   background-color: #ffffff;
   height: 78px;
   left: 32px;
@@ -65,7 +65,7 @@
   width: 208px;
 }
 
-.productList .productName {
+.product-list .product-name {
   background-color: #eeeeee;
   height: 29px;
   left: 18px;
@@ -74,7 +74,7 @@
   width: 171px;
 }
 
-.productList .textWrapper2 {
+.product-list .text-wrapper-2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 13.3px;
@@ -88,7 +88,7 @@
   width: 109px;
 }
 
-.productList .productInfo {
+.product-list .product-info {
   background-color: #eeeeee;
   height: 26px;
   left: 18px;
@@ -97,7 +97,7 @@
   width: 171px;
 }
 
-.productList .textWrapper3 {
+.product-list .text-wrapper-3 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 13.3px;
@@ -111,7 +111,7 @@
   width: 85px;
 }
 
-.productList .product2 {
+.product-list .product-2 {
   background-color: #eeeeee;
   height: 297px;
   left: 589px;
@@ -120,7 +120,7 @@
   width: 273px;
 }
 
-.productList .product3 {
+.product-list .product-3 {
   background-color: #eeeeee;
   height: 297px;
   left: 289px;
@@ -129,7 +129,7 @@
   width: 273px;
 }
 
-.productList .divWrapper {
+.product-list .div-wrapper {
   background-color: #ffffff;
   height: 168px;
   left: 33px;
@@ -138,7 +138,7 @@
   width: 208px;
 }
 
-.productList .infoBox2 {
+.product-list .info-box-2 {
   background-color: #ffffff;
   height: 78px;
   left: 33px;
@@ -147,7 +147,7 @@
   width: 208px;
 }
 
-.productList .product4 {
+.product-list .product-4 {
   background-color: #eeeeee;
   height: 297px;
   left: -10px;
@@ -156,7 +156,7 @@
   width: 273px;
 }
 
-.productList .product5 {
+.product-list .product-5 {
   background-color: #eeeeee;
   height: 297px;
   left: 900px;
@@ -165,7 +165,7 @@
   width: 273px;
 }
 
-.productList .product6 {
+.product-list .product-6 {
   background-color: #eeeeee;
   height: 297px;
   left: 589px;
@@ -173,7 +173,8 @@
   top: 403px;
   width: 273px;
 }
-.productList .product7 {
+
+.product-list .product-7 {
   background-color: #eeeeee;
   height: 297px;
   left: 289px;
@@ -182,7 +183,7 @@
   width: 273px;
 }
 
-.productList .product8 {
+.product-list .product-8 {
   background-color: #eeeeee;
   height: 297px;
   left: -10px;
@@ -191,7 +192,7 @@
   width: 273px;
 }
 
-.productList .product9 {
+.product-list .product-9 {
   background-color: #eeeeee;
   height: 297px;
   left: 900px;
@@ -200,7 +201,7 @@
   width: 273px;
 }
 
-.productList .product10 {
+.product-list .product-10 {
   background-color: #eeeeee;
   height: 297px;
   left: 589px;
@@ -209,7 +210,7 @@
   width: 273px;
 }
 
-.productList .product11 {
+.product-list .product-11 {
   background-color: #eeeeee;
   height: 297px;
   left: 289px;
@@ -218,7 +219,7 @@
   width: 273px;
 }
 
-.productList .product12 {
+.product-list .product-12 {
   background-color: #eeeeee;
   height: 297px;
   left: -10px;
@@ -227,7 +228,7 @@
   width: 273px;
 }
 
-.productList .infoBox3 {
+.product-list .info-box-3 {
   background-color: #ffffff;
   height: 78px;
   left: 38px;
@@ -236,7 +237,7 @@
   width: 208px;
 }
 
-.productList .image2 {
+.product-list .image-2 {
   background-color: #ffffff;
   height: 168px;
   left: 38px;
@@ -245,7 +246,7 @@
   width: 208px;
 }
 
-.productList .detail {
+.product-list .detail {
   background-color: #eeeeee;
   height: 118px;
   left: 119px;
@@ -254,7 +255,7 @@
   width: 1196px;
 }
 
-.productList .divWrapper2 {
+.product-list .div-wrapper-2 {
   background-color: #ffffff;
   height: 72px;
   left: 19px;
@@ -263,7 +264,7 @@
   width: 185px;
 }
 
-.productList .textWrapper4 {
+.product-list .text-wrapper-4 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 39.9px;
@@ -275,7 +276,8 @@
   top: 11px;
   width: 133px;
 }
-.productList .divWrapper3 {
+
+.product-list .div-wrapper-3 {
   background-color: #ffffff;
   height: 72px;
   left: 512px;
@@ -284,7 +286,7 @@
   width: 185px;
 }
 
-.productList .textWrapper5 {
+.product-list .text-wrapper-5 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 39.9px;
@@ -296,7 +298,7 @@
   top: 11px;
 }
 
-.productList .divWrapper4 {
+.product-list .div-wrapper-4 {
   background-color: #ffffff;
   height: 72px;
   left: 751px;
@@ -305,7 +307,7 @@
   width: 185px;
 }
 
-.productList .divWrapper5 {
+.product-list .div-wrapper-5 {
   background-color: #ffffff;
   height: 72px;
   left: 990px;
@@ -314,7 +316,7 @@
   width: 185px;
 }
 
-.productList .divWrapper6 {
+.product-list .div-wrapper-6 {
   background-color: #ffffff;
   height: 72px;
   left: 265px;
@@ -323,7 +325,7 @@
   width: 185px;
 }
 
-.productList .category {
+.product-list .category {
   background-color: #eeeeee;
   height: 118px;
   left: 119px;
@@ -332,7 +334,7 @@
   width: 1194px;
 }
 
-.productList .textWrapper6 {
+.product-list .text-wrapper-6 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 39.9px;
@@ -344,7 +346,7 @@
   top: 10px;
 }
 
-.productList .nav {
+.product-list .nav {
   background-color: #eeeeee;
   height: 118px;
   left: 115px;
@@ -353,7 +355,7 @@
   width: 1196px;
 }
 
-.productList .user {
+.product-list .user {
   background-color: #ffffff;
   height: 62px;
   left: 958px;
@@ -362,7 +364,7 @@
   width: 218px;
 }
 
-.productList .textWrapper7 {
+.product-list .text-wrapper-7 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 39.9px;
@@ -375,7 +377,7 @@
   width: 183px;
 }
 
-.productList .logo {
+.product-list .logo {
   background-color: #ffffff;
   height: 72px;
   left: 19px;
@@ -385,7 +387,7 @@
   width: 185px;
 }
 
-.productList .textWrapper8 {
+.product-list .text-wrapper-8 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 39.9px;

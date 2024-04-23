@@ -15,6 +15,8 @@ import { FindId } from "./routes/findId";
 import { FindPassword } from "./routes/findPassword";
 import { PasswordCheck } from "./routes/passwordCheck";
 import { Login } from "./routes/login";
+import { MainLogin } from "./routes/mainLogin";
+import { MainNotLogin } from "./routes/mainNotLogin";
 
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
         <Route path="userProfile" element={<UserProfile />}></Route>
         <Route path="userEdit" element={<UserEdit />}></Route>
         <Route path="passwordCheck" element={<PasswordCheck />}></Route>
+        <Route path="mainNotLogin" element={<MainNotLogin />}></Route>
+        <Route path="mainLogin" element={<MainLogin />}></Route>
       </Routes>
     </div>
   );
