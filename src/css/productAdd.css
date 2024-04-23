@@ -1,78 +1,73 @@
-.product-add {
-  margin-top: 20px;
+.productAdd{background-color: hsl(0, 0%, 100%);}
+.productAdd .inner{}
+.productAdd .inner .wrap{display: flex;}
+.productAdd .inner .wrap {
+  display: flex; justify-content: space-between; align-items: center;
+  width: 100%; padding: 0 20px; margin: 20px 0;
 }
-.product-add .div {
-  padding: 20px 0;
+.productAdd .inner .wrap .title{font-size: 32px; width: 20%;}
+.productAdd .inner .wrap .box{
+  display: flex; justify-content: space-between; align-items: center;
+  width: 15%; margin-left: 20px;
 }
-.product-add .div .checkBoxWrapper {
-  display: flex;
-  justify-content: space-around;
+.productAdd .inner .wrap .box .text{
+  font-size: 20px;
+}
+.productAdd .inner .wrap .box input[type = "checkbox"]{
+  margin: 0 10px;
+  height: 20px;
   background-color: #eee;
 }
-.product-add .div .checkBoxWrapper h2 {
-  font-size: 40px;
+.productAdd .inner .wrap input[type = "text"]{
+  margin: 0 10px;
+  height: 50px;
+  width: 80%;
+  background-color: #eee;
 }
-.product-add .div .checkBoxWrapper .categorySelect {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.productAdd .inner .wrap.stock select{
+  margin: 0 10px;
+  width: 100%; height: 50px;
+  background-color: #fff;
 }
-.product-add .div .checkBoxWrapper .categorySelect .checkBox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 50px;
+.productAdd .inner .wrap.stock input{
+  margin: 0 10px;
+  height: 50px;
+  width: 100%;
+  background-color: #fff;
 }
-.product-add .div .checkBoxWrapper .categorySelect .checkBox label {
+.productAdd .inner .wrap.stock label{
   font-size: 32px;
 }
-.product-add .div .checkBoxWrapper .categorySelect:nth-of-type(1) .checkBox {
-  padding-left: 20px;
+.productAdd .inner .wrap.img {
+  justify-content: flex-start;
 }
-.product-add .div .name {
-    margin: 10px 0;
-    font-size: 32px;
-}
-.product-add .div .name .input{}
-
-.product-add .div .price {
-    margin: 10px 0;
-    font-size: 32px;
-}
-.product-add .div .price .input {}
-
-.product-add .div .created-at {
-    margin: 10px 0;
-    font-size: 32px;
-}
-.product-add .div .created-at .input {}
-
-
-.product-add .div .main-image {
-    display: flex; align-items: center;
-    margin: 50px 0;
-}
-.product-add .div .main-image .imageAddWrapper{
-    font-size: 32px;
-    padding: 20px 0;
-}
-.product-add .div .main-image .imageAddWrapper label{}
-.product-add .div .main-image .imageAddWrapper label::after{
-    content: '+';
-    display: inline-block;
-    width: 50px; height: 50px;
-    background-color: #fff;
-    border: 1px solid rgb(77,77,77);
-    border-radius: 50%;
-    text-align: center;
-}
-.product-add .div .main-image .imageAddWrapper label:hover label::after{
+.productAdd .inner .wrap.img .addImg{
+  padding: 20px;
+  margin-left: 80px;
+  background-color: #eee;
+  &:hover{
+    background-color: #ddd;
     cursor: pointer;
-    background-color: rgb(77, 77, 77);
+  }
+}
+.productAdd .inner .wrap.img input[type="file"]{
+  display: block;
+  width: 0; height: 0; overflow: hidden;
 }
 
-.product-add .div .main-image .imageAddWrapper .imageAdd {
-    display: none;
+.productAdd .inner .wrap.description input{
+  height: 300px;
+}
+.productAdd .inner .btnForm{
+  display: flex; justify-content: center; align-items: center;
+  width: 100%; height: 200px;
+}
+.productAdd .inner .btnForm button{
+  margin: 0 100px; padding: 10px;
+  width: 300px;
+  font-size: 32px;
+  border-radius: 20px;
 }
 
 

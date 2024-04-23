@@ -31,7 +31,7 @@
   background-color: #ffffff;
 }
 
-.main .text-wrapper {
+.main .text {
   width: 100%;
   margin: 5px 0;
   color: #000000;
@@ -44,22 +44,14 @@
   white-space: nowrap;
 }
 
-.main .info-box {
+.main .infoBox {
   background-color: #ffffff;
 }
 
-.main .product-name {
+.main .productName {
   background-color: #eeeeee;
 }
 
-.main .product-info {
+.main .productInfo {
   background-color: #eeeeee;
-}
-
-.main .product {
-  background-color: #eeeeee;
-}
-
-.main .link{
-  text-decoration: none;
 }
