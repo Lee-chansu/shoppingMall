@@ -6,6 +6,9 @@ import { Product } from "./components/product";
 import { Link } from "react-router-dom";
 
 export const Main = () => {
+
+  
+
   const list = ["", "", "", "", ""];
   return (
     <>

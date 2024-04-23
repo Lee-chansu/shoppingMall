@@ -13,6 +13,8 @@ module.exports = (sequelize) => {
     detailCategory: {
       type: DataTypes.STRING(255)
     }
+  }, {
+    timestamps: false
   });
 
   ProductDetail.associate = (models) => {

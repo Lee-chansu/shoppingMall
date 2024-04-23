@@ -15,6 +15,8 @@ module.exports = (sequelize) => {
         max: 5
       }
     }
+  }, {
+    timestamps: false
   });
 
   StarPoint.associate = (models) => {

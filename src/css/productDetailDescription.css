@@ -1,0 +1,545 @@
+.productDetail {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+.productDetail .div {
+  background-color: #ffffff;
+  height: 2484px;
+  position: relative;
+  width: 1440px;
+  top: -350px;
+}
+
+.productDetail .productInfo {
+  height: 1163px;
+  left: 53px;
+  position: absolute;
+  top: 1265px;
+  width: 1330px;
+}
+
+.productDetail .productDecription {
+  background-color: #eeeeee;
+  height: 931px;
+  left: 2px;
+  position: absolute;
+  top: 175px;
+  width: 1328px;
+}
+
+.productDetail .moreInfo {
+  background-color: #ffffff;
+  height: 119px;
+  left: 3px;
+  position: absolute;
+  top: 812px;
+  width: 1322px;
+}
+
+.productDetail .textWrapper {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 438px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 32px;
+  width: 312px;
+}
+
+.productDetail .polygon {
+  height: 17px;
+  left: 764px;
+  position: absolute;
+  top: 54px;
+  width: 31px;
+}
+
+.productDetail .textWrapper2 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 518px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 439px;
+}
+
+.productDetail .infoSelect {
+  background-color: #ffffff;
+  height: 159px;
+  left: 2px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 1328px;
+}
+
+.productDetail .productReview {
+  height: 190px;
+  left: 664px;
+  position: absolute;
+  top: 5px;
+  width: 664px;
+}
+
+.productDetail .textWrapper3 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 246px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 68px;
+}
+
+.productDetail .productDescription {
+  height: 190px;
+  left: 0;
+  position: absolute;
+  top: 5px;
+  width: 664px;
+}
+
+.productDetail .textWrapper4 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 243px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 66px;
+}
+
+.productDetail .line {
+  height: 5px;
+  left: 0;
+  position: absolute;
+  top: 149px;
+  width: 664px;
+}
+
+.productDetail .buttonBox {
+  background-color: #eeeeee;
+  height: 144px;
+  left: 758px;
+  position: absolute;
+  top: 1025px;
+  width: 590px;
+}
+
+.productDetail .nowPayButton {
+  background-color: #ffffff;
+  height: 96px;
+  left: 313px;
+  position: absolute;
+  top: 24px;
+  width: 255px;
+}
+
+.productDetail .textWrapper5 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 48px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 23px;
+  width: 194px;
+}
+.productDetail .cartButton {
+  background-color: #ffffff;
+  height: 96px;
+  left: 19px;
+  position: absolute;
+  top: 24px;
+  width: 255px;
+}
+
+.productDetail .infoBox {
+  background-color: #eeeeee;
+  height: 586px;
+  left: 756px;
+  position: absolute;
+  top: 417px;
+  width: 592px;
+}
+
+.productDetail .productTotalPrice {
+  background-color: #ffffff;
+  height: 72px;
+  left: 33px;
+  position: absolute;
+  top: 494px;
+  width: 526px;
+}
+
+.productDetail .textWrapper6 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 9px;
+}
+
+.productDetail .productCount {
+  background-color: #ffffff;
+  height: 72px;
+  left: 33px;
+  position: absolute;
+  top: 406px;
+  width: 526px;
+}
+
+.productDetail .overlapGroup {
+  height: 59px;
+  left: 233px;
+  position: absolute;
+  top: 4px;
+  width: 245px;
+}
+
+.productDetail .select {
+  background-color: #eeeeeeee;
+  border: 0.72px solid;
+  border-color: #000000;
+  height: 48px;
+  left: 0;
+  position: absolute;
+  top: 10px;
+  width: 245px;
+}
+
+.productDetail .color {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 42px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  width: 133px;
+}
+
+.productDetail .img {
+  height: 48px;
+  left: 174px;
+  position: absolute;
+  top: 11px;
+  width: 2px;
+}
+
+.productDetail .line2 {
+  height: 48px;
+  left: 69px;
+  position: absolute;
+  top: 11px;
+  width: 2px;
+}
+
+.productDetail .line3 {
+  height: 2px;
+  left: 10px;
+  position: absolute;
+  top: 30px;
+  width: 44px;
+}
+
+.productDetail .line4 {
+  height: 2px;
+  left: 186px;
+  position: absolute;
+  top: 31px;
+  width: 44px;
+}
+
+.productDetail .line5 {
+  height: 35px;
+  left: 207px;
+  position: absolute;
+  top: 17px;
+  width: 1px;
+}
+
+.productDetail .productColor {
+  background-color: #ffffff;
+  height: 72px;
+  left: 33px;
+  position: absolute;
+  top: 318px;
+  width: 526px;
+}
+
+.productDetail .overlap {
+  height: 59px;
+  left: 233px;
+  position: absolute;
+  top: -1px;
+  width: 245px;
+}
+
+.productDetail .textWrapper7 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 42px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  width: 133px;
+}
+
+.productDetail .polygon2 {
+  height: 17px;
+  left: 195px;
+  position: absolute;
+  top: 29px;
+  width: 31px;
+}
+.productDetail .productSize {
+  background-color: #ffffff;
+  height: 72px;
+  left: 33px;
+  position: absolute;
+  top: 231px;
+  width: 526px;
+}
+
+.productDetail .overlap2 {
+  height: 59px;
+  left: 233px;
+  position: absolute;
+  top: 2px;
+  width: 245px;
+}
+
+.productDetail .overlap2 .select,
+.productDetail .overlap .select {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.productDetail .textWrapper8 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 42px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  width: 81px;
+}
+
+.productDetail .productPrice {
+  background-color: #ffffff;
+  height: 72px;
+  left: 33px;
+  position: absolute;
+  top: 143px;
+  width: 526px;
+}
+
+.productDetail .productName {
+  background-color: #ffffff;
+  height: 72px;
+  left: 33px;
+  position: absolute;
+  top: 55px;
+  width: 526px;
+}
+
+.productDetail .thumbnailBox {
+  background-color: #ffffff;
+  height: 817px;
+  left: 25px;
+  position: absolute;
+  top: 388px;
+  width: 722px;
+}
+
+.productDetail .subThmbnail {
+  background-color: #d9d9d9;
+  height: 144px;
+  left: 438px;
+  position: absolute;
+  top: 637px;
+  width: 144px;
+}
+
+.productDetail .subThmbnail2 {
+  background-color: #d9d9d9;
+  height: 144px;
+  left: 278px;
+  position: absolute;
+  top: 637px;
+  width: 144px;
+}
+
+.productDetail .subThmbnail3 {
+  background-color: #d9d9d9;
+  height: 144px;
+  left: 120px;
+  position: absolute;
+  top: 637px;
+  width: 144px;
+}
+
+.productDetail .mainThmbnailWrapper {
+  background-color: #d9d9d9;
+  height: 586px;
+  left: 56px;
+  position: absolute;
+  top: 29px;
+  width: 575px;
+}
+
+.productDetail .mainThmbnail {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 177px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 261px;
+  width: 236px;
+}
+
+.productDetail .category {
+  background-color: #eeeeee;
+  height: 128px;
+  left: 81px;
+  position: absolute;
+  top: 193px;
+  width: 1296px;
+}
+
+.productDetail .divWrapper {
+  background-color: #ffffff;
+  height: 78px;
+  left: 20px;
+  position: absolute;
+  top: 23px;
+  width: 200px;
+}
+
+.productDetail .textWrapper9 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 8px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+}
+
+.productDetail .category2 {
+  background-color: #ffffff;
+  height: 78px;
+  left: 555px;
+  position: absolute;
+  top: 23px;
+  width: 200px;
+}
+
+.productDetail .category3 {
+  background-color: #ffffff;
+  height: 78px;
+  left: 814px;
+  position: absolute;
+  top: 23px;
+  width: 200px;
+}
+
+.productDetail .category4 {
+  background-color: #ffffff;
+  height: 78px;
+  left: 1073px;
+  position: absolute;
+  top: 24px;
+  width: 200px;
+}
+.productDetail .category5 {
+  background-color: #ffffff;
+  height: 78px;
+  left: 287px;
+  position: absolute;
+  top: 23px;
+  width: 200px;
+}
+
+.productDetail .nav {
+  background-color: #eeeeee;
+  height: 128px;
+  left: 81px;
+  position: absolute;
+  top: 43px;
+  width: 1296px;
+}
+
+.productDetail .user {
+  background-color: #ffffff;
+  height: 68px;
+  left: 1038px;
+  position: absolute;
+  top: 33px;
+  width: 236px;
+}
+
+.productDetail .textWrapper10 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 38px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 6px;
+  width: 198px;
+}
+
+.productDetail .textWrapper11 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 63px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 9px;
+  width: 138px;
+}

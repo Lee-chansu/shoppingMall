@@ -4,7 +4,7 @@ export const Product = () => {
       <div className="image">
         <img className="productImg" src="" alt="제품 사진" />
       </div>
-      <div className="info-box">
+      <div className="infoBox">
         <div className="productName">
           <p className="text">상품이름</p>
         </div>
