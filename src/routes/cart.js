@@ -3,9 +3,15 @@ import "../css/cart.css";
 import { CartItem } from "../components/CartItem";
 
 const cartItemList = [
-  { id: 1, price: 50000, name: "상품명1", carryPrice: 3000, count: 3 },
-  // { id: 2, price: 20000, name: "상품명2", carryPrice: 1000, count: 1 },
-  // { id: 3, price: 40000, name: "상품명3", carryPrice: 2000, count: 2 },
+  {
+    id: 1,
+    price: 50000,
+    name: "상품명어쩌구저쩌구",
+    carryPrice: 3000,
+    count: 3,
+  },
+  // { id: 2, price: 20,000, name: "상품명어쩌구저쩌구", carryPrice: 3000, count: 1 },
+  // { id: 3, price: 40,000, name: "상품명어쩌구저쩌구", carryPrice: 3000, count: 2 },
 ];
 
 export const Cart = () => {
