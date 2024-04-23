@@ -36,7 +36,7 @@ export const CartItem = ({ val }) => {
         </div>
         <div className="text-wrapper-6">{item.price}원</div>
       </div>
-      <input type="check" className="is-buy-check-box" />
+      <input type="checkbox" className="is-buy-check-box" />
       <div className="text-wrapper-7">{item.name}</div>
       <div className="overlap-3">
         <div className="text-wrapper-8">{item.carryPrice}원</div>

@@ -32,7 +32,7 @@ export const Cart = () => {
       <div className="div">
         <div className="text-wrapper-11">장바구니</div>
         <div className="navbar">
-          <input type="check" className="is-buy-check-box-2" />
+          <input type="checkbox" className="is-buy-check-box-2" />
           <div className="text-wrapper-12">이미지</div>
           <div className="text-wrapper-13">상품명</div>
           <div className="text-wrapper-14">판매가</div>
