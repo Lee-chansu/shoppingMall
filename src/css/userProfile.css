@@ -217,6 +217,7 @@
   position: absolute;
   top: 4px;
   width: 145px;
+  border: 1px solid #000;
 }
 
 .userProfile .textWrapper4 {
