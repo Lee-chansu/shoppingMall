@@ -1,50 +1,37 @@
-.main-notlogin {
+.main {
   background-color: hsl(0, 0%, 100%);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
 }
 
-.main-notlogin .div {
-  width: 100%;
-  position: relative;
-  background-color: #ffffff;
-}
-
-.visual {
-  position: absolute;
-  left: -110px;
-  top: 0;
+.main .visual {
   width: 100vw;
   height: 600px;
   margin: 20px 0;
   background-color: #eeeeee;
 }
 
-.main-notlogin .wrap {
+.main .wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  margin-top: 700px;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
   padding: 20px;
 }
 
-.main-notlogin .product {
+.main .product {
   background-color: #eeeeee;
   width: 20%;
   margin: 20px 10px;
 }
 
-.main-notlogin .productImg {
+.main .productImg {
   display: block;
   width: 100%;
   height: 200px;
   background-color: #ffffff;
 }
 
-.main-notlogin .text-wrapper {
+.main .text-wrapper {
   width: 100%;
   margin: 5px 0;
   color: #000000;
@@ -57,18 +44,22 @@
   white-space: nowrap;
 }
 
-.main-notlogin .info-box {
+.main .info-box {
   background-color: #ffffff;
 }
 
-.main-notlogin .product-name {
+.main .product-name {
   background-color: #eeeeee;
 }
 
-.main-notlogin .product-info {
+.main .product-info {
   background-color: #eeeeee;
 }
 
-.main-notlogin .product {
+.main .product {
   background-color: #eeeeee;
+}
+
+.main .link{
+  text-decoration: none;
 }

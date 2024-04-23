@@ -2,6 +2,9 @@ import React from "react";
 import "../css/productList.css";
 
 export const ProductList = () => {
+
+  const list = ["", "", "", "", ""];
+
   return (
     <div className="product-list">
       <div className="div">
