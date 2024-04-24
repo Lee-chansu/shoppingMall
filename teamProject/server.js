@@ -1,13 +1,14 @@
 // 1. 모듈 - require
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
-const mysql = require("mysql2");
-const dbConfig = require("./db");
-const db = mysql.createConnection(dbConfig);
+const db = require("./models");
+const { User, Product } = db;
 
 // 2. use, set - 등록
 app.use(express.static(__dirname + "/public"));
+app.use(cors());
 
 app.use(express.json()); // json 형태로 데이터 처리
 app.use(express.urlencoded({ extended: true })); // queryString 형식의 데이터 처리
@@ -18,6 +19,17 @@ app.listen(5000, () => {
 });
 
 // 4. 하위페이지들 - 라우팅
-app.get("/", (req, res) => {
-  res.send("메인 접속성공!");
+
+//------------------productList-------------------
+
+app.get("/", async (req, res) => {
+  const result = await Product.findAll();
+
+  res.json(result);
+});
+
+app.post("/productList/add", (req, res) => {
+  Product.create();
+
+  res.redirect("/productList");
 });

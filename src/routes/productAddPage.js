@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/productAdd.css";
 
 //컴포넌트
@@ -7,7 +7,12 @@ import { Link } from "react-router-dom";
 
 export const ProductAdd = () => {
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
-  const detail = ["detail", "detail", "detail", "detail", "detail"];
+  const [detail, setDetail] = useState([]);
+
+  const handleEvent = (e) => {
+    
+  }
+  
 
   return (
     <>
@@ -20,7 +25,7 @@ export const ProductAdd = () => {
               return (
                 <div className="box">
                   <p className="text">{el}</p>
-                  <input type="checkbox" name={el} value={el} />
+                  <input type="checkbox" name={el} value={el} onClick={handleEvent} />
                 </div>
               );
             })}

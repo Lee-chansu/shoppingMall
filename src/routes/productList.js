@@ -1,12 +1,23 @@
-import React from "react";
-import "../css/productList.css";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "../css/productList.css";
+
+//컴포넌트
 import { Product } from "../components/product";
 import { Nav } from "../components/nav";
 import { Detail } from "../components/detail";
 
 export const ProductList = () => {
-  const list = ["", "", "", "", ""];
+  const [productList, setProductList] = useState([]);
+
+  const loadProduct = async () => {
+    const getProduct = await fetch("http://localhost:5000/").then((res) => res.json());
+    setProductList(getProduct);
+  };
+
+  useEffect(() => {
+    loadProduct();
+  }, []);
 
   return (
     <>
@@ -20,10 +31,10 @@ export const ProductList = () => {
             </Link>
           </div>
           <div className="productWrap">
-            {list.map((el) => {
+            {productList.map((product) => {
               return (
-                <Link className="link" to="/productList/detail">
-                  <Product></Product>
+                <Link className="link" to="/productList/detail/description">
+                  <Product key={product.id} product={product}></Product>
                 </Link>
               );
             })}
