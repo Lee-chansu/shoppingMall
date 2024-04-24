@@ -3,19 +3,18 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    
     await queryInterface.bulkInsert('Users', [
-    {
-      id: 4,
-      userId: "userId",
-      password: "asdfasd",
-      gender: "A",
-      email: "tjgr@asdf.asdf",
-      phoneNumber: "123123123",
-      address: "address",
-      isMaster: false,
-    }
-  ], {});
+      {
+        userId: 1,
+        password: 'asdf',
+        gender: "A",
+        userName: "userName",
+        email: "email",
+        phoneNumber: "010-0000-0000",
+        address: "address",
+        isMaster: false
+      }
+    ], {});
   },
 
   async down (queryInterface, Sequelize) {
@@ -27,13 +26,3 @@ module.exports = {
      */
   }
 };
-
-
-
-
-
-
-
-
-
-

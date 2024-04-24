@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     userId: {
-      type: DataTypes.STRING(15),
+      type: DataTypes.STRING(40),
       allowNull: false
     },
     password: {

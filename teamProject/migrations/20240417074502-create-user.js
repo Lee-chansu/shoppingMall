@@ -9,7 +9,7 @@ module.exports = {
         autoIncrement: true
       },
       userId: {
-        type: Sequelize.STRING(15),
+        type: Sequelize.STRING(40),
         allowNull: false
       },
       password: {
