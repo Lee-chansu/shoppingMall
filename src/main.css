@@ -1,90 +1,20 @@
-.main-notlogin {
-    background-color: hsl(0, 0%, 100%);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .main-notlogin .div {
-    background-color: #ffffff;
-  }
-  
-  .main-notlogin .visual {
-    background-color: #eeeeee;
-  }
-  
-  .main-notlogin .wrap {
-  }
-  
-  .main-notlogin .product {
-    background-color: #eeeeee;
-  }
-  
-  .main-notlogin .image {
-    background-color: #ffffff;
-  }
-  
-  .main-notlogin .text-wrapper-4 {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: normal;
-    text-align: center;
-    white-space: nowrap;
-  }
-  
-  .main-notlogin .info-box {
-    background-color: #ffffff;
-  }
-  
-  .main-notlogin .product-name {
-    background-color: #eeeeee;
-  }
-  
-  .main-notlogin .text-wrapper-5 {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: normal;
-    text-align: center;
-  }
-  
-  .main-notlogin .product-info {
-    background-color: #eeeeee;
-  }
-  
-  .main-notlogin .text-wrapper-6 {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: normal;
-    text-align: center;
-  }
-  
-  .main-notlogin .product-2 {
-    background-color: #eeeeee;
-  }
-  
-  .main-notlogin .product-3 {
-    background-color: #eeeeee;
-  }
-  
-  .main-notlogin .product-4 {
-    background-color: #eeeeee;
-  }
-  
-  .main-notlogin .product-5 {
-    background-color: #eeeeee;
-  }
-  
-  .main-notlogin .product-6 {
-    background-color: #eeeeee;
-  }
-  
+.main {
+  background-color: hsl(0, 0%, 100%);
+}
+
+.main .visual {
+  width: 100vw;
+  height: 600px;
+  margin: 20px 0;
+  background-color: #eeeeee;
+}
+
+.main .wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  padding: 20px;
+  margin: 0 5px;
+}

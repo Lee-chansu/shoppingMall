@@ -1,116 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./main.css";
 
+//컴포넌트
 import { Nav } from "./components/nav";
-import { MainItem } from "./components/MainItem";
+import { Product } from "./components/product";
+import { Link } from "react-router-dom";
 
 export const Main = () => {
-  const mainItemList = [
-    { src: "/path1", pName: "상품상품1", pContent: "상품설명" },
-    { src: "/path2", pName: "상품상품2", pContent: "상품설명" },
-    { src: "/path3", pName: "상품상품3", pContent: "상품설명" },
-  ];
-  return (
-    <div className="main-notlogin">
-      <div className="div">
-        <div className="wrap">
-          {mainItemList.map((val, idx) => {
-            return <MainItem val={val} key={idx} />;
-          })}
+  const [productList, setProductList] = useState([]);
 
-          <div className="product-2">
-            <div className="image">
-              <div className="text-wrapper">사진</div>
-            </div>
-            <div className="info-box">
-              <div className="product-name">
-                <div className="text-wrapper-2">상품이름</div>
-              </div>
-              <div className="product-info">
-                <div className="text-wrapper-3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product-3">
-            <div className="image">
-              <div className="text-wrapper">사진</div>
-            </div>
-            <div className="info-box">
-              <div className="product-name">
-                <div className="text-wrapper-2">상품이름</div>
-              </div>
-              <div className="product-info">
-                <div className="text-wrapper-3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product-4">
-            <div className="image">
-              <div className="text-wrapper">사진</div>
-            </div>
-            <div className="info-box">
-              <div className="product-name">
-                <div className="text-wrapper-2">상품이름</div>
-              </div>
-              <div className="product-info">
-                <div className="text-wrapper-3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product-5">
-            <div className="image">
-              <div className="text-wrapper">사진</div>
-            </div>
-            <div className="info-box">
-              <div className="product-name">
-                <div className="text-wrapper-2">상품이름</div>
-              </div>
-              <div className="product-info">
-                <div className="text-wrapper-3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product-6">
-            <div className="image">
-              <div className="text-wrapper">사진</div>
-            </div>
-            <div className="info-box">
-              <div className="product-name">
-                <div className="text-wrapper-2">상품이름</div>
-              </div>
-              <div className="product-info">
-                <div className="text-wrapper-3">상품설명</div>
-              </div>
-            </div>
-          </div>
-        </div>
+  const loadProduct = async () => {
+    const getProducts = await fetch("http://localhost:5000/").then((res) =>res.json());
+    setProductList(getProducts);
+  };
+
+  useEffect(() => {
+    loadProduct();
+  }, []);
+
+  return (
+    <>
+      <Nav></Nav>
+      <div className="main">
         <div className="visual" />
-        <div className="category">
-          <div className="div-wrapper">
-            <div className="text-wrapper-4">category</div>
-          </div>q2
-          <div className="category-2">
-            <div className="text-wrapper-4">category</div>
+        <div className="inner">
+          <Link className="link" to="/productList">
+            <h1>Best!</h1>
+          </Link>
+          <div className="wrap">
+            {productList.map((product) => {
+              return (
+                <Link className="link" to="/productList/detail/description">
+                  <Product key={product.id} product={product} />
+                </Link>
+              );
+            })}
           </div>
-          <div className="category-3">
-            <div className="text-wrapper-4">category</div>
-          </div>
-          <div className="category-4">
-            <div className="text-wrapper-4">category</div>
-          </div>
-          <div className="category-5">
-            <div className="text-wrapper-4">category</div>
-          </div>
-        </div>
-        <div className="nav">
-          <div className="user">
-            <div className="text-wrapper-5">로그인</div>
-          </div>
-          <div className="logo">
-            <div className="text-wrapper-6">logo</div>
+          <Link className="link" to="/productList">
+            <h1>New!</h1>
+          </Link>
+          <div className="wrap">
+            {productList.map((product) => {
+              return (
+                <Link className="link" to="/productList/description">
+                  <Product key={product.id} product={product} />
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

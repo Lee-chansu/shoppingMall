@@ -10,12 +10,6 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING(255)
     },
-    category: {
-      type: DataTypes.INTEGER,
-      validate: {
-        isIn: [[1, 2, 3, 4, 5]]
-      }
-    },
     price: {
       type: DataTypes.INTEGER
     },
@@ -34,6 +28,8 @@ module.exports = (sequelize) => {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
     }
+  }, {
+    timestamps: false
   });
 
   return Product;

@@ -1,0 +1,284 @@
+.mainLogin {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.mainLogin .div {
+  background-color: #ffffff;
+  height: 1900.98px;
+  overflow: hidden;
+  position: relative;
+  width: 1440px;
+}
+
+.mainLogin .wrap {
+  height: 889px;
+  left: 48px;
+  overflow: hidden;
+  position: absolute;
+  top: 1051px;
+  width: 1337px;
+}
+
+.mainLogin .product {
+  background-color: #eeeeee;
+  height: 328px;
+  left: 885px;
+  position: absolute;
+  top: 0;
+  width: 425px;
+}
+
+.mainLogin .image {
+  background-color: #ffffff;
+  height: 185px;
+  left: 29px;
+  position: absolute;
+  top: 15px;
+  width: 367px;
+}
+
+.mainLogin .textWrapper {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 14.7px;
+  font-weight: 400;
+  left: 106px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 83px;
+  white-space: nowrap;
+  width: 153px;
+}
+
+.mainLogin .infoBox {
+  background-color: #ffffff;
+  height: 96px;
+  left: 29px;
+  position: absolute;
+  top: 216px;
+  width: 367px;
+}
+
+.mainLogin .productName {
+  background-color: #eeeeee;
+  height: 32px;
+  left: 17px;
+  position: absolute;
+  top: 10px;
+  width: 333px;
+}
+
+.mainLogin .textWrapper2 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 14.7px;
+  font-weight: 400;
+  left: 106px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 5px;
+  width: 120px;
+}
+
+.mainLogin .productInfo {
+  background-color: #eeeeee;
+  height: 29px;
+  left: 17px;
+  position: absolute;
+  top: 57px;
+  width: 333px;
+}
+
+.mainLogin .textWrapper3 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 14.7px;
+  font-weight: 400;
+  left: 120px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 5px;
+  width: 94px;
+}
+
+.mainLogin .product2 {
+  background-color: #eeeeee;
+  height: 328px;
+  left: 437px;
+  position: absolute;
+  top: 0;
+  width: 425px;
+}
+
+.mainLogin .product3 {
+  background-color: #eeeeee;
+  height: 328px;
+  left: -11px;
+  position: absolute;
+  top: 0;
+  width: 425px;
+}
+
+.mainLogin .product4 {
+  background-color: #eeeeee;
+  height: 328px;
+  left: 885px;
+  position: absolute;
+  top: 444px;
+  width: 425px;
+}
+
+.mainLogin .product5 {
+  background-color: #eeeeee;
+  height: 328px;
+  left: 437px;
+  position: absolute;
+  top: 444px;
+  width: 425px;
+}
+
+.mainLogin .product6 {
+  background-color: #eeeeee;
+  height: 328px;
+  left: -11px;
+  position: absolute;
+  top: 444px;
+  width: 425px;
+}
+
+.mainLogin .visual {
+  background-color: #eeeeee;
+  height: 604px;
+  left: 0;
+  position: absolute;
+  top: 384px;
+  width: 1435px;
+}
+
+.mainLogin .category {
+  background-color: #eeeeee;
+  height: 130px;
+  left: 67px;
+  position: absolute;
+  top: 205px;
+  width: 1319px;
+}
+.mainLogin .divWrapper {
+  background-color: #ffffff;
+  height: 79px;
+  left: 21px;
+  position: absolute;
+  top: 23px;
+  width: 204px;
+}
+
+.mainLogin .textWrapper4 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 44px;
+  font-weight: 400;
+  left: 8px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+}
+
+.mainLogin .category2 {
+  background-color: #ffffff;
+  height: 79px;
+  left: 565px;
+  position: absolute;
+  top: 23px;
+  width: 204px;
+}
+
+.mainLogin .category3 {
+  background-color: #ffffff;
+  height: 79px;
+  left: 829px;
+  position: absolute;
+  top: 23px;
+  width: 204px;
+}
+
+.mainLogin .category4 {
+  background-color: #ffffff;
+  height: 79px;
+  left: 1093px;
+  position: absolute;
+  top: 25px;
+  width: 204px;
+}
+
+.mainLogin .category5 {
+  background-color: #ffffff;
+  height: 79px;
+  left: 293px;
+  position: absolute;
+  top: 23px;
+  width: 204px;
+}
+
+.mainLogin .nav {
+  background-color: #eeeeee;
+  height: 130px;
+  left: 67px;
+  position: absolute;
+  top: 46px;
+  width: 1319px;
+}
+
+.mainLogin .overlapGroup {
+  height: 115px;
+  left: 1150px;
+  position: absolute;
+  top: 7px;
+  width: 131px;
+}
+
+.mainLogin .userProfileImage {
+  background-color: #ffffff;
+  border-radius: 57.57px;
+  height: 115px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 115px;
+}
+
+.mainLogin .textWrapper5 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 40px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 29px;
+  width: 131px;
+}
+
+.mainLogin .textWrapper6 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 44px;
+  font-weight: 400;
+  left: 64px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 10px;
+  width: 140px;
+}

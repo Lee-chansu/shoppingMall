@@ -1,0 +1,20 @@
+.detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 120px;
+  background-color: #fff;
+}
+
+.detail .inner {
+  background-color: #eee;
+  width: 100%;
+}
+
+.detail .wrapper {
+  padding: 0 10px;
+}
+.detail .div-wrapper .text {
+  padding: 10px;
+  background-color: #fff;
+}

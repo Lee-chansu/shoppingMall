@@ -15,11 +15,13 @@ module.exports = (sequelize) => {
         max: 5
       }
     }
+  }, {
+    timestamps: false
   });
 
   StarPoint.associate = (models) => {
-    StarPoint.belongsTo(models.ReviewList, { foreignKey: 'reviewId' });
-    StarPoint.belongsTo(models.User, { foreignKey: 'userId' });
+    StarPoint.belongsTo(models.ReviewList, { foreignKey: 'review_id' });
+    StarPoint.belongsTo(models.User, { foreignKey: 'user_id' });
   };
 
   return StarPoint;

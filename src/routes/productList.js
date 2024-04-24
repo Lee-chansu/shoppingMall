@@ -1,118 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../css/productList.css";
+
+//컴포넌트
+import { Product } from "../components/product";
 import { Nav } from "../components/nav";
+import { Detail } from "../components/detail";
 
 export const ProductList = () => {
+  const [productList, setProductList] = useState([]);
+
+  const loadProduct = async () => {
+    const getProduct = await fetch("http://localhost:5000/").then((res) => res.json());
+    setProductList(getProduct);
+  };
+
+  useEffect(() => {
+    loadProduct();
+  }, []);
+
   return (
-    <div className="main-notlogin">
-    <div className="div">
-      <div className="wrap">
-        <div className="product">
-          <div className="image">
-            <div className="text-wrapper">사진</div>
+    <>
+      <Nav></Nav>
+      <Detail></Detail>
+      <div className="productList">
+        <div className="inner">
+          <div className="addBtnForm">
+            <Link to="/productList/add">
+              <button>상품 추가</button>
+            </Link>
           </div>
-          <div className="info-box">
-            <div className="product-name">
-              <div className="text-wrapper-2">상품이름</div>
-            </div>
-            <div className="product-info">
-              <div className="text-wrapper-3">상품설명</div>
-            </div>
-          </div>
-        </div>
-        <div className="product-2">
-          <div className="image">
-            <div className="text-wrapper">사진</div>
-          </div>
-          <div className="info-box">
-            <div className="product-name">
-              <div className="text-wrapper-2">상품이름</div>
-            </div>
-            <div className="product-info">
-              <div className="text-wrapper-3">상품설명</div>
-            </div>
-          </div>
-        </div>
-        <div className="product-3">
-          <div className="image">
-            <div className="text-wrapper">사진</div>
-          </div>
-          <div className="info-box">
-            <div className="product-name">
-              <div className="text-wrapper-2">상품이름</div>
-            </div>
-            <div className="product-info">
-              <div className="text-wrapper-3">상품설명</div>
-            </div>
-          </div>
-        </div>
-        <div className="product-4">
-          <div className="image">
-            <div className="text-wrapper">사진</div>
-          </div>
-          <div className="info-box">
-            <div className="product-name">
-              <div className="text-wrapper-2">상품이름</div>
-            </div>
-            <div className="product-info">
-              <div className="text-wrapper-3">상품설명</div>
-            </div>
-          </div>
-        </div>
-        <div className="product-5">
-          <div className="image">
-            <div className="text-wrapper">사진</div>
-          </div>
-          <div className="info-box">
-            <div className="product-name">
-              <div className="text-wrapper-2">상품이름</div>
-            </div>
-            <div className="product-info">
-              <div className="text-wrapper-3">상품설명</div>
-            </div>
-          </div>
-        </div>
-        <div className="product-6">
-          <div className="image">
-            <div className="text-wrapper">사진</div>
-          </div>
-          <div className="info-box">
-            <div className="product-name">
-              <div className="text-wrapper-2">상품이름</div>
-            </div>
-            <div className="product-info">
-              <div className="text-wrapper-3">상품설명</div>
-            </div>
+          <div className="productWrap">
+            {productList.map((product) => {
+              return (
+                <Link className="link" to="/productList/detail/description">
+                  <Product key={product.id} product={product}></Product>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
-      <div className="visual" />
-      <div className="category">
-        <div className="div-wrapper">
-          <div className="text-wrapper-4">category</div>
-        </div>
-        <div className="category-2">
-          <div className="text-wrapper-4">category</div>
-        </div>
-        <div className="category-3">
-          <div className="text-wrapper-4">category</div>
-        </div>
-        <div className="category-4">
-          <div className="text-wrapper-4">category</div>
-        </div>
-        <div className="category-5">
-          <div className="text-wrapper-4">category</div>
-        </div>
-      </div>
-      <div className="nav">
-        <div className="user">
-          <div className="text-wrapper-5">로그인</div>
-        </div>
-        <div className="logo">
-          <div className="text-wrapper-6">logo</div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </>
   );
 };
