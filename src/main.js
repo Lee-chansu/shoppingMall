@@ -20,7 +20,7 @@ export const Main = () => {
           <div className="wrap">
             {list.map((el) => {
               return (
-                <Link className="link" to="/productList/detail">
+                <Link className="link" to="/productList/detail/description">
                   <Product />
                 </Link>
               );
@@ -30,7 +30,7 @@ export const Main = () => {
           <div className="wrap">
             {list.map((el) => {
               return (
-                <Link className="link" to="/productList/detail">
+                <Link className="link" to="/productList/description">
                   <Product />
                 </Link>
               );
