@@ -33,7 +33,7 @@ export const PayFail = () => {
               <p className="p">option / color / size / ect..</p>
               <p className="textWrapper11">
                 <i>
-                  카드사 즉시 할인,포인트 사용내역은 카드사에서 확인 바랍니다
+                카드사 즉시 할인 및 포인트 사용내역은 카드사에서 확인 부탁 드립니다.
                 </i>
               </p>
               <p className="textWrapper12">option / color / size / ect..</p>

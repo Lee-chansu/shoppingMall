@@ -332,9 +332,18 @@ a {
 .payment .product {
   background-color: #eeeeee;
   height: 117px;
+  left: 8px;
+  position: absolute;
+  top: 45px;
+  width: 330px;
+}
+
+.payment .product2 {
+  background-color: #eeeeee;
+  height: 117px;
   left: 17px;
   position: absolute;
-  top: 80px;
+  top: 200px;
   width: 330px;
 }
 
@@ -383,15 +392,6 @@ a {
   text-align: center;
   top: 37px;
   width: 66px;
-}
-
-.payment .product2 {
-  background-color: #eeeeee;
-  height: 117px;
-  left: 17px;
-  position: absolute;
-  top: 210px;
-  width: 330px;
 }
 
 .payment .buyButton {
