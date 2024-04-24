@@ -6,7 +6,7 @@
   width: 100%;
 }
 
-.payment .paymentInnerWrapperr {
+.payment .paymentInnerWrapper {
   background-color: #ffffff;
   height: 1632.14px;
   width: 1440px;
@@ -349,7 +349,7 @@
 .payment .buy {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 36.9px;
+  font-size: 35px;
   font-weight: 400;
   left: 17px;
   letter-spacing: 0;

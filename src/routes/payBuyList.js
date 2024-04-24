@@ -10,13 +10,14 @@ export const PayBuyList = () => {
       payDate: "2024-4-4",
       itemName: "상품명1",
       itemPrice: "50,000",
-      carryState: "ongoing",
+      carryState: "Delivery begins",
+      
     },
     {
       payDate: "2024-2-4",
       itemName: "상품명2",
       itemPrice: "20,000",
-      carryState: "ongoing",
+      carryState: "Delivery begins",
     },
   ];
   return (
