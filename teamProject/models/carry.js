@@ -23,13 +23,8 @@ module.exports = (sequelize) => {
     timestamps: false
   });
 
-<<<<<<< HEAD
-  Carry.associate = (models) => {
-    Carry.belongsTo(models.BuyList, { foreignKey: 'order_id' });
-=======
   Carrys.associate = (models) => {
     Carrys.belongsTo(models.BuyList, { foreignKey: 'order_id' });
->>>>>>> origin/hyoguen
   };
 
   return Carrys;

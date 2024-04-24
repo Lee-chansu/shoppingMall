@@ -20,13 +20,8 @@ module.exports = (sequelize) => {
     timestamps: false
   });
 
-<<<<<<< HEAD
-  Cart.associate = (models) => {
-    Cart.belongsTo(models.User, { foreignKey: 'user_id' });
-=======
   Carts.associate = (models) => {
     Carts.belongsTo(models.User, { foreignKey: 'user_id' });
->>>>>>> origin/hyoguen
   };
 
   return Carts;

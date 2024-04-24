@@ -41,11 +41,7 @@ module.exports = (sequelize) => {
     },
     createdAt: {
       type: DataTypes.DATE,
-<<<<<<< HEAD
-      defaultValue: DataTypes.fn('now')
-=======
       defaultValue: sequelize.fn('now')
->>>>>>> origin/hyoguen
     }
   }, {
     timestamps: false

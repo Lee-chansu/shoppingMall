@@ -24,6 +24,10 @@ import { PayFail } from "./routes/payFail";
 import { PayBuyList } from "./routes/payBuyList";
 
 function App() {
+
+  
+
+
   return (
     <Routes>
       <Route index path="" element={<Main></Main>}></Route>
