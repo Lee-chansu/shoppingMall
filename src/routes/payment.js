@@ -9,18 +9,33 @@ export const Payment = () => {
         <div className="paymentInner">
           <div className="payBox">
             <div className="userInfoBox">
+              <h3 className="carryInfo">배송지 정보</h3>
               <div className="emailBox">
-                <div className="email">이메일 :</div>
+                <div className="email">주문자 이메일
+                </div>
+                <div className="email2">ildan@ildan.com</div>
               </div>
               <div className="addressBox">
-                <div className="address">주소 :</div>
+                <div className="address">배송받을 주소</div>
+                <div className="address2">경기도 부천시 원미구 길주로200</div>
               </div>
               <div className="carryBox">
-                <div className="carryRequest">배송요청사항 :</div>
+                <div  className="carryRequest">배송 요청사항
+                  <select className="carrySelect">
+                    <option value="message1">
+                    문 앞에 놔주세요</option>
+                    <option value="message2">
+                    직접 받을게요</option>
+                    <option value="message3">
+                    우편함에 놔주세요</option>
+                    <option value="message4">
+                    문 앞 배송 후 문자주세요</option>
+                  </select>
+                </div>
               </div>
               <div className="howPayBox">
                 <div className="title">
-                  <div className="textWrapper2">결제방식</div>
+                  <div className="textWrapper2">결제방식 선택하기</div>
                 </div>
                 <div className="paymentBox">
                   <div className="payCase1">네이버페이</div>
