@@ -1,6 +1,7 @@
 // 모듈
 const express = require('express')
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
 const app = express()
 
 const session = require('express-session')
@@ -60,9 +61,9 @@ passport.use(new LocalStrategy(async(userId, password, done)=>{
   let result = await User.findOne({where : {userId}})
 
   if(!result){
-    return done(null, false, {message : '이메일 불일치'})
+    return done(null, false, {message : '이메일이 일치하지않습니다'})
   }if(result.password != password){
-    return done(null, false, {message : '비번 불일치'})
+    return done(null, false, {message : '비밀번호가 일치하지않습니다'})
   }else{
     return done(null,result)
   }
@@ -92,18 +93,17 @@ passport.deserializeUser(async(user,done)=>{
 
 // 로그아웃
 app.get('/logout',(req,res)=>{
-  req.logOut()
+  req.logOut(()=>{res.redirect('/')})
 })
 
 // 로그인
 app.post('/login',(req,res)=>{
   passport.authenticate('local', (error, user, info)=>{
     if(error) return res.status(500).json(error)
-    if(!user) return res.status(500).send(info.message)
+    if(!user) return res.status(401).json(info.message)
 
     req.logIn(user,(err)=>{
       if(err)return next(err)
-
       res.json(user)
     })
   })(req,res)
@@ -115,3 +115,4 @@ app.get('/',async(req,res)=>{
   const result = await Product.findAll()
   res.json(result)
 })
+

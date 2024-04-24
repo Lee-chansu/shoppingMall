@@ -33,16 +33,22 @@ export const Login = () => {
           body : JSON.stringify(loginUser)
         })
         if (!response.ok) {
-          throw new Error('서버에서 응답을 받을 수 없습니다')
+          if(response.status === 401){
+            const errMessage = await response.json();
+            alert(errMessage)
+          }else{
+            throw new Error('서버에서 응답을 받을 수 없습니다')
+          }
         }else{
-          let {userId} = await response.json()
-          if(userId){
+          let user = await response.json()
+          console.log(user)
+          if(user){
             alert('로그인 성공')
             navigate('/')
           }
         }
       } catch (error) {
-        alert('이메일/비밀번호가 일치하지않습니다')
+        alert('로그인에 실패했습니다')
       }
     }
   }
@@ -51,6 +57,7 @@ export const Login = () => {
     <div className="login">
       <div className="div">
         <div className="textWrapper">로그인</div>
+        <Link to="/logout">로그아웃</Link>
         <form className="loginBox">
           <div className="loginForm">
             <div className="inputUserid">
