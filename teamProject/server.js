@@ -20,7 +20,7 @@ app.listen(5000, () => {
 
 // 4. 하위페이지들 - 라우팅
 
-//------------------productList-------------------
+//------------------productList------------------
 
 app.get("/", async (req, res) => {
   const result = await Product.findAll();

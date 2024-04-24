@@ -40,7 +40,7 @@ export const Main = () => {
             <h1>New!</h1>
           </Link>
           <div className="wrap">
-            {productList.map((product) => {
+            {productList.sort().map((product) => {
               return (
                 <Link className="link" to="/productList/description">
                   <Product key={product.id} product={product} />
