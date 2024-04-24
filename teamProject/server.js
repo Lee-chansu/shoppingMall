@@ -7,7 +7,6 @@ const dbConfig = require("./db");
 const db = mysql.createConnection(dbConfig);
 
 // 2. use, set - 등록
-app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
 app.use(express.json()); // json 형태로 데이터 처리
@@ -22,4 +21,3 @@ app.listen(3000, () => {
 app.get("/", (req, res) => {
   res.send("메인 접속성공!");
 });
-
