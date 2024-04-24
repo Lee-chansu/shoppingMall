@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // 모듈
 const express = require("express");
 const cors = require("cors");
@@ -61,7 +62,7 @@ passport.use(
     let result = await User.findOne({ where: { userId } });
 
     if (!result) {
-      return done(null, false, { message: "이메일 불일치" });
+      return done(null, false, { message: "아이디 불일치" });
     }
     if (result.password != password) {
       return done(null, false, { message: "비번 불일치" });
@@ -93,8 +94,18 @@ passport.deserializeUser(async (user, done) => {
   }
 });
 
+app.get("/sessionCheck", (req, res) => {
+  console.log(req.session.userId);
+
+  const sessionUser = req.session.useId;
+
+  res.send(sessionUser)
+
+});
+
 // 로그아웃
 app.get("/logout", (req, res) => {
+  
   req.logOut();
 });
 

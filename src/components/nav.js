@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/nav.css";
 import { Link } from "react-router-dom";
 
 export const Nav = () => {
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
+
+  let [userId, setUserId] = useState("");
+
+  const checkLogin = async () => {
+    const sessionUser = await fetch("http://localhost:5000/sessionCheck");
+    if (sessionUser) {
+      console.log(sessionUser);
+    } else {
+      console.log("세션 값 없음");
+    }
+  };
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
 
   return (
     <header className="header">

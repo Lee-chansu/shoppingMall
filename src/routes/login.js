@@ -53,7 +53,7 @@ export const Login = () => {
         <div className="textWrapper">로그인</div>
         <form className="loginBox">
           <div className="loginForm">
-            <div className="inputUserid">
+            <div className="inputUserId">
               <input className="textWrapper2" type="email" placeholder="사용자 이메일 입력" name="username" onChange={valueChange}/>
             </div>
             <div className="inputUserpassword">
