@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../css/productDetailDescription.css";
 import { ProductDescription } from "../components/productDescription";
 import { Nav } from "../components/nav";
@@ -6,6 +6,7 @@ import { Nav } from "../components/nav";
 export const ProductDetailDescription = () => {
 
   const [value, setValue] = useState(1);
+  const [index, setIndex] = useState(0);
 
   const increaseValue = () => {
     setValue(value + 1);
@@ -16,6 +17,28 @@ export const ProductDetailDescription = () => {
       setValue(value - 1);
     }
   };
+
+  const handleInputChange = (e) => {
+    const number = Number(e.target.value);
+    if (!number) {
+
+    } else if (number < 1) {
+      setValue(1);
+    } else if (number % 1 == 0) {
+      setValue(number);
+    }
+  }
+
+  const mainRef = useRef(null)
+  let photos = [
+    "https://tvvmvn.github.io/front-end/img/Simba.webp",
+    "https://tvvmvn.github.io/front-end/img/Timon.webp",
+    "https://tvvmvn.github.io/front-end/img/Pumbaa.webp"
+  ];
+
+  function jump(index) {
+    setIndex(index);
+  }
 
   return (
     <>
@@ -38,7 +61,7 @@ export const ProductDetailDescription = () => {
               <div className="textWrapper2">수량</div>
               <div className="overlapGroup">
                 <button onClick={decreaseValue} className="inputMinus">-</button>
-                <input className="input" type="number" name="number" min={1} value={value} />
+                <input className="input" type="number" name="number" min={1} value={value} onChange={handleInputChange} />
                 <button onClick={increaseValue} className="inputPlus">+</button>
               </div>
             </div>
@@ -51,9 +74,6 @@ export const ProductDetailDescription = () => {
                   <option value="2">2</option>
                   <option value="3">3</option>
                 </select>
-                {/* <div className="textWrapper3">color</div>
-                <img className="line" alt="Line" src="line-4.svg" />
-                <img className="polygon" alt="Polygon" src="polygon-3.svg" /> */}
               </div>
             </div>
             <div className="productSize">
@@ -65,9 +85,6 @@ export const ProductDetailDescription = () => {
                   <option value="2">2</option>
                   <option value="3">3</option>
                 </select>
-                {/* <div className="textWrapper4">size</div>
-                <img className="line" alt="Line" src="line-5.svg" />
-                <img className="polygon" alt="Polygon" src="polygon-2.svg" /> */}
               </div>
             </div>
             <div className="productPrice">
@@ -78,38 +95,12 @@ export const ProductDetailDescription = () => {
             </div>
           </div>
           <div className="thumbnailBox">
-            <div className="subThmbnail" />
-            <div className="subThmbnail2" />
-            <div className="subThmbnail3" />
-            <div className="mainThmbnailWrapper">
-              <div className="mainThmbnail">thumbnail</div>
-            </div>
+            <img ref={mainRef} src={photos[index]} className="mainThmbnailWrapper" />
+            {
+              photos.map((photo, i) => <img key={i} onClick={() => jump(i)} className={"subThmbnail"+ i} src={photo} />)
+            }
+              {/* <img ref={main} src="" className="mainThmbnail" /> */}
           </div>
-          {/* <div className="category">
-            <div className="divWrapper">
-              <div className="textWrapper5">category</div>
-            </div>
-            <div className="category2">
-              <div className="textWrapper5">category</div>
-            </div>
-            <div className="category3">
-              <div className="textWrapper5">category</div>
-            </div>
-            <div className="category4">
-              <div className="textWrapper5">category</div>
-            </div>
-            <div className="category5">
-              <div className="textWrapper5">category</div>
-            </div>
-          </div>
-          <div className="nav">
-            <div className="user">
-              <div className="textWrapper6">유저정보</div>
-            </div>
-            <div className="divWrapper">
-              <div className="textWrapper7">logo</div>
-            </div>
-          </div> */}
         </div>
       </div>
       <ProductDescription />

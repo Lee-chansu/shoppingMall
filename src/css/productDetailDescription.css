@@ -313,16 +313,16 @@ input[type=number]::-webkit-inner-spin-button,
   width: 722px;
 }
 
-.productdetail .subThmbnail {
+.productdetail .subThmbnail0 {
   background-color: #d9d9d9;
   height: 144px;
-  left: 438px;
+  left: 120px;
   position: absolute;
   top: 637px;
   width: 144px;
 }
 
-.productdetail .subThmbnail2 {
+.productdetail .subThmbnail1 {
   background-color: #d9d9d9;
   height: 144px;
   left: 278px;
@@ -331,10 +331,10 @@ input[type=number]::-webkit-inner-spin-button,
   width: 144px;
 }
 
-.productdetail .subThmbnail3 {
+.productdetail .subThmbnail2 {
   background-color: #d9d9d9;
   height: 144px;
-  left: 120px;
+  left: 438px;
   position: absolute;
   top: 637px;
   width: 144px;
