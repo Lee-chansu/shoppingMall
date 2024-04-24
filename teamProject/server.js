@@ -1,6 +1,7 @@
 // 1. 모듈 - require
 const express = require("express");
 const app = express();
+const cors = require('cors');
 
 const mysql = require("mysql2");
 const dbConfig = require("./db");
@@ -8,6 +9,7 @@ const db = mysql.createConnection(dbConfig);
 
 // 2. use, set - 등록
 app.use(express.static(__dirname + "/public"));
+app.use(cors())
 
 app.use(express.json()); // json 형태로 데이터 처리
 app.use(express.urlencoded({ extended: true })); // queryString 형식의 데이터 처리
@@ -19,5 +21,9 @@ app.listen(3000, () => {
 
 // 4. 하위페이지들 - 라우팅
 app.get("/", (req, res) => {
-  res.send("메인 접속성공!");
+  
 });
+
+app.get('*', (req,res) => {
+  res.sendFile(path.join(__dirname, '/react-project/build/index.html'))
+})
