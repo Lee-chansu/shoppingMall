@@ -9,10 +9,7 @@ export const ProductAdd = () => {
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [detail, setDetail] = useState([]);
 
-  const handleEvent = (e) => {
-    
-  }
-  
+  const handleEvent = (e) => {};
 
   return (
     <>
