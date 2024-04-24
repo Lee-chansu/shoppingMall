@@ -21,6 +21,9 @@ export const Nav = () => {
               );
             })}
           </div>
+          {
+            
+          }
           <Link className="link" to="/login">
             <div className="wrapper">
               <div className="text">로그인</div>

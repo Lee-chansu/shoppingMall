@@ -1,6 +1,4 @@
-
-
-.productdetail {
+.productDetail {
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -9,15 +7,132 @@
   overflow-y: hidden;
 }
 
-.productdetail .div {
+.productDetail .div {
   background-color: #ffffff;
-  height: 855px;
+  height: 2484px;
   position: relative;
   width: 1440px;
   top: -350px;
 }
 
-.productdetail .buttonBox {
+.productDetail .productInfo {
+  height: 1163px;
+  left: 53px;
+  position: absolute;
+  top: 1265px;
+  width: 1330px;
+}
+
+.productDetail .productDecription {
+  background-color: #eeeeee;
+  height: 931px;
+  left: 2px;
+  position: absolute;
+  top: 175px;
+  width: 1328px;
+}
+
+.productDetail .moreInfo {
+  background-color: #ffffff;
+  height: 119px;
+  left: 3px;
+  position: absolute;
+  top: 812px;
+  width: 1322px;
+}
+
+.productDetail .textWrapper {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 438px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 32px;
+  width: 312px;
+}
+
+.productDetail .polygon {
+  height: 17px;
+  left: 764px;
+  position: absolute;
+  top: 54px;
+  width: 31px;
+}
+
+.productDetail .textWrapper2 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 518px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 439px;
+}
+
+.productDetail .infoSelect {
+  background-color: #ffffff;
+  height: 159px;
+  left: 2px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 1328px;
+}
+
+.productDetail .productReview {
+  height: 190px;
+  left: 664px;
+  position: absolute;
+  top: 5px;
+  width: 664px;
+}
+
+.productDetail .textWrapper3 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 246px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 68px;
+}
+
+.productDetail .productDescription {
+  height: 190px;
+  left: 0;
+  position: absolute;
+  top: 5px;
+  width: 664px;
+}
+
+.productDetail .textWrapper4 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 243px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 66px;
+}
+
+.productDetail .line {
+  height: 5px;
+  left: 0;
+  position: absolute;
+  top: 149px;
+  width: 664px;
+}
+
+.productDetail .buttonBox {
   background-color: #eeeeee;
   height: 144px;
   left: 758px;
@@ -26,7 +141,7 @@
   width: 590px;
 }
 
-.productdetail .nowPayButton {
+.productDetail .nowPayButton {
   background-color: #ffffff;
   height: 96px;
   left: 313px;
@@ -35,7 +150,7 @@
   width: 255px;
 }
 
-.productdetail .textWrapper {
+.productDetail .textWrapper5 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -47,8 +162,7 @@
   top: 23px;
   width: 194px;
 }
-
-.productdetail .cartButton {
+.productDetail .cartButton {
   background-color: #ffffff;
   height: 96px;
   left: 19px;
@@ -57,7 +171,7 @@
   width: 255px;
 }
 
-.productdetail .infoBox {
+.productDetail .infoBox {
   background-color: #eeeeee;
   height: 586px;
   left: 756px;
@@ -66,7 +180,7 @@
   width: 592px;
 }
 
-.productdetail .productTotalPrice {
+.productDetail .productTotalPrice {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
@@ -75,7 +189,7 @@
   width: 526px;
 }
 
-.productdetail .textWrapper2 {
+.productDetail .textWrapper6 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -87,7 +201,7 @@
   top: 9px;
 }
 
-.productdetail .productCount {
+.productDetail .productCount {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
@@ -96,7 +210,7 @@
   width: 526px;
 }
 
-.productdetail .overlapGroup {
+.productDetail .overlapGroup {
   height: 59px;
   left: 233px;
   position: absolute;
@@ -104,53 +218,7 @@
   width: 245px;
 }
 
-.productdetail .overlapGroup .inputMinus {
-  z-index: 1;
-  background-color: #eeeeeeee;
-  border: 0.72px solid;
-  border-color: #000000;
-  height: 48px;
-  left: 0;
-  position: absolute;
-  top: 10px;
-  width: 48px;
-  font-size: 32px;
-}
-
-.productdetail .input {
-  background-color: #eeeeeeee;
-  border: 0.72px solid;
-  border-color: #000000;
-  height: 48px;
-  left: 48px;
-  position: absolute;
-  top: 10px;
-  width: 149px;
-  font-size: 32px;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-    height: 0;
-    width: 0;
-  }
-
-.productdetail .overlapGroup .inputPlus {
-  z-index: 1;
-  background-color: #eeeeeeee;
-  border: 0.72px solid;
-  border-color: #000000;
-  height: 48px;
-  right: 0;
-  position: absolute;
-  top: 10px;
-  width: 48px;
-  font-size: 32px;
-}
-
-.productdetail .select {
+.productDetail .select {
   background-color: #eeeeeeee;
   border: 0.72px solid;
   border-color: #000000;
@@ -159,10 +227,9 @@ input[type=number]::-webkit-inner-spin-button,
   position: absolute;
   top: 10px;
   width: 245px;
-  font-size: 32px;
 }
 
-.productdetail .color {
+.productDetail .color {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -177,7 +244,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 133px;
 }
 
-.productdetail .line {
+.productDetail .img {
   height: 48px;
   left: 174px;
   position: absolute;
@@ -185,7 +252,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 2px;
 }
 
-.productdetail .img {
+.productDetail .line2 {
   height: 48px;
   left: 69px;
   position: absolute;
@@ -193,14 +260,15 @@ input[type=number]::-webkit-inner-spin-button,
   width: 2px;
 }
 
-.productdetail .line2 {
+.productDetail .line3 {
   height: 2px;
   left: 10px;
   position: absolute;
   top: 30px;
   width: 44px;
 }
-.productdetail .line3 {
+
+.productDetail .line4 {
   height: 2px;
   left: 186px;
   position: absolute;
@@ -208,7 +276,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 44px;
 }
 
-.productdetail .line4 {
+.productDetail .line5 {
   height: 35px;
   left: 207px;
   position: absolute;
@@ -216,7 +284,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 1px;
 }
 
-.productdetail .productColor {
+.productDetail .productColor {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
@@ -225,7 +293,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 526px;
 }
 
-.productdetail .overlap {
+.productDetail .overlap {
   height: 59px;
   left: 233px;
   position: absolute;
@@ -233,7 +301,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 245px;
 }
 
-.productdetail .textWrapper3 {
+.productDetail .textWrapper7 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -247,15 +315,14 @@ input[type=number]::-webkit-inner-spin-button,
   width: 133px;
 }
 
-.productdetail .polygon {
+.productDetail .polygon2 {
   height: 17px;
   left: 195px;
   position: absolute;
   top: 29px;
   width: 31px;
 }
-
-.productdetail .productSize {
+.productDetail .productSize {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
@@ -264,7 +331,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 526px;
 }
 
-.productdetail .overlap2 {
+.productDetail .overlap2 {
   height: 59px;
   left: 233px;
   position: absolute;
@@ -272,7 +339,13 @@ input[type=number]::-webkit-inner-spin-button,
   width: 245px;
 }
 
-.productdetail .textWrapper4 {
+.productDetail .overlap2 .select,
+.productDetail .overlap .select {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.productDetail .textWrapper8 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -286,7 +359,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 81px;
 }
 
-.productdetail .productPrice {
+.productDetail .productPrice {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
@@ -295,7 +368,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 526px;
 }
 
-.productdetail .productName {
+.productDetail .productName {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
@@ -304,7 +377,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 526px;
 }
 
-.productdetail .thumbnailBox {
+.productDetail .thumbnailBox {
   background-color: #ffffff;
   height: 817px;
   left: 25px;
@@ -313,7 +386,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 722px;
 }
 
-.productdetail .subThmbnail {
+.productDetail .subThmbnail {
   background-color: #d9d9d9;
   height: 144px;
   left: 438px;
@@ -322,7 +395,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 144px;
 }
 
-.productdetail .subThmbnail2 {
+.productDetail .subThmbnail2 {
   background-color: #d9d9d9;
   height: 144px;
   left: 278px;
@@ -331,7 +404,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 144px;
 }
 
-.productdetail .subThmbnail3 {
+.productDetail .subThmbnail3 {
   background-color: #d9d9d9;
   height: 144px;
   left: 120px;
@@ -340,7 +413,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 144px;
 }
 
-.productdetail .mainThmbnailWrapper {
+.productDetail .mainThmbnailWrapper {
   background-color: #d9d9d9;
   height: 586px;
   left: 56px;
@@ -349,7 +422,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 575px;
 }
 
-.productdetail .mainThmbnail {
+.productDetail .mainThmbnail {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -362,7 +435,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 236px;
 }
 
-.productdetail .category {
+.productDetail .category {
   background-color: #eeeeee;
   height: 128px;
   left: 81px;
@@ -371,7 +444,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 1296px;
 }
 
-.productdetail .divWrapper {
+.productDetail .divWrapper {
   background-color: #ffffff;
   height: 78px;
   left: 20px;
@@ -380,7 +453,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 200px;
 }
 
-.productdetail .textWrapper5 {
+.productDetail .textWrapper9 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -392,7 +465,7 @@ input[type=number]::-webkit-inner-spin-button,
   top: 11px;
 }
 
-.productdetail .category2 {
+.productDetail .category2 {
   background-color: #ffffff;
   height: 78px;
   left: 555px;
@@ -401,7 +474,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 200px;
 }
 
-.productdetail .category3 {
+.productDetail .category3 {
   background-color: #ffffff;
   height: 78px;
   left: 814px;
@@ -410,7 +483,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 200px;
 }
 
-.productdetail .category4 {
+.productDetail .category4 {
   background-color: #ffffff;
   height: 78px;
   left: 1073px;
@@ -418,8 +491,7 @@ input[type=number]::-webkit-inner-spin-button,
   top: 24px;
   width: 200px;
 }
-
-.productdetail .category5 {
+.productDetail .category5 {
   background-color: #ffffff;
   height: 78px;
   left: 287px;
@@ -428,7 +500,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 200px;
 }
 
-.productdetail .nav {
+.productDetail .nav {
   background-color: #eeeeee;
   height: 128px;
   left: 81px;
@@ -437,7 +509,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 1296px;
 }
 
-.productdetail .user {
+.productDetail .user {
   background-color: #ffffff;
   height: 68px;
   left: 1038px;
@@ -446,7 +518,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 236px;
 }
 
-.productdetail .textWrapper6 {
+.productDetail .textWrapper10 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -459,7 +531,7 @@ input[type=number]::-webkit-inner-spin-button,
   width: 198px;
 }
 
-.productdetail .textWrapper7 {
+.productDetail .textWrapper11 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;

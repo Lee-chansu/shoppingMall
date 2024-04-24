@@ -17,6 +17,8 @@ import { PasswordCheck } from "./routes/passwordCheck";
 import { Login } from "./routes/login";
 import { Nav } from "./components/nav";
 import { ProductDetailDescription } from "./routes/productDetailDescription";
+import { ProductDescription } from "./components/productDescription";
+import { ProductReview } from "./components/productReview";
 
 
 function App() {
@@ -43,6 +45,8 @@ function App() {
         <Route path="userEdit" element={<UserEdit />}></Route>
         <Route path="passwordCheck" element={<PasswordCheck />}></Route>
         <Route path="nav" element={<Nav />}></Route>
+        <Route path="ProductDescription" element={<ProductDescription />}></Route>
+        <Route path="ProductReview" element={<ProductReview />}></Route>
       </Routes>
   );
 }
