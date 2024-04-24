@@ -4,73 +4,88 @@ import { Link } from "react-router-dom";
 
 export const Payment = () => {
   return (
-    <div class="payment">
-      <div class="payment-inner-wrapper">
-        <div class="payment-inner">
-          <div class="pay-box">
-            <div class="user-info-box">
-              <div class="email">
-                <div class="text-wrapper">이메일</div>
+    <div className="payment">
+      <div className="paymentInnerWrapper">
+        <div className="paymentInner">
+          <div className="payBox">
+            <div className="userInfoBox">
+              <h3 className="carryInfo">배송지 정보</h3>
+              <div className="emailBox">
+                <div className="email">주문자 이메일
+                </div>
+                <div className="email2">ildan@ildan.com</div>
               </div>
-              <div class="carry-req">
-                <div class="div">배송요청사항</div>
+              <div className="addressBox">
+                <div className="address">배송받을 주소</div>
+                <div className="address2">경기도 부천시 원미구 길주로200</div>
               </div>
-              <div class="how-pay-box">
-                <div class="title">
-                  <div class="text-wrapper-2">결제방식</div>
-                </div>
-                <div class="check-box">
-                  <div class="ex">ex 1</div>
-                  <div class="text-wrapper-3">ex 2</div>
-                  <div class="ex-2">ex 3</div>
-                </div>
-              </div>
-              <div className="address">
-                <div class="text-wrapper-4">주소</div>
-              </div>
-            </div>
-            <div class="pay-list">
-              <div class="pay-info">
-                <div class="div-wrapper">
-                  <div class="text-wrapper-5">나의 주문</div>
-                </div>
-                <div class="title-2">
-                  <div class="text-wrapper-5">총 주문금액</div>
-                </div>
-                <div class="title-3">
-                  <div class="text-wrapper-5">배송비</div>
-                </div>
-                <div class="title-4">
-                  <div class="text-wrapper-5">총 합계</div>
+              <div className="carryBox">
+                <div  className="carryRequest">배송 요청사항
+                  <select className="carrySelect">
+                    <option value="message1">
+                    문 앞에 놔주세요</option>
+                    <option value="message2">
+                    직접 받을게요</option>
+                    <option value="message3">
+                    우편함에 놔주세요</option>
+                    <option value="message4">
+                    문 앞 배송 후 문자주세요</option>
+                  </select>
                 </div>
               </div>
-              <div class="product-box">
-                <div class="product">
-                  <div class="info">
-                    <div class="text-wrapper-6">제품설명</div>
-                  </div>
-                  <div class="image">
-                    <div class="text-wrapper-7">이미지</div>
-                  </div>
+              <div className="howPayBox">
+                <div className="title">
+                  <div className="textWrapper2">결제방식 선택하기</div>
                 </div>
-                <div class="product-2">
-                  <div class="info">
-                    <div class="text-wrapper-6">제품설명</div>
-                  </div>
-                  <div class="image">
-                    <div class="text-wrapper-7">이미지</div>
-                  </div>
+                <div className="paymentBox">
+                  <div className="payCase1">네이버페이</div>
+                  <div className="payCase2">카카오페이</div>
+                  <div className="payCase3">신용카드</div>
                 </div>
               </div>
             </div>
-            <div class="buy-button">
-              <Link to="#" class="buy">
+            <div className="payList">
+              <div className="payInfo">
+                <div className="myOrder">
+                  <div className="myOrder">나의 주문</div>
+                </div>
+                <div className="product">
+                  <div className="info">
+                    <div className="textWrapper6">제품설명</div>
+                  </div>
+                  <div className="image">
+                    <div className="textWrapper7">이미지</div>
+                  </div>
+                </div>
+                <div className="product2">
+                  <div className="info">
+                    <div className="textWrapper6">제품설명</div>
+                  </div>
+                  <div className="image">
+                    <div className="textWrapper7">이미지</div>
+                  </div>
+                </div>
+              </div>
+              <div className="productBox">
+                <div className="title2">
+                  <div className="orderSumText">총 주문금액 :</div>
+                </div>
+                <div className="title3">
+                  <div className="orderSumText">배송비 :</div>
+                </div>
+                <div className="title4">
+                  <div className="orderSumText">총 합계 :</div>
+                </div>
+              </div>
+            </div>
+            <div className="buyButton">
+              <Link to="#" className="buy">
                 결제하기
               </Link>
             </div>
           </div>
-          <div class="pay-title">
-            <div class="text-wrapper-8">결제하기</div>
+          <div className="payTitle">
+            <div className="textWrapper8">결제하기</div>
           </div>
         </div>
       </div>

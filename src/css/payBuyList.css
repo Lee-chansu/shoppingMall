@@ -8,7 +8,6 @@
 
 .payBuyList .div {
   background-color: #ffffff;
-  height: 1975.16px;
   position: relative;
   width: 1440px;
 }
@@ -16,10 +15,9 @@
 .payBuyList .payItem {
   background-color: #eeeeeeee;
   height: 472px;
-  left: 62px;
-  position: absolute;
-  top: 448px;
+  margin: 40px auto 0;
   width: 1317px;
+  position: relative;
 }
 
 .payBuyList .itemInfo {
@@ -170,15 +168,6 @@
   width: 39px;
 }
 
-.payBuyList .payItem2 {
-  background-color: #eeeeeeee;
-  height: 472px;
-  left: 62px;
-  position: absolute;
-  top: 1003px;
-  width: 1317px;
-}
-
 .payBuyList .overlap5 {
   height: 57px;
   left: 32px;
@@ -189,43 +178,21 @@
 
 .payBuyList .overlap6 {
   height: 69px;
-  left: 186px;
-  position: absolute;
-  top: 1611px;
+  margin: 40px auto 40px;
   width: 1053px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
-.payBuyList .price {
+.payBuyList .overlap6 > * {
   background-color: #d9d9d9;
-  height: 70px;
-  left: 24px;
-  position: absolute;
-  padding-top: 15px;
-  text-align: center;
+  height: 69px;
   width: 310px;
   font-size: 30px;
-}
-
-.payBuyList .price2 {
-  background-color: #d9d9d9;
-  height: 70px;
-  left: 372px;
-  position: absolute;
-  padding-top: 15px;
   text-align: center;
-  width: 310px;
-  font-size: 30px;
-}
-
-.payBuyList .price3 {
-  background-color: #d9d9d9;
-  height: 70px;
-  left: 720px;
-  position: absolute;
-  padding-top: 15px;
-  text-align: center;
-  width: 310px;
-  font-size: 30px;
+  line-height: 69px;
 }
 
 .payBuyList .textWrapper6 {
@@ -261,13 +228,17 @@
 .payBuyList .textWrapper8 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 40px;
+  font-size: 39.3px;
   font-weight: 400;
+  /* left: 697px; */
   letter-spacing: 0;
   line-height: normal;
+  /* position: absolute; */
   text-align: center;
+  /* top: 11px; */
+  margin: 40px auto;
   white-space: nowrap;
-  /* top 거리 조정 필요 */
+  width: 357px;
 }
 
 .payBuyList .textWrapper9 {
@@ -286,34 +257,12 @@
 .payBuyList .nav {
   background-color: #eeeeee;
   height: 130px;
-  left: 57px;
+  margin: 103px auto 0;
+  /* left: 57px;
   position: absolute;
-  top: 103px;
+  top: 103px; */
   width: 1325px;
-  /* base nav 적용하기 */
-}
-
-.payBuyList .user {
-  background-color: #ffffff;
-  height: 69px;
-  left: 1062px;
-  overflow: hidden;
-  position: absolute;
-  top: 34px;
-  width: 242px;
-}
-
-.payBuyList .textWrapper10 {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 44.2px;
-  font-weight: 400;
-  left: 39px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 7px;
-  width: 203px;
+  position: relative;
 }
 
 .payBuyList .logo {
@@ -324,6 +273,37 @@
   position: absolute;
   top: 24px;
   width: 205px;
+}
+
+.payBuyList .user {
+  background-color: #ffffff;
+  height: 80px;
+  left: 1062px;
+  overflow: hidden;
+  position: absolute;
+  top: 24px;
+  width: 242px;
+}
+
+.payBuyList .nav > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.payBuyList .textWrapper10 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 44.2px;
+  font-weight: 400;
+  /* left: 39px; */
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
+  align-self: center;
+  /* position: absolute;
+  top: 7px;
+  width: 203px; */
 }
 
 .payBuyList .textWrapper11 {

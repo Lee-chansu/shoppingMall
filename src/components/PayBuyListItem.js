@@ -9,13 +9,13 @@ export const PayItem = ({ val }) => {
           <div className="textWrapper2">결제일시 : {val.payDate}</div>
         </div>
         <div className="overlap">
-          <div className="textWrapper">상품명 : db</div>
+          <div className="textWrapper">상품명 : {val.itemName}</div>
         </div>
         <div className="overlapGroup">
-          <div className="textWrapper">상품가격 : db</div>
+          <div className="textWrapper">상품가격 : {val.itemPrice}</div>
         </div>
         <div className="divWrapper">
-          <div className="textWrapper">배송상태 : db</div>
+          <div className="textWrapper">배송상태 : {val.carryState}</div>
         </div>
         <div className="imageBox"></div>
       </div>
