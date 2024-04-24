@@ -1,4 +1,6 @@
-export const Product = ({key, product}) => {
+import '../css/product.css'
+
+export const Product = ({product}) => {
 
 
   return (

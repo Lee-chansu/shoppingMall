@@ -41,7 +41,6 @@ function App() {
         </Route>
         <Route path="add" element={<ProductAdd />}></Route>
       </Route>
-      <Route path="description" element={<ProductDetailDescription />}></Route>
 
       <Route path="login" element={<Login />}></Route>
       <Route path="joinUs" element={<JoinUs />}></Route>
