@@ -257,23 +257,24 @@
 
 .payFail .divWrapper {
   background-color: #eeeeee;
-  height: 98px;
+  height: 80px;
   left: 348px;
+  text-align: center;
   overflow: hidden;
   position: absolute;
   top: 1348px;
   width: 345px;
-  font-size: 44.7px;
+  font-size: 43px;
 }
 
 .payFail .innerBox2 {
   background-color: #eeeeee;
-  height: 98px;
+  height: 80px;
   left: 762px;
   position: absolute;
   top: 1348px;
   width: 345px;
-  font-size: 44.7px;
+  font-size: 43px;
   text-align: center;
 }
 

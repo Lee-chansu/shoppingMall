@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/payment.css";
+import { Link } from "react-router-dom";
 
 export const Payment = () => {
   return (
@@ -63,7 +64,9 @@ export const Payment = () => {
               </div>
             </div>
             <div class="buy-button">
-              <div class="buy">결제하기</div>
+              <Link to="#" class="buy">
+                결제하기
+              </Link>
             </div>
           </div>
           <div class="pay-title">
