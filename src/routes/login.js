@@ -1,10 +1,50 @@
 import { Link , useNavigate} from "react-router-dom";
 import "../css/login.css";
+import { useState } from "react";
 
 export const Login = () => {
   const navigate = useNavigate()
   const goback = ()=>{
     navigate(-1)
+  }
+
+  const [loginUser,setLoginUser] = useState({
+    username : '',
+    password : ''
+  });
+  
+  const valueChange = (e)=>{
+    const {name, value} = e.target
+    setLoginUser({...loginUser,[name]:value})
+  }
+
+  const buttonClick = async(e)=>{
+    e.preventDefault()
+    if(!loginUser.username){
+      alert('이메일을 입력하시오')
+    }
+    else if(!loginUser.password){
+      alert('비밀번호를 입력하시오')
+    }else{
+      try {
+        const response = await fetch('http://localhost:5000/login/',{
+          method : 'POST',
+          headers:{'Content-Type' : 'application/json'},
+          body : JSON.stringify(loginUser)
+        })
+        if (!response.ok) {
+          throw new Error('서버에서 응답을 받을 수 없습니다')
+        }else{
+          let {userId} = await response.json()
+          if(userId){
+            alert('로그인 성공')
+            navigate('/')
+          }
+        }
+      } catch (error) {
+        alert('이메일/비밀번호가 일치하지않습니다')
+      }
+    }
   }
 
   return (
@@ -14,14 +54,14 @@ export const Login = () => {
         <form className="loginBox">
           <div className="loginForm">
             <div className="inputUserid">
-              <input className="textWrapper2" type="email" placeholder="사용자 이메일 입력"/>
+              <input className="textWrapper2" type="email" placeholder="사용자 이메일 입력" name="username" onChange={valueChange}/>
             </div>
             <div className="inputUserpassword">
-              <input className="textWrapper2" placeholder="사용자 비밀번호 입력" type="password"></input>
+              <input className="textWrapper2" placeholder="사용자 비밀번호 입력" type="password" name="password" onChange={valueChange}></input>
             </div>
           </div>
           <div className="loginButton">
-            <button className="submitButton">제출</button>
+            <button className="submitButton" type="button" onClick={buttonClick}>제출</button>
             <button type="button" onClick = {goback}className="cancelButton">취소</button>
           </div>
           <div className="etc">

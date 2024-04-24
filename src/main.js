@@ -6,13 +6,13 @@ import { Nav } from "./components/nav";
 export const Main = () => {
   const [products, setProducts] = useState([])
 
-  async function test(){
+  async function mainF(){
     const res = await fetch('http://localhost:5000/')
     const body = await res.json()
     return body
   }
   const getProducts = async()=>{
-    const pro = await test()
+    const pro = await mainF()
     setProducts(pro)
     console.log(pro)
   }
