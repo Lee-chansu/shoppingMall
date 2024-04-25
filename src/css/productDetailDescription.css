@@ -162,6 +162,18 @@ input[type=number]::-webkit-inner-spin-button,
   font-size: 32px;
 }
 
+.productdetail .text {
+  /* background-color: #eeeeeeee; */
+  /* border: 0.72px solid; */
+  border-color: #000000;
+  height: 48px;
+  left: 0;
+  position: absolute;
+  top: 10px;
+  width: 245px;
+  font-size: 32px;
+}
+
 .productdetail .color {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;

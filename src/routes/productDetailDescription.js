@@ -47,35 +47,24 @@ export const ProductDetailDescription = () => {
       <Nav />
       <div className="productdetail">
         <div className="div">
-          <div className="buttonBox">
-            <div className="nowPayButton">
-              <div className="textWrapper">바로결제</div>
-            </div>
-            <Link to="http://localhost:3000/cart" className="cartButton">
-              <div className="textWrapper">장바구니</div>
-            </Link>
+          <div className="thumbnailBox">
+            <img ref={mainRef} src={photos[index]} className="mainThmbnailWrapper" />
+            {
+              photos.map((photo, i) => <img key={i} onClick={() => jump(i)} className={"subThmbnail"+ i} src={photo} />)
+            }
+              {/* <img ref={main} src="" className="mainThmbnail" /> */}
           </div>
           <div className="infoBox">
-            <div className="productTotalPrice">
-              <div className="textWrapper2">총상품금액</div>
-            </div>
-            <div className="productCount">
-              <div className="textWrapper2">수량</div>
-              <div className="overlapGroup">
-                <button onClick={decreaseValue} className="inputMinus">-</button>
-                <input className="input" type="number" name="number" min={1} value={value} onChange={handleInputChange} />
-                <button onClick={increaseValue} className="inputPlus">+</button>
+            <div className="productName">
+              <div className="textWrapper2">제품명</div>
+              <div className="overlap2">
+                <div className="text">item</div>
               </div>
             </div>
-            <div className="productColor">
-              <div className="textWrapper2">색상</div>
-              <div className="overlap">
-                <select className="select">
-                  <option value="" disabled selected>color</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </select>
+            <div className="productPrice">
+              <div className="textWrapper2">가격</div>
+              <div className="overlap2">
+                <div className="text">price</div>
               </div>
             </div>
             <div className="productSize">
@@ -89,19 +78,39 @@ export const ProductDetailDescription = () => {
                 </select>
               </div>
             </div>
-            <div className="productPrice">
-              <div className="textWrapper2">가격</div>
+            <div className="productColor">
+              <div className="textWrapper2">색상</div>
+              <div className="overlap">
+                <select className="select">
+                  <option value="" disabled selected>color</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
             </div>
-            <div className="productName">
-              <div className="textWrapper2">제품명</div>
+            <div className="productCount">
+              <div className="textWrapper2">수량</div>
+              <div className="overlapGroup">
+                <button onClick={decreaseValue} className="inputMinus">-</button>
+                <input className="input" type="number" name="number" min={1} value={value} onChange={handleInputChange} />
+                <button onClick={increaseValue} className="inputPlus">+</button>
+              </div>
+            </div>
+            <div className="productTotalPrice">
+              <div className="textWrapper2">총액</div>
+              <div className="overlap2">
+                <div className="text">원</div>
+              </div>
             </div>
           </div>
-          <div className="thumbnailBox">
-            <img ref={mainRef} src={photos[index]} className="mainThmbnailWrapper" />
-            {
-              photos.map((photo, i) => <img key={i} onClick={() => jump(i)} className={"subThmbnail"+ i} src={photo} />)
-            }
-              {/* <img ref={main} src="" className="mainThmbnail" /> */}
+          <div className="buttonBox">
+            <Link to="http://localhost:3000/cart" className="cartButton">
+              <div className="textWrapper">장바구니</div>
+            </Link>
+            <div className="nowPayButton">
+              <div className="textWrapper">바로결제</div>
+            </div>
           </div>
         </div>
       </div>
