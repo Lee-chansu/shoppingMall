@@ -107,8 +107,8 @@ app.post('/login',(req,res)=>{
 
     req.logIn(user,(err)=>{
       if(err)return next(err)
-      const token = jwt.sign({userId : user.userId},JWT_SECRET_KEY )
-      res.json({token})
+      const token = jwt.sign({id : user.id, userId : user.userId},JWT_SECRET_KEY )
+      res.json({token, user})
     })
   })(req,res)
 })
@@ -118,5 +118,14 @@ app.post('/login',(req,res)=>{
 app.get('/',async(req,res)=>{
   const result = await Product.findAll()
   res.json(result)
+})
+
+// 유저프로필
+app.get('/userProfile/:id',async(req,res)=>{
+  const {id} = req.params
+  const result = await User.findOne({where : {id}})
+  if(result){
+    res.json(result)
+  }
 })
 

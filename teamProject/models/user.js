@@ -45,6 +45,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
+    userImage: {
+      type : DataTypes.STRING(100)
+    },
     createdAt: {
       type: DataTypes.DATE,
       defaultValue: Sequelize.fn('now')

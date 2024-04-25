@@ -21,11 +21,18 @@ export const Nav = () => {
         </div>
         {
           isLogin ? 
-          <Link className="link" to="/logout" onClick={logOut}>
-            <div className="div-wrapper">
-              <div className="text-wrapper">로그아웃</div>
-            </div>
-          </Link> :
+          <>
+            <Link className="link" to="/userProfile">
+              <div className="div-wrapper">
+                <div className="text-wrapper">유저프로필</div>
+              </div>
+            </Link>
+            <Link className="link" to="/logout" onClick={logOut}>
+              <div className="div-wrapper">
+                <div className="text-wrapper">로그아웃</div>
+              </div>
+            </Link>
+          </>:
           <Link className="link" to="/login">
             <div className="div-wrapper">
               <div className="text-wrapper">로그인</div>
