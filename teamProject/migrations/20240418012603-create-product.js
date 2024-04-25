@@ -23,7 +23,16 @@ module.exports = {
         type: Sequelize.INTEGER,
         defaultValue: 0
       },
-      image: {
+      mainImage: {
+        type: Sequelize.STRING(255)
+      },
+      subImage1: {
+        type: Sequelize.STRING(255)
+      },
+      subImage2: {
+        type: Sequelize.STRING(255)
+      },
+      subImage3: {
         type: Sequelize.STRING(255)
       },
       createdAt: {

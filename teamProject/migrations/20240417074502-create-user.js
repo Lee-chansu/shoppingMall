@@ -36,16 +36,7 @@ module.exports = {
       address: {
         type: Sequelize.STRING(100)
       },
-      mainImage: {
-        type: Sequelize.STRING(100)
-      },
-      subImage1: {
-        type: Sequelize.STRING(100)
-      },
-      subImage2: {
-        type: Sequelize.STRING(100)
-      },
-      subImage3: {
+      userImage: {
         type: Sequelize.STRING(100)
       },
       isMaster: {
