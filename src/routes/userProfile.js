@@ -1,9 +1,13 @@
 
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/userProfile.css";
 
 export const UserProfile = () => {
+  const navigate = useNavigate()
+  const goback = ()=>{
+    navigate(-1)
+  }
   return (
     <div className="userProfile">
       <div className="overlapGroupWrapper">
@@ -41,8 +45,10 @@ export const UserProfile = () => {
               </div>
             </div>
             <div className="editForm">
-              <Link to="/passwordCheck" className="toSubmitButton">수정하기</Link>
-              <Link to="/" className="cancelButton">돌아가기</Link>
+              <Link to="/passwordCheck" className="toSubmitButton">
+                <div className="textWrapper4">수정하기</div>
+              </Link>
+              <button type="button" onClick={goback} className="cancelButton">돌아가기</button>
             </div>
           </div>
         </div>

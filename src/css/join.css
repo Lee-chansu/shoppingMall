@@ -14,7 +14,7 @@
 
 .join .joinBox {
   background-color: #eeeeee;
-  height: 1004px;
+  height: 1104px;
   left: 515px;
   position: relative;
   top: 10px;
@@ -114,6 +114,14 @@
   width: 377px;
 }
 
+.join .boxName {
+  height: 92px;
+  left: 14px;
+  position: absolute;
+  top: 852px;
+  width: 377px;
+}
+
 .join .inputRadio {
   height: 46px;
   left: 4px;
@@ -170,7 +178,7 @@
   height: 63px;
   left: 14px;
   position: absolute;
-  top: 906px;
+  top: 1006px;
   width: 369px;
 }
 

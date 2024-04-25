@@ -1,6 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import "../css/userEdit.css";
 
 export const UserEdit = () => {
+  const navigate = useNavigate()
+  const goback = ()=>{
+    navigate(-1)
+  }
   return (
     <div className="userEdit">
       <div className="div">
@@ -37,7 +42,7 @@ export const UserEdit = () => {
           </div>
           <div className="editForm">
             <button className="submitButton">제출</button>
-            <button type="reset" className="cancelButton">취소</button>
+            <button type="button" onClick={goback} className="cancelButton">취소</button>
           </div>
         </div>
       </div>

@@ -1,7 +1,12 @@
 
+import { useNavigate } from "react-router-dom";
 import "../css/passwordCheck.css";
 
 export const PasswordCheck = () => {
+  const navigate = useNavigate()
+  const goback = ()=>{
+    navigate(-1)
+  }
   return (
     <div className="passwordCheck">
       <div className="div">
@@ -17,7 +22,7 @@ export const PasswordCheck = () => {
           </div>
           <div className="buttonBox">
             <button className="submitButton">제출</button>
-            <button className="cancelButton">취소</button>
+            <button className="cancelButton" type="button" onClick={goback}>취소</button>
           </div>
         </form>
       </div>
