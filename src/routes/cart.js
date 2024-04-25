@@ -8,23 +8,26 @@ const cartItemList = [
   {
     id: 1,
     price: 50000,
-    name: "상품명아홉글자딱1",
+    name: "상품명인데 어디까지 괜찮나",
     carryPrice: 3000,
     count: 3,
+    src: "",
   },
   {
     id: 2,
     price: 20000,
-    name: "상품명아홉글자딱2",
+    name: "근데 상품명이 두줄이면 어떻하지",
     carryPrice: 1000,
     count: 1,
+    src: "",
   },
   {
     id: 3,
     price: 40000,
-    name: "상품명아홉글자딱3",
+    name: "네줄이면 심각해짐..어떻하지",
     carryPrice: 2000,
     count: 2,
+    src: "",
   },
 ];
 
@@ -44,7 +47,7 @@ export const Cart = () => {
         </div>
 
         {cartItemList.map((val, idx) => {
-          return <CartItem name={"이름"} val={val} key={val.id}></CartItem>;
+          return <CartItem val={val} key={val.id}></CartItem>;
         })}
 
         <div className="buttonGroup">
@@ -54,7 +57,7 @@ export const Cart = () => {
             </Link>
           </button>
           <button className="button">
-            <Link to="#" className="buttonText">
+            <Link to="/payment" className="buttonText">
               결제하기
             </Link>
           </button>

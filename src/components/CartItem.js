@@ -21,26 +21,29 @@ export const CartItem = ({ val }) => {
 
   return (
     <div className="cartItem">
-      <div className="imageBox" />
-      <div className="overlap2">
-        <div className="imageBox2">
-          <div className="textWrapper3">{item.count}</div>
-          <div className="overlapGroup2">
-            <button className="textWrapper4" onClick={handleUpCount}>
+      <img
+        className="productImgBox"
+        src={`${process.env.PUBLIC_URL}/img/pants.jpg`}
+      />
+      <div className="inner">
+        <div className="group1">
+          <div className="cartProductStock">{item.count}</div>
+          <div>
+            <button className="countUp" onClick={handleUpCount}>
               ▲
             </button>
-            <button className="textWrapper5" onClick={handleDownCount}>
+            <button className="countDown" onClick={handleDownCount}>
               ▼
             </button>
           </div>
         </div>
-        <div className="textWrapper6">{item.price}원</div>
+        <div className="cartProductPrice">{item.price}원</div>
       </div>
       <input type="checkbox" className="isBuyCheckBox" />
-      <div className="textWrapper7">{item.name}</div>
-      <div className="overlap3">
-        <div className="textWrapper8">{item.carryPrice}원</div>
-        <div className="textWrapper9">
+      <div className="cartProductName">{item.name}</div>
+      <div className="group2">
+        <div className="cartCarryPrice">{item.carryPrice}원</div>
+        <div className="cartSumPrice">
           {item.count * item.price + item.carryPrice}원
         </div>
       </div>
