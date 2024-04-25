@@ -6,14 +6,14 @@
   width: 100%;
 }
 
-.cart .div {
+.cart .wrap {
   background-color: #ffffff;
   height: 1633.06px;
   position: relative;
   width: 1440px;
 }
 
-.cart .textWrapper {
+.cart .buttonText {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.2px;
@@ -37,7 +37,7 @@
   justify-content: space-between;
 }
 
-.cart .overlapGroup2 {
+.cart .buttonGroup {
   font-size: 40px;
   height: 90px;
   width: 700px;
@@ -47,7 +47,7 @@
   justify-content: space-between;
 }
 
-.cart .overlap {
+.cart .button {
   background-color: #eeeeeeee;
   height: 89px;
   width: 281px;
@@ -136,14 +136,6 @@
   position: absolute;
   top: 0;
   width: 2px;
-}
-
-.cart .img {
-  height: 28px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 45px;
 }
 
 .cart .textWrapper4 {
@@ -252,7 +244,7 @@
   width: 225px;
 }
 
-.cart .textWrapper11 {
+.cart .title {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 45px;
@@ -263,7 +255,7 @@
   text-align: center;
 }
 
-.cart .navbar {
+.cart .cartBar {
   background-color: #eeeeeeee;
   margin: 80px auto 0;
   height: 92px;
@@ -275,7 +267,7 @@
   position: relative;
 }
 
-.cart .textWrapper12 {
+.cart .cartBar .productImage {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
   font-size: 38.2px;
@@ -289,7 +281,7 @@
   top: 22px;
 }
 
-.cart .textWrapper13 {
+.cart .productName {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
   font-size: 38.2px;
@@ -303,7 +295,7 @@
   top: 22px;
 }
 
-.cart .textWrapper14 {
+.cart .productPrice {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
   font-size: 38.2px;
@@ -317,7 +309,7 @@
   top: 22px;
 }
 
-.cart .textWrapper15 {
+.cart .productStock {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
   font-size: 38.2px;
@@ -331,7 +323,7 @@
   top: 22px;
 }
 
-.cart .textWrapper16 {
+.cart .productCarryPay {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
   font-size: 38.2px;
@@ -345,7 +337,7 @@
   top: 22px;
 }
 
-.cart .textWrapper17 {
+.cart .sumPay {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
   font-size: 38.2px;
@@ -359,7 +351,7 @@
   top: 22px;
 }
 
-.cart .buyCheckBox2 {
+.cart .buyCheckBox {
   background-color: #ffffff;
   height: 43px;
   left: 42px;

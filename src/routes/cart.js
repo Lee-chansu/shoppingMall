@@ -1,7 +1,8 @@
 import React from "react";
-import "../css/cart.css";
-import { CartItem } from "../components/CartItem";
 import { Link } from "react-router-dom";
+import "../css/cart.css";
+
+import { CartItem } from "../components/CartItem";
 
 const cartItemList = [
   {
@@ -30,30 +31,30 @@ const cartItemList = [
 export const Cart = () => {
   return (
     <div className="section cart">
-      <div className="div">
-        <div className="textWrapper11">장바구니</div>
-        <div className="navbar">
-          <input type="checkbox" className="buyCheckBox2" />
-          <div className="textWrapper12">이미지</div>
-          <div className="textWrapper13">상품명</div>
-          <div className="textWrapper14">판매가</div>
-          <div className="textWrapper15">수량</div>
-          <div className="textWrapper16">배송비</div>
-          <div className="textWrapper17">총 합계</div>
+      <div className="wrap">
+        <div className="title">장바구니</div>
+        <div className="cartBar">
+          <input type="checkbox" className="buyCheckBox" />
+          <div className="productImage">이미지</div>
+          <div className="productName">상품명</div>
+          <div className="productPrice">판매가</div>
+          <div className="productStock">수량</div>
+          <div className="productCarryPay">배송비</div>
+          <div className="sumPay">총 합계</div>
         </div>
 
         {cartItemList.map((val, idx) => {
           return <CartItem name={"이름"} val={val} key={val.id}></CartItem>;
         })}
 
-        <div className="overlapGroup2">
-          <button className="overlap">
-            <Link to="#" className="textWrapper">
+        <div className="buttonGroup">
+          <button className="button">
+            <Link to="#" className="buttonText">
               취소하기
             </Link>
           </button>
-          <button className="overlap">
-            <Link to="#" className="textWrapper">
+          <button className="button">
+            <Link to="#" className="buttonText">
               결제하기
             </Link>
           </button>
