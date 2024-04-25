@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import "../css/productDetailDescription.css";
 import { ProductDescription } from "../components/productDescription";
 import { Nav } from "../components/nav";
+import { ProductReview } from "../components/productReview";
+import { Link } from "react-router-dom";
 
 export const ProductDetailDescription = () => {
 
@@ -49,9 +51,9 @@ export const ProductDetailDescription = () => {
             <div className="nowPayButton">
               <div className="textWrapper">바로결제</div>
             </div>
-            <div className="cartButton">
+            <Link to="http://localhost:3000/cart" className="cartButton">
               <div className="textWrapper">장바구니</div>
-            </div>
+            </Link>
           </div>
           <div className="infoBox">
             <div className="productTotalPrice">
@@ -103,7 +105,7 @@ export const ProductDetailDescription = () => {
           </div>
         </div>
       </div>
-      <ProductDescription />
+      <ProductReview />
     </>
   );
 };
