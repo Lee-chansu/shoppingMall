@@ -23,7 +23,7 @@ export const CartItem = ({ val }) => {
     <div className="cartItem">
       <img
         className="productImgBox"
-        src={`${process.env.PUBLIC_URL}/img/pants.jpg`}
+        src={`${process.env.PUBLIC_URL}/img/${item.src}`}
       />
       <div className="inner">
         <div className="group1">

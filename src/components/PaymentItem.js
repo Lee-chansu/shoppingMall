@@ -1,11 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const PaymentItem = ({ val }) => {
   const [item, setItem] = useState(val);
-
-  function moreDetail() {
-    /* more버튼 클릭시 ...을 다 보여주기 기능구현하기 */
-  }
 
   return (
     <>
@@ -20,9 +17,11 @@ export const PaymentItem = ({ val }) => {
             src={`${process.env.PUBLIC_URL}/img/t-shirt.jpg`}
           />
         </div>
-        <button className="moreButton" onClick={moreDetail}>
-          more
-        </button>
+        <Link to={`productDetail/${item.id}`}>
+          <button className="moreButton">
+            more
+          </button>
+        </Link>
       </div>
     </>
   );

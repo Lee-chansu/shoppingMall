@@ -11,7 +11,7 @@ const cartItemList = [
     name: "상품명인데 어디까지 괜찮나",
     carryPrice: 3000,
     count: 3,
-    src: "",
+    src: "pants.jpg",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const cartItemList = [
     name: "근데 상품명이 두줄이면 어떻하지",
     carryPrice: 1000,
     count: 1,
-    src: "",
+    src: "t-shirt.jpg",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const cartItemList = [
     name: "네줄이면 심각해짐..어떻하지",
     carryPrice: 2000,
     count: 2,
-    src: "",
+    src: "t-shirt.jpg",
   },
 ];
 

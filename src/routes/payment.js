@@ -19,13 +19,6 @@ const paymentItemList = [
       "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
     src: "",
   },
-  {
-    id: 3,
-    productName: "상품명임3",
-    productDetail:
-      "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
-    src: "",
-  },
 ];
 
 export const Payment = () => {

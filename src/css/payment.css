@@ -339,7 +339,7 @@ a {
   background-color: #eeeeee;
   height: 117px;
   left: 24px;
-  position: absolute;
+  position: relative;
   top: 75px;
   width: 330px;
 }
