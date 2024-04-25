@@ -41,6 +41,9 @@ module.exports = (sequelize, DataTypes) => {
     address: {
       type: DataTypes.STRING(100)
     },
+    userImage: {
+      type: DataTypes.STRING(100)
+    },
     isMaster: {
       type: DataTypes.BOOLEAN,
       defaultValue: false

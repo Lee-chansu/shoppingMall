@@ -36,6 +36,9 @@ module.exports = {
       address: {
         type: Sequelize.STRING(100)
       },
+      userImage: {
+        type: Sequelize.STRING(100)
+      },
       isMaster: {
         type: Sequelize.BOOLEAN,
         defaultValue: false
