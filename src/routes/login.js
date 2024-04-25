@@ -58,7 +58,6 @@ export const Login = () => {
     <div className="login">
       <div className="div">
         <div className="textWrapper">로그인</div>
-        <Link to="/logout">로그아웃</Link>
         <form className="loginBox">
           <div className="loginForm">
             <div className="inputUserid">
