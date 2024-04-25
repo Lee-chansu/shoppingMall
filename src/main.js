@@ -14,7 +14,6 @@ export const Main = () => {
   const getProducts = async()=>{
     const pro = await mainF()
     setProducts(pro)
-    console.log(pro)
   }
 
   useEffect(()=>{

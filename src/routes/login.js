@@ -33,6 +33,7 @@ export const Login = () => {
           body : JSON.stringify(loginUser)
         })
         if (!response.ok) {
+          
           if(response.status === 401){
             const errMessage = await response.json();
             alert(errMessage)
@@ -41,8 +42,8 @@ export const Login = () => {
           }
         }else{
           let user = await response.json()
-          console.log(user)
           if(user){
+            sessionStorage.setItem('token',user.token)
             alert('로그인 성공')
             navigate('/')
           }

@@ -25,6 +25,8 @@ const sessionOption = {
   store : new MySQLStore(dbOption)
 }
 
+const JWT_SECRET_KEY = '!@#123'
+
 //db
 const db = require("./models")
 const {User,Product} = db
@@ -93,7 +95,8 @@ passport.deserializeUser(async(user,done)=>{
 
 // 로그아웃
 app.get('/logout',(req,res)=>{
-  req.logOut(()=>{res.redirect('/')})
+  req.logOut()
+  //
 })
 
 // 로그인
@@ -104,7 +107,8 @@ app.post('/login',(req,res)=>{
 
     req.logIn(user,(err)=>{
       if(err)return next(err)
-      res.json(user)
+      const token = jwt.sign({userId : user.userId},JWT_SECRET_KEY )
+      res.json({token})
     })
   })(req,res)
 })
