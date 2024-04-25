@@ -1,29 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-export const CartItem = ({ val }) => {
-  const [item, setItem] = useState(val);
-
+export const CartItem = ({ val, idx, cartItemList, setCartItemList }) => {
+  const item = val;
   const handleUpCount = () => {
-    const copy = { ...item };
-    copy.count = item.count + 1;
-
-    setItem(copy);
+    const listCopy = cartItemList;
+    listCopy[idx].count = val.count + 1;
+    setCartItemList([...listCopy]);
   };
 
   const handleDownCount = () => {
-    const copy = { ...item };
-    if (copy.count <= 0) {
+    if (val.count <= 0) {
       return;
     }
-    copy.count = item.count - 1;
-    setItem(copy);
+    const listCopy = cartItemList;
+    listCopy[idx].count = val.count - 1;
+    setCartItemList([...listCopy]);
   };
+
+  const handleCheck = () => {
+    const listCopy = cartItemList;
+    listCopy[idx].isChecked = !val.isChecked;
+    setCartItemList([...listCopy]);
+  };
+
+  useEffect(() => {
+    console.log('item rerender');
+    console.log(item.isChecked);
+  }, []);
 
   return (
     <div className="cartItem">
       <img
         className="productImgBox"
-        src={`${process.env.PUBLIC_URL}/img/${item.src}`}
+        src={`${process.env.PUBLIC_URL}/img${item.src}`}
       />
       <div className="inner">
         <div className="group1">
@@ -39,7 +48,12 @@ export const CartItem = ({ val }) => {
         </div>
         <div className="cartProductPrice">{item.price}원</div>
       </div>
-      <input type="checkbox" className="isBuyCheckBox" />
+      <input
+        type="checkbox"
+        className="isBuyCheckBox"
+        checked={item.isChecked}
+        onChange={handleCheck}
+      />
       <div className="cartProductName">{item.name}</div>
       <div className="group2">
         <div className="cartCarryPrice">{item.carryPrice}원</div>
