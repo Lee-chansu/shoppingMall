@@ -35,3 +35,13 @@
 .link{
   text-decoration: none;
 }
+
+.linkProfile {
+  background-color: #ffffff;
+  border-radius: 121.63px;
+  height: 143px;
+  width: 143px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
