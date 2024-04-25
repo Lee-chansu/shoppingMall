@@ -34,14 +34,18 @@ export const Login = () => {
         if (!response.ok) {
           throw new Error("서버에서 응답을 받을 수 없습니다");
         } else {
-          let { userId } = await response.json();
+          let { id, userId } = await response.json();
           if (userId) {
+            sessionStorage.setItem("id", id);
+            sessionStorage.setItem("userId", userId);
             alert("로그인 성공");
             navigate("/");
+          } else {
+            alert("이메일/비밀번호가 일치하지않습니다");
+            return;
           }
         }
       } catch (error) {
-        alert("이메일/비밀번호가 일치하지않습니다");
         console.log(error);
       }
     }

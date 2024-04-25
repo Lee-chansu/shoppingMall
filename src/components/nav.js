@@ -1,8 +1,27 @@
+import { useEffect, useState } from "react";
 import "../css/nav.css";
 import { Link } from "react-router-dom";
 
 export const Nav = () => {
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
+
+  const [user, setUser] = useState(false);
+
+  let checkLogin = () => {
+    let checkUser = sessionStorage.getItem("userId");
+    if (checkUser) {
+      setUser(true);
+    } else {
+      setUser(false);
+    }
+  };
+
+  const removeSession = (e) => {
+    sessionStorage.removeItem("userId");
+  };
+  useEffect(() => {
+    checkLogin();
+  }, [user]);
 
   return (
     <header className="header">
@@ -20,11 +39,19 @@ export const Nav = () => {
               );
             })}
           </div>
-          <Link className="link" to="/login">
-            <div className="wrapper">
-              <div className="text">로그인</div>
-            </div>
-          </Link>
+          {user ? (
+            <Link className="link" to="/logout" onClick={removeSession}>
+              <div className="wrapper">
+                <div className="text">로그아웃</div>
+              </div>
+            </Link>
+          ) : (
+            <Link className="link" to="/login">
+              <div className="wrapper">
+                <div className="text">로그인</div>
+              </div>
+            </Link>
+          )}
         </nav>
         <div className="category-2">
           {category.map((el) => {

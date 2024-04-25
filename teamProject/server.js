@@ -75,6 +75,7 @@ passport.use(
 // 세션생성
 passport.serializeUser((user, done) => {
   process.nextTick(() => {
+    console.log("serializeUser");
     done(null, { id: user.id, userId: user.userId });
   });
 });
@@ -97,6 +98,7 @@ passport.deserializeUser(async (user, done) => {
 // 로그아웃
 app.get("/logout", (req, res) => {
   req.logOut();
+  res.redirect("/");
 });
 
 // 로그인
