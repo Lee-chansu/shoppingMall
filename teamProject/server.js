@@ -45,11 +45,11 @@ app.listen(5000, () => {
 
 // 회원가입
 app.post("/join", async (req, res) => {
-  const uewUser = req.body;
+  const newUser = req.body;
   const { userId } = req.body;
   const result = await User.findOne({ where: { userId } });
   if (!result) {
-    await User.create(uewUser);
+    await User.create(newUser);
     res.json({ result: false });
   } else {
     res.json({ result });
@@ -94,18 +94,8 @@ passport.deserializeUser(async (user, done) => {
   }
 });
 
-app.get("/sessionCheck", (req, res) => {
-  console.log(req.session.userId);
-
-  const sessionUser = req.session.useId;
-
-  res.send(sessionUser)
-
-});
-
 // 로그아웃
 app.get("/logout", (req, res) => {
-  
   req.logOut();
 });
 

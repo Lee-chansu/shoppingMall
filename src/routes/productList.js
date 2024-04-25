@@ -11,7 +11,9 @@ export const ProductList = () => {
   const [productList, setProductList] = useState([]);
 
   const loadProduct = async () => {
-    const getProduct = await fetch("http://localhost:5000/").then((res) => res.json());
+    const getProduct = await fetch("http://localhost:5000/").then((res) =>
+      res.json()
+    );
     setProductList(getProduct);
   };
 
@@ -33,7 +35,11 @@ export const ProductList = () => {
           <div className="productWrap">
             {productList.map((product) => {
               return (
-                <Link className="link" to="/productList/detail/description">
+                <Link
+                  key={product.id}
+                  className="link"
+                  to="/productList/detail/description"
+                >
                   <Product key={product.id} product={product}></Product>
                 </Link>
               );
