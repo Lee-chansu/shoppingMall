@@ -1,3 +1,43 @@
+# teamProject 파일 적용
+
+// 이전 migrate 정보 모두 삭제(테이블 전부 삭제)
+npx sequelize db:migrate:undo:all
+
+// 테이블 생성
+npx sequelize db:migrate
+
+// 데이터 모두 전송
+npx sequelize db:seed:all
+
+// 특정 테이블의 데이터만 넣을 경우 fileName.js 위치에 해당 seeder 파일 이름 넣고 실행
+npx sequelize db:seed --seed fileName.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
