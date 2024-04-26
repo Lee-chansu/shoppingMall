@@ -23,6 +23,7 @@
 
 .productList .productWrap .link{
   max-width: 25%;
+  width: 25%;
 }
 .productList .productWrap .link  .product{
   max-width: 240px;
