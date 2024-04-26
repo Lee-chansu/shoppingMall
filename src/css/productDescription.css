@@ -1,0 +1,130 @@
+.productInfo {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.productInfo .productInfoWrapper {
+  background-color: #ffffff;
+  height: 1200px;
+  width: 1440px;
+}
+
+.productInfo .div {
+  height: 1163px;
+  left: 53px;
+  position: relative;
+  top: 18px;
+  width: 1330px;
+}
+
+.productInfo .productDecription {
+  background-color: #eeeeee;
+  height: 931px;
+  left: 2px;
+  position: absolute;
+  top: 175px;
+  width: 1328px;
+}
+
+.productInfo .moreInfo {
+  background-color: #ffffff;
+  height: 119px;
+  left: 3px;
+  position: absolute;
+  top: 812px;
+  width: 1322px;
+}
+
+.productInfo .textWrapper {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 438px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 32px;
+  width: 312px;
+}
+
+.productInfo .polygon {
+  height: 17px;
+  left: 764px;
+  position: absolute;
+  top: 54px;
+  width: 31px;
+}
+
+.productInfo .textWrapper2 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 518px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 439px;
+}
+
+.productInfo .infoSelect {
+  background-color: #ffffff;
+  height: 159px;
+  left: 2px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 1328px;
+}
+
+.productInfo .productReview {
+  height: 190px;
+  left: 664px;
+  position: absolute;
+  top: 5px;
+  width: 664px;
+}
+
+.productInfo .textWrapper3 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 246px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 68px;
+}
+
+.productInfo .productDescription {
+  height: 190px;
+  left: 0;
+  position: absolute;
+  top: 5px;
+  width: 664px;
+}
+
+.productInfo .textWrapper4 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 43.2px;
+  font-weight: 400;
+  left: 243px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 66px;
+}
+
+.productInfo .line {
+  height: 5px;
+  left: 0;
+  position: absolute;
+  top: 149px;
+  width: 664px;
+}
