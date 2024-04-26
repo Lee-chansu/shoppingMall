@@ -82,10 +82,17 @@ export const Payment = () => {
                 </div>
               </div>
             </div>
-            <div className="buyButton">
-              <Link to="/paySuccess" className="buy">
-                결제하기
-              </Link>
+            <div className="buttonGroup">
+              <button className="button">
+                <Link to="#" className="buttonText">
+                  취소하기
+                </Link>
+              </button>
+              <button className="button">
+                <Link to="/payment" className="buttonText">
+                  결제하기
+                </Link>
+              </button>
             </div>
           </div>
           <div className="payTitle">

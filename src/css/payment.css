@@ -411,26 +411,35 @@ a {
   height: auto;
 }
 
-.payment .buyButton {
-  background-color: #eeeeee;
-  height: 60px;
-  left: 330px;
-  position: absolute;
-  top: 789px;
-  width: 200px;
+.payment .buttonGroup {
+  width: 600px;
+  border: none;
+  margin: 790px auto 0;
+  display: flex;
+  justify-content: space-between;
 }
 
-.payment .buy {
+.payment .button {
+  background-color: #eeeeeeee;
+  height: 70px;
+  width: 250px;
+  border: none;
+  position: relative;
+}
+
+.payment .buttonText {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 20px;
   font-weight: 600;
-  left: 63px;
+  left: 50px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 17px;
-  width: 200px;
+  top: 20px;
+  white-space: nowrap;
+  width: 150px;
+  border: none;
 }
 
 .payment .textWrapper8 {
