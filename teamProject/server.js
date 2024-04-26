@@ -2,6 +2,7 @@
 // 모듈
 const express = require("express");
 const cors = require("cors");
+const jwt = require("jsonwebtoken");
 const app = express();
 
 const session = require("express-session");
@@ -24,6 +25,8 @@ const sessionOption = {
   cookie: { maxAge: 60 * 1000 },
   store: new MySQLStore(dbOption),
 };
+
+const JWT_SECRET_KEY = "!@#123";
 
 //db
 const db = require("./models");
@@ -62,10 +65,10 @@ passport.use(
     let result = await User.findOne({ where: { userId } });
 
     if (!result) {
-      return done(null, false, { message: "아이디 불일치" });
+      return done(null, false, { message: "이메일이 일치하지않습니다" });
     }
     if (result.password != password) {
-      return done(null, false, { message: "비번 불일치" });
+      return done(null, false, { message: "비밀번호가 일치하지않습니다" });
     } else {
       return done(null, result);
     }
@@ -97,18 +100,22 @@ passport.deserializeUser(async (user, done) => {
 // 로그아웃
 app.get("/logout", (req, res) => {
   req.logOut();
+  //
 });
 
 // 로그인
 app.post("/login", (req, res) => {
   passport.authenticate("local", (error, user, info) => {
     if (error) return res.status(500).json(error);
-    if (!user) return res.status(500).send(info.message);
+    if (!user) return res.status(401).json(info.message);
 
     req.logIn(user, (err) => {
       if (err) return next(err);
-
-      res.json(user);
+      const token = jwt.sign(
+        { id: user.id, userId: user.userId },
+        JWT_SECRET_KEY
+      );
+      res.json({ token, user });
     });
   })(req, res);
 });
@@ -117,4 +124,13 @@ app.post("/login", (req, res) => {
 app.get("/", async (req, res) => {
   const result = await Product.findAll();
   res.json(result);
+});
+
+// 유저프로필
+app.get("/userProfile/:id", async (req, res) => {
+  const { id } = req.params;
+  const result = await User.findOne({ where: { id } });
+  if (result) {
+    res.json(result);
+  }
 });

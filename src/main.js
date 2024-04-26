@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 export const Main = () => {
   const [productList, setProductList] = useState([]);
-
   const loadProduct = async () => {
     const getProducts = await fetch("http://localhost:5000/").then((res) =>
       res.json()
@@ -32,8 +31,11 @@ export const Main = () => {
           <div className="wrap">
             {productList.map((product) => {
               return (
-                <Link className="link" to="/productList/detail/description">
-                  <Product key={product.id} product={product} />
+                <Link
+                  className="link"
+                  to="/productList/detail/description"
+                  key={product.id}>
+                  <Product product={product} />
                 </Link>
               );
             })}
@@ -42,16 +44,19 @@ export const Main = () => {
             <h1>New!</h1>
           </Link>
           <div className="wrap">
-            {
-            productList.sort(
-              (a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+            {productList
+              .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
               .map((product) => {
-              return (
-                <Link className="link" to="/productList/description">
-                  <Product key={product.id} product={product} />
-                </Link>
-              );
-            })}
+                return (
+                  <Link
+                    className="link"
+                    to="/productList/description"
+                    key={product.id}
+                  >
+                    <Product product={product} />
+                  </Link>
+                );
+              })}
           </div>
         </div>
       </div>

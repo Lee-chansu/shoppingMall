@@ -8,7 +8,6 @@
 
 .userProfile .overlapGroupWrapper {
   background-color: #ffffff;
-  height: 1024px;
   overflow: hidden;
   width: 1440px;
 }
@@ -33,202 +32,56 @@
 
 .userProfile .userEditBox {
   background-color: #eeeeee;
-  height: 824px;
   left: 0;
   position: absolute;
-  top: 211px;
+  top: 230px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
   width: 434px;
+  height: 824px;
 }
 
-.userProfile .boxId {
-  height: 103px;
-  left: 11px;
-  position: absolute;
-  top: 23px;
-  width: 399px;
-}
-
-.userProfile .boxUsername {
-  height: 103px;
-  left: 11px;
-  position: absolute;
-  top: 123px;
-  width: 399px;
-}
-
-.userProfile .divWrapper {
-  background-color: #ffffff;
-  height: 48px;
-  left: 4px;
-  position: relative;
-  top: 44px;
-  width: 391px;
-}
-
-.userProfile .textWrapper {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 14.3px;
-  font-weight: 400;
-  left: 167px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 15px;
-  width: 57px;
-}
-
-.userProfile .userNameBox {
-  height: 97px;
-  left: 18px;
-  position: absolute;
-  top: 126px;
-  width: 399px;
-}
-
-.userProfile .input {
-  background-color: #ffffff;
-  border: none;
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 14.3px;
-  font-weight: 400;
-  height: 48px;
-  left: 4px;
-  letter-spacing: 0;
-  line-height: normal;
-  padding: 0;
-  padding-left: 150px;
-  position: relative;
-  top: 44px;
-  width: 391px;
-}
-
-.userProfile .boxEmail {
-  height: 97px;
-  left: 18px;
-  position: absolute;
-  top: 236px;
-  width: 391px;
+.userProfile .userEditBox .title {
+  padding: 15px 0;
+  margin: 10px;
+  text-align: center;
 }
 
 .userProfile .box {
+  background-color: #eeeeee;
+  height: 97px;
+  width: 399px;
+}
+
+.userProfile .textWrapper {
   background-color: #ffffff;
-  border: none;
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 14.3px;
+  font-size: 20px;
   font-weight: 400;
-  height: 48px;
-  left: 4px;
-  letter-spacing: 0;
   line-height: normal;
-  padding: 0;
-  padding-left: 172px;
-  position: relative;
-  top: 44px;
-  width: 391px;
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px 0;
 }
 
-.userProfile .boxPhone {
-  height: 97px;
-  left: 18px;
-  position: absolute;
-  top: 345px;
-  width: 399px;
-}
-
-.userProfile .phoneNum {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 14.3px;
-  font-weight: 400;
-  left: 139px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 12px;
-  width: 127px;
-}
-
-.userProfile .boxAddress {
-  height: 97px;
-  left: 18px;
-  position: absolute;
-  top: 442px;
-  width: 399px;
-}
-
-.userProfile .textWrapper2 {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 14.3px;
-  font-weight: 400;
-  left: 165px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 12px;
-  width: 60px;
-}
-
-.userProfile .boxGender {
-  height: 97px;
-  left: 18px;
-  position: absolute;
-  top: 552px;
-  width: 399px;
-}
 
 .userProfile .editForm {
-  height: 66px;
-  left: 22px;
-  position: absolute;
-  top: 735px;
-  width: 391px;
+  background-color: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
 }
-
 .userProfile .cancelButton {
   background-color: #ffffff;
   height: 48px;
-  left: 231px;
-  position: absolute;
-  top: 4px;
   width: 145px;
-}
-
-.userProfile .textWrapper3 {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 14.3px;
-  font-weight: 400;
-  left: 45px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 14px;
-  width: 55px;
+  margin-left: 20px;
 }
 
 .userProfile .toSubmitButton {
   background-color: #ffffff;
   height: 48px;
-  left: 26px;
-  position: absolute;
-  top: 4px;
   width: 145px;
-  border: 1px solid #000;
-}
-
-.userProfile .textWrapper4 {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 14.3px;
-  font-weight: 400;
-  left: 44px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 14px;
-  width: 58px;
+  margin-right: 20px;
 }
