@@ -4,6 +4,7 @@ import "../css/productAdd.css";
 //컴포넌트
 import { Nav } from "../components/nav";
 import { Link } from "react-router-dom";
+import { SubImagePreview } from "../components/subImgPreview";
 
 export const ProductAdd = () => {
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
@@ -14,6 +15,8 @@ export const ProductAdd = () => {
 
   const [mainImageFile, setMainImageFile] = useState("");
   const mainImgRef = useRef();
+
+  const subImageCount = [0, 1, 2];
 
   const previewMainImg = () => {
     const file = mainImgRef.current.files[0];
@@ -26,7 +29,6 @@ export const ProductAdd = () => {
 
   const checkOnlyOne = (checkThis) => {
     setCheckCategory(checkThis.name);
-    console.log(checkCategory);
     const checkBox = document.getElementsByClassName("checkBox");
     for (let ch of checkBox) {
       if (ch !== checkThis) {
@@ -121,7 +123,7 @@ export const ProductAdd = () => {
             <h2 className="title">메인이미지 등록</h2>
             <div className="boxWrap">
               <label for="mainImage">
-                <div className="addImg firstImg">+</div>
+                <div className="addImg 1">+</div>
               </label>
               <img
                 style={
@@ -143,19 +145,11 @@ export const ProductAdd = () => {
           <div className="wrap img">
             <h2 className="title">서브이미지 등록</h2>
             <div className="boxWrap">
-              <label for="subImage1">
-                <div className="addImg firstImg">+</div>
-              </label>
-              <input id="subImage1" type="file" name="subImage1" />
-
-              <label for="subImage2">
-                <div className="addImg">+</div>
-              </label>
-              <input id="subImage2" type="file" name="subImage2" />
-              <label for="subImage3">
-                <div className="addImg">+</div>
-              </label>
-              <input id="subImage3" type="file" name="subImage3" />
+              {subImageCount.map((el, index) => {
+                return (
+                  <SubImagePreview key={el} index={index}></SubImagePreview>
+                );
+              })}
             </div>
           </div>
           <div className="wrap description">
