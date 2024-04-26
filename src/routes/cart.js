@@ -11,7 +11,7 @@ export const Cart = () => {
       price: 50000,
       name: '상품명인데 어디까지 괜찮나',
       carryPrice: 3000,
-      count: 3,
+      amount: 3,
       src: '/pants.jpg',
       isChecked: false,
     },
@@ -20,7 +20,7 @@ export const Cart = () => {
       price: 20000,
       name: '근데 상품명이 두줄이면 어떻하지',
       carryPrice: 1000,
-      count: 1,
+      amount: 1,
       src: '/t-shirt.jpg',
       isChecked: false,
     },
@@ -29,7 +29,7 @@ export const Cart = () => {
       price: 40000,
       name: '네줄이면 심각해짐..어떻하지',
       carryPrice: 2000,
-      count: 2,
+      amount: 2,
       src: '/pants.jpg',
       isChecked: false,
     },
@@ -58,7 +58,6 @@ export const Cart = () => {
   };
 
   useEffect(() => {
-    console.log('list rerender');
     cartItemList.forEach((val) => {
       console.log(val.isChecked);
     });
@@ -98,7 +97,7 @@ export const Cart = () => {
 
         <div className="buttonGroup">
           <button className="button">
-            <Link to="#" className="buttonText">
+            <Link to="/" className="buttonText">
               취소하기
             </Link>
           </button>

@@ -15,6 +15,7 @@
     "express": "^4.19.2",
     "express-mysql-session": "^3.0.1",
     "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.9.4",
     "nodemon": "^3.1.0",
     "passport": "^0.7.0",
