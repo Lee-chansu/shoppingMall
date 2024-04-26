@@ -78,6 +78,7 @@ passport.use(
 // 세션생성
 passport.serializeUser((user, done) => {
   process.nextTick(() => {
+    console.log("serializeUser");
     done(null, { id: user.id, userId: user.userId });
   });
 });

@@ -65,11 +65,11 @@
   .category2 {
     overflow-x: scroll;
   }
-  .category2 .wrapper{
+  .category2 .wrapper {
     width: 20%;
     margin: 0 10px;
   }
-  .category2 .wrapper .text{
+  .category2 .wrapper .text {
     font-size: 20px;
   }
 }

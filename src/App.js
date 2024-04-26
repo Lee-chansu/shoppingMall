@@ -56,6 +56,6 @@ function App() {
       <Route path="payBuyList" element={<PayBuyList />}></Route>
     </Routes>
   );
-} 
+}
 
 export default App;

@@ -24,12 +24,13 @@ export const Nav = () => {
           {isLogin ? (
             <>
               <Link className="linkProfile" to="/userInfo">
-                유저프로필
+                <img src="" alt="유저프로필" />
+                <p>유저프로필</p>
               </Link>
             </>
           ) : (
             <Link className="link" to="/login">
-              <div className="div-wrapper">
+              <div className="divWrapper">
                 <div className="text-wrapper">로그인</div>
               </div>
             </Link>

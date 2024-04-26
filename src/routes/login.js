@@ -44,6 +44,9 @@ export const Login = () => {
             sessionStorage.setItem("token", user.token);
             alert("로그인 성공");
             navigate("/");
+          } else {
+            alert("이메일/비밀번호가 일치하지않습니다");
+            return;
           }
         }
       } catch (error) {
