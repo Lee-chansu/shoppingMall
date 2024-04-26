@@ -6,7 +6,7 @@ export const Product = ({product}) => {
   return (
     <div className="product">
       <div className="image">
-        <img className="productImg" src={product.image} alt="제품 사진" />
+        <img className="productImg" src={product.mainImage} alt="제품 사진" />
       </div>
       <div className="infoBox">
         <div className="productName">
