@@ -138,62 +138,61 @@ app.get("/userProfile/:id", async (req, res) => {
 
 // 각 화면들
 
-app.get('/User',async(req,res)=>{
-  const result = await User.findAll()
-  res.json(result)
-})
+app.get("/User", async (req, res) => {
+  const result = await User.findAll();
+  res.json(result);
+});
 
-app.get('/DeleteUser',async(req,res)=>{
-  const result = await DeleteUser.findAll()
-  res.json(result)
-})
+app.get("/DeleteUser", async (req, res) => {
+  const result = await DeleteUser.findAll();
+  res.json(result);
+});
 
-app.get('/Product',async(req,res)=>{
-  const result = await Product.findAll()
-  res.json(result)
-})
+app.get("/Product", async (req, res) => {
+  const result = await Product.findAll();
+  res.json(result);
+});
 
-app.get('/ReviewList',async(req,res)=>{
-  const result = await ReviewList.findAll()
-  res.json(result)
-})
+app.get("/ReviewList", async (req, res) => {
+  const result = await ReviewList.findAll();
+  res.json(result);
+});
 
-app.get('/StarPoint',async(req,res)=>{
-  const result = await StarPoint.findAll()
-  res.json(result)
-})
+app.get("/StarPoint", async (req, res) => {
+  const result = await StarPoint.findAll();
+  res.json(result);
+});
 
-app.get('/Cart',async(req,res)=>{
-  const result = await Cart.findAll()
-  res.json(result)
-})
+app.get("/Cart", async (req, res) => {
+  const result = await Cart.findAll();
+  res.json(result);
+});
 
-app.get('/BuyList',async(req,res)=>{
-  const result = await BuyList.findAll()
-  res.json(result)
-})
+app.get("/BuyList", async (req, res) => {
+  const result = await BuyList.findAll();
+  res.json(result);
+});
 
-app.get('/ProductOption',async(req,res)=>{
-  const result = await ProductOption.findAll()
-  res.json(result)
-})
+app.get("/ProductOption", async (req, res) => {
+  const result = await ProductOption.findAll();
+  res.json(result);
+});
 
-app.get('/ProductDetail',async(req,res)=>{
-  const result = await ProductDetail.findAll()
-  res.json(result)
-})
+app.get("/ProductDetail", async (req, res) => {
+  const result = await ProductDetail.findAll();
+  res.json(result);
+});
 
-app.get('/Carry',async(req,res)=>{
-  const result = await Carry.findAll()
-  res.json(result)
-})
+app.get("/Carry", async (req, res) => {
+  const result = await Carry.findAll();
+  res.json(result);
+});
 
 // 유저프로필
-app.get('/userProfile/:id',async(req,res)=>{
-  const {id} = req.params
-  const result = await User.findOne({where : {id}})
-  if(result){
-    res.json(result)
+app.get("/userProfile/:id", async (req, res) => {
+  const { id } = req.params;
+  const result = await User.findOne({ where: { id } });
+  if (result) {
+    res.json(result);
   }
-})
-
+});
