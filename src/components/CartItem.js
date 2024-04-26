@@ -33,6 +33,7 @@ export const CartItem = ({ val, idx, cartItemList, setCartItemList }) => {
       <img
         className="productImgBox"
         src={`${process.env.PUBLIC_URL}/img${item.src}`}
+        alt="item"
       />
       <div className="inner">
         <div className="group1">

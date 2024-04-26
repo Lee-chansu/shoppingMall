@@ -53,51 +53,10 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: Sequelize.fn("now"),
       },
     },
-<<<<<<< HEAD
     {
       sequelize,
       modelName: "User",
       timestamps: false,
-=======
-    userId: {
-      type: DataTypes.STRING(40),
-      allowNull: false
-    },
-    password: {
-      type: DataTypes.STRING(20),
-      allowNull: false
-    },
-    gender: {
-      type: DataTypes.CHAR(1),
-      validate: {
-        isIn: [['M', 'F']]
-      }
-    },
-    userName: {
-      type: DataTypes.STRING(10),
-      allowNull: false
-    },
-    email: {
-      type: DataTypes.STRING(40),
-      allowNull: false
-    },
-    phoneNumber: {
-      type: DataTypes.STRING(20)
-    },
-    address: {
-      type: DataTypes.STRING(100)
-    },
-    userImage: {
-      type: DataTypes.STRING(100)
-    },
-    isMaster: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-      defaultValue: Sequelize.fn('now')
->>>>>>> origin/hyoguen
     }
   );
   return User;

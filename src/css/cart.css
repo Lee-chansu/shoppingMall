@@ -176,7 +176,7 @@
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  width: 200px;
+  width: auto;
   top: 5px;
 }
 
@@ -328,42 +328,14 @@
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 22px;
+  top: 17px;
 }
 
-.cart .textWrapper15 {
+.cart .sumPay {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 38.2px;
-  font-weight: 300;
-  height: 46px;
-  left: 794px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 22px;
-}
-
-.cart .textWrapper16 {
-  color: #000000;
-  font-family: "Inter-Light", Helvetica;
-  font-size: 38.2px;
-  font-weight: 300;
-  height: 46px;
-  left: 971px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 22px;
-}
-
-.cart .textWrapper17 {
-  color: #000000;
-  font-family: "Inter-Light", Helvetica;
-  font-size: 38.2px;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 600;
   height: 46px;
   left: 1183px;
   letter-spacing: 0;
