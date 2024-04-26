@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "../css/productAdd.css";
 
 //컴포넌트
@@ -11,6 +11,18 @@ export const ProductAdd = () => {
 
   const [detailBar, setDetailBar] = useState([]);
   const [checkDetail, setCheckDetail] = useState("");
+
+  const [mainImageFile, setMainImageFile] = useState("");
+  const mainImgRef = useRef();
+
+  const previewMainImg = () => {
+    const file = mainImgRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setMainImageFile(reader.result);
+    };
+  };
 
   const checkOnlyOne = (checkThis) => {
     setCheckCategory(checkThis.name);
@@ -111,8 +123,22 @@ export const ProductAdd = () => {
               <label for="mainImage">
                 <div className="addImg firstImg">+</div>
               </label>
+              <img
+                style={
+                  !mainImageFile ? { display: "none" } : { display: "block" }
+                }
+                className="previewImg main"
+                src={mainImageFile}
+                alt="메인이미지"
+              />
+              <input
+                id="mainImage"
+                type="file"
+                name="mainImage"
+                onChange={previewMainImg}
+                ref={mainImgRef}
+              />
             </div>
-            <input id="mainImage" type="file" name="mainImage" />
           </div>
           <div className="wrap img">
             <h2 className="title">서브이미지 등록</h2>
