@@ -24,13 +24,13 @@ module.exports = (sequelize) => {
     mainImage: {
       type: DataTypes.STRING(255)
     },
-    subimage1: {
+    subImage1: {
       type: DataTypes.STRING(255)
     },
-    subimage2: {
+    subImage2: {
       type: DataTypes.STRING(255)
     },
-    subimage3: {
+    subImage3: {
       type: DataTypes.STRING(255)
     },
     createdAt: {
