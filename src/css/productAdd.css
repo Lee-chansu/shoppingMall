@@ -82,6 +82,18 @@
   background-color: #ddd;
   cursor: pointer;
 }
+.productAdd .inner .wrap.img .previewImg {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 50px;
+}
+.productAdd .inner .wrap.img .previewImg.main {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: 0 50px;
+}
 .productAdd .inner .wrap.img input[type="file"] {
   display: none;
 }
