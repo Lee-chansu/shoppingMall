@@ -1,36 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../css/cart.css';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "../css/cart.css";
 
-import { CartItem } from '../components/CartItem';
+import { CartItem } from "../components/CartItem";
 
 export const Cart = () => {
   const [cartItemList, setCartItemList] = useState([
     {
       id: 1,
       price: 50000,
-      name: '상품명인데 어디까지 괜찮나',
+      name: "상품명인데 어디까지 괜찮나 한번 볼까",
       carryPrice: 3000,
       count: 3,
-      src: '/pants.jpg',
+      src: "/pants.jpg",
       isChecked: false,
     },
     {
       id: 2,
       price: 20000,
-      name: '근데 상품명이 두줄이면 어떻하지',
+      name: "근데 상품명이 두줄이상이면 어떻하지",
       carryPrice: 1000,
       count: 1,
-      src: '/t-shirt.jpg',
+      src: "/t-shirt.jpg",
       isChecked: false,
     },
     {
       id: 3,
       price: 40000,
-      name: '네줄이면 심각해짐..어떻하지',
+      name: "css로 처리할 수 있었다👍🏻 ",
       carryPrice: 2000,
       count: 2,
-      src: '/pants.jpg',
+      src: "/blouse.jpg",
       isChecked: false,
     },
   ]);
@@ -58,7 +58,7 @@ export const Cart = () => {
   };
 
   useEffect(() => {
-    console.log('list rerender');
+    console.log("list rerender");
     cartItemList.forEach((val) => {
       console.log(val.isChecked);
     });
@@ -75,7 +75,7 @@ export const Cart = () => {
             checked={isCheckedAll}
             onChange={handleCheckboxChange}
           />
-          <div className="productImage">이미지</div>
+          <div className="productImage">상품이미지</div>
           <div className="productName">상품명</div>
           <div className="productPrice">판매가</div>
           <div className="productStock">수량</div>

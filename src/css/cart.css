@@ -16,13 +16,13 @@
 .cart .buttonText {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 600;
   left: 50px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 15px;
+  top: 20px;
   white-space: nowrap;
   width: 150px;
   border: none;
@@ -100,13 +100,13 @@
 
 .cart .group1 {
   background-color: #ffffff;
-  border: 1.73px solid;
+  border: 1px solid;
   border-color: #000000;
-  height: 56px;
-  left: 217px;
+  height: 48px;
+  left: 215px;
   position: absolute;
-  top: 0;
-  width: 135px;
+  top: -5px;
+  width: 120px;
 }
 
 .cart .cartProductStock {
@@ -118,7 +118,7 @@
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 11px;
+  top: 7px;
   width: 42px;
   text-align: right;
 }
@@ -134,13 +134,27 @@
 .cart .countUp {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 17.3px;
+  font-size: 16px;
   font-weight: 400;
   left: 5px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 7px;
+  top: 5px;
+  width: 30px;
+  border: none;
+}
+
+.cart .countDown {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 5px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 22px;
   width: 30px;
   border: none;
 }
@@ -153,26 +167,12 @@
   width: 45px;
 }
 
-.cart .countDown {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 17.3px;
-  font-weight: 400;
-  left: 5px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 25px;
-  width: 30px;
-  border: none;
-}
-
 .cart .cartProductPrice {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 30px;
+  font-size: 22px;
   font-weight: 600;
-  left: 25px;
+  left: 40px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
@@ -182,18 +182,18 @@
 
 .cart .isBuyCheckBox {
   background-color: #ffffff;
-  height: 43px;
+  height: 30px;
   left: 41px;
   position: absolute;
   top: 95px;
-  width: 43px;
+  width: 30px;
 }
 
 .cart .cartProductName {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 26px;
-  left: 350px;
+  font-size: 20px;
+  left: 360px;
   position: absolute;
   top: 90px;
   width: 180px;
@@ -217,9 +217,9 @@
 .cart .cartCarryPrice {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 30px;
+  font-size: 22px;
   font-weight: 600;
-  left: 25px;
+  left: 18px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
@@ -230,9 +230,9 @@
 .cart .cartSumPrice {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 30px;
+  font-size: 22px;
   font-weight: 600;
-  left: 170px;
+  left: 150px;
   text-align: center;
   line-height: normal;
   position: absolute;
@@ -254,7 +254,7 @@
 .cart .cartBar {
   background-color: #eeeeeeee;
   margin: 80px auto 0;
-  height: 92px;
+  height: 60px;
   width: 1377px;
   display: flex;
   justify-content: space-around;
@@ -264,93 +264,91 @@
 }
 
 .cart .cartBar .productImage {
-  color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 30px;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 600;
   height: 46px;
-  left: 160px;
+  left: 170px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 25px;
+  top: 17px;
 }
 
 .cart .productName {
-  color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 30px;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 600;
   height: 46px;
-  left: 371px;
+  left: 395px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 25px;
+  top: 17px;
 }
 
 .cart .productPrice {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 30px;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 600;
   height: 46px;
-  left: 583px;
+  left: 600px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 25px;
+  top: 17px;
 }
 
 .cart .productStock {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 30px;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 600;
   height: 46px;
-  left: 794px;
+  left: 800px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 25px;
+  top: 17px;
 }
 
 .cart .productCarryPay {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 30px;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 600;
   height: 46px;
-  left: 971px;
+  left: 980px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 25px;
+  top: 17px;
 }
 
 .cart .sumPay {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 30px;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 600;
   height: 46px;
   left: 1183px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 25px;
+  top: 17px;
 }
 
 .cart .buyCheckBox {
   background-color: #ffffff;
-  height: 43px;
+  height: 30px;
   left: 42px;
   position: absolute;
-  width: 43px;
+  width: 30px;
 }
