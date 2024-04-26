@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
         isIn: [['M', 'F']]
       }
     },
-    userId: {
+    userName: {
       type: DataTypes.STRING(255)
     },
     email: {

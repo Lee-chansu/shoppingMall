@@ -36,23 +36,15 @@ export const PaySuccess = () => {
               <div className="textWrapper11">
                 <i>
                   카드사 즉시 할인 및 포인트 사용내역은 카드사에서 확인 부탁
-                  드립니다.
-                </i>
+                  드립니다.</i>
               </div>
-            </div>
-          </div>
-          <img className="vector" src="img/vector-5.svg" alt="" />
-          <img className="img" src="img/vector-6.svg" alt="" />
-          <div className="home-button">
-            <Link to="/" className="toHome">
-              Home 으로
-            </Link>
             <Link to="/" className="nextPage">
               쇼핑계속하기
             </Link>
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

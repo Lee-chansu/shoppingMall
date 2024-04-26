@@ -9,7 +9,7 @@ module.exports = {
         autoIncrement: true
       },
       userId: {
-        type: Sequelize.STRING(15),
+        type: Sequelize.STRING(40),
         allowNull: false
       },
       password: {
@@ -34,6 +34,9 @@ module.exports = {
         type: Sequelize.STRING(20)
       },
       address: {
+        type: Sequelize.STRING(100)
+      },
+      userImage: {
         type: Sequelize.STRING(100)
       },
       isMaster: {

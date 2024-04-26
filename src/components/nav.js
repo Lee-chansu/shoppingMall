@@ -13,7 +13,8 @@ export const Nav = () => {
             <h1 className="text logo">logo</h1>
           </div>
           <div className="category">
-            {category.map((el) => {
+            {
+            category.map((el,i) => {
               return (
                 <ul className="wrapper" key={el}>
                   <li className="text">{el}</li>

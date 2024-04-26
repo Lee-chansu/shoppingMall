@@ -11,7 +11,8 @@ export const ProductList = () => {
   const [productList, setProductList] = useState([]);
 
   const loadProduct = async () => {
-    const getProduct = await fetch("http://localhost:5000/").then((res) =>
+    // const getProduct = await fetch("http://localhost:5000/").then((res) =>
+    const getProduct = await fetch("https://hotcake.loca.lt/Product").then((res) =>
       res.json()
     );
     setProductList(getProduct);
