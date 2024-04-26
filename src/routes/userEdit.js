@@ -56,7 +56,6 @@ export const UserEdit = () => {
 
   const buttonClick = async(e)=>{
     
-    console.log(editUser)
     e.preventDefault()
     if(!editUser.password){
       alert('변경할 비밀번호를 입력하시오')
@@ -81,6 +80,7 @@ export const UserEdit = () => {
           throw new Error('서버에서 응답을 받을 수 없습니다')
         }else{
           alert('유저수정 완료')
+          navigate('/userProfile')
         }
         
       } catch (error) {

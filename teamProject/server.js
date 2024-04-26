@@ -148,5 +148,20 @@ app.put('/userEdit/:id',async(req,res)=>{
       result[key] = editUser[key]
     }
     await result.save()
+    res.json(result)
+  }
+})
+
+// 비밀번호체크
+app.post('/passwordCheck/:id',async(req,res)=>{
+  const {id} = req.params
+  const typeingpassword = req.body
+  const result = await User.findOne({where : {id}})
+  if(result){
+    if(result.password == typeingpassword.password){
+      res.json()
+    }else{
+      res.status(401).json({message : '비밀번호가 일치하지 않습니다'})
+    }
   }
 })
