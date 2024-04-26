@@ -11,8 +11,8 @@ export const Cart = () => {
       price: 50000,
       name: "상품명인데 어디까지 괜찮나 한번 볼까",
       carryPrice: 3000,
-      count: 3,
-      src: "/pants.jpg",
+      amount: 3,
+      src: '/pants.jpg',
       isChecked: false,
     },
     {
@@ -20,8 +20,8 @@ export const Cart = () => {
       price: 20000,
       name: "근데 상품명이 두줄이상이면 어떻하지",
       carryPrice: 1000,
-      count: 1,
-      src: "/t-shirt.jpg",
+      amount: 1,
+      src: '/t-shirt.jpg',
       isChecked: false,
     },
     {
@@ -29,8 +29,8 @@ export const Cart = () => {
       price: 40000,
       name: "css로 처리할 수 있었다👍🏻 ",
       carryPrice: 2000,
-      count: 2,
-      src: "/blouse.jpg",
+      amount: 2,
+      src: '/pants.jpg',
       isChecked: false,
     },
   ]);
@@ -58,7 +58,6 @@ export const Cart = () => {
   };
 
   useEffect(() => {
-    console.log("list rerender");
     cartItemList.forEach((val) => {
       console.log(val.isChecked);
     });

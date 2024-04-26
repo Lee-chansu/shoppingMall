@@ -328,14 +328,42 @@
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 17px;
+  top: 22px;
 }
 
-.cart .sumPay {
+.cart .textWrapper15 {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 38.2px;
+  font-weight: 300;
+  height: 46px;
+  left: 794px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 22px;
+}
+
+.cart .textWrapper16 {
+  color: #000000;
+  font-family: "Inter-Light", Helvetica;
+  font-size: 38.2px;
+  font-weight: 300;
+  height: 46px;
+  left: 971px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 22px;
+}
+
+.cart .textWrapper17 {
+  color: #000000;
+  font-family: "Inter-Light", Helvetica;
+  font-size: 38.2px;
+  font-weight: 300;
   height: 46px;
   left: 1183px;
   letter-spacing: 0;

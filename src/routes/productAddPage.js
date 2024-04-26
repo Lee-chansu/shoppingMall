@@ -7,12 +7,21 @@ import { Link } from "react-router-dom";
 
 export const ProductAdd = () => {
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
-  const [detail, setDetail] = useState([]);
+  const [checkCategory, setCheckCategory] = useState("");
 
-  const handleEvent = (e) => {
-    
-  }
-  
+  const [detailBar, setDetailBar] = useState([]);
+  const [checkDetail, setCheckDetail] = useState("");
+
+  const checkOnlyOne = (checkThis) => {
+    setCheckCategory(checkThis.name);
+    console.log(checkCategory);
+    const checkBox = document.getElementsByClassName("checkBox");
+    for (let ch of checkBox) {
+      if (ch !== checkThis) {
+        ch.checked = false;
+      }
+    }
+  };
 
   return (
     <>
@@ -20,21 +29,29 @@ export const ProductAdd = () => {
       <div className="productAdd">
         <div className="inner">
           <div className="wrap">
-            <h2 className="title">카테고리 분류</h2>
+            <h2 className="title">카테고리</h2>
             {category.map((el) => {
               return (
-                <div className="box">
-                  <p className="text">{el}</p>
-                  <input type="checkbox" name={el} value={el} onClick={handleEvent} />
+                <div className="box" key={el}>
+                  <label className="text" for={el}>
+                    {el}
+                  </label>
+                  <input
+                    type="checkbox"
+                    className="checkBox"
+                    name={el}
+                    value={el}
+                    onChange={(e) => checkOnlyOne(e.target)}
+                  />
                 </div>
               );
             })}
           </div>
           <div className="wrap">
-            <h2 className="title">디테일 분류</h2>
-            {detail.map((el) => {
+            <h2 className="title">디테일</h2>
+            {detailBar.map((el) => {
               return (
-                <div className="box">
+                <div className="box" key={el}>
                   <p className="text">{el}</p>
                   <input type="checkbox" name={el} value={el} />
                 </div>
@@ -57,12 +74,21 @@ export const ProductAdd = () => {
             </div>
             <div className="box">
               <label for="size">size</label>
-              <select name="size">
-                <option value="95">95</option>
-                <option value="100">100</option>
-                <option value="105">105</option>
-                <option value="free">free</option>
-              </select>
+              {category === "신발" ? (
+                <select name="size">
+                  <option value="95">260</option>
+                  <option value="100">270</option>
+                  <option value="105">280</option>
+                  <option value="free">290</option>
+                </select>
+              ) : (
+                <select name="size">
+                  <option value="95">95</option>
+                  <option value="100">100</option>
+                  <option value="105">105</option>
+                  <option value="free">free</option>
+                </select>
+              )}
             </div>
             <div className="box">
               <label for="stock">stock</label>

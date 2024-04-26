@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 export const CartItem = ({ val, idx, cartItemList, setCartItemList }) => {
   const item = val;
@@ -24,7 +24,7 @@ export const CartItem = ({ val, idx, cartItemList, setCartItemList }) => {
   };
 
   useEffect(() => {
-    console.log('item rerender');
+    console.log("item rerender");
     console.log(item.isChecked);
   }, []);
 
@@ -58,7 +58,7 @@ export const CartItem = ({ val, idx, cartItemList, setCartItemList }) => {
       <div className="group2">
         <div className="cartCarryPrice">{item.carryPrice}원</div>
         <div className="cartSumPrice">
-          {item.count * item.price + item.carryPrice}원
+          {item.count !== 0 ? item.count * item.price + item.carryPrice : 0}원
         </div>
       </div>
     </div>

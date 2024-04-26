@@ -1,6 +1,6 @@
 .product {
   background-color: #eeeeee;
-  margin: 20px 10px;
+  margin: 20px 30px;
 }
 
 .productImg {
@@ -21,6 +21,8 @@
   line-height: normal;
   text-align: center;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .infoBox {

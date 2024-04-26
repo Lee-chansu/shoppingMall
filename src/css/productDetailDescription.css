@@ -1,4 +1,6 @@
-.productDetail {
+
+
+.productdetail {
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -7,132 +9,15 @@
   overflow-y: hidden;
 }
 
-.productDetail .div {
+.productdetail .div {
   background-color: #ffffff;
-  height: 2484px;
+  height: 855px;
   position: relative;
   width: 1440px;
   top: -350px;
 }
 
-.productDetail .productInfo {
-  height: 1163px;
-  left: 53px;
-  position: absolute;
-  top: 1265px;
-  width: 1330px;
-}
-
-.productDetail .productDecription {
-  background-color: #eeeeee;
-  height: 931px;
-  left: 2px;
-  position: absolute;
-  top: 175px;
-  width: 1328px;
-}
-
-.productDetail .moreInfo {
-  background-color: #ffffff;
-  height: 119px;
-  left: 3px;
-  position: absolute;
-  top: 812px;
-  width: 1322px;
-}
-
-.productDetail .textWrapper {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 43.2px;
-  font-weight: 400;
-  left: 438px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 32px;
-  width: 312px;
-}
-
-.productDetail .polygon {
-  height: 17px;
-  left: 764px;
-  position: absolute;
-  top: 54px;
-  width: 31px;
-}
-
-.productDetail .textWrapper2 {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 43.2px;
-  font-weight: 400;
-  left: 518px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 439px;
-}
-
-.productDetail .infoSelect {
-  background-color: #ffffff;
-  height: 159px;
-  left: 2px;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  width: 1328px;
-}
-
-.productDetail .productReview {
-  height: 190px;
-  left: 664px;
-  position: absolute;
-  top: 5px;
-  width: 664px;
-}
-
-.productDetail .textWrapper3 {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 43.2px;
-  font-weight: 400;
-  left: 246px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 68px;
-}
-
-.productDetail .productDescription {
-  height: 190px;
-  left: 0;
-  position: absolute;
-  top: 5px;
-  width: 664px;
-}
-
-.productDetail .textWrapper4 {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 43.2px;
-  font-weight: 400;
-  left: 243px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 66px;
-}
-
-.productDetail .line {
-  height: 5px;
-  left: 0;
-  position: absolute;
-  top: 149px;
-  width: 664px;
-}
-
-.productDetail .buttonBox {
+.productdetail .buttonBox {
   background-color: #eeeeee;
   height: 144px;
   left: 758px;
@@ -141,7 +26,7 @@
   width: 590px;
 }
 
-.productDetail .nowPayButton {
+.productdetail .nowPayButton {
   background-color: #ffffff;
   height: 96px;
   left: 313px;
@@ -150,7 +35,7 @@
   width: 255px;
 }
 
-.productDetail .textWrapper5 {
+.productdetail .textWrapper {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -162,7 +47,8 @@
   top: 23px;
   width: 194px;
 }
-.productDetail .cartButton {
+
+.productdetail .cartButton {
   background-color: #ffffff;
   height: 96px;
   left: 19px;
@@ -171,7 +57,7 @@
   width: 255px;
 }
 
-.productDetail .infoBox {
+.productdetail .infoBox {
   background-color: #eeeeee;
   height: 586px;
   left: 756px;
@@ -180,7 +66,7 @@
   width: 592px;
 }
 
-.productDetail .productTotalPrice {
+.productdetail .productTotalPrice {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
@@ -189,7 +75,7 @@
   width: 526px;
 }
 
-.productDetail .textWrapper6 {
+.productdetail .textWrapper2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -201,7 +87,7 @@
   top: 9px;
 }
 
-.productDetail .productCount {
+.productdetail .productCount {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
@@ -210,7 +96,7 @@
   width: 526px;
 }
 
-.productDetail .overlapGroup {
+.productdetail .overlapGroup {
   height: 59px;
   left: 233px;
   position: absolute;
@@ -218,7 +104,53 @@
   width: 245px;
 }
 
-.productDetail .select {
+.productdetail .overlapGroup .inputMinus {
+  z-index: 1;
+  background-color: #eeeeeeee;
+  border: 0.72px solid;
+  border-color: #000000;
+  height: 48px;
+  left: 0;
+  position: absolute;
+  top: 10px;
+  width: 48px;
+  font-size: 32px;
+}
+
+.productdetail .input {
+  background-color: #eeeeeeee;
+  border: 0.72px solid;
+  border-color: #000000;
+  height: 48px;
+  left: 48px;
+  position: absolute;
+  top: 10px;
+  width: 149px;
+  font-size: 32px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    height: 0;
+    width: 0;
+  }
+
+.productdetail .overlapGroup .inputPlus {
+  z-index: 1;
+  background-color: #eeeeeeee;
+  border: 0.72px solid;
+  border-color: #000000;
+  height: 48px;
+  right: 0;
+  position: absolute;
+  top: 10px;
+  width: 48px;
+  font-size: 32px;
+}
+
+.productdetail .select {
   background-color: #eeeeeeee;
   border: 0.72px solid;
   border-color: #000000;
@@ -227,9 +159,22 @@
   position: absolute;
   top: 10px;
   width: 245px;
+  font-size: 32px;
 }
 
-.productDetail .color {
+.productdetail .text {
+  /* background-color: #eeeeeeee; */
+  /* border: 0.72px solid; */
+  border-color: #000000;
+  height: 48px;
+  left: 0;
+  position: absolute;
+  top: 10px;
+  width: 245px;
+  font-size: 32px;
+}
+
+.productdetail .color {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -244,7 +189,7 @@
   width: 133px;
 }
 
-.productDetail .img {
+.productdetail .line {
   height: 48px;
   left: 174px;
   position: absolute;
@@ -252,7 +197,7 @@
   width: 2px;
 }
 
-.productDetail .line2 {
+.productdetail .img {
   height: 48px;
   left: 69px;
   position: absolute;
@@ -260,15 +205,14 @@
   width: 2px;
 }
 
-.productDetail .line3 {
+.productdetail .line2 {
   height: 2px;
   left: 10px;
   position: absolute;
   top: 30px;
   width: 44px;
 }
-
-.productDetail .line4 {
+.productdetail .line3 {
   height: 2px;
   left: 186px;
   position: absolute;
@@ -276,7 +220,7 @@
   width: 44px;
 }
 
-.productDetail .line5 {
+.productdetail .line4 {
   height: 35px;
   left: 207px;
   position: absolute;
@@ -284,7 +228,7 @@
   width: 1px;
 }
 
-.productDetail .productColor {
+.productdetail .productColor {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
@@ -293,7 +237,7 @@
   width: 526px;
 }
 
-.productDetail .overlap {
+.productdetail .overlap {
   height: 59px;
   left: 233px;
   position: absolute;
@@ -301,7 +245,7 @@
   width: 245px;
 }
 
-.productDetail .textWrapper7 {
+.productdetail .textWrapper3 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -315,14 +259,15 @@
   width: 133px;
 }
 
-.productDetail .polygon2 {
+.productdetail .polygon {
   height: 17px;
   left: 195px;
   position: absolute;
   top: 29px;
   width: 31px;
 }
-.productDetail .productSize {
+
+.productdetail .productSize {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
@@ -331,7 +276,7 @@
   width: 526px;
 }
 
-.productDetail .overlap2 {
+.productdetail .overlap2 {
   height: 59px;
   left: 233px;
   position: absolute;
@@ -339,13 +284,7 @@
   width: 245px;
 }
 
-.productDetail .overlap2 .select,
-.productDetail .overlap .select {
-  font-size: 32px;
-  font-weight: 400;
-}
-
-.productDetail .textWrapper8 {
+.productdetail .textWrapper4 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -359,7 +298,7 @@
   width: 81px;
 }
 
-.productDetail .productPrice {
+.productdetail .productPrice {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
@@ -368,7 +307,7 @@
   width: 526px;
 }
 
-.productDetail .productName {
+.productdetail .productName {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
@@ -377,7 +316,7 @@
   width: 526px;
 }
 
-.productDetail .thumbnailBox {
+.productdetail .thumbnailBox {
   background-color: #ffffff;
   height: 817px;
   left: 25px;
@@ -386,25 +325,7 @@
   width: 722px;
 }
 
-.productDetail .subThmbnail {
-  background-color: #d9d9d9;
-  height: 144px;
-  left: 438px;
-  position: absolute;
-  top: 637px;
-  width: 144px;
-}
-
-.productDetail .subThmbnail2 {
-  background-color: #d9d9d9;
-  height: 144px;
-  left: 278px;
-  position: absolute;
-  top: 637px;
-  width: 144px;
-}
-
-.productDetail .subThmbnail3 {
+.productdetail .subThmbnail0 {
   background-color: #d9d9d9;
   height: 144px;
   left: 120px;
@@ -413,7 +334,25 @@
   width: 144px;
 }
 
-.productDetail .mainThmbnailWrapper {
+.productdetail .subThmbnail1 {
+  background-color: #d9d9d9;
+  height: 144px;
+  left: 278px;
+  position: absolute;
+  top: 637px;
+  width: 144px;
+}
+
+.productdetail .subThmbnail2 {
+  background-color: #d9d9d9;
+  height: 144px;
+  left: 438px;
+  position: absolute;
+  top: 637px;
+  width: 144px;
+}
+
+.productdetail .mainThmbnailWrapper {
   background-color: #d9d9d9;
   height: 586px;
   left: 56px;
@@ -422,7 +361,7 @@
   width: 575px;
 }
 
-.productDetail .mainThmbnail {
+.productdetail .mainThmbnail {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -435,7 +374,7 @@
   width: 236px;
 }
 
-.productDetail .category {
+.productdetail .category {
   background-color: #eeeeee;
   height: 128px;
   left: 81px;
@@ -444,7 +383,7 @@
   width: 1296px;
 }
 
-.productDetail .divWrapper {
+.productdetail .divWrapper {
   background-color: #ffffff;
   height: 78px;
   left: 20px;
@@ -453,7 +392,7 @@
   width: 200px;
 }
 
-.productDetail .textWrapper9 {
+.productdetail .textWrapper5 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -465,7 +404,7 @@
   top: 11px;
 }
 
-.productDetail .category2 {
+.productdetail .category2 {
   background-color: #ffffff;
   height: 78px;
   left: 555px;
@@ -474,7 +413,7 @@
   width: 200px;
 }
 
-.productDetail .category3 {
+.productdetail .category3 {
   background-color: #ffffff;
   height: 78px;
   left: 814px;
@@ -483,7 +422,7 @@
   width: 200px;
 }
 
-.productDetail .category4 {
+.productdetail .category4 {
   background-color: #ffffff;
   height: 78px;
   left: 1073px;
@@ -491,7 +430,8 @@
   top: 24px;
   width: 200px;
 }
-.productDetail .category5 {
+
+.productdetail .category5 {
   background-color: #ffffff;
   height: 78px;
   left: 287px;
@@ -500,7 +440,7 @@
   width: 200px;
 }
 
-.productDetail .nav {
+.productdetail .nav {
   background-color: #eeeeee;
   height: 128px;
   left: 81px;
@@ -509,7 +449,7 @@
   width: 1296px;
 }
 
-.productDetail .user {
+.productdetail .user {
   background-color: #ffffff;
   height: 68px;
   left: 1038px;
@@ -518,7 +458,7 @@
   width: 236px;
 }
 
-.productDetail .textWrapper10 {
+.productdetail .textWrapper6 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
@@ -531,7 +471,7 @@
   width: 198px;
 }
 
-.productDetail .textWrapper11 {
+.productdetail .textWrapper7 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 43.2px;
