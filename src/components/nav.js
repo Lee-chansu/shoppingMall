@@ -13,8 +13,7 @@ export const Nav = () => {
             <h1 className="text logo">logo</h1>
           </div>
           <div className="category">
-            {
-            category.map((el,i) => {
+            {category.map((el, i) => {
               return (
                 <ul className="wrapper" key={el}>
                   <li className="text">{el}</li>
@@ -26,7 +25,6 @@ export const Nav = () => {
             <>
               <Link className="linkProfile" to="/userInfo">
                 <img src="" alt="유저프로필" />
-                <p>유저프로필</p>
               </Link>
             </>
           ) : (
