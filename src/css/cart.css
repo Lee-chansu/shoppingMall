@@ -6,25 +6,25 @@
   width: 100%;
 }
 
-.cart .div {
+.cart .wrap {
   background-color: #ffffff;
   height: 1633.06px;
   position: relative;
   width: 1440px;
 }
 
-.cart .textWrapper {
+.cart .buttonText {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 44.2px;
-  font-weight: 400;
-  left: 45px;
+  font-size: 30px;
+  font-weight: 600;
+  left: 50px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   top: 15px;
   white-space: nowrap;
-  width: 180px;
+  width: 150px;
   border: none;
 }
 
@@ -37,20 +37,18 @@
   justify-content: space-between;
 }
 
-.cart .overlapGroup2 {
-  font-size: 40px;
-  height: 90px;
-  width: 700px;
+.cart .buttonGroup {
+  width: 600px;
   border: none;
-  margin: 40px auto 0;
+  margin: 100px auto 0;
   display: flex;
   justify-content: space-between;
 }
 
-.cart .overlap {
+.cart .button {
   background-color: #eeeeeeee;
-  height: 89px;
-  width: 281px;
+  height: 70px;
+  width: 250px;
   border: none;
   position: relative;
 }
@@ -74,9 +72,6 @@
   background-color: #eeeeeeee;
   height: 241px;
   overflow: hidden;
-  /* position: absolute;
-  left: 32px;
-  top: 401px; */
   width: 1377px;
   margin: 40px auto 0;
   box-sizing: border-box;
@@ -86,7 +81,7 @@
   position: relative;
 }
 
-.cart .imageBox {
+.cart .productImgBox {
   background-color: #ffffff;
   height: 191px;
   left: 121px;
@@ -95,16 +90,15 @@
   width: 191px;
 }
 
-.cart .overlap2 {
+.cart .inner {
   height: 56px;
   left: 549px;
   position: absolute;
   top: 101px;
   width: 352px;
-  /*사용하는 css*/
 }
 
-.cart .imageBox2 {
+.cart .group1 {
   background-color: #ffffff;
   border: 1.73px solid;
   border-color: #000000;
@@ -115,17 +109,16 @@
   width: 135px;
 }
 
-.cart .textWrapper3 {
+.cart .cartProductStock {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 41.6px;
+  font-size: 30px;
   font-weight: 400;
-  /* left: 17px; */
-  right: 8px;
+  right: 20px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 2px;
+  top: 11px;
   width: 42px;
   text-align: right;
 }
@@ -138,15 +131,7 @@
   width: 2px;
 }
 
-.cart .img {
-  height: 28px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 45px;
-}
-
-.cart .textWrapper4 {
+.cart .countUp {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 17.3px;
@@ -168,7 +153,7 @@
   width: 45px;
 }
 
-.cart .textWrapper5 {
+.cart .countDown {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 17.3px;
@@ -182,17 +167,17 @@
   border: none;
 }
 
-.cart .textWrapper6 {
+.cart .cartProductPrice {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 41.6px;
-  font-weight: 400;
-  left: 0;
+  font-size: 30px;
+  font-weight: 600;
+  left: 25px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 1px;
-  width: 225px;
+  width: 200px;
+  top: 5px;
 }
 
 .cart .isBuyCheckBox {
@@ -204,58 +189,61 @@
   width: 43px;
 }
 
-.cart .textWrapper7 {
+.cart .cartProductName {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 41.6px;
-  font-weight: 400;
-  left: 366px;
-  letter-spacing: 0;
-  line-height: normal;
+  font-size: 26px;
+  left: 350px;
   position: absolute;
-  top: 50px;
-  width: 149px;
+  top: 90px;
+  width: 180px;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: keep-all;
 }
 
-.cart .overlap3 {
+.cart .group2 {
   height: 56px;
   left: 959px;
   position: absolute;
   top: 102px;
   width: 428px;
-  /*사용하는 css*/
 }
 
-.cart .textWrapper8 {
+.cart .cartCarryPrice {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 41.6px;
-  font-weight: 400;
-  left: 0;
+  font-size: 30px;
+  font-weight: 600;
+  left: 25px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 0;
-  width: 225px;
+  top: 5px;
+  width: 200px;
 }
 
-.cart .textWrapper9 {
+.cart .cartSumPrice {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 41.6px;
-  font-weight: 400;
-  left: 203px;
-  letter-spacing: 0;
+  font-size: 30px;
+  font-weight: 600;
+  left: 170px;
+  text-align: center;
   line-height: normal;
   position: absolute;
-  top: 2px;
+  top: 5px;
   width: 225px;
 }
 
-.cart .textWrapper11 {
+.cart .title {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 45px;
+  font-size: 30px;
   font-weight: 400;
   letter-spacing: 0;
   line-height: normal;
@@ -263,7 +251,7 @@
   text-align: center;
 }
 
-.cart .navbar {
+.cart .cartBar {
   background-color: #eeeeeeee;
   margin: 80px auto 0;
   height: 92px;
@@ -275,10 +263,10 @@
   position: relative;
 }
 
-.cart .textWrapper12 {
+.cart .cartBar .productImage {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 38.2px;
+  font-size: 30px;
   font-weight: 300;
   height: 46px;
   left: 160px;
@@ -286,13 +274,13 @@
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 22px;
+  top: 25px;
 }
 
-.cart .textWrapper13 {
+.cart .productName {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 38.2px;
+  font-size: 30px;
   font-weight: 300;
   height: 46px;
   left: 371px;
@@ -300,13 +288,13 @@
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 22px;
+  top: 25px;
 }
 
-.cart .textWrapper14 {
+.cart .productPrice {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 38.2px;
+  font-size: 30px;
   font-weight: 300;
   height: 46px;
   left: 583px;
@@ -314,13 +302,13 @@
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 22px;
+  top: 25px;
 }
 
-.cart .textWrapper15 {
+.cart .productStock {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 38.2px;
+  font-size: 30px;
   font-weight: 300;
   height: 46px;
   left: 794px;
@@ -328,13 +316,13 @@
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 22px;
+  top: 25px;
 }
 
-.cart .textWrapper16 {
+.cart .productCarryPay {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 38.2px;
+  font-size: 30px;
   font-weight: 300;
   height: 46px;
   left: 971px;
@@ -342,13 +330,13 @@
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 22px;
+  top: 25px;
 }
 
-.cart .textWrapper17 {
+.cart .sumPay {
   color: #000000;
   font-family: "Inter-Light", Helvetica;
-  font-size: 38.2px;
+  font-size: 30px;
   font-weight: 300;
   height: 46px;
   left: 1183px;
@@ -356,14 +344,13 @@
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 22px;
+  top: 25px;
 }
 
-.cart .buyCheckBox2 {
+.cart .buyCheckBox {
   background-color: #ffffff;
   height: 43px;
   left: 42px;
   position: absolute;
-  transform: rotate(180deg);
   width: 43px;
 }

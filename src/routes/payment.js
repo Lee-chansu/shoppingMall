@@ -1,6 +1,25 @@
 import React from "react";
-import "../css/payment.css";
 import { Link } from "react-router-dom";
+import "../css/payment.css";
+
+import { PaymentItem } from "../components/PaymentItem";
+
+const paymentItemList = [
+  {
+    id: 1,
+    productName: "상품명임1",
+    productDetail:
+      "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
+    src: "",
+  },
+  {
+    id: 2,
+    productName: "상품명임2",
+    productDetail:
+      "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
+    src: "",
+  },
+];
 
 export const Payment = () => {
   return (
@@ -11,8 +30,7 @@ export const Payment = () => {
             <div className="userInfoBox">
               <h3 className="carryInfo">배송지 정보</h3>
               <div className="emailBox">
-                <div className="email">주문자 이메일
-                </div>
+                <div className="email">주문자 이메일</div>
                 <div className="email2">ildan@ildan.com</div>
               </div>
               <div className="addressBox">
@@ -20,16 +38,13 @@ export const Payment = () => {
                 <div className="address2">경기도 부천시 원미구 길주로200</div>
               </div>
               <div className="carryBox">
-                <div  className="carryRequest">배송 요청사항
+                <div className="carryRequest">
+                  배송 요청사항
                   <select className="carrySelect">
-                    <option value="message1">
-                    문 앞에 놔주세요</option>
-                    <option value="message2">
-                    직접 받을게요</option>
-                    <option value="message3">
-                    우편함에 놔주세요</option>
-                    <option value="message4">
-                    문 앞 배송 후 문자주세요</option>
+                    <option value="message1">문 앞에 놔주세요</option>
+                    <option value="message2">직접 받을게요</option>
+                    <option value="message3">우편함에 놔주세요</option>
+                    <option value="message4">문 앞 배송 후 문자주세요</option>
                   </select>
                 </div>
               </div>
@@ -44,28 +59,17 @@ export const Payment = () => {
                 </div>
               </div>
             </div>
+
             <div className="payList">
-              <div className="payInfo">
-                <div className="myOrder">
-                  <div className="myOrder">나의 주문</div>
-                </div>
-                <div className="product">
-                  <div className="info">
-                    <div className="textWrapper6">제품설명</div>
-                  </div>
-                  <div className="image">
-                    <div className="textWrapper7">이미지</div>
-                  </div>
-                </div>
-                <div className="product2">
-                  <div className="info">
-                    <div className="textWrapper6">제품설명</div>
-                  </div>
-                  <div className="image">
-                    <div className="textWrapper7">이미지</div>
-                  </div>
-                </div>
+              <div className="payInfo"></div>
+              <div className="myOrder">
+                <div className="myOrderText">나의 주문</div>
               </div>
+
+              {paymentItemList.map((val, idx) => {
+                return <PaymentItem val={val} key={val.id}></PaymentItem>;
+              })}
+
               <div className="productBox">
                 <div className="title2">
                   <div className="orderSumText">총 주문금액 :</div>
@@ -79,7 +83,7 @@ export const Payment = () => {
               </div>
             </div>
             <div className="buyButton">
-              <Link to="#" className="buy">
+              <Link to="/paySuccess" className="buy">
                 결제하기
               </Link>
             </div>

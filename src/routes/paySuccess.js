@@ -10,11 +10,11 @@ export const PaySuccess = () => {
           <div className="innerBox">
             <div className="overlapGroup">
               <div className="price"></div>
-              <div className="textWrapper">
+              <div className="successMessage">
                 <b>구매가 정상적으로 완료되었습니다</b>
               </div>
             </div>
-            <div className="overlapGroup2">
+            <div className="orderInfo">
               <div className="textWrapper2">주문정보</div>
               <div className="textWrapper3">상품명</div>
               <div className="textWrapper4">결제방법</div>
@@ -30,21 +30,22 @@ export const PaySuccess = () => {
               <div className="textWrapper10">
                 [category] 이름짓기 어려운 반팔3
               </div>
-              <p className="p">option / color / size / ect..</p>
-              <p className="textWrapper11">
+              <div className="optionInfo1">option / color / size / ect..</div>
+              <p className="optionInfo2">option / color / size / ect..</p>
+              <p className="optionInfo3">option / color / size / ect..</p>
+              <div className="textWrapper11">
                 <i>
-                  카드사 즉시 할인,포인트 사용내역은 카드사에서 확인 바랍니다
+                  카드사 즉시 할인 및 포인트 사용내역은 카드사에서 확인 부탁
+                  드립니다.
                 </i>
-              </p>
-              <p className="textWrapper12">option / color / size / ect..</p>
-              <p className="textWrapper13">option / color / size / ect..</p>
+              </div>
             </div>
           </div>
           <img className="vector" src="img/vector-5.svg" alt="" />
           <img className="img" src="img/vector-6.svg" alt="" />
           <div className="home-button">
             <Link to="/" className="toHome">
-              처음화면
+              Home 으로
             </Link>
             <Link to="/" className="nextPage">
               쇼핑계속하기

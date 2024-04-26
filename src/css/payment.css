@@ -260,7 +260,7 @@ a {
 .payment .payInfo {
   background-color: #ffffff;
   height: 340px;
-  left: 18px;
+  left: 17px;
   position: absolute;
   top: 18px;
   width: 365px;
@@ -269,23 +269,29 @@ a {
 .payment .orderSumText {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 400;
   left: 15px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 15px;
+  top: 18px;
   width: 190px;
 }
 
 .payment .myOrder {
-  height: 60px;
-  left: 70px;
-  overflow: hidden;
+  left: 85px;
   position: absolute;
-  top: 10px;
-  width: 200px;
+  top: 25px;
+  width: 150px;
+}
+
+.payment .myOrderText {
+  height: 60px;
+  left: 85px;
+  position: absolute;
+  top: 25px;
+  width: 150px;
   font-size: 20px;
   font-weight: 600;
 }
@@ -332,95 +338,105 @@ a {
 .payment .product {
   background-color: #eeeeee;
   height: 117px;
-  left: 17px;
-  position: absolute;
-  top: 80px;
+  left: 24px;
+  position: relative;
+  top: 75px;
   width: 330px;
 }
 
-.payment .info {
-  background-color: #ffffff;
-  height: 97px;
-  left: 139px;
+.payment .productName {
+  background-color: #fff;
+  font-size: 17px;
   position: absolute;
   top: 10px;
-  width: 172px;
+  left: 10px;
 }
 
-.payment .textWrapper6 {
+.payment .moreButton {
+  position: absolute;
+  left: 260px;
+  top: 15px;
+  font-size: 10px;
+  color: #eee;
+  border: none;
+  background-color: dimgray;
+  width: 50px;
+  height: 20px;
+  border-radius: 5px;
+}
+
+.payment .productInfo {
+  background-color: #ffffff;
+  height: 105px;
+  left: 122px;
+  position: absolute;
+  top: 5px;
+  width: 200px;
+}
+
+.payment .productDetail {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 19.7px;
-  font-weight: 400;
-  height: 47px;
-  left: 30px;
-  letter-spacing: 0;
+  font-size: 14px;
+  left: 10px;
   line-height: normal;
   position: absolute;
-  text-align: center;
-  top: 35px;
-  width: 113px;
+  top: 43px;
+  width: 150px;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: keep-all;
 }
 
 .payment .image {
   background-color: #ffffff;
-  height: 97px;
   left: 18px;
   position: absolute;
   top: 10px;
   width: 105px;
 }
 
-.payment .textWrapper7 {
+.payment .productImg {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 19.7px;
-  font-weight: 400;
-  left: 19px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 37px;
-  width: 66px;
-}
-
-.payment .product2 {
-  background-color: #eeeeee;
-  height: 117px;
-  left: 17px;
-  position: absolute;
-  top: 210px;
-  width: 330px;
+  width: 105px;
+  top: -5px;
+  left: -10px;
+  height: auto;
 }
 
 .payment .buyButton {
   background-color: #eeeeee;
-  height: 71px;
-  left: 283px;
+  height: 60px;
+  left: 330px;
   position: absolute;
   top: 789px;
-  width: 314px;
+  width: 200px;
 }
 
 .payment .buy {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 35px;
-  font-weight: 400;
-  left: 17px;
+  font-size: 20px;
+  font-weight: 600;
+  left: 63px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  text-align: center;
-  top: 12px;
-  width: 280px;
+  top: 17px;
+  width: 200px;
 }
 
 .payment .textWrapper8 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 36.9px;
+  font-size: 30px;
   font-weight: 400;
   left: 419px;
   letter-spacing: 0;

@@ -1,17 +1,16 @@
 import React from "react";
-import "../css/payBuyList.css";
 import { Link } from "react-router-dom";
+import "../css/payBuyList.css";
+
 import { PayItem } from "../components/PayBuyListItem";
 
 export const PayBuyList = () => {
-  //리네임 리팩토링
   const payItemList = [
     {
       payDate: "2024-4-4",
       itemName: "상품명1",
       itemPrice: "50,000",
       carryState: "Delivery begins",
-      
     },
     {
       payDate: "2024-2-4",
