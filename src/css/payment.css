@@ -269,13 +269,13 @@ a {
 .payment .orderSumText {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 600;
   left: 15px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 18px;
+  top: 14px;
   width: 190px;
 }
 
@@ -298,31 +298,41 @@ a {
 
 .payment .title2 {
   background-color: #eeeeee;
-  height: 61px;
+  height: 50px;
   left: 18px;
   overflow: hidden;
   position: absolute;
-  top: 30px;
+  top: 20px;
   width: 328px;
 }
 
 .payment .title3 {
   background-color: #eeeeee;
-  height: 61px;
+  height: 50px;
   left: 18px;
   overflow: hidden;
   position: absolute;
-  top: 115px;
+  top: 85px;
   width: 328px;
 }
 
 .payment .title4 {
   background-color: #eeeeee;
-  height: 61px;
+  height: 50px;
   left: 18px;
   overflow: hidden;
   position: absolute;
-  top: 200px;
+  top: 152px;
+  width: 328px;
+}
+
+.payment .title5 {
+  background-color: #eeeeee;
+  height: 50px;
+  left: 18px;
+  overflow: hidden;
+  position: absolute;
+  top: 220px;
   width: 328px;
 }
 

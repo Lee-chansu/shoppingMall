@@ -67,7 +67,7 @@ export const Cart = () => {
   return (
     <div className="section cart">
       <div className="wrap">
-        <div className="title">장바구니</div>
+        <div className="title">장바구니/결제</div>
         <div className="cartBar">
           <input
             type="checkbox"
@@ -98,7 +98,7 @@ export const Cart = () => {
 
         <div className="buttonGroup">
           <button className="button">
-            <Link to="#" className="buttonText">
+            <Link to="/" className="buttonText">
               취소하기
             </Link>
           </button>

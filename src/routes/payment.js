@@ -7,17 +7,19 @@ import { PaymentItem } from "../components/PaymentItem";
 const paymentItemList = [
   {
     id: 1,
+    carryPrice: 3000,
     productName: "상품명임1",
     productDetail:
       "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
-    src: "",
+    src: "/blouse.jpg",
   },
   {
     id: 2,
+    carryPrice: 3000,
     productName: "상품명임2",
     productDetail:
       "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
-    src: "",
+    src: "/pants.jpg",
   },
 ];
 
@@ -72,24 +74,29 @@ export const Payment = () => {
 
               <div className="productBox">
                 <div className="title2">
-                  <div className="orderSumText">총 주문금액 :</div>
+                  <div className="orderSumText">
+                    총 주문금액 : 
+                  </div>
                 </div>
                 <div className="title3">
-                  <div className="orderSumText">배송비 :</div>
+                  <div className="orderSumText">배송비 : {paymentItemList.carryPrice}</div>
                 </div>
                 <div className="title4">
-                  <div className="orderSumText">총 합계 :</div>
+                  <div className="orderSumText">총 수량 :</div>
+                </div>
+                <div className="title5">
+                  <div className="orderSumText">총 합계 : {paymentItemList.count}</div>
                 </div>
               </div>
             </div>
             <div className="buttonGroup">
               <button className="button">
-                <Link to="#" className="buttonText">
+                <Link to="/payFail" className="buttonText">
                   취소하기
                 </Link>
               </button>
               <button className="button">
-                <Link to="/payment" className="buttonText">
+                <Link to="/paySuccess" className="buttonText">
                   결제하기
                 </Link>
               </button>
