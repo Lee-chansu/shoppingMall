@@ -129,3 +129,25 @@ app.get('/userProfile/:id',async(req,res)=>{
   }
 })
 
+// 유저수정페이지
+app.get('/userEdit/:id',async(req,res)=>{
+  const {id} = req.params
+  const result = await User.findOne({where : {id}})
+  if(result){
+    res.json(result)
+  }
+})
+
+// 유저수정기능
+app.put('/userEdit/:id',async(req,res)=>{
+  const {id} = req.params
+  const editUser = req.body
+  const result = await User.findOne({where : {id}})
+  if(result){
+    for(let key in editUser){
+      result[key] = editUser[key]
+    }
+    await result.save()
+    res.json(result)
+  }
+})

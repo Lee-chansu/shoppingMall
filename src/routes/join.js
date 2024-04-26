@@ -47,29 +47,31 @@ export const Join = () => {
     else if(!newUser.gender){
       console.log(newUser.gender)
       alert('성별을 선택하시오')
+    }else{
+      try{
+        const response = await fetch('http://localhost:5000/join/',{
+        method : 'POST',
+        headers:{'Content-Type' : 'application/json'},
+        body : JSON.stringify(newUser)
+        })
+        
+        if(!response.ok){
+          throw new Error('서버에서 응답을 받을 수 없습니다')
+        }else{
+          let no = await response.json()
+          if(no.result == false){
+            alert('회원가입이 완료')
+            navigate('/')
+          }else{
+            alert('기존에 있는 아이디입니다')
+          }
+        }
+      }catch(error){
+        alert('회원가입 중 오류가 발생했습니다')
+      }
     }
     
-    try{
-      const response = await fetch('http://localhost:5000/join/',{
-      method : 'POST',
-      headers:{'Content-Type' : 'application/json'},
-      body : JSON.stringify(newUser)
-      })
-      
-      if(!response.ok){
-        throw new Error('서버에서 응답을 받을 수 없습니다')
-      }else{
-        let no = await response.json()
-        if(no.result == false){
-          alert('회원가입이 완료')
-          navigate('/')
-        }else{
-          alert('기존에 있는 아이디입니다')
-        }
-      }
-    }catch(error){
-      alert('회원가입 중 오류가 발생했습니다')
-    }
+    
   }
 
 

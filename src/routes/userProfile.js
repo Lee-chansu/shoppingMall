@@ -14,17 +14,16 @@ export const UserProfile = () => {
   const [userProfile,setUserProfile] = useState({});
   const [id, setId] = useState()
   
-  
-  const getUserProfile = async(id)=>{
-    
-    const user = await userFetch(id)
-    setUserProfile(user)
-  }
-
   const userFetch = async()=>{
     const response = await fetch(`http://localhost:5000/userProfile/${id}`)
     const body = await response.json()
     return body
+  }
+
+  const getUserProfile = async(id)=>{
+    
+    const user = await userFetch(id)
+    setUserProfile(user)
   }
 
   useEffect(()=>{
