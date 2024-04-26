@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       defaultValue: 0
     },
-    mianImage: {
+    mainImage: {
       type: DataTypes.STRING(255)
     },
     subimage1: {
