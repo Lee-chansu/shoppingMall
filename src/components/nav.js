@@ -25,7 +25,6 @@ export const Nav = () => {
             <>
               <Link className="linkProfile" to="/userInfo">
                 <img src="" alt="유저프로필" />
-                <p>유저프로필</p>
               </Link>
             </>
           ) : (
