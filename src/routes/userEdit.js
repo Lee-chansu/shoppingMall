@@ -12,7 +12,6 @@ export const UserEdit = () => {
   const [getUser,setGetUser] = useState({})
   const [id, setId] = useState()
   const [editUser,setEditUser] = useState({})
-  
 
   // 해당유저 정보받아오는 패치
   const getUserFetch = async()=>{
@@ -25,7 +24,7 @@ export const UserEdit = () => {
     const get = await getUserFetch()
     setGetUser(get)
   }
-  
+
   useEffect(()=>{
     const token = sessionStorage.getItem('token')
     if(!token){
@@ -37,10 +36,22 @@ export const UserEdit = () => {
     }
   },[id])
 
+  useEffect(()=>{
+    const editDefault = {
+      password : '',
+      passwordCheck : '',
+      email : getUser.email,
+      phoneNumber : getUser.phoneNumber,
+      address : getUser.address,
+      gender : getUser.gender
+    }
+    setEditUser(editDefault)
+  },[getUser])
+  
+
   const valueChange = (e)=>{
     const {name, value} = e.target
     setEditUser({...editUser,[name]:value})
-    
   }
 
   const buttonClick = async(e)=>{
@@ -98,19 +109,20 @@ export const UserEdit = () => {
           </div>
           <div className="boxPhone">
             <label htmlFor="phone" className="txt">전화번호를 입력해주세요</label>
-            <input id="phone" className="input"  name="phoneNumber" onChange={valueChange} value={editUser.phoneNumber}/>
+            <input id="phone" className="input"  name="phoneNumber" onChange={valueChange} value={editUser.phoneNumber} />
           </div>
           <div className="boxAddress">
             <label htmlFor="address" className="txt">주소를 입력해주세요</label>
-            <input id="address" className="input"  name = "address" onChange={valueChange} value={editUser.address}/>
+            <input id="address" className="input"  name = "address" onChange={valueChange} value={editUser.address} />
           </div>
           <div className="selectGender">
             <div className="txt">성별을 선택해주세요</div>
             <div className="inputRadio">
+              
               <label htmlFor="male" className="textWrapper2">남</label>
-              <input type="radio" name="gender" className="radioMale" value="M" onChange = {valueChange} checked/>
+              <input type="radio" name="gender" className="radioMale" value="M" onChange = {valueChange} checked = {editUser.gender == 'M'}/>
               <label htmlFor="female" className="textWrapper">여</label>
-              <input type="radio" name="gender" className="radioFemale" value="F" onChange = {valueChange}/>
+              <input type="radio" name="gender" className="radioFemale" value="F" onChange = {valueChange} checked = {editUser.gender == 'F'}/>
             </div>
           </div>
           <div className="editForm">

@@ -148,6 +148,5 @@ app.put('/userEdit/:id',async(req,res)=>{
       result[key] = editUser[key]
     }
     await result.save()
-    res.json(result)
   }
 })
