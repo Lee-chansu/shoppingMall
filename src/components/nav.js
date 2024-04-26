@@ -1,4 +1,3 @@
-import React from "react";
 import "../css/nav.css";
 import { Link } from "react-router-dom";
 
@@ -13,7 +12,8 @@ export const Nav = () => {
             <h1 className="text logo">logo</h1>
           </div>
           <div className="category">
-            {category.map((el) => {
+            {
+            category.map((el,i) => {
               return (
                 <ul className="wrapper">
                   <li className="text">{el}</li>
@@ -21,9 +21,6 @@ export const Nav = () => {
               );
             })}
           </div>
-          {
-            
-          }
           <Link className="link" to="/login">
             <div className="wrapper">
               <div className="text">로그인</div>

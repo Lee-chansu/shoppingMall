@@ -46,7 +46,7 @@
 .productAdd .inner .wrap.img {
   justify-content: flex-start;
 }
-.productAdd .inner .wrap.img .addImg{
+.productAdd .inner .wrap.img .editImg{
   padding: 20px;
   margin-left: 80px;
   background-color: #eee;

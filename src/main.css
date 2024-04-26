@@ -1,65 +1,24 @@
-.main-notlogin {
+.main {
   background-color: hsl(0, 0%, 100%);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
 }
 
-.main-notlogin .div {
-  width: 100%;
-  position: relative;
-  background-color: #ffffff;
-}
-
-.visual {
-  position: absolute;
-  left: -110px;
-  top: 0;
+.main .visual {
   width: 100vw;
-  height: 200px;
+  height: 600px;
   margin: 20px 0;
   background-color: #eeeeee;
 }
 
-.main-notlogin .wrap {
+.main .wrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  margin-top: 300px;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  padding: 20px;
+  margin: 0 5px;
 }
 
-.main-notlogin .product {
-  background-color: #eeeeee;
-}
-
-.main-notlogin .image {
-  background-color: #ffffff;
-}
-
-.main-notlogin .text-wrapper {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: normal;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.main-notlogin .info-box {
-  background-color: #ffffff;
-}
-
-.main-notlogin .product-name {
-  background-color: #eeeeee;
-}
-
-.main-notlogin .product-info {
-  background-color: #eeeeee;
-}
-
-.main-notlogin .product {
-  background-color: #eeeeee;
+.main .wrap .link{
+  max-width: 300px;
 }

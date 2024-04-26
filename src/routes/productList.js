@@ -1,224 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../css/productList.css";
 
+//컴포넌트
+import { Product } from "../components/product";
+import { Nav } from "../components/nav";
+import { Detail } from "../components/detail";
+
 export const ProductList = () => {
+  const [productList, setProductList] = useState([]);
+
+  const loadProduct = async () => {
+    const getProduct = await fetch("https://hotcake.loca.lt/Product").then((res) =>
+      res.json()
+    );
+    setProductList(getProduct);
+  };
+
+  useEffect(() => {
+    loadProduct();
+  }, []);
+
   return (
-    <div className="productList">
-      <div className="div">
-        <div className="productWrap">
-          <div className="product">
-            <div className="image">
-              <div className="textWrapper">사진</div>
-            </div>
-            <div className="infoBox">
-              <div className="productName">
-                <div className="textWrapper2">상품이름</div>
-              </div>
-              <div className="productInfo">
-                <div className="textWrapper3">상품설명</div>
-              </div>
-            </div>
+    <>
+      <Nav></Nav>
+      <Detail></Detail>
+      <div className="productList">
+        <div className="inner">
+          <div className="addBtnForm">
+            <Link to="/productList/add">
+              <button>상품 추가</button>
+            </Link>
           </div>
-          <div className="product2">
-            <div className="image">
-              <div className="textWrapper">사진</div>
-            </div>
-            <div className="infoBox">
-              <div className="productName">
-                <div className="textWrapper2">상품이름</div>
-              </div>
-              <div className="productInfo">
-                <div className="textWrapper3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product3">
-            <div className="divWrapper">
-              <div className="textWrapper">사진</div>
-            </div>
-            <div className="infoBox2">
-              <div className="productName">
-                <div className="textWrapper2">상품이름</div>
-              </div>
-              <div className="productInfo">
-                <div className="textWrapper3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product4">
-            <div className="image">
-              <div className="textWrapper">사진</div>
-            </div>
-            <div className="infoBox">
-              <div className="productName">
-                <div className="textWrapper2">상품이름</div>
-              </div>
-              <div className="productInfo">
-                <div className="textWrapper3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product5">
-            <div className="image">
-              <div className="textWrapper">사진</div>
-            </div>
-            <div className="infoBox">
-              <div className="productName">
-                <div className="textWrapper2">상품이름</div>
-              </div>
-              <div className="productInfo">
-                <div className="textWrapper3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product6">
-            <div className="image">
-              <div className="textWrapper">사진</div>
-            </div>
-            <div className="infoBox">
-              <div className="productName">
-                <div className="textWrapper2">상품이름</div>
-              </div>
-              <div className="productInfo">
-                <div className="textWrapper3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product7">
-            <div className="divWrapper">
-              <div className="textWrapper">사진</div>
-            </div>
-            <div className="infoBox2">
-              <div className="productName">
-                <div className="textWrapper2">상품이름</div>
-              </div>
-              <div className="productInfo">
-                <div className="textWrapper3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product8">
-            <div className="image">
-              <div className="textWrapper">사진</div>
-            </div>
-            <div className="infoBox">
-              <div className="productName">
-                <div className="textWrapper2">상품이름</div>
-              </div>
-              <div className="productInfo">
-                <div className="textWrapper3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product9">
-            <div className="image">
-              <div className="textWrapper">사진</div>
-            </div>
-            <div className="infoBox">
-              <div className="productName">
-                <div className="textWrapper2">상품이름</div>
-              </div>
-              <div className="productInfo">
-                <div className="textWrapper3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product9">
-            <div className="image">
-              <div className="textWrapper">사진</div>
-            </div>
-            <div className="infoBox">
-              <div className="productName">
-                <div className="textWrapper2">상품이름</div>
-              </div>
-              <div className="productInfo">
-                <div className="textWrapper3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product10">
-            <div className="image">
-              <div className="textWrapper">사진</div>
-            </div>
-            <div className="infoBox">
-              <div className="productName">
-                <div className="textWrapper2">상품이름</div>
-              </div>
-              <div className="productInfo">
-                <div className="textWrapper3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product11">
-            <div className="divWrapper">
-              <div className="textWrapper">사진</div>
-            </div>
-            <div className="infoBox2">
-              <div className="productName">
-                <div className="textWrapper2">상품이름</div>
-              </div>
-              <div className="productInfo">
-                <div className="textWrapper3">상품설명</div>
-              </div>
-            </div>
-          </div>
-          <div className="product12">
-            <div className="infoBox3">
-              <div className="productName">
-                <div className="textWrapper2">상품이름</div>
-              </div>
-              <div className="productInfo">
-                <div className="textWrapper3">상품설명</div>
-              </div>
-            </div>
-            <div className="image2">
-              <div className="textWrapper">사진</div>
-            </div>
-          </div>
-        </div>
-        <div className="detail">
-          <div className="divWrapper2">
-            <div className="textWrapper4">detail</div>
-          </div>
-          <div className="divWrapper3">
-            <div className="textWrapper5">detail</div>
-          </div>
-          <div className="divWrapper4">
-            <div className="textWrapper5">detail</div>
-          </div>
-          <div className="divWrapper5">
-            <div className="textWrapper5">detail</div>
-          </div>
-          <div className="divWrapper6">
-            <div className="textWrapper5">detail</div>
-          </div>
-        </div>
-        <div className="category">
-          <div className="divWrapper2">
-            <div className="textWrapper6">category</div>
-          </div>
-          <div className="divWrapper3">
-            <div className="textWrapper6">category</div>
-          </div>
-          <div className="divWrapper4">
-            <div className="textWrapper6">category</div>
-          </div>
-          <div className="divWrapper5">
-            <div className="textWrapper6">category</div>
-          </div>
-          <div className="divWrapper6">
-            <div className="textWrapper6">category</div>
-          </div>
-        </div>
-        <div className="nav">
-          <div className="user">
-            <div className="textWrapper7">유저정보</div>
-          </div>
-          <div className="logo">
-            <div className="textWrapper8">logo</div>
+          <div className="productWrap">
+            {productList.map((product) => {
+              return (
+                <Link
+                  key={product.id}
+                  className="link"
+                  to="/productList/detail/description"
+                >
+                  <Product key={product.id} product={product}></Product>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
