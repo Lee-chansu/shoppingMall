@@ -15,19 +15,20 @@ export const SubImagePreview = ({ subImageId , index }) => {
 
   return (
     <>
+    
       <label for={subImageId}>
-        <div className="addImg">+</div>
+        <div className="addImg" style={(subImageId === 'subImage1') ? {"margin-left" : "5px"} : {} }>+</div>
       </label>
       <input
         id={subImageId}
         type="file"
-        name="subImage"
+        name={subImageId}
         onChange={previewImage}
         ref={subImgRef}
       />
       <img
         style={!subImageFile ? { display: "none" } : { display: "block" }}
-        className="previewImg main"
+        className="previewImg subImage"
         src={subImageFile}
         alt="상품 이미지"
       />

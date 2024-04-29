@@ -1,7 +1,8 @@
 .productAdd {
   background-color: hsl(0, 0%, 100%);
 }
-.productAdd .inner {}
+.productAdd .inner {
+}
 .productAdd .inner .wrap {
   display: flex;
 }
@@ -19,10 +20,14 @@
 }
 .productAdd .inner .wrap .boxWrap {
   width: 80%;
+  min-height: 57px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   font-size: 32px;
+}
+.productAdd .inner .wrap .boxWrap .box:first-of-type {
+  margin-left: 5px;
 }
 
 .productAdd .inner .wrap .box {
@@ -49,6 +54,9 @@
   background-color: #eee;
 }
 
+.productAdd .inner .wrap.stock .boxWrap {
+  justify-content: space-between;
+}
 .productAdd .inner .wrap.stock .boxWrap .box {
   margin: 0 10px;
   width: 30%;
@@ -82,9 +90,7 @@
   margin-left: 100px;
   background-color: #eee;
 }
-.productAdd .inner .wrap.img .boxWrap .addImg.first {
-  margin-left: 0;
-}
+
 .productAdd .inner .wrap.img .addImg:hover {
   background-color: #ddd;
   cursor: pointer;
@@ -97,8 +103,14 @@
 }
 .productAdd .inner .wrap.img .previewImg.main {
   display: block;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
+  margin: 0 50px;
+}
+.productAdd .inner .wrap.img .previewImg.subImage {
+  display: block;
+  width: 80px;
+  height: 80px;
   margin: 0 50px;
 }
 .productAdd .inner .wrap.img input[type="file"] {

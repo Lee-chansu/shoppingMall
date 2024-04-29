@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../css/productAdd.css";
 
 //컴포넌트
@@ -11,13 +11,20 @@ export const ProductAdd = () => {
   const [checkCategory, setCheckCategory] = useState("");
 
   const [detailBar, setDetailBar] = useState([]);
+  const detail = {
+    아우터: ["코트", "패딩"],
+    상의: ["반팔", "긴팔", "티셔츠"],
+    하의: ["청바지", "슬랙스"],
+    신발: ["샌들", "런닝화", "구두"],
+    악세사리: ["귀걸이", "가방", "피어싱", "모자"],
+  };
   const [checkDetail, setCheckDetail] = useState("");
 
   const [mainImageFile, setMainImageFile] = useState("");
   const mainImgRef = useRef();
 
   const subImageCount = [0, 1, 2];
-  const subImageId = ['subImage1', 'subImage2', 'subImage3'];
+  const subImageId = ["subImage1", "subImage2", "subImage3"];
 
   const previewMainImg = () => {
     const file = mainImgRef.current.files[0];
@@ -28,14 +35,36 @@ export const ProductAdd = () => {
     };
   };
 
-  const checkOnlyOne = (checkThis) => {
-    setCheckCategory(checkThis.name);
-    const checkBox = document.getElementsByClassName("checkBox");
+  const checkOnlyOneCategory = (checkThis) => {
+    checkThis.checked === false
+      ? setCheckCategory("")
+      : setCheckCategory(checkThis.name);
+    const checkBox = document.getElementsByClassName("checkBoxCategory");
     for (let ch of checkBox) {
       if (ch !== checkThis) {
         ch.checked = false;
       }
     }
+  };
+
+  useEffect(() => {
+    showDetailBar();
+  }, [checkCategory]);
+
+  const checkOnlyOneDetail = (checkThis) => {
+    checkThis.checked === false
+      ? setCheckDetail("")
+      : setCheckDetail(checkThis.name);
+    const checkBox = document.getElementsByClassName("checkBoxDetail");
+    for (let ch of checkBox) {
+      if (ch !== checkThis) {
+        ch.checked = false;
+      }
+    }
+  };
+
+  const showDetailBar = () => {
+    checkCategory !== "" ? setDetailBar(detail.신발) : setDetailBar([]);
   };
 
   return (
@@ -54,10 +83,10 @@ export const ProductAdd = () => {
                     </label>
                     <input
                       type="checkbox"
-                      className="checkBox"
+                      className="checkBoxCategory"
                       name={el}
                       value={el}
-                      onChange={(e) => checkOnlyOne(e.target)}
+                      onChange={(e) => checkOnlyOneCategory(e.target)}
                     />
                   </div>
                 );
@@ -67,14 +96,24 @@ export const ProductAdd = () => {
           <div className="wrap">
             <h2 className="title">디테일</h2>
             <div className="boxWrap">
-              {detailBar.map((el) => {
-                return (
-                  <div className="box" key={el}>
-                    <p className="text">{el}</p>
-                    <input type="checkbox" name={el} value={el} />
-                  </div>
-                );
-              })}
+              {detailBar.length === 0 ? (
+                <p className="text">카테고리를 선택해주세요</p>
+              ) : (
+                detailBar.map((el, index) => {
+                  return (
+                    <div className="box" key={el}>
+                      <p className="text">{el}</p>
+                      <input
+                        type="checkbox"
+                        className="checkBoxDetail"
+                        name={el}
+                        value={el}
+                        onChange={(e) => checkOnlyOneDetail(e.target)}
+                      />
+                    </div>
+                  );
+                })
+              )}
             </div>
           </div>
           <div className="wrap">
@@ -89,7 +128,7 @@ export const ProductAdd = () => {
               <input type="text" name="price" />
             </div>
           </div>
-          <div className="wrap stock boxWrap">
+          <div className="wrap stock">
             <h2 className="title">재고수량</h2>
             <div className="boxWrap">
               <div className="box">
@@ -124,7 +163,9 @@ export const ProductAdd = () => {
             <h2 className="title">메인이미지 등록</h2>
             <div className="boxWrap">
               <label for="mainImage">
-                <div className="addImg 1">+</div>
+                <div className="addImg" style={{ "margin-left": "5px" }}>
+                  +
+                </div>
               </label>
               <img
                 style={
@@ -148,7 +189,10 @@ export const ProductAdd = () => {
             <div className="boxWrap">
               {subImageCount.map((el, index) => {
                 return (
-                  <SubImagePreview key={el} subImageId={subImageId[index]} ></SubImagePreview>
+                  <SubImagePreview
+                    key={el}
+                    subImageId={subImageId[index]}
+                  ></SubImagePreview>
                 );
               })}
             </div>
@@ -160,9 +204,7 @@ export const ProductAdd = () => {
             </div>
           </div>
           <div className="btnForm">
-            <Link to="#">
-              <button>추가</button>
-            </Link>
+            <button>추가</button>
             <Link to="/productList">
               <button>취소</button>
             </Link>
