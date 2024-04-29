@@ -29,48 +29,60 @@
   width: 1088px;
 }
 
-.payBuyList .overlap {
-  background-color: #d9d9d9;
-  height: 77px;
+.payBuyList .productBox1 {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  height: 65px;
+  left: 35px;
+  position: absolute;
+  top: 20px;
+  width: 575px;
+}
+
+.payBuyList .productBox2 {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  height: 65px;
   left: 38px;
   position: absolute;
   top: 111px;
   width: 575px;
 }
 
-.payBuyList .textWrapper {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 44.2px;
-  font-weight: 400;
-  left: 11px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 10px;
-  white-space: nowrap;
-  width: 233px;
-}
-
-.payBuyList .overlapGroup {
-  background-color: #d9d9d9;
-  height: 77px;
+.payBuyList .productBox3 {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  height: 65px;
   left: 38px;
   position: absolute;
   top: 208px;
   width: 575px;
 }
 
-.payBuyList .divWrapper {
-  background-color: #d9d9d9;
-  height: 77px;
+.payBuyList .productBox4 {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  height: 65px;
   left: 38px;
   position: absolute;
   top: 305px;
   width: 575px;
 }
 
-.payBuyList .textWrapper2 {
+.payBuyList .productName {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 25px;
+  font-weight: 500;
+  left: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 15px;
+  white-space: nowrap;
+}
+
+.payBuyList .payDate {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 44.2px;
@@ -82,15 +94,6 @@
   top: 11px;
   white-space: nowrap;
   width: 233px;
-}
-
-.payBuyList .overlap2 {
-  background-color: #d9d9d9;
-  height: 77px;
-  left: 35px;
-  position: absolute;
-  top: 13px;
-  width: 575px;
 }
 
 .payBuyList .textWrapper3 {
@@ -116,13 +119,13 @@
   width: 366px;
 }
 
-.payBuyList .overlap3 {
+.payBuyList .delBtn {
   background-color: #ffffff;
-  height: 57px;
+  height: 30px;
   left: 1233px;
   position: absolute;
   top: 41px;
-  width: 46px;
+  width: 30px;
 }
 
 .payBuyList .textWrapper4 {
@@ -168,12 +171,12 @@
   width: 39px;
 }
 
-.payBuyList .overlap5 {
-  height: 57px;
+.payBuyList .selectBox {
+  height: 30px;
   left: 32px;
   position: absolute;
   top: 43px;
-  width: 46px;
+  width: 30px;
 }
 
 .payBuyList .overlap6 {
@@ -225,17 +228,14 @@
   width: 357px;
 }
 
-.payBuyList .textWrapper8 {
+.payBuyList .title {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 39.3px;
-  font-weight: 400;
-  /* left: 697px; */
+  font-size: 30px;
+  font-weight: 600;
   letter-spacing: 0;
   line-height: normal;
-  /* position: absolute; */
   text-align: center;
-  /* top: 11px; */
   margin: 40px auto;
   white-space: nowrap;
   width: 357px;

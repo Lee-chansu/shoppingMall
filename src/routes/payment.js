@@ -8,7 +8,7 @@ const paymentItemList = [
   {
     id: 1,
     carryPrice: 3000,
-    productName: "상품명임1",
+    productName: "샌드 베이지 숏츠 면 반바지",
     productDetail:
       "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
     src: "/blouse.jpg",
@@ -16,10 +16,18 @@ const paymentItemList = [
   {
     id: 2,
     carryPrice: 3000,
-    productName: "상품명임2",
+    productName: "여름 필수템 베이직 무지 티셔츠",
     productDetail:
       "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
     src: "/pants.jpg",
+  },
+  {
+    id: 3,
+    carryPrice: 3000,
+    productName: "여리여리 갬성 오프숄더 블라우스",
+    productDetail:
+      "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
+    src: "/t-shirt.jpg",
   },
 ];
 
@@ -74,18 +82,20 @@ export const Payment = () => {
 
               <div className="productBox">
                 <div className="title2">
-                  <div className="orderSumText">
-                    총 주문금액 : 
-                  </div>
+                  <div className="orderSumText">총 주문금액 :</div>
                 </div>
                 <div className="title3">
-                  <div className="orderSumText">배송비 : {paymentItemList.carryPrice}</div>
+                  <div className="orderSumText">
+                    배송비 : {paymentItemList.carryPrice}
+                  </div>
                 </div>
                 <div className="title4">
                   <div className="orderSumText">총 수량 :</div>
                 </div>
                 <div className="title5">
-                  <div className="orderSumText">총 합계 : {paymentItemList.count}</div>
+                  <div className="orderSumText">
+                    총 합계 : {paymentItemList.count}
+                  </div>
                 </div>
               </div>
             </div>

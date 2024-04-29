@@ -348,10 +348,10 @@ a {
 .payment .product {
   background-color: #eeeeee;
   height: 117px;
-  left: 24px;
+
   position: relative;
   top: 75px;
-  width: 330px;
+  width: 335px;
 }
 
 .payment .productName {

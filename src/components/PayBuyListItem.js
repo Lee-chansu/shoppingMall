@@ -1,25 +1,34 @@
 import React from "react";
 
+function delBtn() {
+  /* 버튼 클릭시 {val} 한개 삭제 기능 구현 */
+}
+
 export const PayItem = ({ val }) => {
   return (
     <div className="payItem">
-      <input type="checkbox" className="overlap5" name="products"></input>
+      <input type="checkbox" className="selectBox" name="select"></input>
       <div className="itemInfo">
-        <div className="overlap2">
-          <div className="textWrapper2">결제일시 : {val.payDate}</div>
+        <div className="productBox1">
+          <div className="productName">결제일시 : {val.payDate}</div>
         </div>
-        <div className="overlap">
-          <div className="textWrapper">상품명 : {val.itemName}</div>
+        <div className="productBox2">
+          <div className="productName">상품명 : {val.itemName}</div>
         </div>
-        <div className="overlapGroup">
-          <div className="textWrapper">상품가격 : {val.itemPrice}</div>
+        <div className="productBox3">
+          <div className="productName">상품가격 : {val.itemPrice}</div>
         </div>
-        <div className="divWrapper">
-          <div className="textWrapper">배송상태 : {val.carryState}</div>
+        <div className="productBox4">
+          <div className="productName">배송상태 : {val.carryState}</div>
         </div>
-        <div className="imageBox"></div>
+        <img
+          className="imageBox"
+          src={`${process.env.PUBLIC_URL}/img${val.src}`}
+        />
       </div>
-      <button className="overlap3">X</button>
+      <button className="delBtn" onClick={delBtn}>
+        X
+      </button>
     </div>
   );
 };
