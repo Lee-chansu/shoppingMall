@@ -4,6 +4,7 @@ import "../css/payBuyList.css";
 
 import { PayItem } from "../components/PayBuyListItem";
 import { Nav } from "../components/nav";
+import { CartItem } from "../components/CartItem";
 
 export const PayBuyList = () => {
   const payItemList = [
@@ -35,10 +36,20 @@ export const PayBuyList = () => {
       <div className="payBuyList">
         <div className="div">
           <div className="title">구매 내역</div>
-
+          
           {payItemList.map((val, idx) => {
             return <PayItem val={val} key={idx} />;
           })}
+
+          <CartItem val={{
+            id: 3,
+            price: 45000,
+            name: "여리여리 갬성 오프숄더 블라우스",
+            carryPrice: 3000,
+            count: 1,
+            src: "/blouse.jpg",
+            isChecked: false,
+          }} countAble={false}/>
 
           <div className="overlap6">
             <Link to="/" className="price">

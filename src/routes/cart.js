@@ -10,29 +10,35 @@ export const Cart = () => {
     {
       id: 1,
       price: 50000,
-      name: "샌드 베이지 숏츠 면 반바지",
+      productName: "샌드 베이지 숏츠 면 반바지",
       carryPrice: 3000,
       count: 1,
       src: "/pants.jpg",
       isChecked: false,
+      productDetail:
+      "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
     },
     {
       id: 2,
       price: 25000,
-      name: "여름 필수템 베이직 무지 티셔츠",
+      productName: "여름 필수템 베이직 무지 티셔츠",
       carryPrice: 3000,
       count: 1,
       src: "/t-shirt.jpg",
       isChecked: false,
+      productDetail:
+      "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
     },
     {
       id: 3,
       price: 45000,
-      name: "여리여리 갬성 오프숄더 블라우스",
+      productName: "여리여리 갬성 오프숄더 블라우스",
       carryPrice: 3000,
       count: 1,
       src: "/blouse.jpg",
       isChecked: false,
+      productDetail:
+      "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
     },
   ]);
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/payment.css";
 
@@ -7,31 +7,52 @@ import { PaymentItem } from "../components/PaymentItem";
 const paymentItemList = [
   {
     id: 1,
-    carryPrice: 3000,
+    price: 50000,
     productName: "샌드 베이지 숏츠 면 반바지",
+    carryPrice: 3000,
+    count: 1,
+    src: "/blouse.jpg",
     productDetail:
       "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
-    src: "/blouse.jpg",
   },
   {
     id: 2,
-    carryPrice: 3000,
+    price: 25000,
     productName: "여름 필수템 베이직 무지 티셔츠",
+    carryPrice: 3000,
+    count: 1,
+    src: "/pants.jpg",
     productDetail:
       "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
-    src: "/pants.jpg",
   },
   {
     id: 3,
-    carryPrice: 3000,
+    price: 45000,
     productName: "여리여리 갬성 오프숄더 블라우스",
+    carryPrice: 3000,
+    count: 1,
+    src: "/t-shirt.jpg",
     productDetail:
       "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
-    src: "/t-shirt.jpg",
   },
 ];
 
+let total = 0;
+paymentItemList.forEach((val, idx)=>{
+  total += val.price
+})
+console.log(total)
+
 export const Payment = () => {
+
+  //직접입력
+  const [carryMessageBox, setCarryMessageBox] = useState('');
+  const [isDirectInput, setIsDirectInput] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
+  const handleChange = (e) => {
+    setSelectedOption(e.target.value)
+  }
+
   return (
     <div className="payment">
       <div className="paymentInnerWrapper">
@@ -50,19 +71,20 @@ export const Payment = () => {
               <div className="carryBox">
                 <div className="carryRequest">
                   배송시 요청사항을 선택해주세요.
-                  <select className="carrySelect">
-                    <option value="CarryMessage">선택해주세요</option>
-                    <option value="CarryMessage">문 앞에 놔주세요</option>
-                    <option value="CarryMessage">직접 받을게요</option>
-                    <option value="CarryMessage">우편함에 놔주세요</option>
-                    <option value="CarryMessage">
+                  <select className="carrySelect" value={selectedOption} onChange={handleChange}>
+                    <option value="CarryMessage1">선택해주세요</option>
+                    <option value="CarryMessage2">문 앞에 놔주세요</option>
+                    <option value="CarryMessage3">직접 받을게요</option>
+                    <option value="CarryMessage4">우편함에 놔주세요</option>
+                    <option value="CarryMessage5">
                       문 앞 배송 후 문자주세요
                     </option>
-                    <option value="CarryMessage">
+                    <option value="CarryMessage6">
                       부재시 경비실에 맡겨주세요
                     </option>
-                    <option value="CarryMessage">직접입력</option>
+                    <option value="CarryMessage7">직접입력</option>
                   </select>
+                  {selectedOption === "CarryMessage7" && <input placeholder="직접입력하세요"></input>}
                 </div>
               </div>
               <div className="howPayBox">
@@ -111,7 +133,7 @@ export const Payment = () => {
 
               <div className="productBox">
                 <div className="title2">
-                  <div className="orderSumText">총 주문금액</div>
+                  <div className="orderSumText">총 주문금액{total}</div>
                 </div>
                 <div className="title3">
                   <div className="orderSumText">
@@ -123,7 +145,7 @@ export const Payment = () => {
                 </div>
                 <div className="title5">
                   <div className="orderSumText">
-                    총 합계{paymentItemList.count}
+                    총 합계
                   </div>
                 </div>
               </div>
