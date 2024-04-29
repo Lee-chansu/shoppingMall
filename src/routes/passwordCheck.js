@@ -58,8 +58,8 @@ export const PasswordCheck = () => {
             throw new Error('서버에서 응답을 받을 수 없습니다')
           }
         }else{
-          alert('비밀번호 일치 / 프로필로 이동합니다')
-          navigate('/userProfile')
+          alert('비밀번호 일치 / 수정페이지로 이동합니다')
+          navigate('/userEdit')
         }
 
       } catch (error) {
