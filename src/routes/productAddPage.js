@@ -17,6 +17,7 @@ export const ProductAdd = () => {
   const mainImgRef = useRef();
 
   const subImageCount = [0, 1, 2];
+  const subImageId = ['subImage1', 'subImage2', 'subImage3'];
 
   const previewMainImg = () => {
     const file = mainImgRef.current.files[0];
@@ -147,7 +148,7 @@ export const ProductAdd = () => {
             <div className="boxWrap">
               {subImageCount.map((el, index) => {
                 return (
-                  <SubImagePreview key={el} index={index}></SubImagePreview>
+                  <SubImagePreview key={el} subImageId={subImageId[index]} ></SubImagePreview>
                 );
               })}
             </div>

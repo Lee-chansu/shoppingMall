@@ -1,10 +1,8 @@
 import { useRef, useState } from "react";
 
-export const SubImagePreview = ({ index }) => {
+export const SubImagePreview = ({ subImageId , index }) => {
   const [subImageFile, setSubImageFile] = useState("");
-  let [subImageIdCount, setSubImageIdCount] = useState(0);
-  let [subImageCount, setSubImageCount] = useState(0);
-  const subImgRef = useRef();
+  let subImgRef = useRef();
 
   const previewImage = () => {
     const file = subImgRef.current.files[0];
@@ -17,26 +15,22 @@ export const SubImagePreview = ({ index }) => {
 
   return (
     <>
-      <label for="subImage">
+      <label for={subImageId}>
         <div className="addImg">+</div>
       </label>
+      <input
+        id={subImageId}
+        type="file"
+        name="subImage"
+        onChange={previewImage}
+        ref={subImgRef}
+      />
       <img
         style={!subImageFile ? { display: "none" } : { display: "block" }}
         className="previewImg main"
         src={subImageFile}
         alt="상품 이미지"
       />
-      {Array.from({ length: subImageCount }).map((el, index) => {
-        return (
-          <input
-            id="subImage"
-            type="file"
-            name="subImage"
-            onChange={previewImage}
-            ref={subImageFile}
-          />
-        );
-      })}
     </>
   );
 };

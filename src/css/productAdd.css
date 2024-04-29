@@ -49,6 +49,12 @@
   background-color: #eee;
 }
 
+.productAdd .inner .wrap.stock .boxWrap .box {
+  margin: 0 10px;
+  width: 30%;
+  height: 50px;
+  background-color: #fff;
+}
 .productAdd .inner .wrap.stock select {
   margin: 0 10px;
   width: 100%;
@@ -69,13 +75,14 @@
 }
 .productAdd .inner .wrap.img .boxWrap {
   justify-content: flex-start;
+  flex-flow: wrap;
 }
 .productAdd .inner .wrap.img .boxWrap .addImg {
   padding: 20px;
   margin-left: 100px;
   background-color: #eee;
 }
-.productAdd .inner .wrap.img .boxWrap .addImg.1 {
+.productAdd .inner .wrap.img .boxWrap .addImg.first {
   margin-left: 0;
 }
 .productAdd .inner .wrap.img .addImg:hover {
