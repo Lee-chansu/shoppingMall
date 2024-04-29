@@ -136,6 +136,13 @@ app.get("/userProfile/:id", async (req, res) => {
   }
 });
 
+//제품 추가 페이지
+app.post("addProduct", async (req, res) => {
+  const newProduct = req.body;
+  
+  await Product.create(newProduct);
+});
+
 // 각 화면들
 
 app.get("/User", async (req, res) => {
