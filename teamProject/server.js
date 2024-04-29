@@ -24,8 +24,11 @@ const sessionOption = {
   cookie : {maxAge : 60 * 1000},
   store : new MySQLStore(dbOption)
 }
-
+// 토큰 비밀번호
 const JWT_SECRET_KEY = '!@#123'
+// 난수생성용모듈
+const crypto = require('crypto')
+
 
 //db
 const db = require("./models")
@@ -163,5 +166,50 @@ app.post('/passwordCheck/:id',async(req,res)=>{
     }else{
       res.status(401).json({message : '비밀번호가 일치하지 않습니다'})
     }
+  }
+})
+
+
+// 이메일 인증을 위한 호출
+
+const nodemailer = require('nodemailer')
+require('dotenv').config()
+const { email_service, admin, pass} = process.env; // env 파일 데이터가져오기
+
+const transporter = nodemailer.createTransport({ // 이메일 설정
+  service : email_service, // naver smtp 사용한다는 기능 / service 로 'naver' 정해두면 port 와 host 생략가능
+  auth : {
+    user : admin, // 작성자 이메일
+    pass : pass // 비밀번호
+  }
+})
+
+
+// 아이디찾기
+app.post('/findId',async(req,res)=>{
+  
+  const {userName, email} = req.body
+  const result = await User.findOne({where : {userName, email}})
+  let passNum 
+  if(result){
+    const randombyte = crypto.randomBytes(3);
+    const randomNumber = randombyte.toString('hex')
+    passNum = randomNumber
+    const mailOptions = { // 이메일 발신자/수신자/내용 설정
+      from : admin, // 작성자
+      to : email, // 수신자
+      subject : '@@쇼핑몰에서 인증번호를 보냅니다', //제목
+      text : `인증번호 : ${randomNumber}` // 내용
+    }
+    transporter.sendMail(mailOptions,(error, info)=>{ // 이메일 보내기
+      if(error){
+        console.log(error);
+      }else{
+        console.log('인증번호발송 성공')
+      }
+    })
+    res.json({message : true , passNum , userId : result.userId})
+  }else{
+    res.json({msessage : false})
   }
 })
