@@ -12,7 +12,7 @@ export const Cart = () => {
       price: 50000,
       name: "샌드 베이지 숏츠 면 반바지",
       carryPrice: 3000,
-      count: 3,
+      count: 1,
       src: "/pants.jpg",
       isChecked: false,
     },
@@ -30,11 +30,12 @@ export const Cart = () => {
       price: 45000,
       name: "여리여리 갬성 오프숄더 블라우스",
       carryPrice: 3000,
-      count: 2,
+      count: 1,
       src: "/blouse.jpg",
       isChecked: false,
     },
   ]);
+
   const [isCheckedAll, setIsCheckedAll] = useState(false);
 
   const handleCheckboxChange = () => {

@@ -142,27 +142,29 @@ a {
   left: 20px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
-  top: 35px;
+  position: re;
+  top: 25px;
   width: 254px;
 }
 
 .payment .carrySelect {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 500;
   left: 0px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   top: 30px;
   width: 290px;
+  height: 30px;
+  border-radius: 10px;
 }
 
 .payment .howPayBox {
   background-color: #ffffff;
-  height: 203px;
+  height: 210px;
   left: 27px;
   position: absolute;
   top: 441px;
@@ -170,82 +172,43 @@ a {
 }
 
 .payment .title {
-  background-color: #eeeeee;
-  height: 72px;
-  left: 20px;
-  position: absolute;
-  top: 28px;
-  width: 291px;
+  top: 10px;
+  width: 300px;
 }
 
 .payment .textWrapper2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 25px;
-  font-weight: 400;
-  left: 34px;
-  letter-spacing: 0;
-  line-height: normal;
+  font-size: 18px;
+  font-weight: 600;
+  left: -20px;
   position: absolute;
   text-align: center;
-  top: 20px;
+  top: 30px;
   width: 228px;
 }
 
 .payment .paymentBox {
-  height: 60px;
-  left: 17px;
-  position: absolute;
-  top: 122px;
-  width: 294px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 100px;
+  margin-top: 80px;
+  align-items: center;
 }
 
-.payment .payCase1 {
-  color: #eee;
-  background-color: green;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 18px;
-  font-weight: 400;
-  left: 5px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
+.payment .paymentBox .item {
+  width: 45%;
+  border-radius: 5px;
+  border: 2px solid #ddd;
   text-align: center;
-  top: -22px;
-  width: 95px;
-  height: 80px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
 }
 
-.payment .payCase2 {
-  color: #000000;
-  background-color: yellow;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 18px;
-  font-weight: 400;
-  left: 100px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: -22px;
-  width: 100px;
-  height: 80px;
-}
-
-.payment .payCase3 {
-  color: #eee;
-  background-color: blue;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 18px;
-  font-weight: 400;
-  left: 198px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: -22px;
-  width: 95px;
-  height: 80px;
+.payment .paymentBox .item .center {
+  line-height: 43px;
 }
 
 .payment .payList {
@@ -356,10 +319,18 @@ a {
 
 .payment .productName {
   background-color: #fff;
-  font-size: 17px;
+  font-size: 16px;
   position: absolute;
   top: 10px;
   left: 10px;
+  width: 130px;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: keep-all;
 }
 
 .payment .moreButton {
@@ -380,7 +351,7 @@ a {
   height: 105px;
   left: 122px;
   position: absolute;
-  top: 5px;
+  top: 6px;
   width: 200px;
 }
 
@@ -390,7 +361,7 @@ a {
   left: 10px;
   line-height: normal;
   position: absolute;
-  top: 43px;
+  top: 40px;
   width: 150px;
   overflow: hidden;
   white-space: normal;
@@ -416,7 +387,7 @@ a {
   position: absolute;
   text-align: center;
   width: 105px;
-  top: -5px;
+  top: -4px;
   left: -10px;
   height: auto;
 }

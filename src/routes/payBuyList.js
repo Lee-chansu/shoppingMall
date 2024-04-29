@@ -10,7 +10,7 @@ export const PayBuyList = () => {
     {
       payDate: "2024-04-29",
       itemName: "샌드 베이지 숏츠 면 반바지",
-      itemPrice: "50,000",
+      itemPrice: "50000",
       carryState: "Delivery begins",
       src: "/t-shirt.jpg",
     },

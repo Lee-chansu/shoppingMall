@@ -13,21 +13,6 @@
   width: 1440px;
 }
 
-.cart .buttonText {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 20px;
-  font-weight: 600;
-  left: 50px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 20px;
-  white-space: nowrap;
-  width: 150px;
-  border: none;
-}
-
 .cart .overlapGroup {
   height: 90px;
   width: 1004px;
@@ -51,6 +36,21 @@
   width: 250px;
   border: none;
   position: relative;
+}
+
+.cart .buttonText {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 600;
+  left: 50px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 20px;
+  white-space: nowrap;
+  width: 150px;
+  border: none;
 }
 
 .cart .textWrapper {

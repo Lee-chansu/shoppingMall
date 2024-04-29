@@ -57,7 +57,7 @@
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 22px;
+  top: 28px;
   width: 945px;
 }
 
@@ -74,10 +74,10 @@
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 30px;
-  font-weight: 400;
+  font-weight: 600;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 .paySuccess .productName {
@@ -96,59 +96,59 @@
 .paySuccess .howToPay {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 37px;
+  font-size: 30px;
   font-weight: 400;
   left: 55px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 659px;
+  top: 560px;
 }
 
 .paySuccess .howToPayPrint {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 37px;
+  font-size: 28px;
   font-weight: 400;
   left: 256px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 659px;
+  top: 560px;
 }
 
 .paySuccess .paySum {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 37px;
+  font-size: 28px;
   font-weight: 400;
   left: 256px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 740px;
+  top: 640px;
 }
 
-.paySuccess .paySumPrint {
+.paySuccess .paySumText {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 37px;
+  font-size: 30px;
   font-weight: 400;
   left: 55px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 740px;
+  top: 640px;
 }
 
 .paySuccess .orderProduct1 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 35px;
+  font-size: 28px;
   font-weight: 400;
   left: 256px;
   letter-spacing: 0;
@@ -161,78 +161,79 @@
 .paySuccess .orderProduct2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 37px;
+  font-size: 28px;
   font-weight: 400;
   left: 256px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 330px;
+  top: 300px;
 }
 
 .paySuccess .orderProduct3 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 37px;
+  font-size: 28px;
   font-weight: 400;
   left: 256px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 490px;
+  top: 420px;
 }
 
 .paySuccess .optionInfo1 {
   color: #00000070;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 33.3px;
+  font-size: 25px;
   font-weight: 400;
   left: 268px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 245px;
+  top: 230px;
 }
 
 .paySuccess .optionInfo2 {
   color: #00000070;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 33.3px;
+  font-size: 25px;
   font-weight: 400;
   left: 268px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 407px;
+  top: 360px;
 }
 
 .paySuccess .optionInfo3 {
   color: #00000070;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 33.3px;
+  font-size: 25px;
   font-weight: 400;
   left: 268px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 562px;
+  top: 480px;
 }
 
 .paySuccess .readMe {
   color: #00000070;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  top: 720px;
+  left: 200px;
 }
 
-.paySuccess .toHome {
+/* .paySuccess .toHome {
   background-color: #eeeeee;
   font-size: 30px;
   height: 80px;
@@ -254,4 +255,36 @@
   padding-top: 25px;
   top: 1230px;
   width: 300px;
+} */
+
+/* button */
+.paySuccess .buttonGroup {
+  width: 600px;
+  border: none;
+  margin: 700px auto 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.paySuccess .button {
+  background-color: #eeeeeeee;
+  height: 70px;
+  width: 250px;
+  border: none;
+  position: relative;
+}
+
+.paySuccess .buttonText {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 22px;
+  font-weight: 600;
+  left: 50px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 20px;
+  white-space: nowrap;
+  width: 150px;
+  border: none;
 }

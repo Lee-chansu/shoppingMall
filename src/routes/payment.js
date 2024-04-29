@@ -49,23 +49,52 @@ export const Payment = () => {
               </div>
               <div className="carryBox">
                 <div className="carryRequest">
-                  배송 요청사항
+                  배송시 요청사항을 선택해주세요.
                   <select className="carrySelect">
-                    <option value="message1">문 앞에 놔주세요</option>
-                    <option value="message2">직접 받을게요</option>
-                    <option value="message3">우편함에 놔주세요</option>
-                    <option value="message4">문 앞 배송 후 문자주세요</option>
+                    <option value="CarryMessage">선택해주세요</option>
+                    <option value="CarryMessage">문 앞에 놔주세요</option>
+                    <option value="CarryMessage">직접 받을게요</option>
+                    <option value="CarryMessage">우편함에 놔주세요</option>
+                    <option value="CarryMessage">
+                      문 앞 배송 후 문자주세요
+                    </option>
+                    <option value="CarryMessage">
+                      부재시 경비실에 맡겨주세요
+                    </option>
+                    <option value="CarryMessage">직접입력</option>
                   </select>
                 </div>
               </div>
               <div className="howPayBox">
                 <div className="title">
-                  <div className="textWrapper2">결제방식 선택하기</div>
+                  <div className="textWrapper2">
+                    결제방식 선택하기
+                    <br />
+                    <div>{/* 여기에 선택한 결제방식 렌더링 */}</div>
+                  </div>
                 </div>
                 <div className="paymentBox">
-                  <div className="payCase1">네이버페이</div>
-                  <div className="payCase2">카카오페이</div>
-                  <div className="payCase3">신용카드</div>
+                  {/* 가운데 여백이 중복된거 어케 빼지? */}
+                  <div className="item">
+                    <a href="/paySuccess" className="center">
+                      네이버페이
+                    </a>
+                  </div>
+                  <div className="item">
+                    <a href="/paySuccess" className="center">
+                      카카오페이
+                    </a>
+                  </div>
+                  <div className="item">
+                    <a href="/paySuccess" className="center">
+                      신용카드
+                    </a>
+                  </div>
+                  <div className="item">
+                    <a href="/payFail" className="center">
+                      휴대폰결제
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -82,19 +111,19 @@ export const Payment = () => {
 
               <div className="productBox">
                 <div className="title2">
-                  <div className="orderSumText">총 주문금액 :</div>
+                  <div className="orderSumText">총 주문금액</div>
                 </div>
                 <div className="title3">
                   <div className="orderSumText">
-                    배송비 : {paymentItemList.carryPrice}
+                    배송비{paymentItemList.carryPrice}
                   </div>
                 </div>
                 <div className="title4">
-                  <div className="orderSumText">총 수량 :</div>
+                  <div className="orderSumText">총 수량</div>
                 </div>
                 <div className="title5">
                   <div className="orderSumText">
-                    총 합계 : {paymentItemList.count}
+                    총 합계{paymentItemList.count}
                   </div>
                 </div>
               </div>
