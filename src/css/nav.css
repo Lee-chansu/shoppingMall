@@ -82,3 +82,8 @@
   text-decoration: none;
   color: black;
 }
+
+.nav .profileImage {
+  width: 100%;
+  border-radius: 50%;
+}

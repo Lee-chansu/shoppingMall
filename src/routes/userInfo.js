@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../css/userInfo.css";
+import { useState } from "react";
 
 export const UserInfo = () => {
+  const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
   const logOut = (e) => {
     e.preventDefault();
@@ -13,7 +15,12 @@ export const UserInfo = () => {
   return (
     <div className="userInfo">
       <div className="overlapGroupWrapper">
-        <img className="profileImage" src="" alt="프로필 이미지" />
+        <img
+          className="profileImage"
+          src={imageUrl}
+          onError={() => setImageUrl("../img/userDefaultImg.png")}
+          alt="프로필 이미지"
+        />
         <div className="overlapGroup">
           <div className="userSelect">
             <Link to="#" className="link">

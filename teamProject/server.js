@@ -35,7 +35,18 @@ const crypto = require("crypto");
 
 //db
 const db = require("./models");
-const { User, Product, ProductDetail, ProductOption } = db;
+const {
+  User,
+  DeleteUser,
+  Product,
+  ReviewList,
+  StarPoint,
+  Cart,
+  BuyList,
+  ProductOption,
+  ProductDetail,
+  Carry,
+} = db;
 
 //미들웨어
 app.use(cors());
@@ -194,15 +205,39 @@ app.get("/DeleteUser", async (req, res) => {
   res.json(result);
 });
 
+// 상품 상세 조회
+app.get("/product/:id", async (req, res) => {
+  const { id } = req.params;
+  const result = await Product.findOne({ where: { id } });
+  if (result) {
+    res.json(result);
+  } else {
+    res.json({});
+  }
+});
+
 app.get("/Product", async (req, res) => {
   const result = await Product.findAll();
   res.json(result);
 });
 
+// 리뷰 리스트 조회
 app.get("/ReviewList", async (req, res) => {
-  const result = await ReviewList.findAll();
-  res.json(result);
+  const { product_id } = req.query;
+  let result = await ReviewList.findAll({ where: {} });
+  if (product_id) result = await ReviewList.findAll({ where: { product_id } });
+  console.log(result);
+  if (result) {
+    res.json(result);
+  } else {
+    res.json([]);
+  }
 });
+
+// app.get("/ReviewList", async (req, res) => {
+//   const result = await ReviewList.findAll();
+//   res.json(result);
+// });
 
 app.get("/StarPoint", async (req, res) => {
   const result = await StarPoint.findAll();
@@ -348,16 +383,16 @@ app.post("/findPassword", async (req, res) => {
   } else {
     res.json({ msessage: false });
   }
-})
+});
 
 // 비밀번호변경
-app.put('/passwordEdit/:id', async(req,res)=>{
-  const {id} = req.params
-  const {password} = req.body
-  const result = await User.findOne({where : {id}})
-  if(result){
-    result.password = password
+app.put("/passwordEdit/:id", async (req, res) => {
+  const { id } = req.params;
+  const { password } = req.body;
+  const result = await User.findOne({ where: { id } });
+  if (result) {
+    result.password = password;
     await result.save();
-    res.json({message : '비밀번호 변경성공'})
+    res.json({ message: "비밀번호 변경성공" });
   }
-})
+});

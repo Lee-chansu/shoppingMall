@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 
 export const UserProfile = () => {
+  const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
   const goback = () => {
     navigate(-1);
@@ -38,7 +39,12 @@ export const UserProfile = () => {
     <div className="userProfile">
       <div className="overlapGroupWrapper">
         <div className="overlapGroup">
-          <div className="profileImage" />
+          <img
+            className="profileImage"
+            src={imageUrl}
+            onError={() => setImageUrl("../img/userDefaultImg.png")}
+            alt="유저프로필"
+          />
           <div className="userEditBox">
             <div className="boxId">
               <div className="box">

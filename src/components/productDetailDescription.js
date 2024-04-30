@@ -16,9 +16,9 @@ export const ProductDetailDescription = () => {
   // const [photo, setPhoto] = useState([]);
 
   const loadProduct = async () => {
-    const getProducts = await fetch(`http://localhost:5000/product/${id}`).then((res) =>
-      res.json()
-    );
+    // const getProducts = await fetch(`http://localhost:5000/product/${id}`).then((res) =>
+    //   res.json()
+    // );
     setProductList(getProducts);
   };
 

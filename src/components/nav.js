@@ -1,7 +1,9 @@
 import "../css/nav.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export const Nav = () => {
+  const [imageUrl, setImageUrl] = useState("");
   const isLogin = sessionStorage.getItem("token");
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
 
@@ -24,7 +26,12 @@ export const Nav = () => {
           {isLogin ? (
             <>
               <Link className="linkProfile" to="/userInfo">
-                <img src="" alt="유저프로필" />
+                <img
+                  className="profileImage"
+                  src={imageUrl}
+                  onError={() => setImageUrl("../img/userDefaultImg.png")}
+                  alt="유저프로필"
+                />
               </Link>
             </>
           ) : (
