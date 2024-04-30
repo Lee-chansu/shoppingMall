@@ -1,130 +1,59 @@
 import React, { useEffect, useState } from "react";
 import "./main.css";
 
+//컴포넌트
 import { Nav } from "./components/nav";
+import { Product } from "./components/product";
+import { Link } from "react-router-dom";
 
 export const Main = () => {
-  const [products, setProducts] = useState([])
+  const [productList, setProductList] = useState([]);
+  const loadProduct = async () => {
+    const getProducts = await fetch("http://localhost:5000/").then((res) =>
+      res.json()
+    );
+    setProductList(getProducts);
+  };
 
-  async function mainF(){
-    const res = await fetch('http://localhost:5000/')
-    const body = await res.json()
-    return body
-  }
-  const getProducts = async()=>{
-    const pro = await mainF()
-    setProducts(pro)
-  }
-
-  useEffect(()=>{
-    getProducts()
-  },[])
+  useEffect(() => {
+    loadProduct();
+  }, []);
 
   return (
     <>
       <Nav></Nav>
-      <div className="main-notlogin">
-        <div className="div">
-          <div className="visual" />
+      <div className="main">
+        <div className="visual" />
+        <div className="inner">
+          <Link className="link" to="/productList">
+            <h1>Best!</h1>
+          </Link>
           <div className="wrap">
-            {
-              products.map((e)=>{
-                return(
-                  <div className="product" key={e.id}>
-                    <div className="image">
-                      <img className="productImg" src="" alt="제품 사진" />
-                    </div>
-                    <div className="info-box">
-                      <div className="product-name">
-                        <div className="text-wrapper">{e.name}</div>
-                      </div>
-                      <div className="product-info">
-                        <div className="text-wrapper">{e.detail}</div>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })
-            }
-            <div className="product">
-
-              <div className="image">
-                <img className="productImg" src="" alt="제품 사진" />
-              </div>
-              <div className="info-box">
-                <div className="product-name">
-                  <div className="text-wrapper">상품이름</div>
-                </div>
-                <div className="product-info">
-                  <div className="text-wrapper">상품설명</div>
-                </div>
-              </div>
-            </div>
-            <div className="product">
-              <div className="image">
-                <img className="productImg" src="" alt="제품 사진" />
-              </div>
-              <div className="info-box">
-                <div className="product-name">
-                  <div className="text-wrapper">상품이름</div>
-                </div>
-                <div className="product-info">
-                  <div className="text-wrapper">상품설명</div>
-                </div>
-              </div>
-            </div>
-            <div className="product">
-              <div className="image">
-                <img className="productImg" src="" alt="제품 사진" />
-              </div>
-              <div className="info-box">
-                <div className="product-name">
-                  <div className="text-wrapper">상품이름</div>
-                </div>
-                <div className="product-info">
-                  <div className="text-wrapper">상품설명</div>
-                </div>
-              </div>
-            </div>
-            <div className="product">
-              <div className="image">
-                <img className="productImg" src="" alt="제품 사진" />
-              </div>
-              <div className="info-box">
-                <div className="product-name">
-                  <div className="text-wrapper">상품이름</div>
-                </div>
-                <div className="product-info">
-                  <div className="text-wrapper">상품설명</div>
-                </div>
-              </div>
-            </div>
-            <div className="product">
-              <div className="image">
-                <img className="productImg" src="" alt="제품 사진" />
-              </div>
-              <div className="info-box">
-                <div className="product-name">
-                  <div className="text-wrapper">상품이름</div>
-                </div>
-                <div className="product-info">
-                  <div className="text-wrapper">상품설명</div>
-                </div>
-              </div>
-            </div>
-            <div className="product">
-              <div className="image">
-                <img className="productImg" src="" alt="제품 사진" />
-              </div>
-              <div className="info-box">
-                <div className="product-name">
-                  <div className="text-wrapper">상품이름</div>
-                </div>
-                <div className="product-info">
-                  <div className="text-wrapper">상품설명</div>
-                </div>
-              </div>
-            </div>
+            {productList.map((product) => {
+              return (
+                <Link className="link" to="/productList/detail/description">
+                  <Product key={product.id} product={product} />
+                </Link>
+              );
+            })}
+          </div>
+          <Link className="link" to="/productList">
+            <h1>New!</h1>
+          </Link>
+          <div className="wrap">
+            {productList
+              .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+              .map((product) => {
+                return (
+                  <Link
+                    className="link"
+                    to="/productList/description"
+                    key={product.id}
+                  >
+                    <Product product={product} />
+                  </Link>
+                );
+              })}
           </div>
         </div>
       </div>

@@ -1,58 +1,48 @@
-import React from "react";
 import "../css/nav.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Nav = () => {
-  const navigate = useNavigate()
-  const isLogin = sessionStorage.getItem('token')
-  
-  const logOut = (e)=>{
-    e.preventDefault();
-    sessionStorage.removeItem('token')
-    navigate('/')
-    alert('로그아웃 성공')
-  }
-  
+  const isLogin = sessionStorage.getItem("token");
+  const category = ["아우터", "상의", "하의", "신발", "악세사리"];
+
   return (
     <header className="header">
-      <div className="nav">
-        <div className="div-wrapper">
-          <div className="text-wrapper logo">logo</div>
-        </div>
-        {
-          isLogin ? 
-          <>
-            <Link className="linkProfile" to="/userProfile">
-              유저프로필
-            </Link>
-            <Link className="link" to="/logout" onClick={logOut}>
-              <div className="div-wrapper">
-                <div className="text-wrapper">로그아웃</div>
+      <div className="inner">
+        <nav className="nav">
+          <div className="wrapper">
+            <h1 className="text logo">logo</h1>
+          </div>
+          <div className="category">
+            {category.map((el, i) => {
+              return (
+                <ul className="wrapper" key={el}>
+                  <li className="text">{el}</li>
+                </ul>
+              );
+            })}
+          </div>
+          {isLogin ? (
+            <>
+              <Link className="linkProfile" to="/userInfo">
+                <img src="" alt="유저프로필" />
+              </Link>
+            </>
+          ) : (
+            <Link className="link" to="/login">
+              <div className="divWrapper">
+                <div className="text-wrapper">로그인</div>
               </div>
             </Link>
-          </>:
-          <Link className="link" to="/login">
-            <div className="div-wrapper">
-              <div className="text-wrapper">로그인</div>
-            </div>
-          </Link>
-        }
-      </div>
-      <div className="category">
-        <div className="div-wrapper">
-          <div className="text-wrapper">category</div>
-        </div>
-        <div className="div-wrapper">
-          <div className="text-wrapper">category</div>
-        </div>
-        <div className="div-wrapper">
-          <div className="text-wrapper">category</div>
-        </div>
-        <div className="div-wrapper">
-          <div className="text-wrapper">category</div>
-        </div>
-        <div className="div-wrapper">
-          <div className="text-wrapper">category</div>
+          )}
+        </nav>
+        <div className="category2">
+          {category.map((el) => {
+            return (
+              <ul className="wrapper" key={el}>
+                <li className="text">{el}</li>
+              </ul>
+            );
+          })}
         </div>
       </div>
     </header>

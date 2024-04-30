@@ -3,36 +3,34 @@ import "../css/join.css";
 import { useState } from "react";
 
 export const Join = () => {
+  const navigate = useNavigate();
+  const goback = () => {
+    navigate(-1);
+  };
 
-  const navigate = useNavigate()
-  const goback = ()=>{
-    navigate(-1)
-  }
-  
-  const [newUser,setNewUser] = useState({
-    userId : '',
-    password : '',
-    passwordCheck: '',
-    userName : '',
-    email : '',
-    phoneNumber : '',
-    address : '',
-    gender : ''
-  })
+  const [newUser, setNewUser] = useState({
+    userId: "",
+    password: "",
+    passwordCheck: "",
+    userName: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    gender: "",
+  });
 
-  const valueChange = (e)=>{
-    const {name, value} = e.target
-    setNewUser({...newUser,[name]:value})
-  }
+  const valueChange = (e) => {
+    const { name, value } = e.target;
+    setNewUser({ ...newUser, [name]: value });
+  };
 
-  
-  const buttonClick = async (e)=>{
+  const buttonClick = async (e) => {
     e.preventDefault();
-    if(!newUser.password){
-      alert('비밀번호를 입력하시오')
+    if (!newUser.password) {
+      alert("비밀번호를 입력하시오");
       return;
     }
-    else if(newUser.password !=newUser.passwordCheck){
+    else if(newUser.password !== newUser.passwordCheck){
       alert('비밀번호 재확인이 일치하지않습니다')
     }
     else if(!newUser.phoneNumber){
@@ -84,49 +82,127 @@ export const Join = () => {
           <div className="joinBox">
             <div className="textWrapper">회원가입</div>
             <div className="boxId">
-              <label htmlFor="id" className="txt">Id를 입력해주세요</label>
-              <input className="input" id="id" type="email" name="userId" onChange={valueChange}/>
+              <label htmlFor="id" className="txt">
+                Id를 입력해주세요
+              </label>
+              <input
+                className="input"
+                id="id"
+                type="email"
+                name="userId"
+                onChange={valueChange}
+              />
             </div>
             <div className="boxPassword">
-              <label htmlFor="password" className="txt">비밀번호를 입력해주세요</label>
-              <input className="input" id="password" type="password" name="password" onChange={valueChange}/>
+              <label htmlFor="password" className="txt">
+                비밀번호를 입력해주세요
+              </label>
+              <input
+                className="input"
+                id="password"
+                type="password"
+                name="password"
+                onChange={valueChange}
+              />
             </div>
             <div className="boxPasswordCheck">
-              <label htmlFor="passwordCheck" className="txt">비밀번호 재확인</label>
-              <input className="input" id="passwordCheck" type="password" name="passwordCheck" onChange={valueChange}/>
+              <label htmlFor="passwordCheck" className="txt">
+                비밀번호 재확인
+              </label>
+              <input
+                className="input"
+                id="passwordCheck"
+                type="password"
+                name="passwordCheck"
+                onChange={valueChange}
+              />
             </div>
             <div className="boxEmail">
-              <label htmlFor="email" className="txt">이메일을 입력해주세요</label>
-              <input className="input" id="email" type="email" name="email" onChange={valueChange}/>
+              <label htmlFor="email" className="txt">
+                이메일을 입력해주세요
+              </label>
+              <input
+                className="input"
+                id="email"
+                type="email"
+                name="email"
+                onChange={valueChange}
+              />
             </div>
             <div className="boxPhone">
-              <label htmlFor="phone" className="txt">전화번호를 입력해주세요</label>
-              <input className="input" id="phone" name="phoneNumber" onChange={valueChange}/>
+              <label htmlFor="phone" className="txt">
+                전화번호를 입력해주세요
+              </label>
+              <input
+                className="input"
+                id="phone"
+                name="phoneNumber"
+                onChange={valueChange}
+              />
             </div>
             <div className="boxAddress">
-              <label htmlFor="address" className="txt">주소를 입력해주세요</label>
-              <input className="input" id="address" name="address" onChange={valueChange}/>
+              <label htmlFor="address" className="txt">
+                주소를 입력해주세요
+              </label>
+              <input
+                className="input"
+                id="address"
+                name="address"
+                onChange={valueChange}
+              />
             </div>
             <div className="selectGender">
               <div className="txt">성별을 선택해주세요</div>
               <div className="inputRadio">
-                <label htmlFor="male" className="div">남</label>
-                <input type="radio" name="gender" onChange = {valueChange} className="radioMale" id="male" value="M"/>
-                <label htmlFor="female" className="textWrapper2">여</label>
-                <input type="radio" name="gender" onChange = {valueChange} className="radioFemale" id="female" value="F"/>
+                <label htmlFor="male" className="div">
+                  남
+                </label>
+                <input
+                  type="radio"
+                  name="gender"
+                  onChange={valueChange}
+                  className="radioMale"
+                  id="male"
+                  value="M"
+                />
+                <label htmlFor="female" className="textWrapper2">
+                  여
+                </label>
+                <input
+                  type="radio"
+                  name="gender"
+                  onChange={valueChange}
+                  className="radioFemale"
+                  id="female"
+                  value="F"
+                />
               </div>
             </div>
             <div className="boxName">
-              <label htmlFor="username" className="txt">이름을 입력해주세요</label>
-              <input className="input" id="username" name="userName" onChange={valueChange}/>
+              <label htmlFor="username" className="txt">
+                이름을 입력해주세요
+              </label>
+              <input
+                className="input"
+                id="username"
+                name="userName"
+                onChange={valueChange}
+              />
             </div>
             <div className="editForm">
-              <button className="submitButton" onClick={buttonClick} type="button">제출</button>
-              <button className="cancelButton" type="button" onClick={goback}>취소</button>
+              <button
+                className="submitButton"
+                onClick={buttonClick}
+                type="button"
+              >
+                제출
+              </button>
+              <button className="cancelButton" type="button" onClick={goback}>
+                취소
+              </button>
             </div>
           </div>
         </form>
-        
       </div>
     </div>
   );
