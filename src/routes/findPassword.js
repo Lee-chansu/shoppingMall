@@ -51,7 +51,7 @@ export const FindPassword = () => {
             setUserPassword(result.password)
             alert('해당 이메일로 인증번호 발송')
           }else{
-            alert('이름과 이메일이 다릅니다')
+            alert('아이디과 이메일이 다릅니다')
           }
         }
       } catch (error) {
@@ -60,8 +60,16 @@ export const FindPassword = () => {
     }
   }
 
-
-
+  const numButton = (e) => {
+    e.preventDefault();
+    if (passNum == findPassword.number) {
+      alert("인증성공");
+      setPassResult(true);
+    } else {
+      alert("인증번호가 일치하지않습니다");
+    }
+  };
+  
   return (
     <div className="findPassword">
       <div className="div">
@@ -74,16 +82,20 @@ export const FindPassword = () => {
             <div className="inputUserPhoneNumber">
               <input className="textWrapper3" placeholder="사용자 이메일 입력" name="email" onChange={valueChange}></input>
             </div>
-            <div className="inputNum">
+            {
+              isSend ? <div className="inputNum">
               <input type="text" placeholder=" 인증번호 입력" className="inputNumWrapper" name="number" onChange={valueChange}></input>
-              <button className="inputNumButton" type="button">인증번호 확인</button>
-            </div>
+              <button className="inputNumButton" type="button" onClick={numButton}>인증번호 확인</button>
+            </div> : <div></div>
+            }
+            
           </div>
           <div className="buttonBox">
-            <button className="submitButton">제출</button>
+            <button className="submitButton" onClick={submitButton}>제출</button>
             <button className="cancelButton" type="button" onClick={goback}>취소</button>
           </div>
         </form>
+        {passResult ? <div className="result">{userPassword}</div> : <div></div>}
       </div>
     </div>
   );
