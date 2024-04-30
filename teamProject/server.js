@@ -35,7 +35,7 @@ const crypto = require("crypto");
 
 //db
 const db = require("./models");
-const { User, Product } = db;
+const { User, Product, ProductDetail, ProductOption } = db;
 
 //미들웨어
 app.use(cors());
@@ -142,10 +142,21 @@ app.get("/userProfile/:id", async (req, res) => {
 });
 
 //제품 추가 페이지
-app.post("addProduct", async (req, res) => {
-  const newProduct = req.body;
+app.post("/addProduct", async (req, res) => {
+  const { category, detail, color, size, stock, ...rest } = req.body;
+  const newProduct = { ...rest, pdstock: stock, detail: detail };
 
-  await Product.create(newProduct);
+  console.log(newProduct.mainImage);
+
+  let result;
+  try {
+    result = await Product.create(newProduct)
+      .then(await ProductDetail.create(category, detail))
+      .then(await ProductOption.create(color, size, stock));
+  } catch (error) {
+    console.log(error);
+  }
+  res.json(result);
 });
 
 // 각 화면들
@@ -284,16 +295,10 @@ app.post("/findId", async (req, res) => {
   } else {
     res.json({ msessage: false });
   }
-<<<<<<< HEAD
 });
 
 // 비밀번호찾기
-app.post("findPassword", async (req, res) => {});
-=======
-})
-
-// 비밀번호찾기
-app.post('/findPassword', async(req,res)=>{
+app.post("/findPassword", async (req, res) => {
   const { userId, email } = req.body;
   const result = await User.findOne({ where: { userId, email } });
   let passNum;
@@ -320,5 +325,4 @@ app.post('/findPassword', async(req,res)=>{
   } else {
     res.json({ msessage: false });
   }
-})
->>>>>>> f45ffa9eabeb49a7bd0b6f6479da5bec42122d18
+});

@@ -34,10 +34,17 @@ export const ProductAdd = () => {
     reader.onloadend = () => {
       setMainImageFile(reader.result);
     };
-    setNewProduct((prevState) => ({
-      ...prevState,
-      mainImage: file,
-    }));
+    if (file.name.contain("http://")) {
+      setNewProduct((prevState) => ({
+        ...prevState,
+        mainImage: file.name,
+      }));
+    } else {
+      setNewProduct((prevState) => ({
+        ...prevState,
+        mainImage: "../img/" + file.name,
+      }));
+    }
   };
 
   const checkOnlyOneCategory = (checkThis) => {
@@ -102,20 +109,55 @@ export const ProductAdd = () => {
   const toAddProduct = async (e) => {
     e.preventDefault();
 
-    console.log(newProduct);
+    try {
+      if (newProduct.category === "") {
+        alert("카테고리를 선택해주세요.");
+        return;
+      }
+      if (newProduct.detail === "") {
+        alert("디테일을 선택해주세요.");
+        return;
+      }
+      if (newProduct.name === "" || newProduct.name === null) {
+        alert("이름을 입력해주세요.");
+        return;
+      }
+      if (newProduct.mainImage === null) {
+        alert("메인 이미지를 선택 해주세요.");
+        return;
+      }
+      if (newProduct.color === null || newProduct.color === "") {
+        alert("제품의 색상을 입력해주세요.");
+        return;
+      }
+      if (newProduct.price === null || newProduct.price === 0) {
+        alert("제품의 가격을 입력해주세요.");
+        return;
+      }
+      if (newProduct.size === null || newProduct.size === null) {
+        alert("제품의 사이즈를 선택해주세요.");
+        return;
+      }
+      if (newProduct.stock === null || newProduct.stock === "") {
+        alert("제품의 재고수량을 입력해주세요.");
+        return;
+      }
 
-    // if (newProduct.category.length === 0) {
-    //   alert("카테고리를 선택해주세요.");
-    // } else if (newProduct.detail.length === 0) {
-    //   alert("디테일을 선택해주세요.");
-    // } else if (newProduct.name === null) {
-    // }
+      console.log(newProduct.mainImage);
 
-    // const result = await fetch("http://localhost:5000/addProduct/", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(newProduct),
-    // });
+      const result = await fetch("http://localhost:5000/addProduct", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newProduct),
+      }).then((res) => {
+        res.json();
+        alert("제품을 추가했습니다.");
+      });
+    } catch (error) {
+      alert("제품 추가 중 오류가 발생했습니다.");
+      console.log(error);
+      return;
+    }
   };
 
   return (
