@@ -6,7 +6,6 @@ import { PayItem } from "../components/PayBuyListItem";
 import { Nav } from "../components/nav";
 import { Button } from "../components/button";
 
-
 export const PayBuyList = () => {
   const payItemList = [
     {
@@ -46,23 +45,12 @@ export const PayBuyList = () => {
       <div className="payBuyList">
         <div className="div">
           <div className="title">구매 내역</div>
-
           {payItemList.map((val, idx) => {
             return <PayItem val={val} key={idx} />;
           })}
-
-      <Button></Button>
-
-          {/* <div className="buttonBox">
-            <Link to="/" className="btn1">
-              처음화면
-            </Link>
-            <Link to="#" className="btn2">
-              이전화면
-            </Link>
-          </div> */}
         </div>
       </div>
+      <Button></Button>
     </>
   );
 };

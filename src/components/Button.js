@@ -4,7 +4,7 @@ import "../css/button.css";
 
 export const Button = () => {
   return (
-    <div className="btnBox">
+    <div className="buttonBox">
       <Link to="/" className="btn1">
         처음화면
       </Link>
