@@ -97,7 +97,7 @@ export const ProductAdd = () => {
   const toAddProduct = async (e) => {
     e.preventDefault();
 
-    console.log(newProduct.mainImage);
+    console.log(newProduct.subImage3);
 
     // if (newProduct.category.length === 0) {
     //   alert("카테고리를 선택해주세요.");
@@ -240,6 +240,8 @@ export const ProductAdd = () => {
                     <SubImagePreview
                       key={el}
                       subImageId={subImageId[index]}
+                      newProduct={newProduct}
+                      setNewProduct={setNewProduct}
                     ></SubImagePreview>
                   );
                 })}

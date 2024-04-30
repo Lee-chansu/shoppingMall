@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-export const SubImagePreview = ({ subImageId , index }) => {
+export const SubImagePreview = ({ subImageId, setNewProduct }) => {
   const [subImageFile, setSubImageFile] = useState("");
   let subImgRef = useRef();
 
@@ -10,14 +10,34 @@ export const SubImagePreview = ({ subImageId , index }) => {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setSubImageFile(reader.result);
+      if (subImageId === "subImage1") {
+        setNewProduct((prevState) => ({
+          ...prevState,
+          subImage1: file,
+        }));
+      } else if (subImageId === "subImage2") {
+        setNewProduct((prevState) => ({
+          ...prevState,
+          subImage2: file,
+        }));
+      } else if (subImageId === "subImage3") {
+        setNewProduct((prevState) => ({
+          ...prevState,
+          subImage3: file,
+        }));
+      }
     };
   };
 
   return (
     <>
-    
       <label for={subImageId}>
-        <div className="addImg" style={(subImageId === 'subImage1') ? {"margin-left" : "5px"} : {} }>+</div>
+        <div
+          className="addImg"
+          style={subImageId === "subImage1" ? { "margin-left": "5px" } : {}}
+        >
+          +
+        </div>
       </label>
       <input
         id={subImageId}
