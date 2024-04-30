@@ -52,6 +52,15 @@ export const PayItem = ({ val }) => {
           /> */}
           구매내역 삭제
         </Link>
+        <Link to="/" className="reviewBtn">
+          {/* <img
+            className="trashBtn"
+            width="32"
+            alt="trash"
+            src="img/trashBtn.png"
+          /> */}
+          상품 리뷰쓰기
+        </Link>
       </div>
     </div>
   );

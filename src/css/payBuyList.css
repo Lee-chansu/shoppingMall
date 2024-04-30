@@ -109,19 +109,28 @@
 .payBuyList .basketPlus {
   position: absolute;
   border-radius: 5px;
-  padding: 20px;
+  padding: 15px;
   border: 2px solid #ddd;
   right: 110px;
-  top: 90px;
+  top: 80px;
 }
 
 .payBuyList .delBtn {
   position: absolute;
   border-radius: 5px;
-  padding: 20px;
+  padding: 15px;
   border: 2px solid #ddd;
   right: 110px;
-  top: 170px;
+  top: 140px;
+}
+
+.payBuyList .reviewBtn {
+  position: absolute;
+  border-radius: 5px;
+  padding: 15px;
+  border: 2px solid #ddd;
+  right: 110px;
+  top: 200px;
 }
 
 .payBuyList .selectBox {
