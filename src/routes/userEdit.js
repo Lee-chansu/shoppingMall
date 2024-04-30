@@ -53,15 +53,14 @@ export const UserEdit = () => {
   };
 
   const buttonClick = async (e) => {
-    console.log(editUser);
     e.preventDefault();
     if (!editUser.password) {
       alert("변경할 비밀번호를 입력하시오");
     } else if (!editUser.passwordCheck) {
       alert("비밀번호 재확인을 입력하시오");
-    } else if (editUser.password != editUser.passwordCheck) {
+    } else if (editUser.password !== editUser.passwordCheck) {
       alert("비밀번호 재확인이 일치하지 않습니다");
-    } else if (editUser.password == getUser.password) {
+    } else if (editUser.password === getUser.password) {
       alert("기존 비밀번호와 같습니다");
     } else {
       try {
@@ -162,7 +161,7 @@ export const UserEdit = () => {
                 className="radioMale"
                 value="M"
                 onChange={valueChange}
-                checked={editUser.gender == "M"}
+                checked={editUser.gender === "M"}
               />
               <label htmlFor="female" className="textWrapper">
                 여
@@ -173,7 +172,7 @@ export const UserEdit = () => {
                 className="radioFemale"
                 value="F"
                 onChange={valueChange}
-                checked={editUser.gender == "F"}
+                checked={editUser.gender === "F"}
               />
             </div>
           </div>
