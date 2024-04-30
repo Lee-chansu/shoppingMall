@@ -11,6 +11,7 @@ export const UserEdit = () => {
   const [getUser, setGetUser] = useState({});
   const [id, setId] = useState();
   const [editUser, setEditUser] = useState({});
+  const [checkToggle, setCheckToggle] = useState('false');
 
   // 해당유저 정보받아오는 패치
   const getUserFetch = async () => {
@@ -83,34 +84,44 @@ export const UserEdit = () => {
     }
   };
 
+  const checkClick = (e)=>{
+    const{value} = e.target
+    if(value == 'false'){
+      setCheckToggle('true')
+    }else{
+      setCheckToggle('false')
+      
+    }
+  }
+
   return (
     <div className="userEdit">
       <form className="formBox">
         <div className="profileImage" />
         <div className="userEditBox">
           <div className="boxPassword">
-            <label htmlFor="password" className="txt">
-              변경할 비밀번호
-            </label>
-            <input
-              id="password"
-              type="password"
-              className="input"
-              name="password"
-              onChange={valueChange}
-            />
+            <div className="checkBox">
+              <label htmlFor="passwordCheck" className="txt">비밀번호 변경하지않음</label>
+              <input type="checkbox" id="passwordCheck" className="checkPass" onClick={checkClick} value = {checkToggle}></input>
+            </div>
+            <label htmlFor="password" className="txt">변경할 비밀번호</label>
+            {
+              checkToggle == 'true' ? 
+                <input id="password" type="password" className="input" name="password" value={getUser.password}/>
+                :
+                <input id="password" type="password" className="input" name="password" onChange={valueChange} value={editUser.password}/>
+            }
           </div>
           <div className="boxPasswordCheck">
             <label htmlFor="passwordCheck" className="txt">
               비밀번호 재확인
             </label>
-            <input
-              id="passwordCheck"
-              type="password"
-              className="input"
-              name="passwordCheck"
-              onChange={valueChange}
-            />
+            {
+              checkToggle == 'true' ? 
+                <input id="passwordCheck" type="password" className="input" name="passwordCheck" value={getUser.password}/>
+                :
+                <input id="passwordCheck" type="password" className="input" name="passwordCheck" onChange={valueChange} value={editUser.passwordCheck}/>
+            }
           </div>
           <div className="boxEmail">
             <label htmlFor="email" className="txt">
