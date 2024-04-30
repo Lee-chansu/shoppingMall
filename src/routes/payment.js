@@ -37,21 +37,25 @@ const paymentItemList = [
   },
 ];
 
-let total = 0;
-paymentItemList.forEach((val, idx)=>{
-  total += val.price
-})
-console.log(total)
+//총 주문 합계 보기
+let carryTotal = 3000;
+let orderTotal = 0;
+let countTotal = 0;
+let paySumTotal = 0;
+paymentItemList.forEach((val, idx) => {
+  orderTotal += val.price;
+  countTotal++;
+});
+paySumTotal += orderTotal + carryTotal;
 
 export const Payment = () => {
-
-  //직접입력
-  const [carryMessageBox, setCarryMessageBox] = useState('');
+  //배송요청 직접입력
+  const [carryMessageBox, setCarryMessageBox] = useState("");
   const [isDirectInput, setIsDirectInput] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState("");
   const handleChange = (e) => {
-    setSelectedOption(e.target.value)
-  }
+    setSelectedOption(e.target.value);
+  };
 
   return (
     <div className="payment">
@@ -71,20 +75,26 @@ export const Payment = () => {
               <div className="carryBox">
                 <div className="carryRequest">
                   배송시 요청사항을 선택해주세요.
-                  <select className="carrySelect" value={selectedOption} onChange={handleChange}>
-                    <option value="CarryMessage1">선택해주세요</option>
-                    <option value="CarryMessage2">문 앞에 놔주세요</option>
-                    <option value="CarryMessage3">직접 받을게요</option>
-                    <option value="CarryMessage4">우편함에 놔주세요</option>
-                    <option value="CarryMessage5">
+                  <select
+                    className="carrySelect"
+                    value={selectedOption}
+                    onChange={handleChange}
+                  >
+                    <option value="carryMessage1">선택해주세요</option>
+                    <option value="carryMessage2">문 앞에 놔주세요</option>
+                    <option value="carryMessage3">직접 받을게요</option>
+                    <option value="carryMessage4">우편함에 놔주세요</option>
+                    <option value="carryMessage5">
                       문 앞 배송 후 문자주세요
                     </option>
-                    <option value="CarryMessage6">
+                    <option value="carryMessage6">
                       부재시 경비실에 맡겨주세요
                     </option>
-                    <option value="CarryMessage7">직접입력</option>
+                    <option value="carryMessage7">직접입력</option>
                   </select>
-                  {selectedOption === "CarryMessage7" && <input placeholder="직접입력하세요"></input>}
+                  {selectedOption === "carryMessage7" && (
+                    <input className="carryMessage8" placeholder="여기에 배송요청 사항을 직접 입력하세요"></input>
+                  )}
                 </div>
               </div>
               <div className="howPayBox">
@@ -96,7 +106,6 @@ export const Payment = () => {
                   </div>
                 </div>
                 <div className="paymentBox">
-                  {/* 가운데 여백이 중복된거 어케 빼지? */}
                   <div className="item">
                     <a href="/paySuccess" className="center">
                       네이버페이
@@ -133,20 +142,20 @@ export const Payment = () => {
 
               <div className="productBox">
                 <div className="title2">
-                  <div className="orderSumText">총 주문금액{total}</div>
+                  <div className="orderSumText">총 주문금액</div>
+                  <div className="sum">{orderTotal} 원</div>
                 </div>
                 <div className="title3">
-                  <div className="orderSumText">
-                    배송비{paymentItemList.carryPrice}
-                  </div>
+                  <div className="orderSumText">배송비</div>
+                  <div className="sum">{carryTotal} 원</div>
                 </div>
                 <div className="title4">
                   <div className="orderSumText">총 수량</div>
+                  <div className="sum">{countTotal} 개</div>
                 </div>
                 <div className="title5">
-                  <div className="orderSumText">
-                    총 합계
-                  </div>
+                  <div className="orderSumText total">총 합계</div>
+                  <div className="sum total">{paySumTotal} 원</div>
                 </div>
               </div>
             </div>

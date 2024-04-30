@@ -127,7 +127,7 @@ a {
 
 .payment .carryBox {
   background-color: #ffffff;
-  height: 111px;
+  height: 150px;
   left: 27px;
   position: absolute;
   top: 300px;
@@ -142,8 +142,8 @@ a {
   left: 20px;
   letter-spacing: 0;
   line-height: normal;
-  position: re;
-  top: 25px;
+  position: relative;
+  top: 35px;
   width: 254px;
 }
 
@@ -162,9 +162,21 @@ a {
   border-radius: 5px;
 }
 
+.payment .carryMessage8 {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  border: none;
+  width: 290px;
+  height: 28px;
+  text-decoration: underline;
+  font-size: 16px;
+  font-weight: 400;
+}
+
 .payment .howPayBox {
   background-color: #ffffff;
-  height: 210px;
+  height: 222px;
   left: 27px;
   position: absolute;
   top: 441px;
@@ -184,7 +196,7 @@ a {
   left: -20px;
   position: absolute;
   text-align: center;
-  top: 30px;
+  top: 40px;
   width: 228px;
 }
 
@@ -193,7 +205,7 @@ a {
   justify-content: center;
   flex-wrap: wrap;
   height: 100px;
-  margin-top: 80px;
+  margin-top: 85px;
   align-items: center;
 }
 
@@ -229,11 +241,24 @@ a {
   width: 365px;
 }
 
+.payment .sum {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: large;
+  font-weight: 600;
+}
+
+.payment .title5 .total {
+  color: #e65054;
+  font-weight: 600;
+}
+
 .payment .orderSumText {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   left: 15px;
   letter-spacing: 0;
   line-height: normal;

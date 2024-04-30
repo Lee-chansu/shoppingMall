@@ -11,14 +11,18 @@ export const PayBuyList = () => {
     {
       payDate: "2024-04-29",
       itemName: "샌드 베이지 숏츠 면 반바지",
-      itemPrice: "50000",
+      itemPrice: "50,000",
+      itemCount: "1",
+      itemNum: "DAA37WREY1",
       carryState: "Delivery begins",
-      src: "/t-shirt.jpg",
+      src: "/pants.jpg",
     },
     {
       payDate: "2024-04-29",
       itemName: "여름 필수템 베이직 무지 티셔츠",
       itemPrice: "25,000",
+      itemCount: "1",
+      itemNum: "FFF37WREY1",
       carryState: "Delivery begins",
       src: "/t-shirt.jpg",
     },
@@ -26,6 +30,8 @@ export const PayBuyList = () => {
       payDate: "2024-04-29",
       itemName: "여리여리 갬성 오프숄더 블라우스",
       itemPrice: "45,000",
+      itemCount: "1",
+      itemNum: "P3A37WREY33",
       carryState: "Delivery begins",
       src: "/blouse.jpg",
     },
@@ -36,12 +42,12 @@ export const PayBuyList = () => {
       <div className="payBuyList">
         <div className="div">
           <div className="title">구매 내역</div>
-          
+
           {payItemList.map((val, idx) => {
             return <PayItem val={val} key={idx} />;
           })}
 
-          <CartItem val={{
+          {/* <CartItem val={{
             id: 3,
             price: 45000,
             name: "여리여리 갬성 오프숄더 블라우스",
@@ -49,16 +55,13 @@ export const PayBuyList = () => {
             count: 1,
             src: "/blouse.jpg",
             isChecked: false,
-          }} countAble={false}/>
+          }} countAble={false}/> */}
 
-          <div className="overlap6">
-            <Link to="/" className="price">
+          <div className="buttonBox">
+            <Link to="/" className="btn1">
               처음화면
             </Link>
-            <Link to="#" className="price2">
-              재구매하기
-            </Link>
-            <Link to="#" className="price3">
+            <Link to="#" className="btn2">
               이전화면
             </Link>
           </div>
