@@ -285,3 +285,6 @@ app.post("/findId", async (req, res) => {
     res.json({ msessage: false });
   }
 });
+
+// 비밀번호찾기
+app.post("findPassword", async (req, res) => {});
