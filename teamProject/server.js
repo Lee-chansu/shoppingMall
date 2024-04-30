@@ -35,7 +35,7 @@ const crypto = require("crypto");
 
 //db
 const db = require("./models");
-const { User, Product } = db;
+const { User, DeleteUser, Product, ReviewList, StarPoint, Cart, BuyList, ProductOption, ProductDetail, Carry } = db;
 
 //미들웨어
 app.use(cors());
@@ -128,8 +128,7 @@ app.post("/login", (req, res) => {
 
 // 메인화면
 app.get("/", async (req, res) => {
-  const result = await Product.findAll();
-  res.json(result);
+  res.sendFile(__dirname + '/index.html');
 });
 
 // 유저프로필
