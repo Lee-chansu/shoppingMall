@@ -23,31 +23,6 @@
 - npx sequelize db:seed --seed fileName.js
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Getting Started with Create React App
 # react 
 - 설치해야할 라이브러리
