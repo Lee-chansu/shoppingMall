@@ -287,6 +287,31 @@ app.post("/findId", async (req, res) => {
 })
 
 // 비밀번호찾기
-app.post('findPassword', async(req,res)=>{
-  
+app.post('/findPassword', async(req,res)=>{
+  const { userId, email } = req.body;
+  const result = await User.findOne({ where: { userId, email } });
+  let passNum;
+  if (result) {
+    const randombyte = crypto.randomBytes(3);
+    const randomNumber = randombyte.toString("hex");
+    passNum = randomNumber;
+    const mailOptions = {
+      // 이메일 발신자/수신자/내용 설정
+      from: admin, // 작성자
+      to: email, // 수신자
+      subject: "@@쇼핑몰에서 인증번호를 보냅니다", //제목
+      text: `인증번호 : ${randomNumber}`, // 내용
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+      // 이메일 보내기
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("인증번호발송 성공");
+      }
+    });
+    res.json({ message: true, passNum, password: result.password });
+  } else {
+    res.json({ msessage: false });
+  }
 })
