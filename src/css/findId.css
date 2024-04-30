@@ -30,7 +30,7 @@
 
 .findId .findUserIdBox {
   background-color: #eeeeee;
-  height: 622px;
+  height: 822px;
   left: 300px;
   position: absolute;
   top: 201px;
@@ -79,12 +79,45 @@
   width: 756px;
 }
 
+.findId .inputNum {
+  background-color: #eeeeee;
+  height: 93px;
+  left: 0px;
+  position: absolute;
+  top: 350px;
+  width: 756px;
+}
+
+.findId .inputNumWrapper {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 27.6px;
+  font-weight: 400;
+  height: 58px;
+  left: 50px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 16px;
+  width: 492px;
+}
+
+.findId .inputNumButton {
+  background-color: #eeeeee;
+  height: 58px;
+  left: 585px;
+  position: absolute;
+  top: 16px;
+  width: 181px;
+}
+
 .findId .buttonBox {
   background-color: #ffffff;
   height: 160px;
   left: 11px;
   position: absolute;
-  top: 380px;
+  top: 580px;
   width: 815px;
 }
 
@@ -134,4 +167,11 @@
   text-align: center;
   top: 17px;
   width: 170px;
+}
+
+.result {
+  position: absolute;
+  top: 970px;
+  left: 700px;
+  color: red;
 }
