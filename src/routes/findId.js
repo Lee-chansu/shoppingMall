@@ -26,7 +26,6 @@ export const FindId = () => {
   const valueChange = (e) => {
     const { name, value } = e.target;
     setFindUser({ ...findUser, [name]: value });
-    console.log(findUser);
   };
 
   const submitButton = async (e) => {
