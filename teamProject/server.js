@@ -310,8 +310,20 @@ app.post('/findPassword', async(req,res)=>{
         console.log("인증번호발송 성공");
       }
     });
-    res.json({ message: true, passNum, password: result.password });
+    res.json({ message: true, passNum, findUser: result.id });
   } else {
     res.json({ msessage: false });
+  }
+})
+
+// 비밀번호변경
+app.put('/passwordEdit/:id', async(req,res)=>{
+  const {id} = req.params
+  const {password} = req.body
+  const result = await User.findOne({where : {id}})
+  if(result){
+    result.password = password
+    await result.save();
+    res.json({message : '비밀번호 변경성공'})
   }
 })

@@ -20,15 +20,15 @@ export const FindPassword = () => {
     const [passNum, setPassNum] = useState()
     // 인증번호 성공여부
     const [passResult, setPassResult] = useState(false)
-    // 유저 비밀번호
-    const [userPassword, setUserPassword] = useState('')
+    // 유저 정보
+    const [userinfo, setUserinfo] = useState()
 
   const valueChange = (e)=>{
     const {name, value} = e.target
     setFindPassword({...findPassword,[name]:value})
   }
 
-  const submitButton = async(e)=>{
+  const emailButton = async(e)=>{
     e.preventDefault()
     if(!findPassword.userId){
       alert('아이디를 입력하시오')
@@ -48,7 +48,7 @@ export const FindPassword = () => {
           if(result.message){
             setIsSend(result.message)
             setPassNum(result.passNum)
-            setUserPassword(result.password)
+            setUserinfo(result.findUser)
             alert('해당 이메일로 인증번호 발송')
           }else{
             alert('아이디과 이메일이 다릅니다')
@@ -69,6 +69,15 @@ export const FindPassword = () => {
       alert("인증번호가 일치하지않습니다");
     }
   };
+
+  const linkButton = (e)=>{
+    e.preventDefault()
+    if(passResult == true){
+      navigate('/passwordEdit',{state : {id : userinfo}}) // 프롭스드릴링
+    }else{
+      alert('인증을 먼저 진행해주세요')
+    }
+  }
   
   return (
     <div className="findPassword">
@@ -79,8 +88,9 @@ export const FindPassword = () => {
             <div className="inputUserid">
               <input className="textWrapper2" placeholder="사용자 아이디 입력" name="userId" onChange={valueChange}></input>
             </div>
-            <div className="inputUserPhoneNumber">
+            <div className="inputUserEmail">
               <input className="textWrapper3" placeholder="사용자 이메일 입력" name="email" onChange={valueChange}></input>
+              <button className = "emailButton"onClick={emailButton}>인증번호 받기</button>
             </div>
             {
               isSend ? <div className="inputNum">
@@ -91,11 +101,10 @@ export const FindPassword = () => {
             
           </div>
           <div className="buttonBox">
-            <button className="submitButton" onClick={submitButton}>제출</button>
+            <button className="LinkButton" type="button" onClick={linkButton}>비밀번호 변경하러가기</button>
             <button className="cancelButton" type="button" onClick={goback}>취소</button>
           </div>
         </form>
-        {passResult ? <div className="result">{userPassword}</div> : <div></div>}
       </div>
     </div>
   );
