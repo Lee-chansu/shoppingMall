@@ -74,7 +74,10 @@ export const Cart = () => {
       <Nav></Nav>
       <div className="section cart">
         <div className="wrap">
-          <div className="title">장바구니/결제</div>
+          <div className="title">
+            <img src="/img/basket.png" width="28"/>  
+            장바구니/결제
+          </div>
           <div className="cartBar">
             <input
               type="checkbox"

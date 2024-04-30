@@ -23,35 +23,11 @@
   width: 1000px;
 }
 
-.payBuyList .productBox1 {
+.payBuyList .productBox {
   height: 65px;
   left: 250px;
   position: absolute;
   top: 50px;
-  width: 575px;
-}
-
-.payBuyList .productBox2 {
-  height: 65px;
-  left: 250px;
-  position: absolute;
-  top: 80px;
-  width: 575px;
-}
-
-.payBuyList .productBox3 {
-  height: 65px;
-  left: 250px;
-  position: absolute;
-  top: 110px;
-  width: 575px;
-}
-
-.payBuyList .productBox4 {
-  height: 65px;
-  left: 250px;
-  position: absolute;
-  top: 140px;
   width: 575px;
 }
 
@@ -64,16 +40,10 @@
 }
 
 .payBuyList .productName {
-  color: #000000;
+  padding-top: 8px;
+  font-size: 16px;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 18px;
   font-weight: 400;
-  left: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 15px;
-  white-space: nowrap;
 }
 
 .payBuyList .productTotal {
@@ -81,11 +51,8 @@
   font-family: "Inter-Regular", Helvetica;
   font-size: 20px;
   font-weight: 600;
-  left: 20px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
-  top: -5px;
   white-space: nowrap;
 }
 

@@ -18,20 +18,15 @@ export const PayItem = ({ val }) => {
           className="imageBox"
           src={`${process.env.PUBLIC_URL}/img${val.src}`}
         />
-        <div className="productBox1">
-          <div className="productName">주문번호 : {val.itemNum} </div>
-        </div>
-        <div className="productBox2">
-          <div className="productName">상품명 : {val.itemName}</div>
-        </div>
-        <div className="productBox3">
+        <div className="productBox">
+          <div className="productName">주문번호 : {val.itemNum}</div>
+          <div className="productName">상품명 : {val.itemName}</div> 
           <div className="productName">수량 : {val.itemCount}</div>
-        </div>
-        <div className="productBox4">
           <div className="productName">배송상태 : {val.carryState}</div>
         </div>
+      
         <div className="productTotalBox">
-          <div className="productTotal">상품가격 : {val.itemPrice}</div>
+          <div className="productTotal">상품 구매가 : {val.itemPrice}</div>
         </div>
       </div>
       <div className="btnBox">
