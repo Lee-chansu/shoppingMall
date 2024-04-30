@@ -38,8 +38,8 @@ export const UserEdit = () => {
 
   useEffect(() => {
     const editDefault = {
-      password: "",
-      passwordCheck: "",
+      password: '',
+      passwordCheck: '',
       email: getUser.email,
       phoneNumber: getUser.phoneNumber,
       address: getUser.address,
@@ -61,8 +61,6 @@ export const UserEdit = () => {
       alert("비밀번호 재확인을 입력하시오");
     } else if (editUser.password !== editUser.passwordCheck) {
       alert("비밀번호 재확인이 일치하지 않습니다");
-    } else if (editUser.password === getUser.password) {
-      alert("기존 비밀번호와 같습니다");
     } else {
       try {
         const response = await fetch(`http://localhost:5000/userEdit/${id}`, {
@@ -88,9 +86,11 @@ export const UserEdit = () => {
     const{value} = e.target
     if(value == 'false'){
       setCheckToggle('true')
+      setEditUser({password : getUser.password, passwordCheck: getUser.password, gender : getUser.gender})
+      console.log(getUser)
     }else{
       setCheckToggle('false')
-      
+      setEditUser({password : '', passwordCheck: '', gender : getUser.gender})
     }
   }
 
