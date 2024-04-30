@@ -69,6 +69,11 @@ export const ProductAdd = () => {
   };
 
   const showDetailBar = () => {
+    setNewProduct((prevState) => ({
+      ...prevState,
+      category: checkCategory,
+      detail: checkDetail,
+    }));
     checkCategory !== ""
       ? setDetailBar(detail[checkCategory])
       : setDetailBar([]);
@@ -97,7 +102,7 @@ export const ProductAdd = () => {
   const toAddProduct = async (e) => {
     e.preventDefault();
 
-    console.log(newProduct.subImage3);
+    console.log(newProduct);
 
     // if (newProduct.category.length === 0) {
     //   alert("카테고리를 선택해주세요.");
@@ -106,7 +111,6 @@ export const ProductAdd = () => {
     // } else if (newProduct.name === null) {
     // }
 
-    // let newProduct;
     // const result = await fetch("http://localhost:5000/addProduct/", {
     //   method: "POST",
     //   headers: { "Content-Type": "application/json" },
