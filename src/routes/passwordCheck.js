@@ -84,7 +84,7 @@ export const PasswordCheck = () => {
             </div>
           </div>
           <div className="buttonBox">
-            <button className="submitButton" type="button" onClick={submitButton}>제출</button>
+            <button className="submitButton" type="submit" onClick={submitButton}>제출</button>
             <button className="cancelButton" type="button" onClick={goback}>취소</button>
           </div>
         </form>
