@@ -146,17 +146,40 @@ app.post("/addProduct", async (req, res) => {
   const { category, detail, color, size, stock, ...rest } = req.body;
   const newProduct = { ...rest, pdstock: stock, detail: detail };
 
-  console.log(newProduct.mainImage);
-
   let result;
   try {
-    result = await Product.create(newProduct)
-      .then(await ProductDetail.create(category, detail))
-      .then(await ProductOption.create(color, size, stock));
+    const product = await Product.create(newProduct);
+    const { id } = await Product.findOne({
+      order: [["id", "DESC"]],
+      limit: 1,
+    });
+    const newProductDetail = {
+      product_id: id,
+      category,
+      detailCategory: detail,
+    };
+    const newProductOption = {
+      product_id: id,
+      productName: rest.name,
+      productColor: color,
+      productSize: size,
+      productStock: stock,
+    };
+
+    const productDetail = await ProductDetail.create(newProductDetail);
+    const productOption = await ProductOption.create(newProductOption);
+
+    if (!product || !productDetail || !productOption) {
+      result = false;
+    } else {
+      result = true;
+    }
+    console.log(result);
+    res.json(result);
   } catch (error) {
     console.log(error);
+    res.json((result = false));
   }
-  res.json(result);
 });
 
 // 각 화면들

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "../css/productList.css";
 
 //컴포넌트
-import { Product } from "../components/product";
 import { Nav } from "../components/nav";
+import { Product } from "../components/product";
 import { Detail } from "../components/detail";
 
 export const ProductList = () => {
@@ -12,7 +12,7 @@ export const ProductList = () => {
 
   const loadProduct = async () => {
     const getProduct = await fetch("http://localhost:5000/").then((res) =>
-    // const getProduct = await fetch("https://hotcake.loca.lt/Product").then((res) =>
+      // const getProduct = await fetch("https://hotcake.loca.lt/Product").then((res) =>
       res.json()
     );
     setProductList(getProduct);

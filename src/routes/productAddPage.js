@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/productAdd.css";
 
 //컴포넌트
 import { Nav } from "../components/nav";
-import { Link } from "react-router-dom";
 import { SubImagePreview } from "../components/subImgPreview";
 
 export const ProductAdd = () => {
+  const navigate = useNavigate();
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
 
@@ -34,7 +35,7 @@ export const ProductAdd = () => {
     reader.onloadend = () => {
       setMainImageFile(reader.result);
     };
-    if (file.name.contain("http://")) {
+    if (file.name.includes("http://") || file.name.includes("https://")) {
       setNewProduct((prevState) => ({
         ...prevState,
         mainImage: file.name,
@@ -143,7 +144,7 @@ export const ProductAdd = () => {
         return;
       }
 
-      console.log(newProduct.mainImage);
+      // console.log(newProduct.mainImage);
 
       const result = await fetch("http://localhost:5000/addProduct", {
         method: "POST",
@@ -151,7 +152,13 @@ export const ProductAdd = () => {
         body: JSON.stringify(newProduct),
       }).then((res) => {
         res.json();
-        alert("제품을 추가했습니다.");
+        if (res.ok) {
+          alert("제품을 추가했습니다.");
+          navigate("/productList");
+        } else {
+          alert("제품을 추가하는데 실패했습니다.");
+          return;
+        }
       });
     } catch (error) {
       alert("제품 추가 중 오류가 발생했습니다.");
