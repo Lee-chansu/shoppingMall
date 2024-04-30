@@ -1,12 +1,17 @@
-import '../css/product.css'
+import { useState } from "react";
+import "../css/product.css";
 
-export const Product = ({product}) => {
-
-
+export const Product = ({ product }) => {
+  const [imageUrl, setImageUrl] = useState(product.mainImage);
   return (
     <div className="product">
       <div className="image">
-        <img className="productImg" src={product.mainImage} alt="제품 사진" />
+        <img
+          className="productImg"
+          src={imageUrl}
+          onError={() => setImageUrl("../img/readyProduct.png")}
+          alt="제품사진"
+        />
       </div>
       <div className="infoBox">
         <div className="productName">
