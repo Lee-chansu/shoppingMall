@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import styles from "../css/cartItem.module.css"
 
-export const CartItem = ({ val, idx, cartItemList, setCartItemList }) => {
+export const CartItem = ({ val, idx, cartItemList, setCartItemList, countAble=true }) => {
   const item = val;
   const handleUpCount = () => {
     const listCopy = cartItemList;
@@ -29,36 +30,38 @@ export const CartItem = ({ val, idx, cartItemList, setCartItemList }) => {
   }, []);
 
   return (
-    <div className="cartItem">
+    <div className={styles.cartItem}>
       <img
-        className="productImgBox"
+        className={styles.productImgBox}
         src={`${process.env.PUBLIC_URL}/img${item.src}`}
         alt="item"
       />
-      <div className="inner">
-        <div className="group1">
-          <div className="cartProductStock">{item.count}</div>
+      <div className={styles.inner}>
+        <div className={styles.group1}>
+          <div className={styles.cartProductStock}>{item.count}</div>
           <div>
-            <button className="countUp" onClick={handleUpCount}>
+            {countAble && (<>
+            <button className={styles.countUp} onClick={handleUpCount}>
               ▲
             </button>
-            <button className="countDown" onClick={handleDownCount}>
+            <button className={styles.countDown} onClick={handleDownCount}>
               ▼
             </button>
+            </>)}
           </div>
         </div>
-        <div className="cartProductPrice">{item.price}원</div>
+        <div className={styles.cartProductPrice}>{item.price}원</div>
       </div>
       <input
         type="checkbox"
-        className="isBuyCheckBox"
+        className={styles.isBuyCheckBox}
         checked={item.isChecked}
         onChange={handleCheck}
       />
-      <div className="cartProductName">{item.name}</div>
-      <div className="group2">
-        <div className="cartCarryPrice">{item.carryPrice}원</div>
-        <div className="cartSumPrice">
+      <div className={styles.cartProductName}>{item.productName}</div>
+      <div className={styles.group2}>
+        <div className={styles.cartCarryPrice}>{item.carryPrice}원</div>
+        <div className={styles.cartSumPrice}>
           {item.count !== 0 ? item.count * item.price + item.carryPrice : 0}원
         </div>
       </div>

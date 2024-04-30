@@ -14,10 +14,10 @@ export const PaymentItem = ({ val }) => {
         <div className="image">
           <img
             className="productImg"
-            src={`${process.env.PUBLIC_URL}/img/t-shirt.jpg`}
+            src={`${process.env.PUBLIC_URL}/img${item.src}`}
           />
         </div>
-        <Link to={`productDetail/${item.id}`}>
+        <Link to={`/productList/detail/description/${item.id}`}>
           <button className="moreButton">
             more
           </button>

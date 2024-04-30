@@ -3,51 +3,54 @@ import { Link } from "react-router-dom";
 import "../css/payBuyList.css";
 
 import { PayItem } from "../components/PayBuyListItem";
+import { Nav } from "../components/nav";
+import { Button } from "../components/button";
 
 export const PayBuyList = () => {
   const payItemList = [
     {
-      payDate: "2024-4-4",
-      itemName: "상품명1",
+      payDate: "2024-04-29",
+      itemName: "샌드 베이지 숏츠 면 반바지",
       itemPrice: "50,000",
-      carryState: "Delivery begins",
+      itemCount: "1",
+      itemSize: "L",
+      itemNum: "DAA37WREY1",
+      carryState: "배송완료",
+      src: "/pants.jpg",
     },
     {
-      payDate: "2024-2-4",
-      itemName: "상품명2",
-      itemPrice: "20,000",
-      carryState: "Delivery begins",
+      payDate: "2024-04-29",
+      itemName: "여름 필수템 베이직 무지 티셔츠",
+      itemPrice: "25,000",
+      itemCount: "1",
+      itemSize: "F",
+      itemNum: "FFF37WREY1",
+      carryState: "배송완료",
+      src: "/t-shirt.jpg",
+    },
+    {
+      payDate: "2024-04-29",
+      itemName: "여리여리 갬성 오프숄더 블라우스",
+      itemPrice: "45,000",
+      itemCount: "1",
+      itemSize: "S",
+      itemNum: "P3A37WREY33",
+      carryState: "배송완료",
+      src: "/blouse.jpg",
     },
   ];
   return (
-    <div className="payBuyList">
-      <div className="div">
-        <div className="nav">
-          <div className="logo">
-            <span className="textWrapper10">logo</span>
-          </div>
-          <div className="user">
-            <span className="textWrapper10">유저정보</span>
-          </div>
-        </div>
-        <div className="textWrapper8">구매 내역</div>
-
-        {payItemList.map((val, idx) => {
-          return <PayItem val={val} key={idx} />;
-        })}
-
-        <div className="overlap6">
-          <Link to="/" className="price">
-            처음화면
-          </Link>
-          <Link to="#" className="price2">
-            재구매하기
-          </Link>
-          <Link to="#" className="price3">
-            이전화면
-          </Link>
+    <>
+      <Nav></Nav>
+      <div className="payBuyList">
+        <div className="div">
+          <div className="title">구매 내역</div>
+          {payItemList.map((val, idx) => {
+            return <PayItem val={val} key={idx} />;
+          })}
         </div>
       </div>
-    </div>
+      <Button></Button>
+    </>
   );
 };

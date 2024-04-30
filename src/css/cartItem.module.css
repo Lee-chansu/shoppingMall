@@ -68,7 +68,7 @@
   border: none;
 }
 
-.cart .cartItem {
+.cartItem {
   background-color: #eeeeeeee;
   height: 241px;
   overflow: hidden;
@@ -81,7 +81,7 @@
   position: relative;
 }
 
-.cart .productImgBox {
+.productImgBox {
   background-color: #ffffff;
   height: 191px;
   left: 121px;
@@ -90,7 +90,7 @@
   width: 191px;
 }
 
-.cart .inner {
+.inner {
   height: 56px;
   left: 549px;
   position: absolute;
@@ -98,7 +98,7 @@
   width: 352px;
 }
 
-.cart .group1 {
+.group1 {
   background-color: #ffffff;
   border: 1px solid;
   border-color: #000000;
@@ -109,7 +109,7 @@
   width: 120px;
 }
 
-.cart .cartProductStock {
+.cartProductStock {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 30px;
@@ -131,7 +131,7 @@
   width: 2px;
 }
 
-.cart .countUp {
+.countUp {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 16px;
@@ -145,7 +145,7 @@
   border: none;
 }
 
-.cart .countDown {
+.countDown {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 16px;
@@ -167,7 +167,7 @@
   width: 45px;
 }
 
-.cart .cartProductPrice {
+.cartProductPrice {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 22px;
@@ -180,7 +180,7 @@
   top: 5px;
 }
 
-.cart .isBuyCheckBox {
+.isBuyCheckBox {
   background-color: #ffffff;
   height: 30px;
   left: 41px;
@@ -189,7 +189,7 @@
   width: 30px;
 }
 
-.cart .cartProductName {
+.cartProductName {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 20px;
@@ -206,7 +206,7 @@
   word-break: keep-all;
 }
 
-.cart .group2 {
+.group2 {
   height: 56px;
   left: 959px;
   position: absolute;
@@ -214,7 +214,7 @@
   width: 428px;
 }
 
-.cart .cartCarryPrice {
+.cartCarryPrice {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 22px;
@@ -227,7 +227,7 @@
   width: 200px;
 }
 
-.cart .cartSumPrice {
+.cartSumPrice {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 22px;

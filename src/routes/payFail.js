@@ -33,7 +33,8 @@ export const PayFail = () => {
               <p className="p">option / color / size / ect..</p>
               <p className="textWrapper11">
                 <i>
-                카드사 즉시 할인 및 포인트 사용내역은 카드사에서 확인 부탁 드립니다.
+                  카드사 즉시 할인 및 포인트 사용내역은 카드사에서 확인 부탁
+                  드립니다.
                 </i>
               </p>
               <p className="textWrapper12">option / color / size / ect..</p>
@@ -44,11 +45,11 @@ export const PayFail = () => {
           <img className="img" src="img/vector-6.svg" alt="" />
         </div>
         <div className="button-box">
-          <Link to="#" className="divWrapper">
-            다시 결제하기
+          <Link to="/" className="divWrapper">
+            쇼핑 계속하기
           </Link>
-          <Link to="#" className="innerBox2">
-            결제 취소하기
+          <Link to="/paySuccess" className="innerBox2">
+            다시 결제하기
           </Link>
         </div>
       </div>
