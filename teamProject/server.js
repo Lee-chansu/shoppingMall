@@ -159,15 +159,39 @@ app.get("/DeleteUser", async (req, res) => {
   res.json(result);
 });
 
+// 상품 상세 조회
+app.get('/product/:id',async(req,res)=>{
+  const {id} = req.params
+  const result = await Product.findOne({where : {id}})
+  if(result){
+    res.json(result)
+  } else {
+    res.json({})
+  }
+})
+
 app.get("/Product", async (req, res) => {
   const result = await Product.findAll();
   res.json(result);
 });
 
-app.get("/ReviewList", async (req, res) => {
-  const result = await ReviewList.findAll();
-  res.json(result);
-});
+// 리뷰 리스트 조회
+app.get('/ReviewList',async(req,res)=>{
+  const { product_id } = req.query;
+  let result = await ReviewList.findAll({where : {}})
+  if (product_id) result = await ReviewList.findAll({where : { product_id }})
+  console.log(result)
+  if(result){
+    res.json(result)
+  } else {
+    res.json([])
+  }
+})
+
+// app.get("/ReviewList", async (req, res) => {
+//   const result = await ReviewList.findAll();
+//   res.json(result);
+// });
 
 app.get("/StarPoint", async (req, res) => {
   const result = await StarPoint.findAll();
