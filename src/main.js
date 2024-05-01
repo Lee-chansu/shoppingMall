@@ -33,7 +33,7 @@ export const Main = () => {
               return (
                 <Link
                   className="link"
-                  to={`/productList/detail/description/${idx + 1}`}
+                  to={`/productList/detail/description/${product.id}`}
                 >
                   <Product key={product.id} product={product} />
                 </Link>
