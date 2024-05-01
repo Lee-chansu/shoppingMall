@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/cart.css";
 
 import { CartItem } from "../components/CartItem";
 import { Nav } from "../components/nav";
+import { jwtDecode } from "jwt-decode";
 
 export const Cart = () => {
   const [cartItemList, setCartItemList] = useState([
@@ -41,6 +42,53 @@ export const Cart = () => {
       "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
     },
   ]);
+
+  const [userProfile, setUserProfile] = useState({});
+  const [id, setId] = useState("");
+  const navigate = useNavigate();
+
+  const userFetch = async () => {
+    const response = await fetch(`http://localhost:5000/userProfile/${id}`);
+    const body = await response.json();
+    return body;
+  };
+
+  const getUserProfile = async (id) => {
+    const user = await userFetch(id);
+    setUserProfile(user);
+  };
+
+  //유저별 상품조회
+  const userFetchProducts = async () => {
+    const response = await fetch(`http://localhost:5000/Cart/${id}`);
+    const body = await response.json();
+    return body;
+  };
+
+  const getProducts = async (id) => {
+    const result = await userFetchProducts(id);
+    const newArr = result.map((val, idx) => {
+      return { ...val.Product, amount: val.amount };
+    });
+    console.log(newArr);
+
+    setCartItemList(newArr);
+  };
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (id === "" && !token) {
+      navigate("/login");
+    } else {
+      const decodeToken = jwtDecode(token);
+      setId(decodeToken.id);
+    }
+
+    if (id !== "") {
+      getUserProfile();
+      getProducts(id);
+    }
+  }, [id]);
 
   const [isCheckedAll, setIsCheckedAll] = useState(false);
 
@@ -89,7 +137,6 @@ export const Cart = () => {
             <div className="productName">상품명</div>
             <div className="productPrice">판매가</div>
             <div className="productStock">수량</div>
-            <div className="productCarryPay">배송비</div>
             <div className="sumPay">총 합계</div>
           </div>
 
