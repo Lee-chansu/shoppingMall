@@ -397,12 +397,24 @@ a {
   word-break: keep-all;
 }
 
-.payment .image {
-  background-color: #ffffff;
-  left: 18px;
+.payment .productAmount {
+  color: #000000;
+  font-size: 14px;
+  right: 15px;
+  line-height: normal;
   position: absolute;
-  top: 10px;
+  top: 40px;
+  width: 150px;
+  text-align: right;
+}
+
+.payment .image {
+  left: 15px;
+  position: absolute;
+  top: 7px;
   width: 105px;
+  height: 105px;
+  overflow: hidden;
 }
 
 .payment .productImg {
@@ -412,9 +424,10 @@ a {
   position: absolute;
   text-align: center;
   width: 105px;
-  top: -4px;
-  left: -10px;
-  height: auto;
+  /* top: -4px;
+  left: -10px; */
+  object-fit: cover;
+  height: 100%;
 }
 
 .payment .buttonGroup {

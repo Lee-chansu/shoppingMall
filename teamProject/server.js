@@ -252,10 +252,32 @@ app.get("/StarPoint", async (req, res) => {
   res.json(result);
 });
 
+app.get("/Cart/:user_id", async (req, res) => {
+  const { user_id } = req.params;
+
+  try {
+    const result = await Cart.findAll({
+      where: { user_id },
+      include: [{ model: Product }], // Product 모델을 include하여 조인
+    });
+
+    if (result) {
+      res.json(result);
+    } else {
+      res.status(404).json({ message: "Cart not found for the user." });
+    }
+  } catch (error) {
+    console.error("Error fetching cart:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 app.get("/Cart", async (req, res) => {
   const result = await Cart.findAll();
   res.json(result);
 });
+
+//유저별 장바구니 조회
 
 app.get("/BuyList", async (req, res) => {
   const result = await BuyList.findAll();

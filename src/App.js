@@ -45,12 +45,12 @@ function App() {
       <Route path="findId" element={<FindId />}></Route>
       <Route path="findPassword" element={<FindPassword />}></Route>
 
-      <Route path="passwordEdit" element={<PasswordEdit/>}></Route>
+      <Route path="passwordEdit" element={<PasswordEdit />}></Route>
       <Route path="passwordCheck" element={<PasswordCheck />}></Route>
       <Route path="userInfo" element={<UserInfo />}></Route>
       <Route path="userProfile" element={<UserProfile />}></Route>
       <Route path="userEdit" element={<UserEdit />}></Route>
-      
+
       <Route path="cart" element={<Cart />}></Route>
       <Route path="payment" element={<Payment />}></Route>
       <Route path="paySuccess" element={<PaySuccess />}></Route>

@@ -60,20 +60,20 @@ module.exports = {
         product_id: 107,
         user_id: 107,
       },
-      {
-        id: 108,
-        content: "content8",
-        reviewImage: "reviewImage8",
-        product_id: 108,
-        user_id: 108,
-      },
-      {
-        id: 109,
-        content: "content9",
-        reviewImage: "reviewImage9",
-        product_id: 109,
-        user_id: 109,
-      },
+      // {
+      //   id: 108,
+      //   content: "content8",
+      //   reviewImage: "reviewImage8",
+      //   product_id: 108,
+      //   user_id: 108,
+      // },
+      // {
+      //   id: 109,
+      //   content: "content9",
+      //   reviewImage: "reviewImage9",
+      //   product_id: 109,
+      //   user_id: 109,
+      // },
     ], {});
 
   },

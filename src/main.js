@@ -29,9 +29,12 @@ export const Main = () => {
             <h1>Best!</h1>
           </Link>
           <div className="wrap">
-            {productList.map((product) => {
+            {productList.map((product, idx) => {
               return (
-                <Link className="link" to="/productList/detail/description">
+                <Link
+                  className="link"
+                  to={`/productList/detail/description/${product.id}`}
+                >
                   <Product key={product.id} product={product} />
                 </Link>
               );
