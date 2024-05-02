@@ -103,10 +103,12 @@ passport.deserializeUser(async (user, done) => {
   }
 });
 
+
+
 // 로그아웃
 app.get("/logout", (req, res) => {
   req.logOut();
-  //
+
 });
 
 // 로그인
@@ -327,3 +329,17 @@ app.put('/passwordEdit/:id', async(req,res)=>{
     res.json({message : '비밀번호 변경성공'})
   }
 })
+
+// 회원탈퇴
+app.put('/userinfo/put/:id', async(req,res)=>{
+  const {id} = req.params
+  const result = await User.findOne({where : {id}})
+  if(result){
+    result.isDeleted = true
+    await result.save()
+    res.send({message : '삭제성공'})
+  }else{
+    res.status(404).send({message : 'db와 일치하지않음'})
+  }
+})
+

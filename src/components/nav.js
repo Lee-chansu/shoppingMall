@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const Nav = () => {
   const isLogin = sessionStorage.getItem("token");
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
-
+  
   return (
     <header className="header">
       <div className="inner">

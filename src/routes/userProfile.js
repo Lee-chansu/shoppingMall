@@ -13,7 +13,7 @@ export const UserProfile = () => {
   const [id, setId] = useState();
 
   const userFetch = async () => {
-    const response = await fetch(`http://localhost:5000/userProfile/${id}`);
+    const response = await fetch(`http://localhost:5000/userProfile/${id}`)
     const body = await response.json();
     return body;
   };

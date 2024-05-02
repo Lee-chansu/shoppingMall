@@ -14,19 +14,22 @@ module.exports = {
         phoneNumber: "0",
         address: "address0",
         userImage: "userImage0",
-        isMaster: false
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 101,
         userId: "userId1",
         password: '1234',
+        
         gender: "M",
         userName: "userName1",
         email: "email1@naver.com",
         phoneNumber: "1",
         address: "address1",
         userImage: "userImage1",
-        isMaster: false
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 102,
@@ -38,7 +41,8 @@ module.exports = {
         phoneNumber: "2",
         address: "address2",
         userImage: "userImage2",
-        isMaster: false
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 103,
@@ -50,7 +54,8 @@ module.exports = {
         phoneNumber: "3",
         address: "address3",
         userImage: "userImage3",
-        isMaster: false
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 104,
@@ -62,7 +67,8 @@ module.exports = {
         phoneNumber: "4",
         address: "address4",
         userImage: "userImage4",
-        isMaster: false
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 105,
@@ -74,7 +80,8 @@ module.exports = {
         phoneNumber: "5",
         address: "address5",
         userImage: "userImage5",
-        isMaster: false
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 106,
@@ -86,7 +93,8 @@ module.exports = {
         phoneNumber: "6",
         address: "address6",
         userImage: "userImage6",
-        isMaster: false
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 107,
@@ -98,7 +106,8 @@ module.exports = {
         phoneNumber: "7",
         address: "address7",
         userImage: "userImage7",
-        isMaster: false
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 108,
@@ -110,7 +119,8 @@ module.exports = {
         phoneNumber: "8",
         address: "address8",
         userImage: "userImage8",
-        isMaster: false
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 109,
@@ -122,7 +132,8 @@ module.exports = {
         phoneNumber: "9",
         address: "address9",
         userImage: "userImage9",
-        isMaster: false
+        isMaster: false,
+        isDeleted: false
       },
     ], {});
   },
