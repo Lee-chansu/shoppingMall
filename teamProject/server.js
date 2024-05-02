@@ -143,6 +143,14 @@ app.get("/", async (req, res) => {
   res.json(result);
 });
 
+//프로필 이미지 불러오기
+app.get("/profile/:id", async (req, res) => {
+  const { id } = req.params;
+  const { profileImage } = await User.findOne({ where: { id } });
+
+  res.json(profileImage);
+});
+
 // 유저프로필
 app.get("/userProfile/:id", async (req, res) => {
   const { id } = req.params;

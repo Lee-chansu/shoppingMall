@@ -1,11 +1,28 @@
 import "../css/nav.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 
 export const Nav = () => {
-  const [imageUrl, setImageUrl] = useState("");
   const isLogin = sessionStorage.getItem("token");
+  const [imageUrl, setImageUrl] = useState("../img/userDefaultImg.png");
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
+
+  const profileImageLoad = async () => {
+    const { id } = jwtDecode(isLogin);
+    const loadData = await fetch(`http://localhost:5000/profile/${id}`).then(
+      (res) => res.json()
+    );
+    setImageUrl(loadData);
+  };
+
+  useEffect(() => {
+    if (!isLogin) {
+      return;
+    } else {
+      profileImageLoad();
+    }
+  }, [imageUrl]);
 
   return (
     <header className="header">
