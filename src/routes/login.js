@@ -5,7 +5,7 @@ import { useState } from "react";
 export const Login = () => {
   const navigate = useNavigate();
   const goback = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   const [loginUser, setLoginUser] = useState({
