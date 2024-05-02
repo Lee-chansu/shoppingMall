@@ -42,7 +42,7 @@ a {
 }
 
 .payment .userInfoBox {
-  background-color: #eeeeee;
+  /* background-color: #eeeeee; */
   height: 679px;
   left: 31px;
   position: absolute;
@@ -56,7 +56,8 @@ a {
 }
 
 .payment .emailBox {
-  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
   height: 111px;
   left: 27px;
   position: absolute;
@@ -91,7 +92,9 @@ a {
 }
 
 .payment .addressBox {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
+  border: 1px solid #ddd;
+  border-radius: 10px;
   height: 111px;
   left: 27px;
   position: absolute;
@@ -126,7 +129,9 @@ a {
 }
 
 .payment .carryBox {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
+  border: 1px solid #ddd;
+  border-radius: 10px;
   height: 150px;
   left: 27px;
   position: absolute;
@@ -175,12 +180,13 @@ a {
 }
 
 .payment .howPayBox {
-  background-color: #ffffff;
+  background-color: #eee;
   height: 222px;
   left: 27px;
   position: absolute;
-  top: 441px;
+  top: 460px;
   width: 331px;
+  border-radius: 10px;
 }
 
 .payment .title {
@@ -196,7 +202,7 @@ a {
   left: -20px;
   position: absolute;
   text-align: center;
-  top: 40px;
+  top: 20px;
   width: 228px;
 }
 
@@ -205,11 +211,13 @@ a {
   justify-content: center;
   flex-wrap: wrap;
   height: 100px;
-  margin-top: 85px;
+  margin-top: 50px;
   align-items: center;
+  
 }
 
 .payment .paymentBox .item {
+  background-color: #fff;
   width: 45%;
   border-radius: 5px;
   border: 2px solid #ddd;
@@ -217,14 +225,33 @@ a {
   height: 45px;
   display: flex;
   justify-content: center;
+  margin: 2px;
 }
 
 .payment .paymentBox .item .center {
   line-height: 43px;
 }
 
+.payment .underline {
+  text-decoration: underline;
+  color: #999;
+  position: absolute;
+  left: 20px;
+  font-size: 12px;
+  margin-top: 13px;
+  font-weight: lighter;
+}
+
+.payment .smaller {
+  font-size: 10px;
+  color: #999;
+  position: absolute;
+  left: 20px;
+  font-weight: lighter;
+  margin-top: 10px;
+}
+
 .payment .payList {
-  background-color: #eeeeee;
   height: 679px;
   left: 450px;
   position: absolute;
@@ -233,7 +260,6 @@ a {
 }
 
 .payment .payInfo {
-  background-color: #ffffff;
   height: 340px;
   left: 17px;
   position: absolute;
@@ -274,13 +300,11 @@ a {
   width: 150px;
 }
 
-.payment .myOrderText {
-  height: 60px;
+.payment .orderInfo {
   left: 85px;
   position: absolute;
-  top: 25px;
   width: 150px;
-  font-size: 20px;
+  font-size: 18.7px;
   font-weight: 600;
 }
 
@@ -291,7 +315,8 @@ a {
   overflow: hidden;
   position: absolute;
   top: 20px;
-  width: 328px;
+  width: 400px;
+  border-radius: 5px;
 }
 
 .payment .title3 {
@@ -302,6 +327,7 @@ a {
   position: absolute;
   top: 85px;
   width: 328px;
+  border-radius: 5px;
 }
 
 .payment .title4 {
@@ -312,6 +338,7 @@ a {
   position: absolute;
   top: 152px;
   width: 328px;
+  border-radius: 5px;
 }
 
 .payment .title5 {
@@ -322,40 +349,16 @@ a {
   position: absolute;
   top: 220px;
   width: 328px;
+  border-radius: 5px;
 }
 
 .payment .productBox {
-  background-color: #ffffff;
-  height: 288px;
-  left: 18px;
+  border: 1px solid #eee;
+  /* border-radius: 10px; */
+  height: 290px;
   position: absolute;
-  top: 375px;
-  width: 365px;
-}
-
-.payment .product {
-  background-color: #eeeeee;
-  height: 117px;
-
-  position: relative;
-  top: 75px;
-  width: 335px;
-}
-
-.payment .productName {
-  background-color: #fff;
-  font-size: 16px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 130px;
-  overflow: hidden;
-  white-space: normal;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  word-break: keep-all;
+  top: 400px;
+  width: 400px;
 }
 
 .payment .moreButton {
@@ -371,22 +374,63 @@ a {
   border-radius: 5px;
 }
 
-.payment .productInfo {
-  background-color: #ffffff;
-  height: 105px;
-  left: 122px;
+.payment .product {
+  border-radius: 10px;
+  height: 145px;
+  position: relative;
+  top: 40px;
+  right: 50px;
+  width: 400px;
+}
+
+.payment .image {
   position: absolute;
-  top: 6px;
-  width: 200px;
+  width: 38%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.payment .productImg {
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  object-fit: cover;
+}
+
+.payment .productInfo {
+  height: 145px;
+  left: 140px;
+  position: absolute;
+  width: 250px;
+  z-index: 10;
+  border: 1px solid #eee;
+}
+
+.payment .productName {
+  background-color: #fff;
+  font-size: 16px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 130px;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: keep-all;
 }
 
 .payment .productDetail {
   color: #000000;
-  font-size: 14px;
-  left: 10px;
+  font-size: 16px;
+  left: 20px;
   line-height: normal;
   position: absolute;
-  top: 40px;
+  top: 60px;
   width: 150px;
   overflow: hidden;
   white-space: normal;
@@ -399,66 +443,23 @@ a {
 
 .payment .productAmount {
   color: #000000;
-  font-size: 14px;
-  right: 15px;
+  font-size: 16px;
+  left: 20px;
   line-height: normal;
   position: absolute;
-  top: 40px;
+  top: 85px;
   width: 150px;
-  text-align: right;
 }
 
-.payment .image {
-  left: 15px;
-  position: absolute;
-  top: 7px;
-  width: 105px;
-  height: 105px;
-  overflow: hidden;
-}
-
-.payment .productImg {
+.payment .productPrice {
   color: #000000;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  width: 105px;
-  /* top: -4px;
-  left: -10px; */
-  object-fit: cover;
-  height: 100%;
-}
-
-.payment .buttonGroup {
-  width: 600px;
-  border: none;
-  margin: 790px auto 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.payment .button {
-  background-color: #eeeeeeee;
-  height: 70px;
-  width: 250px;
-  border: none;
-  position: relative;
-}
-
-.payment .buttonText {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
-  left: 50px;
-  letter-spacing: 0;
+  left: 20px;
   line-height: normal;
   position: absolute;
-  top: 20px;
-  white-space: nowrap;
+  top: 110px;
   width: 150px;
-  border: none;
 }
 
 .payment .textWrapper8 {
@@ -472,4 +473,10 @@ a {
   position: absolute;
   top: 63px;
   width: 246px;
+}
+
+.payment .buttonBox {
+  position: absolute;
+  top: 740px;
+  left: -80px;
 }
