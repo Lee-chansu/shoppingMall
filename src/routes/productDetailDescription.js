@@ -8,10 +8,11 @@ import { Link, useParams } from "react-router-dom";
 export const ProductDetailDescription = () => {
   let productId = useParams().id;
 
-  const [productList, setProductList] = useState([]);
+  const [product, setProduct] = useState([]);
   const [stock, setStock] = useState(0);
   const [index, setIndex] = useState(0);
   const [id, setId] = useState(0);
+  const [user, setUser] = useState(0);
   const [switchBtn, setSwitchBtn] = useState(!true);
   // const [photo, setPhoto] = useState([]);
 
@@ -19,16 +20,24 @@ export const ProductDetailDescription = () => {
     const getProducts = await fetch(`http://localhost:5000/product/${id}`).then((res) =>
       res.json()
     );
-    setProductList(getProducts);
+    setProduct(getProducts);
   };
+
+  const loadUser = async () => {
+    const getUsers = await fetch(`http://localhost:5000/user`).then((res) =>
+      res.json()
+    );
+    setUser(getUsers);
+  }
 
   useEffect(() => {
     setId(productId);
     loadProduct();
+    loadUser();
   }, [id]);
 
   const increaseStock = () => {
-    if (stock < productList.pdstock) {
+    if (stock < product.pdstock) {
       setStock(stock + 1);
     }
   };
@@ -45,8 +54,8 @@ export const ProductDetailDescription = () => {
 
     } else if (number < 0) {
       setStock(0);
-    } else if (number > productList.pdstock) {
-      setStock(productList.pdstock);
+    } else if (number > product.pdstock) {
+      setStock(product.pdstock);
     } else if (number % 1 == 0) {
       setStock(number);
     }
@@ -55,10 +64,10 @@ export const ProductDetailDescription = () => {
   const mainRef = useRef(null)
 
   let photos = [
-    productList.mainImage,
-    productList.subImage1,
-    productList.subImage2,
-    // productList.subImage3,
+    product.mainImage,
+    product.subImage1,
+    product.subImage2,
+    // product.subImage3,
     // "https://tvvmvn.github.io/front-end/img/Simba.webp",
     // "https://tvvmvn.github.io/front-end/img/Timon.webp",
     // "https://tvvmvn.github.io/front-end/img/Pumbaa.webp"
@@ -76,7 +85,7 @@ export const ProductDetailDescription = () => {
   return (
     <>
     {
-      productList.id ? (
+      product.id ? (
         <div>
           <Nav />
           <div className="productdetail">
@@ -91,13 +100,13 @@ export const ProductDetailDescription = () => {
                 <div className="productName">
                   <div className="textWrapper2">제품명</div>
                   <div className="overlap2">
-                    <div className="text">{productList.name}</div>
+                    <div className="text">{product.name}</div>
                   </div>
                 </div>
                 <div className="productPrice">
                   <div className="textWrapper2">가격</div>
                   <div className="overlap2">
-                    <div className="text">{productList.price}</div>
+                    <div className="text">{product.price}</div>
                   </div>
                 </div>
                 <div className="productSize">
@@ -126,14 +135,14 @@ export const ProductDetailDescription = () => {
                   <div className="textWrapper2">수량</div>
                   <div className="overlapGroup">
                     <button onClick={decreaseStock} className="inputMinus">-</button>
-                    <input className="input" type="number" name="number" min={0} max={productList.pdstock} value={stock} onChange={handleInputChange} />
+                    <input className="input" type="number" name="number" min={0} max={product.pdstock} value={stock} onChange={handleInputChange} />
                     <button onClick={increaseStock} className="inputPlus">+</button>
                   </div>
                 </div>
                 <div className="productTotalPrice">
                   <div className="textWrapper2">총액</div>
                   <div className="overlap2">
-                    <div className="text">{productList.price * stock} 원</div>
+                    <div className="text">{product.price * stock} 원</div>
                   </div>
                 </div>
               </div>
@@ -141,15 +150,15 @@ export const ProductDetailDescription = () => {
                 <Link to="http://localhost:3000/cart" className="cartButton">
                   <div className="textWrapper">장바구니</div>
                 </Link>
-                <div className="nowPayButton">
+                <Link to="http://localhost:3000/payment" className="nowPayButton">
                   <div className="textWrapper">바로결제</div>
-                </div>
+                </Link>
               </div>
             </div>
           </div>
           {/* <ProductDescription switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} />
           <ProductReview switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} /> */}
-          { switchBtn ? <ProductDescription switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} id={id} /> : <ProductReview switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} id={id} />}
+          { switchBtn ? <ProductDescription switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} id={id} product={product} /> : <ProductReview switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} id={id} user={user} />}
           
           
           

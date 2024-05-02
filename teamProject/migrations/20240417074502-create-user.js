@@ -43,6 +43,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
+      isDeleted: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
       profileImg: {
         type: Sequelize.STRING(100),
         defaultValue: false
