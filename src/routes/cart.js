@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import "../css/cart.css";
 
-import { CartItem } from "../components/CartItem";
+//컴포넌트
 import { Nav } from "../components/nav";
-import { jwtDecode } from "jwt-decode";
+import { CartItem } from "../components/CartItem";
 
 export const Cart = () => {
   const [cartItemList, setCartItemList] = useState([
@@ -17,7 +18,7 @@ export const Cart = () => {
       src: "/pants.jpg",
       isChecked: false,
       productDetail:
-      "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
+        "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
     },
     {
       id: 2,
@@ -28,7 +29,7 @@ export const Cart = () => {
       src: "/t-shirt.jpg",
       isChecked: false,
       productDetail:
-      "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
+        "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
     },
     {
       id: 3,
@@ -39,7 +40,7 @@ export const Cart = () => {
       src: "/blouse.jpg",
       isChecked: false,
       productDetail:
-      "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
+        "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
     },
   ]);
 
@@ -108,7 +109,6 @@ export const Cart = () => {
         return copy;
       });
     }
-
     setCartItemList(cartItemList);
     setIsCheckedAll(!isCheckedAll);
   };
@@ -123,7 +123,7 @@ export const Cart = () => {
       <div className="section cart">
         <div className="wrap">
           <div className="title">
-            <img src="/img/basket.png" width="28"/>  
+            <img src="/img/basket.png" width="28" />
             장바구니/결제
           </div>
           <div className="cartBar">
