@@ -160,12 +160,16 @@ export const Payment = () => {
                       휴대폰결제
                     </a>
                   </div>
-                  
                 </div>
-                <span className="underline">* 만 14세 이상 이용자, 개인정보 제공 동의</span><br />
-                <span className="smaller">해당 상품의 거래 전반에 관한 의무와 책임은 각 입점 판매자에게 있습니다<br />
-                위 내용을 확인하였으며 결제에 동의합니다
-                  </span>
+                <span className="underline">
+                  * 만 14세 이상 이용자, 개인정보 제공 동의
+                </span>
+                <br />
+                <span className="smaller">
+                  해당 상품의 거래 전반에 관한 의무와 책임은 각 입점 판매자에게
+                  있습니다
+                  <br />위 내용을 확인하였으며 결제에 동의합니다
+                </span>
               </div>
             </div>
 
@@ -177,8 +181,11 @@ export const Payment = () => {
               {paymentItemList.map((val, idx) => {
                 return <PaymentItem val={val} key={val.id}></PaymentItem>;
               })}
-              
+
               <div className="productBox">
+                <div className="title1">
+                  <div className="orderCheckInfo">주문 확인</div>
+                </div>
                 <div className="title2">
                   <div className="orderSumText">총 주문금액</div>
                   <div className="sum">{orderSum.orderTotal} 원</div>
@@ -192,7 +199,7 @@ export const Payment = () => {
                   <div className="sum">{orderSum.countTotal} 개</div>
                 </div>
                 <div className="title5">
-                  <div className="orderSumText total">총 합계</div>
+                  <div className="orderSumText large">총 합계</div>
                   <div className="sum total">{orderSum.paySumTotal} 원</div>
                 </div>
               </div>
@@ -205,6 +212,5 @@ export const Payment = () => {
         </div>
       </div>
     </div>
-    
   );
 };
