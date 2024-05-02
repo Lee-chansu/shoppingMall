@@ -170,9 +170,8 @@ export const Payment = () => {
             </div>
 
             <div className="payList">
-              <div className="payInfo"></div>
               <div className="myOrder">
-                <div className="orderInfo">나의 주문</div>
+                <h3 className="orderInfo">나의 주문</h3>
               </div>
 
               {paymentItemList.map((val, idx) => {

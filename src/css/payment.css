@@ -42,17 +42,19 @@ a {
 }
 
 .payment .userInfoBox {
-  /* background-color: #eeeeee; */
   height: 679px;
-  left: 31px;
+  left: 20px;
   position: absolute;
   top: 52px;
   width: 385px;
 }
 
 .payment .carryInfo {
-  margin-top: 20px;
   text-align: center;
+  background-color: #eee;
+  border-radius: 10px;
+  margin: 0 25px;
+  padding: 10px;
 }
 
 .payment .emailBox {
@@ -213,7 +215,6 @@ a {
   height: 100px;
   margin-top: 50px;
   align-items: center;
-  
 }
 
 .payment .paymentBox .item {
@@ -259,14 +260,6 @@ a {
   width: 400px;
 }
 
-.payment .payInfo {
-  height: 340px;
-  left: 17px;
-  position: absolute;
-  top: 18px;
-  width: 365px;
-}
-
 .payment .sum {
   position: absolute;
   top: 15px;
@@ -294,16 +287,19 @@ a {
 }
 
 .payment .myOrder {
-  left: 85px;
-  position: absolute;
-  top: 25px;
-  width: 150px;
+  display: flex;
+  justify-content: center;
+  width: 400px;
 }
 
 .payment .orderInfo {
-  left: 85px;
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 10px 50px;
+  text-align: center;
   position: absolute;
-  width: 150px;
+  left: -20px;
+  width: 400px;
   font-size: 18.7px;
   font-weight: 600;
 }
@@ -311,8 +307,6 @@ a {
 .payment .title2 {
   background-color: #eeeeee;
   height: 50px;
-  left: 18px;
-  overflow: hidden;
   position: absolute;
   top: 20px;
   width: 400px;
@@ -322,40 +316,33 @@ a {
 .payment .title3 {
   background-color: #eeeeee;
   height: 50px;
-  left: 18px;
-  overflow: hidden;
   position: absolute;
   top: 85px;
-  width: 328px;
+  width: 400px;
   border-radius: 5px;
 }
 
 .payment .title4 {
   background-color: #eeeeee;
   height: 50px;
-  left: 18px;
-  overflow: hidden;
   position: absolute;
   top: 152px;
-  width: 328px;
+  width: 400px;
   border-radius: 5px;
 }
 
 .payment .title5 {
   background-color: #eeeeee;
   height: 50px;
-  left: 18px;
-  overflow: hidden;
   position: absolute;
   top: 220px;
-  width: 328px;
+  width: 400px;
   border-radius: 5px;
 }
 
 .payment .productBox {
-  border: 1px solid #eee;
-  /* border-radius: 10px; */
   height: 290px;
+  left: -20px;
   position: absolute;
   top: 400px;
   width: 400px;
@@ -375,7 +362,7 @@ a {
 }
 
 .payment .product {
-  border-radius: 10px;
+  border-radius: 5px;
   height: 145px;
   position: relative;
   top: 40px;
