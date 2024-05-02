@@ -36,12 +36,20 @@ module.exports = {
       address: {
         type: Sequelize.STRING(100),
       },
-      profileImage: {
+      userImage: {
         type: Sequelize.STRING(100),
       },
       isMaster: {
         type: Sequelize.BOOLEAN,
-        defaultValue: false,
+        defaultValue: false
+      },
+      isDeleted: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
+      profileImg: {
+        type: Sequelize.STRING(100),
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,
@@ -51,6 +59,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Users");
-  },
+    await queryInterface.dropTable('Users');
+  }
 };

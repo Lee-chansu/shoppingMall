@@ -2,7 +2,7 @@ import React from "react";
 import "../css/productDescription.css";
 
 export const ProductDescription = (props) => {
-  const { switchBtn, setSwitchBtn, handleSwitchBtn, id } = props
+  const { switchBtn, setSwitchBtn, handleSwitchBtn, id, product } = props
 
   return (
     <div className="productInfo">
@@ -17,7 +17,7 @@ export const ProductDescription = (props) => {
             </div>
           </div>
           <div className="productDecription">
-            <div className="textWrapper2">상품 상세페이지</div>
+            <div className="textWrapper2">{product.detail}</div>
             <div className="moreInfo">
               <div className="textWrapper" style={{textWrap:"nowrap"}}>상품정보 더 보기 ▼</div>
             </div>

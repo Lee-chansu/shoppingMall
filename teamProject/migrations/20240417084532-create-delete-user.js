@@ -49,6 +49,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("DeleteUsers");
-  },
+    await queryInterface.dropTable('DeleteUsers');
+  }
 };

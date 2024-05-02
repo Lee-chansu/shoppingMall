@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export const Main = () => {
   const [productList, setProductList] = useState([]);
   const loadProduct = async () => {
-    const getProducts = await fetch("http://localhost:5000/").then((res) =>
+    const getProducts = await fetch("http://localhost:5000/product").then((res) =>
       res.json()
     );
     setProductList(getProducts);
@@ -50,7 +50,7 @@ export const Main = () => {
                 return (
                   <Link
                     className="link"
-                    to="/productList/description"
+                    to={`/productList/detail/description/${product.id}`}
                     key={product.id}
                   >
                     <Product product={product} />

@@ -149,7 +149,8 @@
   height: 382px;
   left: 2px;
   position: relative;
-  width: 665px;
+  width: 100%;
+  /* width: 665px; */
 }
 
 .productInfoReview .overlap {

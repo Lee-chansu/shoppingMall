@@ -146,9 +146,9 @@ app.get("/", async (req, res) => {
 //프로필 이미지 불러오기
 app.get("/profile/:id", async (req, res) => {
   const { id } = req.params;
-  const { profileImage } = await User.findOne({ where: { id } });
+  const { userImage } = await User.findOne({ where: { id } });
 
-  res.json(profileImage);
+  res.json(userImage);
 });
 
 // 유저프로필
@@ -193,7 +193,7 @@ app.post("/addProduct", async (req, res) => {
     } else {
       result = true;
     }
-    console.log(result);
+    // console.log(result);
     res.json(result);
   } catch (error) {
     console.log(error);
@@ -234,7 +234,7 @@ app.get("/ReviewList", async (req, res) => {
   const { product_id } = req.query;
   let result = await ReviewList.findAll({ where: {} });
   if (product_id) result = await ReviewList.findAll({ where: { product_id } });
-  console.log(result);
+  // console.log(result);
   if (result) {
     res.json(result);
   } else {

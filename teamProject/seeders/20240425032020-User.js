@@ -13,8 +13,9 @@ module.exports = {
         email: "email0@naver.com",
         phoneNumber: "0",
         address: "address0",
-        profileImage: "profileImage0",
-        isMaster: false
+        userImage: "userImage0",
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 101,
@@ -25,8 +26,9 @@ module.exports = {
         email: "email1@naver.com",
         phoneNumber: "1",
         address: "address1",
-        profileImage: "profileImage1",
-        isMaster: false
+        userImage: "userImage1",
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 102,
@@ -37,8 +39,9 @@ module.exports = {
         email: "email2@naver.com",
         phoneNumber: "2",
         address: "address2",
-        profileImage: "profileImage2",
-        isMaster: false
+        userImage: "userImage2",
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 103,
@@ -49,8 +52,9 @@ module.exports = {
         email: "email3@naver.com",
         phoneNumber: "3",
         address: "address3",
-        profileImage: "profileImage3",
-        isMaster: false
+        userImage: "userImage3",
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 104,
@@ -61,8 +65,9 @@ module.exports = {
         email: "email4@naver.com",
         phoneNumber: "4",
         address: "address4",
-        profileImage: "profileImage4",
-        isMaster: false
+        userImage: "userImage4",
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 105,
@@ -73,8 +78,9 @@ module.exports = {
         email: "email5@naver.com",
         phoneNumber: "5",
         address: "address5",
-        profileImage: "profileImage5",
-        isMaster: false
+        userImage: "userImage5",
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 106,
@@ -85,8 +91,9 @@ module.exports = {
         email: "email6@naver.com",
         phoneNumber: "6",
         address: "address6",
-        profileImage: "profileImage6",
-        isMaster: false
+        userImage: "userImage6",
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 107,
@@ -97,8 +104,9 @@ module.exports = {
         email: "email7@naver.com",
         phoneNumber: "7",
         address: "address7",
-        profileImage: "profileImage7",
-        isMaster: false
+        userImage: "userImage7",
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 108,
@@ -109,8 +117,9 @@ module.exports = {
         email: "email8@naver.com",
         phoneNumber: "8",
         address: "address8",
-        profileImage: "profileImage8",
-        isMaster: false
+        userImage: "userImage8",
+        isMaster: false,
+        isDeleted: false
       },
       {
         id: 109,
@@ -121,13 +130,13 @@ module.exports = {
         email: "email9@naver.com",
         phoneNumber: "9",
         address: "address9",
-        profileImage: "profileImage9",
-        isMaster: false
+        userImage: "userImage9",
+        isMaster: false,
+        isDeleted: false
       },
     ], {});
   },
 
-  
   async down (queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.

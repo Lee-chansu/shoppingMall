@@ -23,11 +23,14 @@ export const ProductReview = (props) => {
     setReviewList(getReviews);
   };
 
-  const searchByUserId = (reviewList, userList) => {
-    const updateReviewList = reviewList.map((review) => {
+  const searchByUserData = (reviewList, userList) => {
+    const updateReviewList = reviewList.map((review, i) => {
       const foundUser = userList.find((user) => user.id === review.user_id);
       if (foundUser) {
+        console.log('foundUser'+i, foundUser)
         return {...review, username: foundUser.username}
+      } else {
+        console.log('없음')
       }
       return review
     })
@@ -35,15 +38,23 @@ export const ProductReview = (props) => {
   };
 
   useEffect(() => {
-    loadUser()
-    loadReview()
+    const fetchData = async () => {
+      await loadUser();
+      await loadReview();
+    };
+    fetchData();
+    console.log(reviewList)
   },[])
 
-  useEffect(() => {
-    const updateReviewList = searchByUserId(reviewList, userList)
-    setReviewList(updateReviewList)
-  }, [userList])
+  // useEffect(() => {
+    
+  //   setReviewList(updateReviewList)
+  //   console.log(reviewList)
+  // }, [userList])
 
+  useEffect(() => {
+    // setReviewList(updateReviewList)
+  }, [userList])
 
   return (
     <div className="productInfoReview">
@@ -59,7 +70,7 @@ export const ProductReview = (props) => {
           </div>
           <div className="reviewBox">
             <div className="reviewAddBtnForm">
-              <Link to="/addReivew" className="divWrapper">
+              <Link to="/payBuyList" className="divWrapper">
                 <div className="textWrapper4">리뷰 작성하기</div>
               </Link>
             </div>

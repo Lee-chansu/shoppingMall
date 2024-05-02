@@ -45,8 +45,12 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
-      profileImage: {
-        type : DataTypes.STRING(100)
+      isDeleted: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+      userImage: {
+        type: DataTypes.STRING(100),
       },
       createdAt: {
         type: DataTypes.DATE,
