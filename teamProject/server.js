@@ -336,7 +336,11 @@ app.put('/userinfo/put/:id', async(req,res)=>{
   const result = await User.findOne({where : {id}})
   if(result){
     result.isDeleted = true
-    await result.save()
+    // await result.save()
+    // for (let key in editUser) {
+    //   result[key] = editUser[key];
+    // }
+    // await result.save();
     res.send({message : '삭제성공'})
   }else{
     res.status(404).send({message : 'db와 일치하지않음'})
