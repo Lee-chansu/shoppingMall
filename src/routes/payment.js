@@ -3,40 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "../css/payment.css";
 
 import { PaymentItem } from "../components/PaymentItem";
+import { Button } from "../components/Button";
 import { jwtDecode } from "jwt-decode";
-
-// const paymentItemList = [
-//   {
-//     id: 1,
-//     price: 50000,
-//     productName: "샌드 베이지 숏츠 면 반바지",
-//     carryPrice: 3000,
-//     count: 1,
-//     src: "/blouse.jpg",
-//     productDetail:
-//       "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
-//   },
-//   {
-//     id: 2,
-//     price: 25000,
-//     productName: "여름 필수템 베이직 무지 티셔츠",
-//     carryPrice: 3000,
-//     count: 1,
-//     src: "/pants.jpg",
-//     productDetail:
-//       "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
-//   },
-//   {
-//     id: 3,
-//     price: 45000,
-//     productName: "여리여리 갬성 오프숄더 블라우스",
-//     carryPrice: 3000,
-//     count: 1,
-//     src: "/t-shirt.jpg",
-//     productDetail:
-//       "이상품에 대한 설명을 주저리주저리 줄줄줄 더더 길게 줄줄 쓰면 어떻게 되는지 확인",
-//   },
-// ];
 
 export const Payment = () => {
   //배송요청 직접입력
@@ -192,20 +160,25 @@ export const Payment = () => {
                       휴대폰결제
                     </a>
                   </div>
+                  
                 </div>
+                <span className="underline">* 만 14세 이상 이용자, 개인정보 제공 동의</span><br />
+                <span className="smaller">해당 상품의 거래 전반에 관한 의무와 책임은 각 입점 판매자에게 있습니다<br />
+                위 내용을 확인하였으며 결제에 동의합니다
+                  </span>
               </div>
             </div>
 
             <div className="payList">
               <div className="payInfo"></div>
               <div className="myOrder">
-                <div className="myOrderText">나의 주문</div>
+                <div className="orderInfo">나의 주문</div>
               </div>
 
               {paymentItemList.map((val, idx) => {
                 return <PaymentItem val={val} key={val.id}></PaymentItem>;
               })}
-
+              
               <div className="productBox">
                 <div className="title2">
                   <div className="orderSumText">총 주문금액</div>
@@ -225,18 +198,7 @@ export const Payment = () => {
                 </div>
               </div>
             </div>
-            <div className="buttonGroup">
-              <button className="button">
-                <Link to="/payFail" className="buttonText">
-                  취소하기
-                </Link>
-              </button>
-              <button className="button">
-                <Link to="/paySuccess" className="buttonText">
-                  결제하기
-                </Link>
-              </button>
-            </div>
+            <Button></Button>
           </div>
           <div className="payTitle">
             <div className="textWrapper8">결제하기</div>
@@ -244,5 +206,6 @@ export const Payment = () => {
         </div>
       </div>
     </div>
+    
   );
 };

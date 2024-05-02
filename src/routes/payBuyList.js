@@ -4,7 +4,7 @@ import "../css/payBuyList.css";
 
 import { PayItem } from "../components/PayBuyListItem";
 import { Nav } from "../components/nav";
-import { Button } from "../components/button";
+import { Button } from "../components/Button";
 
 export const PayBuyList = () => {
   const payItemList = [
