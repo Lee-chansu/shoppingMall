@@ -6,7 +6,7 @@ import "../css/productAdd.css";
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
 
-export const ProductAdd = () => {
+export const ProductEdit = id => {
   const navigate = useNavigate();
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
@@ -146,8 +146,8 @@ export const ProductAdd = () => {
 
       // console.log(newProduct.mainImage);
 
-      const result = await fetch("http://localhost:5000/addProduct", {
-        method: "POST",
+      const result = await fetch(`http://localhost:5000/productEdit/${id}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newProduct),
       }).then(res => {

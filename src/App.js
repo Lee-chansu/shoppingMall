@@ -4,7 +4,9 @@ import { Routes, Route } from "react-router-dom";
 //컴포넌트
 import { Main } from "./main";
 import { ProductList } from "./routes/productList";
+import { ProductDetailDescription } from "./routes/productDetailDescription";
 import { ProductAdd } from "./routes/productAddPage";
+import { ProductEdit } from "./routes/productEdit";
 
 import { Login } from "./routes/login";
 import { UserEdit } from "./routes/userEdit";
@@ -15,7 +17,6 @@ import { Join } from "./routes/join";
 import { FindId } from "./routes/findId";
 import { FindPassword } from "./routes/findPassword";
 import { PasswordCheck } from "./routes/passwordCheck";
-import { ProductDetailDescription } from "./routes/productDetailDescription";
 
 import { Cart } from "./routes/cart";
 import { Payment } from "./routes/payment";
@@ -27,7 +28,7 @@ import { PasswordEdit } from "./routes/passwordEdit";
 function App() {
   return (
     <Routes>
-      <Route index path="" element={<Main></Main>}></Route>
+      <Route index path="" element={<Main />}></Route>
       <Route path="productList">
         <Route index element={<ProductList />}></Route>
         <Route path="detail">
@@ -37,6 +38,7 @@ function App() {
           ></Route>
         </Route>
         <Route path="add" element={<ProductAdd />}></Route>
+        <Route path="edit" element={<ProductEdit />}></Route>
       </Route>
 
       <Route path="login" element={<Login />}></Route>
