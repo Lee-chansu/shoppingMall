@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/payment.css";
 
@@ -13,6 +13,9 @@ export const Payment = () => {
   const [userProfile, setUserProfile] = useState({});
   const [id, setId] = useState("");
   const navigate = useNavigate();
+  const mainAddressRef = useRef(null);
+  const detailAddressRef = useRef(null);
+  const [isAddressEditable, setIsAddressEditable] = useState(true);
 
   const [paymentItemList, setPaymentItemList] = useState([]);
 
@@ -37,6 +40,14 @@ export const Payment = () => {
   const getUserProfile = async (id) => {
     const user = await userFetch(id);
     setUserProfile(user);
+  };
+
+  const handleAddressFinish = () => {
+    if (detailAddressRef.current.value === "") {
+      return;
+    }
+    setIsAddressEditable(!isAddressEditable);
+    return;
   };
 
   //유저별 상품조회
@@ -102,8 +113,36 @@ export const Payment = () => {
               </div>
               <div className="addressBox">
                 <div className="address">배송받을 주소</div>
-                <div className="address2">{userProfile.address}</div>
-                <ModalPay  />
+                <div className="address2">
+                  <ModalPay mainAddressRef={mainAddressRef} />
+                  <input
+                    ref={mainAddressRef}
+                    placeholder="도로 주소명(자동)"
+                    value={userProfile.address}
+                    disabled
+                  />
+                  <input
+                    ref={detailAddressRef}
+                    placeholder="상세 주소 기입"
+                    disabled={!isAddressEditable}
+                  />
+                  <button
+                    className="btn btn-info "
+                    onClick={handleAddressFinish}
+                    style={{
+                      color:
+                        detailAddressRef.current?.value === ""
+                          ? "gray"
+                          : "black",
+                      cursor:
+                        detailAddressRef.current?.value === ""
+                          ? "cursor"
+                          : "pointer",
+                    }}
+                  >
+                    {isAddressEditable ? "주소 설정 완료" : "상세 주소 수정"}
+                  </button>
+                </div>
               </div>
               <div className="carryBox">
                 <div className="carryRequest">
