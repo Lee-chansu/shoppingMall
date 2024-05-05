@@ -14,6 +14,7 @@ export const Cart = () => {
 
   const [userProfile, setUserProfile] = useState({});
   const [id, setId] = useState("");
+  //네비게이션 선언
   const navigate = useNavigate();
 
   const userFetch = async () => {
@@ -143,19 +144,6 @@ export const Cart = () => {
               handleLinkMove={handlePaymentMove}
             />
           </ButtonBox>
-
-          {/* <div className="buttonGroup">
-            <button className="button">
-              <Link to="/" className="buttonText">
-                취소하기
-              </Link>
-            </button>
-            <button className="button">
-              <Link to="/payment" className="buttonText">
-                결제하기
-              </Link>
-            </button>
-          </div> */}
         </div>
       </div>
     </>
