@@ -5,7 +5,8 @@ import "../css/cart.css";
 import { CartItem } from "../components/CartItem";
 import { Nav } from "../components/nav";
 import { jwtDecode } from "jwt-decode";
-import { Button } from "../components/Button";
+import ButtonBox from "../components/ButtonBox";
+import CustomButton from "../components/CustomButton";
 
 export const Cart = () => {
   //장바구니에 담길 내용
@@ -81,6 +82,14 @@ export const Cart = () => {
     setIsCheckedAll(!isCheckedAll);
   };
 
+  const handleLinkBackMove = () => {
+    navigate(-1);
+  };
+
+  const handlePaymentMove = () => {
+    navigate("/payment");
+  };
+
   useEffect(() => {
     cartItemList.forEach((val) => {});
   });
@@ -121,7 +130,19 @@ export const Cart = () => {
               );
             })}
 
-          <Button></Button>
+          <ButtonBox>
+            <CustomButton
+              className="btn1"
+              buttonTitle="뒤로가기"
+              handleLinkMove={handleLinkBackMove}
+            />
+
+            <CustomButton
+              className="btn2"
+              buttonTitle="선택상품 결제하기"
+              handleLinkMove={handlePaymentMove}
+            />
+          </ButtonBox>
 
           {/* <div className="buttonGroup">
             <button className="button">

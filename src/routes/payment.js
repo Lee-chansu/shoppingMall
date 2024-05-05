@@ -1,9 +1,9 @@
 import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../css/payment.css";
 
 import { PaymentItem } from "../components/PaymentItem";
-import { Button } from "../components/Button";
+import ButtonBox from "../components/ButtonBox";
 import { jwtDecode } from "jwt-decode";
 import ModalPay from "../components/ModalPay";
 
@@ -18,6 +18,7 @@ export const Payment = () => {
   const [isAddressEditable, setIsAddressEditable] = useState(true);
 
   const [paymentItemList, setPaymentItemList] = useState([]);
+  const location = useLocation();
 
   //총 주문 합계 보기 변수선언
   const [orderSum, setOrderSum] = useState({
@@ -245,7 +246,7 @@ export const Payment = () => {
                 </div>
               </div>
             </div>
-            <Button></Button>
+            <ButtonBox></ButtonBox>
           </div>
           <div className="payTitle">
             <div className="textWrapper8">결제하기</div>
