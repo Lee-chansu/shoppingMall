@@ -5,6 +5,7 @@ import "../css/payment.css";
 import { PaymentItem } from "../components/PaymentItem";
 import { Button } from "../components/Button";
 import { jwtDecode } from "jwt-decode";
+import ModalPay from "../components/ModalPay";
 
 export const Payment = () => {
   //배송요청 직접입력
@@ -102,6 +103,7 @@ export const Payment = () => {
               <div className="addressBox">
                 <div className="address">배송받을 주소</div>
                 <div className="address2">{userProfile.address}</div>
+                <ModalPay  />
               </div>
               <div className="carryBox">
                 <div className="carryRequest">
