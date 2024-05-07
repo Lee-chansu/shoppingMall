@@ -8,6 +8,27 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 const { email_service, admin, pass } = process.env; // env 파일 데이터가져오기
 
+// 스케줄링
+const cron = require('node-cron')
+// 회원 기간만료후 물리적삭제
+cron.schedule('* * * * *',async()=>{
+  console.log('스케줄링이 실행됩니다')
+  
+  // deleteUser 테이블에서 삭제
+  const today = new Date()
+  const delUser = await DeleteUser.findAll()
+  if(delUser){
+    delUser.forEach(async (e)=>{
+      if(today > e.deleteDate){
+        await DeleteUser.destroy({where : {deleteDate : e.deleteDate}})
+      } 
+    })
+  }
+
+  
+})
+
+
 const session = require("express-session");
 const passport = require("passport");
 const MySQLStore = require("express-mysql-session")(session);
@@ -35,7 +56,8 @@ const crypto = require("crypto");
 
 //db
 const db = require("./models");
-const { User, Product } = db;
+const { where } = require("sequelize");
+const { User, Product, DeleteUser } = db;
 
 //미들웨어
 app.use(cors());
@@ -330,20 +352,36 @@ app.put('/passwordEdit/:id', async(req,res)=>{
   }
 })
 
+
 // 회원탈퇴
 app.put('/userinfo/put/:id', async(req,res)=>{
   const {id} = req.params
   const result = await User.findOne({where : {id}})
   if(result){
-    result.isDeleted = true
-    // await result.save()
-    // for (let key in editUser) {
-    //   result[key] = editUser[key];
-    // }
-    // await result.save();
+    result.isDeleted = true // 논리적삭제
+    await result.save();
     res.send({message : '삭제성공'})
+    
+    const deleteDate = new Date() 
+    deleteDate.setDate(deleteDate.getDate() + 30) // 물리적삭제 날짜기간정함
+
+    await DeleteUser.create({ 
+      id : result.id,
+      userId : result.userId,
+      password : result.password,
+      gender : result.gender,
+      userName : result.userName,
+      email : result.email,
+      phoneNumber : result.phoneNumber,
+      address : result.address,
+      isMaster : result.isMaster,
+      deleteDate : deleteDate
+    })
+
   }else{
     res.status(404).send({message : 'db와 일치하지않음'})
   }
 })
+
+
 
