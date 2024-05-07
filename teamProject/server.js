@@ -218,16 +218,24 @@ app.get("/DeleteUser", async (req, res) => {
 app.get("/product/:id", async (req, res) => {
   const { id } = req.params;
   const product = await Product.findOne({ where: { id } });
-  const productOption = await ProductOption.findAll({ where: { product_id: id } });
-  const productDetail = await ProductDetail.findAll({ where: { product_id: id } });
+  const productOption = await ProductOption.findAll({
+    where: { product_id: id },
+  });
+  const productDetail = await ProductDetail.findAll({
+    where: { product_id: id },
+  });
   const result = {
-    ...product,
     category: productDetail.category,
     detail: productDetail.detailCategory,
-    size: productOption.productSize,
-    stock: productOption.productStock,
-    color: productOption.productColor,
+    size: [productOption.productSize],
+    color: [productOption.productColor],
+    ...product,
   };
+
+  // console.log(productOption);
+  // console.log(productDetail);
+  console.log(result);
+
   if (result) {
     res.json(result);
   } else {
@@ -237,7 +245,7 @@ app.get("/product/:id", async (req, res) => {
 
 app.get("/product", async (req, res) => {
   const result = await Product.findAll();
-  res.json(result);
+  res.json(result); 
 });
 
 // 리뷰 리스트 조회
