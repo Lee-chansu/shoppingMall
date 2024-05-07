@@ -31,6 +31,11 @@ export const ProductDetailDescription = () => {
     setSelectedColor(event.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // TODO 서밋 후 기능 구현하기
+  }
+
   useEffect(() => {
     // productOption 데이터 가져오기
     fetch("http://localhost:5000/productOption")
@@ -171,95 +176,97 @@ export const ProductDetailDescription = () => {
                   />
                 ))}
               </div>
-              <div className="infoBox">
-                <div className="productName">
-                  <div className="textWrapper2">제품명</div>
-                  <div className="overlap2">
-                    <div className="text">{product.name}</div>
+              <form onSubmit={handleSubmit}>
+                <div className="infoBox">
+                  <div className="productName">
+                    <div className="textWrapper2">제품명</div>
+                    <div className="overlap2">
+                      <div className="text">{product.name}</div>
+                    </div>
+                  </div>
+                  <div className="productPrice">
+                    <div className="textWrapper2">가격</div>
+                    <div className="overlap2">
+                      <div className="text">{product.price}</div>
+                    </div>
+                  </div>
+                  <div className="productSize">
+                    <div className="textWrapper2">사이즈</div>
+                    <div className="overlap2">
+                      <select
+                        className="select" name="productSize"
+                        value={selectedSize}
+                        onChange={handleChangeSize}
+                      >
+                        <option value="" disabled>size</option>
+                        {size.map((el, i) => {
+                          return (
+                            <option key={i} value={el}>
+                              {el}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="productColor">
+                    <div className="textWrapper2">색상</div>
+                    <div className="overlap">
+                      <select
+                        className="select" name="productColor"
+                        value={selectedColor}
+                        onChange={handleChangeColor}
+                      >
+                        <option value="" disabled>color</option>
+                        {color.map((el, i) => {
+                          return (
+                            <option key={i} value={el}>
+                              {el}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="productCount">
+                    <div className="textWrapper2">수량</div>
+                    <div className="overlapGroup">
+                      <button onClick={decreaseStock} className="inputMinus">
+                        -
+                      </button>
+                      <input
+                        className="input"
+                        type="number"
+                        name="number"
+                        min={0}
+                        max={product.stock}
+                        value={stock}
+                        onChange={handleInputChange}
+                      />
+                      <button onClick={increaseStock} className="inputPlus">
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div className="productTotalPrice">
+                    <div className="textWrapper2">총액</div>
+                    <div className="overlap2">
+                      <div className="text">{product.price * stock} 원</div>
+                    </div>
                   </div>
                 </div>
-                <div className="productPrice">
-                  <div className="textWrapper2">가격</div>
-                  <div className="overlap2">
-                    <div className="text">{product.price}</div>
-                  </div>
+                <div className="buttonBox">
+                  <Link to="http://localhost:3000/cart" className="cartButton">
+                    <button className="textWrapper">장바구니</button>
+                  </Link>
+                  <Link
+                    to="http://localhost:3000/payment"
+                    className="nowPayButton"
+                  >
+                    <div className="textWrapper">바로결제</div>
+                  </Link>
                 </div>
-                <div className="productSize">
-                  <div className="textWrapper2">사이즈</div>
-                  <div className="overlap2">
-                    <select
-                      className="select"
-                      value={selectedSize}
-                      onChange={handleChangeSize}
-                    >
-                      <option value="" disabled>size</option>
-                      {size.map((el, i) => {
-                        return (
-                          <option key={i} value={el}>
-                            {el}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </div>
-                </div>
-                <div className="productColor">
-                  <div className="textWrapper2">색상</div>
-                  <div className="overlap">
-                    <select
-                      className="select"
-                      value={selectedColor}
-                      onChange={handleChangeColor}
-                    >
-                      <option value="" disabled>color</option>
-                      {color.map((el, i) => {
-                        return (
-                          <option key={i} value={el}>
-                            {el}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </div>
-                </div>
-                <div className="productCount">
-                  <div className="textWrapper2">수량</div>
-                  <div className="overlapGroup">
-                    <button onClick={decreaseStock} className="inputMinus">
-                      -
-                    </button>
-                    <input
-                      className="input"
-                      type="number"
-                      name="number"
-                      min={0}
-                      max={product.stock}
-                      value={stock}
-                      onChange={handleInputChange}
-                    />
-                    <button onClick={increaseStock} className="inputPlus">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div className="productTotalPrice">
-                  <div className="textWrapper2">총액</div>
-                  <div className="overlap2">
-                    <div className="text">{product.price * stock} 원</div>
-                  </div>
-                </div>
-              </div>
-              <div className="buttonBox">
-                <Link to="http://localhost:3000/cart" className="cartButton">
-                  <div className="textWrapper">장바구니</div>
-                </Link>
-                <Link
-                  to="http://localhost:3000/payment"
-                  className="nowPayButton"
-                >
-                  <div className="textWrapper">바로결제</div>
-                </Link>
-              </div>
+              </form>
             </div>
           </div>
           {switchBtn ? (
