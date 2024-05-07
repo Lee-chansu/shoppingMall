@@ -19,54 +19,11 @@ export const ProductReview = (props) => {
       .then(response => response.json())
       .then(data => setReviewList(data));
 
-    
+    // starPoint 데이터 가져오기
+    fetch(`http://localhost:5000/reviewList?product_id=${item}`)
+      .then(response => response.json())
+      .then(data => setReviewList(data));
   }, []);
-
-  // const loadUser = async () => {
-  //   const getUsers = await fetch(`http://localhost:5000/User`).then((res) =>
-  //     res.json()
-  //   );
-  //   setUserList(getUsers);
-  // };
-
-  // const loadReview = async () => {
-  //   const getReviews = await fetch(`http://localhost:5000/ReviewList?product_id=${item}`).then((res) =>
-  //   // const getReviews = await fetch(`http://localhost:5000/ReviewList`).then((res) =>
-  //     res.json()
-  //   );
-  //   setReviewList(getReviews);
-  // };
-
-  // const searchByUserData = (reviewList, userList) => {
-  //   const updateReviewList = reviewList.map((review, i) => {
-  //     const foundUser = userList.find((user) => user.id === review.user_id);
-  //     if (foundUser) {
-  //       return {...review, username: foundUser.username}
-  //     } else {
-  //     }
-  //     return review
-  //   })
-  //   return updateReviewList
-  // };
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     await loadUser();
-  //     await loadReview();
-  //   };
-  //   fetchData();
-  //   // console.log(reviewList)
-  // },[])
-
-  // useEffect(() => {
-    
-  //   setReviewList(updateReviewList)
-  //   console.log(reviewList)
-  // }, [userList])
-
-  // useEffect(() => {
-  //   setReviewList(updateReviewList)
-  // }, [userList])
 
   return (
     <div className="productInfoReview">
@@ -100,7 +57,12 @@ export const ProductReview = (props) => {
                           </div>
                         </div>) : null}
                       </div>
-                      <div className="starRating">⭐⭐⭐⭐⭐</div>
+                      <div className="starRating">
+                        {
+                          !true ? <img src={process.env.PUBLIC_URL + '/img/fullStar.svg'} alt="별" width={'50px'} /> : <img src={process.env.PUBLIC_URL + '/img/emptyStar.svg'} alt="별" width={'50px'} />
+                        }
+                        
+                      </div>
                       <div className="reviewCreatedAt">{el.reviewDate.substring(0, 10)}</div>
                       <div className="productcolorSize">productColor Size</div>
                       <div className="textWrapper">rating</div>

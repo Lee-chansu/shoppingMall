@@ -20,8 +20,8 @@ export const ProductDetailDescription = () => {
   const [color, setColor] = useState([]);
   const [size, setSize] = useState([]);
   const [option, setOption] = useState([]);
-  const [selectedSize, setSelectedSize] = useState('');
-  const [selectedColor, setSelectedColor] = useState('');
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
 
   const handleChangeSize = (event) => {
     setSelectedSize(event.target.value);
@@ -33,60 +33,62 @@ export const ProductDetailDescription = () => {
 
   useEffect(() => {
     // productOption 데이터 가져오기
-    fetch('http://localhost:5000/productOption')
-      .then(response => response.json())
-      .then(data => {
-        const productDetail = data.filter(product => product.product_id == productId);
+    fetch("http://localhost:5000/productOption")
+      .then((response) => response.json())
+      .then((data) => {
+        const productDetail = data.filter(
+          (product) => product.product_id == productId
+        );
         setOption(productDetail);
-        console.log('productDetail', productDetail);
-        // size, color에 맞는 새 배열 각각 추가
-        const newSize = productDetail.map(product => product.productSize)
-        const sizeList = [...new Set(newSize)]
-        setSize(sizeList.sort((a, b) => a - b))
-        const newColor = productDetail.map(product => product.productColor)
-        const colorList = [...new Set(newColor)]
-        setColor(colorList)
+        const newSize = productDetail.map((product) => product.productSize);
+        const sizeList = [...new Set(newSize)];
+        setSize(sizeList.sort((a, b) => a - b));
+        const newColor = productDetail.map((product) => product.productColor);
+        const colorList = [...new Set(newColor)];
+        setColor(colorList);
       });
-}, []);
+  }, []);
 
   const getStock = () => {
+    let newStock = [{ productStock: 0 }];
     if (selectedSize && selectedColor) {
-      const maxStock = option.filter(product => product.productSize == selectedSize && product.productColor == selectedColor);
-      setMaxStock(maxStock[0].productStock)
-    } else if (selectedSize) {
-      const maxStock = option.filter(product => product.productSize == selectedSize);
-      setMaxStock(maxStock[0].productStock)
-    } else if (selectedColor) {
-      const maxStock = option.filter(product => product.productColor == selectedColor);
-      setMaxStock(maxStock[0].productStock)
-    } else {
-      setMaxStock(0)
+      newStock = option.filter(
+        (product) =>
+          product.productSize == selectedSize &&
+          product.productColor == selectedColor
+      );
     }
-    setStock(0)
-  }
+
+    if (newStock.length) {
+      setMaxStock(newStock[0].productStock);
+    } else {
+      setMaxStock(0);
+    }
+    setStock(0);
+  };
 
   useEffect(() => {
-    console.log('size', size)
-  },[size])
+    // console.log('size', size)
+  }, [size]);
 
   useEffect(() => {
-    console.log('color', color)
-  },[color])
+    // console.log('color', color)
+  }, [color]);
 
   useEffect(() => {
-    console.log('selectedSize', selectedSize)
-    getStock()
-  },[selectedSize])
+    // console.log("selectedSize", selectedSize);
+    getStock();
+  }, [selectedSize]);
 
   useEffect(() => {
-    console.log('selectedColor', selectedColor)
-    getStock()
-  },[selectedColor])
+    // console.log("selectedColor", selectedColor);
+    getStock();
+  }, [selectedColor]);
 
   const loadProduct = async () => {
-    const getProduct = await fetch(`http://localhost:5000/product/${productId}`).then((res) =>
-      res.json()
-    );
+    const getProduct = await fetch(
+      `http://localhost:5000/product/${productId}`
+    ).then((res) => res.json());
     setProduct(getProduct);
   };
 
@@ -125,10 +127,11 @@ export const ProductDetailDescription = () => {
   const handleInputChange = (e) => {
     const number = Number(e.target.value);
     if (!number) {
+      setStock(0);
     } else if (number < 0) {
       setStock(0);
-    } else if (number > product.pdstock) {
-      setStock(product.pdstock);
+    } else if (number > maxStock) {
+      setStock(maxStock);
     } else if (number % 1 == 0) {
       setStock(number);
     }
@@ -136,11 +139,7 @@ export const ProductDetailDescription = () => {
 
   const mainRef = useRef(null);
 
-  let photos = [
-    product.mainImage,
-    product.subImage1,
-    product.subImage2,
-  ];
+  let photos = [product.mainImage, product.subImage1, product.subImage2];
 
   function jump(index) {
     setIndex(index);
@@ -188,32 +187,38 @@ export const ProductDetailDescription = () => {
                 <div className="productSize">
                   <div className="textWrapper2">사이즈</div>
                   <div className="overlap2">
-                    <select className="select" value={selectedSize} onChange={handleChangeSize}>
-                      {
-                        size.map((el) => {
-                          return (
-                            <>
-                              <option value={el}>{el}</option>
-                            </>
-                          )
-                        })
-                      }
+                    <select
+                      className="select"
+                      value={selectedSize}
+                      onChange={handleChangeSize}
+                    >
+                      <option value="" disabled>size</option>
+                      {size.map((el, i) => {
+                        return (
+                          <option key={i} value={el}>
+                            {el}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
                 </div>
                 <div className="productColor">
                   <div className="textWrapper2">색상</div>
                   <div className="overlap">
-                    <select className="select" value={selectedColor} onChange={handleChangeColor}>
-                      {
-                        color.map((el) => {
-                          return (
-                            <>
-                              <option value={el}>{el}</option>
-                            </>
-                          )
-                        })
-                      }
+                    <select
+                      className="select"
+                      value={selectedColor}
+                      onChange={handleChangeColor}
+                    >
+                      <option value="" disabled>color</option>
+                      {color.map((el, i) => {
+                        return (
+                          <option key={i} value={el}>
+                            {el}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
                 </div>
@@ -257,7 +262,25 @@ export const ProductDetailDescription = () => {
               </div>
             </div>
           </div>
-          { switchBtn ? <ProductDescription switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} item={item} product={product} /> : <ProductReview switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} item={item} user={user} id={id} product={product} />}
+          {switchBtn ? (
+            <ProductDescription
+              switchBtn={switchBtn}
+              setSwitchBtn={setSwitchBtn}
+              handleSwitchBtn={handleSwitchBtn}
+              item={item}
+              product={product}
+            />
+          ) : (
+            <ProductReview
+              switchBtn={switchBtn}
+              setSwitchBtn={setSwitchBtn}
+              handleSwitchBtn={handleSwitchBtn}
+              item={item}
+              user={user}
+              id={id}
+              product={product}
+            />
+          )}
         </div>
       ) : (
         // TODO error 페이지 만들어서 대체
