@@ -222,23 +222,22 @@ app.get("/product/:id", async (req, res) => {
   const productDetail = await ProductDetail.findOne({
     where: { product_id: id },
   });
-  const result = {
-    id : product.id,
-    name: product.name,
-    price: product.price,
-    mainImage: product.mainImage,
-    subImage1: product.subImage1,
-    subImage2: product.subImage2,
-    subImage3: product.subImage3,
-    category: productDetail.category,
-    detail: productDetail.detailCategory,
-    size: productOption.productSize,
-    color: productOption.productColor,
-    stock: productOption.productStock,
-  };
 
-
-  if (result) {
+  if (product) {
+    const result = {
+      id : product.id,
+      name: product.name,
+      price: product.price,
+      mainImage: product.mainImage,
+      subImage1: product.subImage1,
+      subImage2: product.subImage2,
+      subImage3: product.subImage3,
+      category: productDetail.category,
+      detail: productDetail.detailCategory,
+      size: productOption.productSize,
+      color: productOption.productColor,
+      stock: productOption.productStock,
+    };
     res.json(result);
   } else {
     res.json({});

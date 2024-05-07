@@ -3,26 +3,27 @@ import "../css/productReview.css";
 import { Link } from "react-router-dom";
 
 export const ProductReview = (props) => {
-  const { switchBtn, setSwitchBtn, handleSwitchBtn, id, item } = props
+  const { switchBtn, setSwitchBtn, handleSwitchBtn, id, item } = props;
 
   const [userList, setUserList] = useState([]);
   const [reviewList, setReviewList] = useState([]);
+  const starPoint = [0, 1, 2, 3, 4];
 
   useEffect(() => {
     // user 데이터 가져오기
-    fetch('http://localhost:5000/user')
-      .then(response => response.json())
-      .then(data => setUserList(data));
+    fetch("http://localhost:5000/user")
+      .then((response) => response.json())
+      .then((data) => setUserList(data));
 
     // reviewList 데이터 가져오기
     fetch(`http://localhost:5000/reviewList?product_id=${item}`)
-      .then(response => response.json())
-      .then(data => setReviewList(data));
+      .then((response) => response.json())
+      .then((data) => setReviewList(data));
 
     // starPoint 데이터 가져오기
     fetch(`http://localhost:5000/reviewList?product_id=${item}`)
-      .then(response => response.json())
-      .then(data => setReviewList(data));
+      .then((response) => response.json())
+      .then((data) => setReviewList(data));
   }, []);
 
   return (
@@ -43,35 +44,54 @@ export const ProductReview = (props) => {
                 <div className="textWrapper4">리뷰 작성하기</div>
               </Link>
             </div>
-            {
-              reviewList.map((el, i) => {
-                  const user = userList.find(user => user.id === el.user_id);
-                  return (
-                  <div className="reviewerInfoWrapper" key={el.id} style={{top:`${183 + i * 382}px`}}>
-                    <div className="reviewerInfo2">
-                      <div className="overlap">
-                        <div className="textWrapper2">{user.userName}</div>
-                        {id === user.id ? (<div className="editBtnForm">
+            {reviewList.map((el, i) => {
+              const user = userList.find((user) => user.id === el.user_id);
+              return (
+                <div
+                  className="reviewerInfoWrapper"
+                  key={el.id}
+                  style={{ top: `${183 + i * 382}px` }}
+                >
+                  <div className="reviewerInfo2">
+                    <div className="overlap">
+                      <div className="textWrapper2">{user.userName}</div>
+                      {id === user.id ? (
+                        <div className="editBtnForm">
                           <div className="overlapGroup">
-                          <div className="textWrapper3">리뷰 수정하기</div>
+                            <div className="textWrapper3">리뷰 수정하기</div>
                           </div>
-                        </div>) : null}
-                      </div>
-                      <div className="starRating">
-                        {
-                          !true ? <img src={process.env.PUBLIC_URL + '/img/fullStar.svg'} alt="별" width={'50px'} /> : <img src={process.env.PUBLIC_URL + '/img/emptyStar.svg'} alt="별" width={'50px'} />
-                        }
-                        
-                      </div>
-                      <div className="reviewCreatedAt">{el.reviewDate.substring(0, 10)}</div>
-                      <div className="productcolorSize">productColor Size</div>
-                      <div className="textWrapper">rating</div>
-                      <div className="detail">{el.content}</div>
+                        </div>
+                      ) : null}
                     </div>
+                    <div className="starRating">
+                      {starPoint.map((element, i) => {
+                        return el.starPoint > i ? (
+                          <img
+                            key={i}
+                            src={process.env.PUBLIC_URL + "/img/fullStar.svg"}
+                            alt="별"
+                            width={"50px"}
+                          />
+                        ) : (
+                          <img
+                            key={i}
+                            src={process.env.PUBLIC_URL + "/img/emptyStar.svg"}
+                            alt="별"
+                            width={"50px"}
+                          />
+                        );
+                      })}
+                    </div>
+                    <div className="reviewCreatedAt">
+                      {el.reviewDate.substring(0, 10)}
+                    </div>
+                    <div className="productcolorSize">productColor</div>
+                    <div className="textWrapper">size</div>
+                    <div className="detail">{el.content}</div>
                   </div>
-                )
-              })
-            }
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

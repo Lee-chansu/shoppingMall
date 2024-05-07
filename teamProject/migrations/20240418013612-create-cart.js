@@ -23,6 +23,12 @@ module.exports = {
           key: "id",
         },
       },
+      size: {
+        type: Sequelize.INTEGER,
+      },
+      color: {
+        type: Sequelize.STRING(40),
+      },
       amount: {
         type: Sequelize.INTEGER,
       },
