@@ -94,7 +94,6 @@ passport.use(
 // 세션생성
 passport.serializeUser((user, done) => {
   process.nextTick(() => {
-    console.log("serializeUser");
     done(null, { id: user.id, userId: user.userId });
   });
 });
@@ -114,12 +113,9 @@ passport.deserializeUser(async (user, done) => {
   }
 });
 
-
-
 // 로그아웃
 app.get("/logout", (req, res) => {
   req.logOut();
-
 });
 
 // 로그인
@@ -128,7 +124,7 @@ app.post("/login", (req, res) => {
     if (error) return res.status(500).json(error);
     if (!user) return res.status(401).json(info.message);
 
-    req.logIn(user, err => {
+    req.logIn(user, (err) => {
       if (err) return next(err);
       const token = jwt.sign(
         { id: user.id, userId: user.userId },
@@ -165,7 +161,7 @@ app.get("/userProfile/:id", async (req, res) => {
 //제품 추가 페이지
 app.post("/addProduct", async (req, res) => {
   const { category, detail, color, size, stock, ...rest } = req.body;
-  const newProduct = { ...rest, pdstock: stock, detail: detail };
+  const newProduct = { ...rest };
 
   let result;
   try {
@@ -181,7 +177,6 @@ app.post("/addProduct", async (req, res) => {
     };
     const newProductOption = {
       product_id: id,
-      productName: rest.name,
       productColor: color,
       productSize: size,
       productStock: stock,
@@ -203,10 +198,7 @@ app.post("/addProduct", async (req, res) => {
   }
 });
 
-
-app.put("/productEdit", (req, res) => {
-
-})
+app.put("/productEdit", (req, res) => {});
 
 // 각 화면들
 
@@ -223,7 +215,29 @@ app.get("/DeleteUser", async (req, res) => {
 // 상품 상세 조회
 app.get("/product/:id", async (req, res) => {
   const { id } = req.params;
-  const result = await Product.findOne({ where: { id } });
+  const product = await Product.findOne({ where: { id } });
+  const productOption = await ProductOption.findOne({
+    where: { product_id: id },
+  });
+  const productDetail = await ProductDetail.findOne({
+    where: { product_id: id },
+  });
+  const result = {
+    id : product.id,
+    name: product.name,
+    price: product.price,
+    mainImage: product.mainImage,
+    subImage1: product.subImage1,
+    subImage2: product.subImage2,
+    subImage3: product.subImage3,
+    category: productDetail.category,
+    detail: productDetail.detailCategory,
+    size: productOption.productSize,
+    color: productOption.productColor,
+    stock: productOption.productStock,
+  };
+
+
   if (result) {
     res.json(result);
   } else {
@@ -432,22 +446,21 @@ app.put("/passwordEdit/:id", async (req, res) => {
     await result.save();
     res.json({ message: "비밀번호 변경성공" });
   }
-})
+});
 
 // 회원탈퇴
-app.put('/userinfo/put/:id', async(req,res)=>{
-  const {id} = req.params
-  const result = await User.findOne({where : {id}})
-  if(result){
-    result.isDeleted = true
+app.put("/userinfo/put/:id", async (req, res) => {
+  const { id } = req.params;
+  const result = await User.findOne({ where: { id } });
+  if (result) {
+    result.isDeleted = true;
     // await result.save()
     // for (let key in editUser) {
     //   result[key] = editUser[key];
     // }
     // await result.save();
-    res.send({message : '삭제성공'})
-  }else{
-    res.status(404).send({message : 'db와 일치하지않음'})
+    res.send({ message: "삭제성공" });
+  } else {
+    res.status(404).send({ message: "db와 일치하지않음" });
   }
-})
-
+});

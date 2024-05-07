@@ -95,20 +95,20 @@ export const ProductDetailDescription = () => {
       res.json()
     );
     setUser(getUsers);
-  }
+  };
 
   useEffect(() => {
     setItem(productId);
     loadProduct();
     loadUser();
-    const token = sessionStorage.getItem('token')
-    if(!token){
-      setId(999)
-    }else{
-      const decodeToken = jwtDecode(token)
-      setId(decodeToken.id)
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      setId(999);
+    } else {
+      const decodeToken = jwtDecode(token);
+      setId(decodeToken.id);
     }
-  }, [id]);
+  }, []);
 
   const increaseStock = () => {
     if (stock < maxStock) {
@@ -125,7 +125,6 @@ export const ProductDetailDescription = () => {
   const handleInputChange = (e) => {
     const number = Number(e.target.value);
     if (!number) {
-
     } else if (number < 0) {
       setStock(0);
     } else if (number > product.pdstock) {
@@ -133,9 +132,9 @@ export const ProductDetailDescription = () => {
     } else if (number % 1 == 0) {
       setStock(number);
     }
-  }
+  };
 
-  const mainRef = useRef(null)
+  const mainRef = useRef(null);
 
   let photos = [
     product.mainImage,
@@ -148,22 +147,30 @@ export const ProductDetailDescription = () => {
   }
 
   const handleSwitchBtn = () => {
-    setSwitchBtn(!switchBtn)
-  }
+    setSwitchBtn(!switchBtn);
+  };
 
   return (
     <>
-    {
-      product.id ? (
+      {product.id ? (
         <div>
           <Nav />
           <div className="productdetail">
             <div className="div">
               <div className="thumbnailBox">
-                <img ref={mainRef} src={photos[index]} className="mainThmbnailWrapper" />
-                {
-                  photos.map((photo, i) => <img key={i} onClick={() => jump(i)} className={"subThmbnail"+ i} src={photo} />)
-                }
+                <img
+                  ref={mainRef}
+                  src={photos[index]}
+                  className="mainThmbnailWrapper"
+                />
+                {photos.map((photo, i) => (
+                  <img
+                    key={i}
+                    onClick={() => jump(i)}
+                    className={"subThmbnail" + i}
+                    src={photo}
+                  />
+                ))}
               </div>
               <div className="infoBox">
                 <div className="productName">
@@ -213,9 +220,21 @@ export const ProductDetailDescription = () => {
                 <div className="productCount">
                   <div className="textWrapper2">수량</div>
                   <div className="overlapGroup">
-                    <button onClick={decreaseStock} className="inputMinus">-</button>
-                    <input className="input" type="number" name="number" min={0} max={product.pdstock} value={stock} onChange={handleInputChange} />
-                    <button onClick={increaseStock} className="inputPlus">+</button>
+                    <button onClick={decreaseStock} className="inputMinus">
+                      -
+                    </button>
+                    <input
+                      className="input"
+                      type="number"
+                      name="number"
+                      min={0}
+                      max={product.stock}
+                      value={stock}
+                      onChange={handleInputChange}
+                    />
+                    <button onClick={increaseStock} className="inputPlus">
+                      +
+                    </button>
                   </div>
                 </div>
                 <div className="productTotalPrice">
@@ -229,7 +248,10 @@ export const ProductDetailDescription = () => {
                 <Link to="http://localhost:3000/cart" className="cartButton">
                   <div className="textWrapper">장바구니</div>
                 </Link>
-                <Link to="http://localhost:3000/payment" className="nowPayButton">
+                <Link
+                  to="http://localhost:3000/payment"
+                  className="nowPayButton"
+                >
                   <div className="textWrapper">바로결제</div>
                 </Link>
               </div>
@@ -240,8 +262,7 @@ export const ProductDetailDescription = () => {
       ) : (
         // TODO error 페이지 만들어서 대체
         <div>해당 상품을 찾을 수 없습니다</div>
-      )
-    }
+      )}
     </>
   );
 };
