@@ -94,7 +94,6 @@ passport.use(
 // 세션생성
 passport.serializeUser((user, done) => {
   process.nextTick(() => {
-    console.log("serializeUser");
     done(null, { id: user.id, userId: user.userId });
   });
 });
@@ -217,24 +216,27 @@ app.get("/DeleteUser", async (req, res) => {
 app.get("/product/:id", async (req, res) => {
   const { id } = req.params;
   const product = await Product.findOne({ where: { id } });
-  const productOption = await ProductOption.findAll({
+  const productOption = await ProductOption.findOne({
     where: { product_id: id },
   });
-  const productDetail = await ProductDetail.findAll({
+  const productDetail = await ProductDetail.findOne({
     where: { product_id: id },
   });
   const result = {
+    id : product.id,
+    name: product.name,
+    price: product.price,
+    mainImage: product.mainImage,
+    subImage1: product.subImage1,
+    subImage2: product.subImage2,
+    subImage3: product.subImage3,
     category: productDetail.category,
     detail: productDetail.detailCategory,
     size: productOption.productSize,
     color: productOption.productColor,
     stock: productOption.productStock,
-    ...product,
   };
 
-  // console.log(productOption);
-  // console.log(productDetail);
-  console.log(result);
 
   if (result) {
     res.json(result);

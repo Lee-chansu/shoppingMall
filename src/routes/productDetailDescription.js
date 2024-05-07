@@ -19,8 +19,9 @@ export const ProductDetailDescription = () => {
 
   const loadProduct = async () => {
     const getProduct = await fetch(
-      `http://localhost:5000/product/${item}`
+      `http://localhost:5000/product/${productId}`
     ).then((res) => res.json());
+    console.log(getProduct);
     setProduct(getProduct);
   };
 
@@ -42,7 +43,7 @@ export const ProductDetailDescription = () => {
       const decodeToken = jwtDecode(token);
       setId(decodeToken.id);
     }
-  }, [id]);
+  }, []);
 
   const increaseStock = () => {
     if (stock < product.stock) {
@@ -134,6 +135,7 @@ export const ProductDetailDescription = () => {
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
+                      <option value={product.color}>{product.color}</option>
                     </select>
                   </div>
                 </div>
@@ -161,7 +163,7 @@ export const ProductDetailDescription = () => {
                       type="number"
                       name="number"
                       min={0}
-                      max={product.pdstock}
+                      max={product.stock}
                       value={stock}
                       onChange={handleInputChange}
                     />

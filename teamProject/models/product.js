@@ -13,14 +13,6 @@ module.exports = (sequelize) => {
     price: {
       type: DataTypes.INTEGER
     },
-    detail: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
-    pdstock: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
     mainImage: {
       type: DataTypes.STRING(255)
     },
