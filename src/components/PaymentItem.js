@@ -7,7 +7,7 @@ export const PaymentItem = ({ val }) => {
       <div className="product">
         <div className="productInfo">
           <div className="productName">{val.name}</div>
-          <div className="productDetail">{val.detail}</div>
+          <div className="productDetail">{val.detail}detail?</div>
           <div className="productAmount">{val.amount}개</div>
           <div className="productPrice">{val.price}원</div>
         </div>

@@ -48,11 +48,12 @@ const ModalPay = ({ mainAddressRef }) => {
       </Modal>
       <Button
         className="btn btn-info"
+        variant="secondary"
         onClick={() => {
           setIsModalOpened(!isModalOpened);
         }}
       >
-        도로명 주소지 조회하기
+        <h6 >조회</h6>
       </Button>
     </>
   );

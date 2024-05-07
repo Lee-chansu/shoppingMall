@@ -227,12 +227,25 @@
   width: 200px;
 }
 
+.cartProductSizeColor {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 22px;
+  font-weight: 600;
+  left: 380px;
+  text-align: center;
+  line-height: normal;
+  position: absolute;
+  top: 5px;
+  width: 225px;
+}
+
 .cartSumPrice {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 22px;
   font-weight: 600;
-  left: 150px;
+  left: 190px;
   text-align: center;
   line-height: normal;
   position: absolute;
@@ -310,20 +323,6 @@
   font-weight: 600;
   height: 46px;
   left: 800px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 17px;
-}
-
-.cart .productCarryPay {
-  color: #000000;
-  font-family: "Inter-Light", Helvetica;
-  font-size: 20px;
-  font-weight: 600;
-  height: 46px;
-  left: 980px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;

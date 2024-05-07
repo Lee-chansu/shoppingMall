@@ -134,18 +134,20 @@ export const Payment = () => {
                 <div className="address2">
                   <ModalPay mainAddressRef={mainAddressRef} />
                   <input
+                  className="mainAddressBox"
                     ref={mainAddressRef}
                     placeholder="도로 주소명(자동)"
                     value={userProfile.address}
                     disabled
                   />
                   <input
+                  className="detailAddressBox"
                     ref={detailAddressRef}
                     placeholder="상세 주소 기입"
                     disabled={!isAddressEditable}
                   />
                   <button
-                    className="btn btn-info "
+                    className="btn btn-info chooseBtn"
                     onClick={handleAddressFinish}
                     style={{
                       color:
@@ -158,7 +160,7 @@ export const Payment = () => {
                           : "pointer",
                     }}
                   >
-                    {isAddressEditable ? "주소 설정 완료" : "상세 주소 수정"}
+                    {isAddressEditable ? <h6>완료</h6> : <h6>수정</h6>}
                   </button>
                 </div>
               </div>
@@ -193,7 +195,7 @@ export const Payment = () => {
               <div className="howPayBox">
                 <div className="title">
                   <div className="textWrapper2">
-                    결제방식 선택하기
+                    결제방식 선택
                     <br />
                     <div className="paySelect">
                       {paySelect == "" ? "결제방법을 골라주세요" : paySelect}

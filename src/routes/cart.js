@@ -102,7 +102,7 @@ export const Cart = () => {
       <div className="section cart">
         <div className="wrap">
           <div className="title">
-            <img src="../img/basket.png" width="28" />
+            <img src="../img/basket.png" width="35" />
             장바구니/결제
           </div>
           <div className="cartBar">
@@ -115,6 +115,7 @@ export const Cart = () => {
             <div className="productImage">상품이미지</div>
             <div className="productName">상품명</div>
             <div className="productPrice">판매가</div>
+            <div className="productSizeColor">사이즈 / 색상</div>
             <div className="productStock">수량</div>
             <div className="sumPay">총 합계</div>
           </div>
