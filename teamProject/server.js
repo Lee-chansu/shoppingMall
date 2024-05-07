@@ -128,7 +128,7 @@ app.post("/login", (req, res) => {
     if (error) return res.status(500).json(error);
     if (!user) return res.status(401).json(info.message);
 
-    req.logIn(user, (err) => {
+    req.logIn(user, err => {
       if (err) return next(err);
       const token = jwt.sign(
         { id: user.id, userId: user.userId },
@@ -203,6 +203,11 @@ app.post("/addProduct", async (req, res) => {
   }
 });
 
+
+app.put("/productEdit", (req, res) => {
+
+})
+
 // 각 화면들
 
 app.get("/User", async (req, res) => {
@@ -226,7 +231,7 @@ app.get("/product/:id", async (req, res) => {
   }
 });
 
-app.get("/Product", async (req, res) => {
+app.get("/product", async (req, res) => {
   const result = await Product.findAll();
   res.json(result);
 });
