@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "../css/product.css";
-import { Link } from "react-router-dom";
 
 export const Product = ({ product }) => {
   const [imageUrl, setImageUrl] = useState(product.mainImage);

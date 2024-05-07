@@ -41,19 +41,15 @@ module.exports = {
       },
       isMaster: {
         type: Sequelize.BOOLEAN,
-        defaultValue: false
+        defaultValue: false,
       },
       isDeleted: {
         type: Sequelize.BOOLEAN,
-<<<<<<< HEAD
-        defaultValue: false
-=======
         defaultValue: false,
->>>>>>> origin/yoonjiho
       },
       profileImg: {
         type: Sequelize.STRING(100),
-        defaultValue: false
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
@@ -63,6 +59,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
-  }
+    await queryInterface.dropTable("Users");
+  },
 };

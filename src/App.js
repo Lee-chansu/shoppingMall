@@ -39,7 +39,7 @@ function App() {
           ></Route>
         </Route>
         <Route path="add" element={<ProductAdd />}></Route>
-        <Route path="edit" element={<ProductEdit />}></Route>
+        <Route path="edit/:id" element={<ProductEdit />}></Route>
       </Route>
 
       <Route path="login" element={<Login />}></Route>

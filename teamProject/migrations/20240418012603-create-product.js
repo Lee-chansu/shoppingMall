@@ -15,14 +15,6 @@ module.exports = {
       price: {
         type: Sequelize.INTEGER,
       },
-      detail: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      pdstock: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0,
-      },
       mainImage: {
         type: Sequelize.STRING(255),
       },

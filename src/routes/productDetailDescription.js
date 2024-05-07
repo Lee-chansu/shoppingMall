@@ -18,9 +18,10 @@ export const ProductDetailDescription = () => {
   const [switchBtn, setSwitchBtn] = useState(!true);
 
   const loadProduct = async () => {
-    const getProduct = await fetch(`http://localhost:5000/product/${item}`).then((res) =>
-      res.json()
-    );
+    const getProduct = await fetch(
+      `http://localhost:5000/product/${productId}`
+    ).then((res) => res.json());
+    console.log(getProduct);
     setProduct(getProduct);
   };
 
@@ -29,23 +30,23 @@ export const ProductDetailDescription = () => {
       res.json()
     );
     setUser(getUsers);
-  }
+  };
 
   useEffect(() => {
     setItem(productId);
     loadProduct();
     loadUser();
-    const token = sessionStorage.getItem('token')
-    if(!token){
-      setId(999)
-    }else{
-      const decodeToken = jwtDecode(token)
-      setId(decodeToken.id)
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      setId(999);
+    } else {
+      const decodeToken = jwtDecode(token);
+      setId(decodeToken.id);
     }
-  }, [id]);
+  }, []);
 
   const increaseStock = () => {
-    if (stock < product.pdstock) {
+    if (stock < product.stock) {
       setStock(stock + 1);
     }
   };
@@ -59,7 +60,6 @@ export const ProductDetailDescription = () => {
   const handleInputChange = (e) => {
     const number = Number(e.target.value);
     if (!number) {
-
     } else if (number < 0) {
       setStock(0);
     } else if (number > product.pdstock) {
@@ -67,15 +67,15 @@ export const ProductDetailDescription = () => {
     } else if (number % 1 == 0) {
       setStock(number);
     }
-  }
+  };
 
-  const mainRef = useRef(null)
+  const mainRef = useRef(null);
 
   let photos = [
     product.mainImage,
     product.subImage1,
     product.subImage2,
-    // product.subImage3,
+    product.subImage3,
     // "https://tvvmvn.github.io/front-end/img/Simba.webp",
     // "https://tvvmvn.github.io/front-end/img/Timon.webp",
     // "https://tvvmvn.github.io/front-end/img/Pumbaa.webp"
@@ -87,22 +87,30 @@ export const ProductDetailDescription = () => {
   }
 
   const handleSwitchBtn = () => {
-    setSwitchBtn(!switchBtn)
-  }
+    setSwitchBtn(!switchBtn);
+  };
 
   return (
     <>
-    {
-      product.id ? (
+      {product.id ? (
         <div>
           <Nav />
           <div className="productdetail">
             <div className="div">
               <div className="thumbnailBox">
-                <img ref={mainRef} src={photos[index]} className="mainThmbnailWrapper" />
-                {
-                  photos.map((photo, i) => <img key={i} onClick={() => jump(i)} className={"subThmbnail"+ i} src={photo} />)
-                }
+                <img
+                  ref={mainRef}
+                  src={photos[index]}
+                  className="mainThmbnailWrapper"
+                />
+                {photos.map((photo, i) => (
+                  <img
+                    key={i}
+                    onClick={() => jump(i)}
+                    className={"subThmbnail" + i}
+                    src={photo}
+                  />
+                ))}
               </div>
               <div className="infoBox">
                 <div className="productName">
@@ -121,10 +129,13 @@ export const ProductDetailDescription = () => {
                   <div className="textWrapper2">사이즈</div>
                   <div className="overlap2">
                     <select className="select" defaultValue="">
-                      <option value="" disabled>size</option>
+                      <option value="" disabled>
+                        size
+                      </option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
+                      <option value={product.color}>{product.color}</option>
                     </select>
                   </div>
                 </div>
@@ -132,7 +143,9 @@ export const ProductDetailDescription = () => {
                   <div className="textWrapper2">색상</div>
                   <div className="overlap">
                     <select className="select" defaultValue="">
-                      <option value="" disabled>color</option>
+                      <option value="" disabled>
+                        color
+                      </option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -142,9 +155,21 @@ export const ProductDetailDescription = () => {
                 <div className="productCount">
                   <div className="textWrapper2">수량</div>
                   <div className="overlapGroup">
-                    <button onClick={decreaseStock} className="inputMinus">-</button>
-                    <input className="input" type="number" name="number" min={0} max={product.pdstock} value={stock} onChange={handleInputChange} />
-                    <button onClick={increaseStock} className="inputPlus">+</button>
+                    <button onClick={decreaseStock} className="inputMinus">
+                      -
+                    </button>
+                    <input
+                      className="input"
+                      type="number"
+                      name="number"
+                      min={0}
+                      max={product.stock}
+                      value={stock}
+                      onChange={handleInputChange}
+                    />
+                    <button onClick={increaseStock} className="inputPlus">
+                      +
+                    </button>
                   </div>
                 </div>
                 <div className="productTotalPrice">
@@ -158,7 +183,10 @@ export const ProductDetailDescription = () => {
                 <Link to="http://localhost:3000/cart" className="cartButton">
                   <div className="textWrapper">장바구니</div>
                 </Link>
-                <Link to="http://localhost:3000/payment" className="nowPayButton">
+                <Link
+                  to="http://localhost:3000/payment"
+                  className="nowPayButton"
+                >
                   <div className="textWrapper">바로결제</div>
                 </Link>
               </div>
@@ -166,13 +194,30 @@ export const ProductDetailDescription = () => {
           </div>
           {/* <ProductDescription switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} />
           <ProductReview switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} /> */}
-          { switchBtn ? <ProductDescription switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} item={item} product={product} /> : <ProductReview switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} item={item} user={user} id={id} product={product} />}
+          {switchBtn ? (
+            <ProductDescription
+              switchBtn={switchBtn}
+              setSwitchBtn={setSwitchBtn}
+              handleSwitchBtn={handleSwitchBtn}
+              item={item}
+              product={product}
+            />
+          ) : (
+            <ProductReview
+              switchBtn={switchBtn}
+              setSwitchBtn={setSwitchBtn}
+              handleSwitchBtn={handleSwitchBtn}
+              item={item}
+              user={user}
+              id={id}
+              product={product}
+            />
+          )}
         </div>
       ) : (
         // TODO error 페이지 만들어서 대체
         <div>해당 상품을 찾을 수 없습니다</div>
-      )
-    }
+      )}
     </>
   );
 };
