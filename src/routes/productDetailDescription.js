@@ -4,6 +4,7 @@ import { ProductDescription } from "../components/productDescription";
 import { Nav } from "../components/nav";
 import { ProductReview } from "../components/productReview";
 import { Link, useParams } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 export const ProductDetailDescription = () => {
   let productId = useParams().id;
@@ -11,16 +12,16 @@ export const ProductDetailDescription = () => {
   const [product, setProduct] = useState([]);
   const [stock, setStock] = useState(0);
   const [index, setIndex] = useState(0);
-  const [id, setId] = useState(0);
+  const [item, setItem] = useState(0);
+  const [id, setId] = useState();
   const [user, setUser] = useState(0);
   const [switchBtn, setSwitchBtn] = useState(!true);
-  // const [photo, setPhoto] = useState([]);
 
   const loadProduct = async () => {
-    const getProducts = await fetch(`http://localhost:5000/product/${id}`).then((res) =>
+    const getProduct = await fetch(`http://localhost:5000/product/${item}`).then((res) =>
       res.json()
     );
-    setProduct(getProducts);
+    setProduct(getProduct);
   };
 
   const loadUser = async () => {
@@ -31,9 +32,16 @@ export const ProductDetailDescription = () => {
   }
 
   useEffect(() => {
-    setId(productId);
+    setItem(productId);
     loadProduct();
     loadUser();
+    const token = sessionStorage.getItem('token')
+    if(!token){
+      setId(999)
+    }else{
+      const decodeToken = jwtDecode(token)
+      setId(decodeToken.id)
+    }
   }, [id]);
 
   const increaseStock = () => {
@@ -112,8 +120,8 @@ export const ProductDetailDescription = () => {
                 <div className="productSize">
                   <div className="textWrapper2">사이즈</div>
                   <div className="overlap2">
-                    <select className="select">
-                      <option value="" disabled selected>size</option>
+                    <select className="select" defaultValue="">
+                      <option value="" disabled>size</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -123,8 +131,8 @@ export const ProductDetailDescription = () => {
                 <div className="productColor">
                   <div className="textWrapper2">색상</div>
                   <div className="overlap">
-                    <select className="select">
-                      <option value="" disabled selected>color</option>
+                    <select className="select" defaultValue="">
+                      <option value="" disabled>color</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -158,11 +166,7 @@ export const ProductDetailDescription = () => {
           </div>
           {/* <ProductDescription switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} />
           <ProductReview switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} /> */}
-          { switchBtn ? <ProductDescription switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} id={id} product={product} /> : <ProductReview switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} id={id} user={user} />}
-          
-          
-          
-          
+          { switchBtn ? <ProductDescription switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} item={item} product={product} /> : <ProductReview switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} item={item} user={user} id={id} product={product} />}
         </div>
       ) : (
         // TODO error 페이지 만들어서 대체
@@ -172,5 +176,3 @@ export const ProductDetailDescription = () => {
     </>
   );
 };
-
-
