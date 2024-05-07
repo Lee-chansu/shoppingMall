@@ -1,14 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "../css/productAdd.css";
 
 //컴포넌트
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
 
-export const ProductEdit = (id) => {
+export const ProductEdit = () => {
+  const id = useParams().id;
   const navigate = useNavigate();
   const mainImgRef = useRef();
+
+  const [product, setProduct] = useState({});
+
+  const loadProduct = async () => {
+    const getProduct = await fetch(`http://localhost:5000/product/${id}`).then(
+      (res) => {
+        res.json();
+      }
+    );
+    console.log(getProduct);
+    // setProduct(getProduct);
+  };
+
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
 
@@ -61,6 +75,7 @@ export const ProductEdit = (id) => {
   };
 
   useEffect(() => {
+    loadProduct();
     showDetailBar();
   }, [checkCategory, checkDetail]);
 
@@ -90,7 +105,7 @@ export const ProductEdit = (id) => {
   const [newProduct, setNewProduct] = useState({
     category: "",
     detail: "",
-    name: "",
+    name: product.name,
     price: 0,
     color: "",
     size: 0,
@@ -107,7 +122,7 @@ export const ProductEdit = (id) => {
     setNewProduct({ ...newProduct, [name]: value });
   };
 
-  const toAddProduct = async (e) => {
+  const toEditProduct = async (e) => {
     e.preventDefault();
 
     try {
@@ -307,7 +322,7 @@ export const ProductEdit = (id) => {
               </div>
             </div>
             <div className="btnForm">
-              <button onClick={toAddProduct}>추가</button>
+              <button onClick={toEditProduct}>수정완료</button>
               <Link to="/productList">
                 <button>취소</button>
               </Link>

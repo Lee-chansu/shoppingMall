@@ -46,7 +46,7 @@ export const Nav = () => {
                 <img
                   className="profileImage"
                   src={imageUrl}
-                  onError={() => setImageUrl("../img/userDefaultImg.png")}
+                  // onError={() => setImageUrl("../img/userDefaultImg.png")}
                   alt="유저프로필"
                 />
               </Link>

@@ -45,7 +45,7 @@ export const ProductDetailDescription = () => {
   }, [id]);
 
   const increaseStock = () => {
-    if (stock < product.pdstock) {
+    if (stock < product.stock) {
       setStock(stock + 1);
     }
   };

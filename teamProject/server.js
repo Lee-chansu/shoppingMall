@@ -162,7 +162,7 @@ app.get("/userProfile/:id", async (req, res) => {
 //제품 추가 페이지
 app.post("/addProduct", async (req, res) => {
   const { category, detail, color, size, stock, ...rest } = req.body;
-  const newProduct = { ...rest, pdstock: stock, detail: detail };
+  const newProduct = { ...rest };
 
   let result;
   try {
@@ -178,7 +178,6 @@ app.post("/addProduct", async (req, res) => {
     };
     const newProductOption = {
       product_id: id,
-      productName: rest.name,
       productColor: color,
       productSize: size,
       productStock: stock,
@@ -227,8 +226,9 @@ app.get("/product/:id", async (req, res) => {
   const result = {
     category: productDetail.category,
     detail: productDetail.detailCategory,
-    size: [productOption.productSize],
-    color: [productOption.productColor],
+    size: productOption.productSize,
+    color: productOption.productColor,
+    stock: productOption.productStock,
     ...product,
   };
 
@@ -245,7 +245,7 @@ app.get("/product/:id", async (req, res) => {
 
 app.get("/product", async (req, res) => {
   const result = await Product.findAll();
-  res.json(result); 
+  res.json(result);
 });
 
 // 리뷰 리스트 조회
