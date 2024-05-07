@@ -5,8 +5,9 @@ import "../css/cart.css";
 
 //컴포넌트
 import { Nav } from "../components/nav";
-import { Button } from "../components/Button";
 import { CartItem } from "../components/CartItem";
+import ButtonBox from "../components/ButtonBox";
+import CustomButton from "../components/CustomButton";
 
 export const Cart = () => {
   //장바구니에 담길 내용
@@ -14,6 +15,7 @@ export const Cart = () => {
 
   const [userProfile, setUserProfile] = useState({});
   const [id, setId] = useState("");
+  //네비게이션 선언
   const navigate = useNavigate();
 
   //비로그인시 장바구니에 접근하지 못하도록 하는
@@ -82,6 +84,14 @@ export const Cart = () => {
     setIsCheckedAll(!isCheckedAll);
   };
 
+  const handleLinkBackMove = () => {
+    navigate(-1);
+  };
+
+  const handlePaymentMove = () => {
+    navigate("/payment");
+  };
+
   useEffect(() => {
     cartItemList.forEach((val) => {});
   });
@@ -122,20 +132,19 @@ export const Cart = () => {
               );
             })}
 
-          <Button></Button>
+          <ButtonBox>
+            <CustomButton
+              className="btn1"
+              buttonTitle="뒤로가기"
+              handleLinkMove={handleLinkBackMove}
+            />
 
-          {/* <div className="buttonGroup">
-            <button className="button">
-              <Link to="/" className="buttonText">
-                취소하기
-              </Link>
-            </button>
-            <button className="button">
-              <Link to="/payment" className="buttonText">
-                결제하기
-              </Link>
-            </button>
-          </div> */}
+            <CustomButton
+              className="btn2"
+              buttonTitle="선택상품 결제하기"
+              handleLinkMove={handlePaymentMove}
+            />
+          </ButtonBox>
         </div>
       </div>
     </>

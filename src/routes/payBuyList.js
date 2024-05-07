@@ -1,12 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/payBuyList.css";
 
 import { PayItem } from "../components/PayBuyListItem";
 import { Nav } from "../components/nav";
-import { Button } from "../components/Button";
+import ButtonBox from "../components/ButtonBox";
+import CustomButton from "../components/CustomButton";
 
 export const PayBuyList = () => {
+  //네비게이션 선언
+  const navigate = useNavigate();
+
   const payItemList = [
     {
       payDate: "2024-04-29",
@@ -39,6 +43,16 @@ export const PayBuyList = () => {
       src: "/blouse.jpg",
     },
   ];
+
+  //버튼 이동 함수 정의
+  const handleLinkBackMove = () => {
+    navigate(-1);
+  };
+
+  const handlePaymentMove = () => {
+    navigate("/payment");
+  };
+
   return (
     <>
       <Nav></Nav>
@@ -50,7 +64,19 @@ export const PayBuyList = () => {
           })}
         </div>
       </div>
-      <Button></Button>
+      <ButtonBox>
+        <CustomButton
+          className="btn1"
+          buttonTitle="뒤로가기"
+          handleLinkMove={handleLinkBackMove}
+        />
+
+        <CustomButton
+          className="btn2"
+          buttonTitle="선택상품 결제하기"
+          handleLinkMove={handlePaymentMove}
+        />
+      </ButtonBox>
     </>
   );
 };

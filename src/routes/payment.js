@@ -1,10 +1,12 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../css/payment.css";
 
 import { PaymentItem } from "../components/PaymentItem";
-import { Button } from "../components/Button";
+import ButtonBox from "../components/ButtonBox";
 import { jwtDecode } from "jwt-decode";
+import ModalPay from "../components/ModalPay";
+import CustomButton from "../components/CustomButton";
 
 export const Payment = () => {
   //배송요청 직접입력
@@ -12,8 +14,14 @@ export const Payment = () => {
   const [userProfile, setUserProfile] = useState({});
   const [id, setId] = useState("");
   const navigate = useNavigate();
+  const mainAddressRef = useRef(null);
+  const detailAddressRef = useRef(null);
+  const [isAddressEditable, setIsAddressEditable] = useState(true);
 
   const [paymentItemList, setPaymentItemList] = useState([]);
+  //결제방식 선택하기
+  const [paySelect, setPaySelect] = useState("");
+  const location = useLocation();
 
   //총 주문 합계 보기 변수선언
   const [orderSum, setOrderSum] = useState({
@@ -36,6 +44,29 @@ export const Payment = () => {
   const getUserProfile = async (id) => {
     const user = await userFetch(id);
     setUserProfile(user);
+  };
+
+  const handleAddressFinish = () => {
+    if (detailAddressRef.current.value === "") {
+      return;
+    }
+    setIsAddressEditable(!isAddressEditable);
+    return;
+  };
+
+  //버튼 이동 함수 정의
+  const handleLinkBackMove = () => {
+    navigate(-1);
+  };
+
+  const handleAllPayment = () => {
+    navigate("/paySuccess");
+    //모달 처리 예정 , if문으로 분기처리 예정
+  };
+
+  //결제방식 선택시 실행할 함수
+  const handlePaySelect = (e) => {
+    setPaySelect(e.target.innerText);
   };
 
   //유저별 상품조회
@@ -96,12 +127,40 @@ export const Payment = () => {
               <h3 className="carryInfo">배송지 정보</h3>
               <div className="emailBox">
                 <div className="email">주문자 이메일</div>
-                {/* userProfile이 로딩된 후에만 email출력 */}
                 <div className="email2">{userProfile.email}</div>
               </div>
               <div className="addressBox">
                 <div className="address">배송받을 주소</div>
-                <div className="address2">{userProfile.address}</div>
+                <div className="address2">
+                  <ModalPay mainAddressRef={mainAddressRef} />
+                  <input
+                    ref={mainAddressRef}
+                    placeholder="도로 주소명(자동)"
+                    value={userProfile.address}
+                    disabled
+                  />
+                  <input
+                    ref={detailAddressRef}
+                    placeholder="상세 주소 기입"
+                    disabled={!isAddressEditable}
+                  />
+                  <button
+                    className="btn btn-info "
+                    onClick={handleAddressFinish}
+                    style={{
+                      color:
+                        detailAddressRef.current?.value === ""
+                          ? "gray"
+                          : "black",
+                      cursor:
+                        detailAddressRef.current?.value === ""
+                          ? "cursor"
+                          : "pointer",
+                    }}
+                  >
+                    {isAddressEditable ? "주소 설정 완료" : "상세 주소 수정"}
+                  </button>
+                </div>
               </div>
               <div className="carryBox">
                 <div className="carryRequest">
@@ -136,50 +195,58 @@ export const Payment = () => {
                   <div className="textWrapper2">
                     결제방식 선택하기
                     <br />
-                    <div>{/* 여기에 선택한 결제방식 렌더링 */}</div>
+                    <div className="paySelect">
+                      {paySelect == "" ? "결제방법을 골라주세요" : paySelect}
+                    </div>
                   </div>
                 </div>
                 <div className="paymentBox">
                   <div className="item">
-                    <a href="/paySuccess" className="center">
+                    <span className="center" onClick={handlePaySelect}>
                       네이버페이
-                    </a>
+                    </span>
                   </div>
                   <div className="item">
-                    <a href="/paySuccess" className="center">
+                    <span className="center" onClick={handlePaySelect}>
                       카카오페이
-                    </a>
+                    </span>
                   </div>
                   <div className="item">
-                    <a href="/paySuccess" className="center">
+                    <span className="center" onClick={handlePaySelect}>
                       신용카드
-                    </a>
+                    </span>
                   </div>
                   <div className="item">
-                    <a href="/payFail" className="center">
+                    <span className="center" onClick={handlePaySelect}>
                       휴대폰결제
-                    </a>
+                    </span>
                   </div>
-                  
                 </div>
-                <span className="underline">* 만 14세 이상 이용자, 개인정보 제공 동의</span><br />
-                <span className="smaller">해당 상품의 거래 전반에 관한 의무와 책임은 각 입점 판매자에게 있습니다<br />
-                위 내용을 확인하였으며 결제에 동의합니다
-                  </span>
+                <span className="underline">
+                  * 만 14세 이상 이용자, 개인정보 제공 동의
+                </span>
+                <br />
+                <span className="smaller">
+                  해당 상품의 거래 전반에 관한 의무와 책임은 각 입점 판매자에게
+                  있습니다
+                  <br />위 내용을 확인하였으며 결제에 동의합니다
+                </span>
               </div>
             </div>
 
             <div className="payList">
-              <div className="payInfo"></div>
               <div className="myOrder">
-                <div className="orderInfo">나의 주문</div>
+                <h3 className="orderInfo">나의 주문</h3>
               </div>
 
               {paymentItemList.map((val, idx) => {
                 return <PaymentItem val={val} key={val.id}></PaymentItem>;
               })}
-              
+
               <div className="productBox">
+                <div className="title1">
+                  <div className="orderCheckInfo">주문 확인</div>
+                </div>
                 <div className="title2">
                   <div className="orderSumText">총 주문금액</div>
                   <div className="sum">{orderSum.orderTotal} 원</div>
@@ -193,12 +260,24 @@ export const Payment = () => {
                   <div className="sum">{orderSum.countTotal} 개</div>
                 </div>
                 <div className="title5">
-                  <div className="orderSumText total">총 합계</div>
+                  <div className="orderSumText large">총 합계</div>
                   <div className="sum total">{orderSum.paySumTotal} 원</div>
                 </div>
               </div>
             </div>
-            <Button></Button>
+            <ButtonBox>
+              <CustomButton
+                className="btn1"
+                buttonTitle="뒤로가기"
+                handleLinkMove={handleLinkBackMove}
+              />
+
+              <CustomButton
+                className="btn2"
+                buttonTitle="결제하기"
+                handleLinkMove={handleAllPayment}
+              />
+            </ButtonBox>
           </div>
           <div className="payTitle">
             <div className="textWrapper8">결제하기</div>
@@ -206,6 +285,5 @@ export const Payment = () => {
         </div>
       </div>
     </div>
-    
   );
 };
