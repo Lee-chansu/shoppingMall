@@ -1,10 +1,13 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 //컴포넌트
 import { Main } from "./main";
 import { ProductList } from "./routes/productList";
+import { ProductDetailDescription } from "./routes/productDetailDescription";
 import { ProductAdd } from "./routes/productAddPage";
+import { ProductEdit } from "./routes/productEdit";
 
 import { Login } from "./routes/login";
 import { UserEdit } from "./routes/userEdit";
@@ -15,7 +18,6 @@ import { Join } from "./routes/join";
 import { FindId } from "./routes/findId";
 import { FindPassword } from "./routes/findPassword";
 import { PasswordCheck } from "./routes/passwordCheck";
-import { ProductDetailDescription } from "./routes/productDetailDescription";
 
 import { Cart } from "./routes/cart";
 import { Payment } from "./routes/payment";
@@ -27,16 +29,17 @@ import { PasswordEdit } from "./routes/passwordEdit";
 function App() {
   return (
     <Routes>
-      <Route index path="" element={<Main></Main>}></Route>
+      <Route index path="" element={<Main />}></Route>
       <Route path="productList">
         <Route index element={<ProductList />}></Route>
         <Route path="detail">
           <Route
-            path="description"
+            path="description/:id"
             element={<ProductDetailDescription />}
           ></Route>
         </Route>
         <Route path="add" element={<ProductAdd />}></Route>
+        <Route path="edit/:id" element={<ProductEdit />}></Route>
       </Route>
 
       <Route path="login" element={<Login />}></Route>
@@ -45,12 +48,12 @@ function App() {
       <Route path="findId" element={<FindId />}></Route>
       <Route path="findPassword" element={<FindPassword />}></Route>
 
-      <Route path="passwordEdit" element={<PasswordEdit/>}></Route>
+      <Route path="passwordEdit" element={<PasswordEdit />}></Route>
       <Route path="passwordCheck" element={<PasswordCheck />}></Route>
       <Route path="userInfo" element={<UserInfo />}></Route>
       <Route path="userProfile" element={<UserProfile />}></Route>
       <Route path="userEdit" element={<UserEdit />}></Route>
-      
+
       <Route path="cart" element={<Cart />}></Route>
       <Route path="payment" element={<Payment />}></Route>
       <Route path="paySuccess" element={<PaySuccess />}></Route>

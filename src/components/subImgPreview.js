@@ -11,20 +11,41 @@ export const SubImagePreview = ({ subImageId, setNewProduct }) => {
     reader.onloadend = () => {
       setSubImageFile(reader.result);
       if (subImageId === "subImage1") {
-        setNewProduct((prevState) => ({
-          ...prevState,
-          subImage1: file,
-        }));
+        if (file.name.includes("http://") || file.name.includes("https://")) {
+          setNewProduct((prevState) => ({
+            ...prevState,
+            subImage1: file.name,
+          }));
+        } else {
+          setNewProduct((prevState) => ({
+            ...prevState,
+            subImage1: "../img/" + file.name,
+          }));
+        }
       } else if (subImageId === "subImage2") {
-        setNewProduct((prevState) => ({
-          ...prevState,
-          subImage2: file,
-        }));
+        if (file.name.includes("http://") || file.name.includes("https://")) {
+          setNewProduct((prevState) => ({
+            ...prevState,
+            subImage2: file.name,
+          }));
+        } else {
+          setNewProduct((prevState) => ({
+            ...prevState,
+            subImage2: "../img/" + file.name,
+          }));
+        }
       } else if (subImageId === "subImage3") {
-        setNewProduct((prevState) => ({
-          ...prevState,
-          subImage3: file,
-        }));
+        if (file.name.includes("http://") || file.name.includes("https://")) {
+          setNewProduct((prevState) => ({
+            ...prevState,
+            subImage3: file.name,
+          }));
+        } else {
+          setNewProduct((prevState) => ({
+            ...prevState,
+            subImage3: "../img/" + file.name,
+          }));
+        }
       }
     };
   };

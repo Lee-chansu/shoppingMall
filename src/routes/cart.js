@@ -1,39 +1,67 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import "../css/cart.css";
 
+//컴포넌트
+import { Nav } from "../components/nav";
 import { CartItem } from "../components/CartItem";
+import ButtonBox from "../components/ButtonBox";
+import CustomButton from "../components/CustomButton";
 
 export const Cart = () => {
-  const [cartItemList, setCartItemList] = useState([
-    {
-      id: 1,
-      price: 50000,
-      name: "상품명인데 어디까지 괜찮나 한번 볼까",
-      carryPrice: 3000,
-      count: 3,
-      src: "/pants.jpg",
-      isChecked: false,
-    },
-    {
-      id: 2,
-      price: 20000,
-      name: "근데 상품명이 두줄이상이면 어떻하지",
-      carryPrice: 1000,
-      count: 1,
-      src: "/t-shirt.jpg",
-      isChecked: false,
-    },
-    {
-      id: 3,
-      price: 40000,
-      name: "css로 처리할 수 있었다👍🏻 ",
-      carryPrice: 2000,
-      count: 2,
-      src: "/pants.jpg",
-      isChecked: false,
-    },
-  ]);
+  //장바구니에 담길 내용
+  const [cartItemList, setCartItemList] = useState([]);
+
+  const [userProfile, setUserProfile] = useState({});
+  const [id, setId] = useState("");
+  //네비게이션 선언
+  const navigate = useNavigate();
+
+  //비로그인시 장바구니에 접근하지 못하도록 하는
+  const userFetch = async () => {
+    const response = await fetch(`http://localhost:5000/userProfile/${id}`);
+    const body = await response.json();
+    return body;
+  };
+
+  const getUserProfile = async (id) => {
+    const user = await userFetch(id);
+    setUserProfile(user);
+  };
+
+  //유저별 상품조회
+  const userFetchProducts = async () => {
+    const response = await fetch(`http://localhost:5000/Cart/${id}`);
+    const body = await response.json();
+    return body;
+  };
+
+  const getProducts = async (id) => {
+    const result = await userFetchProducts(id);
+    const newArr = result.map((val, idx) => {
+      return { ...val.Product, amount: val.amount };
+    });
+    console.log(newArr);
+
+    setCartItemList(newArr);
+  };
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (id === "" && !token) {
+      navigate("/login");
+    } else {
+      const decodeToken = jwtDecode(token);
+      setId(decodeToken.id);
+    }
+
+    if (id !== "") {
+      getUserProfile();
+      getProducts(id);
+    }
+  }, [id]);
+
   const [isCheckedAll, setIsCheckedAll] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -52,9 +80,16 @@ export const Cart = () => {
         return copy;
       });
     }
-
     setCartItemList(cartItemList);
     setIsCheckedAll(!isCheckedAll);
+  };
+
+  const handleLinkBackMove = () => {
+    navigate(-1);
+  };
+
+  const handlePaymentMove = () => {
+    navigate("/payment");
   };
 
   useEffect(() => {
@@ -62,50 +97,56 @@ export const Cart = () => {
   });
 
   return (
-    <div className="section cart">
-      <div className="wrap">
-        <div className="title">장바구니</div>
-        <div className="cartBar">
-          <input
-            type="checkbox"
-            className="buyCheckBox"
-            checked={isCheckedAll}
-            onChange={handleCheckboxChange}
-          />
-          <div className="productImage">상품이미지</div>
-          <div className="productName">상품명</div>
-          <div className="productPrice">판매가</div>
-          <div className="productStock">수량</div>
-          <div className="productCarryPay">배송비</div>
-          <div className="sumPay">총 합계</div>
-        </div>
+    <>
+      <Nav></Nav>
+      <div className="section cart">
+        <div className="wrap">
+          <div className="title">
+            <img src="../img/basket.png" width="28" />
+            장바구니/결제
+          </div>
+          <div className="cartBar">
+            <input
+              type="checkbox"
+              className="buyCheckBox"
+              checked={isCheckedAll}
+              onChange={handleCheckboxChange}
+            />
+            <div className="productImage">상품이미지</div>
+            <div className="productName">상품명</div>
+            <div className="productPrice">판매가</div>
+            <div className="productStock">수량</div>
+            <div className="sumPay">총 합계</div>
+          </div>
 
-        {cartItemList &&
-          cartItemList.map((val, idx) => {
-            return (
-              <CartItem
-                val={val}
-                idx={idx}
-                cartItemList={cartItemList}
-                setCartItemList={setCartItemList}
-                key={val.id}
-              ></CartItem>
-            );
-          })}
+          {cartItemList &&
+            cartItemList.map((val, idx) => {
+              return (
+                <CartItem
+                  val={val}
+                  idx={idx}
+                  cartItemList={cartItemList}
+                  setCartItemList={setCartItemList}
+                  key={val.id}
+                ></CartItem>
+              );
+            })}
 
-        <div className="buttonGroup">
-          <button className="button">
-            <Link to="/" className="buttonText">
-              취소하기
-            </Link>
-          </button>
-          <button className="button">
-            <Link to="/payment" className="buttonText">
-              결제하기
-            </Link>
-          </button>
+          <ButtonBox>
+            <CustomButton
+              className="btn1"
+              buttonTitle="뒤로가기"
+              handleLinkMove={handleLinkBackMove}
+            />
+
+            <CustomButton
+              className="btn2"
+              buttonTitle="선택상품 결제하기"
+              handleLinkMove={handlePaymentMove}
+            />
+          </ButtonBox>
         </div>
       </div>
-    </div>
+    </>
   );
 };

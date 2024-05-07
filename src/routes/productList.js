@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import "../css/productList.css";
 
 //컴포넌트
-import { Product } from "../components/product";
 import { Nav } from "../components/nav";
+import { Product } from "../components/product";
 import { Detail } from "../components/detail";
 
 export const ProductList = () => {
   const [productList, setProductList] = useState([]);
 
   const loadProduct = async () => {
-    const getProduct = await fetch("http://localhost:5000/").then((res) =>
-    // const getProduct = await fetch("https://hotcake.loca.lt/Product").then((res) =>
+    const getProduct = await fetch("http://localhost:5000/product").then(res =>
+      // const getProduct = await fetch("https://hotcake.loca.lt/Product").then((res) =>
       res.json()
     );
     setProductList(getProduct);
@@ -34,13 +34,12 @@ export const ProductList = () => {
             </Link>
           </div>
           <div className="productWrap">
-            {productList.map((product) => {
+            {productList.map(product => {
               return (
                 <Link
                   key={product.id}
                   className="link"
-                  to="/productList/detail/description"
-                >
+                  to={`/productList/detail/description/${product.id}`}>
                   <Product key={product.id} product={product}></Product>
                 </Link>
               );

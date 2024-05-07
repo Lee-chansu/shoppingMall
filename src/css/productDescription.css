@@ -31,7 +31,7 @@
 
 .productInfo .moreInfo {
   background-color: #ffffff;
-  height: 119px;
+  height: 117px;
   left: 3px;
   position: absolute;
   top: 812px;
@@ -82,7 +82,7 @@
 }
 
 .productInfo .productReview {
-  height: 190px;
+  height: 156px;
   left: 664px;
   position: absolute;
   top: 5px;
@@ -101,12 +101,15 @@
   top: 68px;
 }
 
-.productInfo .productDescription {
-  height: 190px;
+.productInfo .productDescription1 {
+  height: 156px;
   left: 0;
   position: absolute;
   top: 5px;
   width: 664px;
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
+  border-color: #000000;
 }
 
 .productInfo .textWrapper4 {
@@ -121,10 +124,10 @@
   top: 66px;
 }
 
-.productInfo .line {
+/* .productInfo .line {
   height: 5px;
   left: 0;
   position: absolute;
   top: 149px;
   width: 664px;
-}
+} */

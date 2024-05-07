@@ -1,0 +1,21 @@
+.buttonBox {
+  height: 65px;
+  margin: 50px auto;
+  width: 1053px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.buttonBox > * {
+  background-color: #eee;
+  margin-right: 30px;
+  height: 60px;
+  width: 200px;
+  font-size: 22px;
+  text-align: center;
+  line-height: 62px;
+  border-radius: 5px;
+  border: none;
+}

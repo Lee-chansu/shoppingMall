@@ -1,47 +1,47 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable("Users", {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
       },
       userId: {
         type: Sequelize.STRING(40),
-        allowNull: false
+        allowNull: false,
       },
       password: {
         type: Sequelize.STRING(20),
-        allowNull: false
+        allowNull: false,
       },
       gender: {
         type: Sequelize.CHAR(1),
         validate: {
-          isIn: [['M', 'F']]
-        }
+          isIn: [["M", "F"]],
+        },
       },
       userName: {
         type: Sequelize.STRING(10),
-        allowNull: false
+        allowNull: false,
       },
       email: {
         type: Sequelize.STRING(40),
-        allowNull: false
+        allowNull: false,
       },
       phoneNumber: {
-        type: Sequelize.STRING(20)
+        type: Sequelize.STRING(20),
       },
       address: {
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING(100),
       },
       userImage: {
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING(100),
       },
       isMaster: {
         type: Sequelize.BOOLEAN,
-        defaultValue: false
+        defaultValue: false,
       },
       isDeleted: {
         type: Sequelize.BOOLEAN,
@@ -49,16 +49,16 @@ module.exports = {
       },
       profileImg: {
         type: Sequelize.STRING(100),
-        defaultValue: false
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now')
-      }
+        defaultValue: Sequelize.fn("now"),
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
-  }
+    await queryInterface.dropTable("Users");
+  },
 };

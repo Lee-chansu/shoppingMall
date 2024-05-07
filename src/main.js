@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./main.css";
 
 //컴포넌트
 import { Nav } from "./components/nav";
 import { Product } from "./components/product";
-import { Link } from "react-router-dom";
 
 export const Main = () => {
   const [productList, setProductList] = useState([]);
   const loadProduct = async () => {
-    const getProducts = await fetch("http://localhost:5000/").then((res) =>
+    const getProducts = await fetch("http://localhost:5000/").then(res =>
       res.json()
     );
+
     setProductList(getProducts);
   };
 
@@ -21,7 +22,7 @@ export const Main = () => {
 
   return (
     <>
-      <Nav></Nav>
+      <Nav />
       <div className="main">
         <div className="visual" />
         <div className="inner">
@@ -29,10 +30,14 @@ export const Main = () => {
             <h1>Best!</h1>
           </Link>
           <div className="wrap">
-            {productList.map((product) => {
+            {productList.slice(0, 5).map(product => {
               return (
-                <Link className="link" to="/productList/detail/description">
-                  <Product key={product.id} product={product} />
+                <Link
+                  className="link"
+                  key={product.id}
+                  to={`/productList/detail/description/${product.id}`}
+                >
+                  <Product product={product} />
                 </Link>
               );
             })}
@@ -43,11 +48,12 @@ export const Main = () => {
           <div className="wrap">
             {productList
               .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-              .map((product) => {
+              .slice(0, 5)
+              .map(product => {
                 return (
                   <Link
                     className="link"
-                    to="/productList/description"
+                    to={`/productList/detail/description/${product.id}`}
                     key={product.id}
                   >
                     <Product product={product} />

@@ -1,4 +1,9 @@
-.nav {
+.header {
+}
+.header .inner {
+}
+
+.header .inner .nav {
   padding: 20px 30px;
   background-color: #eeeeee;
   display: flex;
@@ -7,7 +12,7 @@
   margin: 10px 0;
 }
 
-.category {
+.header .inner .category {
   padding: 20px 20px;
   background-color: #eeeeee;
   display: flex;
@@ -16,7 +21,7 @@
   text-align: center;
 }
 
-.category2 {
+.header .inner .category2 {
   padding: 20px 20px;
   background-color: #eeeeee;
   display: none;
@@ -25,13 +30,13 @@
   text-align: center;
 }
 
-.wrapper {
+.header .inner .wrapper {
   padding: 0px;
   background-color: #ffffff;
   text-align: center;
 }
 
-.text {
+.header .inner .text {
   padding: 10px;
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
@@ -41,39 +46,15 @@
   line-height: normal;
 }
 
-.category .wrapper {
+.header .inner .category .wrapper {
   margin: 0 20px;
 }
 
-.link {
+.header .inner .link {
   text-decoration: none;
 }
 
-@media screen and (max-width: 1400px) {
-  .nav {
-    display: flex;
-  }
-  .category {
-    display: none;
-  }
-  .category2 {
-    display: flex;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .category2 {
-    overflow-x: scroll;
-  }
-  .category2 .wrapper {
-    width: 20%;
-    margin: 0 10px;
-  }
-  .category2 .wrapper .text {
-    font-size: 20px;
-  }
-}
-.linkProfile {
+.header .inner .nav .linkProfile {
   background-color: #ffffff;
   border-radius: 121.63px;
   height: 143px;
@@ -81,4 +62,36 @@
   text-align: center;
   text-decoration: none;
   color: black;
+}
+
+.header .inner .nav .linkProfile .profileImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 1400px) {
+  .nav {
+    display: flex;
+  }
+  .header .inner .nav .category {
+    display: none;
+  }
+  .header .inner .category2 {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .header .inner .category2 {
+    overflow-x: scroll;
+  }
+  .header .inner .category2 .wrapper {
+    width: 20%;
+    margin: 0 10px;
+  }
+  .header .inner .category2 .wrapper .text {
+    font-size: 20px;
+  }
 }

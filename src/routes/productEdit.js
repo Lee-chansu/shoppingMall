@@ -1,13 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "../css/productAdd.css";
 
 //컴포넌트
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
 
-export const ProductAdd = () => {
+export const ProductEdit = () => {
+  const id = useParams().id;
   const navigate = useNavigate();
+  const mainImgRef = useRef();
+
+  const [product, setProduct] = useState({});
+
+  const loadProduct = async () => {
+    const getProduct = await fetch(`http://localhost:5000/product/${id}`).then(
+      (res) => {
+        res.json();
+      }
+    );
+    console.log(getProduct);
+    // setProduct(getProduct);
+  };
+
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
 
@@ -23,7 +38,6 @@ export const ProductAdd = () => {
   const [checkDetail, setCheckDetail] = useState("");
 
   const [mainImageFile, setMainImageFile] = useState("");
-  const mainImgRef = useRef();
 
   const subImageCount = [0, 1, 2];
   const subImageId = ["subImage1", "subImage2", "subImage3"];
@@ -36,19 +50,19 @@ export const ProductAdd = () => {
       setMainImageFile(reader.result);
     };
     if (file.name.includes("http://") || file.name.includes("https://")) {
-      setNewProduct(prevState => ({
+      setNewProduct((prevState) => ({
         ...prevState,
         mainImage: file.name,
       }));
     } else {
-      setNewProduct(prevState => ({
+      setNewProduct((prevState) => ({
         ...prevState,
         mainImage: "../img/" + file.name,
       }));
     }
   };
 
-  const checkOnlyOneCategory = checkThis => {
+  const checkOnlyOneCategory = (checkThis) => {
     checkThis.checked === false
       ? setCheckCategory("")
       : setCheckCategory(checkThis.name);
@@ -61,10 +75,11 @@ export const ProductAdd = () => {
   };
 
   useEffect(() => {
+    loadProduct();
     showDetailBar();
   }, [checkCategory, checkDetail]);
 
-  const checkOnlyOneDetail = checkThis => {
+  const checkOnlyOneDetail = (checkThis) => {
     checkThis.checked === false
       ? setCheckDetail("")
       : setCheckDetail(checkThis.name);
@@ -77,7 +92,7 @@ export const ProductAdd = () => {
   };
 
   const showDetailBar = () => {
-    setNewProduct(prevState => ({
+    setNewProduct((prevState) => ({
       ...prevState,
       category: checkCategory,
       detail: checkDetail,
@@ -90,7 +105,7 @@ export const ProductAdd = () => {
   const [newProduct, setNewProduct] = useState({
     category: "",
     detail: "",
-    name: "",
+    name: product.name,
     price: 0,
     color: "",
     size: 0,
@@ -102,12 +117,12 @@ export const ProductAdd = () => {
     description: "",
   });
 
-  const valueChange = e => {
+  const valueChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
 
-  const toAddProduct = async e => {
+  const toEditProduct = async (e) => {
     e.preventDefault();
 
     try {
@@ -146,11 +161,11 @@ export const ProductAdd = () => {
 
       // console.log(newProduct.mainImage);
 
-      const result = await fetch("http://localhost:5000/addProduct", {
-        method: "POST",
+      const result = await fetch(`http://localhost:5000/productEdit/${id}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newProduct),
-      }).then(res => {
+      }).then((res) => {
         res.json();
         if (res.ok) {
           alert("제품을 추가했습니다.");
@@ -176,7 +191,7 @@ export const ProductAdd = () => {
             <div className="wrap">
               <h2 className="title">카테고리</h2>
               <div className="boxWrap">
-                {category.map(el => {
+                {category.map((el) => {
                   return (
                     <div className="box" key={el}>
                       <label className="text" for={el}>
@@ -187,7 +202,7 @@ export const ProductAdd = () => {
                         className="checkBoxCategory"
                         name={el}
                         value={el}
-                        onChange={e => checkOnlyOneCategory(e.target)}
+                        onChange={(e) => checkOnlyOneCategory(e.target)}
                       />
                     </div>
                   );
@@ -209,7 +224,7 @@ export const ProductAdd = () => {
                           className="checkBoxDetail"
                           name={el}
                           value={el}
-                          onChange={e => checkOnlyOneDetail(e.target)}
+                          onChange={(e) => checkOnlyOneDetail(e.target)}
                         />
                       </div>
                     );
@@ -307,7 +322,7 @@ export const ProductAdd = () => {
               </div>
             </div>
             <div className="btnForm">
-              <button onClick={toAddProduct}>추가</button>
+              <button onClick={toEditProduct}>수정완료</button>
               <Link to="/productList">
                 <button>취소</button>
               </Link>

@@ -11,21 +11,24 @@ const { email_service, admin, pass } = process.env; // env 파일 데이터가�
 // 스케줄링
 const cron = require('node-cron')
 // 회원 기간만료후 물리적삭제
-cron.schedule('* * * * *',async()=>{
-  console.log('스케줄링이 실행됩니다')
+cron.schedule('0 0 * * *',async()=>{
+  console.log('매 정각마다 스케줄링이 실행됩니다')
   
-  // deleteUser 테이블에서 삭제
   const today = new Date()
   const delUser = await DeleteUser.findAll()
   if(delUser){
     delUser.forEach(async (e)=>{
       if(today > e.deleteDate){
         await DeleteUser.destroy({where : {deleteDate : e.deleteDate}})
+        await Carry.destroy({where : {user_id : e.user_id}})
+        await BuyList.destroy({where : {user_id : e.user_id}})
+        await StarPoint.destroy({where : {user_id : e.user_id}})
+        await ReviewList.destroy({where : {user_id : e.user_id}})
+        await Cart.destroy({where : {user_id : e.user_id}})
+        await User.destroy({where : {id : e.user_id}})
       } 
     })
   }
-
-  
 })
 
 
@@ -56,8 +59,18 @@ const crypto = require("crypto");
 
 //db
 const db = require("./models");
-const { where } = require("sequelize");
-const { User, Product, DeleteUser } = db;
+const {
+  User,
+  DeleteUser,
+  Product,
+  ReviewList,
+  StarPoint,
+  Cart,
+  BuyList,
+  ProductOption,
+  ProductDetail,
+  Carry,
+} = db;
 
 //미들웨어
 app.use(cors());
@@ -96,7 +109,11 @@ passport.use(
     }
     if (result.password != password) {
       return done(null, false, { message: "비밀번호가 일치하지않습니다" });
-    } else {
+    }
+    if (result.isDeleted){
+      return done(null, false, { message : '휴먼 계정입니다'})
+    }
+    else {
       return done(null, result);
     }
   })
@@ -105,7 +122,6 @@ passport.use(
 // 세션생성
 passport.serializeUser((user, done) => {
   process.nextTick(() => {
-    console.log("serializeUser");
     done(null, { id: user.id, userId: user.userId });
   });
 });
@@ -125,12 +141,9 @@ passport.deserializeUser(async (user, done) => {
   }
 });
 
-
-
 // 로그아웃
 app.get("/logout", (req, res) => {
   req.logOut();
-
 });
 
 // 로그인
@@ -156,6 +169,14 @@ app.get("/", async (req, res) => {
   res.json(result);
 });
 
+//프로필 이미지 불러오기
+app.get("/profile/:id", async (req, res) => {
+  const { id } = req.params;
+  const { userImage } = await User.findOne({ where: { id } });
+
+  res.json(userImage);
+});
+
 // 유저프로필
 app.get("/userProfile/:id", async (req, res) => {
   const { id } = req.params;
@@ -166,11 +187,46 @@ app.get("/userProfile/:id", async (req, res) => {
 });
 
 //제품 추가 페이지
-app.post("addProduct", async (req, res) => {
-  const newProduct = req.body;
+app.post("/addProduct", async (req, res) => {
+  const { category, detail, color, size, stock, ...rest } = req.body;
+  const newProduct = { ...rest };
 
-  await Product.create(newProduct);
+  let result;
+  try {
+    const product = await Product.create(newProduct);
+    const { id } = await Product.findOne({
+      order: [["id", "DESC"]],
+      limit: 1,
+    });
+    const newProductDetail = {
+      product_id: id,
+      category,
+      detailCategory: detail,
+    };
+    const newProductOption = {
+      product_id: id,
+      productColor: color,
+      productSize: size,
+      productStock: stock,
+    };
+
+    const productDetail = await ProductDetail.create(newProductDetail);
+    const productOption = await ProductOption.create(newProductOption);
+
+    if (!product || !productDetail || !productOption) {
+      result = false;
+    } else {
+      result = true;
+    }
+    // console.log(result);
+    res.json(result);
+  } catch (error) {
+    console.log(error);
+    res.json((result = false));
+  }
 });
+
+app.put("/productEdit", (req, res) => {});
 
 // 각 화면들
 
@@ -184,25 +240,93 @@ app.get("/DeleteUser", async (req, res) => {
   res.json(result);
 });
 
-app.get("/Product", async (req, res) => {
+// 상품 상세 조회
+app.get("/product/:id", async (req, res) => {
+  const { id } = req.params;
+  const product = await Product.findOne({ where: { id } });
+  const productOption = await ProductOption.findOne({
+    where: { product_id: id },
+  });
+  const productDetail = await ProductDetail.findOne({
+    where: { product_id: id },
+  });
+  const result = {
+    id : product.id,
+    name: product.name,
+    price: product.price,
+    mainImage: product.mainImage,
+    subImage1: product.subImage1,
+    subImage2: product.subImage2,
+    subImage3: product.subImage3,
+    category: productDetail.category,
+    detail: productDetail.detailCategory,
+    size: productOption.productSize,
+    color: productOption.productColor,
+    stock: productOption.productStock,
+  };
+
+
+  if (result) {
+    res.json(result);
+  } else {
+    res.json({});
+  }
+});
+
+app.get("/product", async (req, res) => {
   const result = await Product.findAll();
   res.json(result);
 });
 
+// 리뷰 리스트 조회
 app.get("/ReviewList", async (req, res) => {
-  const result = await ReviewList.findAll();
-  res.json(result);
+  const { product_id } = req.query;
+  let result = await ReviewList.findAll({ where: {} });
+  if (product_id) result = await ReviewList.findAll({ where: { product_id } });
+  // console.log(result);
+  if (result) {
+    res.json(result);
+  } else {
+    res.json([]);
+  }
 });
+
+// app.get("/ReviewList", async (req, res) => {
+//   const result = await ReviewList.findAll();
+//   res.json(result);
+// });
 
 app.get("/StarPoint", async (req, res) => {
   const result = await StarPoint.findAll();
   res.json(result);
 });
 
+app.get("/Cart/:user_id", async (req, res) => {
+  const { user_id } = req.params;
+
+  try {
+    const result = await Cart.findAll({
+      where: { user_id },
+      include: [{ model: Product }], // Product 모델을 include하여 조인
+    });
+
+    if (result) {
+      res.json(result);
+    } else {
+      res.status(404).json({ message: "Cart not found for the user." });
+    }
+  } catch (error) {
+    console.error("Error fetching cart:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 app.get("/Cart", async (req, res) => {
   const result = await Cart.findAll();
   res.json(result);
 });
+
+//유저별 장바구니 조회
 
 app.get("/BuyList", async (req, res) => {
   const result = await BuyList.findAll();
@@ -308,10 +432,10 @@ app.post("/findId", async (req, res) => {
   } else {
     res.json({ msessage: false });
   }
-})
+});
 
 // 비밀번호찾기
-app.post('/findPassword', async(req,res)=>{
+app.post("/findPassword", async (req, res) => {
   const { userId, email } = req.body;
   const result = await User.findOne({ where: { userId, email } });
   let passNum;
@@ -338,19 +462,19 @@ app.post('/findPassword', async(req,res)=>{
   } else {
     res.json({ msessage: false });
   }
-})
+});
 
 // 비밀번호변경
-app.put('/passwordEdit/:id', async(req,res)=>{
-  const {id} = req.params
-  const {password} = req.body
-  const result = await User.findOne({where : {id}})
-  if(result){
-    result.password = password
+app.put("/passwordEdit/:id", async (req, res) => {
+  const { id } = req.params;
+  const { password } = req.body;
+  const result = await User.findOne({ where: { id } });
+  if (result) {
+    result.password = password;
     await result.save();
-    res.json({message : '비밀번호 변경성공'})
+    res.json({ message: "비밀번호 변경성공" });
   }
-})
+});
 
 
 // 회원탈퇴
@@ -366,7 +490,7 @@ app.put('/userinfo/put/:id', async(req,res)=>{
     deleteDate.setDate(deleteDate.getDate() + 30) // 물리적삭제 날짜기간정함
 
     await DeleteUser.create({ 
-      id : result.id,
+      user_id : result.id,
       userId : result.userId,
       password : result.password,
       gender : result.gender,
@@ -377,7 +501,6 @@ app.put('/userinfo/put/:id', async(req,res)=>{
       isMaster : result.isMaster,
       deleteDate : deleteDate
     })
-
   }else{
     res.status(404).send({message : 'db와 일치하지않음'})
   }

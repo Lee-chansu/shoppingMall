@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: false,
       },
       userImage: {
-        type : DataTypes.STRING(100)
+        type: DataTypes.STRING(100),
       },
       createdAt: {
         type: DataTypes.DATE,

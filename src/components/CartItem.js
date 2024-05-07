@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
+import styles from "../css/cartItem.module.css"
 
-export const CartItem = ({ val, idx, cartItemList, setCartItemList }) => {
-  const item = val;
+export const CartItem = ({ val, idx, cartItemList, setCartItemList, countAble=true }) => {
+
   const handleUpCount = () => {
     const listCopy = cartItemList;
-    listCopy[idx].count = val.count + 1;
+    listCopy[idx].amount = val.amount + 1;
     setCartItemList([...listCopy]);
   };
 
   const handleDownCount = () => {
-    if (val.count <= 0) {
+    if (val.amount <= 0) {
       return;
     }
     const listCopy = cartItemList;
-    listCopy[idx].count = val.count - 1;
+    listCopy[idx].amount = val.amount - 1;
     setCartItemList([...listCopy]);
   };
 
@@ -25,41 +26,43 @@ export const CartItem = ({ val, idx, cartItemList, setCartItemList }) => {
 
   useEffect(() => {
     console.log("item rerender");
-    console.log(item.isChecked);
+    console.log(val.isChecked);
   }, []);
 
   return (
-    <div className="cartItem">
+    <div className={styles.cartItem}>
       <img
-        className="productImgBox"
-        src={`${process.env.PUBLIC_URL}/img${item.src}`}
+        className={styles.productImgBox}
+        src={val.mainImage}
         alt="item"
       />
-      <div className="inner">
-        <div className="group1">
-          <div className="cartProductStock">{item.count}</div>
+      <div className={styles.inner}>
+        <div className={styles.group1}>
+          <div className={styles.cartProductStock}>{val.amount}</div>
           <div>
-            <button className="countUp" onClick={handleUpCount}>
+            {countAble && (<>
+            <button className={styles.countUp} onClick={handleUpCount}>
               ▲
             </button>
-            <button className="countDown" onClick={handleDownCount}>
+            <button className={styles.countDown} onClick={handleDownCount}>
               ▼
             </button>
+            </>)}
           </div>
         </div>
-        <div className="cartProductPrice">{item.price}원</div>
+        <div className={styles.cartProductPrice}>{val.price}원</div>
       </div>
       <input
         type="checkbox"
-        className="isBuyCheckBox"
-        checked={item.isChecked}
+        className={styles.isBuyCheckBox}
+        checked={val.isChecked}
         onChange={handleCheck}
       />
-      <div className="cartProductName">{item.name}</div>
-      <div className="group2">
-        <div className="cartCarryPrice">{item.carryPrice}원</div>
-        <div className="cartSumPrice">
-          {item.count !== 0 ? item.count * item.price + item.carryPrice : 0}원
+      <div className={styles.cartProductName}>{val.name}</div>
+      <div className={styles.group2}>
+        
+        <div className={styles.cartSumPrice}>
+          {val.amount !== 0 ? val.amount * val.price  : 0}원
         </div>
       </div>
     </div>

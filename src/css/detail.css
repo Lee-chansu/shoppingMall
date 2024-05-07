@@ -9,12 +9,14 @@
 .detail .inner {
   background-color: #eee;
   width: 100%;
+  overflow: hidden;
 }
 
 .detail .wrapper {
-  padding: 0 10px;
-}
-.detail .div-wrapper .text {
   padding: 10px;
   background-color: #fff;
+}
+
+.detail .div-wrapper .text {
+  padding: 10px;
 }

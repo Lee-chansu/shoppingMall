@@ -22,9 +22,9 @@
 
 .productInfoReview .reviewBox {
   background-color: #eeeeee;
-  height: 992px;
+  height: 527px;
   left: 2px;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: absolute;
   top: 171px;
   width: 1328px;
@@ -149,7 +149,8 @@
   height: 382px;
   left: 2px;
   position: relative;
-  width: 665px;
+  width: 100%;
+  /* width: 665px; */
 }
 
 .productInfoReview .overlap {
@@ -242,8 +243,9 @@
 
 .productInfoReview .infoSelect {
   background-color: #ffffff;
-  height: 161px;
+  height: 159px;
   left: 2px;
+  overflow: hidden;
   position: absolute;
   top: 0;
   width: 1328px;

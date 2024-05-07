@@ -8,17 +8,6 @@ git remote add origin https://github.com/Lee-chansu/shoppingMall.git
 git push -u origin master
 
 
-
-
-
-
-
-
-
-
-
-
-
 # 기본적인 git 사용법
 
 ## github.com 로그인
