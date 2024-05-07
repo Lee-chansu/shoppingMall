@@ -223,7 +223,7 @@ app.get("/product/:id", async (req, res) => {
     where: { product_id: id },
   });
   const result = {
-    id : product.id,
+    id: product.id,
     name: product.name,
     price: product.price,
     mainImage: product.mainImage,
@@ -236,7 +236,6 @@ app.get("/product/:id", async (req, res) => {
     color: productOption.productColor,
     stock: productOption.productStock,
   };
-
 
   if (result) {
     res.json(result);

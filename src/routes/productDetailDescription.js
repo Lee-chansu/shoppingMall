@@ -113,6 +113,7 @@ export const ProductDetailDescription = () => {
                 ))}
               </div>
               <div className="infoBox">
+                <Link className="link" to={`/productList/edit/${productId}`}>✏</Link>
                 <div className="productName">
                   <div className="textWrapper2">제품명</div>
                   <div className="overlap2">
@@ -132,10 +133,7 @@ export const ProductDetailDescription = () => {
                       <option value="" disabled>
                         size
                       </option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value={product.color}>{product.color}</option>
+                      <option value={product.size}>{product.size}</option>
                     </select>
                   </div>
                 </div>
@@ -146,9 +144,7 @@ export const ProductDetailDescription = () => {
                       <option value="" disabled>
                         color
                       </option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
+                      <option value={product.color}>{product.color}</option>
                     </select>
                   </div>
                 </div>
