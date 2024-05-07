@@ -11,6 +11,7 @@ export const ProductDetailDescription = () => {
 
   const [product, setProduct] = useState([]);
   const [stock, setStock] = useState(0);
+  const [maxStock, setMaxStock] = useState(0);
   const [index, setIndex] = useState(0);
   const [item, setItem] = useState(0);
   const [id, setId] = useState();
@@ -19,22 +20,68 @@ export const ProductDetailDescription = () => {
   const [color, setColor] = useState([]);
   const [size, setSize] = useState([]);
   const [option, setOption] = useState([]);
+  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedColor, setSelectedColor] = useState('');
+
+  const handleChangeSize = (event) => {
+    setSelectedSize(event.target.value);
+  };
+
+  const handleChangeColor = (event) => {
+    setSelectedColor(event.target.value);
+  };
 
   useEffect(() => {
     // productOption 데이터 가져오기
     fetch('http://localhost:5000/productOption')
       .then(response => response.json())
       .then(data => {
-        setOption(data);
         const productDetail = data.filter(product => product.product_id == productId);
+        setOption(productDetail);
         console.log('productDetail', productDetail);
         // size, color에 맞는 새 배열 각각 추가
+        const newSize = productDetail.map(product => product.productSize)
+        const sizeList = [...new Set(newSize)]
+        setSize(sizeList.sort((a, b) => a - b))
+        const newColor = productDetail.map(product => product.productColor)
+        const colorList = [...new Set(newColor)]
+        setColor(colorList)
       });
 }, []);
 
-  // useEffect(() => {
-  //   console.log(size)
-  // },[size])
+  const getStock = () => {
+    if (selectedSize && selectedColor) {
+      const maxStock = option.filter(product => product.productSize == selectedSize && product.productColor == selectedColor);
+      setMaxStock(maxStock[0].productStock)
+    } else if (selectedSize) {
+      const maxStock = option.filter(product => product.productSize == selectedSize);
+      setMaxStock(maxStock[0].productStock)
+    } else if (selectedColor) {
+      const maxStock = option.filter(product => product.productColor == selectedColor);
+      setMaxStock(maxStock[0].productStock)
+    } else {
+      setMaxStock(0)
+    }
+    setStock(0)
+  }
+
+  useEffect(() => {
+    console.log('size', size)
+  },[size])
+
+  useEffect(() => {
+    console.log('color', color)
+  },[color])
+
+  useEffect(() => {
+    console.log('selectedSize', selectedSize)
+    getStock()
+  },[selectedSize])
+
+  useEffect(() => {
+    console.log('selectedColor', selectedColor)
+    getStock()
+  },[selectedColor])
 
   const loadProduct = async () => {
     const getProduct = await fetch(`http://localhost:5000/product/${productId}`).then((res) =>
@@ -64,7 +111,7 @@ export const ProductDetailDescription = () => {
   }, [id]);
 
   const increaseStock = () => {
-    if (stock < product.pdstock) {
+    if (stock < maxStock) {
       setStock(stock + 1);
     }
   };
@@ -134,22 +181,32 @@ export const ProductDetailDescription = () => {
                 <div className="productSize">
                   <div className="textWrapper2">사이즈</div>
                   <div className="overlap2">
-                    <select className="select" defaultValue="">
-                      <option value="" disabled>size</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
+                    <select className="select" value={selectedSize} onChange={handleChangeSize}>
+                      {
+                        size.map((el) => {
+                          return (
+                            <>
+                              <option value={el}>{el}</option>
+                            </>
+                          )
+                        })
+                      }
                     </select>
                   </div>
                 </div>
                 <div className="productColor">
                   <div className="textWrapper2">색상</div>
                   <div className="overlap">
-                    <select className="select" defaultValue="">
-                      <option value="" disabled>color</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
+                    <select className="select" value={selectedColor} onChange={handleChangeColor}>
+                      {
+                        color.map((el) => {
+                          return (
+                            <>
+                              <option value={el}>{el}</option>
+                            </>
+                          )
+                        })
+                      }
                     </select>
                   </div>
                 </div>
