@@ -21,6 +21,7 @@ module.exports = {
         id: 101,
         userId: "userId1",
         password: '1234',
+        
         gender: "M",
         userName: "userName1",
         email: "email1@naver.com",
