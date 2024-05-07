@@ -1,100 +1,124 @@
+*{margin:0; padding: 0; box-sizing: border-box;}
+ul, ol, li{list-style:none;}
+a{text-decoration:none;} 
+
+
 .login {
-  background-color: #ffffff;
+  background-color: #f6f1eb;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 100vh;
 }
 
 .login .div {
-  background-color: #ffffff;
-  height: 1024px;
+  background-color: #fffcf7;
+  height: 524px;
   position: relative;
-  width: 1440px;
+  width: 640px;
+  border-radius: 10px;
+}
+.login .div > .textWrapper::after{
+  content: '';
+  display: block;
+  width: 540px;
+  border: 1px solid #f6f1eb;
+  position: absolute;
+  top: 60px;
+  left: 170px;
+  
 }
 
 .login .textWrapper {
-  color: #000000;
+  color: #524747;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 36.7px;
+  font-size: 30px;
   font-weight: 400;
   height: 95px;
-  left: 511px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 40px;
+  top: 20px;
+  left: -120px;
   width: 413px;
 }
 
 .login .loginBox {
-  background-color: #eeeeee;
-  height: 673px;
-  left: 316px;
+  background-color: #fffcf7;
+  height: 373px;
+  left: 0px;
   position: absolute;
-  top: 176px;
-  width: 808px;
+  top: 100px;
+  width: 408px;
 }
 
 .login .loginForm {
-  background-color: #ffffff;
-  height: 278px;
-  left: 13px;
+  background-color: #fffcf7;
+  height: 178px;
+  left: 110px;
   position: absolute;
-  top: 69px;
-  width: 782px;
+  top: 10px;
+  width: 402px;
 }
 
 .login .inputUserId {
-  background-color: #eeeeee;
+  background-color: #fffcf7;
   height: 90px;
-  left: 27px;
+  left: -70px;
   position: absolute;
   top: 24px;
-  width: 728px;
+  width: 400px;
 }
 
 .login .textWrapper2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 26.6px;
+  font-size: 15px;
   font-weight: 400;
-  height: 56px;
-  left: 106px;
+  height: 40px;
+  left: 96px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  text-align: center;
+  text-align: left;
   top: 15px;
-  width: 512px;
+  width: 370px;
+  border: 1px solid #9d2a1e;
+  padding-left: 7px;
+  border-radius: 4px;
 }
 
 .login .inputUserpassword {
-  background-color: #eeeeee;
-  height: 90px;
-  left: 27px;
+  background-color: #fffcf7;
+  height: 70px;
+  left: -70px;
   position: absolute;
-  top: 161px;
-  width: 728px;
+  top: 100px;
+  width: 400px;
 }
 
 .login .loginButton {
-  background-color: #ffffff;
+  background-color: #fffcf7;
   height: 154px;
   left: 10px;
   position: absolute;
-  top: 366px;
-  width: 784px;
+  top: 200px;
+  width: 400px;
 }
 
 .login .submitButton {
-  background-color: #eeeeee;
-  height: 90px;
-  left: 45px;
+  background-color: #4d4a4a;
+  height: 40px;
+  left: 150px;
   position: absolute;
   top: 28px;
-  width: 270px;
+  width: 120px;
+  border-radius: 5px;
+  border: transparent;
+  color: #ffffff;
 }
 
 .login .textWrapper3 {
@@ -113,12 +137,15 @@
 }
 
 .login .cancelButton {
-  background-color: #eeeeee;
-  height: 90px;
-  left: 492px;
+  background-color: #4d4a4a;
+  height: 40px;
+  left: 350px;
   position: absolute;
   top: 28px;
-  width: 221px;
+  width: 120px;
+  border-radius: 5px;
+  border: transparent;
+  color: #ffffff;
 }
 
 .login .textWrapper4 {
@@ -137,18 +164,18 @@
 }
 
 .login .etc {
-  background-color: #ffffff;
+  background-color: #fffcf7;
   height: 54px;
-  left: 73px;
+  left: 10px;
   position: absolute;
-  top: 554px;
-  width: 658px;
+  top: 354px;
+  width: 400px;
 }
 
 .login .textWrapper5 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 26.6px;
+  font-size: 12px;
   font-weight: 400;
   height: 37px;
   left: 58px;
@@ -157,28 +184,28 @@
   position: absolute;
   text-align: center;
   top: 10px;
-  width: 160px;
+  width: 100px;
 }
 
-.login .etc::after {
+.login .etc > ::after {
   content: '';
   display: block;
-  border-right: 1px solid #000000;
-  height: 100%;
+  width: 1px;
+  height: 60%;
+  background-color: #000000;
   position: absolute;
-  top: 0;
-  right: -20px;
-  border-collapse: collapse;
+  top: 0px;
+  left: 150px;
 }
 
-.login .etc:last-of-type::after {
-  border: 0;
+.login .etc :last-of-type::after {
+  width: 0;
 }
 
 .login .textWrapper6 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 26.6px;
+  font-size: 12px;
   font-weight: 400;
   height: 35px;
   left: 250px;
@@ -187,13 +214,13 @@
   position: absolute;
   text-align: center;
   top: 10px;
-  width: 160px;
+  width: 100px;
 }
 
 .login .textWrapper7 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 26.6px;
+  font-size: 12px;
   font-weight: 400;
   height: 37px;
   left: 446px;
@@ -202,5 +229,5 @@
   position: absolute;
   text-align: center;
   top: 10px;
-  width: 160px;
+  width: 100px;
 }
