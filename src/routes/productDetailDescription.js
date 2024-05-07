@@ -16,9 +16,28 @@ export const ProductDetailDescription = () => {
   const [id, setId] = useState();
   const [user, setUser] = useState(0);
   const [switchBtn, setSwitchBtn] = useState(!true);
+  const [color, setColor] = useState([]);
+  const [size, setSize] = useState([]);
+  const [option, setOption] = useState([]);
+
+  useEffect(() => {
+    // productOption 데이터 가져오기
+    fetch('http://localhost:5000/productOption')
+      .then(response => response.json())
+      .then(data => {
+        setOption(data);
+        const productDetail = data.filter(product => product.product_id == productId);
+        console.log('productDetail', productDetail);
+        // size, color에 맞는 새 배열 각각 추가
+      });
+}, []);
+
+  // useEffect(() => {
+  //   console.log(size)
+  // },[size])
 
   const loadProduct = async () => {
-    const getProduct = await fetch(`http://localhost:5000/product/${item}`).then((res) =>
+    const getProduct = await fetch(`http://localhost:5000/product/${productId}`).then((res) =>
       res.json()
     );
     setProduct(getProduct);
@@ -75,12 +94,7 @@ export const ProductDetailDescription = () => {
     product.mainImage,
     product.subImage1,
     product.subImage2,
-    // product.subImage3,
-    // "https://tvvmvn.github.io/front-end/img/Simba.webp",
-    // "https://tvvmvn.github.io/front-end/img/Timon.webp",
-    // "https://tvvmvn.github.io/front-end/img/Pumbaa.webp"
   ];
-  // setPhoto(photos)
 
   function jump(index) {
     setIndex(index);
@@ -164,8 +178,6 @@ export const ProductDetailDescription = () => {
               </div>
             </div>
           </div>
-          {/* <ProductDescription switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} />
-          <ProductReview switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} /> */}
           { switchBtn ? <ProductDescription switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} item={item} product={product} /> : <ProductReview switchBtn={switchBtn} setSwitchBtn={setSwitchBtn} handleSwitchBtn={handleSwitchBtn} item={item} user={user} id={id} product={product} />}
         </div>
       ) : (

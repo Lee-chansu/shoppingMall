@@ -86,19 +86,6 @@ export const ProductReview = (props) => {
                 <div className="textWrapper4">리뷰 작성하기</div>
               </Link>
             </div>
-            
-            {/* {reviewList.map((el, i) => {
-              // user_id에 해당하는 A 테이블의 name 찾기
-              const users = userList.find(user => user.id === el.user_id);
-
-              // 해당 항목과 A 테이블의 name을 같이 출력
-              return (
-                <div key={el.id}>
-                  <p>B 테이블의 값: {el.value}</p>
-                  <p>A 테이블의 이름: {users.name}</p>
-                </div>
-              );
-            })} */}
             {
               reviewList.map((el, i) => {
                   const user = userList.find(user => user.id === el.user_id);

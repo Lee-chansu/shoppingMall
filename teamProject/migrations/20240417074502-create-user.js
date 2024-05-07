@@ -45,11 +45,7 @@ module.exports = {
       },
       isDeleted: {
         type: Sequelize.BOOLEAN,
-<<<<<<< HEAD
-        defaultValue: false
-=======
         defaultValue: false,
->>>>>>> origin/yoonjiho
       },
       profileImg: {
         type: Sequelize.STRING(100),
