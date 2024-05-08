@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import "../css/productAdd.css";
+import "../css/productEdit.css";
 
 //컴포넌트
 import { Nav } from "../components/nav";
@@ -14,6 +14,7 @@ export const ProductEdit = () => {
   const [newProduct, setNewProduct] = useState({});
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
+  const [stock, setStock] = useState(0);
   const [checkedCategory, setCheckedCategory] = useState("");
   const [checkedDetail, setCheckedDetail] = useState("");
   const detail = {
@@ -38,6 +39,7 @@ export const ProductEdit = () => {
     setCheckDetail(getProduct.detail);
     setName(getProduct.name);
     setPrice(getProduct.price);
+    setStock(getProduct.stock);
   };
 
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
@@ -95,6 +97,10 @@ export const ProductEdit = () => {
       setCheckedDetail("");
     } else {
       setCheckDetail(checkThis.name);
+      setNewProduct((prevState) => ({
+        ...prevState,
+        detail: checkDetail,
+      }));
       setCheckedDetail(checkThis.name);
     }
   };
@@ -105,10 +111,10 @@ export const ProductEdit = () => {
       category: checkCategory,
       detail: checkDetail,
     }));
+    console.log(newProduct.category, newProduct.detail);
     checkCategory !== ""
       ? setDetailBar(detail[checkCategory])
       : setDetailBar([]);
-    console.log(newProduct.category, newProduct.detail);
   };
 
   const valueChange = (e) => {
@@ -281,7 +287,12 @@ export const ProductEdit = () => {
                 </div>
                 <div className="box">
                   <label htmlFor="stock">stock</label>
-                  <input type="number" name="stock" onChange={valueChange} />
+                  <input
+                    type="number"
+                    name="stock"
+                    onChange={valueChange}
+                    value={stock}
+                  />
                 </div>
               </div>
             </div>
@@ -289,7 +300,7 @@ export const ProductEdit = () => {
               <h2 className="title">메인이미지 등록</h2>
               <div className="boxWrap">
                 <label htmlFor="mainImage">
-                  <div className="addImg" style={{ "margin-Left": "5px" }}>
+                  <div className="addImg" style={{ "marginLeft": "5px" }}>
                     +
                   </div>
                 </label>

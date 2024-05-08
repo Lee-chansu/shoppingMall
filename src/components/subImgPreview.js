@@ -55,7 +55,7 @@ export const SubImagePreview = ({ subImageId, setNewProduct }) => {
       <label htmlFor={subImageId}>
         <div
           className="addImg"
-          style={subImageId === "subImage1" ? { "margin-Left": "5px" } : {}}
+          style={subImageId === "subImage1" ? { "marginLeft": "5px" } : {}}
         >
           +
         </div>

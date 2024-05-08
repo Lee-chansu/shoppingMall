@@ -12,7 +12,7 @@
 
 .productAdd .inner .wrap .box{
   display: flex; justify-content: space-between; align-items: center;
-  width: 15%; margin-Left: 20px;
+  width: 15%; margin-left: 20px;
 }
 .productAdd .inner .wrap .box .text{
   font-size: 20px; font-weight: 600;
@@ -48,7 +48,7 @@
 }
 .productAdd .inner .wrap.img .editImg{
   padding: 20px;
-  margin-Left: 80px;
+  margin-left: 80px;
   background-color: #eee;
   &:hover{
     background-color: #ddd;
