@@ -40,7 +40,12 @@ export const Cart = () => {
   const getProducts = async (id) => {
     const result = await userFetchProducts(id);
     const newArr = result.map((val, idx) => {
-      return { ...val.Product, amount: val.amount };
+      return {
+        ...val.Product,
+        amount: val.amount,
+        size: val.size,
+        color: val.color,
+      };
     });
     console.log(newArr);
 
@@ -101,9 +106,7 @@ export const Cart = () => {
       <Nav></Nav>
       <div className="section cart">
         <div className="wrap">
-          <div className="title">
-            장바구니/결제
-          </div>
+          <div className="title">장바구니/결제</div>
           <div className="cartBar">
             <input
               type="checkbox"

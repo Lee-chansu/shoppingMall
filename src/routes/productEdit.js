@@ -164,8 +164,8 @@ export const ProductEdit = () => {
 
   return (
     <>
-      <Nav></Nav>
-      <div className="productAdd">
+      <Nav/>
+      <div className="productEdit">
         <div className="inner">
           <form className="formBox">
             <div className="wrap">
