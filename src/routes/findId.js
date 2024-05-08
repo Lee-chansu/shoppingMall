@@ -7,6 +7,7 @@ export const FindId = () => {
   const goback = () => {
     navigate(-1);
   };
+  console.log()
 
   const [findUser, setFindUser] = useState({
     userName: "",
@@ -28,7 +29,7 @@ export const FindId = () => {
     setFindUser({ ...findUser, [name]: value });
   };
 
-  const submitButton = async (e) => {
+  const emailButton = async (e) => {
     e.preventDefault();
 
     if (!findUser.userName) {
@@ -87,7 +88,7 @@ export const FindId = () => {
                 name="userName"
               ></input>
             </div>
-            <div className="inputUserPhoneNumber">
+            <div className="inputUserEmail">
               <input
                 type="email"
                 placeholder=" 사용자 이메일 입력"
@@ -95,6 +96,7 @@ export const FindId = () => {
                 onChange={valueChange}
                 name="email"
               ></input>
+              <button className = "emailButton" onClick={emailButton}>인증번호 받기</button>
             </div>
             {isSend ? (
               <div className="inputNum">
@@ -118,19 +120,13 @@ export const FindId = () => {
             )}
           </div>
           <div className="buttonBox">
-            <button
-              className="submitButton"
-              type="submit"
-              onClick={submitButton}
-            >
-              제출
-            </button>
+            <button className="submitButton" type="button" onClick={()=>{navigate('/findPassword')}}>비밀번호 찾기</button>
             <button className="cancelButton" type="button" onClick={goback}>
               취소
             </button>
           </div>
         </form>
-        {passResult ? <div className="result">{userId}</div> : <div></div>}
+        {passResult ? <div className="result">아이디 : {userId}</div> : <div></div>}
       </div>
     </div>
   );
