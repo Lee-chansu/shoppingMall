@@ -101,6 +101,7 @@ export const ProductDetailDescription = () => {
                 <img
                   ref={mainRef}
                   src={photos[index]}
+                  onError={() => {}}
                   className="mainThmbnailWrapper"
                 />
                 {photos.map((photo, i) => (
@@ -113,7 +114,9 @@ export const ProductDetailDescription = () => {
                 ))}
               </div>
               <div className="infoBox">
-                <Link className="link" to={`/productList/edit/${productId}`}>✏</Link>
+                <Link className="link" to={`/productList/edit/${productId}`}>
+                  ✏
+                </Link>
                 <div className="productName">
                   <div className="textWrapper2">제품명</div>
                   <div className="overlap2">

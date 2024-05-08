@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-export const SubImagePreview = ({ subImageId, setNewProduct }) => {
+export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
   const [subImageFile, setSubImageFile] = useState("");
   let subImgRef = useRef();
 
@@ -55,7 +55,7 @@ export const SubImagePreview = ({ subImageId, setNewProduct }) => {
       <label htmlFor={subImageId}>
         <div
           className="addImg"
-          style={subImageId === "subImage1" ? { "marginLeft": "5px" } : {}}
+          style={subImageId === "subImage1" ? { marginLeft: "5px" } : {}}
         >
           +
         </div>
@@ -68,7 +68,13 @@ export const SubImagePreview = ({ subImageId, setNewProduct }) => {
         ref={subImgRef}
       />
       <img
-        style={!subImageFile ? { display: "none" } : { display: "block" }}
+        style={{
+          display: newProduct.subImage1
+            ? "block"
+            : !subImageFile
+            ? "none"
+            : "block",
+        }}
         className="previewImg subImage"
         src={subImageFile}
         alt="상품 이미지"

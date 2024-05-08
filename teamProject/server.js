@@ -198,7 +198,52 @@ app.post("/addProduct", async (req, res) => {
   }
 });
 
-app.put("/productEdit", (req, res) => {});
+app.put("/productEdit/:id", async (req, res) => {
+  const { id } = req.params;
+  const { category, detail, color, size, stock, ...rest } = req.body;
+  const newProduct = { ...rest };
+  const newProductDetail = {
+    category,
+    detailCategory: detail,
+  };
+  const newProductOption = {
+    productColor: color,
+    productSize: size,
+    productStock: stock,
+  };
+
+  // console.log();
+
+  let result;
+  try {
+    const product = await Product.update({ ...newProduct }, { where: { id } });
+
+    const productDetail = await ProductDetail.update(
+      { ...newProductDetail },
+      {
+        where: { product_id: id },
+      }
+    );
+    const productOption = await ProductOption.update(
+      { ...newProductOption },
+      {
+        where: { product_id: id },
+      }
+    );
+    console.log("productDetail",productDetail);
+
+    if (!product || !productDetail || !productOption) {
+      result = false;
+    } else {
+      result = true;
+    }
+    // console.log(result);
+    res.json(result);
+  } catch (error) {
+    console.log(error);
+    res.json((result = false));
+  }
+});
 
 // 각 화면들
 

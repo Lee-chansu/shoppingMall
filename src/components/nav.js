@@ -29,7 +29,9 @@ export const Nav = () => {
       <div className="inner">
         <nav className="nav">
           <div className="wrapper">
+            <Link to="/">
             <h1 className="text logo">logo</h1>
+            </Link>
           </div>
           <div className="category">
             {category.map((el, i) => {

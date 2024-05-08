@@ -12,11 +12,15 @@ export const ProductEdit = () => {
   const mainImgRef = useRef();
 
   const [newProduct, setNewProduct] = useState({});
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [stock, setStock] = useState(0);
-  const [checkedCategory, setCheckedCategory] = useState("");
-  const [checkedDetail, setCheckedDetail] = useState("");
+  const [detailBar, setDetailBar] = useState([]);
+  const [checkDetail, setCheckDetail] = useState("");
+  const [mainImageFile, setMainImageFile] = useState("");
+  const category = ["아우터", "상의", "하의", "신발", "악세사리"];
+  const [checkCategory, setCheckCategory] = useState("");
+
+  const subImageCount = [0, 1, 2];
+  const subImageId = ["subImage1", "subImage2", "subImage3"];
+
   const detail = {
     아우터: ["코트", "블레이저", "패딩"],
     상의: ["반팔", "긴팔", "티셔츠", "후드", "러닝"],
@@ -32,25 +36,9 @@ export const ProductEdit = () => {
       }
     );
     setNewProduct(getProduct);
-
-    setCheckedCategory(getProduct.category);
     setCheckCategory(getProduct.category);
-    setCheckedDetail(getProduct.detail);
     setCheckDetail(getProduct.detail);
-    setName(getProduct.name);
-    setPrice(getProduct.price);
-    setStock(getProduct.stock);
   };
-
-  const category = ["아우터", "상의", "하의", "신발", "악세사리"];
-  const [checkCategory, setCheckCategory] = useState("");
-
-  const [detailBar, setDetailBar] = useState([]);
-  const [checkDetail, setCheckDetail] = useState("");
-  const [mainImageFile, setMainImageFile] = useState("");
-
-  const subImageCount = [0, 1, 2];
-  const subImageId = ["subImage1", "subImage2", "subImage3"];
 
   const previewMainImg = () => {
     const file = mainImgRef.current.files[0];
@@ -75,43 +63,26 @@ export const ProductEdit = () => {
   const checkOnlyOneCategory = (checkThis) => {
     if (checkThis.checked === false) {
       setCheckCategory("");
-      setCheckedCategory("");
       setCheckDetail("");
     } else {
       setCheckCategory(checkThis.name);
-      setCheckedCategory(checkThis.name);
     }
   };
-
-  useEffect(() => {
-    loadProduct();
-  }, []);
-
-  useEffect(() => {
-    showDetailBar();
-  }, [checkCategory, checkDetail]);
 
   const checkOnlyOneDetail = (checkThis) => {
     if (checkThis.checked === false) {
       setCheckDetail("");
-      setCheckedDetail("");
     } else {
       setCheckDetail(checkThis.name);
-      setNewProduct((prevState) => ({
-        ...prevState,
-        detail: checkDetail,
-      }));
-      setCheckedDetail(checkThis.name);
     }
   };
 
   const showDetailBar = () => {
-    setNewProduct((prevState) => ({
-      ...prevState,
+    setNewProduct({
+      ...newProduct,
       category: checkCategory,
       detail: checkDetail,
-    }));
-    console.log(newProduct.category, newProduct.detail);
+    });
     checkCategory !== ""
       ? setDetailBar(detail[checkCategory])
       : setDetailBar([]);
@@ -121,6 +92,14 @@ export const ProductEdit = () => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
+
+  useEffect(() => {
+    loadProduct();
+  }, []);
+
+  useEffect(() => {
+    showDetailBar();
+  }, [checkCategory, checkDetail]);
 
   const toEditProduct = async (e) => {
     e.preventDefault();
@@ -159,6 +138,8 @@ export const ProductEdit = () => {
         return;
       }
 
+      console.log(newProduct.category, newProduct.detail);
+
       await fetch(`http://localhost:5000/productEdit/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -167,7 +148,7 @@ export const ProductEdit = () => {
         res.json();
         if (res.ok) {
           alert("제품의 정보를 수정했습니다.");
-          navigate("/productList");
+          navigate(`/productList/detail/description/${id}`);
         } else {
           alert("제품의 정보를 수정하는데 실패했습니다.");
           console.log(newProduct);
@@ -201,7 +182,7 @@ export const ProductEdit = () => {
                         className="checkBoxCategory"
                         name={el}
                         value={el}
-                        checked={checkedCategory === el}
+                        checked={checkCategory === el}
                         onChange={(e) => checkOnlyOneCategory(e.target)}
                       />
                     </div>
@@ -224,7 +205,7 @@ export const ProductEdit = () => {
                           className="checkBoxDetail"
                           name={el}
                           value={el}
-                          checked={checkedDetail === el}
+                          checked={checkDetail === el}
                           onChange={(e) => checkOnlyOneDetail(e.target)}
                         />
                       </div>
@@ -239,7 +220,7 @@ export const ProductEdit = () => {
                 <input
                   type="text"
                   name="name"
-                  value={name}
+                  value={newProduct.name}
                   onChange={valueChange}
                 />
               </div>
@@ -250,7 +231,7 @@ export const ProductEdit = () => {
                 <input
                   type="text"
                   name="price"
-                  value={price}
+                  value={newProduct.price}
                   onChange={valueChange}
                 />
               </div>
@@ -290,8 +271,8 @@ export const ProductEdit = () => {
                   <input
                     type="number"
                     name="stock"
+                    value={newProduct.stock}
                     onChange={valueChange}
-                    value={stock}
                   />
                 </div>
               </div>
@@ -300,16 +281,20 @@ export const ProductEdit = () => {
               <h2 className="title">메인이미지 등록</h2>
               <div className="boxWrap">
                 <label htmlFor="mainImage">
-                  <div className="addImg" style={{ "marginLeft": "5px" }}>
+                  <div className="addImg" style={{ marginLeft: "5px" }}>
                     +
                   </div>
                 </label>
                 <img
-                  style={
-                    !mainImageFile ? { display: "none" } : { display: "block" }
-                  }
+                  style={{
+                    display: newProduct.mainImage
+                      ? "block"
+                      : mainImageFile
+                      ? "block"
+                      : "none",
+                  }}
                   className="previewImg main"
-                  src={mainImageFile}
+                  src={!mainImageFile ? newProduct.mainImage : mainImageFile}
                   alt="메인이미지"
                 />
                 <input
@@ -344,7 +329,7 @@ export const ProductEdit = () => {
             </div>
             <div className="btnForm">
               <button onClick={toEditProduct}>수정완료</button>
-              <Link to="/productList">
+              <Link to={`/productList/detail/description/${id}`}>
                 <button>취소</button>
               </Link>
             </div>
