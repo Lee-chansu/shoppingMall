@@ -303,6 +303,7 @@ export const ProductEdit = () => {
                   name="mainImage"
                   onChange={previewMainImg}
                   ref={mainImgRef}
+                  accept="image/*"
                 />
               </div>
             </div>

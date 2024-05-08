@@ -69,7 +69,7 @@
 }
 
 .cartItem {
-  background-color: #eeeeeeee;
+  border-bottom: 1px solid #ddd;
   height: 241px;
   overflow: hidden;
   width: 1377px;
@@ -121,14 +121,6 @@
   top: 7px;
   width: 42px;
   text-align: right;
-}
-
-.cart .vector {
-  height: 36px;
-  left: 82px;
-  position: absolute;
-  top: 0;
-  width: 2px;
 }
 
 .countUp {
@@ -227,12 +219,24 @@
   width: 200px;
 }
 
-.cartSumPrice {
+.cartProductSizeColor {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 22px;
   font-weight: 600;
-  left: 150px;
+  left: 380px;
+  text-align: center;
+  line-height: normal;
+  position: absolute;
+  top: 5px;
+  width: 225px;
+}
+
+.cartSumPrice {
+  color: #ff7d9e;
+  font-size: 28px;
+  font-weight: 600;
+  left: 190px;
   text-align: center;
   line-height: normal;
   position: absolute;
@@ -261,6 +265,7 @@
   align-items: center;
   box-sizing: border-box;
   position: relative;
+  
 }
 
 .cart .cartBar .productImage {
@@ -269,8 +274,6 @@
   font-weight: 600;
   height: 46px;
   left: 170px;
-  letter-spacing: 0;
-  line-height: normal;
   position: absolute;
   text-align: center;
   top: 17px;
@@ -282,66 +285,40 @@
   font-weight: 600;
   height: 46px;
   left: 395px;
-  letter-spacing: 0;
-  line-height: normal;
   position: absolute;
   text-align: center;
   top: 17px;
 }
 
 .cart .productPrice {
-  color: #000000;
   font-family: "Inter-Light", Helvetica;
   font-size: 20px;
   font-weight: 600;
   height: 46px;
   left: 600px;
-  letter-spacing: 0;
-  line-height: normal;
   position: absolute;
   text-align: center;
   top: 17px;
 }
 
 .cart .productStock {
-  color: #000000;
   font-family: "Inter-Light", Helvetica;
   font-size: 20px;
   font-weight: 600;
   height: 46px;
   left: 800px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 17px;
-}
-
-.cart .productCarryPay {
-  color: #000000;
-  font-family: "Inter-Light", Helvetica;
-  font-size: 20px;
-  font-weight: 600;
-  height: 46px;
-  left: 980px;
-  letter-spacing: 0;
-  line-height: normal;
   position: absolute;
   text-align: center;
   top: 17px;
 }
 
 .cart .sumPay {
-  color: #000000;
   font-family: "Inter-Light", Helvetica;
   font-size: 20px;
   font-weight: 600;
   height: 46px;
-  left: 1183px;
-  letter-spacing: 0;
-  line-height: normal;
+  left: 1200px;
   position: absolute;
-  text-align: center;
   top: 17px;
 }
 

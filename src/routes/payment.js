@@ -5,7 +5,7 @@ import "../css/payment.css";
 import { PaymentItem } from "../components/PaymentItem";
 import ButtonBox from "../components/ButtonBox";
 import { jwtDecode } from "jwt-decode";
-import ModalPay from "../components/ModalPay";
+import PaymentModal from "../components/PaymentModal";
 import CustomButton from "../components/CustomButton";
 
 export const Payment = () => {
@@ -122,6 +122,9 @@ export const Payment = () => {
     <div className="payment">
       <div className="paymentInnerWrapper">
         <div className="paymentInner">
+          <div className="payTitle">
+            <div className="textWrapper8">결제하기</div>
+          </div>
           <div className="payBox">
             <div className="userInfoBox">
               <h3 className="carryInfo">배송지 정보</h3>
@@ -132,20 +135,22 @@ export const Payment = () => {
               <div className="addressBox">
                 <div className="address">배송받을 주소</div>
                 <div className="address2">
-                  <ModalPay mainAddressRef={mainAddressRef} />
+                  <PaymentModal mainAddressRef={mainAddressRef} />
                   <input
+                    className="mainAddressBox"
                     ref={mainAddressRef}
                     placeholder="도로 주소명(자동)"
                     value={userProfile.address}
                     disabled
                   />
                   <input
+                    className="detailAddressBox"
                     ref={detailAddressRef}
                     placeholder="상세 주소 기입"
                     disabled={!isAddressEditable}
                   />
                   <button
-                    className="btn btn-info "
+                    className="btn btn-info chooseBtn"
                     onClick={handleAddressFinish}
                     style={{
                       color:
@@ -158,7 +163,11 @@ export const Payment = () => {
                           : "pointer",
                     }}
                   >
-                    {isAddressEditable ? "주소 설정 완료" : "상세 주소 수정"}
+                    {isAddressEditable ? (
+                      <h6 className="carrySelectBtn">완료</h6>
+                    ) : (
+                      <h6>수정</h6>
+                    )}
                   </button>
                 </div>
               </div>
@@ -193,7 +202,7 @@ export const Payment = () => {
               <div className="howPayBox">
                 <div className="title">
                   <div className="textWrapper2">
-                    결제방식 선택하기
+                    결제방식 선택
                     <br />
                     <div className="paySelect">
                       {paySelect == "" ? "결제방법을 골라주세요" : paySelect}
@@ -278,9 +287,6 @@ export const Payment = () => {
                 handleLinkMove={handleAllPayment}
               />
             </ButtonBox>
-          </div>
-          <div className="payTitle">
-            <div className="textWrapper8">결제하기</div>
           </div>
         </div>
       </div>

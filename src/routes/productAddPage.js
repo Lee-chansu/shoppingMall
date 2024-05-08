@@ -31,24 +31,28 @@ export const ProductAdd = () => {
   const previewMainImg = () => {
     const file = mainImgRef.current.files[0];
     const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setMainImageFile(reader.result);
-    };
-    if (file.name.includes("http://") || file.name.includes("https://")) {
-      setNewProduct(prevState => ({
-        ...prevState,
-        mainImage: file.name,
-      }));
+    if (file) {
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setMainImageFile(reader.result);
+      };
+      if (file.name.includes("http://") || file.name.includes("https://")) {
+        setNewProduct((prevState) => ({
+          ...prevState,
+          mainImage: file.name,
+        }));
+      } else {
+        setNewProduct((prevState) => ({
+          ...prevState,
+          mainImage: "../img/" + file.name,
+        }));
+      }
     } else {
-      setNewProduct(prevState => ({
-        ...prevState,
-        mainImage: "../img/" + file.name,
-      }));
+      return;
     }
   };
 
-  const checkOnlyOneCategory = checkThis => {
+  const checkOnlyOneCategory = (checkThis) => {
     checkThis.checked === false
       ? setCheckCategory("")
       : setCheckCategory(checkThis.name);
@@ -64,7 +68,7 @@ export const ProductAdd = () => {
     showDetailBar();
   }, [checkCategory, checkDetail]);
 
-  const checkOnlyOneDetail = checkThis => {
+  const checkOnlyOneDetail = (checkThis) => {
     checkThis.checked === false
       ? setCheckDetail("")
       : setCheckDetail(checkThis.name);
@@ -77,7 +81,7 @@ export const ProductAdd = () => {
   };
 
   const showDetailBar = () => {
-    setNewProduct(prevState => ({
+    setNewProduct((prevState) => ({
       ...prevState,
       category: checkCategory,
       detail: checkDetail,
@@ -102,12 +106,12 @@ export const ProductAdd = () => {
     description: "",
   });
 
-  const valueChange = e => {
+  const valueChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
 
-  const toAddProduct = async e => {
+  const toAddProduct = async (e) => {
     e.preventDefault();
 
     try {
@@ -150,7 +154,7 @@ export const ProductAdd = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newProduct),
-      }).then(res => {
+      }).then((res) => {
         res.json();
         if (res.ok) {
           alert("제품을 추가했습니다.");
@@ -176,7 +180,7 @@ export const ProductAdd = () => {
             <div className="wrap">
               <h2 className="title">카테고리</h2>
               <div className="boxWrap">
-                {category.map(el => {
+                {category.map((el) => {
                   return (
                     <div className="box" key={el}>
                       <label className="text" htmlFor={el}>
@@ -187,7 +191,7 @@ export const ProductAdd = () => {
                         className="checkBoxCategory"
                         name={el}
                         value={el}
-                        onChange={e => checkOnlyOneCategory(e.target)}
+                        onChange={(e) => checkOnlyOneCategory(e.target)}
                       />
                     </div>
                   );
@@ -209,7 +213,7 @@ export const ProductAdd = () => {
                           className="checkBoxDetail"
                           name={el}
                           value={el}
-                          onChange={e => checkOnlyOneDetail(e.target)}
+                          onChange={(e) => checkOnlyOneDetail(e.target)}
                         />
                       </div>
                     );
@@ -264,7 +268,7 @@ export const ProductAdd = () => {
               <h2 className="title">메인이미지 등록</h2>
               <div className="boxWrap">
                 <label htmlFor="mainImage">
-                  <div className="addImg" style={{ "marginLeft": "5px" }}>
+                  <div className="addImg" style={{ marginLeft: "5px" }}>
                     +
                   </div>
                 </label>
@@ -282,6 +286,7 @@ export const ProductAdd = () => {
                   name="mainImage"
                   onChange={previewMainImg}
                   ref={mainImgRef}
+                  accept="image/*"
                 />
               </div>
             </div>

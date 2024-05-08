@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
-import styles from "../css/cartItem.module.css"
+import styles from "../css/cartItem.module.css";
 
-export const CartItem = ({ val, idx, cartItemList, setCartItemList, countAble=true }) => {
-
+export const CartItem = ({
+  val,
+  idx,
+  cartItemList,
+  setCartItemList,
+  countAble = true,
+}) => {
   const handleUpCount = () => {
     const listCopy = cartItemList;
     listCopy[idx].amount = val.amount + 1;
@@ -31,25 +36,24 @@ export const CartItem = ({ val, idx, cartItemList, setCartItemList, countAble=tr
 
   return (
     <div className={styles.cartItem}>
-      <img
-        className={styles.productImgBox}
-        src={val.mainImage}
-        alt="item"
-      />
+      <img className={styles.productImgBox} src={val.mainImage} alt="item" />
       <div className={styles.inner}>
         <div className={styles.group1}>
           <div className={styles.cartProductStock}>{val.amount}</div>
           <div>
-            {countAble && (<>
-            <button className={styles.countUp} onClick={handleUpCount}>
-              ▲
-            </button>
-            <button className={styles.countDown} onClick={handleDownCount}>
-              ▼
-            </button>
-            </>)}
+            {countAble && (
+              <>
+                <button className={styles.countUp} onClick={handleUpCount}>
+                  ▲
+                </button>
+                <button className={styles.countDown} onClick={handleDownCount}>
+                  ▼
+                </button>
+              </>
+            )}
           </div>
         </div>
+        <div className={styles.cartProductSizeColor}>여기 사이즈/색상 받아오기</div>
         <div className={styles.cartProductPrice}>{val.price}원</div>
       </div>
       <input
@@ -60,9 +64,8 @@ export const CartItem = ({ val, idx, cartItemList, setCartItemList, countAble=tr
       />
       <div className={styles.cartProductName}>{val.name}</div>
       <div className={styles.group2}>
-        
         <div className={styles.cartSumPrice}>
-          {val.amount !== 0 ? val.amount * val.price  : 0}원
+          {val.amount !== 0 ? val.amount * val.price : 0}원
         </div>
       </div>
     </div>
