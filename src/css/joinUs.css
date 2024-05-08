@@ -1,44 +1,50 @@
+*{margin:0; padding: 0; box-sizing: border-box;}
+ul, ol, li{list-style:none;}
+a{text-decoration:none;} 
+
 .joinUs {
-  background-color: #ffffff;
+  background-color: #f6f1eb;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  overflow: hidden;
 }
 
 .joinUs .joinBoxWrapper {
-  background-color: #ffffff;
-  height: 1024px;
+  background-color: #f6f1eb;
   width: 1440px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
 .joinUs .joinBox {
-  background-color: #eeeeee;
-  height: 998px;
-  left: 433px;
-  position: relative;
-  top: 13px;
+  background-color: #fffcf7;
+  height: 900px;
   width: 574px;
+  position: relative;
 }
 
 .joinUs .txt {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 18.9px;
+  font-size: 30px;
   font-weight: 400;
-  left: 251px;
+  left: 218px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 68px;
-  width: 80px;
+  top: 30px;
+  width: 200px;
 }
 
 .joinUs .overlapGroup {
   height: 248px;
   left: 20px;
   position: absolute;
-  top: 184px;
+  top: 114px;
   width: 528px;
 }
 
@@ -73,12 +79,12 @@
 }
 
 .joinUs .vector {
-  height: 1px;
+  height: 2px;
   left: 3px;
   position: absolute;
   top: 82px;
   width: 518px;
-  background-color: #000;
+  background-color: #f6f1eb;
 }
 
 .joinUs .check {
@@ -102,39 +108,74 @@
   width: 330px;
 }
 
-.joinUs .input {
-  background-color: #ffffff;
-  height: 64px;
-  left: 5px;
+.joinUs .subtxt1{
   position: absolute;
-  top: 58px;
-  width: 517px;
+  top: 2px;
+  left: 280px;
+  color: #9d2a1e;
 }
+
+.joinUs .text1{
+  position: absolute;
+  top: 50px;
+  left: 18px;
+  width: 500px;
+  height: 150px;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #f6f1eb;
+}
+
 
 .joinUs .check2 {
   height: 128px;
   left: 20px;
   position: absolute;
-  top: 451px;
+  top: 500px;
   width: 527px;
 }
 
+.joinUs .subtxt2{
+  position: absolute;
+  top: 2px;
+  left: 150px;
+  color: #9d2a1e;
+}
+
+
+.joinUs .text2{
+  position: absolute;
+  top: 50px;
+  left: 18px;
+  width: 500px;
+  height: 150px;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #f6f1eb;
+}
+
 .joinUs .submitButton {
-  background-color: #ffffff;
+  background-color: #4d4a4a;
   height: 64px;
   left: 50px;
   position: absolute;
-  top: 893px;
+  top: 730px;
   width: 192px;
+  color: #ffffff;
+  border-radius: 5px;
+  border: transparent;
 }
 
 .joinUs .cancleButton {
-  background-color: #ffffff;
+  background-color: #4d4a4a;
   height: 64px;
   left: 340px;
   position: absolute;
-  top: 893px;
+  top: 730px;
   width: 192px;
+  color: #ffffff;
+  border-radius: 5px;
+  border: transparent;
 }
 
 .joinUs .textWrapper2 {
@@ -147,4 +188,25 @@
   line-height: normal;
   position: absolute;
   top: 22px;
+}
+
+/* 텍스트에어리어 박스 사이즈늘리는거 비활성화 */
+textarea{
+  resize: none;
+}
+/* 스크롤바 전체 */
+textarea::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f6f1eb;
+}
+
+/* 스크롤바 막대 */
+textarea::-webkit-scrollbar-thumb{
+  background-color: #4d4a4a;
+  border-radius: 5px;
+}
+
+/* 스크롤바 여백 */
+textarea::-webkit-scrollbar-track{
+
 }

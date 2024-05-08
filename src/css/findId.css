@@ -1,177 +1,210 @@
+*{margin:0; padding: 0; box-sizing: border-box;}
+ul, ol, li{list-style:none;}
+a{text-decoration:none;} 
+
 .findId {
-  background-color: #ffffff;
+  background-color: #f6f1eb;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 100vh;
 }
 
 .findId .div {
-  background-color: #ffffff;
-  height: 1024px;
+  background-color: #fffcf7;
+  height: 524px;
   position: relative;
-  width: 1440px;
+  width: 640px;
+  border-radius: 10px;
+}
+
+.findId .div > .textWrapper::after{
+  content: '';
+  display: block;
+  width: 540px;
+  border: 1px solid #f6f1eb;
+  position: absolute;
+  top: 60px;
+  left: 135px;
 }
 
 .findId .textWrapper {
-  color: #000000;
+  color: #524747;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 44.1px;
+  font-size: 30px;
   font-weight: 400;
-  height: 129px;
-  left: 406px;
+  height: 95px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 39px;
-  width: 633px;
+  top: 20px;
+  left: -90px;
+  width: 413px;
 }
 
 .findId .findUserIdBox {
-  background-color: #eeeeee;
-  height: 822px;
-  left: 300px;
+  background-color: #fffcf7;
+  height: 373px;
+  left: 0px;
   position: absolute;
-  top: 201px;
-  width: 840px;
+  top: 100px;
+  width: 408px;
 }
 
 .findId .inputBox {
-  background-color: #ffffff;
-  height: 289px;
-  left: 13px;
+  background-color: #fffcf7;
+  height: 178px;
+  left: 110px;
   position: absolute;
-  top: 72px;
-  width: 812px;
+  top: 10px;
+  width: 402px;
 }
 
 .findId .inputUsername {
-  background-color: #eeeeee;
-  height: 93px;
-  left: 28px;
+  background-color: #fffcf7;
+  height: 90px;
+  left: -70px;
   position: absolute;
-  top: 25px;
-  width: 756px;
+  top: 24px;
+  width: 400px;
 }
 
 .findId .textWrapper2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 27.6px;
+  font-size: 15px;
   font-weight: 400;
-  height: 58px;
-  left: 110px;
+  height: 40px;
+  left: 96px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  text-align: center;
-  top: 16px;
-  width: 532px;
+  text-align: left;
+  top: 15px;
+  width: 370px;
+  border: 1px solid #9d2a1e;
+  padding-left: 7px;
+  border-radius: 4px;
 }
 
-.findId .inputUserPhoneNumber {
-  background-color: #eeeeee;
-  height: 93px;
-  left: 28px;
+.findId .inputUserEmail {
+  background-color: #fffcf7;
+  height: 70px;
+  left: -70px;
   position: absolute;
-  top: 167px;
-  width: 756px;
+  top: 100px;
+  width: 400px;
+}
+
+.findId .emailButton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4d4a4a;
+  height: 40px;
+  position: absolute;
+  top: 15px;
+  left: 388px;
+  width: 80px;
+  border-radius: 5px;
+  border: transparent;
+  color: #ffffff;
+  font-size: 10px;
 }
 
 .findId .inputNum {
-  background-color: #eeeeee;
-  height: 93px;
-  left: 0px;
+  background-color: #fffcf7;
+  height: 90px;
+  left: -70px;
   position: absolute;
-  top: 350px;
-  width: 756px;
+  top: 180px;
+  width: 400px; 
 }
 
 .findId .inputNumWrapper {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 27.6px;
+  font-size: 15px;
   font-weight: 400;
-  height: 58px;
-  left: 50px;
+  height: 40px;
+  left: 96px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  text-align: center;
-  top: 16px;
-  width: 492px;
+  text-align: left;
+  top: 15px;
+  width: 370px;
+  border: 1px solid #9d2a1e;
+  padding-left: 7px;
+  border-radius: 4px;
 }
 
 .findId .inputNumButton {
-  background-color: #eeeeee;
-  height: 58px;
-  left: 585px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4d4a4a;
+  height: 40px;
   position: absolute;
-  top: 16px;
-  width: 181px;
+  top: 15px;
+  left: 388px;
+  width: 80px;
+  border-radius: 5px;
+  border: transparent;
+  color: #ffffff;
+  font-size: 10px;
 }
 
 .findId .buttonBox {
-  background-color: #ffffff;
-  height: 160px;
-  left: 11px;
+  background-color: #fffcf7;
+  height: 154px;
+  left: 10px;
   position: absolute;
-  top: 580px;
-  width: 815px;
+  top: 200px;
+  width: 400px;
 }
 
 .findId .submitButton {
-  background-color: #eeeeee;
-  height: 93px;
-  left: 47px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4d4a4a;
+  height: 40px;
+  left: 150px;
   position: absolute;
-  top: 29px;
-  width: 281px;
+  top: 28px;
+  width: 120px;
+  border-radius: 5px;
+  border: transparent;
+  color: #ffffff;
+  font-size: 15px;
 }
 
-.findId .textWrapper3 {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 27.6px;
-  font-weight: 400;
-  height: 58px;
-  left: 67px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 17px;
-  width: 134px;
-}
+
 
 .findId .cancelButton {
-  background-color: #eeeeee;
-  height: 93px;
-  left: 512px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4d4a4a;
+  height: 40px;
+  left: 350px;
   position: absolute;
-  top: 29px;
-  width: 230px;
+  top: 28px;
+  width: 120px;
+  border-radius: 5px;
+  border: transparent;
+  color: #ffffff;
+  font-size: 15px;
 }
 
-.findId .textWrapper4 {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 27.6px;
-  font-weight: 400;
-  height: 58px;
-  left: 32px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
-  top: 17px;
-  width: 170px;
-}
 
 .result {
   position: absolute;
-  top: 970px;
-  left: 700px;
-  color: red;
+  top: 470px;
+  left: 260px;
+  color: #9d2a1e;
 }

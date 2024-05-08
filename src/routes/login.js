@@ -99,7 +99,7 @@ export const Login = () => {
             <Link to="/findPassword" className="textWrapper6">
               비밀번호찾기
             </Link>
-            <Link to="/join" className="textWrapper7">
+            <Link to="/joinUs" className="textWrapper7">
               회원가입
             </Link>
           </div>
