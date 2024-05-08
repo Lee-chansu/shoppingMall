@@ -329,7 +329,7 @@ export const ProductEdit = () => {
             </div>
             <div className="btnForm">
               <button onClick={toEditProduct}>수정완료</button>
-              <Link to="/productList">
+              <Link to={`/productList/detail/description/${id}`}>
                 <button>취소</button>
               </Link>
             </div>
