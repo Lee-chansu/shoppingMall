@@ -24,6 +24,16 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING(255)
+    },
+    buyDate: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.fn('now')
+    },
+    amount: {
+      type: DataTypes.INTEGER
+    },
+    carryStatus: {
+      type: DataTypes.STRING(255)
     }
   }, {
     timestamps: false

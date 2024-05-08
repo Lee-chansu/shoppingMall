@@ -5,6 +5,19 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('BuyLists', [
       {
+        id: 99,
+        productName: "productName10",
+        category: "category10",
+        price: 20000,
+        description: "description10",
+        pdstock: 0,
+        image: "image10",
+        user_id: 100,
+        product_id: 100,
+        amount:1,
+        carryStatus: '배송완료'
+      },
+      {
         id: 100,
         productName: "productName0",
         category: "category0",
@@ -14,6 +27,8 @@ module.exports = {
         image: "image0",
         user_id: 100,
         product_id: 100,
+        amount:1,
+        carryStatus: '배송중'
       },
       {
         id: 101,
@@ -25,6 +40,8 @@ module.exports = {
         image: "image1",
         user_id: 101,
         product_id: 101,
+        amount:2,
+        carryStatus: '도착완료'
       },
       {
         id: 102,
@@ -36,6 +53,8 @@ module.exports = {
         image: "image2",
         user_id: 102,
         product_id: 102,
+        amount:3,
+        carryStatus: '도착완료'
       },
       {
         id: 103,
@@ -47,6 +66,8 @@ module.exports = {
         image: "image3",
         user_id: 103,
         product_id: 103,
+        amount:1,
+        carryStatus: '도착완료'
       },
       {
         id: 104,
@@ -58,6 +79,8 @@ module.exports = {
         image: "image4",
         user_id: 104,
         product_id: 104,
+        amount:2,
+        carryStatus: '도착완료'
       },
       {
         id: 105,
@@ -69,6 +92,8 @@ module.exports = {
         image: "image5",
         user_id: 105,
         product_id: 105,
+        amount:3,
+        carryStatus: '도착완료'
       },
       {
         id: 106,
@@ -80,6 +105,8 @@ module.exports = {
         image: "image6",
         user_id: 106,
         product_id: 106,
+        amount:1,
+        carryStatus: '도착완료'
       },
       {
         id: 107,
@@ -91,6 +118,8 @@ module.exports = {
         image: "image7",
         user_id: 107,
         product_id: 107,
+        amount:2,
+        carryStatus: '도착완료'
       },
       {
         id: 108,
@@ -102,6 +131,8 @@ module.exports = {
         image: "image8",
         user_id: 108,
         product_id: 108,
+        amount:3,
+        carryStatus: '도착완료'
       },
       {
         id: 109,
@@ -113,6 +144,8 @@ module.exports = {
         image: "image9",
         user_id: 109,
         product_id: 109,
+        amount:1,
+        carryStatus: '도착완료'
       },
     ], {});
   },

@@ -68,7 +68,7 @@ a {
 
 .payment .email {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Inter-Regular', Helvetica;
   font-size: 16px;
   font-weight: 400;
   left: 20px;
@@ -81,7 +81,7 @@ a {
 
 .payment .email2 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Inter-Regular', Helvetica;
   font-size: 18px;
   font-weight: 600;
   left: 20px;
@@ -103,7 +103,7 @@ a {
 
 .payment .address {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Inter-Regular', Helvetica;
   font-size: 16px;
   font-weight: 400;
   left: 20px;
@@ -116,7 +116,7 @@ a {
 
 .payment .address2 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Inter-Regular', Helvetica;
   font-size: 18px;
   font-weight: 600;
   left: 20px;
@@ -176,7 +176,7 @@ a {
 
 .payment .carryRequest {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Inter-Regular', Helvetica;
   font-size: 16px;
   font-weight: 400;
   left: 20px;
@@ -189,7 +189,7 @@ a {
 
 .payment .carrySelect {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Inter-Regular', Helvetica;
   font-size: 15px;
   font-weight: 500;
   left: 0px;
@@ -231,7 +231,7 @@ a {
 
 .payment .textWrapper2 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Inter-Regular', Helvetica;
   font-size: 18px;
   font-weight: 600;
   left: 20px;
@@ -305,6 +305,16 @@ a {
   width: 400px;
 }
 
+.payment .paymentList {
+  overflow-y: scroll;
+  position: relative;
+  width: 420px;
+  height: 340px;
+  top: 20px;
+  margin: 20px 30px;
+  left: 10px;
+}
+
 .payment .sum {
   position: absolute;
   top: 5px;
@@ -328,7 +338,7 @@ a {
 
 .payment .orderSumText {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Inter-Regular', Helvetica;
   font-size: 16px;
   font-weight: 400;
   left: 15px;
@@ -425,11 +435,12 @@ a {
 .payment .product {
   border-radius: 5px;
   height: 145px;
-  position: relative;
-  top: 40px;
-  right: 30px;
   width: 400px;
-  left: 10px;
+  position: relative;
+  /* top: 40px;
+  right: 30px;
+  left: 10px; */
+  margin: 20px 0px;
 }
 
 .payment .image {
@@ -441,11 +452,9 @@ a {
 }
 
 .payment .productImg {
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  text-align: center;
   object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .payment .productInfo {
@@ -515,7 +524,7 @@ a {
 
 .payment .textWrapper8 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Inter-Regular', Helvetica;
   font-size: 30px;
   font-weight: 400;
   left: 419px;

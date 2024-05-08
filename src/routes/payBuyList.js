@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/payBuyList.css";
 
@@ -6,43 +6,14 @@ import { PayItem } from "../components/PayBuyListItem";
 import { Nav } from "../components/nav";
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
+import { jwtDecode } from "jwt-decode";
 
 export const PayBuyList = () => {
   //네비게이션 선언
   const navigate = useNavigate();
 
   const [payItemList, setPayItemList] = useState([]);
-  // payItemList = [
-  // {
-  //   payDate: "2024-04-29",
-  //   itemName: "샌드 베이지 숏츠 면 반바지",
-  //   itemPrice: "50,000",
-  //   itemCount: "1",
-  //   itemSize: "L",
-  //   itemNum: "DAA37WREY1",
-  //   carryState: "배송완료",
-  //   src: "/pants.jpg",
-  // },
-  // {
-  //   payDate: "2024-04-29",
-  //   itemName: "여름 필수템 베이직 무지 티셔츠",
-  //   itemPrice: "25,000",
-  //   itemCount: "1",
-  //   itemSize: "F",
-  //   itemNum: "FFF37WREY1",
-  //   carryState: "배송완료",
-  //   src: "/t-shirt.jpg",
-  // },
-  // {
-  //   payDate: "2024-04-29",
-  //   itemName: "여리여리 갬성 오프숄더 블라우스",
-  //   itemPrice: "45,000",
-  //   itemCount: "1",
-  //   itemSize: "S",
-  //   itemNum: "P3A37WREY33",
-  //   carryState: "배송완료",
-  //   src: "/blouse.jpg",
-  // },];
+  const [id, setId] = useState("");
 
   //버튼 이동 함수 정의
   const handleLinkBackMove = () => {
@@ -52,6 +23,28 @@ export const PayBuyList = () => {
   const handlePaymentMove = () => {
     navigate("/payment");
   };
+
+  const getPayItemList = async () => {
+    const response = await fetch (`http://localhost:5000/buyList/${id}`)
+    const payOrderList = await response.json();
+    setPayItemList(payOrderList);
+  }
+
+  //로그인한 유저의 id 가져오기
+  useEffect(()=> {
+    const token = sessionStorage.getItem("token");
+    if (id === "" && !token) {
+      navigate("/login");
+    } else {
+      const decodeToken = jwtDecode(token);
+      setId(decodeToken.id);
+    }
+
+    //유저의 id로 구매내역 조회
+    if (id !== "") {
+      getPayItemList();
+    }
+  },[id])
 
   return (
     <>

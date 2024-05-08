@@ -248,9 +248,11 @@ export const Payment = () => {
                 <h3 className="orderInfo">나의 주문</h3>
               </div>
 
-              {paymentItemList.map((val, idx) => {
-                return <PaymentItem val={val} key={val.id}></PaymentItem>;
-              })}
+              <div className="paymentList">
+                {paymentItemList.map((val, idx) => {
+                  return <PaymentItem val={val} key={val.id}></PaymentItem>;
+                })}
+              </div>
 
               <div className="productBox">
                 <div className="title1">
