@@ -9,6 +9,14 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
     const reader = new FileReader();
     if (file) {
       reader.readAsDataURL(file);
+      const extension = file.name.split(".").pop().toLowerCase();
+      const allowedExtensions = ["jpg", "jpeg", "png", "svg"]; // 허용되는 확장자 목록
+
+      if (!allowedExtensions.includes(extension)) {
+        alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
+        subImgRef.value = subImageFile; // 파일 선택 취소
+        return; // 다음 파일 처리 중단
+      }
       reader.onloadend = () => {
         setSubImageFile(reader.result);
         if (subImageId === "subImage1") {
@@ -44,7 +52,7 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
           } else {
             setNewProduct((prevState) => ({
               ...prevState,
-              subImage3: "../img/" + file.name,
+              subImage3: "/img/" + file.name,
             }));
           }
         }
@@ -74,11 +82,12 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
       />
       <img
         style={{
-          display: newProduct.subImage1
-            ? "block"
-            : !subImageFile
-            ? "none"
-            : "block",
+          display:
+            subImageId === "newProduct." + subImageId
+              ? "block"
+              : !subImageFile
+              ? "none"
+              : "block",
         }}
         className="previewImg subImage"
         src={subImageFile}
