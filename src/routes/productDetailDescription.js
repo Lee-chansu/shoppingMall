@@ -181,7 +181,9 @@ export const ProductDetailDescription = () => {
               </div>
               <div className="buttonBox">
                 <Link to="http://localhost:3000/cart" className="cartButton">
-                  <div className="textWrapper">장바구니</div>
+                  <button className="textWrapper" >
+                    장바구니
+                  </button>
                 </Link>
                 <Link
                   to="http://localhost:3000/payment"

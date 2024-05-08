@@ -102,7 +102,6 @@ export const Cart = () => {
       <div className="section cart">
         <div className="wrap">
           <div className="title">
-            <img src="../img/basket.png" width="35" />
             장바구니/결제
           </div>
           <div className="cartBar">

@@ -20,17 +20,17 @@ export const PayItem = ({ val }) => {
         />
         <div className="productBox">
           <div className="productName">주문번호 : {val.itemNum}</div>
-          <div className="productName">상품명 : {val.itemName}</div> 
+          <div className="productName">상품명 : {val.itemName}</div>
           <div className="productName">수량 : {val.itemCount}</div>
           <div className="productName">배송상태 : {val.carryState}</div>
         </div>
-      
+
         <div className="productTotalBox">
           <div className="productTotal">상품 구매가 : {val.itemPrice}</div>
         </div>
       </div>
       <div className="btnBox">
-        <Link to="/" className="basketPlus" onClick={basketPlus}>
+        <Link to="/cart" className="basketPlus" onClick={basketPlus}>
           {/* <img className="basketBtn"
           width="38"
           alt="basket"
