@@ -101,7 +101,7 @@ export const FindPassword = () => {
             
           </div>
           <div className="buttonBox">
-            <button className="LinkButton" type="button" onClick={linkButton}>비밀번호 변경하러가기</button>
+            <button className="LinkButton" type="button" onClick={linkButton}>비밀번호 변경</button>
             <button className="cancelButton" type="button" onClick={goback}>취소</button>
           </div>
         </form>
