@@ -90,6 +90,46 @@ export const ProductDetailDescription = () => {
     setSwitchBtn(!switchBtn);
   };
 
+  function handleCartAlert () {
+    alert("장바구니에 잘 담겼습니당")
+    // <div
+    //   class="modal fade"
+    //   id="exampleModal"
+    //   tabindex="-1"
+    //   aria-labelledby="exampleModalLabel"
+    //   aria-hidden="true"
+    // >
+    //   <div class="modal-dialog">
+    //     <div class="modal-content">
+    //       <div class="modal-header">
+    //         <h1 class="modal-title fs-5" id="exampleModalLabel">
+    //           장바구니 담기
+    //         </h1>
+    //         <button
+    //           type="button"
+    //           class="btn-close"
+    //           data-bs-dismiss="modal"
+    //           aria-label="Close"
+    //         ></button>
+    //       </div>
+    //       <div class="modal-body">장바구니에 정상적으로 담겼습니다 !</div>
+    //       <div class="modal-footer">
+    //         <button
+    //           type="button"
+    //           class="btn btn-secondary"
+    //           data-bs-dismiss="modal"
+    //         >
+    //           닫기
+    //         </button>
+    //         <button type="button" class="btn btn-primary">
+    //           장바구니로 가기
+    //         </button>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>;
+  };
+
   return (
     <>
       {product.id ? (
@@ -181,7 +221,7 @@ export const ProductDetailDescription = () => {
               </div>
               <div className="buttonBox">
                 <Link to="http://localhost:3000/cart" className="cartButton">
-                  <button className="textWrapper" >
+                  <button className="textWrapper" onClick={handleCartAlert}>
                     장바구니
                   </button>
                 </Link>

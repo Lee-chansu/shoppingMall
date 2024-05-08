@@ -8,12 +8,14 @@ export const CartItem = ({
   setCartItemList,
   countAble = true,
 }) => {
+  //수량 up btn
   const handleUpCount = () => {
     const listCopy = cartItemList;
     listCopy[idx].amount = val.amount + 1;
     setCartItemList([...listCopy]);
   };
 
+  //수량 down btn
   const handleDownCount = () => {
     if (val.amount <= 0) {
       return;
@@ -53,7 +55,9 @@ export const CartItem = ({
             )}
           </div>
         </div>
-        <div className={styles.cartProductSizeColor}>여기 사이즈/색상 받아오기</div>
+        <div className={styles.cartProductSizeColor}>
+          {val.size} / {val.color}
+        </div>
         <div className={styles.cartProductPrice}>{val.price}원</div>
       </div>
       <input
