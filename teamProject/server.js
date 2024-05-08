@@ -283,6 +283,7 @@ app.get("/Cart/:user_id", async (req, res) => {
 
     if (result) {
       res.json(result);
+      console.log(result)
     } else {
       res.status(404).json({ message: "Cart not found for the user." });
     }
@@ -292,13 +293,26 @@ app.get("/Cart/:user_id", async (req, res) => {
   }
 });
 
+// 장바구니에 상품 추가
+app.post("/cart", async (req, res) => {
+  const newProduct = req.body;
+  const { user_id, product_id, size, color, amount } = req.body;
+  const result = await Cart.findOne({ where: { user_id, product_id, size, color } });
+  console.log('result', result)
+  if (!result) {
+    await Cart.create(newProduct);
+    res.json({ result: false });
+  } else {
+    res.json({ result });
+  }
+});
+
 app.get("/Cart", async (req, res) => {
   const result = await Cart.findAll();
   res.json(result);
 });
 
-//유저별 장바구니 조회
-
+//유저별 구매내역 조회
 app.get("/BuyList", async (req, res) => {
   const result = await BuyList.findAll();
   res.json(result);
