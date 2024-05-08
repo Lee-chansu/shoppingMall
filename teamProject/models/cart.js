@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
         autoIncrement: true,
       },
       size: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING(10),
       },
       color: {
         type: DataTypes.STRING(40),
