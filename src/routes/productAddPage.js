@@ -179,7 +179,7 @@ export const ProductAdd = () => {
                 {category.map(el => {
                   return (
                     <div className="box" key={el}>
-                      <label className="text" for={el}>
+                      <label className="text" htmlFor={el}>
                         {el}
                       </label>
                       <input
@@ -233,11 +233,11 @@ export const ProductAdd = () => {
               <h2 className="title">재고수량</h2>
               <div className="boxWrap">
                 <div className="box">
-                  <label for="color">color</label>
+                  <label htmlFor="color">color</label>
                   <input type="text" name="color" onChange={valueChange} />
                 </div>
                 <div className="box">
-                  <label for="size">size</label>
+                  <label htmlFor="size">size</label>
                   {checkCategory === "신발" ? (
                     <select id="size" name="size" onChange={valueChange}>
                       <option value="260">260</option>
@@ -255,7 +255,7 @@ export const ProductAdd = () => {
                   )}
                 </div>
                 <div className="box">
-                  <label for="stock">stock</label>
+                  <label htmlFor="stock">stock</label>
                   <input type="number" name="stock" onChange={valueChange} />
                 </div>
               </div>
@@ -263,8 +263,8 @@ export const ProductAdd = () => {
             <div className="wrap img">
               <h2 className="title">메인이미지 등록</h2>
               <div className="boxWrap">
-                <label for="mainImage">
-                  <div className="addImg" style={{ "margin-left": "5px" }}>
+                <label htmlFor="mainImage">
+                  <div className="addImg" style={{ "marginLeft": "5px" }}>
                     +
                   </div>
                 </label>
