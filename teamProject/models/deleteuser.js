@@ -48,7 +48,7 @@ module.exports = (sequelize) => {
   });
 
   DeleteUser.associate = (models) => {
-    DeleteUser.belongsTo(models.User, { foreignKey: 'user_id' });
+    DeleteUser.belongsTo(models.User, { foreignKey: "user_id" });
   };
 
   return DeleteUser;
