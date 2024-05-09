@@ -17,6 +17,11 @@ export const ProductEdit = () => {
   const [mainImageFile, setMainImageFile] = useState("");
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
+  const [option, setOption] = useState([]);
+  const [size, setSize] = useState([]);
+  const [color, setColor] = useState([]);
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
 
   const subImageCount = [0, 1, 2];
   const subImageId = ["subImage1", "subImage2", "subImage3"];
@@ -38,6 +43,23 @@ export const ProductEdit = () => {
     setNewProduct(getProduct);
     setCheckCategory(getProduct.category);
     setCheckDetail(getProduct.detail);
+
+    const getProductOption = await fetch(`http://localhost:5000/productOption`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        const productDetail = data.filter(
+          (product) => product.product_id == id
+        );
+        setOption(productDetail);
+        const newSize = productDetail.map((product) => product.productSize);
+        const sizeList = [...new Set(newSize)];
+        setSize(sizeList.sort((a, b) => a - b));
+        const newColor = productDetail.map((product) => product.productColor);
+        const colorList = [...new Set(newColor)];
+        setColor(colorList);
+      });
   };
 
   const previewMainImg = () => {
@@ -105,6 +127,14 @@ export const ProductEdit = () => {
     setNewProduct({ ...newProduct, [name]: value });
   };
 
+  const handleChangeSize = (event) => {
+    setSelectedSize(event.target.value);
+  };
+
+  const handleChangeColor = (event) => {
+    setSelectedColor(event.target.value);
+  };
+
   useEffect(() => {
     loadProduct();
   }, []);
@@ -112,6 +142,7 @@ export const ProductEdit = () => {
   useEffect(() => {
     showDetailBar();
   }, [checkCategory, checkDetail]);
+
 
   const toEditProduct = async (e) => {
     e.preventDefault();
@@ -176,7 +207,7 @@ export const ProductEdit = () => {
 
   return (
     <>
-      <Nav/>
+      <Nav />
       <div className="productEdit">
         <div className="inner">
           <form className="formBox">
@@ -253,30 +284,43 @@ export const ProductEdit = () => {
               <div className="boxWrap">
                 <div className="box">
                   <label htmlFor="color">color</label>
-                  <select type="text" name="color" onChange={valueChange}>
-                    <option value="" default disabled>
+                  <select
+                    className="select"
+                    name="productColor"
+                    value={selectedColor}
+                    onChange={handleChangeColor}
+                  >
+                    <option value="" disabled>
                       color
                     </option>
-                    <option value={newProduct.color}>{newProduct.color}</option>
+                    {color.map((el, i) => {
+                      return (
+                        <option key={i} value={el}>
+                          {el}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
                 <div className="box">
                   <label htmlFor="size">size</label>
-                  {checkCategory === "신발" ? (
-                    <select id="size" name="size" onChange={valueChange}>
-                      <option value="260">260</option>
-                      <option value="270">270</option>
-                      <option value="280">280</option>
-                      <option value="290">290</option>
-                    </select>
-                  ) : (
-                    <select name="size" onChange={valueChange}>
-                      <option value="95">95</option>
-                      <option value="100">100</option>
-                      <option value="105">105</option>
-                      <option value="free">free</option>
-                    </select>
-                  )}
+                  <select
+                    className="select"
+                    name="productSize"
+                    value={selectedSize}
+                    onChange={handleChangeSize}
+                  >
+                    <option value="" disabled>
+                      size
+                    </option>
+                    {size.map((el, i) => {
+                      return (
+                        <option key={i} value={el}>
+                          {el}
+                        </option>
+                      );
+                    })}
+                  </select>
                 </div>
                 <div className="box">
                   <label htmlFor="stock">stock</label>

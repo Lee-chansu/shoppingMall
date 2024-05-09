@@ -28,7 +28,7 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
           } else {
             setNewProduct((prevState) => ({
               ...prevState,
-              subImage1: "../img/" + file.name,
+              subImage1: "/img/" + file.name,
             }));
           }
         } else if (subImageId === "subImage2") {
@@ -40,7 +40,7 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
           } else {
             setNewProduct((prevState) => ({
               ...prevState,
-              subImage2: "../img/" + file.name,
+              subImage2: "/img/" + file.name,
             }));
           }
         } else if (subImageId === "subImage3") {
@@ -80,19 +80,20 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
         ref={subImgRef}
         accept="image/*"
       />
-      <img
-        style={{
-          display:
-            subImageId === "newProduct." + subImageId
+      {newProduct && (
+        <img
+          style={{
+            display: newProduct.subImage1
               ? "block"
-              : !subImageFile
-              ? "none"
-              : "block",
-        }}
-        className="previewImg subImage"
-        src={subImageFile}
-        alt="상품 이미지"
-      />
+              : subImageFile
+              ? "block"
+              : "none",
+          }}
+          className="previewImg subImage"
+          src={newProduct ? newProduct : subImageFile}
+          alt="상품 이미지"
+        />
+      )}
     </>
   );
 };
