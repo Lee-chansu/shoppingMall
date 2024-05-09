@@ -369,9 +369,9 @@ app.get("/Cart", async (req, res) => {
 });
 
 //유저별 장바구니 조회
-
-app.get("/buyList", async (req, res) => {
-  const result = await BuyList.findAll();
+app.get("/buyList/:user_id", async (req, res) => {
+  const { user_id } = req.params;
+  const result = await BuyList.findAll({ where : {user_id}});
   res.json(result);
 });
 

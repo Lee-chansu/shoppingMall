@@ -40,6 +40,16 @@ module.exports = {
       },
       image: {
         type: Sequelize.STRING(255)
+      },
+      buyDate: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
+      },
+      amount: {
+        type: Sequelize.INTEGER
+      },
+      carryStatus: {
+        type: Sequelize.STRING(255)
       }
     });
   },
