@@ -5,12 +5,14 @@ import "../css/productAdd.css";
 //컴포넌트
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
-import { ProductOption } from "../productOptionAdd";
+import { ProductOption } from "../components/productOptionAdd";
 
 export const ProductAdd = () => {
   const navigate = useNavigate();
+
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
+  const [count, setCount] = useState(1);
 
   const detail = {
     아우터: ["코트", "블레이저", "패딩"],
@@ -61,10 +63,23 @@ export const ProductAdd = () => {
     }
   };
 
+  const addTag = (e) => {
+    e.preventDefault();
+    setCount(count + 1);
+  };
   const checkOnlyOneCategory = (checkThis) => {
     checkThis.checked === false
       ? setCheckCategory("")
       : setCheckCategory(checkThis.name);
+  };
+  const delTag = (e) => {
+    e.preventDefault();
+    if (count > 1) {
+      setCount(count - 1);
+    } else {
+      alert("경고");
+      return;
+    }
   };
 
   useEffect(() => {
@@ -87,15 +102,14 @@ export const ProductAdd = () => {
       ? setDetailBar(detail[checkCategory])
       : setDetailBar([]);
   };
+  const [newOption, setNewOption] = useState([]);
 
   const [newProduct, setNewProduct] = useState({
     category: "",
     detail: "",
     name: "",
     price: 0,
-    color: "",
-    size: 0,
-    stock: 0,
+    newOption: [newOption],
     mainImage: null,
     subImage1: null,
     subImage2: null,
@@ -108,64 +122,76 @@ export const ProductAdd = () => {
     setNewProduct({ ...newProduct, [name]: value });
   };
 
+  const components = Array.from({ length: count }, (el, index) => {
+    return (
+      <ProductOption
+        key={index}
+        checkCategory={checkCategory}
+        // valueChange={valueChange}
+        newOption={newOption[index]}
+        setNewOption={setNewOption}
+        delTag={delTag}
+      />
+    );
+  });
+
   const toAddProduct = async (e) => {
     e.preventDefault();
+    console.log(newOption);
 
-    try {
-      if (newProduct.category === "") {
-        alert("카테고리를 선택해주세요.");
-        return;
-      }
-      if (newProduct.detail === "") {
-        alert("디테일을 선택해주세요.");
-        return;
-      }
-      if (newProduct.name === "" || newProduct.name === null) {
-        alert("이름을 입력해주세요.");
-        return;
-      }
-      if (newProduct.mainImage === null) {
-        alert("메인 이미지를 선택 해주세요.");
-        return;
-      }
-      if (newProduct.color === null || newProduct.color === "") {
-        alert("제품의 색상을 입력해주세요.");
-        return;
-      }
-      if (newProduct.price === null || newProduct.price === 0) {
-        alert("제품의 가격을 입력해주세요.");
-        return;
-      }
-      if (newProduct.size === null || newProduct.size === null) {
-        alert("제품의 사이즈를 선택해주세요.");
-        return;
-      }
-      if (newProduct.stock === null || newProduct.stock === "") {
-        alert("제품의 재고수량을 입력해주세요.");
-        return;
-      }
+    // try {
+    //   if (newProduct.category === "") {
+    //     alert("카테고리를 선택해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.detail === "") {
+    //     alert("디테일을 선택해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.name === "" || newProduct.name === null) {
+    //     alert("이름을 입력해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.mainImage === null) {
+    //     alert("메인 이미지를 선택 해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.color === null || newProduct.color === "") {
+    //     alert("제품의 색상을 입력해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.price === null || newProduct.price === 0) {
+    //     alert("제품의 가격을 입력해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.size === null || newProduct.size === null) {
+    //     alert("제품의 사이즈를 선택해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.stock === null || newProduct.stock === "") {
+    //     alert("제품의 재고수량을 입력해주세요.");
+    //     return;
+    //   }
 
-      // console.log(newProduct.mainImage);
-
-      const result = await fetch("http://localhost:5000/addProduct", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newProduct),
-      }).then((res) => {
-        res.json();
-        if (res.ok) {
-          alert("제품을 추가했습니다.");
-          navigate("/productList");
-        } else {
-          alert("제품을 추가하는데 실패했습니다.");
-          return;
-        }
-      });
-    } catch (error) {
-      alert("제품 추가 중 오류가 발생했습니다.");
-      console.log(error);
-      return;
-    }
+    //   const result = await fetch("http://localhost:5000/addProduct", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(newProduct),
+    //   }).then((res) => {
+    //     res.json();
+    //     if (res.ok) {
+    //       alert("제품을 추가했습니다.");
+    //       navigate("/productList");
+    //     } else {
+    //       alert("제품을 추가하는데 실패했습니다.");
+    //       return;
+    //     }
+    //   });
+    // } catch (error) {
+    //   alert("제품 추가 중 오류가 발생했습니다.");
+    //   console.log(error);
+    //   return;
+    // }
   };
 
   return (
@@ -232,7 +258,15 @@ export const ProductAdd = () => {
                 <input type="text" name="price" onChange={valueChange} />
               </div>
             </div>
-            <ProductOption checkCategory={checkCategory} valueChange={valueChange} />
+            <div className="wrap stock">
+              <h2 className="title">
+                옵션
+                <button className="btn" onClick={addTag}>
+                  +
+                </button>
+              </h2>
+              {components}
+            </div>
             <div className="wrap img">
               <h2 className="title">메인이미지 등록</h2>
               <div className="boxWrap">

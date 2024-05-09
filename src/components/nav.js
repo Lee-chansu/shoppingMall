@@ -55,8 +55,8 @@ export const Nav = () => {
             </>
           ) : (
             <Link className="link" to="/login">
-              <div className="divWrapper">
-                <div className="text-wrapper">로그인</div>
+              <div className="wrapper">
+                <div className="text">로그인</div>
               </div>
             </Link>
           )}
