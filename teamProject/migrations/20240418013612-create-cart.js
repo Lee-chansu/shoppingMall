@@ -24,7 +24,7 @@ module.exports = {
         },
       },
       size: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(10),
       },
       color: {
         type: Sequelize.STRING(40),

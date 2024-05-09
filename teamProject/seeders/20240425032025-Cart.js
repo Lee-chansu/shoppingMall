@@ -69,7 +69,23 @@ module.exports = {
           size: 100,
           color: "화이트",
           amount: 7,
-        }, // { //   id: 108, //   user_id: 108, //   product_id: 9, //   size: 105, //   color: "!", //   amount: 8, // }, // { //   id: 109, //   user_id: 109, //   product_id: 10, //   size: 95, //   color: "!", //   amount: 9, // },
+        },
+        // {
+        //   id: 108,
+        //   user_id: 108,
+        //   product_id: 9,
+        //   size: 105,
+        //   color: "!",
+        //   amount: 8,
+        // },
+        // {
+        //   id: 109,
+        //   user_id: 109,
+        //   product_id: 10,
+        //   size: 95,
+        //   color: "!",
+        //   amount: 9,
+        // },
       ],
       {}
     );

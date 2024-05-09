@@ -3,11 +3,12 @@ import "../css/productDetailDescription.css";
 import { ProductDescription } from "../components/productDescription";
 import { Nav } from "../components/nav";
 import { ProductReview } from "../components/productReview";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 export const ProductDetailDescription = () => {
-  let productId = useParams().id;
+  const navigate = useNavigate();
+  const productId = useParams().id;
 
   const [product, setProduct] = useState([]);
   const [stock, setStock] = useState(0);
@@ -31,9 +32,61 @@ export const ProductDetailDescription = () => {
     setSelectedColor(event.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO 서밋 후 기능 구현하기
+    const isLogin = sessionStorage.getItem("token");
+    if (!isLogin) {
+      alert("로그인 후 사용할 수 있습니다");
+      return
+    }
+    const { id } = jwtDecode(isLogin);
+
+    const updatedFormData = {
+      size: selectedSize,
+      color: selectedColor,
+      user_id: id,
+      product_id: productId,
+      amount: stock,
+    };
+
+    if (updatedFormData.size === "") {
+      alert("사이즈를 선택하세요");
+      return;
+    } else if (updatedFormData.size === "") {
+      alert("사이즈를 선택하세요");
+      return;
+    } else if (updatedFormData.color === "") {
+      alert("색상을 선택하세요");
+      return;
+    } else if (stock == 0) {
+      alert("수량이 0입니다");
+      return;
+    } else {
+      try {
+        const response = await fetch("http://localhost:5000/cart/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedFormData),
+        });
+
+        console.log(updatedFormData);
+
+        if (!response.ok) {
+          throw new Error("서버에서 응답을 받을 수 없습니다");
+        } else {
+          let no = await response.json();
+          if (no.result == false) {
+            const confirmed = window.confirm("장바구니에 상품을 추가했습니다 장바구니로 이동하시겠습니까?");
+            if (confirmed) navigate('/cart')
+          } else {
+            const confirmed = window.confirm("장바구니에 이미 해당 상품이 담겨있습니다 장바구니로 이동하시겠습니까?");
+            if (confirmed) navigate('/cart')
+          }
+        }
+      } catch (error) {
+        alert("오류가 발생했습니다");
+      }
+    }
   };
 
   useEffect(() => {
@@ -72,13 +125,13 @@ export const ProductDetailDescription = () => {
     setStock(0);
   };
 
-  useEffect(() => {
-    // console.log('size', size)
-  }, [size]);
+  // useEffect(() => {
+  //   // console.log('size', size)
+  // }, [size]);
 
-  useEffect(() => {
-    // console.log('color', color)
-  }, [color]);
+  // useEffect(() => {
+  //   // console.log('color', color)
+  // }, [color]);
 
   useEffect(() => {
     // console.log("selectedSize", selectedSize);
@@ -243,7 +296,11 @@ export const ProductDetailDescription = () => {
                   <div className="productCount">
                     <div className="textWrapper2">수량</div>
                     <div className="overlapGroup">
-                      <button onClick={decreaseStock} className="inputMinus">
+                      <button
+                        type="button"
+                        onClick={decreaseStock}
+                        className="inputMinus"
+                      >
                         -
                       </button>
                       <input
@@ -255,7 +312,11 @@ export const ProductDetailDescription = () => {
                         value={stock}
                         onChange={handleInputChange}
                       />
-                      <button onClick={increaseStock} className="inputPlus">
+                      <button
+                        type="button"
+                        onClick={increaseStock}
+                        className="inputPlus"
+                      >
                         +
                       </button>
                     </div>
@@ -268,9 +329,14 @@ export const ProductDetailDescription = () => {
                   </div>
                 </div>
                 <div className="buttonBox">
-                  <Link to="http://localhost:3000/cart" className="cartButton">
-                    <button className="textWrapper">장바구니</button>
-                  </Link>
+                  <div className="cartButton">
+                    <button
+                      style={{ border: "none", backgroundColor: "white" }}
+                      className="textWrapper"
+                    >
+                      장바구니
+                    </button>
+                  </div>
                   <Link
                     to="http://localhost:3000/payment"
                     className="nowPayButton"

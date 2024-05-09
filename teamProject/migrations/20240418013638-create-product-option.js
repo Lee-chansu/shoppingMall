@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.STRING(255),
       },
       productSize: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(10),
       },
       productStock: {
         type: Sequelize.INTEGER,

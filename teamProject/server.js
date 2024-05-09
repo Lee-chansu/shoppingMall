@@ -283,7 +283,7 @@ app.get("/DeleteUser", async (req, res) => {
   res.json(result);
 });
 
-// 상품 상세 조회
+// 제품 상세 조회
 app.get("/product/:id", async (req, res) => {
   const { id } = req.params;
   const product = await Product.findOne({ where: { id } });
@@ -354,12 +354,27 @@ app.get("/Cart/:user_id", async (req, res) => {
 
     if (result) {
       res.json(result);
+      console.log(result)
     } else {
       res.status(404).json({ message: "Cart not found for the user." });
     }
   } catch (error) {
     console.error("Error fetching cart:", error);
     res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+// 장바구니에 상품 추가
+app.post("/cart", async (req, res) => {
+  const newProduct = req.body;
+  const { user_id, product_id, size, color, amount } = req.body;
+  const result = await Cart.findOne({ where: { user_id, product_id, size, color } });
+  console.log('result', result)
+  if (!result) {
+    await Cart.create(newProduct);
+    res.json({ result: false });
+  } else {
+    res.json({ result });
   }
 });
 
