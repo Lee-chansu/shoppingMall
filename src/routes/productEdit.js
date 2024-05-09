@@ -44,7 +44,7 @@ export const ProductEdit = () => {
     setCheckCategory(getProduct.category);
     setCheckDetail(getProduct.detail);
 
-    const getProductOption = await fetch(`http://localhost:5000/productOption`)
+    await fetch(`http://localhost:5000/productOption`)
       .then((res) => {
         return res.json();
       })

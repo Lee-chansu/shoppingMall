@@ -5,9 +5,6 @@
 }
 .productAdd .inner .wrap {
   display: flex;
-}
-.productAdd .inner .wrap {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -22,7 +19,7 @@
   width: 80%;
   min-height: 57px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   font-size: 32px;
 }

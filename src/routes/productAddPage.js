@@ -5,6 +5,7 @@ import "../css/productAdd.css";
 //컴포넌트
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
+import { ProductOption } from "../productOptionAdd";
 
 export const ProductAdd = () => {
   const navigate = useNavigate();
@@ -64,12 +65,6 @@ export const ProductAdd = () => {
     checkThis.checked === false
       ? setCheckCategory("")
       : setCheckCategory(checkThis.name);
-    const checkBox = document.getElementsByClassName("checkBoxCategory");
-    for (let ch of checkBox) {
-      if (ch !== checkThis) {
-        ch.checked = false;
-      }
-    }
   };
 
   useEffect(() => {
@@ -80,12 +75,6 @@ export const ProductAdd = () => {
     checkThis.checked === false
       ? setCheckDetail("")
       : setCheckDetail(checkThis.name);
-    const checkBox = document.getElementsByClassName("checkBoxDetail");
-    for (let ch of checkBox) {
-      if (ch !== checkThis) {
-        ch.checked = false;
-      }
-    }
   };
 
   const showDetailBar = () => {
@@ -199,6 +188,7 @@ export const ProductAdd = () => {
                         className="checkBoxCategory"
                         name={el}
                         value={el}
+                        checked={checkCategory === el}
                         onChange={(e) => checkOnlyOneCategory(e.target)}
                       />
                     </div>
@@ -221,6 +211,7 @@ export const ProductAdd = () => {
                           className="checkBoxDetail"
                           name={el}
                           value={el}
+                          checked={checkDetail === el}
                           onChange={(e) => checkOnlyOneDetail(e.target)}
                         />
                       </div>
@@ -241,37 +232,7 @@ export const ProductAdd = () => {
                 <input type="text" name="price" onChange={valueChange} />
               </div>
             </div>
-            <div className="wrap stock">
-              <h2 className="title">재고수량</h2>
-              <div className="boxWrap">
-                <div className="box">
-                  <label htmlFor="color">color</label>
-                  <input type="text" name="color" onChange={valueChange} />
-                </div>
-                <div className="box">
-                  <label htmlFor="size">size</label>
-                  {checkCategory === "신발" ? (
-                    <select id="size" name="size" onChange={valueChange}>
-                      <option value="260">260</option>
-                      <option value="270">270</option>
-                      <option value="280">280</option>
-                      <option value="290">290</option>
-                    </select>
-                  ) : (
-                    <select name="size" onChange={valueChange}>
-                      <option value="95">95</option>
-                      <option value="100">100</option>
-                      <option value="105">105</option>
-                      <option value="free">free</option>
-                    </select>
-                  )}
-                </div>
-                <div className="box">
-                  <label htmlFor="stock">stock</label>
-                  <input type="number" name="stock" onChange={valueChange} />
-                </div>
-              </div>
-            </div>
+            <ProductOption checkCategory={checkCategory} valueChange={valueChange} />
             <div className="wrap img">
               <h2 className="title">메인이미지 등록</h2>
               <div className="boxWrap">
