@@ -4,6 +4,12 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
   const [subImageFile, setSubImageFile] = useState("");
   let subImgRef = useRef();
 
+  const subIamgeArray = {
+    subImage1: newProduct.subImage1,
+    subImage2: newProduct.subImage2,
+    subImage3: newProduct.subImage3,
+  }[subImageId];
+
   const previewImage = () => {
     const file = subImgRef.current.files[0];
     const reader = new FileReader();
@@ -80,17 +86,13 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
         ref={subImgRef}
         accept="image/*"
       />
-      {newProduct && (
+      {subIamgeArray && (
         <img
           style={{
-            display: newProduct.subImage1
-              ? "block"
-              : subImageFile
-              ? "block"
-              : "none",
+            display: subIamgeArray ? "block" : subImageFile ? "block" : "none",
           }}
           className="previewImg subImage"
-          src={newProduct ? newProduct : subImageFile}
+          src={subIamgeArray ? subIamgeArray : subImageFile}
           alt="상품 이미지"
         />
       )}
