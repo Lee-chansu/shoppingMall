@@ -69,14 +69,14 @@ export const ProductReview = (props) => {
                           <img
                             key={i}
                             src={process.env.PUBLIC_URL + "/img/fullStar.svg"}
-                            alt="별"
+                            alt="켜진별"
                             width={"50px"}
                           />
                         ) : (
                           <img
                             key={i}
                             src={process.env.PUBLIC_URL + "/img/emptyStar.svg"}
-                            alt="별"
+                            alt="꺼진별"
                             width={"50px"}
                           />
                         );

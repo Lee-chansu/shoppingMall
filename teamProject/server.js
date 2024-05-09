@@ -212,7 +212,7 @@ app.get("/DeleteUser", async (req, res) => {
   res.json(result);
 });
 
-// 상품 상세 조회
+// 제품 상세 조회
 app.get("/product/:id", async (req, res) => {
   const { id } = req.params;
   const product = await Product.findOne({ where: { id } });
