@@ -1,12 +1,23 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../css/userInfo.css";
 import { jwtDecode } from "jwt-decode";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const UserInfo = () => {
   const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
   const [id,setId] = useState('');
+
+  useEffect(()=>{
+    const token = sessionStorage.getItem('token')
+    if(!token){
+      navigate('/')
+    }else {
+      const decodeToken = jwtDecode(token)
+      setId(decodeToken.id)
+    }
+  },[])
+  
   
   const logOut = (e) => {
     e.preventDefault();
@@ -17,13 +28,8 @@ export const UserInfo = () => {
 
   const deleteButton = async(e)=>{
     e.preventDefault()
-    const token = sessionStorage.getItem('token')
-    if(!token){
-      alert('권한이 없습니다')
-    }else {
-      const decodeToken = jwtDecode(token)
-      setId(decodeToken.id)
-    }
+    
+    
     const response = await fetch(`http://localhost:5000/userProfile/${id}`)
     const body = await response.json()
     

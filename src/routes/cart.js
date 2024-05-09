@@ -40,7 +40,12 @@ export const Cart = () => {
   const getProducts = async (id) => {
     const result = await userFetchProducts(id);
     const newArr = result.map((val, idx) => {
-      return { ...val.Product, amount: val.amount };
+      return {
+        ...val.Product,
+        amount: val.amount,
+        size: val.size,
+        color: val.color,
+      };
     });
     console.log(newArr);
 
@@ -101,10 +106,7 @@ export const Cart = () => {
       <Nav></Nav>
       <div className="section cart">
         <div className="wrap">
-          <div className="title">
-            <img src="../img/basket.png" width="28" />
-            장바구니/결제
-          </div>
+          <div className="title">장바구니/결제</div>
           <div className="cartBar">
             <input
               type="checkbox"
@@ -115,6 +117,7 @@ export const Cart = () => {
             <div className="productImage">상품이미지</div>
             <div className="productName">상품명</div>
             <div className="productPrice">판매가</div>
+            <div className="productSizeColor">사이즈 / 색상</div>
             <div className="productStock">수량</div>
             <div className="sumPay">총 합계</div>
           </div>

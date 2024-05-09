@@ -483,3 +483,10 @@ input[type=number]::-webkit-inner-spin-button,
   top: 9px;
   width: 138px;
 }
+
+.productdetail .btn{
+  width: 50%;
+  background-color: inherit;
+  border-radius: 5px;
+  border: 1px solid black;
+}

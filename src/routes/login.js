@@ -65,7 +65,7 @@ export const Login = () => {
               <input
                 className="textWrapper2"
                 type="email"
-                placeholder="사용자 이메일 입력"
+                placeholder="이메일*"
                 name="username"
                 onChange={valueChange}
               />
@@ -73,7 +73,7 @@ export const Login = () => {
             <div className="inputUserpassword">
               <input
                 className="textWrapper2"
-                placeholder="사용자 비밀번호 입력"
+                placeholder="비밀번호*"
                 type="password"
                 name="password"
                 onChange={valueChange}
@@ -99,7 +99,7 @@ export const Login = () => {
             <Link to="/findPassword" className="textWrapper6">
               비밀번호찾기
             </Link>
-            <Link to="/join" className="textWrapper7">
+            <Link to="/joinUs" className="textWrapper7">
               회원가입
             </Link>
           </div>

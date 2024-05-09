@@ -218,6 +218,7 @@ export const ProductDetailDescription = () => {
                 <img
                   ref={mainRef}
                   src={photos[index]}
+                  alt="메인이미지"
                   className="mainThmbnailWrapper"
                 />
                 {photos.map((photo, i) => (
@@ -225,12 +226,17 @@ export const ProductDetailDescription = () => {
                     key={i}
                     onClick={() => jump(i)}
                     className={"subThmbnail" + i}
+                    alt="제품 서브이미지"
                     src={photo}
                   />
                 ))}
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="infoBox">
+                  <Link to={`/productList/edit/${productId}`}>
+                    <button className="btn">수정</button>
+                  </Link>
+                  <button className="btn">삭제</button>
                   <div className="productName">
                     <div className="textWrapper2">제품명</div>
                     <div className="overlap2">
