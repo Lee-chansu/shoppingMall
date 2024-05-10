@@ -45,7 +45,7 @@ export const ProductDetailDescription = () => {
       size: selectedSize,
       color: selectedColor,
       user_id: id,
-      product_id: productId,
+      productOption_id: productId,
       amount: stock,
     };
 
@@ -234,9 +234,9 @@ export const ProductDetailDescription = () => {
               <form onSubmit={handleSubmit}>
                 <div className="infoBox">
                   <Link to={`/productList/edit/${productId}`}>
-                    <button className="btn">수정</button>
+                    <button type="button" className="btn">수정</button>
                   </Link>
-                  <button className="btn">삭제</button>
+                  <button type="button" className="btn">삭제</button>
                   <div className="productName">
                     <div className="textWrapper2">제품명</div>
                     <div className="overlap2">

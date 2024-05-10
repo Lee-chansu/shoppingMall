@@ -26,6 +26,14 @@ export const ProductEdit = () => {
   const subImageCount = [0, 1, 2];
   const subImageId = ["subImage1", "subImage2", "subImage3"];
 
+  const handleChangeSize = (event) => {
+    setSelectedSize(event.target.value);
+  };
+
+  const handleChangeColor = (event) => {
+    setSelectedColor(event.target.value);
+  };
+
   const detail = {
     아우터: ["코트", "블레이저", "패딩"],
     상의: ["반팔", "긴팔", "티셔츠", "후드", "러닝"],
@@ -127,14 +135,6 @@ export const ProductEdit = () => {
     setNewProduct({ ...newProduct, [name]: value });
   };
 
-  const handleChangeSize = (event) => {
-    setSelectedSize(event.target.value);
-  };
-
-  const handleChangeColor = (event) => {
-    setSelectedColor(event.target.value);
-  };
-
   useEffect(() => {
     loadProduct();
   }, []);
@@ -146,6 +146,9 @@ export const ProductEdit = () => {
 
   const toEditProduct = async (e) => {
     e.preventDefault();
+
+    console.log(newProduct)
+    // return
 
     try {
       if (newProduct.category === "") {
@@ -164,7 +167,7 @@ export const ProductEdit = () => {
         alert("메인 이미지를 선택 해주세요.");
         return;
       }
-      if (newProduct.color === null || newProduct.color === "") {
+      if (newProduct.color === "" || newProduct.color === "") {
         alert("제품의 색상을 입력해주세요.");
         return;
       }
@@ -172,7 +175,7 @@ export const ProductEdit = () => {
         alert("제품의 가격을 입력해주세요.");
         return;
       }
-      if (newProduct.size === null || newProduct.size === null) {
+      if (newProduct.size === "" || newProduct.size === null) {
         alert("제품의 사이즈를 선택해주세요.");
         return;
       }
@@ -199,7 +202,7 @@ export const ProductEdit = () => {
         }
       });
     } catch (error) {
-      alert("제품 추가 중 오류가 발생했습니다.");
+      alert("제품 수정 중 오류가 발생했습니다.");
       console.log(error);
       return;
     }
@@ -210,7 +213,7 @@ export const ProductEdit = () => {
       <Nav />
       <div className="productEdit">
         <div className="inner">
-          <form className="formBox">
+          <form onSubmit={toEditProduct} className="formBox">
             <div className="wrap">
               <h2 className="title">카테고리</h2>
               <div className="boxWrap">
@@ -290,9 +293,9 @@ export const ProductEdit = () => {
                     value={selectedColor}
                     onChange={handleChangeColor}
                   >
-                    <option value="" disabled>
-                      color
-                    </option>
+                    {
+                      !color && <option value="" disabled>color</option>
+                    }
                     {color.map((el, i) => {
                       return (
                         <option key={i} value={el}>
@@ -310,9 +313,9 @@ export const ProductEdit = () => {
                     value={selectedSize}
                     onChange={handleChangeSize}
                   >
-                    <option value="" disabled>
-                      size
-                    </option>
+                    {
+                      !size && <option value="" disabled>size</option>
+                    }
                     {size.map((el, i) => {
                       return (
                         <option key={i} value={el}>
@@ -385,7 +388,7 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="btnForm">
-              <button onClick={toEditProduct}>수정완료</button>
+              <button>수정완료</button>
               <Link to={`/productList/detail/description/${id}`}>
                 <button>취소</button>
               </Link>

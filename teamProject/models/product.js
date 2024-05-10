@@ -33,5 +33,10 @@ module.exports = (sequelize) => {
     timestamps: false
   });
 
+  Product.associate = (models) => {
+    Product.hasMany(models.ProductOption, { foreignKey: 'product_id' });
+    Product.hasMany(models.ProductDetail, { foreignKey: 'product_id' });
+  }
+
   return Product;
 };
