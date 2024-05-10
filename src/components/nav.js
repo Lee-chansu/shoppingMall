@@ -1,5 +1,5 @@
 import "../css/nav.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 
@@ -8,6 +8,9 @@ export const Nav = () => {
   const [imageUrl, setImageUrl] = useState("../img/userDefaultImg.png");
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
 
+
+
+  // 유저프로필 이미지
   const profileImageLoad = async () => {
     const { id } = jwtDecode(isLogin);
     const loadData = await fetch(`http://localhost:5000/profile/${id}`).then(
@@ -15,7 +18,7 @@ export const Nav = () => {
     );
     setImageUrl(loadData);
   };
-
+  
   useEffect(() => {
     if (!isLogin) {
       return;
@@ -23,6 +26,18 @@ export const Nav = () => {
       profileImageLoad();
     }
   }, [imageUrl]);
+
+  //
+
+  const navigate = useNavigate()
+
+  const categoryButton = (e)=>{
+    const {innerText} = e.target
+    navigate(`/productList?category=${innerText}`)
+  }
+
+
+
 
   return (
     <header className="header">
@@ -37,7 +52,7 @@ export const Nav = () => {
             {category.map((el, i) => {
               return (
                 <ul className="wrapper" key={el}>
-                  <li className="text">{el}</li>
+                  <li className="text"><button onClick={categoryButton}>{el}</button></li>
                 </ul>
               );
             })}
@@ -65,7 +80,7 @@ export const Nav = () => {
           {category.map((el) => {
             return (
               <ul className="wrapper" key={el}>
-                <li className="text">{el}</li>
+                <li className="text"><button onClick={categoryButton}>{el}</button></li>
               </ul>
             );
           })}
