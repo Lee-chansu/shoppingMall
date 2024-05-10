@@ -186,7 +186,7 @@ app.get("/userProfile/:id", async (req, res) => {
 
 //제품 추가 페이지
 app.post("/addProduct", async (req, res) => {
-  const { category, detail, color, size, stock, ...rest } = req.body;
+  const { category, detail, size, stock, ...rest } = req.body;
   const newProduct = { ...rest };
 
   let result;
@@ -250,13 +250,14 @@ app.put("/productEdit/:id", async (req, res) => {
         where: { product_id: id },
       }
     );
+    console.log(color, size, stock);
     const productOption = await ProductOption.update(
       { ...newProductOption },
       {
-        where: { product_id: id },
+        where: { product_id: id, productColor: color, productSize: size },
       }
     );
-    console.log("productDetail", productDetail);
+    // console.log("productDetail", productDetail);
 
     if (!product || !productDetail || !productOption) {
       result = false;
@@ -354,7 +355,7 @@ app.get("/Cart/:user_id", async (req, res) => {
 
     if (result) {
       res.json(result);
-      console.log(result)
+      console.log(result);
     } else {
       res.status(404).json({ message: "Cart not found for the user." });
     }
@@ -368,8 +369,10 @@ app.get("/Cart/:user_id", async (req, res) => {
 app.post("/cart", async (req, res) => {
   const newProduct = req.body;
   const { user_id, product_id, size, color, amount } = req.body;
-  const result = await Cart.findOne({ where: { user_id, product_id, size, color } });
-  console.log('result', result)
+  const result = await Cart.findOne({
+    where: { user_id, product_id, size, color },
+  });
+  console.log("result", result);
   if (!result) {
     await Cart.create(newProduct);
     res.json({ result: false });
@@ -386,7 +389,7 @@ app.get("/Cart", async (req, res) => {
 //유저별 장바구니 조회
 app.get("/buyList/:user_id", async (req, res) => {
   const { user_id } = req.params;
-  const result = await BuyList.findAll({ where : {user_id}});
+  const result = await BuyList.findAll({ where: { user_id } });
   res.json(result);
 });
 
@@ -458,7 +461,7 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: email_admin, // 작성자 이메일
     pass: email_password, // 비밀번호
-    method: 'PLAIN'
+    method: "PLAIN",
   },
 });
 

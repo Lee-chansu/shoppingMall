@@ -82,10 +82,6 @@ export const ProductAdd = () => {
     }
   };
 
-  useEffect(() => {
-    showDetailBar();
-  }, [checkCategory, checkDetail]);
-
   const checkOnlyOneDetail = (checkThis) => {
     checkThis.checked === false
       ? setCheckDetail("")
@@ -102,6 +98,7 @@ export const ProductAdd = () => {
       ? setDetailBar(detail[checkCategory])
       : setDetailBar([]);
   };
+
   const [newOption, setNewOption] = useState([]);
 
   const [newProduct, setNewProduct] = useState({
@@ -127,17 +124,26 @@ export const ProductAdd = () => {
       <ProductOption
         key={index}
         checkCategory={checkCategory}
-        // valueChange={valueChange}
-        newOption={newOption[index]}
+        newOption={newOption}
+        index={index}
         setNewOption={setNewOption}
         delTag={delTag}
+        count={count}
       />
     );
   });
 
+  useEffect(() => {
+    showDetailBar();
+  }, [checkCategory, checkDetail]);
+
+  useEffect(() => {
+    console.log("newOption: ", newOption);
+  }, [newOption]);
+
   const toAddProduct = async (e) => {
     e.preventDefault();
-    console.log(newOption);
+    console.log("newProduct의 newOption: ", newProduct.newOption);
 
     // try {
     //   if (newProduct.category === "") {

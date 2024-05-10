@@ -3,22 +3,38 @@ export function ProductOption({
   delTag,
   newOption,
   setNewOption,
+  index,
+  count,
 }) {
   const valueChange = (e) => {
+    const newOptions = [...newOption];
     const { name, value } = e.target;
-    setNewOption({ ...newOption, [name]: value });
-    console.log(newOption);
+    newOptions[index] = { [name] : value };
+    setNewOption(newOptions);
+
+    // for(let i = 0; i <= count; i++) {
+    //   newOption.push()
+    // }
   };
   return (
     <div className="boxWrap">
       <div className="box">
-        <label htmlFor="color">color</label>
-        <input type="text" name="color" onChange={valueChange} />
+        <label htmlFor={`color` + index}>color</label>
+        <input
+          type="text"
+          id={`color` + index}
+          name="color"
+          onChange={valueChange}
+        />
       </div>
       <div className="box">
-        <label htmlFor="size">size</label>
+        <label htmlFor={`size` + index}>size</label>
         {checkCategory === "신발" ? (
-          <select id="size" name="size" onChange={valueChange}>
+          <select
+            id={`size` + index}
+            name={`size` + index}
+            onChange={valueChange}
+          >
             <option value="" disabled>
               size
             </option>
@@ -35,7 +51,7 @@ export function ProductOption({
             <option value="290">290</option>
           </select>
         ) : (
-          <select name="size" onChange={valueChange}>
+          <select id={`size` + index} name="size" onChange={valueChange}>
             <option value="" default disabled>
               size
             </option>
@@ -50,7 +66,7 @@ export function ProductOption({
         )}
       </div>
       <div className="box">
-        <label htmlFor="stock">stock</label>
+        <label htmlFor={`stock` + index}>stock</label>
         <input type="number" name="stock" onChange={valueChange} />
       </div>
       <div className="delBtn">
