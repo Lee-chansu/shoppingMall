@@ -238,7 +238,6 @@ app.put("/productEdit/:id", async (req, res) => {
     productStock: stock,
   };
 
-  // console.log();
 
   let result;
   try {
@@ -306,9 +305,9 @@ app.get("/product/:id", async (req, res) => {
       subImage3: product.subImage3,
       category: productDetail.category,
       detail: productDetail.detailCategory,
-      size: productOption.productSize,
-      color: productOption.productColor,
-      stock: productOption.productStock,
+      // size: productOption.productSize,
+      // color: productOption.productColor,
+      // stock: productOption.productStock,
     };
     res.json(result);
   } else {
