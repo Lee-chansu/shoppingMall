@@ -140,6 +140,7 @@ export const ProductEdit = () => {
 
   useEffect(() => {
     loadProduct();
+    console.log(newProduct.color);
   }, []);
 
   useEffect(() => {
@@ -263,7 +264,7 @@ export const ProductEdit = () => {
                 <input
                   type="text"
                   name="name"
-                  value={newProduct.name}
+                  defaultValue={newProduct.name}
                   onChange={valueChange}
                 />
               </div>
@@ -274,7 +275,7 @@ export const ProductEdit = () => {
                 <input
                   type="text"
                   name="price"
-                  value={newProduct.price}
+                  defaultValue={newProduct.price}
                   onChange={valueChange}
                 />
               </div>
@@ -288,7 +289,6 @@ export const ProductEdit = () => {
                     defaultValue=""
                     className="select"
                     name="color"
-                    // value={selectedColor}
                     onChange={handleChangeColor}
                   >
                     <option value="" disabled>
@@ -329,7 +329,7 @@ export const ProductEdit = () => {
                   <input
                     type="number"
                     name="stock"
-                    value={newProduct.stock}
+                    defaultValue={newProduct.stock}
                     onChange={valueChange}
                   />
                 </div>

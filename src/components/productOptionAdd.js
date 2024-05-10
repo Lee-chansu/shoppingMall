@@ -4,12 +4,12 @@ export function ProductOption({
   newOption,
   setNewOption,
   index,
-  count,
 }) {
   const valueChange = (e) => {
     const newOptions = [...newOption];
     const { name, value } = e.target;
-    newOptions[index] = { [name] : value };
+    const updateOption = { ...newOptions[index], [name]: value };
+    newOptions[index] = updateOption;
     setNewOption(newOptions);
 
     // for(let i = 0; i <= count; i++) {

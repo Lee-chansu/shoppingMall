@@ -106,7 +106,6 @@ export const ProductAdd = () => {
     detail: "",
     name: "",
     price: 0,
-    newOption: [newOption],
     mainImage: null,
     subImage1: null,
     subImage2: null,
@@ -143,61 +142,66 @@ export const ProductAdd = () => {
 
   const toAddProduct = async (e) => {
     e.preventDefault();
-    console.log("newProduct의 newOption: ", newProduct.newOption);
 
-    // try {
-    //   if (newProduct.category === "") {
-    //     alert("카테고리를 선택해주세요.");
-    //     return;
-    //   }
-    //   if (newProduct.detail === "") {
-    //     alert("디테일을 선택해주세요.");
-    //     return;
-    //   }
-    //   if (newProduct.name === "" || newProduct.name === null) {
-    //     alert("이름을 입력해주세요.");
-    //     return;
-    //   }
-    //   if (newProduct.mainImage === null) {
-    //     alert("메인 이미지를 선택 해주세요.");
-    //     return;
-    //   }
-    //   if (newProduct.color === null || newProduct.color === "") {
-    //     alert("제품의 색상을 입력해주세요.");
-    //     return;
-    //   }
-    //   if (newProduct.price === null || newProduct.price === 0) {
-    //     alert("제품의 가격을 입력해주세요.");
-    //     return;
-    //   }
-    //   if (newProduct.size === null || newProduct.size === null) {
-    //     alert("제품의 사이즈를 선택해주세요.");
-    //     return;
-    //   }
-    //   if (newProduct.stock === null || newProduct.stock === "") {
-    //     alert("제품의 재고수량을 입력해주세요.");
-    //     return;
-    //   }
+    try {
+      // if (newProduct.category === "") {
+      //   alert("카테고리를 선택해주세요.");
+      //   return;
+      // }
+      // if (newProduct.detail === "") {
+      //   alert("디테일을 선택해주세요.");
+      //   return;
+      // }
+      // if (newProduct.name === "" || newProduct.name === null) {
+      //   alert("이름을 입력해주세요.");
+      //   return;
+      // }
+      // if (newProduct.mainImage === null) {
+      //   alert("메인 이미지를 선택 해주세요.");
+      //   return;
+      // }
+      // if (newProduct.color === null || newProduct.color === "") {
+      //   alert("제품의 색상을 입력해주세요.");
+      //   return;
+      // }
+      // if (newProduct.price === null || newProduct.price === 0) {
+      //   alert("제품의 가격을 입력해주세요.");
+      //   return;
+      // }
+      // if (newProduct.size === null || newProduct.size === null) {
+      //   alert("제품의 사이즈를 선택해주세요.");
+      //   return;
+      // }
+      // if (newProduct.stock === null || newProduct.stock === "") {
+      //   alert("제품의 재고수량을 입력해주세요.");
+      //   return;
+      // }
 
-    //   const result = await fetch("http://localhost:5000/addProduct", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(newProduct),
-    //   }).then((res) => {
-    //     res.json();
-    //     if (res.ok) {
-    //       alert("제품을 추가했습니다.");
-    //       navigate("/productList");
-    //     } else {
-    //       alert("제품을 추가하는데 실패했습니다.");
-    //       return;
-    //     }
-    //   });
-    // } catch (error) {
-    //   alert("제품 추가 중 오류가 발생했습니다.");
-    //   console.log(error);
-    //   return;
-    // }
+      const body = {
+        newProduct,
+        newOption
+      };
+
+      const result = await fetch("http://localhost:5000/addProduct", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      })
+      // .then((res) => {
+      //   res.json();
+      //   if (res.ok) {
+      //     alert("제품을 추가했습니다.");
+      //     navigate("/productList");
+      //   } else {
+      //     alert("제품을 추가하는데 실패했습니다.");
+      //     return;
+      //   }
+      // });
+    } catch (error) {
+      alert("제품 추가 중 오류가 발생했습니다.");
+      console.log(error);
+      return;
+    }
   };
 
   return (

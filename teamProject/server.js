@@ -186,38 +186,42 @@ app.get("/userProfile/:id", async (req, res) => {
 
 //제품 추가 페이지
 app.post("/addProduct", async (req, res) => {
-  const { category, detail, size, stock, ...rest } = req.body;
-  const newProduct = { ...rest };
+  // console.log(req.body);
+  const { newProduct, newOption } = req.body;
+  // console.log("newPorduct:", newProduct, "newOption:", newOption);
+
+  for (let i = 0; i < newOption.length; i++) {
+    
+    console.log()
+  }
 
   let result;
   try {
-    const product = await Product.create(newProduct);
-    const { id } = await Product.findOne({
-      order: [["id", "DESC"]],
-      limit: 1,
-    });
-    const newProductDetail = {
-      product_id: id,
-      category,
-      detailCategory: detail,
-    };
-    const newProductOption = {
-      product_id: id,
-      productColor: color,
-      productSize: size,
-      productStock: stock,
-    };
-
-    const productDetail = await ProductDetail.create(newProductDetail);
-    const productOption = await ProductOption.create(newProductOption);
-
-    if (!product || !productDetail || !productOption) {
-      result = false;
-    } else {
-      result = true;
-    }
-    // console.log(result);
-    res.json(result);
+    // const product = await Product.create(newProduct);
+    // const { id } = await Product.findOne({
+    //   order: [["id", "DESC"]],
+    //   limit: 1,
+    // });
+    // const newProductDetail = {
+    //   product_id: id,
+    //   category,
+    //   detailCategory: detail,
+    // };
+    // const newProductOption = {
+    //   product_id: id,
+    //   productColor: color,
+    //   productSize: size,
+    //   productStock: stock,
+    // };
+    // const productDetail = await ProductDetail.create(newProductDetail);
+    // const productOption = await ProductOption.create(newProductOption);
+    // if (!product || !productDetail || !productOption) {
+    //   result = false;
+    // } else {
+    //   result = true;
+    // }
+    // // console.log(result);
+    // res.json(result);
   } catch (error) {
     console.log(error);
     res.json((result = false));
@@ -237,7 +241,6 @@ app.put("/productEdit/:id", async (req, res) => {
     productSize: size,
     productStock: stock,
   };
-
 
   let result;
   try {
@@ -287,12 +290,14 @@ app.get("/DeleteUser", async (req, res) => {
 app.get("/product/:id", async (req, res) => {
   const { id } = req.params;
   const product = await Product.findOne({ where: { id } });
-  const productOption = await ProductOption.findOne({
+  const { productColor, productSize } = await ProductOption.findOne({
     where: { product_id: id },
   });
   const productDetail = await ProductDetail.findOne({
     where: { product_id: id },
   });
+
+  await ProductOption.findOne({ where: { product_id: id } });
 
   if (product) {
     const result = {
