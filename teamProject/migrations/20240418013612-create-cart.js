@@ -23,13 +23,19 @@ module.exports = {
           key: "id",
         },
       },
+      size: {
+        type: Sequelize.STRING(10),
+      },
+      color: {
+        type: Sequelize.STRING(40),
+      },
       amount: {
         type: Sequelize.INTEGER,
       },
       price: {
         type: Sequelize.INTEGER,
       },
-    });
+    }); 
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable("Carts");

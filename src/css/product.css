@@ -3,9 +3,14 @@
   margin: 20px 30px;
 }
 
-.productImg {
+.link{
+  width: 300px;
+}
+
+.link .product .productImg {
   display: block;
   width: 100%;
+  max-width: 240px;
   height: 200px;
   background-color: #ffffff;
 }

@@ -10,6 +10,9 @@ module.exports = (sequelize) => {
     content: {
       type: DataTypes.STRING(255)
     },
+    starPoint: {
+      type: DataTypes.INTEGER(1)
+    },
     reviewImage: {
       type: DataTypes.STRING(255)
     },

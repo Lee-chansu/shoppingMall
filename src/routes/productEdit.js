@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import "../css/productAdd.css";
+import "../css/productEdit.css";
 
 //컴포넌트
 import { Nav } from "../components/nav";
@@ -11,20 +11,20 @@ export const ProductEdit = () => {
   const navigate = useNavigate();
   const mainImgRef = useRef();
 
-  const [product, setProduct] = useState({});
-
-  const loadProduct = async () => {
-    const getProduct = await fetch(`http://localhost:5000/product/${id}`).then(
-      (res) => {
-        res.json();
-      }
-    );
-    console.log(getProduct);
-    // setProduct(getProduct);
-  };
-
+  const [newProduct, setNewProduct] = useState({});
+  const [detailBar, setDetailBar] = useState([]);
+  const [checkDetail, setCheckDetail] = useState("");
+  const [mainImageFile, setMainImageFile] = useState("");
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
+  const [option, setOption] = useState([]);
+  const [size, setSize] = useState([]);
+  const [color, setColor] = useState([]);
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
+
+  const subImageCount = [0, 1, 2];
+  const subImageId = ["subImage1", "subImage2", "subImage3"];
 
   const detail = {
     아우터: ["코트", "블레이저", "패딩"],
@@ -34,93 +34,115 @@ export const ProductEdit = () => {
     악세사리: ["귀걸이", "가방", "피어싱", "모자"],
   };
 
-  const [detailBar, setDetailBar] = useState([]);
-  const [checkDetail, setCheckDetail] = useState("");
+  const loadProduct = async () => {
+    const getProduct = await fetch(`http://localhost:5000/product/${id}`).then(
+      (res) => {
+        return res.json();
+      }
+    );
+    setNewProduct(getProduct);
+    setCheckCategory(getProduct.category);
+    setCheckDetail(getProduct.detail);
 
-  const [mainImageFile, setMainImageFile] = useState("");
-
-  const subImageCount = [0, 1, 2];
-  const subImageId = ["subImage1", "subImage2", "subImage3"];
+    const getProductOption = await fetch(`http://localhost:5000/productOption`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        const productDetail = data.filter(
+          (product) => product.product_id == id
+        );
+        setOption(productDetail);
+        const newSize = productDetail.map((product) => product.productSize);
+        const sizeList = [...new Set(newSize)];
+        setSize(sizeList.sort((a, b) => a - b));
+        const newColor = productDetail.map((product) => product.productColor);
+        const colorList = [...new Set(newColor)];
+        setColor(colorList);
+      });
+  };
 
   const previewMainImg = () => {
     const file = mainImgRef.current.files[0];
     const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setMainImageFile(reader.result);
-    };
-    if (file.name.includes("http://") || file.name.includes("https://")) {
-      setNewProduct((prevState) => ({
-        ...prevState,
-        mainImage: file.name,
-      }));
+    if (file) {
+      reader.readAsDataURL(file);
+      const extension = file.name.split(".").pop().toLowerCase();
+      const allowedExtensions = ["jpg", "jpeg", "png", "svg"]; // 허용되는 확장자 목록
+
+      if (!allowedExtensions.includes(extension)) {
+        alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
+        mainImgRef.value = mainImageFile; // 파일 선택 취소
+        return; // 다음 파일 처리 중단
+      }
+      reader.onloadend = () => {
+        setMainImageFile(reader.result);
+      };
+      if (file.name.includes("http://") || file.name.includes("https://")) {
+        setNewProduct((prevState) => ({
+          ...prevState,
+          mainImage: file.value,
+        }));
+      } else {
+        setNewProduct((prevState) => ({
+          ...prevState,
+          mainImage: "/img/" + file.name,
+        }));
+      }
     } else {
-      setNewProduct((prevState) => ({
-        ...prevState,
-        mainImage: "../img/" + file.name,
-      }));
+      return;
     }
   };
 
   const checkOnlyOneCategory = (checkThis) => {
-    checkThis.checked === false
-      ? setCheckCategory("")
-      : setCheckCategory(checkThis.name);
-    const checkBox = document.getElementsByClassName("checkBoxCategory");
-    for (let ch of checkBox) {
-      if (ch !== checkThis) {
-        ch.checked = false;
-      }
+    if (checkThis.checked === false) {
+      setCheckCategory("");
+      setCheckDetail("");
+    } else {
+      setCheckCategory(checkThis.name);
     }
   };
 
-  useEffect(() => {
-    loadProduct();
-    showDetailBar();
-  }, [checkCategory, checkDetail]);
-
   const checkOnlyOneDetail = (checkThis) => {
-    checkThis.checked === false
-      ? setCheckDetail("")
-      : setCheckDetail(checkThis.name);
-    const checkBox = document.getElementsByClassName("checkBoxDetail");
-    for (let ch of checkBox) {
-      if (ch !== checkThis) {
-        ch.checked = false;
-      }
+    if (checkThis.checked === false) {
+      setCheckDetail("");
+    } else {
+      setCheckDetail(checkThis.name);
     }
   };
 
   const showDetailBar = () => {
-    setNewProduct((prevState) => ({
-      ...prevState,
+    setNewProduct({
+      ...newProduct,
       category: checkCategory,
       detail: checkDetail,
-    }));
+    });
     checkCategory !== ""
       ? setDetailBar(detail[checkCategory])
       : setDetailBar([]);
   };
 
-  const [newProduct, setNewProduct] = useState({
-    category: "",
-    detail: "",
-    name: product.name,
-    price: 0,
-    color: "",
-    size: 0,
-    stock: 0,
-    mainImage: null,
-    subImage1: null,
-    subImage2: null,
-    subImage3: null,
-    description: "",
-  });
-
   const valueChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
+
+  const handleChangeSize = (event) => {
+    setSelectedSize(event.target.value);
+  };
+
+  const handleChangeColor = (event) => {
+    setSelectedColor(event.target.value);
+  };
+
+  useEffect(() => {
+    loadProduct();
+  }, []);
+
+  useEffect(() => {
+    showDetailBar();
+  }, [checkCategory, checkDetail]);
+
 
   const toEditProduct = async (e) => {
     e.preventDefault();
@@ -159,19 +181,20 @@ export const ProductEdit = () => {
         return;
       }
 
-      // console.log(newProduct.mainImage);
+      console.log(newProduct.category, newProduct.detail);
 
-      const result = await fetch(`http://localhost:5000/productEdit/${id}`, {
+      await fetch(`http://localhost:5000/productEdit/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newProduct),
       }).then((res) => {
         res.json();
         if (res.ok) {
-          alert("제품을 추가했습니다.");
-          navigate("/productList");
+          alert("제품의 정보를 수정했습니다.");
+          navigate(`/productList/detail/description/${id}`);
         } else {
-          alert("제품을 추가하는데 실패했습니다.");
+          alert("제품의 정보를 수정하는데 실패했습니다.");
+          console.log(newProduct);
           return;
         }
       });
@@ -184,8 +207,8 @@ export const ProductEdit = () => {
 
   return (
     <>
-      <Nav></Nav>
-      <div className="productAdd">
+      <Nav />
+      <div className="productEdit">
         <div className="inner">
           <form className="formBox">
             <div className="wrap">
@@ -194,7 +217,7 @@ export const ProductEdit = () => {
                 {category.map((el) => {
                   return (
                     <div className="box" key={el}>
-                      <label className="text" for={el}>
+                      <label className="text" htmlFor={el}>
                         {el}
                       </label>
                       <input
@@ -202,6 +225,7 @@ export const ProductEdit = () => {
                         className="checkBoxCategory"
                         name={el}
                         value={el}
+                        checked={checkCategory === el}
                         onChange={(e) => checkOnlyOneCategory(e.target)}
                       />
                     </div>
@@ -224,6 +248,7 @@ export const ProductEdit = () => {
                           className="checkBoxDetail"
                           name={el}
                           value={el}
+                          checked={checkDetail === el}
                           onChange={(e) => checkOnlyOneDetail(e.target)}
                         />
                       </div>
@@ -235,60 +260,97 @@ export const ProductEdit = () => {
             <div className="wrap">
               <h2 className="title">제품명</h2>
               <div className="boxWrap">
-                <input type="text" name="name" onChange={valueChange} />
+                <input
+                  type="text"
+                  name="name"
+                  value={newProduct.name}
+                  onChange={valueChange}
+                />
               </div>
             </div>
             <div className="wrap">
               <h2 className="title">가격</h2>
               <div className="boxWrap">
-                <input type="text" name="price" onChange={valueChange} />
+                <input
+                  type="text"
+                  name="price"
+                  value={newProduct.price}
+                  onChange={valueChange}
+                />
               </div>
             </div>
             <div className="wrap stock">
               <h2 className="title">재고수량</h2>
               <div className="boxWrap">
                 <div className="box">
-                  <label for="color">color</label>
-                  <input type="text" name="color" onChange={valueChange} />
+                  <label htmlFor="color">color</label>
+                  <select
+                    className="select"
+                    name="productColor"
+                    value={selectedColor}
+                    onChange={handleChangeColor}
+                  >
+                    <option value="" disabled>
+                      color
+                    </option>
+                    {color.map((el, i) => {
+                      return (
+                        <option key={i} value={el}>
+                          {el}
+                        </option>
+                      );
+                    })}
+                  </select>
                 </div>
                 <div className="box">
-                  <label for="size">size</label>
-                  {checkCategory === "신발" ? (
-                    <select id="size" name="size" onChange={valueChange}>
-                      <option value="260">260</option>
-                      <option value="270">270</option>
-                      <option value="280">280</option>
-                      <option value="290">290</option>
-                    </select>
-                  ) : (
-                    <select name="size" onChange={valueChange}>
-                      <option value="95">95</option>
-                      <option value="100">100</option>
-                      <option value="105">105</option>
-                      <option value="free">free</option>
-                    </select>
-                  )}
+                  <label htmlFor="size">size</label>
+                  <select
+                    className="select"
+                    name="productSize"
+                    value={selectedSize}
+                    onChange={handleChangeSize}
+                  >
+                    <option value="" disabled>
+                      size
+                    </option>
+                    {size.map((el, i) => {
+                      return (
+                        <option key={i} value={el}>
+                          {el}
+                        </option>
+                      );
+                    })}
+                  </select>
                 </div>
                 <div className="box">
-                  <label for="stock">stock</label>
-                  <input type="number" name="stock" onChange={valueChange} />
+                  <label htmlFor="stock">stock</label>
+                  <input
+                    type="number"
+                    name="stock"
+                    value={newProduct.stock}
+                    onChange={valueChange}
+                  />
                 </div>
               </div>
             </div>
             <div className="wrap img">
               <h2 className="title">메인이미지 등록</h2>
               <div className="boxWrap">
-                <label for="mainImage">
-                  <div className="addImg" style={{ "margin-left": "5px" }}>
+                <label htmlFor="mainImage">
+                  <div className="addImg" style={{ marginLeft: "5px" }}>
                     +
                   </div>
                 </label>
                 <img
-                  style={
-                    !mainImageFile ? { display: "none" } : { display: "block" }
-                  }
+                  style={{
+                    display: newProduct.mainImage
+                      ? "block"
+                      : mainImageFile
+                      ? "block"
+                      : "none",
+                  }}
                   className="previewImg main"
-                  src={mainImageFile}
+                  src={!mainImageFile ? newProduct.mainImage : mainImageFile}
                   alt="메인이미지"
                 />
                 <input
@@ -297,6 +359,7 @@ export const ProductEdit = () => {
                   name="mainImage"
                   onChange={previewMainImg}
                   ref={mainImgRef}
+                  accept="image/*"
                 />
               </div>
             </div>
@@ -323,7 +386,7 @@ export const ProductEdit = () => {
             </div>
             <div className="btnForm">
               <button onClick={toEditProduct}>수정완료</button>
-              <Link to="/productList">
+              <Link to={`/productList/detail/description/${id}`}>
                 <button>취소</button>
               </Link>
             </div>

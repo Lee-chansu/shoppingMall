@@ -3,7 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import { useNavigate } from "react-router-dom";
 
-const ModalPay = ({ mainAddressRef }) => {
+const PaymentModal = ({ mainAddressRef }) => {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const detailAddressRef = useRef();
   const navigate = useNavigate();
@@ -48,14 +48,15 @@ const ModalPay = ({ mainAddressRef }) => {
       </Modal>
       <Button
         className="btn btn-info"
+        variant="secondary"
         onClick={() => {
           setIsModalOpened(!isModalOpened);
         }}
       >
-        도로명 주소지 조회하기
+        <h6 className="carrySelectBtn">조회</h6>
       </Button>
     </>
   );
 };
 
-export default ModalPay;
+export default PaymentModal;

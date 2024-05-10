@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+}
+
 .payBuyList {
   background-color: #ffffff;
   display: flex;
@@ -47,7 +51,7 @@
 }
 
 .payBuyList .productTotal {
-  color: tomato;
+  color: #ff7d9e;
   font-family: "Inter-Regular", Helvetica;
   font-size: 20px;
   font-weight: 600;
@@ -79,7 +83,7 @@
   padding: 15px;
   border: 2px solid #ddd;
   right: 110px;
-  top: 80px;
+  top: 70px;
 }
 
 .payBuyList .delBtn {
@@ -88,7 +92,7 @@
   padding: 15px;
   border: 2px solid #ddd;
   right: 110px;
-  top: 140px;
+  top: 135px;
 }
 
 .payBuyList .reviewBtn {

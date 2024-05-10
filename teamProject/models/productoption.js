@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(255),
       },
       productSize: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING(10),
       },
       productStock: {
         type: DataTypes.INTEGER,

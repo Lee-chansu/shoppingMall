@@ -9,28 +9,27 @@ require("dotenv").config();
 const { email_service, email_admin, email_password } = process.env; // env 파일 데이터가져오기
 
 // 스케줄링
-const cron = require('node-cron')
+const cron = require("node-cron");
 // 회원 기간만료후 물리적삭제
-cron.schedule('0 0 * * *',async()=>{
-  console.log('매 정각마다 스케줄링이 실행됩니다')
-  
-  const today = new Date()
-  const delUser = await DeleteUser.findAll()
-  if(delUser){
-    delUser.forEach(async (e)=>{
-      if(today > e.deleteDate){
-        await DeleteUser.destroy({where : {deleteDate : e.deleteDate}})
-        await Carry.destroy({where : {user_id : e.user_id}})
-        await BuyList.destroy({where : {user_id : e.user_id}})
-        await StarPoint.destroy({where : {user_id : e.user_id}})
-        await ReviewList.destroy({where : {user_id : e.user_id}})
-        await Cart.destroy({where : {user_id : e.user_id}})
-        await User.destroy({where : {id : e.user_id}})
-      } 
-    })
-  }
-})
+cron.schedule("0 0 * * *", async () => {
+  console.log("매 정각마다 스케줄링이 실행됩니다");
 
+  const today = new Date();
+  const delUser = await DeleteUser.findAll();
+  if (delUser) {
+    delUser.forEach(async (e) => {
+      if (today > e.deleteDate) {
+        await DeleteUser.destroy({ where: { deleteDate: e.deleteDate } });
+        await Carry.destroy({ where: { user_id: e.user_id } });
+        await BuyList.destroy({ where: { user_id: e.user_id } });
+        await StarPoint.destroy({ where: { user_id: e.user_id } });
+        await ReviewList.destroy({ where: { user_id: e.user_id } });
+        await Cart.destroy({ where: { user_id: e.user_id } });
+        await User.destroy({ where: { id: e.user_id } });
+      }
+    });
+  }
+});
 
 const session = require("express-session");
 const passport = require("passport");
@@ -110,10 +109,9 @@ passport.use(
     if (result.password != password) {
       return done(null, false, { message: "비밀번호가 일치하지않습니다" });
     }
-    if (result.isDeleted){
-      return done(null, false, { message : '휴먼 계정입니다'})
-    }
-    else {
+    if (result.isDeleted) {
+      return done(null, false, { message: "휴먼 계정입니다" });
+    } else {
       return done(null, result);
     }
   })
@@ -226,7 +224,52 @@ app.post("/addProduct", async (req, res) => {
   }
 });
 
-app.put("/productEdit", (req, res) => {});
+app.put("/productEdit/:id", async (req, res) => {
+  const { id } = req.params;
+  const { category, detail, color, size, stock, ...rest } = req.body;
+  const newProduct = { ...rest };
+  const newProductDetail = {
+    category,
+    detailCategory: detail,
+  };
+  const newProductOption = {
+    productColor: color,
+    productSize: size,
+    productStock: stock,
+  };
+
+  // console.log();
+
+  let result;
+  try {
+    const product = await Product.update({ ...newProduct }, { where: { id } });
+
+    const productDetail = await ProductDetail.update(
+      { ...newProductDetail },
+      {
+        where: { product_id: id },
+      }
+    );
+    const productOption = await ProductOption.update(
+      { ...newProductOption },
+      {
+        where: { product_id: id },
+      }
+    );
+    console.log("productDetail", productDetail);
+
+    if (!product || !productDetail || !productOption) {
+      result = false;
+    } else {
+      result = true;
+    }
+    // console.log(result);
+    res.json(result);
+  } catch (error) {
+    console.log(error);
+    res.json((result = false));
+  }
+});
 
 // 각 화면들
 
@@ -240,7 +283,7 @@ app.get("/DeleteUser", async (req, res) => {
   res.json(result);
 });
 
-// 상품 상세 조회
+// 제품 상세 조회
 app.get("/product/:id", async (req, res) => {
   const { id } = req.params;
   const product = await Product.findOne({ where: { id } });
@@ -250,23 +293,22 @@ app.get("/product/:id", async (req, res) => {
   const productDetail = await ProductDetail.findOne({
     where: { product_id: id },
   });
-  const result = {
-    id : product.id,
-    name: product.name,
-    price: product.price,
-    mainImage: product.mainImage,
-    subImage1: product.subImage1,
-    subImage2: product.subImage2,
-    subImage3: product.subImage3,
-    category: productDetail.category,
-    detail: productDetail.detailCategory,
-    size: productOption.productSize,
-    color: productOption.productColor,
-    stock: productOption.productStock,
-  };
 
-
-  if (result) {
+  if (product) {
+    const result = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      mainImage: product.mainImage,
+      subImage1: product.subImage1,
+      subImage2: product.subImage2,
+      subImage3: product.subImage3,
+      category: productDetail.category,
+      detail: productDetail.detailCategory,
+      size: productOption.productSize,
+      color: productOption.productColor,
+      stock: productOption.productStock,
+    };
     res.json(result);
   } else {
     res.json({});
@@ -312,6 +354,7 @@ app.get("/Cart/:user_id", async (req, res) => {
 
     if (result) {
       res.json(result);
+      console.log(result)
     } else {
       res.status(404).json({ message: "Cart not found for the user." });
     }
@@ -321,29 +364,43 @@ app.get("/Cart/:user_id", async (req, res) => {
   }
 });
 
+// 장바구니에 상품 추가
+app.post("/cart", async (req, res) => {
+  const newProduct = req.body;
+  const { user_id, product_id, size, color, amount } = req.body;
+  const result = await Cart.findOne({ where: { user_id, product_id, size, color } });
+  console.log('result', result)
+  if (!result) {
+    await Cart.create(newProduct);
+    res.json({ result: false });
+  } else {
+    res.json({ result });
+  }
+});
+
 app.get("/Cart", async (req, res) => {
   const result = await Cart.findAll();
   res.json(result);
 });
 
 //유저별 장바구니 조회
-
-app.get("/BuyList", async (req, res) => {
-  const result = await BuyList.findAll();
+app.get("/buyList/:user_id", async (req, res) => {
+  const { user_id } = req.params;
+  const result = await BuyList.findAll({ where : {user_id}});
   res.json(result);
 });
 
-app.get("/ProductOption", async (req, res) => {
+app.get("/productOption", async (req, res) => {
   const result = await ProductOption.findAll();
   res.json(result);
 });
 
-app.get("/ProductDetail", async (req, res) => {
+app.get("/productDetail", async (req, res) => {
   const result = await ProductDetail.findAll();
   res.json(result);
 });
 
-app.get("/Carry", async (req, res) => {
+app.get("/carry", async (req, res) => {
   const result = await Carry.findAll();
   res.json(result);
 });
@@ -477,35 +534,31 @@ app.put("/passwordEdit/:id", async (req, res) => {
   }
 });
 
-
 // 회원탈퇴
-app.put('/userinfo/put/:id', async(req,res)=>{
-  const {id} = req.params
-  const result = await User.findOne({where : {id}})
-  if(result){
-    result.isDeleted = true // 논리적삭제
+app.put("/userinfo/put/:id", async (req, res) => {
+  const { id } = req.params;
+  const result = await User.findOne({ where: { id } });
+  if (result) {
+    result.isDeleted = true; // 논리적삭제
     await result.save();
-    res.send({message : '삭제성공'})
-    
-    const deleteDate = new Date() 
-    deleteDate.setDate(deleteDate.getDate() + 30) // 물리적삭제 날짜기간정함
+    res.send({ message: "삭제성공" });
 
-    await DeleteUser.create({ 
-      user_id : result.id,
-      userId : result.userId,
-      password : result.password,
-      gender : result.gender,
-      userName : result.userName,
-      email : result.email,
-      phoneNumber : result.phoneNumber,
-      address : result.address,
-      isMaster : result.isMaster,
-      deleteDate : deleteDate
-    })
-  }else{
-    res.status(404).send({message : 'db와 일치하지않음'})
+    const deleteDate = new Date();
+    deleteDate.setDate(deleteDate.getDate() + 30); // 물리적삭제 날짜기간정함
+
+    await DeleteUser.create({
+      user_id: result.id,
+      userId: result.userId,
+      password: result.password,
+      gender: result.gender,
+      userName: result.userName,
+      email: result.email,
+      phoneNumber: result.phoneNumber,
+      address: result.address,
+      isMaster: result.isMaster,
+      deleteDate: deleteDate,
+    });
+  } else {
+    res.status(404).send({ message: "db와 일치하지않음" });
   }
-})
-
-
-
+});

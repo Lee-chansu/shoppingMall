@@ -26,6 +26,9 @@ module.exports = {
       content: {
         type: Sequelize.STRING(255)
       },
+      starPoint: {
+        type: Sequelize.INTEGER(1)
+      },
       reviewImage: {
         type: Sequelize.STRING(255)
       },

@@ -9,7 +9,16 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
+      size: {
+        type: DataTypes.STRING(10),
+      },
+      color: {
+        type: DataTypes.STRING(40),
+      },
       amount: {
+        type: DataTypes.INTEGER,
+      },
+      price: {
         type: DataTypes.INTEGER,
       },
     },
