@@ -77,10 +77,10 @@ export const PasswordCheck = () => {
         <form className="loginBox">
           <div className="inputBox">
             <div className="inputUserpassword">
-              <input type="password" className="textWrapper4" placeholder="사용자 비밀번호 입력" name="password" onChange={valueChange}></input>
+              <input type="password" className="textWrapper4" placeholder="비밀번호*" name="password" onChange={valueChange}></input>
             </div>
             <div className="divWrapper">
-              <input type="password" className="textWrapper4" placeholder="사용자 비밀번호 재입력" name="passwordCheck" onChange={valueChange}></input>
+              <input type="password" className="textWrapper4" placeholder="비밀번호 재확인*" name="passwordCheck" onChange={valueChange}></input>
             </div>
           </div>
           <div className="buttonBox">
