@@ -5,6 +5,7 @@ import "../css/productEdit.css";
 //컴포넌트
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
+import { ProductOption } from "../components/productOptionAdd";
 
 export const ProductEdit = () => {
   const id = useParams().id;
@@ -22,6 +23,10 @@ export const ProductEdit = () => {
   const [color, setColor] = useState([]);
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
+  const [stock, setStock] = useState(0);
+
+  const [newOption, setNewOption] = useState([]);
+  const [count, setCount] = useState(1);
 
   const subImageCount = [0, 1, 2];
   const subImageId = ["subImage1", "subImage2", "subImage3"];
@@ -35,24 +40,18 @@ export const ProductEdit = () => {
   };
 
   const loadProduct = async () => {
-    const getProduct = await fetch(`http://localhost:5000/product/${id}`).then(
-      (res) => {
-        return res.json();
-      }
-    );
-    await fetch(`http://localhost:5000/productOption`)
-      .then((res) => {
+    const getProduct = await fetch(`http://localhost:5000/product/${id}`)
+      .then(res => {
         return res.json();
       })
-      .then((data) => {
-        const productDetail = data.filter(
-          (product) => product.product_id == id
-        );
-        setOption(productDetail);
-        const newSize = productDetail.map((product) => product.productSize);
+      .then(data => {
+        console.log(data);
+        setCount(data.length);
+        setOption(data);
+        const newSize = data.map(product => product.productSize);
         const sizeList = [...new Set(newSize)];
         setSize(sizeList.sort((a, b) => a - b));
-        const newColor = productDetail.map((product) => product.productColor);
+        const newColor = data.map(product => product.productColor);
         const colorList = [...new Set(newColor)];
         setColor(colorList);
       });
@@ -78,12 +77,12 @@ export const ProductEdit = () => {
         setMainImageFile(reader.result);
       };
       if (file.name.includes("http://") || file.name.includes("https://")) {
-        setNewProduct((prevState) => ({
+        setNewProduct(prevState => ({
           ...prevState,
           mainImage: file.value,
         }));
       } else {
-        setNewProduct((prevState) => ({
+        setNewProduct(prevState => ({
           ...prevState,
           mainImage: "/img/" + file.name,
         }));
@@ -93,7 +92,7 @@ export const ProductEdit = () => {
     }
   };
 
-  const checkOnlyOneCategory = (checkThis) => {
+  const checkOnlyOneCategory = checkThis => {
     if (checkThis.checked === false) {
       setCheckCategory("");
       setCheckDetail("");
@@ -102,7 +101,7 @@ export const ProductEdit = () => {
     }
   };
 
-  const checkOnlyOneDetail = (checkThis) => {
+  const checkOnlyOneDetail = checkThis => {
     if (checkThis.checked === false) {
       setCheckDetail("");
     } else {
@@ -121,89 +120,116 @@ export const ProductEdit = () => {
       : setDetailBar([]);
   };
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
 
-  const handleChangeSize = (event) => {
+  const handleChangeSize = event => {
     setSelectedSize(event.target.value);
     valueChange(event);
     console.log(selectedSize);
   };
 
-  const handleChangeColor = (event) => {
+  const handleChangeColor = event => {
     setSelectedColor(event.target.value);
     valueChange(event);
     console.log(selectedColor);
   };
 
+  const addTag = e => {
+    e.preventDefault();
+    setCount(count + 1);
+  };
+
+  const components = Array.from({ length: count }, (el, index) => {
+    return (
+      <ProductOption
+        key={index}
+        isAdd={false}
+        checkCategory={checkCategory}
+        newOption={newOption}
+        idx={index}
+        count={count}
+        setCount={setCount}
+        setNewOption={setNewOption}
+        color={color}
+        setColor={setColor}
+        size={size}
+        setSize={setSize}
+      />
+    );
+  });
+
   useEffect(() => {
     loadProduct();
-    console.log(newProduct.color);
   }, []);
 
   useEffect(() => {
     showDetailBar();
   }, [checkCategory, checkDetail]);
 
-  const toEditProduct = async (e) => {
+  useEffect(() => {
+    console.log(newOption);
+  }, [newOption]);
+
+  const toEditProduct = async e => {
     e.preventDefault();
 
-    try {
-      if (newProduct.category === "") {
-        alert("카테고리를 선택해주세요.");
-        return;
-      }
-      if (newProduct.detail === "") {
-        alert("디테일을 선택해주세요.");
-        return;
-      }
-      if (newProduct.name === "" || newProduct.name === null) {
-        alert("이름을 입력해주세요.");
-        return;
-      }
-      if (newProduct.mainImage === null) {
-        alert("메인 이미지를 선택 해주세요.");
-        return;
-      }
-      if (newProduct.color === null || newProduct.color === "") {
-        alert("제품의 색상을 입력해주세요.");
-        return;
-      }
-      if (newProduct.price === null || newProduct.price === 0) {
-        alert("제품의 가격을 입력해주세요.");
-        return;
-      }
-      if (newProduct.size === null || newProduct.size === null) {
-        alert("제품의 사이즈를 선택해주세요.");
-        return;
-      }
-      if (newProduct.stock === null || newProduct.stock === "") {
-        alert("제품의 재고수량을 입력해주세요.");
-        return;
-      }
+    // try {
+    //   if (newProduct.category === "") {
+    //     alert("카테고리를 선택해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.detail === "") {
+    //     alert("디테일을 선택해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.name === "" || newProduct.name === null) {
+    //     alert("이름을 입력해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.mainImage === null) {
+    //     alert("메인 이미지를 선택 해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.color === null || newProduct.color === "") {
+    //     alert("제품의 색상을 입력해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.price === null || newProduct.price === 0) {
+    //     alert("제품의 가격을 입력해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.size === null || newProduct.size === null) {
+    //     alert("제품의 사이즈를 선택해주세요.");
+    //     return;
+    //   }
+    //   if (newProduct.stock === null || newProduct.stock === "") {
+    //     alert("제품의 재고수량을 입력해주세요.");
+    //     return;
+    //   }
 
-      await fetch(`http://localhost:5000/productEdit/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newProduct),
-      }).then((res) => {
-        res.json();
-        if (res.ok) {
-          alert("제품의 정보를 수정했습니다.");
-          navigate(`/productList/detail/description/${id}`);
-        } else {
-          alert("제품의 정보를 수정하는데 실패했습니다.");
-          console.log(newProduct);
-          return;
-        }
-      });
-    } catch (error) {
-      alert("제품 추가 중 오류가 발생했습니다.");
-      console.log(error);
-      return;
-    }
+    //   await fetch(`http://localhost:5000/productEdit/${id}`, {
+    //     method: "PUT",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(newProduct),
+    //   }).then((res) => {
+    //     res.json();
+    //     if (res.ok) {
+    //       alert("제품의 정보를 수정했습니다.");
+    //       navigate(`/productList/detail/description/${id}`);
+    //     } else {
+    //       alert("제품의 정보를 수정하는데 실패했습니다.");
+    //       console.log(newProduct);
+    //       return;
+    //     }
+    //   });
+    // } catch (error) {
+    //   alert("제품 추가 중 오류가 발생했습니다.");
+    //   console.log(error);
+    //   return;
+    // }
   };
 
   return (
@@ -215,7 +241,7 @@ export const ProductEdit = () => {
             <div className="wrap">
               <h2 className="title">카테고리</h2>
               <div className="boxWrap">
-                {category.map((el) => {
+                {category.map(el => {
                   return (
                     <div className="box" key={el}>
                       <label className="text" htmlFor={el}>
@@ -227,7 +253,7 @@ export const ProductEdit = () => {
                         name={el}
                         value={el}
                         checked={checkCategory === el}
-                        onChange={(e) => checkOnlyOneCategory(e.target)}
+                        onChange={e => checkOnlyOneCategory(e.target)}
                       />
                     </div>
                   );
@@ -250,7 +276,7 @@ export const ProductEdit = () => {
                           name={el}
                           value={el}
                           checked={checkDetail === el}
-                          onChange={(e) => checkOnlyOneDetail(e.target)}
+                          onChange={e => checkOnlyOneDetail(e.target)}
                         />
                       </div>
                     );
@@ -281,6 +307,15 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap stock">
+              <h2 className="title">
+                옵션
+                <button className="btn" onClick={addTag}>
+                  +
+                </button>
+              </h2>
+              {components}
+            </div>
+            {/* <div className="wrap stock">
               <h2 className="title">옵션</h2>
               <div className="boxWrap">
                 <div className="box">
@@ -334,7 +369,7 @@ export const ProductEdit = () => {
                   />
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="wrap img">
               <h2 className="title">메인이미지 등록</h2>
               <div className="boxWrap">

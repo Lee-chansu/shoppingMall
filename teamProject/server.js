@@ -186,41 +186,43 @@ app.get("/userProfile/:id", async (req, res) => {
 
 //제품 추가 페이지
 app.post("/addProduct", async (req, res) => {
-  // console.log(req.body);
   const { newProduct, newOption } = req.body;
   // console.log("newPorduct:", newProduct, "newOption:", newOption);
 
-  for (let i = 0; i < newOption.length; i++) {
-    console.log(i + "번째", newOption[i]);
-  }
-
   let result;
   try {
-    // const product = await Product.create(newProduct);
-    // const { id } = await Product.findOne({
-    //   order: [["id", "DESC"]],
-    //   limit: 1,
-    // });
-    // const newProductDetail = {
-    //   product_id: id,
-    //   category,
-    //   detailCategory: detail,
-    // };
-    // const newProductOption = {
-    //   product_id: id,
-    //   productColor: color,
-    //   productSize: size,
-    //   productStock: stock,
-    // };
-    // const productDetail = await ProductDetail.create(newProductDetail);
-    // const productOption = await ProductOption.create(newProductOption);
-    // if (!product || !productDetail || !productOption) {
-    //   result = false;
-    // } else {
-    //   result = true;
-    // }
-    // // console.log(result);
-    // res.json(result);
+    const product = await Product.create(newProduct);
+    const { id } = await Product.findOne({
+      order: [["id", "DESC"]],
+      limit: 1,
+    });
+    const newProductDetail = {
+      product_id: id,
+      category: newProduct.category,
+      detailCategory: newProduct.detail,
+    };
+    const productDetail = await ProductDetail.create(newProductDetail);
+
+    let newProductOption, productOption;
+    for (let i = 0; i < newOption.length; i++) {
+      newProductOption = {
+        productColor: newOption[i].color,
+        productSize: newOption[i].size,
+        productStock: newOption[i].stock,
+        product_id: id,
+      };
+      productOption = await ProductOption.create(newProductOption);
+      if (!productOption) {
+        return;
+      }
+    }
+    if (!product || !productDetail || !productOption) {
+      result = false;
+    } else {
+      result = true;
+    }
+    // console.log(result);
+    res.json(result);
   } catch (error) {
     console.log(error);
     res.json((result = false));
@@ -296,23 +298,29 @@ app.get("/product/:id", async (req, res) => {
     where: { product_id: id },
   });
 
-  await ProductOption.findOne({ where: { product_id: id } });
+  let productOption = await ProductOption.findAll({
+    where: { product_id: id },
+  });
 
   if (product) {
-    const result = {
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      mainImage: product.mainImage,
-      subImage1: product.subImage1,
-      subImage2: product.subImage2,
-      subImage3: product.subImage3,
-      category: productDetail.category,
-      detail: productDetail.detailCategory,
-      // size: productOption.productSize,
-      // color: productOption.productColor,
-      // stock: productOption.productStock,
-    };
+    let result= [];
+    for (let i = 0; i < productOption.length; i++) {
+      result[i] = {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        mainImage: product.mainImage,
+        subImage1: product.subImage1,
+        subImage2: product.subImage2,
+        subImage3: product.subImage3,
+        category: productDetail.category,
+        detail: productDetail.detailCategory,
+        size: productOption[i].productSize,
+        color: productOption[i].productColor,
+        stock: productOption[i].productStock,
+      };
+      // console.log(result.size, result.color, result.stock);
+    }
     res.json(result);
   } else {
     res.json({});

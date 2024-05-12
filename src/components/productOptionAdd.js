@@ -1,25 +1,16 @@
 export function ProductOption({
+  isAdd,
   checkCategory,
   newOption,
   setNewOption,
   idx,
   count,
   setCount,
+  color,
+  setColor,
+  size,
+  setSize,
 }) {
-  const delTag = e => {
-    e.preventDefault();
-    if (count > 1) {
-      setCount(count - 1);
-      const newOptions = [...newOption];
-      const { index } = e.target.dataset;
-      console.log(index);
-      newOptions.splice(index, 1);
-      setNewOption(newOptions);
-    } else {
-      alert("경고");
-      return;
-    }
-  };
   const valueChange = e => {
     const newOptions = [...newOption];
     const { name, value } = e.target;
@@ -27,16 +18,42 @@ export function ProductOption({
     newOptions[idx] = updateOption;
     setNewOption(newOptions);
   };
+
+  const delTag = e => {
+    e.preventDefault();
+    if (count > 1) {
+      setCount(count - 1);
+      const newOptions = [...newOption];
+      const { index } = e.target.dataset;
+      newOptions.splice(index, 1);
+      setNewOption(newOptions);
+    } else {
+      return;
+    }
+  };
+
   return (
     <div className="boxWrap">
       <div className="box">
         <label htmlFor={`color` + idx}>color</label>
-        <input
-          type="text"
-          id={`color` + idx}
-          name="color"
-          onChange={valueChange}
-        />
+        {!isAdd ? (
+          <input
+            type="text"
+            id={`color` + idx}
+            name="color"
+            onChange={valueChange}
+          />
+        ) : (
+          color.map(el => {
+            <input
+              type="text"
+              id={`color` + idx}
+              name="color"
+              value={el}
+              onChange={valueChange}
+            />;
+          })
+        )}
       </div>
       <div className="box">
         <label htmlFor={`size` + idx}>size</label>
