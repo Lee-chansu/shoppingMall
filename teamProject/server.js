@@ -17,7 +17,7 @@ cron.schedule("0 0 * * *", async () => {
   const today = new Date();
   const delUser = await DeleteUser.findAll();
   if (delUser) {
-    delUser.forEach(async (e) => {
+    delUser.forEach(async e => {
       if (today > e.deleteDate) {
         await DeleteUser.destroy({ where: { deleteDate: e.deleteDate } });
         await Carry.destroy({ where: { user_id: e.user_id } });
@@ -150,7 +150,7 @@ app.post("/login", (req, res) => {
     if (error) return res.status(500).json(error);
     if (!user) return res.status(401).json(info.message);
 
-    req.logIn(user, (err) => {
+    req.logIn(user, err => {
       if (err) return next(err);
       const token = jwt.sign(
         { id: user.id, userId: user.userId },
@@ -191,8 +191,7 @@ app.post("/addProduct", async (req, res) => {
   // console.log("newPorduct:", newProduct, "newOption:", newOption);
 
   for (let i = 0; i < newOption.length; i++) {
-    
-    console.log()
+    console.log(i + "번째", newOption[i]);
   }
 
   let result;

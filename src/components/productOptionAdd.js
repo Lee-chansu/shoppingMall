@@ -1,38 +1,50 @@
 export function ProductOption({
   checkCategory,
-  delTag,
   newOption,
   setNewOption,
-  index,
+  idx,
+  count,
+  setCount,
 }) {
-  const valueChange = (e) => {
+  const delTag = e => {
+    e.preventDefault();
+    if (count > 1) {
+      setCount(count - 1);
+      const newOptions = [...newOption];
+      const { index } = e.target.dataset;
+      console.log(index);
+      newOptions.splice(index, 1);
+      setNewOption(newOptions);
+    } else {
+      alert("경고");
+      return;
+    }
+  };
+  const valueChange = e => {
     const newOptions = [...newOption];
     const { name, value } = e.target;
-    const updateOption = { ...newOptions[index], [name]: value };
-    newOptions[index] = updateOption;
+    const updateOption = { ...newOptions[idx], [name]: value };
+    newOptions[idx] = updateOption;
     setNewOption(newOptions);
-
-    // for(let i = 0; i <= count; i++) {
-    //   newOption.push()
-    // }
   };
   return (
     <div className="boxWrap">
       <div className="box">
-        <label htmlFor={`color` + index}>color</label>
+        <label htmlFor={`color` + idx}>color</label>
         <input
           type="text"
-          id={`color` + index}
+          id={`color` + idx}
           name="color"
           onChange={valueChange}
         />
       </div>
       <div className="box">
-        <label htmlFor={`size` + index}>size</label>
+        <label htmlFor={`size` + idx}>size</label>
         {checkCategory === "신발" ? (
           <select
-            id={`size` + index}
-            name={`size` + index}
+            id={`size` + idx}
+            name="size"
+            defaultValue={""}
             onChange={valueChange}
           >
             <option value="" disabled>
@@ -51,8 +63,13 @@ export function ProductOption({
             <option value="290">290</option>
           </select>
         ) : (
-          <select id={`size` + index} name="size" onChange={valueChange}>
-            <option value="" default disabled>
+          <select
+            id={`size` + idx}
+            name="size"
+            defaultValue={""}
+            onChange={valueChange}
+          >
+            <option value="" disabled>
               size
             </option>
             <option value="XS">XS</option>
@@ -66,11 +83,11 @@ export function ProductOption({
         )}
       </div>
       <div className="box">
-        <label htmlFor={`stock` + index}>stock</label>
+        <label htmlFor={`stock` + idx}>stock</label>
         <input type="number" name="stock" onChange={valueChange} />
       </div>
       <div className="delBtn">
-        <button className="btn" onClick={delTag}>
+        <button className="btn" onClick={delTag} data-index={idx}>
           -
         </button>
       </div>

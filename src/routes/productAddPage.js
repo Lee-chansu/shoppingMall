@@ -48,12 +48,12 @@ export const ProductAdd = () => {
         setMainImageFile(reader.result);
       };
       if (file.name.includes("http://") || file.name.includes("https://")) {
-        setNewProduct((prevState) => ({
+        setNewProduct(prevState => ({
           ...prevState,
           mainImage: file.name,
         }));
       } else {
-        setNewProduct((prevState) => ({
+        setNewProduct(prevState => ({
           ...prevState,
           mainImage: "/img/" + file.name,
         }));
@@ -63,33 +63,24 @@ export const ProductAdd = () => {
     }
   };
 
-  const addTag = (e) => {
+  const addTag = e => {
     e.preventDefault();
     setCount(count + 1);
   };
-  const checkOnlyOneCategory = (checkThis) => {
+  const checkOnlyOneCategory = checkThis => {
     checkThis.checked === false
       ? setCheckCategory("")
       : setCheckCategory(checkThis.name);
   };
-  const delTag = (e) => {
-    e.preventDefault();
-    if (count > 1) {
-      setCount(count - 1);
-    } else {
-      alert("경고");
-      return;
-    }
-  };
 
-  const checkOnlyOneDetail = (checkThis) => {
+  const checkOnlyOneDetail = checkThis => {
     checkThis.checked === false
       ? setCheckDetail("")
       : setCheckDetail(checkThis.name);
   };
 
   const showDetailBar = () => {
-    setNewProduct((prevState) => ({
+    setNewProduct(prevState => ({
       ...prevState,
       category: checkCategory,
       detail: checkDetail,
@@ -113,7 +104,7 @@ export const ProductAdd = () => {
     description: "",
   });
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
@@ -124,10 +115,10 @@ export const ProductAdd = () => {
         key={index}
         checkCategory={checkCategory}
         newOption={newOption}
-        index={index}
-        setNewOption={setNewOption}
-        delTag={delTag}
+        idx={index}
         count={count}
+        setCount={setCount}
+        setNewOption={setNewOption}
       />
     );
   });
@@ -140,7 +131,7 @@ export const ProductAdd = () => {
     console.log("newOption: ", newOption);
   }, [newOption]);
 
-  const toAddProduct = async (e) => {
+  const toAddProduct = async e => {
     e.preventDefault();
 
     try {
@@ -179,14 +170,14 @@ export const ProductAdd = () => {
 
       const body = {
         newProduct,
-        newOption
+        newOption,
       };
 
       const result = await fetch("http://localhost:5000/addProduct", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      })
+      });
       // .then((res) => {
       //   res.json();
       //   if (res.ok) {
@@ -213,7 +204,7 @@ export const ProductAdd = () => {
             <div className="wrap">
               <h2 className="title">카테고리</h2>
               <div className="boxWrap">
-                {category.map((el) => {
+                {category.map(el => {
                   return (
                     <div className="box" key={el}>
                       <label className="text" htmlFor={el}>
@@ -225,7 +216,7 @@ export const ProductAdd = () => {
                         name={el}
                         value={el}
                         checked={checkCategory === el}
-                        onChange={(e) => checkOnlyOneCategory(e.target)}
+                        onChange={e => checkOnlyOneCategory(e.target)}
                       />
                     </div>
                   );
@@ -248,7 +239,7 @@ export const ProductAdd = () => {
                           name={el}
                           value={el}
                           checked={checkDetail === el}
-                          onChange={(e) => checkOnlyOneDetail(e.target)}
+                          onChange={e => checkOnlyOneDetail(e.target)}
                         />
                       </div>
                     );
