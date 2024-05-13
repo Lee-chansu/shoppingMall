@@ -13,6 +13,7 @@ module.exports = {
           size: 95,
           color: "파란색",
           amount: 2,
+          price: 19000,
         },
         {
           id: 101,
@@ -21,6 +22,7 @@ module.exports = {
           size: 100,
           color: "청색",
           amount: 1,
+          price: 12000,
         },
         {
           id: 102,
@@ -29,6 +31,7 @@ module.exports = {
           size: 105,
           color: "블랙",
           amount: 2,
+          price: 14000,
         },
         {
           id: 103,
@@ -37,6 +40,7 @@ module.exports = {
           size: 95,
           color: "청색",
           amount: 3,
+          price: 36000,
         },
         {
           id: 104,
@@ -45,6 +49,7 @@ module.exports = {
           size: 100,
           color: "블랙",
           amount: 4,
+          price: 5000,
         },
         {
           id: 105,
@@ -53,6 +58,7 @@ module.exports = {
           size: 105,
           color: "베이지",
           amount: 5,
+          price: 30000,
         },
         {
           id: 106,
@@ -61,6 +67,7 @@ module.exports = {
           size: 95,
           color: "베이지",
           amount: 6,
+          price: 200000,
         },
         {
           id: 107,
@@ -69,6 +76,7 @@ module.exports = {
           size: 100,
           color: "화이트",
           amount: 7,
+          price: 1000,
         },
         // {
         //   id: 108,

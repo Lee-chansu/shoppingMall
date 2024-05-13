@@ -17,7 +17,7 @@ cron.schedule("0 0 * * *", async () => {
   const today = new Date();
   const delUser = await DeleteUser.findAll();
   if (delUser) {
-    delUser.forEach(async e => {
+    delUser.forEach(async (e) => {
       if (today > e.deleteDate) {
         await DeleteUser.destroy({ where: { deleteDate: e.deleteDate } });
         await Carry.destroy({ where: { user_id: e.user_id } });
@@ -149,7 +149,7 @@ app.post("/login", (req, res) => {
     if (error) return res.status(500).json(error);
     if (!user) return res.status(401).json(info.message);
 
-    req.logIn(user, err => {
+    req.logIn(user, (err) => {
       if (err) return next(err);
       const token = jwt.sign(
         { id: user.id, userId: user.userId },
@@ -254,7 +254,11 @@ app.put("/productEdit/:id", async (req, res) => {
     const productOption = await ProductOption.update(
       { ...newProductOption },
       {
-        where: { product_id: id, productColor: newProductOption.productColor, productSize: newProductOption.productSize },
+        where: {
+          product_id: id,
+          productColor: newProductOption.productColor,
+          productSize: newProductOption.productSize,
+        },
       }
     );
     // console.log("productDetail", productDetail);
@@ -326,34 +330,31 @@ app.get("/product/:id", async (req, res) => {
 
 // nav 카테고리 별 제품리스트조회
 app.get("/product", async (req, res) => {
-  const {category}= req.query
-  let result
+  const { category } = req.query;
+  let result;
   try {
-    if(category){
+    if (category) {
       result = await ProductDetail.findAll({
-        include : [Product],
-        where : {
-          category : category
-        }
-      })
+        include: [Product],
+        where: {
+          category: category,
+        },
+      });
+    } else {
+      result = await Product.findAll();
     }
-    else{
-      result = await Product.findAll()
-    }
-    res.json(result)
-    
+    res.json(result);
   } catch (error) {
-    console.log("데이터 조회 중 오류 발생 : ", error)
+    console.log("데이터 조회 중 오류 발생 : ", error);
   }
 });
-
-
 
 // 리뷰 리스트 조회
 app.get("/ReviewList", async (req, res) => {
   const { productOption_id } = req.query;
   let result = await ReviewList.findAll({ where: {} });
-  if (productOption_id) result = await ReviewList.findAll({ where: { productOption_id } });
+  if (productOption_id)
+    result = await ReviewList.findAll({ where: { productOption_id } });
   // console.log(result);
   if (result) {
     res.json(result);
@@ -392,8 +393,10 @@ app.get("/Cart/:user_id", async (req, res) => {
 app.post("/cart", async (req, res) => {
   const newProduct = req.body;
   const { user_id, productOption_id, size, color, amount } = req.body;
-  const result = await Cart.findOne({ where: { user_id, productOption_id, size, color } });
-  console.log('result', result)
+  const result = await Cart.findOne({
+    where: { user_id, productOption_id, size, color },
+  });
+  console.log("result", result);
   if (!result) {
     await Cart.create(newProduct);
     res.json({ result: false });
@@ -410,7 +413,7 @@ app.get("/Cart", async (req, res) => {
 //유저별 장바구니 조회
 app.get("/buyList/:user_id", async (req, res) => {
   const { user_id } = req.params;
-  const result = await BuyList.findAll({ where: { user_id } });
+  const result = await BuyList.findAll({ where: { user_id }, include: [ProductOption], });
   res.json(result);
 });
 
@@ -421,13 +424,12 @@ app.delete("/buyList/delete/:id", async (req, res) => {
     await Carry.destroy({ where: { order_id: id } });
     await BuyList.destroy({ where: { id } });
 
-    res.status(200).json({ message: "삭제 완료" })
+    res.status(200).json({ message: "삭제 완료" });
   } catch (error) {
-    console.error("삭제 중 에러 발생", error)
-    res.status(500).json({ message: "삭제 중 오류가 발생했습니다" })
+    console.error("삭제 중 에러 발생", error);
+    res.status(500).json({ message: "삭제 중 오류가 발생했습니다" });
   }
-  
-})
+});
 
 app.get("/productOption", async (req, res) => {
   const result = await ProductOption.findAll();
