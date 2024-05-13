@@ -5,11 +5,14 @@ import "../css/productAdd.css";
 //컴포넌트
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
+import { ProductOption } from "../components/productOptionAdd";
 
 export const ProductAdd = () => {
   const navigate = useNavigate();
+
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
+  const [count, setCount] = useState(1);
 
   const detail = {
     아우터: ["코트", "블레이저", "패딩"],
@@ -45,12 +48,12 @@ export const ProductAdd = () => {
         setMainImageFile(reader.result);
       };
       if (file.name.includes("http://") || file.name.includes("https://")) {
-        setNewProduct((prevState) => ({
+        setNewProduct(prevState => ({
           ...prevState,
           mainImage: file.name,
         }));
       } else {
-        setNewProduct((prevState) => ({
+        setNewProduct(prevState => ({
           ...prevState,
           mainImage: "/img/" + file.name,
         }));
@@ -60,36 +63,24 @@ export const ProductAdd = () => {
     }
   };
 
-  const checkOnlyOneCategory = (checkThis) => {
+  const addTag = e => {
+    e.preventDefault();
+    setCount(count + 1);
+  };
+  const checkOnlyOneCategory = checkThis => {
     checkThis.checked === false
       ? setCheckCategory("")
       : setCheckCategory(checkThis.name);
-    const checkBox = document.getElementsByClassName("checkBoxCategory");
-    for (let ch of checkBox) {
-      if (ch !== checkThis) {
-        ch.checked = false;
-      }
-    }
   };
 
-  useEffect(() => {
-    showDetailBar();
-  }, [checkCategory, checkDetail]);
-
-  const checkOnlyOneDetail = (checkThis) => {
+  const checkOnlyOneDetail = checkThis => {
     checkThis.checked === false
       ? setCheckDetail("")
       : setCheckDetail(checkThis.name);
-    const checkBox = document.getElementsByClassName("checkBoxDetail");
-    for (let ch of checkBox) {
-      if (ch !== checkThis) {
-        ch.checked = false;
-      }
-    }
   };
 
   const showDetailBar = () => {
-    setNewProduct((prevState) => ({
+    setNewProduct(prevState => ({
       ...prevState,
       category: checkCategory,
       detail: checkDetail,
@@ -99,14 +90,13 @@ export const ProductAdd = () => {
       : setDetailBar([]);
   };
 
+  const [newOption, setNewOption] = useState([]);
+
   const [newProduct, setNewProduct] = useState({
     category: "",
     detail: "",
     name: "",
     price: 0,
-    color: "",
-    size: 0,
-    stock: 0,
     mainImage: null,
     subImage1: null,
     subImage2: null,
@@ -114,64 +104,90 @@ export const ProductAdd = () => {
     description: "",
   });
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
 
-  const toAddProduct = async (e) => {
+  const components = Array.from({ length: count }, (el, index) => {
+    return (
+      <ProductOption
+        key={index}
+        checkCategory={checkCategory}
+        newOption={newOption}
+        idx={index}
+        count={count}
+        setCount={setCount}
+        setNewOption={setNewOption}
+      />
+    );
+  });
+
+  useEffect(() => {
+    showDetailBar();
+  }, [checkCategory, checkDetail]);
+
+  useEffect(() => {
+    console.log("newOption: ", newOption);
+  }, [newOption]);
+
+  const toAddProduct = async e => {
     e.preventDefault();
 
     try {
-      if (newProduct.category === "") {
-        alert("카테고리를 선택해주세요.");
-        return;
-      }
-      if (newProduct.detail === "") {
-        alert("디테일을 선택해주세요.");
-        return;
-      }
-      if (newProduct.name === "" || newProduct.name === null) {
-        alert("이름을 입력해주세요.");
-        return;
-      }
-      if (newProduct.mainImage === null) {
-        alert("메인 이미지를 선택 해주세요.");
-        return;
-      }
-      if (newProduct.color === null || newProduct.color === "") {
-        alert("제품의 색상을 입력해주세요.");
-        return;
-      }
-      if (newProduct.price === null || newProduct.price === 0) {
-        alert("제품의 가격을 입력해주세요.");
-        return;
-      }
-      if (newProduct.size === null || newProduct.size === null) {
-        alert("제품의 사이즈를 선택해주세요.");
-        return;
-      }
-      if (newProduct.stock === null || newProduct.stock === "") {
-        alert("제품의 재고수량을 입력해주세요.");
-        return;
-      }
+      // if (newProduct.category === "") {
+      //   alert("카테고리를 선택해주세요.");
+      //   return;
+      // }
+      // if (newProduct.detail === "") {
+      //   alert("디테일을 선택해주세요.");
+      //   return;
+      // }
+      // if (newProduct.name === "" || newProduct.name === null) {
+      //   alert("이름을 입력해주세요.");
+      //   return;
+      // }
+      // if (newProduct.mainImage === null) {
+      //   alert("메인 이미지를 선택 해주세요.");
+      //   return;
+      // }
+      // if (newProduct.color === null || newProduct.color === "") {
+      //   alert("제품의 색상을 입력해주세요.");
+      //   return;
+      // }
+      // if (newProduct.price === null || newProduct.price === 0) {
+      //   alert("제품의 가격을 입력해주세요.");
+      //   return;
+      // }
+      // if (newProduct.size === null || newProduct.size === null) {
+      //   alert("제품의 사이즈를 선택해주세요.");
+      //   return;
+      // }
+      // if (newProduct.stock === null || newProduct.stock === "") {
+      //   alert("제품의 재고수량을 입력해주세요.");
+      //   return;
+      // }
 
-      // console.log(newProduct.mainImage);
+      const body = {
+        newProduct,
+        newOption,
+      };
 
       const result = await fetch("http://localhost:5000/addProduct", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newProduct),
-      }).then((res) => {
-        res.json();
-        if (res.ok) {
-          alert("제품을 추가했습니다.");
-          navigate("/productList");
-        } else {
-          alert("제품을 추가하는데 실패했습니다.");
-          return;
-        }
+        body: JSON.stringify(body),
       });
+      // .then((res) => {
+      //   res.json();
+      //   if (res.ok) {
+      //     alert("제품을 추가했습니다.");
+      //     navigate("/productList");
+      //   } else {
+      //     alert("제품을 추가하는데 실패했습니다.");
+      //     return;
+      //   }
+      // });
     } catch (error) {
       alert("제품 추가 중 오류가 발생했습니다.");
       console.log(error);
@@ -188,7 +204,7 @@ export const ProductAdd = () => {
             <div className="wrap">
               <h2 className="title">카테고리</h2>
               <div className="boxWrap">
-                {category.map((el) => {
+                {category.map(el => {
                   return (
                     <div className="box" key={el}>
                       <label className="text" htmlFor={el}>
@@ -199,7 +215,8 @@ export const ProductAdd = () => {
                         className="checkBoxCategory"
                         name={el}
                         value={el}
-                        onChange={(e) => checkOnlyOneCategory(e.target)}
+                        checked={checkCategory === el}
+                        onChange={e => checkOnlyOneCategory(e.target)}
                       />
                     </div>
                   );
@@ -221,7 +238,8 @@ export const ProductAdd = () => {
                           className="checkBoxDetail"
                           name={el}
                           value={el}
-                          onChange={(e) => checkOnlyOneDetail(e.target)}
+                          checked={checkDetail === el}
+                          onChange={e => checkOnlyOneDetail(e.target)}
                         />
                       </div>
                     );
@@ -242,35 +260,13 @@ export const ProductAdd = () => {
               </div>
             </div>
             <div className="wrap stock">
-              <h2 className="title">재고수량</h2>
-              <div className="boxWrap">
-                <div className="box">
-                  <label htmlFor="color">color</label>
-                  <input type="text" name="color" onChange={valueChange} />
-                </div>
-                <div className="box">
-                  <label htmlFor="size">size</label>
-                  {checkCategory === "신발" ? (
-                    <select id="size" name="size" onChange={valueChange}>
-                      <option value="260">260</option>
-                      <option value="270">270</option>
-                      <option value="280">280</option>
-                      <option value="290">290</option>
-                    </select>
-                  ) : (
-                    <select name="size" onChange={valueChange}>
-                      <option value="95">95</option>
-                      <option value="100">100</option>
-                      <option value="105">105</option>
-                      <option value="free">free</option>
-                    </select>
-                  )}
-                </div>
-                <div className="box">
-                  <label htmlFor="stock">stock</label>
-                  <input type="number" name="stock" onChange={valueChange} />
-                </div>
-              </div>
+              <h2 className="title">
+                옵션
+                <button className="btn" onClick={addTag}>
+                  +
+                </button>
+              </h2>
+              {components}
             </div>
             <div className="wrap img">
               <h2 className="title">메인이미지 등록</h2>

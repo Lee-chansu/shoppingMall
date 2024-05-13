@@ -26,13 +26,13 @@ export const ProductEdit = () => {
   const subImageCount = [0, 1, 2];
   const subImageId = ["subImage1", "subImage2", "subImage3"];
 
-  const handleChangeSize = (event) => {
-    setSelectedSize(event.target.value);
-  };
+  // const handleChangeSize = (event) => {
+  //   setSelectedSize(event.target.value);
+  // };
 
-  const handleChangeColor = (event) => {
-    setSelectedColor(event.target.value);
-  };
+  // const handleChangeColor = (event) => {
+  //   setSelectedColor(event.target.value);
+  // };
 
   const detail = {
     아우터: ["코트", "블레이저", "패딩"],
@@ -48,11 +48,7 @@ export const ProductEdit = () => {
         return res.json();
       }
     );
-    setNewProduct(getProduct);
-    setCheckCategory(getProduct.category);
-    setCheckDetail(getProduct.detail);
-
-    const getProductOption = await fetch(`http://localhost:5000/productOption`)
+    await fetch(`http://localhost:5000/productOption`)
       .then((res) => {
         return res.json();
       })
@@ -68,6 +64,9 @@ export const ProductEdit = () => {
         const colorList = [...new Set(newColor)];
         setColor(colorList);
       });
+    setNewProduct(getProduct);
+    setCheckCategory(getProduct.category);
+    setCheckDetail(getProduct.detail);
   };
 
   const previewMainImg = () => {
@@ -135,14 +134,26 @@ export const ProductEdit = () => {
     setNewProduct({ ...newProduct, [name]: value });
   };
 
+  const handleChangeSize = (event) => {
+    setSelectedSize(event.target.value);
+    valueChange(event);
+    console.log(selectedSize);
+  };
+
+  const handleChangeColor = (event) => {
+    setSelectedColor(event.target.value);
+    valueChange(event);
+    console.log(selectedColor);
+  };
+
   useEffect(() => {
     loadProduct();
+    console.log(newProduct.color);
   }, []);
 
   useEffect(() => {
     showDetailBar();
   }, [checkCategory, checkDetail]);
-
 
   const toEditProduct = async (e) => {
     e.preventDefault();
@@ -183,8 +194,6 @@ export const ProductEdit = () => {
         alert("제품의 재고수량을 입력해주세요.");
         return;
       }
-
-      console.log(newProduct.category, newProduct.detail);
 
       await fetch(`http://localhost:5000/productEdit/${id}`, {
         method: "PUT",
@@ -266,7 +275,7 @@ export const ProductEdit = () => {
                 <input
                   type="text"
                   name="name"
-                  value={newProduct.name}
+                  defaultValue={newProduct.name}
                   onChange={valueChange}
                 />
               </div>
@@ -277,20 +286,20 @@ export const ProductEdit = () => {
                 <input
                   type="text"
                   name="price"
-                  value={newProduct.price}
+                  defaultValue={newProduct.price}
                   onChange={valueChange}
                 />
               </div>
             </div>
             <div className="wrap stock">
-              <h2 className="title">재고수량</h2>
+              <h2 className="title">옵션</h2>
               <div className="boxWrap">
                 <div className="box">
                   <label htmlFor="color">color</label>
                   <select
+                    defaultValue=""
                     className="select"
-                    name="productColor"
-                    value={selectedColor}
+                    name="color"
                     onChange={handleChangeColor}
                   >
                     {
@@ -308,9 +317,10 @@ export const ProductEdit = () => {
                 <div className="box">
                   <label htmlFor="size">size</label>
                   <select
+                    defaultValue=""
                     className="select"
-                    name="productSize"
-                    value={selectedSize}
+                    name="size"
+                    // value={selectedSize}
                     onChange={handleChangeSize}
                   >
                     {
@@ -330,7 +340,7 @@ export const ProductEdit = () => {
                   <input
                     type="number"
                     name="stock"
-                    value={newProduct.stock}
+                    defaultValue={newProduct.stock}
                     onChange={valueChange}
                   />
                 </div>

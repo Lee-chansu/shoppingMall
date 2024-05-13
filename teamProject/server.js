@@ -17,7 +17,7 @@ cron.schedule("0 0 * * *", async () => {
   const today = new Date();
   const delUser = await DeleteUser.findAll();
   if (delUser) {
-    delUser.forEach(async (e) => {
+    delUser.forEach(async e => {
       if (today > e.deleteDate) {
         await DeleteUser.destroy({ where: { deleteDate: e.deleteDate } });
         await Carry.destroy({ where: { user_id: e.user_id } });
@@ -148,7 +148,7 @@ app.post("/login", (req, res) => {
     if (error) return res.status(500).json(error);
     if (!user) return res.status(401).json(info.message);
 
-    req.logIn(user, (err) => {
+    req.logIn(user, err => {
       if (err) return next(err);
       const token = jwt.sign(
         { id: user.id, userId: user.userId },
@@ -184,38 +184,41 @@ app.get("/userProfile/:id", async (req, res) => {
 
 //제품 추가 페이지
 app.post("/addProduct", async (req, res) => {
-  const { category, detail, color, size, stock, ...rest } = req.body;
-  const newProduct = { ...rest };
+  // console.log(req.body);
+  const { newProduct, newOption } = req.body;
+  // console.log("newPorduct:", newProduct, "newOption:", newOption);
+
+  for (let i = 0; i < newOption.length; i++) {
+    console.log(i + "번째", newOption[i]);
+  }
 
   let result;
   try {
-    const product = await Product.create(newProduct);
-    const { id } = await Product.findOne({
-      order: [["id", "DESC"]],
-      limit: 1,
-    });
-    const newProductDetail = {
-      product_id: id,
-      category,
-      detailCategory: detail,
-    };
-    const newProductOption = {
-      product_id: id,
-      productColor: color,
-      productSize: size,
-      productStock: stock,
-    };
-
-    const productDetail = await ProductDetail.create(newProductDetail);
-    const productOption = await ProductOption.create(newProductOption);
-
-    if (!product || !productDetail || !productOption) {
-      result = false;
-    } else {
-      result = true;
-    }
-    // console.log(result);
-    res.json(result);
+    // const product = await Product.create(newProduct);
+    // const { id } = await Product.findOne({
+    //   order: [["id", "DESC"]],
+    //   limit: 1,
+    // });
+    // const newProductDetail = {
+    //   product_id: id,
+    //   category,
+    //   detailCategory: detail,
+    // };
+    // const newProductOption = {
+    //   product_id: id,
+    //   productColor: color,
+    //   productSize: size,
+    //   productStock: stock,
+    // };
+    // const productDetail = await ProductDetail.create(newProductDetail);
+    // const productOption = await ProductOption.create(newProductOption);
+    // if (!product || !productDetail || !productOption) {
+    //   result = false;
+    // } else {
+    //   result = true;
+    // }
+    // // console.log(result);
+    // res.json(result);
   } catch (error) {
     console.log(error);
     res.json((result = false));
@@ -236,8 +239,6 @@ app.put("/productEdit/:id", async (req, res) => {
     productStock: stock,
   };
 
-  // console.log();
-
   let result;
   try {
     const product = await Product.update({ ...newProduct }, { where: { id } });
@@ -248,13 +249,14 @@ app.put("/productEdit/:id", async (req, res) => {
         where: { product_id: id },
       }
     );
+    console.log(color, size, stock);
     const productOption = await ProductOption.update(
       { ...newProductOption },
       {
-        where: { product_id: id, productColor: newProductOption.productColor, productSize: newProductOption.productSize },
+        where: { product_id: id, productColor: color, productSize: size },
       }
     );
-    console.log("productDetail", productDetail);
+    // console.log("productDetail", productDetail);
 
     if (!product || !productDetail || !productOption) {
       result = false;
@@ -285,12 +287,14 @@ app.get("/DeleteUser", async (req, res) => {
 app.get("/product/:id", async (req, res) => {
   const { id } = req.params;
   const product = await Product.findOne({ where: { id } });
-  const productOption = await ProductOption.findOne({
+  const { productColor, productSize } = await ProductOption.findOne({
     where: { product_id: id },
   });
   const productDetail = await ProductDetail.findOne({
     where: { product_id: id },
   });
+
+  await ProductOption.findOne({ where: { product_id: id } });
 
   if (product) {
     const result = {
@@ -303,9 +307,9 @@ app.get("/product/:id", async (req, res) => {
       subImage3: product.subImage3,
       category: productDetail.category,
       detail: productDetail.detailCategory,
-      size: productOption.productSize,
-      color: productOption.productColor,
-      stock: productOption.productStock,
+      // size: productOption.productSize,
+      // color: productOption.productColor,
+      // stock: productOption.productStock,
     };
     res.json(result);
   } else {
@@ -347,7 +351,7 @@ app.get("/Cart/:user_id", async (req, res) => {
 
     if (result) {
       res.json(result);
-      console.log(result)
+      console.log(result);
     } else {
       res.status(404).json({ message: "Cart not found for the user." });
     }
@@ -360,8 +364,8 @@ app.get("/Cart/:user_id", async (req, res) => {
 // 장바구니에 상품 추가
 app.post("/cart", async (req, res) => {
   const newProduct = req.body;
-  const { user_id, productOption_id, size, color, amount } = req.body;
-  const result = await Cart.findOne({ where: { user_id, productOption_id, size, color } });
+  const { user_id, product_id, size, color, amount } = req.body;
+  const result = await Cart.findOne({ where: { user_id, product_id, size, color } });
   console.log('result', result)
   if (!result) {
     await Cart.create(newProduct);
@@ -379,7 +383,7 @@ app.get("/Cart", async (req, res) => {
 //유저별 장바구니 조회
 app.get("/buyList/:user_id", async (req, res) => {
   const { user_id } = req.params;
-  const result = await BuyList.findAll({ where : {user_id}});
+  const result = await BuyList.findAll({ where: { user_id } });
   res.json(result);
 });
 
@@ -451,7 +455,7 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: email_admin, // 작성자 이메일
     pass: email_password, // 비밀번호
-    method: 'PLAIN'
+    method: "PLAIN",
   },
 });
 

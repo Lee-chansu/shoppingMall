@@ -5,9 +5,6 @@
 }
 .productAdd .inner .wrap {
   display: flex;
-}
-.productAdd .inner .wrap {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -22,7 +19,7 @@
   width: 80%;
   min-height: 57px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   font-size: 32px;
 }
@@ -35,7 +32,7 @@
   justify-content: space-between;
   align-items: center;
   width: 15%;
-  margin-left: 20px;
+  margin-left: 55px;
 }
 .productAdd .inner .wrap .box .text {
   font-size: 20px;
@@ -54,8 +51,13 @@
   background-color: #eee;
 }
 
+.productAdd .inner .wrap.stock {
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
 .productAdd .inner .wrap.stock .boxWrap {
   justify-content: space-between;
+  margin: 0 0 10px 0;
 }
 .productAdd .inner .wrap.stock .boxWrap .box {
   margin: 0 10px;
@@ -63,6 +65,7 @@
   height: 50px;
   background-color: #fff;
 }
+
 .productAdd .inner .wrap.stock select {
   margin: 0 10px;
   width: 100%;
@@ -78,6 +81,15 @@
 .productAdd .inner .wrap.stock label {
   font-size: 32px;
 }
+.productAdd .inner .wrap.stock .title .btn {
+  padding: 10px 15px; margin-left: 20px;
+  background-color: #eee;
+}
+.productAdd .inner .wrap.stock .btn {
+  padding: 10px 15px;
+  background-color: #eee;
+}
+
 .productAdd .inner .wrap.img {
   justify-content: flex-start;
 }
@@ -85,6 +97,7 @@
   justify-content: flex-start;
   flex-flow: wrap;
 }
+
 .productAdd .inner .wrap.img .boxWrap .addImg {
   padding: 20px;
   margin-left: 100px;

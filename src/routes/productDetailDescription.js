@@ -37,7 +37,7 @@ export const ProductDetailDescription = () => {
     const isLogin = sessionStorage.getItem("token");
     if (!isLogin) {
       alert("로그인 후 사용할 수 있습니다");
-      return
+      return;
     }
     const { id } = jwtDecode(isLogin);
 
@@ -76,11 +76,15 @@ export const ProductDetailDescription = () => {
         } else {
           let no = await response.json();
           if (no.result == false) {
-            const confirmed = window.confirm("장바구니에 상품을 추가했습니다 장바구니로 이동하시겠습니까?");
-            if (confirmed) navigate('/cart')
+            const confirmed = window.confirm(
+              "장바구니에 상품을 추가했습니다 장바구니로 이동하시겠습니까?"
+            );
+            if (confirmed) navigate("/cart");
           } else {
-            const confirmed = window.confirm("장바구니에 이미 해당 상품이 담겨있습니다 장바구니로 이동하시겠습니까?");
-            if (confirmed) navigate('/cart')
+            const confirmed = window.confirm(
+              "장바구니에 이미 해당 상품이 담겨있습니다 장바구니로 이동하시겠습니까?"
+            );
+            if (confirmed) navigate("/cart");
           }
         }
       } catch (error) {
