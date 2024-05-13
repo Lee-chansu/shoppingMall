@@ -6,6 +6,7 @@ export const PayItem = ({
   payItemList,
   setPayItemList,
   handleDeleteItem,
+  handleAddToCart,
 }) => {
   async function delBtn() {
     /* 버튼 클릭시 {val} 한개 삭제 기능 구현 */
@@ -14,12 +15,13 @@ export const PayItem = ({
 
   function basketPlus() {
     /* 버튼 클릭시 cart에 담기 */
+    handleAddToCart(val)
   }
 
   return (
     <div className="payItem">
       <div className="itemInfo">
-        <div className="payDate">{val.buyDate}</div>
+        <div className="payDate">{val.buyDate.substring(0, 10)}</div>
         <img className="imageBox" src={val.image} />
         <div className="productBox">
           <div className="productName">상품명 : {val.productName}</div>
@@ -33,15 +35,15 @@ export const PayItem = ({
         </div>
       </div>
       <div className="btnBox">
-        <div to="/cart" className="basketPlus" onClick={basketPlus}>
+        <Link className="basketPlus" onClick={basketPlus}>
           {/* <img className="basketBtn"
           width="38"
           alt="basket"
           src="img/basket.png"
           /> */}
           장바구니 담기
-        </div>
-        <div className="delBtn" onClick={delBtn}>
+        </Link>
+        <Link className="delBtn" onClick={delBtn}>
           {/* <img
             className="trashBtn"
             width="32"
@@ -49,7 +51,7 @@ export const PayItem = ({
             src="img/trashBtn.png"
           /> */}
           구매내역 삭제
-        </div>
+        </Link>
         <Link to="/" className="reviewBtn">
           {/* <img
             className="trashBtn"

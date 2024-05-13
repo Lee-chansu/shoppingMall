@@ -97,6 +97,10 @@ export const Cart = () => {
     navigate("/payment");
   };
 
+  const handlePaymentRemove = () => {
+    // navigate("/payment");
+  };
+
   useEffect(() => {
     cartItemList.forEach((val) => {});
   });
@@ -146,6 +150,12 @@ export const Cart = () => {
               className="btn2"
               buttonTitle="선택상품 결제하기"
               handleLinkMove={handlePaymentMove}
+            />
+
+            <CustomButton
+              className="btn3"
+              buttonTitle="선택상품 삭제하기"
+              handleLinkMove={handlePaymentRemove}
             />
           </ButtonBox>
         </div>

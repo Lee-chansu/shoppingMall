@@ -7,14 +7,13 @@ import { Nav } from "../components/nav";
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
 import { jwtDecode } from "jwt-decode";
-import HomeButton from "../components/HomeButton";
 
 export const PayBuyList = () => {
   //네비게이션 선언
   const navigate = useNavigate();
 
   const [payItemList, setPayItemList] = useState([]);
-  const [id, setId] = useState("");
+  const [id, setId] = useState();
 
   //버튼 이동 함수 정의
   const handleLinkBackMove = () => {
@@ -26,13 +25,13 @@ export const PayBuyList = () => {
   };
 
   const getPayItemList = async () => {
-    const response = await fetch (`http://localhost:5000/buyList/${id}`)
+    const response = await fetch(`http://localhost:5000/buyList/${id}`);
     const payOrderList = await response.json();
     setPayItemList(payOrderList);
-  }
+  };
 
   //로그인한 유저의 id 가져오기
-  useEffect(()=> {
+  useEffect(() => {
     const token = sessionStorage.getItem("token");
     if (id === "" && !token) {
       navigate("/login");
@@ -40,31 +39,59 @@ export const PayBuyList = () => {
       const decodeToken = jwtDecode(token);
       setId(decodeToken.id);
     }
-  },[])
+  }, []);
 
   useEffect(() => {
     //유저의 id로 구매내역 조회
     if (id !== "") {
       getPayItemList();
     }
-  },[id])
+  }, [id]);
 
-  const handleDeleteItem = async (deletedItem) => {
+  const handleDeleteItem = async (val) => {
     try {
-      const response = await fetch(`http://localhost:5000/buyList/delete/${deletedItem.id}`, {
-        method: 'DELETE',
-      });
-      
+      const response = await fetch(
+        `http://localhost:5000/buyList/delete/${val.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
       if (response.ok) {
         // alert('삭제 완료');
-        setPayItemList((prevList) => prevList.filter(item => item.id !== deletedItem.id));
+        setPayItemList((prevList) =>
+          prevList.filter((item) => item.id !== val.id)
+        );
       } else {
-        throw new Error('서버에서 아이템 삭제 실패');
+        throw new Error("서버에서 아이템 삭제 실패");
       }
     } catch (error) {
       console.error(error);
-      alert('구매 내역 삭제 중 오류가 발생했습니다');
+      alert("구매 내역 삭제 중 오류가 발생했습니다");
     }
+  };
+
+  const handleAddToCart = async (val) => {
+    let newItem = payItemList.find((item) => item.id === val.id)
+
+    console.log(newItem.ProductOption)
+
+    const addItem = {
+      size: newItem.ProductOption.productSize,
+      color: newItem.ProductOption.productColor,
+      amount: newItem.amount,
+      price: newItem.price,
+      user_id: id,
+      productOption_id: newItem.ProductOption.id,
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(addItem),
+      });
+    } catch (error) {}
   };
 
   return (
@@ -82,6 +109,7 @@ export const PayBuyList = () => {
                 payItemList={payItemList}
                 setPayItemList={setPayItemList}
                 handleDeleteItem={handleDeleteItem}
+                handleAddToCart={handleAddToCart}
               />
             );
           })}
@@ -94,7 +122,7 @@ export const PayBuyList = () => {
           handleLinkMove={handleLinkBackMove}
         />
 
-        <HomeButton
+        <CustomButton
           className="btn2"
           buttonTitle="홈으로"
           handleLinkMove={handleHomeMove}
