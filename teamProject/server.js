@@ -414,6 +414,21 @@ app.get("/buyList/:user_id", async (req, res) => {
   res.json(result);
 });
 
+// 구매 내역 삭제
+app.delete("/buyList/delete/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Carry.destroy({ where: { order_id: id } });
+    await BuyList.destroy({ where: { id } });
+
+    res.status(200).json({ message: "삭제 완료" })
+  } catch (error) {
+    console.error("삭제 중 에러 발생", error)
+    res.status(500).json({ message: "삭제 중 오류가 발생했습니다" })
+  }
+  
+})
+
 app.get("/productOption", async (req, res) => {
   const result = await ProductOption.findAll();
   res.json(result);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../css/payBuyList.css";
 
 import { PayItem } from "../components/PayBuyListItem";
@@ -21,7 +21,7 @@ export const PayBuyList = () => {
     navigate(-1);
   };
 
-  const handleHometMove = () => {
+  const handleHomeMove = () => {
     navigate("/");
   };
 
@@ -40,12 +40,32 @@ export const PayBuyList = () => {
       const decodeToken = jwtDecode(token);
       setId(decodeToken.id);
     }
+  },[])
 
+  useEffect(() => {
     //유저의 id로 구매내역 조회
     if (id !== "") {
       getPayItemList();
     }
   },[id])
+
+  const handleDeleteItem = async (deletedItem) => {
+    try {
+      const response = await fetch(`http://localhost:5000/buyList/delete/${deletedItem.id}`, {
+        method: 'DELETE',
+      });
+      
+      if (response.ok) {
+        // alert('삭제 완료');
+        setPayItemList((prevList) => prevList.filter(item => item.id !== deletedItem.id));
+      } else {
+        throw new Error('서버에서 아이템 삭제 실패');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('구매 내역 삭제 중 오류가 발생했습니다');
+    }
+  };
 
   return (
     <>
@@ -58,9 +78,10 @@ export const PayBuyList = () => {
               <PayItem
                 val={val}
                 idx={idx}
-                key={idx}
+                key={val.id}
                 payItemList={payItemList}
                 setPayItemList={setPayItemList}
+                handleDeleteItem={handleDeleteItem}
               />
             );
           })}
@@ -76,7 +97,7 @@ export const PayBuyList = () => {
         <HomeButton
           className="btn2"
           buttonTitle="홈으로"
-          handleLinkMove={handleHometMove}
+          handleLinkMove={handleHomeMove}
         />
       </ButtonBox>
     </>
