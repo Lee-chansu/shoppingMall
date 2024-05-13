@@ -15,6 +15,7 @@ export const UserInfo = () => {
     }else {
       const decodeToken = jwtDecode(token)
       setId(decodeToken.id)
+      setImageUrl(decodeToken.profileImg)
     }
   },[])
   
@@ -28,7 +29,6 @@ export const UserInfo = () => {
 
   const deleteButton = async(e)=>{
     e.preventDefault()
-    
     
     const response = await fetch(`http://localhost:5000/userProfile/${id}`)
     const body = await response.json()

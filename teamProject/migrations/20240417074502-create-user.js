@@ -36,9 +36,6 @@ module.exports = {
       address: {
         type: Sequelize.STRING(100),
       },
-      userImage: {
-        type: Sequelize.STRING(100),
-      },
       isMaster: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
@@ -48,8 +45,7 @@ module.exports = {
         defaultValue: false,
       },
       profileImg: {
-        type: Sequelize.STRING(100),
-        defaultValue: false,
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
