@@ -5,6 +5,7 @@ import { Nav } from "../components/nav";
 import { ProductReview } from "../components/productReview";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import e from "cors";
 
 export const ProductDetailDescription = () => {
   const navigate = useNavigate();
@@ -102,10 +103,10 @@ export const ProductDetailDescription = () => {
           (product) => product.product_id == productId
         );
         setOption(productDetail);
-        const newSize = productDetail.map((product) => product.productSize);
+        const newSize = productDetail.map((product) => product.size);
         const sizeList = [...new Set(newSize)];
         setSize(sizeList.sort((a, b) => a - b));
-        const newColor = productDetail.map((product) => product.productColor);
+        const newColor = productDetail.map((product) => product.color);
         const colorList = [...new Set(newColor)];
         setColor(colorList);
       });
@@ -116,13 +117,12 @@ export const ProductDetailDescription = () => {
     if (selectedSize && selectedColor) {
       newStock = option.filter(
         (product) =>
-          product.productSize == selectedSize &&
-          product.productColor == selectedColor
+          product.size == selectedSize && product.color == selectedColor
       );
     }
 
     if (newStock.length) {
-      setMaxStock(newStock[0].productStock);
+      setMaxStock(newStock[0].stock);
     } else {
       setMaxStock(0);
     }
@@ -211,6 +211,18 @@ export const ProductDetailDescription = () => {
     setSwitchBtn(!switchBtn);
   };
 
+  const delProduct = (e) => {
+    e.preventDefault();
+
+    if (confirm("정말로 등록을 취소하시겠습니까?")) {
+      return;
+    } else {
+      const delelte = async () => {
+        await fetch(``);
+      };
+    }
+  };
+
   return (
     <>
       {product.id ? (
@@ -238,9 +250,13 @@ export const ProductDetailDescription = () => {
               <form onSubmit={handleSubmit}>
                 <div className="infoBox">
                   <Link to={`/productList/edit/${productId}`}>
-                    <button type="button" className="btn">수정</button>
+                    <button type="button" className="btn">
+                      수정
+                    </button>
                   </Link>
-                  <button type="button" className="btn">삭제</button>
+                  <button type="button" className="btn" onClick={delProduct}>
+                    삭제
+                  </button>
                   <div className="productName">
                     <div className="textWrapper2">제품명</div>
                     <div className="overlap2">

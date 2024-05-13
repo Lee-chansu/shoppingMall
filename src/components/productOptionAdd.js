@@ -1,17 +1,14 @@
+import { useState } from "react";
+
 export function ProductOption({
-  isAdd,
   checkCategory,
   newOption,
   setNewOption,
   idx,
   count,
   setCount,
-  color,
-  setColor,
-  size,
-  setSize,
 }) {
-  const valueChange = e => {
+  const valueChange = (e) => {
     const newOptions = [...newOption];
     const { name, value } = e.target;
     const updateOption = { ...newOptions[idx], [name]: value };
@@ -19,7 +16,7 @@ export function ProductOption({
     setNewOption(newOptions);
   };
 
-  const delTag = e => {
+  const delTag = (e) => {
     e.preventDefault();
     if (count > 1) {
       setCount(count - 1);
@@ -36,24 +33,12 @@ export function ProductOption({
     <div className="boxWrap">
       <div className="box">
         <label htmlFor={`color` + idx}>color</label>
-        {!isAdd ? (
-          <input
-            type="text"
-            id={`color` + idx}
-            name="color"
-            onChange={valueChange}
-          />
-        ) : (
-          color.map(el => {
-            <input
-              type="text"
-              id={`color` + idx}
-              name="color"
-              value={el}
-              onChange={valueChange}
-            />;
-          })
-        )}
+        <input
+          type="text"
+          id={`color` + idx}
+          name="color"
+          onChange={valueChange}
+        />
       </div>
       <div className="box">
         <label htmlFor={`size` + idx}>size</label>
@@ -102,6 +87,74 @@ export function ProductOption({
       <div className="box">
         <label htmlFor={`stock` + idx}>stock</label>
         <input type="number" name="stock" onChange={valueChange} />
+      </div>
+      <div className="delBtn">
+        <button className="btn" onClick={delTag} data-index={idx}>
+          -
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export function EditInfo({
+  newOption,
+  setNewOption,
+  optionLength,
+  setOptionLength,
+  idx,
+  count,
+  setCount,
+}) {
+  const delTag = (e) => {
+    e.preventDefault();
+    if (optionLength > 1) {
+      setOptionLength(optionLength - 1);
+      const newOptions = [...newOption];
+      const { index } = e.target.dataset;
+      newOptions.splice(index, 1);
+      setNewOption(newOptions);
+    } else {
+      return;
+    }
+  };
+  const valueChange = (e) => {
+    const newOptions = [...newOption];
+    const { name, value } = e.target;
+    const updateOption = { ...newOptions[idx], [name]: value };
+    newOptions[idx] = updateOption;
+    setNewOption(newOptions);
+  };
+  return (
+    <div className="boxWrap">
+      <div className="box">
+        <label htmlFor="color">color</label>
+        <select
+          defaultValue=""
+          className="select"
+          name="color"
+        >
+          <option value={newOption[idx].color}>{newOption[idx].color}</option>
+        </select>
+      </div>
+      <div className="box">
+        <label htmlFor="size">size</label>
+        <select
+          defaultValue=""
+          className="select"
+          name="size"
+        >
+          <option value={newOption[idx].size}>{newOption[idx].size}</option>
+        </select>
+      </div>
+      <div className="box">
+        <label htmlFor="stock">stock</label>
+        <input
+          type="number"
+          name="stock"
+          value={newOption[idx].stock}
+          onChange={valueChange}
+        />
       </div>
       <div className="delBtn">
         <button className="btn" onClick={delTag} data-index={idx}>

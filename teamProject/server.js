@@ -17,7 +17,7 @@ cron.schedule("0 0 * * *", async () => {
   const today = new Date();
   const delUser = await DeleteUser.findAll();
   if (delUser) {
-    delUser.forEach(async e => {
+    delUser.forEach(async (e) => {
       if (today > e.deleteDate) {
         await DeleteUser.destroy({ where: { deleteDate: e.deleteDate } });
         await Carry.destroy({ where: { user_id: e.user_id } });
@@ -58,6 +58,7 @@ const crypto = require("crypto");
 //db
 const db = require("./models");
 const productdetail = require("./models/productdetail");
+const { and } = require("sequelize");
 const {
   User,
   DeleteUser,
@@ -149,7 +150,7 @@ app.post("/login", (req, res) => {
     if (error) return res.status(500).json(error);
     if (!user) return res.status(401).json(info.message);
 
-    req.logIn(user, err => {
+    req.logIn(user, (err) => {
       if (err) return next(err);
       const token = jwt.sign(
         { id: user.id, userId: user.userId },
@@ -205,9 +206,9 @@ app.post("/addProduct", async (req, res) => {
     let newProductOption, productOption;
     for (let i = 0; i < newOption.length; i++) {
       newProductOption = {
-        productColor: newOption[i].color,
-        productSize: newOption[i].size,
-        productStock: newOption[i].stock,
+        color: newOption[i].color,
+        size: newOption[i].size,
+        stock: newOption[i].stock,
         product_id: id,
       };
       productOption = await ProductOption.create(newProductOption);
@@ -230,16 +231,12 @@ app.post("/addProduct", async (req, res) => {
 
 app.put("/productEdit/:id", async (req, res) => {
   const { id } = req.params;
-  const { category, detail, color, size, stock, ...rest } = req.body;
-  const newProduct = { ...rest };
+  const { newProduct, newOption, option } = req.body;
+  console.log(newProduct, newOption, option);
+
   const newProductDetail = {
-    category,
-    detailCategory: detail,
-  };
-  const newProductOption = {
-    productColor: color,
-    productSize: size,
-    productStock: stock,
+    category: newProduct.category,
+    detailCategory: newProduct.detail,
   };
 
   let result;
@@ -252,14 +249,32 @@ app.put("/productEdit/:id", async (req, res) => {
         where: { product_id: id },
       }
     );
-    console.log(color, size, stock);
     const productOption = await ProductOption.update(
-      { ...newProductOption },
+      { ...option },
       {
-        where: { product_id: id, productColor: newProductOption.productColor, productSize: newProductOption.productSize },
+        where: {
+          product_id: id,
+          ...option,
+        },
       }
     );
-    // console.log("productDetail", productDetail);
+    if (newOption) {
+      let newProductOption;
+      let optionBox;
+      for (let i = 0; i < newOption.length; i++) {
+        optionBox = {
+          product_id: id,
+          color: newOption[i].color,
+          size: newOption[i].size,
+          stock: newOption[i].stock,
+        };
+        newProductOption = await ProductOption.create(optionBox);
+        if (!newProductOption) {
+          result = false;
+          return;
+        }
+      }
+    }
 
     if (!product || !productDetail || !productOption) {
       result = false;
@@ -290,36 +305,23 @@ app.get("/DeleteUser", async (req, res) => {
 app.get("/product/:id", async (req, res) => {
   const { id } = req.params;
   const product = await Product.findOne({ where: { id } });
-  const { productColor, productSize } = await ProductOption.findOne({
-    where: { product_id: id },
-  });
   const productDetail = await ProductDetail.findOne({
     where: { product_id: id },
   });
 
-  let productOption = await ProductOption.findAll({
-    where: { product_id: id },
-  });
-
   if (product) {
-    let result= [];
-    for (let i = 0; i < productOption.length; i++) {
-      result[i] = {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        mainImage: product.mainImage,
-        subImage1: product.subImage1,
-        subImage2: product.subImage2,
-        subImage3: product.subImage3,
-        category: productDetail.category,
-        detail: productDetail.detailCategory,
-        size: productOption[i].productSize,
-        color: productOption[i].productColor,
-        stock: productOption[i].productStock,
-      };
-      // console.log(result.size, result.color, result.stock);
-    }
+    let result = [];
+    result = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      mainImage: product.mainImage,
+      subImage1: product.subImage1,
+      subImage2: product.subImage2,
+      subImage3: product.subImage3,
+      category: productDetail.category,
+      detail: productDetail.detailCategory,
+    };
     res.json(result);
   } else {
     res.json({});
@@ -334,34 +336,31 @@ app.get("/product/:id", async (req, res) => {
 
 // nav 카테고리 별 제품리스트조회
 app.get("/product", async (req, res) => {
-  const {category}= req.query
-  let result
+  const { category } = req.query;
+  let result;
   try {
-    if(category){
+    if (category) {
       result = await ProductDetail.findAll({
-        include : [Product],
-        where : {
-          category : category
-        }
-      })
+        include: [Product],
+        where: {
+          category: category,
+        },
+      });
+    } else {
+      result = await Product.findAll();
     }
-    else{
-      result = await Product.findAll()
-    }
-    res.json(result)
-    
+    res.json(result);
   } catch (error) {
-    console.log("데이터 조회 중 오류 발생 : ", error)
+    console.log("데이터 조회 중 오류 발생 : ", error);
   }
 });
-
-
 
 // 리뷰 리스트 조회
 app.get("/ReviewList", async (req, res) => {
   const { productOption_id } = req.query;
   let result = await ReviewList.findAll({ where: {} });
-  if (productOption_id) result = await ReviewList.findAll({ where: { productOption_id } });
+  if (productOption_id)
+    result = await ReviewList.findAll({ where: { productOption_id } });
   // console.log(result);
   if (result) {
     res.json(result);
@@ -400,8 +399,10 @@ app.get("/Cart/:user_id", async (req, res) => {
 app.post("/cart", async (req, res) => {
   const newProduct = req.body;
   const { user_id, productOption_id, size, color, amount } = req.body;
-  const result = await Cart.findOne({ where: { user_id, productOption_id, size, color } });
-  console.log('result', result)
+  const result = await Cart.findOne({
+    where: { user_id, productOption_id, size, color },
+  });
+  console.log("result", result);
   if (!result) {
     await Cart.create(newProduct);
     res.json({ result: false });
@@ -424,6 +425,15 @@ app.get("/buyList/:user_id", async (req, res) => {
 
 app.get("/productOption", async (req, res) => {
   const result = await ProductOption.findAll();
+  res.json(result);
+});
+
+app.get("/productOption/:id", async (req, res) => {
+  const { id } = req.params;
+  const result = await ProductOption.findAll({
+    where: { product_id: id },
+    limit: 10,
+  });
   res.json(result);
 });
 

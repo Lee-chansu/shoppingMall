@@ -16,13 +16,13 @@ module.exports = {
           key: "id",
         },
       },
-      productColor: {
+      color: {
         type: Sequelize.STRING(255),
       },
-      productSize: {
+      size: {
         type: Sequelize.STRING(10),
       },
-      productStock: {
+      stock: {
         type: Sequelize.INTEGER,
       },
     });
