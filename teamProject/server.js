@@ -289,6 +289,23 @@ app.put("/productEdit/:id", async (req, res) => {
   }
 });
 
+app.delete("/productDelete/:id", async (req, res) => {
+  const { id } = req.params;
+  const optionDel = await ProductOption.destroy({ where: { product_id: id } });
+  let detailDel, delProduct, result;
+  if (optionDel) {
+    detailDel = await ProductDetail.destroy({ where: { product_id: id } });
+    if (detailDel) {
+      delProduct = await Product.destory({ where: { id } });
+      result = true;
+    }
+  } else {
+    result = false;
+    return;
+  }
+  res.json(result);
+});
+
 // 각 화면들
 
 app.get("/User", async (req, res) => {

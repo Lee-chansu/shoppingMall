@@ -211,17 +211,35 @@ export const ProductDetailDescription = () => {
     setSwitchBtn(!switchBtn);
   };
 
-  const delProduct = (e) => {
-    e.preventDefault();
-
-    if (confirm("정말로 등록을 취소하시겠습니까?")) {
+  function delProduct() {
+    if (("정말 삭제하시겠습니까?")) {
       return;
     } else {
-      const delelte = async () => {
-        await fetch(``);
-      };
+      try {
+        const deleteProduct = async () => {
+          await fetch(`http://localhost:5000/productDelete/${productId}`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+          })
+            .then((res) => {
+              return res.json();
+            })
+            .then((res) => {
+              if (res) {
+                alert("등록을 취소했습니다.");
+                return;
+              } else {
+                alert("등록을 취소하는데 실패했습니다.");
+                console.log(res);
+              }
+            });
+        };
+      } catch (error) {
+        alert("오류");
+        console.log(error);
+      }
     }
-  };
+  }
 
   return (
     <>
