@@ -153,8 +153,9 @@ app.post("/login", (req, res) => {
 
     req.logIn(user, (err) => {
       if (err) return next(err);
+      
       const token = jwt.sign(
-        { id: user.id, userId: user.userId },
+        { id: user.id, userId: user.userId ,profileImg : user.profileImg},
         JWT_SECRET_KEY
       );
       res.json({ token, user });
@@ -171,9 +172,9 @@ app.get("/", async (req, res) => {
 //유저프로필 이미지 불러오기
 app.get("/profile/:id", async (req, res) => {
   const { id } = req.params;
-  const { userImage } = await User.findOne({ where: { id } });
+  const { profileImg } = await User.findOne({ where: { id } });
 
-  res.json(userImage);
+  res.json(profileImg);
 });
 
 // 유저프로필
@@ -453,6 +454,7 @@ app.get("/userEdit/:id", async (req, res) => {
 app.put("/userEdit/:id", async (req, res) => {
   const { id } = req.params;
   const editUser = req.body;
+  
   const result = await User.findOne({ where: { id } });
   if (result) {
     for (let key in editUser) {

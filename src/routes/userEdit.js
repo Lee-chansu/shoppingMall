@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 
 export const UserEdit = () => {
-  const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
   const goback = () => {
     navigate(-1);
@@ -39,6 +38,7 @@ export const UserEdit = () => {
 
   useEffect(() => {
     const editDefault = {
+      profileImg : getUser.profileImg,
       password: "",
       passwordCheck: "",
       email: getUser.email,
@@ -49,10 +49,43 @@ export const UserEdit = () => {
     setEditUser(editDefault);
   }, [getUser]);
 
+  const checkClick = (e) => {
+    const { value } = e.target;
+    if (value == "false") {
+      setCheckToggle("true");
+      setEditUser(pre=>({
+        ...pre,
+        password: getUser.password,
+        passwordCheck: getUser.password,
+        gender: getUser.gender,
+      }));
+    } else {
+      setCheckToggle("false");
+      setEditUser(pre=>({
+        ...pre,
+        password: "",
+        passwordCheck: "",
+        gender: getUser.gender,
+      }));
+    }
+  };
+
   const valueChange = (e) => {
     const { name, value } = e.target;
-    setEditUser({ ...editUser, [name]: value });
+    setEditUser(pre => ({...pre, [name]: value }));
   };
+
+  const imageChange = (e)=>{
+    const selectFile = e.target.files[0]
+    console.log(e.target)
+    if(selectFile){
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setEditUser(pre => ({...pre, profileImg : reader.result}))
+      }
+      reader.readAsDataURL(selectFile)
+    }
+  }
 
   const buttonClick = async (e) => {
     e.preventDefault();
@@ -69,6 +102,7 @@ export const UserEdit = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(editUser),
         });
+        
 
         if (!response.ok) {
           throw new Error("서버에서 응답을 받을 수 없습니다");
@@ -83,30 +117,19 @@ export const UserEdit = () => {
     }
   };
 
-  const checkClick = (e) => {
-    const { value } = e.target;
-    if (value == "false") {
-      setCheckToggle("true");
-      setEditUser({
-        password: getUser.password,
-        passwordCheck: getUser.password,
-        gender: getUser.gender,
-      });
-      console.log(getUser);
-    } else {
-      setCheckToggle("false");
-      setEditUser({ password: "", passwordCheck: "", gender: getUser.gender });
-    }
-  };
+  
+
+  
 
   return (
     <div className="userEdit">
       <form className="formBox">
+        <input className="iuputImage" type="file" onChange={imageChange}></input>
         <img
           className="profileImage"
-          src={imageUrl}
-          onError={() => setImageUrl("../img/userDefaultImg.png")}
-          alt="유저프로필"
+          src={editUser.profileImg}
+          onError={() => {if(!getUser.profileImg){setGetUser({...getUser, profileImg : '../img/userDefaultImg.png'})}}}
+          alt="프로필 이미지"
         />
         <div className="userEditBox">
           <div className="boxPassword">

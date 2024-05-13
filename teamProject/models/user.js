@@ -49,8 +49,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
-      userImage: {
-        type: DataTypes.STRING(100),
+      profileImg: {
+        type: DataTypes.TEXT
       },
       createdAt: {
         type: DataTypes.DATE,

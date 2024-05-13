@@ -7,7 +7,7 @@ export const UserProfile = () => {
   const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
   const goback = () => {
-    navigate(-1);
+    navigate('/');
   };
 
   const [userProfile, setUserProfile] = useState({});
@@ -41,7 +41,7 @@ export const UserProfile = () => {
         <div className="overlapGroup">
           <img
             className="profileImage"
-            src={imageUrl}
+            src={userProfile.profileImg}
             onError={() => setImageUrl("../img/userDefaultImg.png")}
             alt="유저프로필"
           />
@@ -50,12 +50,6 @@ export const UserProfile = () => {
               <div className="box">
                 <p className="title">아이디 :</p>
                 <p className="textWrapper">{userProfile.userId}</p>
-              </div>
-            </div>
-            <div className="boxUsername">
-              <div className="box">
-                <p className="title">비밀번호 : </p>
-                <p className="textWrapper">{userProfile.userName}</p>
               </div>
             </div>
             <div className="boxEmail">
@@ -89,7 +83,7 @@ export const UserProfile = () => {
                 <button className="toSubmitButton">수정하기</button>
               </Link>
               <button type="button" onClick={goback} className="cancelButton">
-                돌아가기
+                홈으로
               </button>
             </div>
           </div>

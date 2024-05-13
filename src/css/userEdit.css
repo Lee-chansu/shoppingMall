@@ -14,16 +14,24 @@
   width: 1440px;
 }
 
-.userEdit .profileImage {
-  background-color: #d9d9d9;
+.userEdit .iuputImage{
+  position: absolute;
+  top: 210px;
+  left: 850px;
+  z-index: 1;
+}
+
+.userEdit .profileImage{
+  position: absolute;
   border-radius: 109.48px;
   height: 219px;
   left: 611px;
   position: absolute;
-  top: 20px;
+  top: 21px;
   width: 219px;
   z-index: 1;
 }
+
 
 .userEdit .userEditBox {
   background-color: #eeeeee;
