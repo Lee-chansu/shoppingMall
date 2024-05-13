@@ -3,22 +3,24 @@ ul, ol, li{list-style:none;}
 a{text-decoration:none;} 
 
 .userProfile {
-  background-color: #ffffff;
+  background-color: #f6f1eb;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
 .userProfile .overlapGroupWrapper {
-  background-color: #ffffff;
-  overflow: hidden;
+  background-color: #f6f1eb;
   width: 1440px;
+  height: 120vh;
+  display: flex;
+  justify-content: center;
 }
 
 .userProfile .overlapGroup {
   height: 1035px;
-  left: 503px;
   position: relative;
   width: 434px;
 }
@@ -35,27 +37,47 @@ a{text-decoration:none;}
 }
 
 .userProfile .userEditBox {
-  background-color: #eeeeee;
+  background-color: #fffcf7;
   left: 0;
   position: absolute;
-  top: 230px;
+  top: 210px;
   display: flex;
   flex-flow: column;
   align-items: center;
   width: 434px;
-  height: 824px;
+  height: 920px;
+  border-radius: 10px;
 }
 
 .userProfile .userEditBox .title {
   padding: 15px 0;
-  margin: 10px;
+  margin: 60px 10px 10px 10px;
   text-align: center;
+  line-height: 35px;
+  position: relative;
+}
+
+.userProfile .userEditBox .title::after{
+  content: '';
+  display: block;
+  width: 90%;
+  height: 2px;
+  background-color: #fffcf7;
+  position: absolute;
+  top: 45px;
+  left: 20px;
+}
+
+.userProfile .userEditBox .title > span{
+  color: #9d2b1eb7;
 }
 
 .userProfile .box {
-  background-color: #eeeeee;
+  background-color: #f6f1eb;
   height: 97px;
   width: 399px;
+  border-radius: 5px;
+  
 }
 
 .userProfile .textWrapper {
@@ -66,6 +88,7 @@ a{text-decoration:none;}
   text-align: center;
   margin: 20px 0;
   padding: 10px 0;
+  
 }
 
 
@@ -77,15 +100,25 @@ a{text-decoration:none;}
   margin: 20px;
 }
 .userProfile .cancelButton {
-  background-color: #ffffff;
-  height: 48px;
-  width: 145px;
-  margin-left: 20px;
+  background-color: #4d4a4a;
+  height: 40px;
+  left: 250px;
+  position: absolute;
+  top: 850px;
+  width: 120px;
+  border-radius: 5px;
+  border: transparent;
+  color: #ffffff;
 }
 
 .userProfile .toSubmitButton {
-  background-color: #ffffff;
-  height: 48px;
-  width: 145px;
-  margin-right: 20px;
+  background-color: #4d4a4a;
+  height: 40px;
+  left: 60px;
+  position: absolute;
+  top: 850px;
+  width: 120px;
+  border-radius: 5px;
+  border: transparent;
+  color: #ffffff;
 }

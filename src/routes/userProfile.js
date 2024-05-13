@@ -48,34 +48,27 @@ export const UserProfile = () => {
           <div className="userEditBox">
             <div className="boxId">
               <div className="box">
-                <p className="title">아이디 :</p>
-                <p className="textWrapper">{userProfile.userId}</p>
+                <p className="title">아이디  <br></br><span>{userProfile.userId}</span></p>
               </div>
             </div>
             <div className="boxEmail">
               <div className="box">
-                <p className="title">이메일 : </p>
-                <p className="textWrapper">{userProfile.email}</p>
+                <p className="title">이메일  <br></br><span>{userProfile.email}</span></p>
               </div>
             </div>
             <div className="boxPhone">
               <div className="box">
-                <p className="title">휴대폰 번호 :</p>
-                <div className="textWrapper">{userProfile.phoneNumber}</div>
+                <p className="title">휴대폰 번호 <br></br><span>{userProfile.email}</span></p>
               </div>
             </div>
             <div className="boxAddress">
               <div className="box">
-                <p className="title">주소 : </p>
-                <p className="textWrapper">{userProfile.address}</p>
+                <p className="title">주소  <br></br><span>{userProfile.email}</span></p>
               </div>
             </div>
             <div className="boxGender">
               <div className="box">
-                <p className="title">성별</p>
-                <p className="textWrapper">
-                  {userProfile.gender === "M" ? "남자" : "여자"}
-                </p>
+                <p className="title">성별  <br></br><span>{userProfile.gender === "M" ? "남자" : "여자"}</span></p>
               </div>
             </div>
             <div className="editForm">

@@ -123,147 +123,151 @@ export const UserEdit = () => {
 
   return (
     <div className="userEdit">
-      <form className="formBox">
-        <input className="iuputImage" type="file" onChange={imageChange}></input>
-        <img
-          className="profileImage"
-          src={editUser.profileImg}
-          onError={() => {if(!getUser.profileImg){setGetUser({...getUser, profileImg : '../img/userDefaultImg.png'})}}}
-          alt="프로필 이미지"
-        />
-        <div className="userEditBox">
-          <div className="boxPassword">
-            <div className="checkBox">
+      <div className="inner">
+        <form className="formBox">
+          <div className="userEditBox">
+            <div className="imageBox">
+              <input className="iuputImage" type="file" onChange={imageChange}></input>
+              <img
+                className="profileImage"
+                src={editUser.profileImg}
+                onError={() => {if(!getUser.profileImg){setGetUser({...getUser, profileImg : '../img/userDefaultImg.png'})}}}
+                alt="프로필 이미지"
+              />
+            </div>
+            <div className="boxPassword">
+              <div className="checkBox">
+                <label htmlFor="passwordCheck" className="txt">
+                  비밀번호 변경하지않음
+                </label>
+                <input
+                  type="checkbox"
+                  id="passwordCheck"
+                  className="checkPass"
+                  onClick={checkClick}
+                  value={checkToggle}
+                ></input>
+              </div>
+              <label htmlFor="password" className="txt">
+                변경할 비밀번호
+              </label>
+              {checkToggle == "true" ? (
+                <input
+                  id="password"
+                  type="password"
+                  className="input"
+                  name="password"
+                  value={getUser.password}
+                />
+              ) : (
+                <input
+                  id="password"
+                  type="password"
+                  className="input"
+                  name="password"
+                  onChange={valueChange}
+                  value={editUser.password}
+                />
+              )}
+            </div>
+            <div className="boxPasswordCheck">
               <label htmlFor="passwordCheck" className="txt">
-                비밀번호 변경하지않음
+                비밀번호 재확인
               </label>
-              <input
-                type="checkbox"
-                id="passwordCheck"
-                className="checkPass"
-                onClick={checkClick}
-                value={checkToggle}
-              ></input>
+              {checkToggle == "true" ? (
+                <input
+                  id="passwordCheck"
+                  type="password"
+                  className="input"
+                  name="passwordCheck"
+                  value={getUser.password}
+                />
+              ) : (
+                <input
+                  id="passwordCheck"
+                  type="password"
+                  className="input"
+                  name="passwordCheck"
+                  onChange={valueChange}
+                  value={editUser.passwordCheck}
+                />
+              )}
             </div>
-            <label htmlFor="password" className="txt">
-              변경할 비밀번호
-            </label>
-            {checkToggle == "true" ? (
-              <input
-                id="password"
-                type="password"
-                className="input"
-                name="password"
-                value={getUser.password}
-              />
-            ) : (
-              <input
-                id="password"
-                type="password"
-                className="input"
-                name="password"
-                onChange={valueChange}
-                value={editUser.password}
-              />
-            )}
-          </div>
-          <div className="boxPasswordCheck">
-            <label htmlFor="passwordCheck" className="txt">
-              비밀번호 재확인
-            </label>
-            {checkToggle == "true" ? (
-              <input
-                id="passwordCheck"
-                type="password"
-                className="input"
-                name="passwordCheck"
-                value={getUser.password}
-              />
-            ) : (
-              <input
-                id="passwordCheck"
-                type="password"
-                className="input"
-                name="passwordCheck"
-                onChange={valueChange}
-                value={editUser.passwordCheck}
-              />
-            )}
-          </div>
-          <div className="boxEmail">
-            <label htmlFor="email" className="txt">
-              이메일을 입력해주세요
-            </label>
-            <input
-              id="email"
-              type="email"
-              className="input"
-              name="email"
-              onChange={valueChange}
-              value={editUser.email}
-            />
-          </div>
-          <div className="boxPhone">
-            <label htmlFor="phone" className="txt">
-              전화번호를 입력해주세요
-            </label>
-            <input
-              id="phone"
-              className="input"
-              name="phoneNumber"
-              onChange={valueChange}
-              value={editUser.phoneNumber}
-            />
-          </div>
-          <div className="boxAddress">
-            <label htmlFor="address" className="txt">
-              주소를 입력해주세요
-            </label>
-            <input
-              id="address"
-              className="input"
-              name="address"
-              onChange={valueChange}
-              value={editUser.address}
-            />
-          </div>
-          <div className="selectGender">
-            <div className="txt">성별을 선택해주세요</div>
-            <div className="inputRadio">
-              <label htmlFor="male" className="textWrapper2">
-                남
+            <div className="boxEmail">
+              <label htmlFor="email" className="txt">
+                이메일을 입력해주세요
               </label>
               <input
-                type="radio"
-                name="gender"
-                className="radioMale"
-                value="M"
+                id="email"
+                type="email"
+                className="input"
+                name="email"
                 onChange={valueChange}
-                checked={editUser.gender === "M"}
-              />
-              <label htmlFor="female" className="textWrapper">
-                여
-              </label>
-              <input
-                type="radio"
-                name="gender"
-                className="radioFemale"
-                value="F"
-                onChange={valueChange}
-                checked={editUser.gender === "F"}
+                value={editUser.email}
               />
             </div>
+            <div className="boxPhone">
+              <label htmlFor="phone" className="txt">
+                전화번호를 입력해주세요
+              </label>
+              <input
+                id="phone"
+                className="input"
+                name="phoneNumber"
+                onChange={valueChange}
+                value={editUser.phoneNumber}
+              />
+            </div>
+            <div className="boxAddress">
+              <label htmlFor="address" className="txt">
+                주소를 입력해주세요
+              </label>
+              <input
+                id="address"
+                className="input"
+                name="address"
+                onChange={valueChange}
+                value={editUser.address}
+              />
+            </div>
+            <div className="selectGender">
+              <div className="txt">성별을 선택해주세요</div>
+              <div className="inputRadio">
+                <label htmlFor="male" className="textWrapper2">
+                  남
+                </label>
+                <input
+                  type="radio"
+                  name="gender"
+                  className="radioMale"
+                  value="M"
+                  onChange={valueChange}
+                  checked={editUser.gender === "M"}
+                />
+                <label htmlFor="female" className="textWrapper">
+                  여
+                </label>
+                <input
+                  type="radio"
+                  name="gender"
+                  className="radioFemale"
+                  value="F"
+                  onChange={valueChange}
+                  checked={editUser.gender === "F"}
+                />
+              </div>
+            </div>
+            <div className="editForm">
+              <button className="submitButton" onClick={buttonClick}>
+                제출
+              </button>
+              <button type="button" onClick={goback} className="cancelButton">
+                취소
+              </button>
+            </div>
           </div>
-          <div className="editForm">
-            <button className="submitButton" onClick={buttonClick}>
-              제출
-            </button>
-            <button type="button" onClick={goback} className="cancelButton">
-              취소
-            </button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
