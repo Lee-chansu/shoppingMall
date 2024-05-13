@@ -9,7 +9,7 @@ module.exports = {
         {
           id: 100,
           user_id: 100,
-          product_id: 1,
+          productOption_id: 1,
           size: 95,
           color: "파란색",
           amount: 2,
@@ -17,7 +17,7 @@ module.exports = {
         {
           id: 101,
           user_id: 100,
-          product_id: 2,
+          productOption_id: 2,
           size: 100,
           color: "청색",
           amount: 1,
@@ -25,7 +25,7 @@ module.exports = {
         {
           id: 102,
           user_id: 102,
-          product_id: 3,
+          productOption_id: 3,
           size: 105,
           color: "블랙",
           amount: 2,
@@ -33,7 +33,7 @@ module.exports = {
         {
           id: 103,
           user_id: 103,
-          product_id: 4,
+          productOption_id: 4,
           size: 95,
           color: "청색",
           amount: 3,
@@ -41,7 +41,7 @@ module.exports = {
         {
           id: 104,
           user_id: 104,
-          product_id: 5,
+          productOption_id: 5,
           size: 100,
           color: "블랙",
           amount: 4,
@@ -49,7 +49,7 @@ module.exports = {
         {
           id: 105,
           user_id: 105,
-          product_id: 6,
+          productOption_id: 6,
           size: 105,
           color: "베이지",
           amount: 5,
@@ -57,7 +57,7 @@ module.exports = {
         {
           id: 106,
           user_id: 106,
-          product_id: 7,
+          productOption_id: 7,
           size: 95,
           color: "베이지",
           amount: 6,
@@ -65,7 +65,7 @@ module.exports = {
         {
           id: 107,
           user_id: 107,
-          product_id: 8,
+          productOption_id: 8,
           size: 100,
           color: "화이트",
           amount: 7,
@@ -73,7 +73,7 @@ module.exports = {
         // {
         //   id: 108,
         //   user_id: 108,
-        //   product_id: 9,
+        //   productOption_id: 9,
         //   size: 105,
         //   color: "!",
         //   amount: 8,
@@ -81,7 +81,7 @@ module.exports = {
         // {
         //   id: 109,
         //   user_id: 109,
-        //   product_id: 10,
+        //   productOption_id: 10,
         //   size: 95,
         //   color: "!",
         //   amount: 9,

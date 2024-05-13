@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../css/productList.css";
 
 //컴포넌트
@@ -9,18 +9,35 @@ import { Detail } from "../components/detail";
 
 export const ProductList = () => {
   const [productList, setProductList] = useState([]);
-
+  // url 쿼리 문자열 받아오는 방법
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search)
+  const queryParamValue = searchParams.get('category')
+  
+  
   const loadProduct = async () => {
-    const getProduct = await fetch("http://localhost:5000/product").then(res =>
-      // const getProduct = await fetch("https://hotcake.loca.lt/Product").then((res) =>
-      res.json()
-    );
+    let getProduct
+    if(queryParamValue){
+      getProduct = await fetch(`http://localhost:5000/product?category=${queryParamValue}`).then(res =>
+        // const getProduct = await fetch("https://hotcake.loca.lt/Product").then((res) =>
+        res.json(),
+      );
+      
+    }else{
+      getProduct = await fetch(`http://localhost:5000/product`).then(res =>
+        // const getProduct = await fetch("https://hotcake.loca.lt/Product").then((res) =>
+        res.json(),
+      );
+    }
     setProductList(getProduct);
+    
   };
 
   useEffect(() => {
     loadProduct();
-  }, []);
+  }, [queryParamValue]);
+  
+  
 
   return (
     <>

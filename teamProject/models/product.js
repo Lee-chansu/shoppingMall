@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+const { FOREIGNKEYS } = require('sequelize/lib/query-types');
 
 module.exports = (sequelize) => {
   const Product = sequelize.define('Product', {
@@ -32,6 +33,11 @@ module.exports = (sequelize) => {
   }, {
     timestamps: false
   });
+
+  Product.associate = (models) => {
+    Product.hasMany(models.ProductOption, { foreignKey: 'product_id' });
+    Product.hasMany(models.ProductDetail, { foreignKey: 'product_id' });
+  }
 
   return Product;
 };
