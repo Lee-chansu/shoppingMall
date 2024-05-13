@@ -5,6 +5,7 @@ import "../css/productEdit.css";
 //컴포넌트
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
+import { ProductOption, EditInfo } from "../components/productOptionAdd";
 
 export const ProductEdit = () => {
   const id = useParams().id;
@@ -12,27 +13,18 @@ export const ProductEdit = () => {
   const mainImgRef = useRef();
 
   const [newProduct, setNewProduct] = useState({});
+  const [option, setOption] = useState([]);
+  const [newOption, setNewOption] = useState([]);
+  const [optionLength, setOptionLength] = useState(0);
   const [detailBar, setDetailBar] = useState([]);
   const [checkDetail, setCheckDetail] = useState("");
   const [mainImageFile, setMainImageFile] = useState("");
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
-  const [option, setOption] = useState([]);
-  const [size, setSize] = useState([]);
-  const [color, setColor] = useState([]);
-  const [selectedSize, setSelectedSize] = useState("");
-  const [selectedColor, setSelectedColor] = useState("");
+  const [count, setCount] = useState(0);
 
   const subImageCount = [0, 1, 2];
   const subImageId = ["subImage1", "subImage2", "subImage3"];
-
-  const handleChangeSize = (event) => {
-    setSelectedSize(event.target.value);
-  };
-
-  const handleChangeColor = (event) => {
-    setSelectedColor(event.target.value);
-  };
 
   const detail = {
     아우터: ["코트", "블레이저", "패딩"],
@@ -48,25 +40,19 @@ export const ProductEdit = () => {
         return res.json();
       }
     );
-    await fetch(`http://localhost:5000/productOption`)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        const productDetail = data.filter(
-          (product) => product.product_id == id
-        );
-        setOption(productDetail);
-        const newSize = productDetail.map((product) => product.productSize);
-        const sizeList = [...new Set(newSize)];
-        setSize(sizeList.sort((a, b) => a - b));
-        const newColor = productDetail.map((product) => product.productColor);
-        const colorList = [...new Set(newColor)];
-        setColor(colorList);
-      });
     setNewProduct(getProduct);
     setCheckCategory(getProduct.category);
     setCheckDetail(getProduct.detail);
+  };
+
+  const loadOption = async () => {
+    const loadData = await fetch(
+      `http://localhost:5000/productOption/${id}`
+    ).then((res) => {
+      return res.json();
+    });
+    setOptionLength(loadData.length);
+    setOption(loadData);
   };
 
   const previewMainImg = () => {
@@ -136,18 +122,54 @@ export const ProductEdit = () => {
 
   useEffect(() => {
     loadProduct();
-    console.log(newProduct.color);
+    loadOption();
   }, []);
 
   useEffect(() => {
     showDetailBar();
   }, [checkCategory, checkDetail]);
 
+  const addTag = (e) => {
+    e.preventDefault();
+    setCount(count + 1);
+  };
+
+  //새로운 정보를 추가하는 컴포넌트
+  const components = Array.from({ length: count }, (el, index) => {
+    return (
+      <ProductOption
+        key={index}
+        checkCategory={checkCategory}
+        newOption={newOption}
+        setNewOption={setNewOption}
+        idx={index}
+        count={count}
+        setCount={setCount}
+      />
+    );
+  });
+
+  //기존의 정보를 불러오는 컴포넌트
+  const editComponents = Array.from({ length: optionLength }, (el, index) => {
+    // const currentOption = newOption[index];
+    return (
+      <EditInfo
+        key={index}
+        newOption={option}
+        setNewOption={setOption}
+        optionLength={optionLength}
+        setOptionLength={setOptionLength}
+        idx={index}
+        count={count}
+        setCount={setCount}
+      />
+    );
+  });
+
+  useEffect(() => {}, [option, newOption]);
+
   const toEditProduct = async (e) => {
     e.preventDefault();
-
-    console.log(newProduct)
-    // return
 
     try {
       if (newProduct.category === "") {
@@ -183,10 +205,16 @@ export const ProductEdit = () => {
         return;
       }
 
+      const body = {
+        newProduct,
+        newOption,
+        option,
+      };
+
       await fetch(`http://localhost:5000/productEdit/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newProduct),
+        body: JSON.stringify(body),
       }).then((res) => {
         res.json();
         if (res.ok) {
@@ -280,59 +308,14 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap stock">
-              <h2 className="title">옵션</h2>
-              <div className="boxWrap">
-                <div className="box">
-                  <label htmlFor="color">color</label>
-                  <select
-                    defaultValue=""
-                    className="select"
-                    name="color"
-                    onChange={handleChangeColor}
-                  >
-                    {
-                      !color && <option value="" disabled>color</option>
-                    }
-                    {color.map((el, i) => {
-                      return (
-                        <option key={i} value={el}>
-                          {el}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </div>
-                <div className="box">
-                  <label htmlFor="size">size</label>
-                  <select
-                    defaultValue=""
-                    className="select"
-                    name="size"
-                    // value={selectedSize}
-                    onChange={handleChangeSize}
-                  >
-                    {
-                      !size && <option value="" disabled>size</option>
-                    }
-                    {size.map((el, i) => {
-                      return (
-                        <option key={i} value={el}>
-                          {el}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </div>
-                <div className="box">
-                  <label htmlFor="stock">stock</label>
-                  <input
-                    type="number"
-                    name="stock"
-                    defaultValue={newProduct.stock}
-                    onChange={valueChange}
-                  />
-                </div>
-              </div>
+              <h2 className="title">
+                옵션
+                <button className="btn" onClick={addTag}>
+                  +
+                </button>
+              </h2>
+              {editComponents}
+              {components}
             </div>
             <div className="wrap img">
               <h2 className="title">메인이미지 등록</h2>

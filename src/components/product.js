@@ -7,7 +7,6 @@ export const Product = ({ product }) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search)
   const queryParamValue = searchParams.get('category')
-  console.log(1,queryParamValue)
   const [imageUrl, setImageUrl] = useState(product.mainImage);
 
   useEffect(()=>{

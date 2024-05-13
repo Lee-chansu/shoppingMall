@@ -58,6 +58,7 @@ const crypto = require("crypto");
 //db
 const db = require("./models");
 const productdetail = require("./models/productdetail");
+const { and } = require("sequelize");
 const {
   User,
   DeleteUser,
@@ -151,9 +152,9 @@ app.post("/login", (req, res) => {
 
     req.logIn(user, (err) => {
       if (err) return next(err);
-      
+
       const token = jwt.sign(
-        { id: user.id, userId: user.userId ,profileImg : user.profileImg},
+        { id: user.id, userId: user.userId, profileImg: user.profileImg },
         JWT_SECRET_KEY
       );
       res.json({ token, user });
@@ -186,41 +187,43 @@ app.get("/userProfile/:id", async (req, res) => {
 
 //제품 추가 페이지
 app.post("/addProduct", async (req, res) => {
-  // console.log(req.body);
   const { newProduct, newOption } = req.body;
   // console.log("newPorduct:", newProduct, "newOption:", newOption);
 
-  for (let i = 0; i < newOption.length; i++) {
-    console.log(i + "번째", newOption[i]);
-  }
-
   let result;
   try {
-    // const product = await Product.create(newProduct);
-    // const { id } = await Product.findOne({
-    //   order: [["id", "DESC"]],
-    //   limit: 1,
-    // });
-    // const newProductDetail = {
-    //   product_id: id,
-    //   category,
-    //   detailCategory: detail,
-    // };
-    // const newProductOption = {
-    //   product_id: id,
-    //   productColor: color,
-    //   productSize: size,
-    //   productStock: stock,
-    // };
-    // const productDetail = await ProductDetail.create(newProductDetail);
-    // const productOption = await ProductOption.create(newProductOption);
-    // if (!product || !productDetail || !productOption) {
-    //   result = false;
-    // } else {
-    //   result = true;
-    // }
-    // // console.log(result);
-    // res.json(result);
+    const product = await Product.create(newProduct);
+    const { id } = await Product.findOne({
+      order: [["id", "DESC"]],
+      limit: 1,
+    });
+    const newProductDetail = {
+      product_id: id,
+      category: newProduct.category,
+      detailCategory: newProduct.detail,
+    };
+    const productDetail = await ProductDetail.create(newProductDetail);
+
+    let newProductOption, productOption;
+    for (let i = 0; i < newOption.length; i++) {
+      newProductOption = {
+        color: newOption[i].color,
+        size: newOption[i].size,
+        stock: newOption[i].stock,
+        product_id: id,
+      };
+      productOption = await ProductOption.create(newProductOption);
+      if (!productOption) {
+        return;
+      }
+    }
+    if (!product || !productDetail || !productOption) {
+      result = false;
+    } else {
+      result = true;
+    }
+    // console.log(result);
+    res.json(result);
   } catch (error) {
     console.log(error);
     res.json((result = false));
@@ -229,16 +232,12 @@ app.post("/addProduct", async (req, res) => {
 
 app.put("/productEdit/:id", async (req, res) => {
   const { id } = req.params;
-  const { category, detail, color, size, stock, ...rest } = req.body;
-  const newProduct = { ...rest };
+  const { newProduct, newOption, option } = req.body;
+  console.log(newProduct, newOption, option);
+
   const newProductDetail = {
-    category,
-    detailCategory: detail,
-  };
-  const newProductOption = {
-    productColor: color,
-    productSize: size,
-    productStock: stock,
+    category: newProduct.category,
+    detailCategory: newProduct.detail,
   };
 
   let result;
@@ -251,18 +250,32 @@ app.put("/productEdit/:id", async (req, res) => {
         where: { product_id: id },
       }
     );
-    console.log(color, size, stock);
     const productOption = await ProductOption.update(
-      { ...newProductOption },
+      { ...option },
       {
         where: {
           product_id: id,
-          productColor: newProductOption.productColor,
-          productSize: newProductOption.productSize,
+          ...option,
         },
       }
     );
-    // console.log("productDetail", productDetail);
+    if (newOption) {
+      let newProductOption;
+      let optionBox;
+      for (let i = 0; i < newOption.length; i++) {
+        optionBox = {
+          product_id: id,
+          color: newOption[i].color,
+          size: newOption[i].size,
+          stock: newOption[i].stock,
+        };
+        newProductOption = await ProductOption.create(optionBox);
+        if (!newProductOption) {
+          result = false;
+          return;
+        }
+      }
+    }
 
     if (!product || !productDetail || !productOption) {
       result = false;
@@ -275,6 +288,23 @@ app.put("/productEdit/:id", async (req, res) => {
     console.log(error);
     res.json((result = false));
   }
+});
+
+app.delete("/productDelete/:id", async (req, res) => {
+  const { id } = req.params;
+  const optionDel = await ProductOption.destroy({ where: { product_id: id } });
+  let detailDel, delProduct, result;
+  if (optionDel) {
+    detailDel = await ProductDetail.destroy({ where: { product_id: id } });
+    if (detailDel) {
+      delProduct = await Product.destory({ where: { id } });
+      result = true;
+    }
+  } else {
+    result = false;
+    return;
+  }
+  res.json(result);
 });
 
 // 각 화면들
@@ -293,17 +323,13 @@ app.get("/DeleteUser", async (req, res) => {
 app.get("/product/:id", async (req, res) => {
   const { id } = req.params;
   const product = await Product.findOne({ where: { id } });
-  const { productColor, productSize } = await ProductOption.findOne({
-    where: { product_id: id },
-  });
   const productDetail = await ProductDetail.findOne({
     where: { product_id: id },
   });
 
-  await ProductOption.findOne({ where: { product_id: id } });
-
   if (product) {
-    const result = {
+    let result = [];
+    result = {
       id: product.id,
       name: product.name,
       price: product.price,
@@ -313,9 +339,6 @@ app.get("/product/:id", async (req, res) => {
       subImage3: product.subImage3,
       category: productDetail.category,
       detail: productDetail.detailCategory,
-      // size: productOption.productSize,
-      // color: productOption.productColor,
-      // stock: productOption.productStock,
     };
     res.json(result);
   } else {
@@ -414,7 +437,10 @@ app.get("/Cart", async (req, res) => {
 //유저별 장바구니 조회
 app.get("/buyList/:user_id", async (req, res) => {
   const { user_id } = req.params;
-  const result = await BuyList.findAll({ where: { user_id }, include: [ProductOption], });
+  const result = await BuyList.findAll({
+    where: { user_id },
+    include: [ProductOption],
+  });
   res.json(result);
 });
 
@@ -434,6 +460,15 @@ app.delete("/buyList/delete/:id", async (req, res) => {
 
 app.get("/productOption", async (req, res) => {
   const result = await ProductOption.findAll();
+  res.json(result);
+});
+
+app.get("/productOption/:id", async (req, res) => {
+  const { id } = req.params;
+  const result = await ProductOption.findAll({
+    where: { product_id: id },
+    limit: 10,
+  });
   res.json(result);
 });
 
@@ -468,7 +503,7 @@ app.get("/userEdit/:id", async (req, res) => {
 app.put("/userEdit/:id", async (req, res) => {
   const { id } = req.params;
   const editUser = req.body;
-  
+
   const result = await User.findOne({ where: { id } });
   if (result) {
     for (let key in editUser) {
