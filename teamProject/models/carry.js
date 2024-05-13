@@ -21,8 +21,8 @@ module.exports = (sequelize) => {
   });
 
   Carry.associate = (models) => {
+    Carry.belongsTo(models.User, { foreignKey: 'user_id' });
     Carry.belongsTo(models.BuyList, { foreignKey: 'order_id' });
-    Carry.belongsTo(models.BuyList, { foreignKey: 'user_id' });
   };
 
   return Carry;
