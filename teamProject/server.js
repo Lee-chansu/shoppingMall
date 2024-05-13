@@ -58,6 +58,7 @@ const crypto = require("crypto");
 
 //db
 const db = require("./models");
+const productdetail = require("./models/productdetail");
 const {
   User,
   DeleteUser,
@@ -167,7 +168,7 @@ app.get("/", async (req, res) => {
   res.json(result);
 });
 
-//프로필 이미지 불러오기
+//유저프로필 이미지 불러오기
 app.get("/profile/:id", async (req, res) => {
   const { id } = req.params;
   const { userImage } = await User.findOne({ where: { id } });
@@ -319,10 +320,36 @@ app.get("/product/:id", async (req, res) => {
   }
 });
 
+//원본
+// app.get("/product", async (req, res) => {
+//   const result = await Product.findAll();
+//   res.json(result);
+// });
+
+// nav 카테고리 별 제품리스트조회
 app.get("/product", async (req, res) => {
-  const result = await Product.findAll();
-  res.json(result);
+  const {category}= req.query
+  let result
+  try {
+    if(category){
+      result = await ProductDetail.findAll({
+        include : [Product],
+        where : {
+          category : category
+        }
+      })
+    }
+    else{
+      result = await Product.findAll()
+    }
+    res.json(result)
+    
+  } catch (error) {
+    console.log("데이터 조회 중 오류 발생 : ", error)
+  }
 });
+
+
 
 // 리뷰 리스트 조회
 app.get("/ReviewList", async (req, res) => {

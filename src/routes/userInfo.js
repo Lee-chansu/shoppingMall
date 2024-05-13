@@ -71,10 +71,10 @@ export const UserInfo = () => {
         <div className="overlapGroup">
           <div className="userSelect">
             <Link to="#" className="link">
-              <div className="textWrapper">payBuyList</div>
+              <div className="textWrapper">구매내역</div>
             </Link>
-            <Link to="/userProfile" className="link">
-              <div className="textWrapper">userProfile</div>
+            <Link to="/passwordCheck" className="link">
+              <div className="textWrapper">내 정보</div>
             </Link>
             <Link className="link" to="/logout" onClick={logOut}>
               <div className="textWrapper">로그아웃</div>

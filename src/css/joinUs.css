@@ -206,7 +206,3 @@ textarea::-webkit-scrollbar-thumb{
   border-radius: 5px;
 }
 
-/* 스크롤바 여백 */
-textarea::-webkit-scrollbar-track{
-
-}

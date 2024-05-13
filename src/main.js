@@ -9,7 +9,7 @@ import { Product } from "./components/product";
 export const Main = () => {
   const [productList, setProductList] = useState([]);
   const loadProduct = async () => {
-    const getProducts = await fetch("http://localhost:5000/").then(res =>
+    const getProducts = await fetch("http://localhost:5000/product").then(res =>
       res.json()
     );
 
