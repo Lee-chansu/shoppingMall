@@ -57,6 +57,7 @@ const crypto = require("crypto");
 
 //db
 const db = require("./models");
+const productdetail = require("./models/productdetail");
 const {
   User,
   DeleteUser,
@@ -108,7 +109,7 @@ passport.use(
       return done(null, false, { message: "비밀번호가 일치하지않습니다" });
     }
     if (result.isDeleted) {
-      return done(null, false, { message: "휴먼 계정입니다" });
+      return done(null, false, { message: "휴면 계정입니다" });
     } else {
       return done(null, result);
     }
@@ -165,7 +166,7 @@ app.get("/", async (req, res) => {
   res.json(result);
 });
 
-//프로필 이미지 불러오기
+//유저프로필 이미지 불러오기
 app.get("/profile/:id", async (req, res) => {
   const { id } = req.params;
   const { userImage } = await User.findOne({ where: { id } });
@@ -253,7 +254,7 @@ app.put("/productEdit/:id", async (req, res) => {
     const productOption = await ProductOption.update(
       { ...newProductOption },
       {
-        where: { product_id: id, productColor: color, productSize: size },
+        where: { product_id: id, productColor: newProductOption.productColor, productSize: newProductOption.productSize },
       }
     );
     // console.log("productDetail", productDetail);
@@ -317,10 +318,36 @@ app.get("/product/:id", async (req, res) => {
   }
 });
 
+//원본
+// app.get("/product", async (req, res) => {
+//   const result = await Product.findAll();
+//   res.json(result);
+// });
+
+// nav 카테고리 별 제품리스트조회
 app.get("/product", async (req, res) => {
-  const result = await Product.findAll();
-  res.json(result);
+  const {category}= req.query
+  let result
+  try {
+    if(category){
+      result = await ProductDetail.findAll({
+        include : [Product],
+        where : {
+          category : category
+        }
+      })
+    }
+    else{
+      result = await Product.findAll()
+    }
+    res.json(result)
+    
+  } catch (error) {
+    console.log("데이터 조회 중 오류 발생 : ", error)
+  }
 });
+
+
 
 // 리뷰 리스트 조회
 app.get("/ReviewList", async (req, res) => {
@@ -364,8 +391,8 @@ app.get("/Cart/:user_id", async (req, res) => {
 // 장바구니에 상품 추가
 app.post("/cart", async (req, res) => {
   const newProduct = req.body;
-  const { user_id, product_id, size, color, amount } = req.body;
-  const result = await Cart.findOne({ where: { user_id, product_id, size, color } });
+  const { user_id, productOption_id, size, color, amount } = req.body;
+  const result = await Cart.findOne({ where: { user_id, productOption_id, size, color } });
   console.log('result', result)
   if (!result) {
     await Cart.create(newProduct);

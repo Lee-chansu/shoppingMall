@@ -82,7 +82,7 @@ export const FindId = () => {
             <div className="inputUsername">
               <input
                 type="text"
-                placeholder=" 사용자 이름 입력"
+                placeholder="이름*"
                 className="textWrapper2"
                 onChange={valueChange}
                 name="userName"
@@ -91,7 +91,7 @@ export const FindId = () => {
             <div className="inputUserEmail">
               <input
                 type="email"
-                placeholder=" 사용자 이메일 입력"
+                placeholder="이메일*"
                 className="textWrapper2"
                 onChange={valueChange}
                 name="email"
@@ -102,7 +102,7 @@ export const FindId = () => {
               <div className="inputNum">
                 <input
                   type="text"
-                  placeholder=" 인증번호 입력"
+                  placeholder="인증번호*"
                   className="inputNumWrapper"
                   name="number"
                   onChange={valueChange}

@@ -86,15 +86,15 @@ export const FindPassword = () => {
         <form className="findPasswordBox">
           <div className="inputBox">
             <div className="inputUserid">
-              <input className="textWrapper2" placeholder="사용자 아이디 입력" name="userId" onChange={valueChange}></input>
+              <input className="textWrapper2" placeholder="아이디*" name="userId" onChange={valueChange}></input>
             </div>
             <div className="inputUserEmail">
-              <input className="textWrapper3" placeholder="사용자 이메일 입력" name="email" onChange={valueChange}></input>
+              <input className="textWrapper3" placeholder="이메일*" name="email" onChange={valueChange}></input>
               <button className = "emailButton"onClick={emailButton}>인증번호 받기</button>
             </div>
             {
               isSend ? <div className="inputNum">
-              <input type="text" placeholder=" 인증번호 입력" className="inputNumWrapper" name="number" onChange={valueChange}></input>
+              <input type="text" placeholder="인증번호*" className="inputNumWrapper" name="number" onChange={valueChange}></input>
               <button className="inputNumButton" type="button" onClick={numButton}>인증번호 확인</button>
             </div> : <div></div>
             }

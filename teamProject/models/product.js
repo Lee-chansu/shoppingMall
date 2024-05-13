@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+const { FOREIGNKEYS } = require('sequelize/lib/query-types');
 
 module.exports = (sequelize) => {
   const Product = sequelize.define('Product', {

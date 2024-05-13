@@ -26,13 +26,13 @@ export const ProductEdit = () => {
   const subImageCount = [0, 1, 2];
   const subImageId = ["subImage1", "subImage2", "subImage3"];
 
-  // const handleChangeSize = (event) => {
-  //   setSelectedSize(event.target.value);
-  // };
+  const handleChangeSize = (event) => {
+    setSelectedSize(event.target.value);
+  };
 
-  // const handleChangeColor = (event) => {
-  //   setSelectedColor(event.target.value);
-  // };
+  const handleChangeColor = (event) => {
+    setSelectedColor(event.target.value);
+  };
 
   const detail = {
     아우터: ["코트", "블레이저", "패딩"],
@@ -132,18 +132,6 @@ export const ProductEdit = () => {
   const valueChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
-  };
-
-  const handleChangeSize = (event) => {
-    setSelectedSize(event.target.value);
-    valueChange(event);
-    console.log(selectedSize);
-  };
-
-  const handleChangeColor = (event) => {
-    setSelectedColor(event.target.value);
-    valueChange(event);
-    console.log(selectedColor);
   };
 
   useEffect(() => {

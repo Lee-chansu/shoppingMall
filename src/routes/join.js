@@ -26,21 +26,26 @@ export const Join = () => {
 
   const buttonClick = async (e) => {
     e.preventDefault();
-    if (!newUser.password) {
+    if(!newUser.userId){
+      alert("아이디를 입력하시오")
+    }
+    else if (!newUser.password) {
       alert("비밀번호를 입력하시오");
-      return;
     }
     else if(newUser.password !== newUser.passwordCheck){
       alert('비밀번호 재확인이 일치하지않습니다')
+    }
+    else if(!newUser.userName){
+      alert('이름을 입력하시오')
+    }
+    else if(!newUser.email){
+      alert('이메일을 입력하시오')
     }
     else if(!newUser.phoneNumber){
       alert('전화번호를 입력하시오')
     }
     else if(!newUser.address){
       alert('주소를 입력하시오')
-    }
-    else if(!newUser.userName){
-      alert('이름을 입력하시오')
     }
     else if(!newUser.gender){
       console.log(newUser.gender)
@@ -81,125 +86,112 @@ export const Join = () => {
         <form>
           <div className="joinBox">
             <div className="textWrapper">회원가입</div>
-            <div className="boxId">
-              <label htmlFor="id" className="txt">
-                Id를 입력해주세요
-              </label>
-              <input
-                className="input"
-                id="id"
-                type="email"
-                name="userId"
-                onChange={valueChange}
-              />
-            </div>
-            <div className="boxPassword">
-              <label htmlFor="password" className="txt">
-                비밀번호를 입력해주세요
-              </label>
-              <input
-                className="input"
-                id="password"
-                type="password"
-                name="password"
-                onChange={valueChange}
-              />
-            </div>
-            <div className="boxPasswordCheck">
-              <label htmlFor="passwordCheck" className="txt">
-                비밀번호 재확인
-              </label>
-              <input
-                className="input"
-                id="passwordCheck"
-                type="password"
-                name="passwordCheck"
-                onChange={valueChange}
-              />
-            </div>
-            <div className="boxEmail">
-              <label htmlFor="email" className="txt">
-                이메일을 입력해주세요
-              </label>
-              <input
-                className="input"
-                id="email"
-                type="email"
-                name="email"
-                onChange={valueChange}
-              />
-            </div>
-            <div className="boxPhone">
-              <label htmlFor="phone" className="txt">
-                전화번호를 입력해주세요
-              </label>
-              <input
-                className="input"
-                id="phone"
-                name="phoneNumber"
-                onChange={valueChange}
-              />
-            </div>
-            <div className="boxAddress">
-              <label htmlFor="address" className="txt">
-                주소를 입력해주세요
-              </label>
-              <input
-                className="input"
-                id="address"
-                name="address"
-                onChange={valueChange}
-              />
-            </div>
-            <div className="selectGender">
-              <div className="txt">성별을 선택해주세요</div>
-              <div className="inputRadio">
-                <label htmlFor="male" className="div">
-                  남
-                </label>
+            <div className="inputWrap">
+              <div className="boxId">
                 <input
-                  type="radio"
-                  name="gender"
+                  className="input"
+                  id="id"
+                  type="email"
+                  name="userId"
+                  placeholder="아이디*"
                   onChange={valueChange}
-                  className="radioMale"
-                  id="male"
-                  value="M"
-                />
-                <label htmlFor="female" className="textWrapper2">
-                  여
-                </label>
-                <input
-                  type="radio"
-                  name="gender"
-                  onChange={valueChange}
-                  className="radioFemale"
-                  id="female"
-                  value="F"
                 />
               </div>
-            </div>
-            <div className="boxName">
-              <label htmlFor="username" className="txt">
-                이름을 입력해주세요
-              </label>
-              <input
-                className="input"
-                id="username"
-                name="userName"
-                onChange={valueChange}
-              />
-            </div>
-            <div className="editForm">
-              <button
-                className="submitButton"
-                onClick={buttonClick}
-                type="button"
-              >
-                제출
-              </button>
-              <button className="cancelButton" type="button" onClick={goback}>
-                취소
-              </button>
+              <div className="boxPassword">
+                <input
+                  className="input"
+                  id="password"
+                  type="password"
+                  name="password"
+                  onChange={valueChange}
+                  placeholder="비밀번호*"
+                />
+              </div>
+              <div className="boxPasswordCheck">
+                <input
+                  className="input"
+                  id="passwordCheck"
+                  type="password"
+                  name="passwordCheck"
+                  onChange={valueChange}
+                  placeholder="비밀번호 확인*"
+                />
+              </div>
+              <div className="boxEmail">
+                <input
+                  className="input"
+                  id="email"
+                  type="email"
+                  name="email"
+                  onChange={valueChange}
+                  placeholder="이메일*"
+                />
+              </div>
+              <div className="boxPhone">
+                <input
+                  className="input"
+                  id="phone"
+                  name="phoneNumber"
+                  onChange={valueChange}
+                  placeholder="전화번호*"
+                />
+              </div>
+              <div className="boxAddress">
+                <input
+                  className="input"
+                  id="address"
+                  name="address"
+                  onChange={valueChange}
+                  placeholder="주소*"
+                />
+              </div>
+              <div className="selectGender">
+                <div className="inputRadio">
+                  <label htmlFor="male" className="div">
+                    남자
+                  </label>
+                  <input
+                    type="radio"
+                    name="gender"
+                    onChange={valueChange}
+                    className="radioMale"
+                    id="male"
+                    value="M"
+                  />
+                  <label htmlFor="female" className="textWrapper2">
+                    여자
+                  </label>
+                  <input
+                    type="radio"
+                    name="gender"
+                    onChange={valueChange}
+                    className="radioFemale"
+                    id="female"
+                    value="F"
+                  />
+                </div>
+              </div>
+              <div className="boxName">
+                <input
+                  className="input"
+                  id="username"
+                  name="userName"
+                  onChange={valueChange}
+                  placeholder="이름*"
+                />
+              </div>
+              <div className="editForm">
+                <button
+                  className="submitButton"
+                  onClick={buttonClick}
+                  type="button"
+                >
+                  제출
+                </button>
+                <button className="cancelButton" type="button" onClick={goback}>
+                  취소
+                </button>
+              </div>
             </div>
           </div>
         </form>

@@ -7,6 +7,7 @@ import { Nav } from "../components/nav";
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
 import { jwtDecode } from "jwt-decode";
+import HomeButton from "../components/HomeButton";
 
 export const PayBuyList = () => {
   //네비게이션 선언
@@ -20,8 +21,8 @@ export const PayBuyList = () => {
     navigate(-1);
   };
 
-  const handlePaymentMove = () => {
-    navigate("/payment");
+  const handleHometMove = () => {
+    navigate("/");
   };
 
   const getPayItemList = async () => {
@@ -72,10 +73,10 @@ export const PayBuyList = () => {
           handleLinkMove={handleLinkBackMove}
         />
 
-        <CustomButton
+        <HomeButton
           className="btn2"
           buttonTitle="홈으로"
-          handleLinkMove={handlePaymentMove}
+          handleLinkMove={handleHometMove}
         />
       </ButtonBox>
     </>
