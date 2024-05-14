@@ -57,15 +57,13 @@ const crypto = require("crypto");
 
 //db
 const db = require("./models");
-const productdetail = require("./models/productdetail");
-const { and } = require("sequelize");
 const {
   User,
   DeleteUser,
-  Product,
   ReviewList,
   Cart,
   BuyList,
+  Product,
   ProductOption,
   ProductDetail,
   Carry,
@@ -230,6 +228,7 @@ app.post("/addProduct", async (req, res) => {
   }
 });
 
+//제품 수정
 app.put("/productEdit/:id", async (req, res) => {
   const { id } = req.params;
   const { newProduct, newOption, option } = req.body;
@@ -293,16 +292,15 @@ app.put("/productEdit/:id", async (req, res) => {
 app.delete("/productDelete/:id", async (req, res) => {
   const { id } = req.params;
   const optionDel = await ProductOption.destroy({ where: { product_id: id } });
-  let detailDel, delProduct, result;
+  let detailDel, result;
   if (optionDel) {
     detailDel = await ProductDetail.destroy({ where: { product_id: id } });
     if (detailDel) {
-      delProduct = await Product.destory({ where: { id } });
+      await Product.destroy({ where: { id } });
       result = true;
     }
   } else {
     result = false;
-    return;
   }
   res.json(result);
 });
