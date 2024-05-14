@@ -5,7 +5,6 @@ import { Nav } from "../components/nav";
 import { ProductReview } from "../components/productReview";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import e from "cors";
 
 export const ProductDetailDescription = () => {
   const navigate = useNavigate();
@@ -211,35 +210,33 @@ export const ProductDetailDescription = () => {
     setSwitchBtn(!switchBtn);
   };
 
-  function delProduct() {
-    if (("정말 삭제하시겠습니까?")) {
+  const deleteProduct = async () => {
+    const delConfirm = window.confirm("제품을 정말 삭제하시겠습니까?");
+
+    if (!delConfirm) {
       return;
-    } else {
-      try {
-        const deleteProduct = async () => {
-          await fetch(`http://localhost:5000/productDelete/${productId}`, {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" },
-          })
-            .then((res) => {
-              return res.json();
-            })
-            .then((res) => {
-              if (res) {
-                alert("등록을 취소했습니다.");
-                return;
-              } else {
-                alert("등록을 취소하는데 실패했습니다.");
-                console.log(res);
-              }
-            });
-        };
-      } catch (error) {
-        alert("오류");
-        console.log(error);
-      }
     }
-  }
+    try {
+      await fetch(`http://localhost:5000/productDelete/${productId}`, {
+        method: "DELETE",
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          if (res) {
+            alert("제품을 삭제했습니다.");
+            navigate("/productList");
+          } else {
+            alert("제품을 삭제하는데 실패했습니다.");
+            console.log(res);
+          }
+        });
+    } catch (error) {
+      alert("제품을 삭제하던 도중 오류가 발생했습니다.");
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -272,7 +269,7 @@ export const ProductDetailDescription = () => {
                       수정
                     </button>
                   </Link>
-                  <button type="button" className="btn" onClick={delProduct}>
+                  <button type="button" className="btn" onClick={deleteProduct}>
                     삭제
                   </button>
                   <div className="productName">
