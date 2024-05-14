@@ -42,11 +42,15 @@ export const ProductDetailDescription = () => {
     }
     const { id } = jwtDecode(isLogin);
 
+    const response = await fetch(`http://localhost:5000/productOption/${productId}`)
+    const productOptions = await response.json();
+    const selectedProductOption = productOptions.find(option => option.size === selectedSize && option.color === selectedColor)
+
     const updatedFormData = {
       size: selectedSize,
       color: selectedColor,
       user_id: id,
-      productOption_id: productId,
+      productOption_id: selectedProductOption.id,
       amount: stock,
     };
 

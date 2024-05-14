@@ -40,14 +40,18 @@ export const Cart = () => {
   const getProducts = async (id) => {
     const result = await userFetchProducts(id);
     const newArr = result.map((val, idx) => {
+      console.log(idx, val)
       return {
-        ...val.Product,
+        ...val.ProductOption.Product,
         amount: val.amount,
         size: val.size,
         color: val.color,
+        stock: val.ProductOption.stock,
+        isChecked: false,
       };
     });
-    console.log(newArr);
+    // console.log(newArr);
+    newArr.forEach((el, i)=> console.log(i, el.stock))
 
     setCartItemList(newArr);
   };

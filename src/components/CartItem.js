@@ -10,6 +10,8 @@ export const CartItem = ({
 }) => {
   //수량 up btn
   const handleUpCount = () => {
+    console.log(val.stock)
+    if (val.amount >= val.stock) return;
     const listCopy = cartItemList;
     listCopy[idx].amount = val.amount + 1;
     setCartItemList([...listCopy]);
@@ -32,8 +34,7 @@ export const CartItem = ({
   };
 
   useEffect(() => {
-    console.log("item rerender");
-    console.log(val.isChecked);
+    console.log("item rerender", val.isChecked);
   }, []);
 
   return (

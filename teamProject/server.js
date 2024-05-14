@@ -398,7 +398,7 @@ app.get("/Cart/:user_id", async (req, res) => {
   try {
     const result = await Cart.findAll({
       where: { user_id },
-      include: [{ model: Product }], // Product 모델을 include하여 조인
+      include: [{ model: ProductOption, include: [{ model: Product }] }], // Product 모델을 include하여 조인
     });
 
     if (result) {
