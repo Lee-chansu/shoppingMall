@@ -32,7 +32,6 @@ a{text-decoration:none;}
 
 .findId .textWrapper {
   color: #524747;
-  font-family: "Inter-Regular", Helvetica;
   font-size: 30px;
   font-weight: 400;
   height: 95px;
@@ -74,7 +73,6 @@ a{text-decoration:none;}
 
 .findId .textWrapper2 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
   font-size: 15px;
   font-weight: 400;
   height: 40px;
@@ -126,7 +124,6 @@ a{text-decoration:none;}
 
 .findId .inputNumWrapper {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
   font-size: 15px;
   font-weight: 400;
   height: 40px;

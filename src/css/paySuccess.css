@@ -49,7 +49,7 @@
 
 .paySuccess .successMessage {
   color: #aa0000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 30px;
   font-weight: 400;
   left: 30px;
@@ -72,7 +72,7 @@
 
 .paySuccess .payInfo {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 30px;
   font-weight: 600;
   display: flex;
@@ -82,7 +82,7 @@
 
 .paySuccess .productName {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 30px;
   font-weight: 400;
   left: 55px;
@@ -95,7 +95,7 @@
 
 .paySuccess .howToPay {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 30px;
   font-weight: 400;
   left: 55px;
@@ -108,7 +108,7 @@
 
 .paySuccess .howToPayPrint {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 28px;
   font-weight: 400;
   left: 256px;
@@ -121,7 +121,7 @@
 
 .paySuccess .paySum {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 28px;
   font-weight: 400;
   left: 256px;
@@ -134,7 +134,7 @@
 
 .paySuccess .paySumText {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 30px;
   font-weight: 400;
   left: 55px;
@@ -147,7 +147,7 @@
 
 .paySuccess .orderProduct1 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 28px;
   font-weight: 400;
   left: 256px;
@@ -160,7 +160,7 @@
 
 .paySuccess .orderProduct2 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 28px;
   font-weight: 400;
   left: 256px;
@@ -173,7 +173,7 @@
 
 .paySuccess .orderProduct3 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 28px;
   font-weight: 400;
   left: 256px;
@@ -186,7 +186,7 @@
 
 .paySuccess .optionInfo1 {
   color: #00000070;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 25px;
   font-weight: 400;
   left: 268px;
@@ -199,7 +199,7 @@
 
 .paySuccess .optionInfo2 {
   color: #00000070;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 25px;
   font-weight: 400;
   left: 268px;
@@ -212,7 +212,7 @@
 
 .paySuccess .optionInfo3 {
   color: #00000070;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 25px;
   font-weight: 400;
   left: 268px;
@@ -225,7 +225,7 @@
 
 .paySuccess .readMe {
   color: #00000070;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 20px;
   font-weight: 400;
   position: absolute;
@@ -276,7 +276,7 @@
 
 .paySuccess .buttonText {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 22px;
   font-weight: 600;
   left: 50px;

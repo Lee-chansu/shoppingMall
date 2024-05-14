@@ -46,13 +46,13 @@ a {
 .payBuyList .productName {
   padding-top: 8px;
   font-size: 16px;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-weight: 400;
 }
 
 .payBuyList .productTotal {
   color: #ff7d9e;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 0;
@@ -114,7 +114,7 @@ a {
 
 .payBuyList .title {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 30px;
   font-weight: 600;
   letter-spacing: 0;

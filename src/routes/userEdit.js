@@ -38,7 +38,7 @@ export const UserEdit = () => {
 
   useEffect(() => {
     const editDefault = {
-      profileImg : getUser.profileImg,
+      profileImg: getUser.profileImg,
       password: "",
       passwordCheck: "",
       email: getUser.email,
@@ -53,7 +53,7 @@ export const UserEdit = () => {
     const { value } = e.target;
     if (value == "false") {
       setCheckToggle("true");
-      setEditUser(pre=>({
+      setEditUser((pre) => ({
         ...pre,
         password: getUser.password,
         passwordCheck: getUser.password,
@@ -61,7 +61,7 @@ export const UserEdit = () => {
       }));
     } else {
       setCheckToggle("false");
-      setEditUser(pre=>({
+      setEditUser((pre) => ({
         ...pre,
         password: "",
         passwordCheck: "",
@@ -72,20 +72,20 @@ export const UserEdit = () => {
 
   const valueChange = (e) => {
     const { name, value } = e.target;
-    setEditUser(pre => ({...pre, [name]: value }));
+    setEditUser((pre) => ({ ...pre, [name]: value }));
   };
 
-  const imageChange = (e)=>{
-    const selectFile = e.target.files[0]
-    console.log(e.target)
-    if(selectFile){
+  const imageChange = (e) => {
+    const selectFile = e.target.files[0];
+    console.log(e.target);
+    if (selectFile) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setEditUser(pre => ({...pre, profileImg : reader.result}))
-      }
-      reader.readAsDataURL(selectFile)
+        setEditUser((pre) => ({ ...pre, profileImg: reader.result }));
+      };
+      reader.readAsDataURL(selectFile);
     }
-  }
+  };
 
   const buttonClick = async (e) => {
     e.preventDefault();
@@ -102,7 +102,6 @@ export const UserEdit = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(editUser),
         });
-        
 
         if (!response.ok) {
           throw new Error("서버에서 응답을 받을 수 없습니다");
@@ -117,21 +116,28 @@ export const UserEdit = () => {
     }
   };
 
-  
-
-  
-
   return (
     <div className="userEdit">
       <div className="inner">
         <form className="formBox">
           <div className="userEditBox">
             <div className="imageBox">
-              <input className="iuputImage" type="file" onChange={imageChange}></input>
+              <input
+                className="iuputImage"
+                type="file"
+                onChange={imageChange}
+              ></input>
               <img
                 className="profileImage"
                 src={editUser.profileImg}
-                onError={() => {if(!getUser.profileImg){setGetUser({...getUser, profileImg : '../img/userDefaultImg.png'})}}}
+                onError={() => {
+                  if (!getUser.profileImg) {
+                    setGetUser({
+                      ...getUser,
+                      profileImg: "../img/userDefaultImg.png",
+                    });
+                  }
+                }}
                 alt="프로필 이미지"
               />
             </div>

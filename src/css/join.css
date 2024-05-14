@@ -28,7 +28,7 @@ a{text-decoration:none;}
 
 .join .textWrapper {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 30px;
   font-weight: 400;
   left: 218px;
@@ -68,7 +68,7 @@ a{text-decoration:none;}
 
 .join .input {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 15px;
   font-weight: 400;
   height: 40px;
@@ -165,7 +165,7 @@ a{text-decoration:none;}
 
 .join .div {
   color: #999;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 13.5px;
   font-weight: 400;
   left: 50px;
@@ -187,7 +187,7 @@ a{text-decoration:none;}
 
 .join .textWrapper2 {
   color: #999;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 13.5px;
   font-weight: 400;
   left: 230px;

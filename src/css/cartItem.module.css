@@ -40,7 +40,7 @@
 
 .cart .buttonText {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 20px;
   font-weight: 600;
   left: 50px;
@@ -55,7 +55,7 @@
 
 .cart .textWrapper {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 44.2px;
   font-weight: 400;
   left: 48px;
@@ -111,7 +111,7 @@
 
 .cartProductStock {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 30px;
   font-weight: 400;
   right: 20px;
@@ -125,7 +125,7 @@
 
 .countUp {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 16px;
   font-weight: 400;
   left: 5px;
@@ -139,7 +139,7 @@
 
 .countDown {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 16px;
   font-weight: 400;
   left: 5px;
@@ -161,7 +161,7 @@
 
 .cartProductPrice {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 22px;
   font-weight: 600;
   left: 40px;
@@ -183,7 +183,7 @@
 
 .cartProductName {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 20px;
   left: 360px;
   position: absolute;
@@ -208,7 +208,7 @@
 
 .cartCarryPrice {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 22px;
   font-weight: 600;
   left: 18px;
@@ -221,7 +221,7 @@
 
 .cartProductSizeColor {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 22px;
   font-weight: 600;
   left: 380px;
@@ -246,7 +246,7 @@
 
 .cart .title {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 30px;
   font-weight: 400;
   letter-spacing: 0;

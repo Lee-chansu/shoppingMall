@@ -5,6 +5,7 @@ import "./main.css";
 //컴포넌트
 import { Nav } from "./components/nav";
 import { Product } from "./components/product";
+import { Visual } from "./components/visual";
 
 export const Main = () => {
   const [productList, setProductList] = useState([]);
@@ -24,7 +25,7 @@ export const Main = () => {
     <>
       <Nav />
       <div className="main">
-        <div className="visual" />
+        <Visual />
         <div className="inner">
           <Link className="link" to="/productList">
             <h1>Best!</h1>

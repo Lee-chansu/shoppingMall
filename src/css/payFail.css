@@ -49,7 +49,7 @@
 
 .payFail .textWrapper {
   color: #aa0000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 44.7px;
   font-weight: 400;
   left: 0;
@@ -72,7 +72,7 @@
 
 .payFail .textWrapper2 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 44.7px;
   font-weight: 400;
   left: 383px;
@@ -85,7 +85,7 @@
 
 .payFail .textWrapper3 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 37.2px;
   font-weight: 400;
   left: 56px;
@@ -98,7 +98,7 @@
 
 .payFail .textWrapper4 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 37.2px;
   font-weight: 400;
   left: 56px;
@@ -111,7 +111,7 @@
 
 .payFail .textWrapper5 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 37.2px;
   font-weight: 400;
   left: 258px;
@@ -124,7 +124,7 @@
 
 .payFail .textWrapper6 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 37.2px;
   font-weight: 400;
   left: 258px;
@@ -137,7 +137,7 @@
 
 .payFail .textWrapper7 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 37.2px;
   font-weight: 400;
   left: 56px;
@@ -150,7 +150,7 @@
 
 .payFail .textWrapper8 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 37.2px;
   font-weight: 400;
   left: 258px;
@@ -163,7 +163,7 @@
 
 .payFail .textWrapper9 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 37.2px;
   font-weight: 400;
   left: 258px;
@@ -176,7 +176,7 @@
 
 .payFail .textWrapper10 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 37.2px;
   font-weight: 400;
   left: 258px;
@@ -189,7 +189,7 @@
 
 .payFail .p {
   color: #00000070;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 33.5px;
   font-weight: 400;
   left: 270px;
@@ -202,7 +202,7 @@
 
 .payFail .textWrapper11 {
   color: #00000070;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 29.8px;
   font-weight: 400;
   left: 46px;
@@ -215,7 +215,7 @@
 
 .payFail .textWrapper12 {
   color: #00000070;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 33.5px;
   font-weight: 400;
   left: 270px;
@@ -228,7 +228,7 @@
 
 .payFail .textWrapper13 {
   color: #00000070;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 33.5px;
   font-weight: 400;
   left: 270px;
@@ -282,7 +282,7 @@
 
 .payFail .textWrapper15 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+  
   font-size: 44.7px;
   font-weight: 400;
   height: 90px;

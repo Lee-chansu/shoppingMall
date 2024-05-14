@@ -1,10 +1,18 @@
-*{margin:0; padding: 0; box-sizing: border-box;}
-ul, ol, li{list-style:none;}
-a{text-decoration:none;} 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
 
-
-
-.userEdit{
+.userEdit {
   background-color: #f6f1eb;
   display: flex;
   flex-direction: row;
@@ -16,7 +24,7 @@ a{text-decoration:none;}
   position: relative;
 }
 
-.userEdit .inner{
+.userEdit .inner {
   width: 1440px;
   height: 100vh;
   display: flex;
@@ -35,13 +43,13 @@ a{text-decoration:none;}
   border-radius: 10px;
 }
 
-.userEdit .imageBox{
+.userEdit .imageBox {
   position: absolute;
   top: -200px;
   left: -440px;
 }
 
-.userEdit .iuputImage{
+.userEdit .iuputImage {
   position: absolute;
   top: 210px;
   left: 850px;
@@ -55,7 +63,7 @@ a{text-decoration:none;}
   cursor: pointer;
 }
 
-.userEdit .profileImage{
+.userEdit .profileImage {
   position: absolute;
   border-radius: 109.48px;
   height: 219px;
@@ -76,20 +84,19 @@ a{text-decoration:none;}
 
 .userEdit .checkBox {
   position: absolute;
-  top : 0px;
+  top: 0px;
   left: 220px;
 }
 
-.userEdit .checkPass{
+.userEdit .checkPass {
   position: absolute;
-  top : -7px;
+  top: -7px;
   left: 235px;
 }
 
-
 .userEdit .input {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+
   font-size: 15px;
   font-weight: 400;
   height: 40px;
@@ -107,7 +114,7 @@ a{text-decoration:none;}
 
 .userEdit .txt {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+
   font-size: 12.9px;
   font-weight: 400;
   left: 96px;
@@ -124,7 +131,6 @@ a{text-decoration:none;}
   position: absolute;
   top: 170px;
   width: 359px;
-  
 }
 
 .userEdit .boxEmail {
@@ -165,13 +171,13 @@ a{text-decoration:none;}
   position: absolute;
   top: 19px;
   width: 373px;
-  border: 1px solid #9d2a1e;;
+  border: 1px solid #9d2a1e;
   border-radius: 4px;
   background-color: #ffffff;
 }
 
-.userEdit .inputRadio::after{
-  content: '';
+.userEdit .inputRadio::after {
+  content: "";
   display: block;
   height: 100%;
   width: 1px;
@@ -182,7 +188,7 @@ a{text-decoration:none;}
 
 .userEdit .textWrapper {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+
   font-size: 12.9px;
   font-weight: 400;
   left: 192px;
@@ -195,7 +201,7 @@ a{text-decoration:none;}
 
 .userEdit .textWrapper2 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+
   font-size: 12.9px;
   font-weight: 400;
   left: 18px;
@@ -246,7 +252,7 @@ a{text-decoration:none;}
 
 .userEdit .textWrapper3 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+
   font-size: 12.9px;
   font-weight: 400;
   left: 21px;
@@ -271,7 +277,7 @@ a{text-decoration:none;}
 
 .userEdit .textWrapper4 {
   color: #000000;
-  font-family: "Inter-Regular", Helvetica;
+
   font-size: 12.9px;
   font-weight: 400;
   left: 31px;

@@ -8,8 +8,6 @@ export const Nav = () => {
   const [imageUrl, setImageUrl] = useState("../img/userDefaultImg.png");
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
 
-
-
   // 유저프로필 이미지
   const profileImageLoad = async () => {
     const { id } = jwtDecode(isLogin);
@@ -18,7 +16,7 @@ export const Nav = () => {
     );
     setImageUrl(loadData);
   };
-  
+
   useEffect(() => {
     if (!isLogin) {
       return;
@@ -29,15 +27,12 @@ export const Nav = () => {
 
   //
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const categoryButton = (e)=>{
-    const {innerText} = e.target
-    navigate(`/productList?category=${innerText}`)
-  }
-
-
-
+  const categoryButton = (e) => {
+    const { innerText } = e.target;
+    navigate(`/productList?category=${innerText}`);
+  };
 
   return (
     <header className="header">
@@ -45,14 +40,17 @@ export const Nav = () => {
         <nav className="nav">
           <div className="wrapper">
             <Link to="/">
-            <h1 className="text logo">logo</h1>
+              <h1 className="text logo">logo</h1>
+              <img className="logo" src="/img/Logo.png" alt="logo" />
             </Link>
           </div>
           <div className="category">
             {category.map((el, i) => {
               return (
                 <ul className="wrapper" key={el}>
-                  <li className="text"><button onClick={categoryButton}>{el}</button></li>
+                  <li className="text">
+                    <button onClick={categoryButton}>{el}</button>
+                  </li>
                 </ul>
               );
             })}
@@ -80,7 +78,9 @@ export const Nav = () => {
           {category.map((el) => {
             return (
               <ul className="wrapper" key={el}>
-                <li className="text"><button onClick={categoryButton}>{el}</button></li>
+                <li className="text">
+                  <button onClick={categoryButton}>{el}</button>
+                </li>
               </ul>
             );
           })}
