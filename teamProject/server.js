@@ -289,6 +289,7 @@ app.put("/productEdit/:id", async (req, res) => {
   }
 });
 
+// 제품 삭제
 app.delete("/productDelete/:id", async (req, res) => {
   const { id } = req.params;
   const optionDel = await ProductOption.destroy({ where: { product_id: id } });
@@ -396,7 +397,7 @@ app.get("/Cart/:user_id", async (req, res) => {
   try {
     const result = await Cart.findAll({
       where: { user_id },
-      include: [{ model: Product }], // Product 모델을 include하여 조인
+      include: [{ model: ProductOption, include: [{ model: Product }] }], // Product 모델을 include하여 조인
     });
 
     if (result) {
@@ -411,7 +412,7 @@ app.get("/Cart/:user_id", async (req, res) => {
   }
 });
 
-// 장바구니에 상품 추가
+// 장바구니에 제품 추가
 app.post("/cart", async (req, res) => {
   const newProduct = req.body;
   const { user_id, productOption_id, size, color, amount } = req.body;
@@ -442,6 +443,19 @@ app.get("/buyList/:user_id", async (req, res) => {
   res.json(result);
 });
 
+// 장바구니 삭제 기능
+app.delete("/cart/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Cart.destroy({ where: { id } });
+
+    res.status(200).json({ message: "삭제 완료" });
+  } catch (error) {
+    console.error("삭제 중 에러 발생", error);
+    res.status(500).json({ message: "삭제 중 오류가 발생했습니다" });
+  }
+});
+
 // 구매 내역 삭제
 app.delete("/buyList/delete/:id", async (req, res) => {
   const { id } = req.params;
@@ -465,7 +479,8 @@ app.get("/productOption/:id", async (req, res) => {
   const { id } = req.params;
   const result = await ProductOption.findAll({
     where: { product_id: id },
-    limit: 10,
+    include: Product
+    // limit: 10,
   });
   res.json(result);
 });

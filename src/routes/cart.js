@@ -41,10 +41,13 @@ export const Cart = () => {
     const result = await userFetchProducts(id);
     const newArr = result.map((val, idx) => {
       return {
-        ...val.Product,
+        ...val.ProductOption.Product,
+        id: val.id,
         amount: val.amount,
         size: val.size,
         color: val.color,
+        stock: val.ProductOption.stock,
+        isChecked: false,
       };
     });
     console.log(newArr);
@@ -94,11 +97,46 @@ export const Cart = () => {
   };
 
   const handlePaymentMove = () => {
-    navigate("/payment");
+    const paymentList = cartItemList.filter((option => option.isChecked === true));
+
+    if(paymentList.length) {
+      navigate("/payment", { state: { paymentList }});
+    } else {
+      console.log(paymentList.length)
+      alert('상품을 선택하세요')
+    }
   };
 
   const handlePaymentRemove = () => {
-    // navigate("/payment");
+    cartItemList.map((val) => {
+      handleDeleteCart(val)
+    });
+  };
+
+  const handleDeleteCart = async (val) => {
+
+    if (!val.isChecked) return
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/cart/${val.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.ok) {
+        // alert('삭제 완료');
+        setCartItemList((prevList) =>
+          prevList.filter((item) => item.id !== val.id)
+        );
+      } else {
+        throw new Error("서버에서 장바구니 삭제 실패");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("장바구니 삭제 중 오류가 발생했습니다");
+    }
   };
 
   useEffect(() => {

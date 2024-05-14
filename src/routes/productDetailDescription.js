@@ -41,27 +41,34 @@ export const ProductDetailDescription = () => {
     }
     const { id } = jwtDecode(isLogin);
 
-    const updatedFormData = {
-      size: selectedSize,
-      color: selectedColor,
-      user_id: id,
-      productOption_id: productId,
-      amount: stock,
-    };
-
-    if (updatedFormData.size === "") {
+    if (selectedSize === "") {
       alert("사이즈를 선택하세요");
       return;
-    } else if (updatedFormData.size === "") {
-      alert("사이즈를 선택하세요");
-      return;
-    } else if (updatedFormData.color === "") {
+    } else if (selectedColor === "") {
       alert("색상을 선택하세요");
       return;
     } else if (stock == 0) {
       alert("수량이 0입니다");
       return;
     } else {
+      const response = await fetch(
+        `http://localhost:5000/productOption/${productId}`
+      );
+      const productOptions = await response.json();
+
+      const selectedProductOption = productOptions.find(
+        (option) =>
+          option.size === selectedSize && option.color === selectedColor
+      );
+
+      const updatedFormData = {
+        size: selectedSize,
+        color: selectedColor,
+        user_id: id,
+        productOption_id: selectedProductOption.id,
+        amount: stock,
+      };
+
       try {
         const response = await fetch("http://localhost:5000/cart/", {
           method: "POST",
@@ -89,6 +96,55 @@ export const ProductDetailDescription = () => {
         }
       } catch (error) {
         alert("오류가 발생했습니다");
+      }
+    }
+  };
+
+  const handlePayment = async (e) => {
+    const isLogin = sessionStorage.getItem("token");
+    if (!isLogin) {
+      alert("로그인 후 사용할 수 있습니다");
+      return;
+    }
+    const { id } = jwtDecode(isLogin);
+
+    if (selectedSize === "") {
+      alert("사이즈를 선택하세요");
+      return;
+    } else if (selectedColor === "") {
+      alert("색상을 선택하세요");
+      return;
+    } else if (stock == 0) {
+      alert("수량이 0입니다");
+      return;
+    } else {
+      const response = await fetch(
+        `http://localhost:5000/productOption/${productId}`
+      );
+      const productOptions = await response.json();
+
+      const selectedProductOption = productOptions.find(
+        (option) =>
+          option.size === selectedSize && option.color === selectedColor
+      );
+
+      const updatedFormData = {
+        ... selectedProductOption.Product,
+        size: selectedSize,
+        color: selectedColor,
+        user_id: id,
+        productOption_id: selectedProductOption.id,
+        amount: stock,
+        stock: selectedProductOption.stock,
+        isChecked: false,
+      };
+
+      if (updatedFormData) {
+        console.log(updatedFormData)
+        navigate("/payment", { state: { paymentList: [updatedFormData] } });
+      } else {
+        console.log(updatedFormData);
+        alert("상품을 선택하세요");
       }
     }
   };
@@ -372,12 +428,16 @@ export const ProductDetailDescription = () => {
                       장바구니
                     </button>
                   </div>
-                  <Link
-                    to="http://localhost:3000/payment"
-                    className="nowPayButton"
-                  >
-                    <div className="textWrapper">바로결제</div>
-                  </Link>
+                  <div className="nowPayButton">
+                    <button
+                      type="button"
+                      style={{ border: "none", backgroundColor: "white" }}
+                      className="textWrapper"
+                      onClick={() => handlePayment()}
+                    >
+                      바로결제
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
