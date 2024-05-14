@@ -70,7 +70,7 @@ export const UserInfo = () => {
         />
         <div className="overlapGroup">
           <div className="userSelect">
-            <Link to="#" className="link">
+            <Link to="/payBuyList" className="link">
               <div className="textWrapper">구매내역</div>
             </Link>
             <Link to="/passwordCheck" className="link">
