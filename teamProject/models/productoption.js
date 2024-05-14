@@ -9,13 +9,13 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      productColor: {
+      color: {
         type: DataTypes.STRING(255),
       },
-      productSize: {
+      size: {
         type: DataTypes.STRING(10),
       },
-      productStock: {
+      stock: {
         type: DataTypes.INTEGER,
       },
     },
@@ -25,6 +25,9 @@ module.exports = (sequelize) => {
   );
 
   ProductOption.associate = (models) => {
+    ProductOption.hasMany(models.ReviewList, {
+      foreignKey: "productOption_id",
+    });
     ProductOption.belongsTo(models.Product, { foreignKey: "product_id" });
   };
 

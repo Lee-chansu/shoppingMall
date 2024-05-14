@@ -1,37 +1,69 @@
-.userEdit {
-  background-color: #ffffff;
+*{margin:0; padding: 0; box-sizing: border-box;}
+ul, ol, li{list-style:none;}
+a{text-decoration:none;} 
+
+
+
+.userEdit{
+  background-color: #f6f1eb;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   width: 100%;
-}
-
-.userEdit .div {
-  background-color: #ffffff;
-  height: 1024px;
-  overflow: hidden;
+  height: 100vh;
+  overflow: scroll;
   position: relative;
-  width: 1440px;
 }
 
-.userEdit .profileImage {
-  background-color: #d9d9d9;
+.userEdit .inner{
+  width: 1440px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.userEdit .userEditBox {
+  background-color: #fffcf7;
+  height: 830px;
+  width: 574px;
+  position: absolute;
+  top: 200px;
+  left: 500px;
+  border-radius: 10px;
+}
+
+.userEdit .imageBox{
+  position: absolute;
+  top: -200px;
+  left: -440px;
+}
+
+.userEdit .iuputImage{
+  position: absolute;
+  top: 210px;
+  left: 850px;
+  z-index: 2;
+  border-radius: 109.48px;
+  height: 219px;
+  left: 611px;
+  width: 219px;
+  top: 21px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.userEdit .profileImage{
+  position: absolute;
   border-radius: 109.48px;
   height: 219px;
   left: 611px;
   position: absolute;
-  top: 20px;
+  top: 21px;
   width: 219px;
   z-index: 1;
-}
-
-.userEdit .userEditBox {
-  background-color: #eeeeee;
-  height: 845px;
-  left: 524px;
-  position: absolute;
-  top: 219px;
-  width: 391px;
 }
 
 .userEdit .boxPassword {
@@ -44,24 +76,33 @@
 
 .userEdit .checkBox {
   position: absolute;
-  top : -20px;
-  left: 200px;
+  top : 0px;
+  left: 220px;
 }
 
 .userEdit .checkPass{
   position: absolute;
-  top : 13px;
-  left: 140px;
+  top : -7px;
+  left: 235px;
 }
 
 
 .userEdit .input {
-  background-color: #ffffff;
-  height: 43px;
-  left: 4px;
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 15px;
+  font-weight: 400;
+  height: 40px;
+  left: 96px;
+  letter-spacing: 0;
+  line-height: normal;
   position: absolute;
-  top: 39px;
-  width: 352px;
+  text-align: left;
+  top: 15px;
+  width: 373px;
+  border: 1px solid #9d2a1e;
+  padding-left: 7px;
+  border-radius: 4px;
 }
 
 .userEdit .txt {
@@ -69,11 +110,11 @@
   font-family: "Inter-Regular", Helvetica;
   font-size: 12.9px;
   font-weight: 400;
-  left: 4px;
+  left: 96px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 10px;
+  top: -10px;
   width: 190px;
 }
 
@@ -83,6 +124,7 @@
   position: absolute;
   top: 170px;
   width: 359px;
+  
 }
 
 .userEdit .boxEmail {
@@ -119,10 +161,23 @@
 
 .userEdit .inputRadio {
   height: 43px;
-  left: 4px;
+  left: 100px;
   position: absolute;
-  top: 39px;
-  width: 352px;
+  top: 19px;
+  width: 373px;
+  border: 1px solid #9d2a1e;;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+
+.userEdit .inputRadio::after{
+  content: '';
+  display: block;
+  height: 100%;
+  width: 1px;
+  background-color: #9d2a1e;
+  position: absolute;
+  left: 176px;
 }
 
 .userEdit .textWrapper {
@@ -178,12 +233,15 @@
 }
 
 .userEdit .submitButton {
-  background-color: #ffffff;
-  height: 43px;
-  left: 24px;
+  background-color: #4d4a4a;
+  height: 40px;
+  left: 120px;
   position: absolute;
-  top: 3px;
-  width: 131px;
+  top: 0px;
+  width: 120px;
+  border-radius: 5px;
+  border: transparent;
+  color: #ffffff;
 }
 
 .userEdit .textWrapper3 {
@@ -200,13 +258,15 @@
 }
 
 .userEdit .cancelButton {
-  background-color: #ffffff;
-  height: 43px;
-  left: 221px;
-  overflow: hidden;
+  background-color: #4d4a4a;
+  height: 40px;
+  left: 310px;
   position: absolute;
-  top: 3px;
-  width: 107px;
+  top: 0px;
+  width: 120px;
+  border-radius: 5px;
+  border: transparent;
+  color: #ffffff;
 }
 
 .userEdit .textWrapper4 {

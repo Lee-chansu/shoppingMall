@@ -16,10 +16,10 @@ module.exports = {
           key: 'id'
         }
       },
-      product_id: {
+      productOption_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Products',
+          model: 'ProductOptions',
           key: 'id'
         }
       },
@@ -34,9 +34,6 @@ module.exports = {
       },
       description: {
         type: Sequelize.STRING(255)
-      },
-      pdstock: {
-        type: Sequelize.INTEGER
       },
       image: {
         type: Sequelize.STRING(255)

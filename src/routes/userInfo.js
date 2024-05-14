@@ -15,6 +15,7 @@ export const UserInfo = () => {
     }else {
       const decodeToken = jwtDecode(token)
       setId(decodeToken.id)
+      setImageUrl(decodeToken.profileImg)
     }
   },[])
   
@@ -28,7 +29,6 @@ export const UserInfo = () => {
 
   const deleteButton = async(e)=>{
     e.preventDefault()
-    
     
     const response = await fetch(`http://localhost:5000/userProfile/${id}`)
     const body = await response.json()
@@ -71,10 +71,10 @@ export const UserInfo = () => {
         <div className="overlapGroup">
           <div className="userSelect">
             <Link to="#" className="link">
-              <div className="textWrapper">payBuyList</div>
+              <div className="textWrapper">구매내역</div>
             </Link>
-            <Link to="/userProfile" className="link">
-              <div className="textWrapper">userProfile</div>
+            <Link to="/passwordCheck" className="link">
+              <div className="textWrapper">내 정보</div>
             </Link>
             <Link className="link" to="/logout" onClick={logOut}>
               <div className="textWrapper">로그아웃</div>

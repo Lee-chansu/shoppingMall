@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../css/payBuyList.css";
 
 import { PayItem } from "../components/PayBuyListItem";
@@ -13,14 +13,18 @@ export const PayBuyList = () => {
   const navigate = useNavigate();
 
   const [payItemList, setPayItemList] = useState([]);
-  const [id, setId] = useState("");
+  const [id, setId] = useState();
 
   //버튼 이동 함수 정의
   const handleLinkBackMove = () => {
     navigate(-1);
   };
 
+<<<<<<< HEAD
   const handlePaymentMove = () => {
+=======
+  const handleHomeMove = () => {
+>>>>>>> 8203971b15a8f0b164fe37fa755c18de924ad26e
     navigate("/");
   };
 
@@ -39,12 +43,63 @@ export const PayBuyList = () => {
       const decodeToken = jwtDecode(token);
       setId(decodeToken.id);
     }
+  }, []);
 
+  useEffect(() => {
     //유저의 id로 구매내역 조회
     if (id !== "") {
       getPayItemList();
     }
   }, [id]);
+<<<<<<< HEAD
+=======
+
+  const handleDeleteItem = async (val) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/buyList/delete/${val.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.ok) {
+        // alert('삭제 완료');
+        setPayItemList((prevList) =>
+          prevList.filter((item) => item.id !== val.id)
+        );
+      } else {
+        throw new Error("서버에서 아이템 삭제 실패");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("구매 내역 삭제 중 오류가 발생했습니다");
+    }
+  };
+
+  const handleAddToCart = async (val) => {
+    let newItem = payItemList.find((item) => item.id === val.id)
+
+    console.log(newItem.ProductOption)
+
+    const addItem = {
+      size: newItem.ProductOption.productSize,
+      color: newItem.ProductOption.productColor,
+      amount: newItem.amount,
+      price: newItem.price,
+      user_id: id,
+      productOption_id: newItem.ProductOption.id,
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(addItem),
+      });
+    } catch (error) {}
+  };
+>>>>>>> 8203971b15a8f0b164fe37fa755c18de924ad26e
 
   return (
     <>
@@ -57,9 +112,11 @@ export const PayBuyList = () => {
               <PayItem
                 val={val}
                 idx={idx}
-                key={idx}
+                key={val.id}
                 payItemList={payItemList}
                 setPayItemList={setPayItemList}
+                handleDeleteItem={handleDeleteItem}
+                handleAddToCart={handleAddToCart}
               />
             );
           })}
@@ -75,7 +132,7 @@ export const PayBuyList = () => {
         <CustomButton
           className="btn2"
           buttonTitle="홈으로"
-          handleLinkMove={handlePaymentMove}
+          handleLinkMove={handleHomeMove}
         />
       </ButtonBox>
     </>

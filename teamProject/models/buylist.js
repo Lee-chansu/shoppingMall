@@ -19,9 +19,6 @@ module.exports = (sequelize) => {
     description: {
       type: DataTypes.STRING(255)
     },
-    pdstock: {
-      type: DataTypes.INTEGER
-    },
     image: {
       type: DataTypes.STRING(255)
     },
@@ -41,7 +38,7 @@ module.exports = (sequelize) => {
 
   BuyList.associate = (models) => {
     BuyList.belongsTo(models.User, { foreignKey: 'user_id' });
-    BuyList.belongsTo(models.Product, { foreignKey: 'product_id' });
+    BuyList.belongsTo(models.ProductOption, { foreignKey: 'productOption_id' });
   };
 
   return BuyList;

@@ -1,12 +1,8 @@
-"use strict";
-const { Model, Sequelize } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
-    static associate(models) {
-      // define association here
-    }
-  }
-  User.init(
+const { DataTypes } = require("sequelize");
+
+module.exports = (sequelize) => {
+  const User = sequelize.define(
+    "User",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -49,19 +45,25 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
-      userImage: {
-        type: DataTypes.STRING(100),
+      profileImg: {
+        type: DataTypes.TEXT,
       },
       createdAt: {
         type: DataTypes.DATE,
-        defaultValue: Sequelize.fn("now"),
+        defaultValue: DataTypes.NOW,
       },
     },
     {
-      sequelize,
-      modelName: "User",
       timestamps: false,
     }
   );
+
+  User.associate = (models) => {
+    User.hasMany(models.Cart, { foreignKey: "user_id" });
+    User.hasMany(models.ReviewList, { foreignKey: "user_id" });
+    User.hasMany(models.BuyList, { foreignKey: "user_id" });
+    User.hasMany(models.Carry, { foreignKey: "user_id" });
+  };
+
   return User;
 };

@@ -1,31 +1,36 @@
+*{margin:0; padding: 0; box-sizing: border-box;}
+ul, ol, li{list-style:none;}
+a{text-decoration:none;} 
+
 .userInfo {
-  background-color: #ffffff;
+  background-color: #f6f1eb;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 100vh;
 }
 
 .userInfo .overlapGroupWrapper {
-  background-color: #ffffff;
+  background-color: #fffcf7;
   position: relative;
+  height: 950px;
 }
 .userInfo .profileImage {
   background-color: #d9d9d9;
   border-radius: 204.77px;
   position: absolute;
-  left: 150px;
-  top: 0;
-  height: 410px;
-  width: 410px;
+  left: 200px;
+  top: 30px;
+  height: 310px;
+  width: 310px;
   z-index: 1;
 }
 
-.userInfo .overlapGroup {
-}
 
 .userInfo .userSelect {
-  background-color: #eeeeee;
+  background-color: #fffcf7;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -35,32 +40,36 @@
 }
 
 .userInfo .link {
-  background-color: #ffffff;
-  width: 90%;
+  background-color: #f6f1eb;
+  width: 70%;
   margin: 20px 0;
   padding: 10px;
+  border-radius: 10px;
 }
 
 .userInfo .deleteButton {
-  background-color: #ffffff;
-  width: 90%;
+  background-color: #f6f1eb;
+  width: 70%;
   margin: 20px 0;
   padding: 10px;
   border: transparent;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 48.1px;
+  font-size: 30px;
   font-weight: 400;
   letter-spacing: 0;
   line-height: normal;
   cursor: pointer;
+  border-radius: 10px;
+  color : #9d2b1eb7
 }
 
 .userInfo .textWrapper {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 48.1px;
+  font-size: 30px;
   font-weight: 400;
   letter-spacing: 0;
   line-height: normal;
   text-align: center;
+  color : #9d2b1eb7
 }

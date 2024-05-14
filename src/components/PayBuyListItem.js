@@ -1,23 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function delBtn() {
-  /* 버튼 클릭시 {val} 한개 삭제 기능 구현 */
-}
+export const PayItem = ({
+  val,
+  payItemList,
+  setPayItemList,
+  handleDeleteItem,
+  handleAddToCart,
+}) => {
+  async function delBtn() {
+    /* 버튼 클릭시 {val} 한개 삭제 기능 구현 */
+    handleDeleteItem(val);
+  }
 
-function basketPlus() {
-  /* 버튼 클릭시 cart에 담기 */
-}
+  function basketPlus() {
+    /* 버튼 클릭시 cart에 담기 */
+    handleAddToCart(val)
+  }
 
-export const PayItem = ({ val }) => {
   return (
     <div className="payItem">
       <div className="itemInfo">
-        <div className="payDate">{val.buyDate}</div>
-        <img
-          className="imageBox"
-          src={val.image}
-        />
+        <div className="payDate">{val.buyDate.substring(0, 10)}</div>
+        <img className="imageBox" src={val.image} />
         <div className="productBox">
           <div className="productName">상품명 : {val.productName}</div>
           <div className="productName">수량 : {val.amount}</div>
@@ -30,7 +35,7 @@ export const PayItem = ({ val }) => {
         </div>
       </div>
       <div className="btnBox">
-        <Link to="/cart" className="basketPlus" onClick={basketPlus}>
+        <Link className="basketPlus" onClick={basketPlus}>
           {/* <img className="basketBtn"
           width="38"
           alt="basket"
@@ -38,7 +43,7 @@ export const PayItem = ({ val }) => {
           /> */}
           장바구니 담기
         </Link>
-        <Link to="/" className="delBtn" onClick={delBtn}>
+        <Link className="delBtn" onClick={delBtn}>
           {/* <img
             className="trashBtn"
             width="32"
