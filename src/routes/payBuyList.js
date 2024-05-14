@@ -20,11 +20,7 @@ export const PayBuyList = () => {
     navigate(-1);
   };
 
-<<<<<<< HEAD
-  const handlePaymentMove = () => {
-=======
   const handleHomeMove = () => {
->>>>>>> 8203971b15a8f0b164fe37fa755c18de924ad26e
     navigate("/");
   };
 
@@ -51,8 +47,6 @@ export const PayBuyList = () => {
       getPayItemList();
     }
   }, [id]);
-<<<<<<< HEAD
-=======
 
   const handleDeleteItem = async (val) => {
     try {
@@ -99,7 +93,6 @@ export const PayBuyList = () => {
       });
     } catch (error) {}
   };
->>>>>>> 8203971b15a8f0b164fe37fa755c18de924ad26e
 
   return (
     <>

@@ -18,13 +18,14 @@ import { Join } from "./routes/join";
 import { FindId } from "./routes/findId";
 import { FindPassword } from "./routes/findPassword";
 import { PasswordCheck } from "./routes/passwordCheck";
+import { PasswordEdit } from "./routes/passwordEdit";
 
 import { Cart } from "./routes/cart";
 import { Payment } from "./routes/payment";
 import { PaySuccess } from "./routes/paySuccess";
 import { PayFail } from "./routes/payFail";
 import { PayBuyList } from "./routes/payBuyList";
-import { PasswordEdit } from "./routes/passwordEdit";
+import { Review } from "./routes/review";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
       <Route path="paySuccess" element={<PaySuccess />}></Route>
       <Route path="payFail" element={<PayFail />}></Route>
       <Route path="payBuyList" element={<PayBuyList />}></Route>
+      <Route path="review" element={<Review />}></Route>
     </Routes>
   );
 }
