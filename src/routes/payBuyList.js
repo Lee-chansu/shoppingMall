@@ -21,17 +21,17 @@ export const PayBuyList = () => {
   };
 
   const handlePaymentMove = () => {
-    navigate("/payment");
+    navigate("/");
   };
 
   const getPayItemList = async () => {
-    const response = await fetch (`http://localhost:5000/buyList/${id}`)
+    const response = await fetch(`http://localhost:5000/buyList/${id}`);
     const payOrderList = await response.json();
     setPayItemList(payOrderList);
-  }
+  };
 
   //로그인한 유저의 id 가져오기
-  useEffect(()=> {
+  useEffect(() => {
     const token = sessionStorage.getItem("token");
     if (id === "" && !token) {
       navigate("/login");
@@ -44,7 +44,7 @@ export const PayBuyList = () => {
     if (id !== "") {
       getPayItemList();
     }
-  },[id])
+  }, [id]);
 
   return (
     <>

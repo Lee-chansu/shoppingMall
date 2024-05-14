@@ -48,7 +48,7 @@
 }
 
 .paySuccess .successMessage {
-  color: #aa0000;
+  color: #ff7d9e;
   font-family: "Inter-Regular", Helvetica;
   font-size: 30px;
   font-weight: 400;
@@ -120,10 +120,10 @@
 }
 
 .paySuccess .paySum {
-  color: #000000;
+  color: #ff7d9e;
   font-family: "Inter-Regular", Helvetica;
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 600;
   left: 256px;
   letter-spacing: 0;
   line-height: normal;
