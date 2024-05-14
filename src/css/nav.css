@@ -20,8 +20,7 @@
 }
 
 .header .inner .category2 {
-  padding: 20px 20px;
-  background-color: #eeeeee;
+  background-color: inherit;
   display: none;
   justify-content: space-between;
   align-items: center;
