@@ -34,8 +34,8 @@ export const CartItem = ({
   };
 
   useEffect(() => {
-    console.log("item rerender", val.isChecked);
-  }, []);
+    console.log("item rerender", val);
+  }, [cartItemList]);
 
   return (
     <div className={styles.cartItem}>

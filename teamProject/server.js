@@ -481,7 +481,8 @@ app.get("/productOption/:id", async (req, res) => {
   const { id } = req.params;
   const result = await ProductOption.findAll({
     where: { product_id: id },
-    limit: 10,
+    include: Product
+    // limit: 10,
   });
   res.json(result);
 });

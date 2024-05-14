@@ -11,7 +11,7 @@ import CustomButton from "../components/CustomButton";
 export const Payment = () => {
   //배송요청 직접입력
   const [selectedOption, setSelectedOption] = useState("");
-  const [userProfile, setUserProfile] = useState({});
+  const [userProfile, setUserProfile] = useState({address:''});
   const [id, setId] = useState("");
   const navigate = useNavigate();
   const mainAddressRef = useRef(null);
@@ -22,7 +22,8 @@ export const Payment = () => {
   //결제방식 선택하기
   const [paySelect, setPaySelect] = useState("");
   const location = useLocation();
-
+  
+  
   //총 주문 합계 보기 변수선언
   const [orderSum, setOrderSum] = useState({
     carryTotal: 3000,
@@ -71,6 +72,14 @@ export const Payment = () => {
 
   //유저별 상품조회
   const userFetchProducts = async () => {
+    let data = []
+    if (location.state) {
+      data = location.state.paymentList;
+    }
+
+    console.log('paymentList', data)
+    return data;
+
     const response = await fetch(`http://localhost:5000/Cart/${id}`);
     const body = await response.json();
     return body;
@@ -79,7 +88,7 @@ export const Payment = () => {
   const getProducts = async (id) => {
     const result = await userFetchProducts(id);
     const newArr = result.map((val, idx) => {
-      return { ...val.Product, amount: val.amount };
+      return { ...val };
     });
     console.log(newArr);
 
@@ -105,7 +114,7 @@ export const Payment = () => {
     //총 주문 합계 보기
     if (paymentItemList.length !== 0) {
       let temp = { ...orderSum };
-      console.log(paymentItemList.length);
+      // console.log(paymentItemList.length);
       paymentItemList.forEach((val, idx) => {
         console.log(val.price);
         temp.orderTotal += val.price * val.amount;

@@ -97,7 +97,14 @@ export const Cart = () => {
   };
 
   const handlePaymentMove = () => {
-    navigate("/payment");
+    const paymentList = cartItemList.filter((option => option.isChecked === true));
+
+    if(paymentList.length) {
+      navigate("/payment", { state: { paymentList }});
+    } else {
+      console.log(paymentList.length)
+      alert('상품을 선택하세요')
+    }
   };
 
   const handlePaymentRemove = () => {
