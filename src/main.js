@@ -13,7 +13,6 @@ export const Main = () => {
     const getProducts = await fetch("http://localhost:5000/product").then(res =>
       res.json()
     );
-
     setProductList(getProducts);
   };
 
