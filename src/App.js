@@ -25,6 +25,7 @@ import { PaySuccess } from "./routes/paySuccess";
 import { PayFail } from "./routes/payFail";
 import { PayBuyList } from "./routes/payBuyList";
 import { PasswordEdit } from "./routes/passwordEdit";
+import { ReviewWrite } from "./routes/reviewWrite";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
       <Route path="paySuccess" element={<PaySuccess />}></Route>
       <Route path="payFail" element={<PayFail />}></Route>
       <Route path="payBuyList" element={<PayBuyList />}></Route>
+      <Route path="reviewWrite" element={<ReviewWrite/>}></Route>
     </Routes>
   );
 }
