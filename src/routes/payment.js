@@ -8,6 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import PaymentModal from "../components/PaymentModal";
 import CustomButton from "../components/CustomButton";
 import { Nav } from "../components/nav";
+import axios from "axios";
 
 export const Payment = () => {
   //배송요청 직접입력
@@ -60,9 +61,18 @@ export const Payment = () => {
     navigate(-1);
   };
 
-  const handleAllPayment = () => {
-    navigate("/paySuccess");
+  const handleAllPayment = async () => {
+    // navigate("/paySuccess");
     //모달 처리 예정 , if문으로 분기처리 예정
+    const body = {
+      user_id : id, 
+      // productOption_id, size, color, amount
+      list:paymentItemList
+    }
+    const res = await axios.post("http://localhost:5000/buyList", body)
+    const data = res.data;
+    alert(data.message)
+    navigate('/payBuyList')
   };
 
   //결제방식 선택시 실행할 함수
@@ -80,7 +90,12 @@ export const Payment = () => {
   const getProducts = async (id) => {
     const result = await userFetchProducts(id);
     const newArr = result.map((val, idx) => {
-      return { ...val.Product, amount: val.amount };
+      return {
+        ...val.Product,
+        amount: val.amount,
+        size: val.size,
+        color: val.color,
+      };
     });
     console.log(newArr);
 

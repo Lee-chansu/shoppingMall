@@ -1,3 +1,13 @@
+.selected {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+}
+
+.non-selected {
+  background-color: gray;
+}
+
 .review {
   background-color: #ffffff;
   display: flex;

@@ -398,7 +398,7 @@ app.get("/Cart/:user_id", async (req, res) => {
   try {
     const result = await Cart.findAll({
       where: { user_id },
-      include: [{ model: Product }], // Product 모델을 include하여 조인
+      include: [{ model: Product }], // Product 모app.post("/cart델을 include하여 조인
     });
 
     if (result) {
@@ -434,7 +434,7 @@ app.get("/Cart", async (req, res) => {
   res.json(result);
 });
 
-//유저별 장바구니 조회
+//유저별 구매내역 조회
 app.get("/buyList/:user_id", async (req, res) => {
   const { user_id } = req.params;
   const result = await BuyList.findAll({
@@ -457,6 +457,34 @@ app.delete("/buyList/delete/:id", async (req, res) => {
     res.status(500).json({ message: "삭제 중 오류가 발생했습니다" });
   }
 });
+
+// 조회 : get , 추가 : post , 수정 : put , 삭제 : delete
+// 구매내역 추가 (cart의 리스트를 payBuyList에 추가)
+app.post('/buyList' , async (req,res) => {
+  const {list, user_id} = req.body;
+  console.log(list);
+
+  list.forEach( async (val, idx)=>{
+    const newBuyList = {
+      user_id,
+      productOption_id: val.id,
+      productName: val.name,
+      category: val.category ? val.category : "x",
+      price:val.price,
+      description:val.description ? val.description : "x",
+      image: val.mainImage,
+      amount: val.amount,
+      carryStatus: "도착완료",
+    }
+    try {
+      await BuyList.create(newBuyList)
+    } catch (error) {
+      console.error("구매내역 추가 중 에러 발생", error);
+      res.status(500).json({ message: "구매내역 추가 중 에러 발생했습니다" });
+    }
+  })
+  res.json({message: '결제가 성공적으로 완료되었습니다'})
+})
 
 app.get("/productOption", async (req, res) => {
   const result = await ProductOption.findAll();

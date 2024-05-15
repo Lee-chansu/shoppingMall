@@ -1,7 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../css/review.css";
+import CustomButton from "../components/CustomButton";
 
 export const Review = () => {
+
+  const [reviewColor, setReviewColor] = useState('');
+  const [reviewSize, setReviewSize] = useState('');
+  const colorList = ['밝아요', '화면과 같아요', '어두워요'];
+  const sizeList = ['작아요', '정사이즈예요', '커요'];
+
   return (
     <div className="review">
       <div className="reviewWrap">
@@ -22,29 +29,36 @@ export const Review = () => {
 
         <div className="reviewColorBox">
           <span className="title">색상은 어떤가요?</span>
-          <div className="checkBox">
-            <div className="text-wrapper-8">밝아요</div>
-          </div>
-          <div className="overlap-4">
-            <div className="text-wrapper-10">화면과 같아요</div>
-          </div>
-          <div className="overlap-6">
-            <div className="text-wrapper-11">어두워요</div>
-          </div>
+          <br/>
+          {colorList.map((val, idx) => {
+            return (
+              <CustomButton
+                key={idx}
+                buttonTitle={val}
+                className={reviewColor == idx ? 'selected' : 'non-selected'}
+                handleLinkMove={() => {
+                  setReviewColor(idx);
+                }}
+              />
+            );
+          })}
         </div>
 
         <div className="reviewSizeBox">
           <span className="title">사이즈는 어떤가요?</span>
-          <div className="div-wrapper">
-            <div className="text-wrapper-8">작아요</div>
-          </div>
-          <div className="overlap-5">
-            <div className="text-wrapper-10">정사이즈예요</div>
-          </div>
-
-          <div className="overlap-7">
-            <div className="text-wrapper-12">커요</div>
-          </div>
+          <br/>
+          {sizeList.map((val, idx) => {
+            return (
+              <CustomButton
+                key={idx}
+                buttonTitle={val}
+                className={reviewSize == idx ? 'selected' : 'non-selected'}
+                handleLinkMove={() => {
+                  setReviewSize(idx);
+                }}
+              />
+            );
+          })}
         </div>
 
         <div className="reviewDetailBox">
