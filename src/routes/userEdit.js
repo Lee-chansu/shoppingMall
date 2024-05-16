@@ -77,11 +77,11 @@ export const UserEdit = () => {
 
   const imageChange = (e) => {
     const selectFile = e.target.files[0];
-    console.log(e.target);
+    console.log(selectFile.name);
     if (selectFile) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setEditUser((pre) => ({ ...pre, profileImg: reader.result }));
+        setEditUser((pre) => ({ ...pre, profileImg: "/img/"+selectFile.name }));
       };
       reader.readAsDataURL(selectFile);
     }
