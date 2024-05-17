@@ -1,13 +1,3 @@
-.selected {
-  background-color: black;
-  color: white;
-  border: 1px solid black;
-}
-
-.non-selected {
-  background-color: gray;
-}
-
 .review {
   background-color: #ffffff;
   display: flex;
@@ -24,41 +14,41 @@
 
 .review .productBox {
   display: flex;
-  margin-top: 80px;
-  height: 150px;
+  margin-top: 50px;
+  height: 120px;
   width: 100%;
+  padding: 20px;
+  border-top: 3px solid #ddd;
+  border-bottom: 3px solid #ddd;
 }
 
 .review .productImg {
   background-color: #eeeeee;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
 }
 
 .review .nameOptionBox {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-left: 30px;
 }
 
-
 .review .productName {
-  color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 35px;
+  font-size: 24px;
   font-weight: 400;
 }
 
 .review .productOption {
-  color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 35px;
+  font-size: 24px;
   font-weight: 400;
 }
 
 .review .line {
-  margin-top: 50px;
+  margin-top: 1px;
   width: 100%;
   height: 0;
   border: 3px solid #ff7d9e;
@@ -92,11 +82,10 @@
 .review .reviewSizeBox {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 400;
-  left: 83px;
-  position: absolute;
-  top: 905px;
+  margin-top: 50px;
+  margin-left: 80px;
 }
 
 .review .reviewDetailBox {
@@ -104,13 +93,21 @@
   font-family: "Inter-Regular", Helvetica;
   font-size: 40px;
   font-weight: 400;
-  left: 83px;
-  position: absolute;
-  top: 1203px;
+  margin-top: 50px;
+  margin-left: 80px;
+}
+
+.review .reviewTitle {
+  color: #ff7d9e;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 40px;
+  font-weight: 600;
+  padding-top: 80px;
+  text-align: center;
 }
 
 .review .title {
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .review .checkBox {
@@ -147,20 +144,18 @@
   width: 320px;
 }
 
-.review .overlap-2 {
-  margin-top: 750px;
-  width: 100%;
-}
-
 .review .reviewDetail {
-  color: #cccccc;
+  color: #ddd;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   width: 100%;
   height: 5em;
-  border: 3px solid #ccc;
+  border: 3px solid #ddd;
   border-radius: 10px;
+  letter-spacing: -1px;
+  box-sizing: border-box;
+  resize: none;
 }
 
 .review .overlap-3 {
@@ -269,4 +264,28 @@
   left: 118px;
   position: absolute;
   top: 46px;
+}
+
+.review .selectButton {
+  display: inline-block;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.selected {
+  background-color: #ff7d9e;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  width: 250px;
+  height: 70px;
+}
+
+.non-selected {
+  border: 3px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #ccc;
+  width: 250px;
+  height: 70px;
 }
