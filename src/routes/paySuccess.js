@@ -1,14 +1,30 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../css/paySuccess.css";
+import ButtonBox from "../components/ButtonBox";
+import CustomButton from "../components/CustomButton";
+import { PaySuccessItem } from "../components/PaySuccessItem";
 
 export const PaySuccess = () => {
   const [paidItemList, setPaidItemList] = useState([]);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { paySelect, list, paySelectSumPrice } = location.state;
+
+  const handleHome = () => {
+    navigate("/");
+  };
+
+  const handleProductList = () => {
+    navigate("/productList");
+  };
+
+  const handlePayBuyList = () => {
+    navigate("/payBuyList");
+  };
 
   useEffect(() => {
-    const { list } = location.state;
     console.log(list);
     setPaidItemList(list);
   }, []);
@@ -28,21 +44,13 @@ export const PaySuccess = () => {
               <div className="payInfo">결제내역</div>
               <div className="productName">상품명</div>
               <div className="howToPay">결제방법</div>
-              <div className="howToPayPrint">신용카드</div>
-              <div className="paySum">50,000원</div>
+              <div className="howToPayPrint">{paySelect}</div>
+              <div className="paySum">{paySelectSumPrice}</div>
               <div className="paySumText">결제금액</div>
 
               <div className="paidItemList">
                 {paidItemList.map((val, idx) => {
-                  return (
-                    <>
-                      <div className="orderProduct1">{val.name}</div>
-                      <div className="optionInfo1">
-                        option : {val.color} / {val.size} / {val.amount} /{" "}
-                        {val.price}
-                      </div>
-                    </>
-                  );
+                  return <PaySuccessItem key={val.id} val={val} />;
                 })}
               </div>
 
@@ -52,18 +60,26 @@ export const PaySuccess = () => {
                   드립니다.
                 </i>
               </div>
-              <div className="buttonGroup">
-                <button className="button">
-                  <Link to="/" className="buttonText">
-                    홈으로
-                  </Link>
-                </button>
-                <button className="button">
-                  <Link to="/" className="buttonText">
-                    쇼핑 계속하기
-                  </Link>
-                </button>
-              </div>
+
+              <ButtonBox>
+                <CustomButton
+                  className="btn1"
+                  buttonTitle="홈으로"
+                  handleLinkMove={handleHome}
+                />
+
+                <CustomButton
+                  className="btn2"
+                  buttonTitle="쇼핑 계속하기"
+                  handleLinkMove={handleProductList}
+                />
+
+                <CustomButton
+                  className="btn3"
+                  buttonTitle="구매내역으로"
+                  handleLinkMove={handlePayBuyList}
+                />
+              </ButtonBox>
             </div>
           </div>
         </div>

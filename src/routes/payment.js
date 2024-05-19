@@ -61,11 +61,12 @@ export const Payment = () => {
   };
 
   const handleAllPayment = async () => {
-    // navigate("/paySuccess");
-    //모달 처리 예정 , if문으로 분기처리 예정
+    if (paySelect == "") {
+      alert("결제방식을 선택해주세요");
+      return;
+    }
     const body = {
       user_id: id,
-      // productOption_id, size, color, amount
       list: paymentItemList,
     };
     const postRes = await axios.post("http://localhost:5000/buyList", body);
@@ -89,7 +90,7 @@ export const Payment = () => {
     // alert("결제가 성공적으로 완료 되었습니다.");
 
     alert(postData.message);
-    navigate("/paySuccess", { state: { list: paymentItemList } });
+    navigate("/paySuccess", { state: { list: paymentItemList, paySelect, paySelectSumPrice: orderSum.paySumTotal } });
   };
 
   //결제방식 선택시 실행할 함수
