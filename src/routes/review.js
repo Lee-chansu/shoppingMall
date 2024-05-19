@@ -52,8 +52,6 @@ export const Review = () => {
           </div>
         </div>
 
-        {/* <hr className="line" /> */}
-
         <div className="reviewCheckBox">
           <span className="title">구매하신 상품의 만족도를 체크해주세요</span>
           <div className="starBox">리뷰 별점수</div>

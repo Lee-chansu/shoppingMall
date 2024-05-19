@@ -1,42 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../css/paySuccess.css";
 
-import { CartItem } from "../components/CartItem";
-
 export const PaySuccess = () => {
-  const [cartItemList, setCartItemList] = useState([
-    {
-      id: 1,
-      price: 50000,
-      name: "상품명인데 어디까지 괜찮나 한번 볼까",
-      carryPrice: 3000,
-      count: 3,
-      src: "/pants.jpg",
-      isChecked: false,
-    },
-    {
-      id: 2,
-      price: 20000,
-      name: "근데 상품명이 두줄이상이면 어떻하지",
-      carryPrice: 1000,
-      count: 1,
-      src: "/t-shirt.jpg",
-      isChecked: false,
-    },
-    {
-      id: 3,
-      price: 40000,
-      name: "css로 처리할 수 있었다👍🏻 ",
-      carryPrice: 2000,
-      count: 2,
-      src: "/pants.jpg",
-      isChecked: false,
-    },
-  ]);
+  const [paidItemList, setPaidItemList] = useState([]);
+  const location = useLocation();
 
-  const [isCheckedAll, setIsCheckedAll] = useState(false);
+  useEffect(() => {
+    const { list } = location.state;
+    console.log(list);
+    setPaidItemList(list);
+  }, []);
 
   return (
     <div className="paySuccess">
@@ -56,30 +31,20 @@ export const PaySuccess = () => {
               <div className="howToPayPrint">신용카드</div>
               <div className="paySum">50,000원</div>
               <div className="paySumText">결제금액</div>
-              <div className="orderProduct1">
-                [category] 이름짓기 어려운 반팔1
-              </div>
-              <div className="orderProduct2">
-                [category] 이름짓기 어려운 반팔2
-              </div>
-              <div className="orderProduct3">
-                [category] 이름짓기 어려운 반팔3
-              </div>
-              <div className="optionInfo1">option / color / size / ect..</div>
-              <p className="optionInfo2">option / color / size / ect..</p>
-              <p className="optionInfo3">option / color / size / ect..</p>
-              {/* {cartItemList &&
-                cartItemList.map((val, idx) => {
+
+              <div className="paidItemList">
+                {paidItemList.map((val, idx) => {
                   return (
-                    <CartItem
-                      val={val}
-                      idx={idx}
-                      cartItemList={cartItemList}
-                      setCartItemList={setCartItemList}
-                      key={val.id}
-                    ></CartItem>
+                    <>
+                      <div className="orderProduct1">{val.name}</div>
+                      <div className="optionInfo1">
+                        option : {val.color} / {val.size} / {val.amount} /{" "}
+                        {val.price}
+                      </div>
+                    </>
                   );
-                })} */}
+                })}
+              </div>
 
               <div className="readMe">
                 <i>

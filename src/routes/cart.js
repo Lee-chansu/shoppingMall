@@ -8,6 +8,7 @@ import { Nav } from "../components/nav";
 import { CartItem } from "../components/CartItem";
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
+import axios from "axios";
 
 export const Cart = () => {
   //장바구니에 담길 내용
@@ -96,12 +97,43 @@ export const Cart = () => {
     navigate(-1);
   };
 
+  //선택상품만 결제하기
   const handlePaymentMove = () => {
-    navigate("/payment");
+    //선택된 상품 추출
+    const selectedCartItemList = cartItemList.filter(
+      (val) => val.isChecked === true
+    );
+
+    //payment로 선택된 상품 전달
+    navigate("/payment", {
+      state: {
+        list: selectedCartItemList,
+      },
+    });
   };
 
-  const handlePaymentRemove = () => {
-    // navigate("/payment");
+  const handlePaymentRemove = async () => {
+    const selectedCartItemList = cartItemList.filter(
+      (val) => val.isChecked === true
+    );
+
+    const body = {
+      user_id: id,
+      list: selectedCartItemList,
+    };
+
+    try {
+      const res = await axios.delete("http://localhost:5000/cart", {
+        data: body,
+      });
+
+      const data = res.data;
+      alert(data.message);
+      getProducts();
+    } catch (error) {
+      console.error(error);
+      alert("삭제 실패");
+    }
   };
 
   useEffect(() => {
@@ -138,7 +170,7 @@ export const Cart = () => {
                   cartItemList={cartItemList}
                   setCartItemList={setCartItemList}
                   key={val.id}
-                ></CartItem>
+                />
               );
             })}
 
