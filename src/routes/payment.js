@@ -87,8 +87,6 @@ export const Payment = () => {
       return;
     }
 
-    // alert("결제가 성공적으로 완료 되었습니다.");
-
     alert(postData.message);
     navigate("/paySuccess", { state: { list: paymentItemList, paySelect, paySelectSumPrice: orderSum.paySumTotal } });
   };
@@ -312,7 +310,7 @@ export const Payment = () => {
 
               <CustomButton
                 className="btn2"
-                buttonTitle="결제하기"
+                buttonTitle="결제완료"
                 handleLinkMove={handleAllPayment}
               />
             </ButtonBox>
