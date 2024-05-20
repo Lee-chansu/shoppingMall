@@ -47,41 +47,34 @@ export const ProductAdd = () => {
       reader.onloadend = () => {
         setMainImageFile(reader.result);
       };
-      if (file.name.includes("http://") || file.name.includes("https://")) {
-        setNewProduct(prevState => ({
-          ...prevState,
-          mainImage: file.name,
-        }));
-      } else {
-        setNewProduct(prevState => ({
-          ...prevState,
-          mainImage: "/img/" + file.name,
-        }));
-      }
+      setNewProduct((prevState) => ({
+        ...prevState,
+        mainImage: file,
+      }));
     } else {
       return;
     }
   };
 
-  const addTag = e => {
+  const addTag = (e) => {
     e.preventDefault();
     setCount(count + 1);
   };
 
-  const checkOnlyOneCategory = checkThis => {
+  const checkOnlyOneCategory = (checkThis) => {
     checkThis.checked === false
       ? setCheckCategory("")
       : setCheckCategory(checkThis.name);
   };
 
-  const checkOnlyOneDetail = checkThis => {
+  const checkOnlyOneDetail = (checkThis) => {
     checkThis.checked === false
       ? setCheckDetail("")
       : setCheckDetail(checkThis.name);
   };
 
   const showDetailBar = () => {
-    setNewProduct(prevState => ({
+    setNewProduct((prevState) => ({
       ...prevState,
       category: checkCategory,
       detail: checkDetail,
@@ -105,7 +98,7 @@ export const ProductAdd = () => {
     description: "",
   });
 
-  const valueChange = e => {
+  const valueChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
@@ -130,62 +123,64 @@ export const ProductAdd = () => {
 
   useEffect(() => {}, [newOption]);
 
-  const toAddProduct = async e => {
+  const toAddProduct = async (e) => {
     e.preventDefault();
 
     try {
-      if (newProduct.category === "") {
-        alert("카테고리를 선택해주세요.");
-        return;
-      }
-      if (newProduct.detail === "") {
-        alert("디테일을 선택해주세요.");
-        return;
-      }
-      if (newProduct.name === "" || newProduct.name === null) {
-        alert("이름을 입력해주세요.");
-        return;
-      }
-      if (newProduct.mainImage === null) {
-        alert("메인 이미지를 선택 해주세요.");
-        return;
-      }
-      if (newProduct.color === null || newProduct.color === "") {
-        alert("제품의 색상을 입력해주세요.");
-        return;
-      }
-      if (newProduct.price === null || newProduct.price === 0) {
-        alert("제품의 가격을 입력해주세요.");
-        return;
-      }
-      if (newProduct.size === null || newProduct.size === null) {
-        alert("제품의 사이즈를 선택해주세요.");
-        return;
-      }
-      if (newProduct.stock === null || newProduct.stock === "") {
-        alert("제품의 재고수량을 입력해주세요.");
-        return;
-      }
-
-      const body = {
-        newProduct,
-        newOption,
-      };
+      // if (newProduct.category === "") {
+      //   alert("카테고리를 선택해주세요.");
+      //   return;
+      // }
+      // if (newProduct.detail === "") {
+      //   alert("디테일을 선택해주세요.");
+      //   return;
+      // }
+      // if (newProduct.name === "" || newProduct.name === null) {
+      //   alert("이름을 입력해주세요.");
+      //   return;
+      // }
+      // if (newProduct.mainImage === null) {
+      //   alert("메인 이미지를 선택 해주세요.");
+      //   return;
+      // }
+      // if (newProduct.color === null || newProduct.color === "") {
+      //   alert("제품의 색상을 입력해주세요.");
+      //   return;
+      // }
+      // if (newProduct.price === null || newProduct.price === 0) {
+      //   alert("제품의 가격을 입력해주세요.");
+      //   return;
+      // }
+      // if (newProduct.size === null || newProduct.size === null) {
+      //   alert("제품의 사이즈를 선택해주세요.");
+      //   return;
+      // }
+      // if (newProduct.stock === null || newProduct.stock === "") {
+      //   alert("제품의 재고수량을 입력해주세요.");
+      //   return;
+      // }
+      let formData = new FormData();
+      formData.append("mainImage", newProduct.mainImage);
+      formData.append("subImage1", newProduct.subImage1);
+      formData.append("subImage2", newProduct.subImage2);
+      formData.append("subImage3", newProduct.subImage3);
+      formData.append("newProduct", JSON.stringify(newProduct));
+      formData.append("newProduct", JSON.stringify(newOption));
 
       await fetch("http://localhost:5000/addProduct", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      }).then(res => {
-        res.json();
-        if (res.ok) {
-          alert("제품을 추가했습니다.");
-          navigate("/productList");
-        } else {
-          alert("제품을 추가하는데 실패했습니다.");
-          return;
-        }
+        body: formData,
       });
+      // .then(res => {
+      //   res.json();
+      //   if (res.ok) {
+      //     alert("제품을 추가했습니다.");
+      //     navigate("/productList");
+      //   } else {
+      //     alert("제품을 추가하는데 실패했습니다.");
+      //     return;
+      //   }
+      // });
     } catch (error) {
       alert("제품 추가 중 오류가 발생했습니다.");
       console.log(error);
@@ -198,11 +193,15 @@ export const ProductAdd = () => {
       <Nav></Nav>
       <div className="productAdd">
         <div className="inner">
-          <form className="formBox">
+          <form
+            className="formBox"
+            encType="multipart/form-data"
+            onSubmit={toAddProduct}
+          >
             <div className="wrap">
               <h2 className="title">카테고리</h2>
               <div className="boxWrap">
-                {category.map(el => {
+                {category.map((el) => {
                   return (
                     <div className="box" key={el}>
                       <label className="text" htmlFor={el}>
@@ -214,7 +213,7 @@ export const ProductAdd = () => {
                         name={el}
                         value={el}
                         checked={checkCategory === el}
-                        onChange={e => checkOnlyOneCategory(e.target)}
+                        onChange={(e) => checkOnlyOneCategory(e.target)}
                       />
                     </div>
                   );
@@ -237,7 +236,7 @@ export const ProductAdd = () => {
                           name={el}
                           value={el}
                           checked={checkDetail === el}
-                          onChange={e => checkOnlyOneDetail(e.target)}
+                          onChange={(e) => checkOnlyOneDetail(e.target)}
                         />
                       </div>
                     );
@@ -314,7 +313,7 @@ export const ProductAdd = () => {
               </div>
             </div>
             <div className="btnForm">
-              <button onClick={toAddProduct}>추가</button>
+              <button>추가</button>
               <Link to="/productList">
                 <button>취소</button>
               </Link>
