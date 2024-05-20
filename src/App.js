@@ -25,7 +25,7 @@ import { PaySuccess } from "./routes/paySuccess";
 import { PayFail } from "./routes/payFail";
 import { PayBuyList } from "./routes/payBuyList";
 import { PasswordEdit } from "./routes/passwordEdit";
-import { ReviewWrite } from "./routes/reviewWrite";
+
 
 function App() {
   return (
