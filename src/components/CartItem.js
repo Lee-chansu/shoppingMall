@@ -19,7 +19,7 @@ export const CartItem = ({
 
   //수량 down btn
   const handleDownCount = () => {
-    if (val.amount <= 0) {
+    if (val.amount <= 1) {
       return;
     }
     const listCopy = cartItemList;

@@ -4,9 +4,8 @@ const { FOREIGNKEYS } = require('sequelize/lib/query-types');
 module.exports = (sequelize) => {
   const PaymentRequest = sequelize.define('PaymentRequest', {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(40),
       primaryKey: true,
-      autoIncrement: true
     },
     amount: {
       type: DataTypes.INTEGER
@@ -18,6 +17,10 @@ module.exports = (sequelize) => {
   }, {
     timestamps: false
   });
+
+  PaymentRequest.associate = (models) => {
+    PaymentRequest.belongsTo(models.User, { foreignKey: 'user_id' });
+  };
 
   return PaymentRequest;
 };

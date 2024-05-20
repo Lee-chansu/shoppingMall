@@ -67,6 +67,7 @@ const {
   ProductOption,
   ProductDetail,
   Carry,
+  PaymentRequest
 } = db;
 
 //미들웨어
@@ -653,6 +654,21 @@ app.put("/userinfo/put/:id", async (req, res) => {
     res.status(404).send({ message: "db와 일치하지않음" });
   }
 });
+
+// 결제 요청 생성
+app.post("/paymentRequest", async (req, res) => {
+  const newRequest = req.body;
+  const { id } = req.body;
+  const result = await PaymentRequest.findOne({ where: { id } });
+  if (!result) {
+    await PaymentRequest.create(newRequest);
+    res.json({ result: false });
+  } else {
+    res.json({ result });
+  }
+});
+
+
 
 // 결제 api 관련
 // const got = require("got");

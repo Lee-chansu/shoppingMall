@@ -97,7 +97,7 @@ export const Cart = () => {
   };
 
   const handlePaymentMove = () => {
-    const paymentList = cartItemList.filter((option => option.isChecked === true));
+    const paymentList = cartItemList.filter((option => option.isChecked === true && true));
 
     if(paymentList.length) {
       navigate("/payment", { state: { paymentList }});
