@@ -17,8 +17,11 @@ export const Payment = () => {
   const [id, setId] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  const mainAddressRef = useRef(null);
-  const detailAddressRef = useRef(null);
+  //useRef 는 태그를 편하게 지칭하거나 값을 임시적으로 담기 좋다
+  //useRef 값에 접근하기 위해서는 .current를 써야한다
+  const mainAddressRef = useRef(null); 
+  const detailAddressRef = useRef(null); 
+  //완료 or 수정하기위한 변수 선언
   const [isAddressEditable, setIsAddressEditable] = useState(true);
   const [paySelect, setPaySelect] = useState("");
   const [paymentItemList, setPaymentItemList] = useState([]);
@@ -26,10 +29,10 @@ export const Payment = () => {
 
   //총 주문 합계 보기 변수선언
   const [orderSum, setOrderSum] = useState({
-    carryTotal: 3000,
-    orderTotal: 0,
-    countTotal: 0,
-    paySumTotal: 0,
+    carryTotal: 3000, //배송비
+    orderTotal: 0, //총주문금액
+    countTotal: 0, //총수량
+    paySumTotal: 0, //총주문금액 + 배송비
   });
 
   const handleChange = (e) => {
@@ -65,10 +68,12 @@ export const Payment = () => {
       alert("결제방식을 선택해주세요");
       return;
     }
+    //결제정보
     const body = {
       user_id: id,
       list: paymentItemList,
     };
+    //결제목록에 추가하는 코드
     const postRes = await axios.post("http://localhost:5000/buyList", body);
     const postData = postRes.data;
 
@@ -77,6 +82,7 @@ export const Payment = () => {
       return;
     }
 
+    //cart에서 결제된 항목 삭제
     const deleteRes = await axios.delete("http://localhost:5000/cart", {
       data: body,
     });
@@ -96,13 +102,7 @@ export const Payment = () => {
     setPaySelect(e.target.innerText);
   };
 
-  //유저별 상품조회
-  const userFetchProducts = async () => {
-    const response = await fetch(`http://localhost:5000/Cart/${id}`);
-    const body = await response.json();
-    return body;
-  };
-
+  //user id 가져오기위한 useEffect
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     if (id === "" && !token) {
@@ -117,6 +117,8 @@ export const Payment = () => {
     }
   }, [id]);
 
+  //화면 출력 전 주문금액 총합계를 구하기 위한 useLayoutEffect
+  //useEffect보다 총합계를 더 빨리 연산하기위한 useLayoutEffect
   useLayoutEffect(() => {
     //총 주문 합계 보기
     if (paymentItemList.length !== 0) {
@@ -136,16 +138,15 @@ export const Payment = () => {
 
   //cart의 선택된 상품을 전달받아 list에 저장
   useEffect(() => {
-    const { list } = location.state;
+    const { list } = location.state; //cart에서 navigate로 보낸 cartItemList를 location으로 list란 이름으로 받음
     console.log(list);
     setPaymentItemList(list); //list가 없을때 예외처리 해야함
-  }, []);
+  }, []); //의존성 배열이 비어있기때문에 값이 바뀔수없으므로 한번만 실행
 
   return (
     <>
       <Nav></Nav>
       <div className="payment">
-        {/* <div className="paymentInnerWrapper"> */}
         <div className="paymentInner">
           <div className="payTitle">
             <div className="textWrapper8">결제하기</div>
@@ -160,10 +161,12 @@ export const Payment = () => {
               <div className="addressBox">
                 <div className="address">배송받을 주소</div>
                 <div className="address2">
+                  {/* paymentmodal에서 mainAddressRef로 input태그에 접근이 가능해짐 */}
                   <PaymentModal mainAddressRef={mainAddressRef} />
+                  
                   <input
                     className="mainAddressBox"
-                    ref={mainAddressRef}
+                    ref={mainAddressRef} //input태그를 ref로 편하게 지칭가능
                     placeholder="도로 주소명(자동)"
                     value={userProfile.address}
                     disabled
@@ -179,6 +182,7 @@ export const Payment = () => {
                     onClick={handleAddressFinish}
                     style={{
                       color:
+                      //최초에 그릴때 ref와 태그와 연결되기전 current안에있는value를 찾으려하면 버그발생을 막기위해 ? 사용
                         detailAddressRef.current?.value === ""
                           ? "gray"
                           : "black",
@@ -316,7 +320,6 @@ export const Payment = () => {
             </ButtonBox>
           </div>
         </div>
-        {/* </div> */}
       </div>
     </>
   );

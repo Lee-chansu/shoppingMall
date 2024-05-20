@@ -38,8 +38,11 @@ export const Cart = () => {
     return body;
   };
 
+  // db조인결과를 잘가져오는데 좀 더 연산을 편하게 하기위해서 데이터 조작
   const getProducts = async (id) => {
     const result = await userFetchProducts(id);
+    // cart와 product의 조인된 결과의 속성명들이 key가 되어야하는데
+    // 조인된 결과가 Product 가 key가 되었기 때문에 속성명들이 key가 되기위한 추가연산
     const newArr = result.map((val, idx) => {
       return {
         ...val.Product,
@@ -112,17 +115,20 @@ export const Cart = () => {
     });
   };
 
+  //선택상품 삭제버튼 클릭시 체크되어 있는 val을 삭제처리
   const handlePaymentRemove = async () => {
     const selectedCartItemList = cartItemList.filter(
       (val) => val.isChecked === true
     );
 
+    //서버에 보낼 정보를 담은 body 선언
     const body = {
       user_id: id,
       list: selectedCartItemList,
     };
 
     try {
+      //axios 에서는 data란 key값으로 우리가 원하는 객체를 보냄
       const res = await axios.delete("http://localhost:5000/cart", {
         data: body,
       });
@@ -130,15 +136,12 @@ export const Cart = () => {
       const data = res.data;
       alert(data.message);
       getProducts();
+
     } catch (error) {
       console.error(error);
       alert("삭제 실패");
     }
   };
-
-  useEffect(() => {
-    cartItemList.forEach((val) => {});
-  });
 
   return (
     <>
