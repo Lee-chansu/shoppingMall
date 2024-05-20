@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../css/paySuccess.css";
 import ButtonBox from "../components/ButtonBox";
@@ -37,19 +37,26 @@ export const PaySuccess = () => {
             <div className="overlapGroup">
               <div className="price"></div>
               <div className="successMessage">
+                <i class="bi bi-balloon-heart-fill"></i>
                 <b>구매가 정상적으로 완료되었습니다</b>
+                <i class="bi bi-balloon-heart-fill"></i>
               </div>
             </div>
             <div className="orderInfo">
-              <div className="payInfo">결제내역</div>
+              <div className="payInfo">
+                {/* 요기에 user Id 가져오기 */}
+                ★님의 결제내역
+                </div>
               <div className="howToPay">결제방법</div>
               <div className="howToPayPrint">{paySelect}</div>
               <div className="paySum">{paySelectSumPrice} 원</div>
               <div className="paySumText">결제금액</div>
 
-              {paidItemList.map((val, idx) => {
-                return <PaySuccessItem key={val.id} val={val} />;
-              })}
+              <div className="row">
+                {paidItemList.map((val, idx) => {
+                  return <PaySuccessItem key={val.id} val={val} />;
+                })}
+              </div>
 
               <div className="readMe">
                 <i>

@@ -22,11 +22,7 @@
 }
 
 .paySuccess .innerBox {
-  background-color: #eeeeee;
   height: 1172px;
-  left: 0;
-  position: absolute;
-  top: 0;
   width: 1060px;
 }
 
@@ -39,7 +35,8 @@
 }
 
 .paySuccess .price {
-  background-color: #ffffff;
+  background-color: #ff7d9e;
+  border-radius: 10px;
   height: 97px;
   left: 20px;
   position: absolute;
@@ -48,7 +45,7 @@
 }
 
 .paySuccess .successMessage {
-  color: #ff7d9e;
+  color: #fff;
   font-family: "Inter-Regular", Helvetica;
   font-size: 30px;
   font-weight: 400;
@@ -63,6 +60,8 @@
 
 .paySuccess .orderInfo {
   background-color: #ffffff;
+  border: 5px dashed #ff7d9e;
+  border-radius: 10px;
   height: 918px;
   left: 56px;
   position: absolute;
@@ -76,7 +75,7 @@
   font-weight: 600;
   display: flex;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .paySuccess .productName {
@@ -139,33 +138,23 @@
   top: 640px;
 }
 
-/* .paidItemList {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.paidItemList .p1,
-.paidItemList .p2,
-.paidItemList .p3 {
-  margin-right: 20px;
-}
-
-.paidItemList img {
-  display: block;
-} */
-
-.paySuccessItemList {
-  display: flex; 
-  flex-wrap: wrap;
+.row {
+  margin-left: 45px;
+  padding: 50px;
+  
 }
 
 .paidItem {
   flex: 0 0 calc(33.33% - 20px); /* 한 줄에 세 개의 요소가 들어가도록 설정. 여백 포함하여 총 너비의 33.33%로 설정. */
-  margin-right: 20px;
-  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-bottom: 80px;
   box-sizing: border-box;
+}
+
+.paidItem::after {
+  content: '결제완료';
+  color: tomato;
+  font-weight: 600;
 }
 
 .paidItem:last-child {

@@ -5,6 +5,7 @@ import "../css/review.css";
 //컴포넌트
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
+import ReviewAddImage from "../components/ReviewAddImage";
 
 export const Review = () => {
   const navigate = useNavigate();
@@ -15,7 +16,6 @@ export const Review = () => {
   const [textarea, setTextarea] = useState(
     "다른 분들에게 도움이 될 수 있는 리뷰를 300자 이내로 작성해 주세요"
   );
-  const pageButton = ["사진 첨부하기", "리뷰 등록하기"];
 
   const handleFocus = () => {
     if (
@@ -30,7 +30,7 @@ export const Review = () => {
   };
 
   const handleLinkBackMove = () => {
-    navigate("/"); //사진등록하기 페이지 설정
+    navigate(-1);
   };
 
   const handleLinkReviewMove = () => {
@@ -38,12 +38,9 @@ export const Review = () => {
   };
 
   return (
-    
     <div className="review">
       <div className="reviewWrap">
-      <div className="reviewTitle">
-      리뷰 작성하기
-    </div>
+        <div className="reviewTitle">리뷰 작성하기</div>
         <div className="productBox">
           <img className="productImg"></img>
           <div className="nameOptionBox">
@@ -53,12 +50,14 @@ export const Review = () => {
         </div>
 
         <div className="reviewCheckBox">
-          <span className="title">구매하신 상품의 만족도를 체크해주세요</span>
-          <div className="starBox">리뷰 별점수</div>
+          <span className="title">구매하신 상품의 만족도를 체크해주세요 <big>*</big></span>
+          <div className="starBox">
+            <img src="" />
+          </div>
         </div>
 
         <div className="reviewColorBox">
-          <span className="title">색상은 어떤가요?</span>
+          <span className="title">색상은 어떤가요 <big>*</big></span>
           <br />
           {colorList.map((val, idx) => {
             return (
@@ -79,7 +78,8 @@ export const Review = () => {
         </div>
 
         <div className="reviewSizeBox">
-          <span className="title">사이즈는 어떤가요?</span>
+          <span className="title">사이즈는 어떤가요? <big>*</big>
+          </span>
           <br />
           {sizeList.map((val, idx) => {
             return (
@@ -111,10 +111,15 @@ export const Review = () => {
           </div>
         </div>
 
+        <div className="reviewAddImage">
+          <span className="title">사진 첨부하기 </span>
+          <ReviewAddImage />
+        </div>
+
         <ButtonBox>
           <CustomButton
             className="btn1"
-            buttonTitle="사진 등록하기"
+            buttonTitle="취소"
             handleLinkMove={handleLinkBackMove}
           />
           <CustomButton
