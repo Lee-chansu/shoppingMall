@@ -6,20 +6,25 @@ import { useEffect, useState } from "react";
 export const UserInfo = () => {
   const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
-  const [id,setId] = useState('');
+  const [id, setId] = useState("");
 
-  useEffect(()=>{
-    const token = sessionStorage.getItem('token')
-    if(!token){
-      navigate('/')
-    }else {
-      const decodeToken = jwtDecode(token)
-      setId(decodeToken.id)
-      setImageUrl(decodeToken.profileImg)
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      navigate("/");
+    } else {
+      const decodeToken = jwtDecode(token);
+      setId(decodeToken.id);
+      fetchData();
     }
-  },[])
-  
-  
+  }, [id]);
+
+  const fetchData = async () => {
+    const response = await fetch(`http://localhost:5000/userinfo/${id}`);
+    const body = await response.json();
+    setImageUrl(body.data);
+  };
+
   const logOut = (e) => {
     e.preventDefault();
     sessionStorage.removeItem("token");
@@ -27,37 +32,38 @@ export const UserInfo = () => {
     alert("로그아웃 성공");
   };
 
-  const deleteButton = async(e)=>{
-    e.preventDefault()
-    
-    const response = await fetch(`http://localhost:5000/userProfile/${id}`)
-    const body = await response.json()
-    
-    const delCode = `${body.userName}는 탈퇴하겠습니다`
-    const delReult = prompt(`회원탈퇴를 원하시면 "${body.userName}는 탈퇴하겠습니다" 입력하시오 `)
+  const deleteButton = async (e) => {
+    e.preventDefault();
 
-    if(delReult == delCode){
+    const response = await fetch(`http://localhost:5000/userProfile/${id}`);
+    const body = await response.json();
+
+    const delCode = `${body.userName}는 탈퇴하겠습니다`;
+    const delReult = prompt(
+      `회원탈퇴를 원하시면 "${body.userName}는 탈퇴하겠습니다" 입력하시오 `
+    );
+
+    if (delReult == delCode) {
       try {
-        const response = await fetch(`http://localhost:5000/userinfo/put/${id}`,{method : 'PUT'})
+        const response = await fetch(
+          `http://localhost:5000/userinfo/put/${id}`,
+          { method: "PUT" }
+        );
 
-        if(!response.ok){
-          throw new Error('서버에서 응답을 받을 수 없습니다')
-        }else{
-          alert('회원탈퇴 완료')
+        if (!response.ok) {
+          throw new Error("서버에서 응답을 받을 수 없습니다");
+        } else {
+          alert("회원탈퇴 완료");
           sessionStorage.removeItem("token");
-          navigate('/')
+          navigate("/");
         }
-
       } catch (error) {
-        alert('유저 삭제중 오류가 발생했습니다')
+        alert("유저 삭제중 오류가 발생했습니다");
       }
-      
-    } else{
-      alert('회원탈퇴 실패')
+    } else {
+      alert("회원탈퇴 실패");
     }
-    
-  }
-
+  };
 
   return (
     <div className="userInfo">
@@ -79,7 +85,13 @@ export const UserInfo = () => {
             <Link className="link" to="/logout" onClick={logOut}>
               <div className="textWrapper">로그아웃</div>
             </Link>
-            <button className="deleteButton" type="button" onClick={deleteButton}>회원탈퇴</button>
+            <button
+              className="deleteButton"
+              type="button"
+              onClick={deleteButton}
+            >
+              회원탈퇴
+            </button>
           </div>
         </div>
       </div>

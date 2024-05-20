@@ -83,9 +83,10 @@ export const UserEdit = () => {
       reader.onloadend = () => {
         setEditUser((pre) => ({ ...pre, profileImg: "/img/"+selectFile.name }));
       };
-      reader.readAsDataURL(selectFile);
+    reader.readAsDataURL(selectFile);
     }
-  };
+  }
+  
 
   const buttonClick = async (e) => {
     e.preventDefault();

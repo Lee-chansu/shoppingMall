@@ -26,6 +26,7 @@ import { PayFail } from "./routes/payFail";
 import { PayBuyList } from "./routes/payBuyList";
 import { PasswordEdit } from "./routes/passwordEdit";
 
+
 function App() {
   return (
     <Routes>
