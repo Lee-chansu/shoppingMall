@@ -15,11 +15,11 @@
 .review .productBox {
   display: flex;
   margin-top: 50px;
+  margin-bottom: 50px;
   height: 120px;
   width: 100%;
-  padding: 20px;
-  border-top: 3px solid #ddd;
-  border-bottom: 3px solid #ddd;
+  padding-top: 8px;
+  border-bottom: 1px solid #ddd;
 }
 
 .review .productImg {
@@ -60,7 +60,6 @@
   margin-top: 20px;
   width: 500px;
   height: 60px;
-  background-color: orange;
 }
 
 .review .reviewColorBox {
@@ -90,8 +89,35 @@
   margin-left: 80px;
 }
 
+.review .reviewAddImage {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 40px;
+  font-weight: 400;
+  margin-top: 50px;
+  margin-left: 80px;
+}
+
+big {
+  color: #FF6600;
+}
+
+.upload {
+  padding: 5px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.review .btn1:hover {
+  background-color: #FF6600;
+  color: #fff;
+}
+
 .review .reviewTitle {
-  color: #ff7d9e;
+  color: #FF6600;
   font-family: "Inter-Regular", Helvetica;
   font-size: 40px;
   font-weight: 600;
@@ -265,9 +291,15 @@
   margin-top: 10px;
 }
 
+.review .subTitle {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ccc;
+}
+
 .selected {
-  background-color: #ff7d9e;
-  color: white;
+  background-color: #ccc;
+  color: #fff;
   border-radius: 10px;
   border: none;
   width: 250px;

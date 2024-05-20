@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from "react";
-import styles from "../css/paySuccess.css";
+import React from "react";
 
 export const PaySuccessItem = ({ val }) => {
   return (
-    <>
-      <div className="orderProduct1">{val.mainImage} {/*mainImage 왜 text로 가져와? */}{val.name}</div>
-      <div className="optionInfo1">
-        option : {val.color} / {val.size} / {val.amount} / {val.price}
+    <div className="paidItem">
+      <div className="p1">
+        <img src={val.mainImage} width="220px" height="220px" alt={val.name} />
       </div>
-    </>
+      <div className="p2">
+        <p className="pname">{val.name}</p>
+      </div>
+      <div className="p3">
+        <span className="poption">
+          option : {val.color} / {val.size} / {val.amount} / {val.price}
+        </span>
+      </div>
+    </div>
   );
 };
