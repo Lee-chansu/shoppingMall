@@ -30,6 +30,11 @@ cron.schedule("0 0 * * *", async () => {
   }
 });
 
+//imgbb 활용할 때 쓸 키
+const imgbbKey = "41be9bc26229e3df57a9818ed955b889";
+
+const imgbbUploader = require("imgbb-uploader");
+
 const session = require("express-session");
 const passport = require("passport");
 const MySQLStore = require("express-mysql-session")(session);
@@ -479,7 +484,7 @@ app.get("/productOption/:id", async (req, res) => {
   const { id } = req.params;
   const result = await ProductOption.findAll({
     where: { product_id: id },
-    include: Product
+    include: Product,
     // limit: 10,
   });
   res.json(result);
@@ -512,39 +517,29 @@ app.get("/userEdit/:id", async (req, res) => {
   }
 });
 
-
-
-
-
 // 유저수정기능
 
-const imgbbKey = '41be9bc26229e3df57a9818ed955b889'
-
-const imgbbUploader = require("imgbb-uploader") ; 
-
-app.put("/userEdit/:id",async (req, res) => {
+app.put("/userEdit/:id", async (req, res) => {
   const { id } = req.params;
   const editUser = req.body;
-  
 
   const options = {
-    apiKey : imgbbKey,
-    base64string : editUser.profileImg.split(',')[1]
-  }
+    apiKey: imgbbKey,
+    base64string: editUser.profileImg.split(",")[1],
+  };
 
   const result = await User.findOne({ where: { id } });
 
   if (result) {
-    
     for (let key in editUser) {
       result[key] = editUser[key];
     }
 
-    if(options.base64string){
-      const uploadResponse = await imgbbUploader(options)
-      result.profileImg = uploadResponse.url
+    if (options.base64string) {
+      const uploadResponse = await imgbbUploader(options);
+      result.profileImg = uploadResponse.url;
     }
-    
+
     await result.save();
     res.json(result);
   }
@@ -677,14 +672,13 @@ app.put("/userinfo/put/:id", async (req, res) => {
   }
 });
 
-
 // 유저인포 사진보기용
-app.get("/userinfo/:id",async(req,res)=>{
-  const{id} = req.params;
+app.get("/userinfo/:id", async (req, res) => {
+  const { id } = req.params;
 
-  const result = await User.findOne({where : {id}})
+  const result = await User.findOne({ where: { id } });
 
-  if(result){
-    res.json({data : result.profileImg})
+  if (result) {
+    res.json({ data: result.profileImg });
   }
-})
+});
