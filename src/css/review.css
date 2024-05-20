@@ -15,11 +15,11 @@
 .review .productBox {
   display: flex;
   margin-top: 50px;
+  margin-bottom: 50px;
   height: 120px;
   width: 100%;
-  padding: 20px;
-  border-top: 3px solid #ddd;
-  border-bottom: 3px solid #ddd;
+  padding-top: 8px;
+  border-bottom: 1px solid #ddd;
 }
 
 .review .productImg {

@@ -42,17 +42,14 @@ export const PaySuccess = () => {
             </div>
             <div className="orderInfo">
               <div className="payInfo">결제내역</div>
-              <div className="productName">상품명</div>
               <div className="howToPay">결제방법</div>
               <div className="howToPayPrint">{paySelect}</div>
-              <div className="paySum">{paySelectSumPrice}</div>
+              <div className="paySum">{paySelectSumPrice} 원</div>
               <div className="paySumText">결제금액</div>
 
-              <div className="paidItemList">
-                {paidItemList.map((val, idx) => {
-                  return <PaySuccessItem key={val.id} val={val} />;
-                })}
-              </div>
+              {paidItemList.map((val, idx) => {
+                return <PaySuccessItem key={val.id} val={val} />;
+              })}
 
               <div className="readMe">
                 <i>

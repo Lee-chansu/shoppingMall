@@ -440,8 +440,8 @@ app.get("/cart", async (req, res) => {
 app.delete("/cart", async (req, res) => {
   // const { user_id } = req.params;
   const { list, user_id } = req.body;
-  // console.log("list", list);
-  // console.log("user_id", user_id);
+  console.log("list", list);
+  console.log("user_id", user_id);
 
   try {
     await list.forEach((val) => {
@@ -472,9 +472,11 @@ app.get("/buyList/:user_id", async (req, res) => {
 
 // 구매 내역 삭제
 app.delete("/buyList/delete/:id", async (req, res) => {
+  //여기서 가져오는 data 뭔지?
   const { id } = req.params;
   try {
     await Carry.destroy({ where: { order_id: id } });
+    //이거 왜 Carry?
     await BuyList.destroy({ where: { id } });
 
     res.status(200).json({ message: "삭제 완료" });

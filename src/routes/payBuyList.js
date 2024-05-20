@@ -91,7 +91,9 @@ export const PayBuyList = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(addItem),
       });
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
