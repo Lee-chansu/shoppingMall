@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER(1)
     },
     reviewImage: {
-      type: DataTypes.STRING(255)
+      type: DataTypes.TEXT
     },
     reviewDate: {
       type: DataTypes.DATE,

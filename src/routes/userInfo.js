@@ -7,6 +7,7 @@ export const UserInfo = () => {
   const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
   const [id,setId] = useState('');
+  
 
   useEffect(()=>{
     const token = sessionStorage.getItem('token')
@@ -15,9 +16,17 @@ export const UserInfo = () => {
     }else {
       const decodeToken = jwtDecode(token)
       setId(decodeToken.id)
-      setImageUrl(decodeToken.profileImg)
+      fetchData()
     }
-  },[])
+  },[id])
+
+  const fetchData = async()=>{
+    const response = await fetch(`http://localhost:5000/userinfo/${id}`)
+    const body = await response.json()
+    setImageUrl(body.data)
+  }
+  
+  
   
   
   const logOut = (e) => {

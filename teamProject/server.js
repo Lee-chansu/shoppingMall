@@ -512,16 +512,39 @@ app.get("/userEdit/:id", async (req, res) => {
   }
 });
 
+
+
+
+
 // 유저수정기능
-app.put("/userEdit/:id", async (req, res) => {
+
+const imgbbKey = '41be9bc26229e3df57a9818ed955b889'
+
+const imgbbUploader = require("imgbb-uploader") ; 
+
+app.put("/userEdit/:id",async (req, res) => {
   const { id } = req.params;
   const editUser = req.body;
+  
+
+  const options = {
+    apiKey : imgbbKey,
+    base64string : editUser.profileImg.split(',')[1]
+  }
 
   const result = await User.findOne({ where: { id } });
+
   if (result) {
+    
     for (let key in editUser) {
       result[key] = editUser[key];
     }
+
+    if(options.base64string){
+      const uploadResponse = await imgbbUploader(options)
+      result.profileImg = uploadResponse.url
+    }
+    
     await result.save();
     res.json(result);
   }
@@ -653,3 +676,15 @@ app.put("/userinfo/put/:id", async (req, res) => {
     res.status(404).send({ message: "db와 일치하지않음" });
   }
 });
+
+
+// 유저인포 사진보기용
+app.get("/userinfo/:id",async(req,res)=>{
+  const{id} = req.params;
+
+  const result = await User.findOne({where : {id}})
+
+  if(result){
+    res.json({data : result.profileImg})
+  }
+})
