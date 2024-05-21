@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const app = express();
+
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 const { email_service, email_admin, email_password } = process.env; // env 파일 데이터가져오기
@@ -72,13 +73,14 @@ const {
   ProductOption,
   ProductDetail,
   Carry,
-  PaymentRequest
+  PaymentRequest,
 } = db;
 
 //미들웨어
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
+
 app.use(passport.initialize());
 app.use(session(sessionOption));
 app.use(passport.session());
@@ -188,72 +190,63 @@ app.get("/userProfile/:id", async (req, res) => {
   }
 });
 
-const multer = require("multer");
-const upload = multer({
-  storage: multer.diskStorage({
-    filename(req, file, done) {
-      done(null, file.originalname);
-    },
-    destination(req, file, done) {
-      done(null, "../public/img");
-    },
-  }),
-});
+// const multer = require("multer");
+// const upload = multer({
+//   storage: multer.diskStorage({
+//     filename(req, file, done) {
+//       done(null, file.originalname);
+//     },
+//     destination(req, file, done) {
+//       done(null, "../public/img");
+//     },
+//   }),
+// });
 
 //제품 추가 페이지
-app.post(
-  "/addProduct",
-  upload.fields([
-    { name: "mainImage" },
-    { name: "subImage1" },
-    { name: "subImage2" },
-    { name: "subImage3" },
-  ]),
-  async (req, res) => {
-    const { newOption } = req.body;
-    const mainImage = req.files.mainImage[0];
-    const subImage1 = req.files.subImage1[0] ? req.files.subImage1[0] : null;
-    const subImage2 = req.files.subImage2[0] ? req.files.subImage2[0] : null;
-    const subImage3 = req.files.subImage3[0] ? req.files.subImage3[0] : null;
-    console.log(mainImage, subImage1, subImage2, subImage3);
-    // try {
-    //   const product = await Product.create(newProduct);
-    //   const { id } = await Product.findOne({
-    //     order: [["id", "DESC"]],
-    //     limit: 1,
-    //   });
-    //   const newProductDetail = {
-    //     product_id: id,
-    //     category: newProduct.category,
-    //     detailCategory: newProduct.detail,
-    //   };
-    //   const productDetail = await ProductDetail.create(newProductDetail);
-    //   let newProductOption, productOption;
-    //   for (let i = 0; i < newOption.length; i++) {
-    //     newProductOption = {
-    //       color: newOption[i].color,
-    //       size: newOption[i].size,
-    //       stock: newOption[i].stock,
-    //       product_id: id,
-    //     };
-    //     productOption = await ProductOption.create(newProductOption);
-    //     if (!productOption) {
-    //       return;
-    //     }
-    //   }
-    //   if (!product || !productDetail || !productOption) {
-    //     result = false;
-    //   } else {
-    //     result = true;
-    //   }
-    //   // console.log(result);
-    //   res.json(result);
-    // } catch (error) {
-    //   console.log(error);
-    //   res.json((result = false));
-    // }
-  }
-);
+app.post("/addProduct", async (req, res) => {
+  const { newProduct, newOption } = req.body;
+  // const mainImage = req.files.mainImage[0];
+  // const subImage1 = req.files.subImage1[0] ? req.files.subImage1[0] : null;
+  // const subImage2 = req.files.subImage2[0] ? req.files.subImage2[0] : null;
+  // const subImage3 = req.files.subImage3[0] ? req.files.subImage3[0] : null;
+  console.log();
+  // try {
+  //   const product = await Product.create(newProduct);
+  //   const { id } = await Product.findOne({
+  //     order: [["id", "DESC"]],
+  //     limit: 1,
+  //   });
+  //   const newProductDetail = {
+  //     product_id: id,
+  //     category: newProduct.category,
+  //     detailCategory: newProduct.detail,
+  //   };
+  //   const productDetail = await ProductDetail.create(newProductDetail);
+  //   let newProductOption, productOption;
+  //   for (let i = 0; i < newOption.length; i++) {
+  //     newProductOption = {
+  //       color: newOption[i].color,
+  //       size: newOption[i].size,
+  //       stock: newOption[i].stock,
+  //       product_id: id,
+  //     };
+  //     productOption = await ProductOption.create(newProductOption);
+  //     if (!productOption) {
+  //       return;
+  //     }
+  //   }
+  //   if (!product || !productDetail || !productOption) {
+  //     result = false;
+  //   } else {
+  //     result = true;
+  //   }
+  //   // console.log(result);
+  //   res.json(result);
+  // } catch (error) {
+  //   console.log(error);
+  //   res.json((result = false));
+  // }
+});
 
 //제품 수정
 app.put("/productEdit/:id", async (req, res) => {
@@ -544,7 +537,6 @@ app.get("/userEdit/:id", async (req, res) => {
 app.put("/userEdit/:id", async (req, res) => {
   const { id } = req.params;
   const editUser = req.body;
-  console.log(editUser.profileImg);
 
   const options = {
     apiKey: imgbbKey,
@@ -561,7 +553,6 @@ app.put("/userEdit/:id", async (req, res) => {
     if (options.base64string) {
       const uploadResponse = await imgbbUploader(options);
       result.profileImg = uploadResponse.url;
-      // console.log("result.profileImg: ", result.profileImg);
     }
 
     await result.save();
@@ -719,14 +710,12 @@ app.post("/paymentRequest", async (req, res) => {
   }
 });
 
-
-
 // 결제 api 관련
 // const got = require("got");
 let got;
 
 (async () => {
-  got = (await import('got')).default;
+  got = (await import("got")).default;
 })();
 
 // TODO: 개발자센터에 로그인해서 내 결제위젯 연동 키 > 시크릿 키를 입력하세요. 시크릿 키는 외부에 공개되면 안돼요.

@@ -97,12 +97,11 @@ export const UserEdit = () => {
       alert("비밀번호 재확인이 일치하지 않습니다");
     } else {
       try {
-        let formData = new FormData();
-        formData.append("editUser", editUser);
+        console.log(editUser);
         const response = await fetch(`http://localhost:5000/userEdit/${id}`, {
           method: "PUT",
-          // headers: { "Content-Type": "application/json" },
-          body: formData,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(editUser),
         });
 
         if (!response.ok) {
