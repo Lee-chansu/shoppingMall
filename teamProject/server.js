@@ -72,7 +72,7 @@ const {
   ProductOption,
   ProductDetail,
   Carry,
-  PaymentRequest
+  PaymentRequest,
 } = db;
 
 //미들웨어
@@ -380,18 +380,27 @@ app.get("/product/:id", async (req, res) => {
 
 // nav 카테고리 별 제품리스트조회
 app.get("/product", async (req, res) => {
-  const { category } = req.query;
+  const { category, detail } = req.query;
   let result;
   try {
-    if (category) {
+    if (detail) {
       result = await ProductDetail.findAll({
         include: [Product],
         where: {
-          category: category,
+          detail: detail,
         },
       });
     } else {
-      result = await Product.findAll();
+      if (category) {
+        result = await ProductDetail.findAll({
+          include: [Product],
+          where: {
+            category: category,
+          },
+        });
+      } else {
+        result = await Product.findAll();
+      }
     }
     res.json(result);
   } catch (error) {
@@ -719,14 +728,12 @@ app.post("/paymentRequest", async (req, res) => {
   }
 });
 
-
-
 // 결제 api 관련
 // const got = require("got");
 let got;
 
 (async () => {
-  got = (await import('got')).default;
+  got = (await import("got")).default;
 })();
 
 // TODO: 개발자센터에 로그인해서 내 결제위젯 연동 키 > 시크릿 키를 입력하세요. 시크릿 키는 외부에 공개되면 안돼요.
