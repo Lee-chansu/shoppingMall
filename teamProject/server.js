@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const app = express();
+
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 const { email_service, email_admin, email_password } = process.env; // env 파일 데이터가져오기
@@ -77,8 +78,9 @@ const {
 
 //미들웨어
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
+
 app.use(passport.initialize());
 app.use(session(sessionOption));
 app.use(passport.session());
@@ -203,6 +205,7 @@ app.get("/userProfile/:id", async (req, res) => {
 //제품 추가 페이지
 app.post("/addProduct", async (req, res) => {
   const { newProduct, newOption } = req.body;
+<<<<<<< HEAD
   // const images = {
   //   mainImage: newProduct.mainImage,
   //   subImage1: newProduct.subImage1,
@@ -256,6 +259,49 @@ app.post("/addProduct", async (req, res) => {
     console.log(error);
     res.json((result = false));
   }
+=======
+  // const mainImage = req.files.mainImage[0];
+  // const subImage1 = req.files.subImage1[0] ? req.files.subImage1[0] : null;
+  // const subImage2 = req.files.subImage2[0] ? req.files.subImage2[0] : null;
+  // const subImage3 = req.files.subImage3[0] ? req.files.subImage3[0] : null;
+  console.log();
+  // try {
+  //   const product = await Product.create(newProduct);
+  //   const { id } = await Product.findOne({
+  //     order: [["id", "DESC"]],
+  //     limit: 1,
+  //   });
+  //   const newProductDetail = {
+  //     product_id: id,
+  //     category: newProduct.category,
+  //     detailCategory: newProduct.detail,
+  //   };
+  //   const productDetail = await ProductDetail.create(newProductDetail);
+  //   let newProductOption, productOption;
+  //   for (let i = 0; i < newOption.length; i++) {
+  //     newProductOption = {
+  //       color: newOption[i].color,
+  //       size: newOption[i].size,
+  //       stock: newOption[i].stock,
+  //       product_id: id,
+  //     };
+  //     productOption = await ProductOption.create(newProductOption);
+  //     if (!productOption) {
+  //       return;
+  //     }
+  //   }
+  //   if (!product || !productDetail || !productOption) {
+  //     result = false;
+  //   } else {
+  //     result = true;
+  //   }
+  //   // console.log(result);
+  //   res.json(result);
+  // } catch (error) {
+  //   console.log(error);
+  //   res.json((result = false));
+  // }
+>>>>>>> 0a67492531b5fa85597393b88c0fd5cbb684666e
 });
 
 //제품 수정
@@ -556,7 +602,6 @@ app.get("/userEdit/:id", async (req, res) => {
 app.put("/userEdit/:id", async (req, res) => {
   const { id } = req.params;
   const editUser = req.body;
-  console.log(editUser.profileImg);
 
   const options = {
     apiKey: imgbbKey,
@@ -573,7 +618,6 @@ app.put("/userEdit/:id", async (req, res) => {
     if (options.base64string) {
       const uploadResponse = await imgbbUploader(options);
       result.profileImg = uploadResponse.url;
-      // console.log("result.profileImg: ", result.profileImg);
     }
 
     await result.save();
