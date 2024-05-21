@@ -106,7 +106,6 @@ export function CheckoutPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id:orderId, amount, user_id:id }),
-        // body: JSON.stringify({ orderId, amount, userId: id })
       });
 
       if (!saveResponse.ok) {
@@ -125,7 +124,8 @@ export function CheckoutPage() {
           : `${location.state.paymentList[0]} 외 ${
               location.state.paymentList.length - 1
             }건`;
-      const cleanedPhoneNumber = userProfile.phoneNumber.replace(/-/g, "")
+      const cleanedPhoneNumber = userProfile.phoneNumber.length > 10 ? userProfile.phoneNumber.replace(/-/g, "") : null
+      console.log(userProfile.phoneNumber)
       console.log(cleanedPhoneNumber)
 
       await paymentWidget?.requestPayment({
