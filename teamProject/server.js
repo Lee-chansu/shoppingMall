@@ -188,72 +188,75 @@ app.get("/userProfile/:id", async (req, res) => {
   }
 });
 
-const multer = require("multer");
-const upload = multer({
-  storage: multer.diskStorage({
-    filename(req, file, done) {
-      done(null, file.originalname);
-    },
-    destination(req, file, done) {
-      done(null, "../public/img");
-    },
-  }),
-});
+// const multer = require("multer");
+// const upload = multer({
+//   storage: multer.diskStorage({
+//     filename(req, file, done) {
+//       done(null, file.originalname);
+//     },
+//     destination(req, file, done) {
+//       done(null, "../public/img");
+//     },
+//   }),
+// });
 
 //제품 추가 페이지
-app.post(
-  "/addProduct",
-  upload.fields([
-    { name: "mainImage" },
-    { name: "subImage1" },
-    { name: "subImage2" },
-    { name: "subImage3" },
-  ]),
-  async (req, res) => {
-    const { newOption } = req.body;
-    const mainImage = req.files.mainImage[0];
-    const subImage1 = req.files.subImage1[0] ? req.files.subImage1[0] : null;
-    const subImage2 = req.files.subImage2[0] ? req.files.subImage2[0] : null;
-    const subImage3 = req.files.subImage3[0] ? req.files.subImage3[0] : null;
-    console.log(mainImage, subImage1, subImage2, subImage3);
-    // try {
-    //   const product = await Product.create(newProduct);
-    //   const { id } = await Product.findOne({
-    //     order: [["id", "DESC"]],
-    //     limit: 1,
-    //   });
-    //   const newProductDetail = {
-    //     product_id: id,
-    //     category: newProduct.category,
-    //     detailCategory: newProduct.detail,
-    //   };
-    //   const productDetail = await ProductDetail.create(newProductDetail);
-    //   let newProductOption, productOption;
-    //   for (let i = 0; i < newOption.length; i++) {
-    //     newProductOption = {
-    //       color: newOption[i].color,
-    //       size: newOption[i].size,
-    //       stock: newOption[i].stock,
-    //       product_id: id,
-    //     };
-    //     productOption = await ProductOption.create(newProductOption);
-    //     if (!productOption) {
-    //       return;
-    //     }
-    //   }
-    //   if (!product || !productDetail || !productOption) {
-    //     result = false;
-    //   } else {
-    //     result = true;
-    //   }
-    //   // console.log(result);
-    //   res.json(result);
-    // } catch (error) {
-    //   console.log(error);
-    //   res.json((result = false));
+app.post("/addProduct", async (req, res) => {
+  const { newProduct, newOption } = req.body;
+  // const images = {
+  //   mainImage: newProduct.mainImage,
+  //   subImage1: newProduct.subImage1,
+  //   subImage2: newProduct.subImage2,
+  //   subImage3: newProduct.subImage3,
+  // };
+  try {
+    // let options = {
+    //   apiKey: imgbbKey,
+    //   base64string: newProduct.mainImage.split(",")[1],
+    // };
+    // console.log(options.base64string);
+
+    // if (options.base64string) {
+    //   const uploadResponse = await imgbbUploader(options);
+    //   let result = uploadResponse.url;
     // }
+
+    const product = await Product.create(newProduct);
+    const { id } = await Product.findOne({
+      order: [["id", "DESC"]],
+      limit: 1,
+    });
+    const newProductDetail = {
+      product_id: id,
+      category: newProduct.category,
+      detailCategory: newProduct.detail,
+    };
+    const productDetail = await ProductDetail.create(newProductDetail);
+    let newProductOption, productOption;
+    for (let i = 0; i < newOption.length; i++) {
+      newProductOption = {
+        color: newOption[i].color,
+        size: newOption[i].size,
+        stock: newOption[i].stock,
+        product_id: id,
+      };
+      productOption = await ProductOption.create(newProductOption);
+      if (!productOption) {
+        return;
+      }
+    }
+    if (!product || !productDetail || !productOption) {
+      result = false;
+    } else {
+      result = true;
+    }
+    console.log(result);
+    res.json(result);
+  } catch (error) {
+    console.log(error);
+    res.json((result = false));
   }
-);
+});
 
 //제품 수정
 app.put("/productEdit/:id", async (req, res) => {

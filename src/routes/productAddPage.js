@@ -49,7 +49,7 @@ export const ProductAdd = () => {
       };
       setNewProduct((prevState) => ({
         ...prevState,
-        mainImage: file,
+        mainImage: reader.result,
       }));
     } else {
       return;
@@ -159,17 +159,21 @@ export const ProductAdd = () => {
       //   alert("제품의 재고수량을 입력해주세요.");
       //   return;
       // }
-      let formData = new FormData();
-      formData.append("mainImage", newProduct.mainImage);
-      formData.append("subImage1", newProduct.subImage1);
-      formData.append("subImage2", newProduct.subImage2);
-      formData.append("subImage3", newProduct.subImage3);
-      formData.append("newProduct", JSON.stringify(newProduct));
-      formData.append("newProduct", JSON.stringify(newOption));
+      // let formData = new FormData();
+      // formData.append("mainImage", newProduct.mainImage);
+      // formData.append("subImage1", newProduct.subImage1);
+      // formData.append("subImage2", newProduct.subImage2);
+      // formData.append("subImage3", newProduct.subImage3);
+      // formData.append("newProduct", JSON.stringify(newProduct));
+      // formData.append("newProduct", JSON.stringify(newOption));
+      const body = {
+        newProduct,
+        newOption,
+      };
 
       await fetch("http://localhost:5000/addProduct", {
         method: "POST",
-        body: formData,
+        body: JSON.stringify(body),
       });
       // .then(res => {
       //   res.json();

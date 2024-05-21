@@ -27,17 +27,17 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
         if (subImageId === "subImage1") {
           setNewProduct((prevState) => ({
             ...prevState,
-            subImage1: file,
+            subImage1: reader.result,
           }));
         } else if (subImageId === "subImage2") {
           setNewProduct((prevState) => ({
             ...prevState,
-            subImage2: file,
+            subImage2: reader.result,
           }));
         } else if (subImageId === "subImage3") {
           setNewProduct((prevState) => ({
             ...prevState,
-            subImage3: file,
+            subImage3: reader.result,
           }));
         }
       };
