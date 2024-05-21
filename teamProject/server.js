@@ -4,6 +4,9 @@ const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const app = express();
+
+
+
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 const { email_service, email_admin, email_password } = process.env; // env 파일 데이터가져오기
@@ -71,8 +74,9 @@ const {
 
 //미들웨어
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({limit : '10mb'}));
+app.use(express.urlencoded({ limit : '10mb' ,extended: true }));
+
 
 app.use(passport.initialize());
 app.use(session(sessionOption));
@@ -517,6 +521,7 @@ app.get("/userEdit/:id", async (req, res) => {
 
 
 // 유저수정기능
+
 
 const imgbbKey = '41be9bc26229e3df57a9818ed955b889'
 
