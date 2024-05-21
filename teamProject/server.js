@@ -696,7 +696,6 @@ app.put("/userinfo/put/:id", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
 // 유저인포 사진보기용
 app.get("/userinfo/:id", async (req, res) => {
   const { id } = req.params;
@@ -707,7 +706,6 @@ app.get("/userinfo/:id", async (req, res) => {
     res.json({ data: result.profileImg });
   }
 });
-=======
 // 결제 요청 생성
 app.post("/paymentRequest", async (req, res) => {
   const newRequest = req.body;
@@ -771,4 +769,3 @@ app.post("/confirm", function (req, res) {
       res.status(error.response.statusCode).json(error.response.body);
     });
 });
->>>>>>> origin/hyoguen

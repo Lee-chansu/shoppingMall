@@ -18,12 +18,9 @@
     "express": "^4.19.2",
     "express-mysql-session": "^3.0.1",
     "express-session": "^1.18.0",
-<<<<<<< HEAD
     "form-data": "^4.0.0",
-    "imgbb-uploader": "^1.5.1",
-=======
     "got": "^14.3.0",
->>>>>>> origin/hyoguen
+    "imgbb-uploader": "^1.5.1",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "multer": "^1.4.5-lts.1",
