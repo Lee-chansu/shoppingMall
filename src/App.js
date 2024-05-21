@@ -25,6 +25,9 @@ import { PaySuccess } from "./routes/paySuccess";
 import { PayFail } from "./routes/payFail";
 import { PayBuyList } from "./routes/payBuyList";
 import { PasswordEdit } from "./routes/passwordEdit";
+import { CheckoutPage } from "./components/Checkout.js";
+import { SuccessPage } from "./components/Success.js";
+import { FailPage } from "./components/Fail.js";
 
 
 function App() {
@@ -60,6 +63,12 @@ function App() {
       <Route path="paySuccess" element={<PaySuccess />}></Route>
       <Route path="payFail" element={<PayFail />}></Route>
       <Route path="payBuyList" element={<PayBuyList />}></Route>
+      <Route path="toss">
+        <Route index element={<CheckoutPage />}></Route>
+        <Route path="success" element={<SuccessPage />}></Route>
+        <Route path="fail" element={<FailPage />}></Route>
+
+      </Route>
     </Routes>
   );
 }
