@@ -76,9 +76,8 @@ const {
 
 //미들웨어
 app.use(cors());
-app.use(express.json({ limit: "100366 " }));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(passport.initialize());
 app.use(session(sessionOption));
 app.use(passport.session());
@@ -544,13 +543,14 @@ app.get("/userEdit/:id", async (req, res) => {
 app.put("/userEdit/:id", async (req, res) => {
   const { id } = req.params;
   const editUser = req.body;
+  console.log(editUser.profileImg);
 
   const options = {
     apiKey: imgbbKey,
     base64string: editUser.profileImg.split(",")[1],
   };
 
-  const result = await User.findOne({ where: { id } });
+  let result = await User.findOne({ where: { id } });
 
   if (result) {
     for (let key in editUser) {
@@ -560,6 +560,7 @@ app.put("/userEdit/:id", async (req, res) => {
     if (options.base64string) {
       const uploadResponse = await imgbbUploader(options);
       result.profileImg = uploadResponse.url;
+      // console.log("result.profileImg: ", result.profileImg);
     }
 
     await result.save();

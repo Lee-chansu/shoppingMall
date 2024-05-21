@@ -81,12 +81,11 @@ export const UserEdit = () => {
     if (selectFile) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setEditUser((pre) => ({ ...pre, profileImg: "/img/"+selectFile.name }));
+        setEditUser((pre) => ({ ...pre, profileImg: reader.result }));
       };
-    reader.readAsDataURL(selectFile);
+      reader.readAsDataURL(selectFile);
     }
-  }
-  
+  };
 
   const buttonClick = async (e) => {
     e.preventDefault();
@@ -98,10 +97,12 @@ export const UserEdit = () => {
       alert("비밀번호 재확인이 일치하지 않습니다");
     } else {
       try {
+        let formData = new FormData();
+        formData.append("editUser", editUser);
         const response = await fetch(`http://localhost:5000/userEdit/${id}`, {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(editUser),
+          // headers: { "Content-Type": "application/json" },
+          body: formData,
         });
 
         if (!response.ok) {
