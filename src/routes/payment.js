@@ -208,7 +208,7 @@ export const Payment = () => {
                   )}
                 </div>
               </div>
-              <div className="howPayBox">
+              {/* <div className="howPayBox">
                 <div className="title">
                   <div className="textWrapper2">
                     결제방식 선택
@@ -249,7 +249,7 @@ export const Payment = () => {
                   있습니다
                   <br />위 내용을 확인하였으며 결제에 동의합니다
                 </span>
-              </div>
+              </div> */}
             </div>
 
             <div className="payList">
