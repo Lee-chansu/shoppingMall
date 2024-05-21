@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import "../css/toss.css";
 
 export function SuccessPage() {
@@ -15,8 +15,17 @@ export function SuccessPage() {
       paymentKey: searchParams.get("paymentKey"),
     };
 
+    console.log(requestData)
+
+    
+
     async function confirm() {
-      const response = await fetch("/confirm", {
+
+      const checkRequest = await fetch(`http://localhost:5000/paymentRequest?id=${requestData.orderId}&amount=${requestData.amount}&paymentKey=${requestData.paymentKey}`)
+
+      console.log(checkRequest)
+
+      const response = await fetch("http://localhost:5000/confirm", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

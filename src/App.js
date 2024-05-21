@@ -25,9 +25,9 @@ import { PaySuccess } from "./routes/paySuccess";
 import { PayFail } from "./routes/payFail";
 import { PayBuyList } from "./routes/payBuyList";
 import { PasswordEdit } from "./routes/passwordEdit";
-import { CheckoutPage } from "./components/Checkout.js";
-import { SuccessPage } from "./components/Success.js";
-import { FailPage } from "./components/Fail.js";
+import { CheckoutPage } from "./routes/Checkout.js";
+import { SuccessPage } from "./routes/Success.js";
+import { FailPage } from "./routes/Fail.js";
 
 function App() {
   return (

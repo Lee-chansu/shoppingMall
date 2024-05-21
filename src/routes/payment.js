@@ -59,9 +59,9 @@ export const Payment = () => {
   const handleLinkBackMove = () => {
     navigate(-1);
   };
- 
+
   const handleAllPayment = () => {
-    navigate("/toss", { state: { paymentList:location.state.paymentList }});
+    navigate("/toss", { state: { paymentList:location.state.paymentList, orderSum }});
     //모달 처리 예정 , if문으로 분기처리 예정
   };
 
