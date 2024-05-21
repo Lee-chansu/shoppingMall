@@ -258,7 +258,7 @@ app.post(
 app.put("/productEdit/:id", async (req, res) => {
   const { id } = req.params;
   const { newProduct, newOption, option } = req.body;
-  console.log(newProduct, newOption, option);
+  // console.log(newProduct, newOption, option);
 
   const newProductDetail = {
     category: newProduct.category,
@@ -445,7 +445,7 @@ app.post("/cart", async (req, res) => {
   const result = await Cart.findOne({
     where: { user_id, productOption_id, size, color },
   });
-  console.log("result", result);
+  // console.log("result", result);
   if (!result) {
     await Cart.create(newProduct);
     res.json({ result: false });
