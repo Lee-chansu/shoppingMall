@@ -49,7 +49,16 @@ module.exports = {
       },
       carryStatus: {
         type: Sequelize.STRING(255)
-      }
+      },
+      productColor: {
+        type: Sequelize.STRING(255),
+      },
+      productSize: {
+        type: Sequelize.STRING(4),
+      },
+      orderQuantity: {
+        type: Sequelize.INTEGER,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {

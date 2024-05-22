@@ -35,9 +35,17 @@ export const ProductAdd = () => {
     const file = mainImgRef.current.files[0];
     const reader = new FileReader();
     if (file) {
-      reader.readAsDataURL(file);
       const extension = file.name.split(".").pop().toLowerCase();
-      const allowedExtensions = ["jpg", "jpeg", "png", "svg"]; // 허용되는 확장자 목록
+      const allowedExtensions = [
+        "jpg",
+        "png",
+        "bmp",
+        "gif",
+        "tif",
+        "webp",
+        "heic",
+        "pdf",
+      ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
         alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
@@ -46,42 +54,36 @@ export const ProductAdd = () => {
       }
       reader.onloadend = () => {
         setMainImageFile(reader.result);
+        setNewProduct((prevState) => ({
+          ...prevState,
+          mainImage: reader.result,
+        }));
       };
-      if (file.name.includes("http://") || file.name.includes("https://")) {
-        setNewProduct(prevState => ({
-          ...prevState,
-          mainImage: file.name,
-        }));
-      } else {
-        setNewProduct(prevState => ({
-          ...prevState,
-          mainImage: "/img/" + file.name,
-        }));
-      }
+      reader.readAsDataURL(file);
     } else {
       return;
     }
   };
 
-  const addTag = e => {
+  const addTag = (e) => {
     e.preventDefault();
     setCount(count + 1);
   };
 
-  const checkOnlyOneCategory = checkThis => {
+  const checkOnlyOneCategory = (checkThis) => {
     checkThis.checked === false
       ? setCheckCategory("")
       : setCheckCategory(checkThis.name);
   };
 
-  const checkOnlyOneDetail = checkThis => {
+  const checkOnlyOneDetail = (checkThis) => {
     checkThis.checked === false
       ? setCheckDetail("")
       : setCheckDetail(checkThis.name);
   };
 
   const showDetailBar = () => {
-    setNewProduct(prevState => ({
+    setNewProduct((prevState) => ({
       ...prevState,
       category: checkCategory,
       detail: checkDetail,
@@ -105,7 +107,7 @@ export const ProductAdd = () => {
     description: "",
   });
 
-  const valueChange = e => {
+  const valueChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
@@ -130,7 +132,7 @@ export const ProductAdd = () => {
 
   useEffect(() => {}, [newOption]);
 
-  const toAddProduct = async e => {
+  const toAddProduct = async (e) => {
     e.preventDefault();
 
     try {
@@ -176,7 +178,7 @@ export const ProductAdd = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      }).then(res => {
+      }).then((res) => {
         res.json();
         if (res.ok) {
           alert("제품을 추가했습니다.");
@@ -198,11 +200,15 @@ export const ProductAdd = () => {
       <Nav></Nav>
       <div className="productAdd">
         <div className="inner">
-          <form className="formBox">
+          <form
+            className="formBox"
+            encType="multipart/form-data"
+            onSubmit={toAddProduct}
+          >
             <div className="wrap">
               <h2 className="title">카테고리</h2>
               <div className="boxWrap">
-                {category.map(el => {
+                {category.map((el) => {
                   return (
                     <div className="box" key={el}>
                       <label className="text" htmlFor={el}>
@@ -214,7 +220,7 @@ export const ProductAdd = () => {
                         name={el}
                         value={el}
                         checked={checkCategory === el}
-                        onChange={e => checkOnlyOneCategory(e.target)}
+                        onChange={(e) => checkOnlyOneCategory(e.target)}
                       />
                     </div>
                   );
@@ -237,7 +243,7 @@ export const ProductAdd = () => {
                           name={el}
                           value={el}
                           checked={checkDetail === el}
-                          onChange={e => checkOnlyOneDetail(e.target)}
+                          onChange={(e) => checkOnlyOneDetail(e.target)}
                         />
                       </div>
                     );
@@ -314,7 +320,7 @@ export const ProductAdd = () => {
               </div>
             </div>
             <div className="btnForm">
-              <button onClick={toAddProduct}>추가</button>
+              <button>추가</button>
               <Link to="/productList">
                 <button>취소</button>
               </Link>

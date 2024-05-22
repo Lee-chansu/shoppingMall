@@ -2,67 +2,54 @@ import { useRef, useState } from "react";
 
 export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
   const [subImageFile, setSubImageFile] = useState("");
-  let subImgRef = useRef();
 
   const subIamgeArray = {
-    subImage1: newProduct.subImage1,
-    subImage2: newProduct.subImage2,
-    subImage3: newProduct.subImage3,
+    subImage1: subImageFile,
+    subImage2: subImageFile,
+    subImage3: subImageFile,
   }[subImageId];
 
-  const previewImage = () => {
-    const file = subImgRef.current.files[0];
+  const previewImage = (e) => {
+    const file = e.target.files[0];
     const reader = new FileReader();
     if (file) {
-      reader.readAsDataURL(file);
       const extension = file.name.split(".").pop().toLowerCase();
-      const allowedExtensions = ["jpg", "jpeg", "png", "svg"]; // 허용되는 확장자 목록
+      const allowedExtensions = [
+        "jpg",
+        "png",
+        "bmp",
+        "gif",
+        "tif",
+        "webp",
+        "heic",
+        "pdf",
+      ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
         alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
-        subImgRef.value = subImageFile; // 파일 선택 취소
+        e.target.value = subImageFile; // 파일 선택 취소
         return; // 다음 파일 처리 중단
       }
       reader.onloadend = () => {
         setSubImageFile(reader.result);
         if (subImageId === "subImage1") {
-          if (file.name.includes("http://") || file.name.includes("https://")) {
-            setNewProduct((prevState) => ({
-              ...prevState,
-              subImage1: file.name,
-            }));
-          } else {
-            setNewProduct((prevState) => ({
-              ...prevState,
-              subImage1: "/img/" + file.name,
-            }));
-          }
+          setNewProduct((prevState) => ({
+            ...prevState,
+            subImage1: reader.result,
+          }));
         } else if (subImageId === "subImage2") {
-          if (file.name.includes("http://") || file.name.includes("https://")) {
-            setNewProduct((prevState) => ({
-              ...prevState,
-              subImage2: file.name,
-            }));
-          } else {
-            setNewProduct((prevState) => ({
-              ...prevState,
-              subImage2: "/img/" + file.name,
-            }));
-          }
+          setNewProduct((prevState) => ({
+            ...prevState,
+            subImage2: reader.result,
+          }));
         } else if (subImageId === "subImage3") {
-          if (file.name.includes("http://") || file.name.includes("https://")) {
-            setNewProduct((prevState) => ({
-              ...prevState,
-              subImage3: file.name,
-            }));
-          } else {
-            setNewProduct((prevState) => ({
-              ...prevState,
-              subImage3: "/img/" + file.name,
-            }));
-          }
+          setNewProduct((prevState) => ({
+            ...prevState,
+            subImage3: reader.result,
+          }));
         }
       };
+      reader.readAsDataURL(file);
     } else {
       return;
     }
@@ -83,7 +70,6 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
         type="file"
         name={subImageId}
         onChange={previewImage}
-        ref={subImgRef}
         accept="image/*"
       />
       {subIamgeArray && (

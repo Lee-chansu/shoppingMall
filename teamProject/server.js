@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const app = express();
+
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 const { email_service, email_admin, email_password } = process.env; // env 파일 데이터가져오기
@@ -29,6 +30,11 @@ cron.schedule("0 0 * * *", async () => {
     });
   }
 });
+
+//imgbb 활용할 때 쓸 키
+const imgbbKey = "41be9bc26229e3df57a9818ed955b889";
+
+const imgbbUploader = require("imgbb-uploader");
 
 const session = require("express-session");
 const passport = require("passport");
@@ -67,13 +73,13 @@ const {
   ProductOption,
   ProductDetail,
   Carry,
-  PaymentRequest
+  PaymentRequest,
 } = db;
 
 //미들웨어
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 app.use(passport.initialize());
 app.use(session(sessionOption));
@@ -187,10 +193,34 @@ app.get("/userProfile/:id", async (req, res) => {
 //제품 추가 페이지
 app.post("/addProduct", async (req, res) => {
   const { newProduct, newOption } = req.body;
-  // console.log("newPorduct:", newProduct, "newOption:", newOption);
-
-  let result;
+  const base64Images = [
+    newProduct.mainImage.split(",")[1],
+    newProduct.subImage1 ? newProduct.subImage1.split(",")[1] : null,
+    newProduct.subImage2 ? newProduct.subImage2.split(",")[1] : null,
+    newProduct.subImage3 ? newProduct.subImage3.split(",")[1] : null,
+  ];
   try {
+    let options;
+    let productImage = [];
+    let idx = 0;
+    for (let img of base64Images) {
+      options = {
+        apiKey: imgbbKey,
+        base64string: img,
+      };
+      if (options.base64string) {
+        const uploadResponse = await imgbbUploader(options);
+        productImage[idx] = uploadResponse.url;
+        idx++;
+      } else {
+        productImage[idx] = "";
+        idx++;
+      }
+    }
+    newProduct.mainImage = productImage[0];
+    newProduct.subImage1 = productImage[1];
+    newProduct.subImage2 = productImage[2];
+    newProduct.subImage3 = productImage[3];
     const product = await Product.create(newProduct);
     const { id } = await Product.findOne({
       order: [["id", "DESC"]],
@@ -202,7 +232,6 @@ app.post("/addProduct", async (req, res) => {
       detailCategory: newProduct.detail,
     };
     const productDetail = await ProductDetail.create(newProductDetail);
-
     let newProductOption, productOption;
     for (let i = 0; i < newOption.length; i++) {
       newProductOption = {
@@ -233,7 +262,33 @@ app.post("/addProduct", async (req, res) => {
 app.put("/productEdit/:id", async (req, res) => {
   const { id } = req.params;
   const { newProduct, newOption, option } = req.body;
-  console.log(newProduct, newOption, option);
+  const base64Images = [
+    newProduct.mainImage.split(",")[1],
+    newProduct.subImage1 ? newProduct.subImage1.split(",")[1] : null,
+    newProduct.subImage2 ? newProduct.subImage2.split(",")[1] : null,
+    newProduct.subImage3 ? newProduct.subImage3.split(",")[1] : null,
+  ];
+  let options;
+  let productImage = [];
+  let idx = 0;
+  for (let img of base64Images) {
+    options = {
+      apiKey: imgbbKey,
+      base64string: img,
+    };
+    if (options.base64string) {
+      const uploadResponse = await imgbbUploader(options);
+      productImage[idx] = uploadResponse.url;
+      idx++;
+    } else {
+      productImage[idx] = "";
+      idx++;
+    }
+  }
+  newProduct.mainImage = productImage[0];
+  newProduct.subImage1 = productImage[1];
+  newProduct.subImage2 = productImage[2];
+  newProduct.subImage3 = productImage[3];
 
   const newProductDetail = {
     category: newProduct.category,
@@ -293,14 +348,19 @@ app.put("/productEdit/:id", async (req, res) => {
 // 제품 삭제
 app.delete("/productDelete/:id", async (req, res) => {
   const { id } = req.params;
+  // let cartDel = [];
+  // cartDel = await Cart.findAll({
+  //   include: {
+  //     include: [{ model: ProductOption, include: [{ model: Product }]  }],
+  //   },
+  // });
   const optionDel = await ProductOption.destroy({ where: { product_id: id } });
-  let detailDel, result;
-  if (optionDel) {
-    detailDel = await ProductDetail.destroy({ where: { product_id: id } });
-    if (detailDel) {
-      await Product.destroy({ where: { id } });
-      result = true;
-    }
+  const detailDel = await ProductDetail.destroy({ where: { product_id: id } });
+  console.log(detailDel, optionDel);
+  let result;
+  if (detailDel && optionDel) {
+    await Product.destroy({ where: { id } });
+    result = true;
   } else {
     result = false;
   }
@@ -354,18 +414,27 @@ app.get("/product/:id", async (req, res) => {
 
 // nav 카테고리 별 제품리스트조회
 app.get("/product", async (req, res) => {
-  const { category } = req.query;
+  const { category, detail } = req.query;
   let result;
   try {
-    if (category) {
+    if (detail) {
       result = await ProductDetail.findAll({
         include: [Product],
         where: {
-          category: category,
+          detail: detail,
         },
       });
     } else {
-      result = await Product.findAll();
+      if (category) {
+        result = await ProductDetail.findAll({
+          include: [Product],
+          where: {
+            category: category,
+          },
+        });
+      } else {
+        result = await Product.findAll();
+      }
     }
     res.json(result);
   } catch (error) {
@@ -420,7 +489,7 @@ app.post("/cart", async (req, res) => {
   const result = await Cart.findOne({
     where: { user_id, productOption_id, size, color },
   });
-  console.log("result", result);
+  // console.log("result", result);
   if (!result) {
     await Cart.create(newProduct);
     res.json({ result: false });
@@ -480,7 +549,7 @@ app.get("/productOption/:id", async (req, res) => {
   const { id } = req.params;
   const result = await ProductOption.findAll({
     where: { product_id: id },
-    include: Product
+    include: Product,
     // limit: 10,
   });
   res.json(result);
@@ -514,15 +583,29 @@ app.get("/userEdit/:id", async (req, res) => {
 });
 
 // 유저수정기능
+
 app.put("/userEdit/:id", async (req, res) => {
   const { id } = req.params;
   const editUser = req.body;
 
-  const result = await User.findOne({ where: { id } });
+  const options = {
+    apiKey: imgbbKey,
+    base64string: editUser.profileImg.split(",")[1],
+  };
+
+  let result = await User.findOne({ where: { id } });
+
   if (result) {
     for (let key in editUser) {
       result[key] = editUser[key];
     }
+
+    if (options.base64string) {
+      const uploadResponse = await imgbbUploader(options);
+      result.profileImg = uploadResponse.url;
+      console.log("url", uploadResponse.url);
+    }
+
     await result.save();
     res.json(result);
   }
@@ -655,19 +738,41 @@ app.put("/userinfo/put/:id", async (req, res) => {
   }
 });
 
-// 결제 요청 조회
-app.get("/paymentRequest", async (req, res) => {
-  const { orderId, amount, paymentKey } = req.query;
-  let result = await PaymentRequest.findAll({ where: {} });
-  if (orderId && amount) result = await PaymentRequest.findAll({ where: { id: orderId, amount } });
-  // console.log(result);
+// 유저인포 사진보기용
+app.get("/userinfo/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const result = await User.findOne({ where: { id } });
+
   if (result) {
-    res.json(result);
-  } else {
-    res.json([]);
+    res.json({ data: result.profileImg });
   }
 });
 
+// 결제 요청 조회
+app.get("/paymentRequest", async (req, res) => {
+  const { orderId, amount, paymentKey } = req.query;
+
+  console.log(orderId, amount)
+
+  if (!orderId || !amount) {
+    res.json([{ isValid: false }]);
+  }
+
+  try {
+    const result = await PaymentRequest.findAll({
+      where: { id: orderId, amount },
+    });
+    if (result.length > 0) {
+      res.json(result);
+    } else {
+      res.json([{ isValid: false }]);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "서버 오류가 발생했습니다." });
+  }
+});
 
 // 결제 요청 생성
 app.post("/paymentRequest", async (req, res) => {
@@ -682,14 +787,12 @@ app.post("/paymentRequest", async (req, res) => {
   }
 });
 
-
-
 // 결제 api 관련
 // const got = require("got");
 let got;
 
 (async () => {
-  got = (await import('got')).default;
+  got = (await import("got")).default;
 })();
 
 // TODO: 개발자센터에 로그인해서 내 결제위젯 연동 키 > 시크릿 키를 입력하세요. 시크릿 키는 외부에 공개되면 안돼요.

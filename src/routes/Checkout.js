@@ -89,10 +89,6 @@ export function CheckoutPage() {
     paymentMethodsWidget.updateAmount(price);
   }, [price]);
 
-  // function calculateTotalAmount(paymentList) {
-  //   return paymentList.reduce((total, item) => total + item.price, 0);
-  // }
-
   const handlePaymentRequest = async () => {
     const orderId = nanoid();
     console.log('test', price)

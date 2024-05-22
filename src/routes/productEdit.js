@@ -61,7 +61,16 @@ export const ProductEdit = () => {
     if (file) {
       reader.readAsDataURL(file);
       const extension = file.name.split(".").pop().toLowerCase();
-      const allowedExtensions = ["jpg", "jpeg", "png", "svg"]; // 허용되는 확장자 목록
+      const allowedExtensions = [
+        "jpg",
+        "png",
+        "bmp",
+        "gif",
+        "tif",
+        "webp",
+        "heic",
+        "pdf",
+      ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
         alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
@@ -70,18 +79,11 @@ export const ProductEdit = () => {
       }
       reader.onloadend = () => {
         setMainImageFile(reader.result);
+        setNewProduct((prevState) => ({
+          ...prevState,
+          mainImage: reader.result,
+        }));
       };
-      if (file.name.includes("http://") || file.name.includes("https://")) {
-        setNewProduct((prevState) => ({
-          ...prevState,
-          mainImage: file.value,
-        }));
-      } else {
-        setNewProduct((prevState) => ({
-          ...prevState,
-          mainImage: "/img/" + file.name,
-        }));
-      }
     } else {
       return;
     }

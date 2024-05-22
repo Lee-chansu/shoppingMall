@@ -15,7 +15,7 @@ export function SuccessPage() {
       paymentKey: searchParams.get("paymentKey"),
     };
 
-    console.log(requestData)
+    // console.log(requestData)
 
     const findRequest = async () => {
       const checkRequest = await fetch(`http://localhost:5000/paymentRequest?orderId=${requestData.orderId}&amount=${requestData.amount}&paymentKey=${requestData.paymentKey}`)
@@ -29,13 +29,14 @@ export function SuccessPage() {
 
       const arrayResponse = await findRequest();
 
-      // 배열이 빈 배열인지 확인
-      if (arrayResponse.length === 0) {
-        console.error("Error: 배열이 비어 있습니다.");
-        return;  // 배열이 비어 있을 때 동작 멈춤
-      }
+      console.log('arrayResponse', arrayResponse)
 
-      console.log("결제 시도")
+      // 서버로부터의 응답을 검사하여 결제 요청이 변조되었는지 확인
+      if (arrayResponse.length === 0 || arrayResponse[0].isValid === false) {
+        console.error("Error: 결제 요청이 변조되었습니다.");
+        navigate('/toss/fail?message=결제 요청이 변조되었습니다.');
+        return; // 변조된 요청일 때 결제 로직을 중단
+      }
 
       const response = await fetch("http://localhost:5000/confirm", {
         method: "POST",
