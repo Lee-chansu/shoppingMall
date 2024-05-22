@@ -34,7 +34,10 @@ module.exports = (sequelize) => {
       phoneNumber: {
         type: DataTypes.STRING(20),
       },
-      address: {
+      mainAddress: {
+        type: DataTypes.STRING(100),
+      },
+      detailAddress: {
         type: DataTypes.STRING(100),
       },
       isMaster: {

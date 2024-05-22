@@ -8,6 +8,7 @@ import { PaySuccessItem } from "../components/PaySuccessItem";
 
 export const PaySuccess = () => {
   const [paidItemList, setPaidItemList] = useState([]);
+  const [id, setId] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
   const { paySelect, list, paySelectSumPrice } = location.state;
@@ -46,7 +47,7 @@ export const PaySuccess = () => {
               <div className="payInfo">
                 {/* 요기에 user Id 가져오기 */}
                 ★님의 결제내역
-                </div>
+              </div>
               <div className="howToPay">결제방법</div>
               <div className="howToPayPrint">{paySelect}</div>
               <div className="paySum">{paySelectSumPrice} 원</div>

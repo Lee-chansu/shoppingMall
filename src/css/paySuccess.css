@@ -138,10 +138,17 @@
   top: 640px;
 }
 
-.row {
+.paySuccess .row {
+  /* 1개만 나옴 */
   margin-left: 45px;
   padding: 50px;
-  
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: keep-all;
 }
 
 .paidItem {
@@ -152,7 +159,7 @@
 }
 
 .paidItem::after {
-  content: '결제완료';
+  content: "결제완료";
   color: tomato;
   font-weight: 600;
 }
@@ -215,4 +222,5 @@
 .paySuccess .buttonBox {
   position: absolute;
   top: 750px;
+  left: -40px;
 }

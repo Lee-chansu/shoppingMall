@@ -53,7 +53,7 @@ const PaymentModal = ({ mainAddressRef }) => {
           setIsModalOpened(!isModalOpened);
         }}
       >
-        <h6 className="carrySelectBtn">조회</h6>
+        <h6 className="carrySelectBtn">기본 배송지 수정</h6>
       </Button>
     </>
   );

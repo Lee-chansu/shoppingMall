@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../css/payment.css";
 
 import { PaymentItem } from "../components/PaymentItem";
@@ -145,7 +145,6 @@ export const Payment = () => {
     <>
       <Nav></Nav>
       <div className="payment">
-        {/* <div className="paymentInnerWrapper"> */}
         <div className="paymentInner">
           <div className="payTitle">
             <div className="textWrapper8">결제하기</div>
@@ -164,14 +163,15 @@ export const Payment = () => {
                   <input
                     className="mainAddressBox"
                     ref={mainAddressRef}
-                    placeholder="도로 주소명(자동)"
-                    value={userProfile.address}
+                    placeholder={userProfile.mainAddress}
+                    // value={userProfile.mainAddress} 
                     disabled
                   />
                   <input
                     className="detailAddressBox"
                     ref={detailAddressRef}
-                    placeholder="상세 주소를 써주세요"
+                    placeholder={userProfile.detailAddress}
+                    // value={userProfile.detailAddress} 
                     disabled={!isAddressEditable}
                   />
                   <button
@@ -180,8 +180,8 @@ export const Payment = () => {
                     style={{
                       color:
                         detailAddressRef.current?.value === ""
-                          ? "gray"
-                          : "black",
+                          ? "black"
+                          : "gray",
                       cursor:
                         detailAddressRef.current?.value === ""
                           ? "cursor"
@@ -191,7 +191,7 @@ export const Payment = () => {
                     {isAddressEditable ? (
                       <h6 className="carrySelectBtn">완료</h6>
                     ) : (
-                      <h6>수정</h6>
+                      <h6 className="carrySelectBtn">완료</h6>
                     )}
                   </button>
                 </div>
@@ -310,13 +310,18 @@ export const Payment = () => {
 
               <CustomButton
                 className="btn2"
+                buttonTitle="결제취소"
+                handleLinkMove={handleAllPayment}
+              />
+
+<CustomButton
+                className="btn3"
                 buttonTitle="결제완료"
                 handleLinkMove={handleAllPayment}
               />
             </ButtonBox>
           </div>
         </div>
-        {/* </div> */}
       </div>
     </>
   );
