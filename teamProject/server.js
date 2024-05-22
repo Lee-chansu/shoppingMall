@@ -348,15 +348,9 @@ app.put("/productEdit/:id", async (req, res) => {
 // 제품 삭제
 app.delete("/productDelete/:id", async (req, res) => {
   const { id } = req.params;
-  // let cartDel = [];
-  // cartDel = await Cart.findAll({
-  //   include: {
-  //     include: [{ model: ProductOption, include: [{ model: Product }]  }],
-  //   },
-  // });
+  const cartDel = await Cart.destroy({ where: { product_id: id } });
   const optionDel = await ProductOption.destroy({ where: { product_id: id } });
   const detailDel = await ProductDetail.destroy({ where: { product_id: id } });
-  console.log(detailDel, optionDel);
   let result;
   if (detailDel && optionDel) {
     await Product.destroy({ where: { id } });
@@ -485,7 +479,8 @@ app.get("/Cart/:user_id", async (req, res) => {
 // 장바구니에 제품 추가
 app.post("/cart", async (req, res) => {
   const newProduct = req.body;
-  const { user_id, productOption_id, size, color, amount } = req.body;
+  const { user_id, productOption_id, product_id, size, color, amount } =
+    req.body;
   const result = await Cart.findOne({
     where: { user_id, productOption_id, size, color },
   });
