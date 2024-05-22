@@ -23,8 +23,11 @@ module.exports = {
           key: 'id'
         }
       },
-      userId: {
+      userName: {
         type: Sequelize.STRING(15)
+      },
+      address: {
+        type: Sequelize.STRING(100)
       },
       progress: {
         type: Sequelize.STRING(30)

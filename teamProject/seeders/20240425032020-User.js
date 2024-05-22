@@ -11,7 +11,7 @@ module.exports = {
         gender: "M",
         userName: "userName0",
         email: "email0@naver.com",
-        phoneNumber: "0",
+        phoneNumber: "010-1234-5678",
         address: "address0",
         profileImg: "profileImg0",
         isMaster: false,
