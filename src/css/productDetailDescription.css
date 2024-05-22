@@ -1,3 +1,21 @@
+.parentBox{
+  position: relative;
+}
+
+.parentBox .header{
+  position: relative;
+  z-index: 2;
+}
+.parentBox .productdetail{
+  position: relative;
+  z-index: 1;
+}
+
+.parentBox .componentBox{
+  position: relative;
+  z-index: 0;
+}
+
 
 
 .productdetail {
@@ -6,7 +24,7 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  overflow-y: hidden;
+  
 }
 
 .productdetail .div {
@@ -14,7 +32,7 @@
   height: 855px;
   position: relative;
   width: 1440px;
-  top: -350px;
+  top: -300px;
 }
 
 .productdetail .buttonBox {
@@ -24,6 +42,7 @@
   position: absolute;
   top: 1025px;
   width: 590px;
+  
 }
 
 .productdetail .nowPayButton {
@@ -490,3 +509,4 @@ input[type=number]::-webkit-inner-spin-button,
   border-radius: 5px;
   border: 1px solid black;
 }
+

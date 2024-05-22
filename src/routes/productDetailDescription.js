@@ -297,7 +297,7 @@ export const ProductDetailDescription = () => {
   return (
     <>
       {product.id ? (
-        <div>
+        <div className="parentBox">
           <Nav />
           <div className="productdetail">
             <div className="div">
@@ -442,25 +442,28 @@ export const ProductDetailDescription = () => {
               </form>
             </div>
           </div>
-          {switchBtn ? (
-            <ProductDescription
-              switchBtn={switchBtn}
-              setSwitchBtn={setSwitchBtn}
-              handleSwitchBtn={handleSwitchBtn}
-              item={item}
-              product={product}
-            />
-          ) : (
-            <ProductReview
-              switchBtn={switchBtn}
-              setSwitchBtn={setSwitchBtn}
-              handleSwitchBtn={handleSwitchBtn}
-              item={item}
-              user={user}
-              id={id}
-              product={product}
-            />
-          )}
+          <div className="componentBox">
+            {switchBtn ? (
+              <ProductDescription
+                switchBtn={switchBtn}
+                setSwitchBtn={setSwitchBtn}
+                handleSwitchBtn={handleSwitchBtn}
+                item={item}
+                product={product}
+              />
+            ) : (
+              <ProductReview
+                switchBtn={switchBtn}
+                setSwitchBtn={setSwitchBtn}
+                handleSwitchBtn={handleSwitchBtn}
+                item={item}
+                user={user}
+                id={id}
+                product={product}
+              />
+            )}
+          </div>
+          
         </div>
       ) : (
         // TODO error 페이지 만들어서 대체

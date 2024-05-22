@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../css/login.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ export const Login = () => {
           }
         } else {
           let user = await response.json();
-          if (user) {
+          if (user) {``
             sessionStorage.setItem("token", user.token);
             alert("로그인 성공");
             navigate("/");
@@ -55,6 +55,34 @@ export const Login = () => {
     }
   };
 
+  const placeRef = useRef()
+  const placeRef2 = useRef()
+  
+  const placeholderText = {
+    email : '이메일*',
+    password : '비밀번호*'
+  }
+
+  const inputFocus = (e)=>{
+    e.target.placeholder = ''
+    if(e.target.name === 'username'){
+      placeRef.current.style.zIndex = 2;
+    }
+    else{
+      placeRef2.current.style.zIndex = 2;
+    }
+  }
+
+  const inputBlur = (e)=>{
+    if(e.target.name === 'username'){
+      e.target.placeholder = placeholderText.email
+      placeRef.current.style.zIndex = -1
+    }else{
+      e.target.placeholder = placeholderText.password
+      placeRef2.current.style.zIndex = -1;
+    }  
+  }
+
   return (
     <div className="login">
       <div className="div">
@@ -62,21 +90,27 @@ export const Login = () => {
         <form className="loginBox">
           <div className="loginForm">
             <div className="inputUserId">
+              <div className="place1" ref={placeRef}>이메일</div>
               <input
                 className="textWrapper2"
                 type="email"
                 placeholder="이메일*"
                 name="username"
                 onChange={valueChange}
+                onFocus={inputFocus}
+                onBlur={inputBlur}
               />
             </div>
             <div className="inputUserpassword">
+              <div className="place1" ref={placeRef2}>비밀번호</div>
               <input
                 className="textWrapper2"
                 placeholder="비밀번호*"
                 type="password"
                 name="password"
                 onChange={valueChange}
+                onFocus={inputFocus}
+                onBlur={inputBlur}
               ></input>
             </div>
           </div>
