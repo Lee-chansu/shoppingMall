@@ -72,6 +72,18 @@ a{text-decoration:none;}
   width: 400px;
 }
 
+.login .place1{
+  position: absolute;
+  top: 2px;
+  left: 100px;
+  z-index:-1;
+  width: 50px;
+  text-align: center;
+  background-color: white;
+  color: #999999;
+  font-size: 14px;
+}
+
 .login .textWrapper2 {
   color: #000000;
   
