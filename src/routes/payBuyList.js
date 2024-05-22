@@ -44,12 +44,15 @@ export const PayBuyList = () => {
   useEffect(() => {
     //유저의 id로 구매내역 조회
     if (id !== "") {
+      //id가 빈문자열일때 한번 실행
+      //실제 id가 든 상태로 재실행시 아래함수 실행
       getPayItemList();
     }
   }, [id]);
 
   const handleDeleteItem = async (val) => {
     try {
+      //구매내역 삭제 코드
       const response = await fetch(
         `http://localhost:5000/buyList/delete/${val.id}`,
         {

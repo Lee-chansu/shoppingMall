@@ -1,12 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap"; //리액트 부트스트랩 사용한 모달
 import DaumPostcodeEmbed from "react-daum-postcode";
-import { useNavigate } from "react-router-dom";
 
 const PaymentModal = ({ mainAddressRef }) => {
   const [isModalOpened, setIsModalOpened] = useState(false);
-  const detailAddressRef = useRef();
-  const navigate = useNavigate();
 
   const MyHandleComplete = (data) => {
     console.log(data);
@@ -17,11 +14,6 @@ const PaymentModal = ({ mainAddressRef }) => {
     console.log(state);
     setIsModalOpened(!isModalOpened);
   };
-
-  // useEffect(() => {
-  //   console.count('세부주소로인한 재생성');
-  //   console.log(detailAddress);
-  // }, [detailAddress]);
 
   return (
     <>
