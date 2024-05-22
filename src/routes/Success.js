@@ -17,13 +17,25 @@ export function SuccessPage() {
 
     console.log(requestData)
 
-    
+    const findRequest = async () => {
+      const checkRequest = await fetch(`http://localhost:5000/paymentRequest?orderId=${requestData.orderId}&amount=${requestData.amount}&paymentKey=${requestData.paymentKey}`)
+      const body = await checkRequest.json();
+      return body;
+    };
+
 
     async function confirm() {
+      // console.log(findRequest())
 
-      const checkRequest = await fetch(`http://localhost:5000/paymentRequest?id=${requestData.orderId}&amount=${requestData.amount}&paymentKey=${requestData.paymentKey}`)
+      const arrayResponse = await findRequest();
 
-      console.log(checkRequest)
+      // 배열이 빈 배열인지 확인
+      if (arrayResponse.length === 0) {
+        console.error("Error: 배열이 비어 있습니다.");
+        return;  // 배열이 비어 있을 때 동작 멈춤
+      }
+
+      console.log("결제 시도")
 
       const response = await fetch("http://localhost:5000/confirm", {
         method: "POST",

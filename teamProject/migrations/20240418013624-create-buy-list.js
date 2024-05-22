@@ -16,13 +16,6 @@ module.exports = {
           key: 'id'
         }
       },
-      productOption_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'ProductOptions',
-          key: 'id'
-        }
-      },
       productName: {
         type: Sequelize.STRING(255)
       },
@@ -38,11 +31,20 @@ module.exports = {
       image: {
         type: Sequelize.STRING(255)
       },
+      productColor: {
+        type: Sequelize.STRING(255)
+      },
+      productSize: {
+        type: Sequelize.STRING(255)
+      },
       buyDate: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now')
       },
       amount: {
+        type: Sequelize.INTEGER
+      },
+      orderQuantity: {
         type: Sequelize.INTEGER
       },
       carryStatus: {

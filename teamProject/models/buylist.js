@@ -22,11 +22,20 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.STRING(255)
     },
+    productColor: {
+      type: DataTypes.STRING(255)
+    },
+    productsize: {
+      type: DataTypes.STRING(255)
+    },
     buyDate: {
       type: DataTypes.DATE,
       defaultValue: sequelize.fn('now')
     },
     amount: {
+      type: DataTypes.INTEGER
+    },
+    orderQuantity: {
       type: DataTypes.INTEGER
     },
     carryStatus: {
@@ -38,7 +47,6 @@ module.exports = (sequelize) => {
 
   BuyList.associate = (models) => {
     BuyList.belongsTo(models.User, { foreignKey: 'user_id' });
-    BuyList.belongsTo(models.ProductOption, { foreignKey: 'productOption_id' });
   };
 
   return BuyList;

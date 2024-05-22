@@ -89,13 +89,13 @@ export function CheckoutPage() {
     paymentMethodsWidget.updateAmount(price);
   }, [price]);
 
-  function calculateTotalAmount(paymentList) {
-    return paymentList.reduce((total, item) => total + item.price, 0);
-  }
+  // function calculateTotalAmount(paymentList) {
+  //   return paymentList.reduce((total, item) => total + item.price, 0);
+  // }
 
   const handlePaymentRequest = async () => {
     const orderId = nanoid();
-    const amount = calculateTotalAmount(location.state.paymentList);
+    console.log('test', price)
 
     // 사용자 프로필을 가져오기
     const userResponse = await fetch(`http://localhost:5000/userProfile/${id}`);
@@ -105,7 +105,7 @@ export function CheckoutPage() {
       const saveResponse = await fetch("http://localhost:5000/paymentRequest", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: orderId, amount, user_id: id }),
+        body: JSON.stringify({ id: orderId, amount:price, user_id: id }),
       });
 
       if (!saveResponse.ok) {
