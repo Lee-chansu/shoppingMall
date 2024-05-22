@@ -69,6 +69,7 @@ export const UserEdit = () => {
       }));
     }
   };
+  console.log(editUser.profileImg);
 
   const valueChange = (e) => {
     const { name, value } = e.target;
@@ -77,9 +78,25 @@ export const UserEdit = () => {
 
   const imageChange = (e) => {
     const selectFile = e.target.files[0];
-    console.log(selectFile.name);
+    const reader = new FileReader();
     if (selectFile) {
-      const reader = new FileReader();
+      const extension = selectFile.name.split(".").pop().toLowerCase();
+      const allowedExtensions = [
+        "jpg",
+        "png",
+        "bmp",
+        "gif",
+        "tif",
+        "webp",
+        "heic",
+        "pdf",
+      ]; // 허용되는 확장자 목록
+
+      if (!allowedExtensions.includes(extension)) {
+        alert(`${selectFile.name} 파일은 허용되지 않는 확장자입니다.`);
+        e.target.value = ''; // 파일 선택 취소
+        return; // 다음 파일 처리 중단
+      }
       reader.onloadend = () => {
         setEditUser((pre) => ({ ...pre, profileImg: reader.result }));
       };
@@ -97,7 +114,7 @@ export const UserEdit = () => {
       alert("비밀번호 재확인이 일치하지 않습니다");
     } else {
       try {
-        console.log(editUser);
+        // console.log(editUser);
         const response = await fetch(`http://localhost:5000/userEdit/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../css/productDetailDescription.css";
-import { ProductDescription } from "../components/productDescription";
-import { Nav } from "../components/nav";
-import { ProductReview } from "../components/productReview";
-import { Link, useNavigate, useParams } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import "../css/productDetailDescription.css";
+
+//컴포넌트
+import { Nav } from "../components/nav";
+import { ProductDescription } from "../components/productDescription";
+import { ProductReview } from "../components/productReview";
 
 export const ProductDetailDescription = () => {
   const navigate = useNavigate();
@@ -129,7 +131,7 @@ export const ProductDetailDescription = () => {
       );
 
       const updatedFormData = {
-        ... selectedProductOption.Product,
+        ...selectedProductOption.Product,
         size: selectedSize,
         color: selectedColor,
         user_id: id,
@@ -140,7 +142,7 @@ export const ProductDetailDescription = () => {
       };
 
       if (updatedFormData) {
-        console.log(updatedFormData)
+        console.log(updatedFormData);
         navigate("/payment", { state: { paymentList: [updatedFormData] } });
       } else {
         console.log(updatedFormData);
@@ -276,18 +278,18 @@ export const ProductDetailDescription = () => {
       await fetch(`http://localhost:5000/productDelete/${productId}`, {
         method: "DELETE",
       })
-        .then((res) => {
-          return res.json();
-        })
-        .then((res) => {
-          if (res) {
-            alert("제품을 삭제했습니다.");
-            navigate("/productList");
-          } else {
-            alert("제품을 삭제하는데 실패했습니다.");
-            console.log(res);
-          }
-        });
+        // .then((res) => {
+        //   return res.json();
+        // })
+        // .then((res) => {
+        //   if (res) {
+        //     alert("제품을 삭제했습니다.");
+        //     navigate("/productList");
+        //   } else {
+        //     alert("제품을 삭제하는데 실패했습니다.");
+        //     console.log(res);
+        //   }
+        // });
     } catch (error) {
       alert("제품을 삭제하던 도중 오류가 발생했습니다.");
       console.log(error);

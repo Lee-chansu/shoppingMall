@@ -8,6 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
 }
 
 .header .inner .nav .wrapper {
@@ -85,7 +86,7 @@
   border-radius: 50%;
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1500px) {
   .nav {
     display: flex;
   }
@@ -99,7 +100,7 @@
 
 @media screen and (max-width: 1000px) {
   .header .inner .category2 {
-    overflow-x: scroll;
+    flex-wrap: wrap;
   }
   .header .inner .category2 .wrapper {
     width: 20%;
