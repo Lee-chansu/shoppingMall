@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import "../css/join.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import AddressModal from "../components/AddressModal";
 
 export const Join = () => {
   const navigate = useNavigate();
   const goback = () => {
     navigate(-1);
   };
+  
+  const mainAddressRef = useRef(null);
 
   const [newUser, setNewUser] = useState({
     userId: "",
@@ -73,12 +76,7 @@ export const Join = () => {
         alert('회원가입 중 오류가 발생했습니다')
       }
     }
-    
-    
   }
-
-
-
 
   return (
     <div className="join">
@@ -117,6 +115,15 @@ export const Join = () => {
                   placeholder="비밀번호 확인*"
                 />
               </div>
+              <div className="boxName">
+                <input
+                  className="input"
+                  id="username"
+                  name="userName"
+                  onChange={valueChange}
+                  placeholder="이름*"
+                />
+              </div>
               <div className="boxEmail">
                 <input
                   className="input"
@@ -136,15 +143,35 @@ export const Join = () => {
                   placeholder="전화번호*"
                 />
               </div>
-              <div className="boxAddress">
+
+              <AddressModal 
+                innerText="주소"
+                mainAddressRef={mainAddressRef}
+              />
+              <div className="boxMainAddress">
+                <input
+                  className="input"
+                  id="address"
+                  name="address"
+                  ref={mainAddressRef}
+                  onChange={valueChange}
+                  placeholder="도로명 주소*"
+                  disabled
+                />
+                <button onClick={()=>{alert('fff')}}>btn</button>
+              </div>
+              <div className="boxDetailAddress">
                 <input
                   className="input"
                   id="address"
                   name="address"
                   onChange={valueChange}
-                  placeholder="주소*"
+                  placeholder="상세주소*"
                 />
               </div>
+
+
+
               <div className="selectGender">
                 <div className="inputRadio">
                   <label htmlFor="male" className="div">
@@ -171,15 +198,7 @@ export const Join = () => {
                   />
                 </div>
               </div>
-              <div className="boxName">
-                <input
-                  className="input"
-                  id="username"
-                  name="userName"
-                  onChange={valueChange}
-                  placeholder="이름*"
-                />
-              </div>
+             
               <div className="editForm">
                 <button
                   className="submitButton"

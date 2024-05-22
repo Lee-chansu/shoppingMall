@@ -21,7 +21,7 @@ a{text-decoration:none;}
 
 .join .joinBox {
   background-color: #fffcf7;
-  height: 1100px;
+  height: 1200px;
   width: 574px;
   position: relative;
 }
@@ -124,7 +124,7 @@ a{text-decoration:none;}
   width: 377px;
 }
 
-.join .boxAddress {
+.join .boxMainAddress {
   height: 92px;
   left: -70px;
   position: absolute;
@@ -132,21 +132,31 @@ a{text-decoration:none;}
   width: 377px;
 }
 
-.join .selectGender {
+.join .boxMainAddress .input {
+  width: 300px;
+}
+
+.join .boxDetailAddress {
   height: 92px;
-  left: 14px;
+  left: -70px;
   position: absolute;
   top: 760px;
   width: 377px;
 }
 
-
+.join .selectGender {
+  height: 92px;
+  left: 14px;
+  position: absolute;
+  top: 770px;
+  width: 377px;
+}
 
 .join .inputRadio {
   height: 46px;
   left: 13px;
   position: absolute;
-  top: 13px;
+  top: 110px;
   width: 373px;
   border: 1px solid #9d2a1e;;
   border-radius: 4px;
@@ -220,21 +230,19 @@ a{text-decoration:none;}
   height: 40px;
   left: 150px;
   position: absolute;
-  top: 28px;
+  top: 100px;
   width: 120px;
   border-radius: 5px;
   border: transparent;
   color: #ffffff;
 }
 
-
-
 .join .cancelButton {
   background-color: #4d4a4a;
   height: 40px;
   left: 350px;
   position: absolute;
-  top: 28px;
+  top: 100px;
   width: 120px;
   border-radius: 5px;
   border: transparent;

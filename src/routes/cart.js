@@ -105,8 +105,12 @@ export const Cart = () => {
     //선택된 상품 추출
     const selectedCartItemList = cartItemList.filter(
       (val) => val.isChecked === true
-    );
-
+      );
+      if(selectedCartItemList.length === 0){
+        alert('결제하실 상품을 골라주세요')
+        return;
+      }
+      
     //payment로 선택된 상품 전달
     navigate("/payment", {
       state: {
@@ -119,7 +123,11 @@ export const Cart = () => {
   const handlePaymentRemove = async () => {
     const selectedCartItemList = cartItemList.filter(
       (val) => val.isChecked === true
-    );
+      );
+      if(selectedCartItemList.length === 0){
+        alert('삭제하실 상품을 골라주세요')
+        return;
+      }
 
     //서버에 보낼 정보를 담은 body 선언
     const body = {
