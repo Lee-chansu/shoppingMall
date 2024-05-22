@@ -52,7 +52,7 @@ export const PayItem = ({
           /> */}
           구매내역 삭제
         </Link>
-        <Link to="/" className="reviewBtn">
+        <Link to="/review" className="reviewBtn">
           {/* <img
             className="trashBtn"
             width="32"

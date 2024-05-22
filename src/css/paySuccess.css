@@ -22,11 +22,7 @@
 }
 
 .paySuccess .innerBox {
-  background-color: #eeeeee;
   height: 1172px;
-  left: 0;
-  position: absolute;
-  top: 0;
   width: 1060px;
 }
 
@@ -39,7 +35,8 @@
 }
 
 .paySuccess .price {
-  background-color: #ffffff;
+  background-color: #ff7d9e;
+  border-radius: 10px;
   height: 97px;
   left: 20px;
   position: absolute;
@@ -48,8 +45,8 @@
 }
 
 .paySuccess .successMessage {
-  color: #aa0000;
-  
+  color: #fff;
+  font-family: "Inter-Regular", Helvetica;
   font-size: 30px;
   font-weight: 400;
   left: 30px;
@@ -63,6 +60,8 @@
 
 .paySuccess .orderInfo {
   background-color: #ffffff;
+  border: 5px dashed #ff7d9e;
+  border-radius: 10px;
   height: 918px;
   left: 56px;
   position: absolute;
@@ -71,19 +70,17 @@
 }
 
 .paySuccess .payInfo {
-  color: #000000;
-  
+  font-family: "Inter-Regular", Helvetica;
   font-size: 30px;
   font-weight: 600;
   display: flex;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .paySuccess .productName {
-  color: #000000;
-  
-  font-size: 30px;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 24px;
   font-weight: 400;
   left: 55px;
   letter-spacing: 0;
@@ -94,36 +91,32 @@
 }
 
 .paySuccess .howToPay {
-  color: #000000;
-  
-  font-size: 30px;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 24px;
   font-weight: 400;
   left: 55px;
-  letter-spacing: 0;
-  line-height: normal;
+
   position: absolute;
   text-align: center;
   top: 560px;
 }
 
 .paySuccess .howToPayPrint {
-  color: #000000;
-  
-  font-size: 28px;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 24px;
   font-weight: 400;
   left: 256px;
-  letter-spacing: 0;
-  line-height: normal;
+
   position: absolute;
   text-align: center;
   top: 560px;
 }
 
 .paySuccess .paySum {
-  color: #000000;
-  
+  color: #ff7d9e;
+  font-family: "Inter-Regular", Helvetica;
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 600;
   left: 256px;
   letter-spacing: 0;
   line-height: normal;
@@ -134,9 +127,9 @@
 
 .paySuccess .paySumText {
   color: #000000;
-  
-  font-size: 30px;
-  font-weight: 400;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 24px;
+  font-weight: 600;
   left: 55px;
   letter-spacing: 0;
   line-height: normal;
@@ -225,37 +218,56 @@
 
 .paySuccess .readMe {
   color: #00000070;
+}
   
+.paySuccess .row {
+  /* 1개만 나옴 */
+  margin-left: 45px;
+  padding: 50px;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: keep-all;
+}
+
+.paidItem {
+  flex: 0 0 calc(33.33% - 20px); /* 한 줄에 세 개의 요소가 들어가도록 설정. 여백 포함하여 총 너비의 33.33%로 설정. */
+  margin-right: 10px;
+  margin-bottom: 80px;
+  box-sizing: border-box;
+}
+
+.paidItem::after {
+  content: "결제완료";
+  color: tomato;
+  font-weight: 600;
+}
+
+.paidItem:last-child {
+  margin-right: 0;
+}
+
+.pname {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 18px;
+}
+
+.poption {
+  color: #9e9e9e;
+}
+
+.paySuccess .readMe {
+  font-family: "Inter-Regular", Helvetica;
   font-size: 20px;
   font-weight: 400;
   position: absolute;
   top: 720px;
   left: 200px;
 }
-
-/* .paySuccess .toHome {
-  background-color: #eeeeee;
-  font-size: 30px;
-  height: 80px;
-  left: 180px;
-  text-align: center;
-  position: absolute;
-  padding-top: 25px;
-  top: 1230px;
-  width: 300px;
-}
-
-.paySuccess .nextPage {
-  background-color: #eeeeee;
-  font-size: 30px;
-  height: 80px;
-  left: 580px;
-  text-align: center;
-  position: absolute;
-  padding-top: 25px;
-  top: 1230px;
-  width: 300px;
-} */
 
 /* button */
 .paySuccess .buttonGroup {
@@ -287,4 +299,10 @@
   white-space: nowrap;
   width: 150px;
   border: none;
+}
+
+.paySuccess .buttonBox {
+  position: absolute;
+  top: 750px;
+  left: -40px;
 }

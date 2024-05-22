@@ -455,13 +455,14 @@ app.get("/ReviewList", async (req, res) => {
 //   res.json(result);
 // });
 
-app.get("/Cart/:user_id", async (req, res) => {
+//user Id 로 장바구니 조회
+app.get("/cart/:user_id", async (req, res) => {
   const { user_id } = req.params;
 
   try {
     const result = await Cart.findAll({
       where: { user_id },
-      include: [{ model: ProductOption, include: [{ model: Product }] }], // Product 모델을 include하여 조인
+      include: [{ model: Product }], // Product 모app.post("/cart델을 include하여 조인
     });
 
     if (result) {
@@ -493,12 +494,37 @@ app.post("/cart", async (req, res) => {
   }
 });
 
-app.get("/Cart", async (req, res) => {
+// 유저번호와 상관없이 모든 cart 조회
+app.get("/cart", async (req, res) => {
   const result = await Cart.findAll();
   res.json(result);
 });
 
-//유저별 장바구니 조회
+// user Id 별 장바구니 상품삭제
+app.delete("/cart", async (req, res) => {
+  // const { user_id } = req.params;
+  const { list, user_id } = req.body;
+  console.log("list", list);
+  console.log("user_id", user_id);
+
+  try {
+    await list.forEach((val) => {
+      Cart.destroy({
+        where: {
+          productOption_id: val.productOption_id,
+        },
+      });
+    });
+  } catch (error) {
+    console.error("삭제 중 에러 발생", error);
+    res
+      .status(500)
+      .json({ message: "삭제 중 오류가 발생했습니다", success: false });
+  }
+  res.status(200).json({ message: "삭제 완료", success: true });
+});
+
+//유저별 구매내역 조회
 app.get("/buyList/:user_id", async (req, res) => {
   const { user_id } = req.params;
   const result = await BuyList.findAll({
@@ -523,9 +549,11 @@ app.delete("/cart/:id", async (req, res) => {
 
 // 구매 내역 삭제
 app.delete("/buyList/delete/:id", async (req, res) => {
+  //여기서 가져오는 data 뭔지?
   const { id } = req.params;
   try {
     await Carry.destroy({ where: { order_id: id } });
+    //이거 왜 Carry?
     await BuyList.destroy({ where: { id } });
 
     res.status(200).json({ message: "삭제 완료" });
@@ -533,6 +561,34 @@ app.delete("/buyList/delete/:id", async (req, res) => {
     console.error("삭제 중 에러 발생", error);
     res.status(500).json({ message: "삭제 중 오류가 발생했습니다" });
   }
+});
+
+// 조회 : get , 추가 : post , 수정 : put , 삭제 : delete
+// 구매내역 추가 (cart의 리스트를 payBuyList에 추가)
+app.post("/buyList", async (req, res) => {
+  const { list, user_id } = req.body;
+  console.log(list);
+
+  list.forEach(async (val, idx) => {
+    const newBuyList = {
+      user_id,
+      productOption_id: val.id,
+      productName: val.name,
+      category: val.category ? val.category : "x",
+      price: val.price,
+      description: val.description ? val.description : "x",
+      image: val.mainImage,
+      amount: val.amount,
+      carryStatus: "도착완료",
+    };
+    try {
+      await BuyList.create(newBuyList);
+    } catch (error) {
+      console.error("구매내역 추가 중 에러 발생", error);
+      res.status(500).json({ message: "구매내역 추가 중 에러 발생했습니다" });
+    }
+  });
+  res.json({ message: "결제가 성공적으로 완료되었습니다", success: true });
 });
 
 app.get("/productOption", async (req, res) => {

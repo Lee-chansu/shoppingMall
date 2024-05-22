@@ -1,14 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-ul,
-ol,
-a {
-  text-decoration: none;
-}
-
 .payment {
   background-color: #ffffff;
   display: flex;
@@ -17,28 +6,19 @@ a {
   width: 100%;
 }
 
-.payment .paymentInnerWrapper {
-  background-color: #ffffff;
-  height: 1632.14px;
-  width: 1440px;
-}
-
 .payment .paymentInner {
-  background-color: #eeeeee;
   height: 1195px;
-  left: 249px;
   position: relative;
-  top: 218px;
-  width: 942px;
+  width: 950px;
 }
 
 .payment .payBox {
   background-color: #ffffff;
   height: 915px;
-  left: 34px;
+  left: 10px;
   position: absolute;
-  top: 188px;
-  width: 881px;
+  top: 125px;
+  width: 900px;
 }
 
 .payment .userInfoBox {
@@ -68,7 +48,7 @@ a {
 
 .payment .email {
   color: #000000;
-  font-family: 'Inter-Regular', Helvetica;
+  font-family: "Inter-Regular", Helvetica;
   font-size: 16px;
   font-weight: 400;
   left: 20px;
@@ -81,7 +61,7 @@ a {
 
 .payment .email2 {
   color: #000000;
-  font-family: 'Inter-Regular', Helvetica;
+  font-family: "Inter-Regular", Helvetica;
   font-size: 18px;
   font-weight: 600;
   left: 20px;
@@ -103,7 +83,7 @@ a {
 
 .payment .address {
   color: #000000;
-  font-family: 'Inter-Regular', Helvetica;
+  font-family: "Inter-Regular", Helvetica;
   font-size: 16px;
   font-weight: 400;
   left: 20px;
@@ -116,7 +96,7 @@ a {
 
 .payment .address2 {
   color: #000000;
-  font-family: 'Inter-Regular', Helvetica;
+  font-family: "Inter-Regular", Helvetica;
   font-size: 18px;
   font-weight: 600;
   left: 20px;
@@ -176,7 +156,7 @@ a {
 
 .payment .carryRequest {
   color: #000000;
-  font-family: 'Inter-Regular', Helvetica;
+  font-family: "Inter-Regular", Helvetica;
   font-size: 16px;
   font-weight: 400;
   left: 20px;
@@ -189,7 +169,7 @@ a {
 
 .payment .carrySelect {
   color: #000000;
-  font-family: 'Inter-Regular', Helvetica;
+  font-family: "Inter-Regular", Helvetica;
   font-size: 15px;
   font-weight: 500;
   left: 0px;
@@ -231,7 +211,7 @@ a {
 
 .payment .textWrapper2 {
   color: #000000;
-  font-family: 'Inter-Regular', Helvetica;
+  font-family: "Inter-Regular", Helvetica;
   font-size: 18px;
   font-weight: 600;
   left: 20px;
@@ -338,7 +318,7 @@ a {
 
 .payment .orderSumText {
   color: #000000;
-  font-family: 'Inter-Regular', Helvetica;
+  font-family: "Inter-Regular", Helvetica;
   font-size: 16px;
   font-weight: 400;
   left: 15px;
@@ -437,9 +417,6 @@ a {
   height: 145px;
   width: 400px;
   position: relative;
-  /* top: 40px;
-  right: 30px;
-  left: 10px; */
   margin: 20px 0px;
 }
 
@@ -523,16 +500,15 @@ a {
 }
 
 .payment .textWrapper8 {
-  color: #000000;
-  font-family: 'Inter-Regular', Helvetica;
+  color: #ff7d9e;
+  font-family: "Inter-Regular", Helvetica;
   font-size: 30px;
-  font-weight: 400;
+  font-weight: 600;
   left: 419px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 63px;
-  width: 246px;
+  top: 60px;
 }
 
 .payment .buttonBox {
