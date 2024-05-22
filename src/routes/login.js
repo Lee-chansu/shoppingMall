@@ -40,7 +40,7 @@ export const Login = () => {
           }
         } else {
           let user = await response.json();
-          if (user) {``
+          if (user) {
             sessionStorage.setItem("token", user.token);
             alert("로그인 성공");
             navigate("/");
