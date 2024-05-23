@@ -7,6 +7,12 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true
     },
+    userName: {
+      type: DataTypes.STRING(15)
+    },
+    address: {
+      type: DataTypes.STRING(100)
+    },
     progress: {
       type: DataTypes.STRING(30)
     },

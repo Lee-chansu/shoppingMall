@@ -63,44 +63,9 @@ export const Payment = () => {
     navigate(-1);
   };
 
-  const handleAllPayment = async () => {
-    if (paySelect == "") {
-      alert("결제방식을 선택해주세요");
-      return;
-    }
-    //결제정보
-    const body = {
-      user_id: id,
-      list: paymentItemList,
-    };
-    //결제목록에 추가하는 코드
-    const postRes = await axios.post("http://localhost:5000/buyList", body);
-    const postData = postRes.data;
-
-    if (!postData.success) {
-      alert("상품 결제 중 오류 발생");
-      return;
-    }
-
-    //cart에서 결제된 항목 삭제
-    const deleteRes = await axios.delete("http://localhost:5000/cart", {
-      data: body,
-    });
-    const deleteData = deleteRes.data;
-
-    if (!deleteData.success) {
-      alert("상품 결제 중 오류 발생");
-      return;
-    }
-
-    alert(postData.message);
-    navigate("/paySuccess", {
-      state: {
-        list: paymentItemList,
-        paySelect,
-        paySelectSumPrice: orderSum.paySumTotal,
-      },
-    });
+  const handleAllPayment = () => {
+    navigate("/toss", { state: { paymentList:location.state.paymentList, orderSum }});
+    //모달 처리 예정 , if문으로 분기처리 예정
   };
 
   //결제방식 선택시 실행할 함수
@@ -263,7 +228,7 @@ export const Payment = () => {
                   )}
                 </div>
               </div>
-              <div className="howPayBox">
+              {/* <div className="howPayBox">
                 <div className="title">
                   <div className="textWrapper2">
                     결제방식 선택
@@ -304,7 +269,7 @@ export const Payment = () => {
                   있습니다
                   <br />위 내용을 확인하였으며 결제에 동의합니다
                 </span>
-              </div>
+              </div> */}
             </div>
 
             <div className="payList">

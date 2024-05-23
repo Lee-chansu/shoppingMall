@@ -73,7 +73,7 @@ module.exports = {
         {
           id: 100,
           name: "name0",
-          price: 0,
+          price: 2100,
           mainImage: "imageUrl0",
           createdAt: Sequelize.literal("CURRENT_TIMESTAMP"),
         },

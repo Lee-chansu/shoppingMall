@@ -799,6 +799,32 @@ app.get("/userinfo/:id", async (req, res) => {
     res.json({ data: result.profileImg });
   }
 });
+
+// 결제 요청 조회
+app.get("/paymentRequest", async (req, res) => {
+  const { orderId, amount, paymentKey } = req.query;
+
+  console.log(orderId, amount)
+
+  if (!orderId || !amount) {
+    res.json([{ isValid: false }]);
+  }
+
+  try {
+    const result = await PaymentRequest.findAll({
+      where: { id: orderId, amount },
+    });
+    if (result.length > 0) {
+      res.json(result);
+    } else {
+      res.json([{ isValid: false }]);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "서버 오류가 발생했습니다." });
+  }
+});
+
 // 결제 요청 생성
 app.post("/paymentRequest", async (req, res) => {
   const newRequest = req.body;
@@ -822,7 +848,8 @@ let got;
 
 // TODO: 개발자센터에 로그인해서 내 결제위젯 연동 키 > 시크릿 키를 입력하세요. 시크릿 키는 외부에 공개되면 안돼요.
 // @docs https://docs.tosspayments.com/reference/using-api/api-keys
-const widgetSecretKey = "test_sk_Ba5PzR0ArnPOg9AxQ0oN3vmYnNeD";
+// const widgetSecretKey = "test_sk_Ba5PzR0ArnPOg9AxQ0oN3vmYnNeD"; // 비지니스용
+const widgetSecretKey = "test_gsk_docs_OaPz8L5KdmQXkzRz3y47BMw6"; // 테스트용
 
 app.post("/confirm", function (req, res) {
   const { paymentKey, orderId, amount } = req.body;
