@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import "../css/findId.css";
 import { useRef, useState } from "react";
+import Swal from "sweetalert2";
+import { Myalter } from "../components/Myalter";
 
 export const FindId = () => {
   const navigate = useNavigate();
@@ -33,9 +35,9 @@ export const FindId = () => {
     e.preventDefault();
 
     if (!findUser.userName) {
-      alert("이름을 입력하시오");
+      Myalter('warning', '아이디 찾기 가이드','이름을 입력하시오')
     } else if (!findUser.email) {
-      alert("이메일을 입력하시오");
+      Myalter('warning','아이디 찾기 가이드','이메일을 입력하시오')
     } else {
       try {
         const response = await fetch("http://localhost:5000/findId/", {
@@ -51,14 +53,25 @@ export const FindId = () => {
             setIsSend(result.message);
             setPassNum(result.passNum);
             setUserId(result.userId);
-            alert("해당 이메일로 인증번호 발송");
+            Swal.fire({
+              icon : 'success',
+              title : '아이디 찾기 가이드',
+              text : '해당 이메일로 인증번호 발송'
+            })
           } else {
-            alert("이름과 이메일이 다릅니다");
+            Swal.fire({
+              icon : 'warning',
+              title : '아이디 찾기 가이드',
+              text : '이름 혹은 이메일이 다릅니다'
+            })
           }
         }
       } catch (error) {
-        alert("아이디 찾기 중 오류가 발생했습니다");
-        console.log(error);
+        Swal.fire({
+          icon : 'warning',
+          title : '아이디 찾기 가이드',
+          text : '아이디 찾기 중 오류가 발생했습니다'
+        })
       }
     }
   };
@@ -66,10 +79,18 @@ export const FindId = () => {
   const numButton = (e) => {
     e.preventDefault();
     if (passNum == findUser.number) {
-      alert("인증성공");
+      Swal.fire({
+        icon : 'success',
+        title : '아이디 찾기 가이드',
+        text : '인증성공'
+      })
       setPassResult(true);
     } else {
-      alert("인증번호가 일치하지않습니다");
+      Swal.fire({
+        icon : 'warning',
+        title : '아이디 찾기 가이드',
+        text : '인증번호가 일치하지않습니다'
+      })
     }
   };
 

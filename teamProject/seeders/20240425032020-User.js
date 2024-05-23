@@ -12,7 +12,7 @@ module.exports = {
         userName: "userName0",
         email: "email0@naver.com",
         phoneNumber: "010-1234-5678",
-        address: "address0",
+        mainAddress: "address0",
         profileImg: "profileImg0",
         isMaster: false,
         isDeleted: false
@@ -26,7 +26,7 @@ module.exports = {
         userName: "userName1",
         email: "email1@naver.com",
         phoneNumber: "1",
-        address: "address1",
+        mainAddress: "address1",
         profileImg: "profileImg1",
         isMaster: false,
         isDeleted: false
@@ -39,7 +39,7 @@ module.exports = {
         userName: "userName2",
         email: "email2@naver.com",
         phoneNumber: "2",
-        address: "address2",
+        mainAddress: "address2",
         profileImg: "profileImg2",
         isMaster: false,
         isDeleted: false
@@ -52,7 +52,7 @@ module.exports = {
         userName: "userName3",
         email: "email3@naver.com",
         phoneNumber: "3",
-        address: "address3",
+        mainAddress: "address3",
         profileImg: "profileImg3",
         isMaster: false,
         isDeleted: false
@@ -65,7 +65,7 @@ module.exports = {
         userName: "userName4",
         email: "email4@naver.com",
         phoneNumber: "4",
-        address: "address4",
+        mainAddress: "address4",
         profileImg: "profileImg4",
         isMaster: false,
         isDeleted: false
@@ -78,7 +78,7 @@ module.exports = {
         userName: "userName5",
         email: "email5@naver.com",
         phoneNumber: "5",
-        address: "address5",
+        mainAddress: "address5",
         profileImg: "profileImg5",
         isMaster: false,
         isDeleted: false
@@ -91,7 +91,7 @@ module.exports = {
         userName: "userName6",
         email: "email6@naver.com",
         phoneNumber: "6",
-        address: "address6",
+        mainAddress: "address6",
         profileImg: "profileImg6",
         isMaster: false,
         isDeleted: false
@@ -104,7 +104,7 @@ module.exports = {
         userName: "userName7",
         email: "email7@naver.com",
         phoneNumber: "7",
-        address: "address7",
+        mainAddress: "address7",
         profileImg: "profileImg7",
         isMaster: false,
         isDeleted: false
@@ -117,7 +117,7 @@ module.exports = {
         userName: "userName8",
         email: "email8@naver.com",
         phoneNumber: "8",
-        address: "address8",
+        mainAddress: "address8",
         profileImg: "profileImg8",
         isMaster: false,
         isDeleted: false
@@ -130,7 +130,7 @@ module.exports = {
         userName: "userName9",
         email: "email9@naver.com",
         phoneNumber: "9",
-        address: "address9",
+        mainAddress: "address9",
         profileImg: "profileImg9",
         isMaster: false,
         isDeleted: false

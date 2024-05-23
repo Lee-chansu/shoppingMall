@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "../css/userInfo.css";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2"
+
 
 export const UserInfo = () => {
   const [imageUrl, setImageUrl] = useState("");
@@ -28,8 +30,11 @@ export const UserInfo = () => {
   const logOut = (e) => {
     e.preventDefault();
     sessionStorage.removeItem("token");
-    navigate("/");
-    alert("로그아웃 성공");
+    
+    Swal.fire({
+      icon : 'success',
+      title : '로그아웃 성공',
+    }).then(()=>{navigate("/")})
   };
 
   const deleteButton = async (e) => {
@@ -39,11 +44,18 @@ export const UserInfo = () => {
     const body = await response.json();
 
     const delCode = `${body.userName}는 탈퇴하겠습니다`;
-    const delReult = prompt(
-      `회원탈퇴를 원하시면 "${body.userName}는 탈퇴하겠습니다" 입력하시오 `
-    );
-
-    if (delReult == delCode) {
+    
+    const delReult = await Swal.fire({
+      icon : 'info',
+      title : '회원탈퇴 가이드',
+      text : `회원탈퇴를 원하시면 "${body.userName}는 탈퇴하겠습니다" 입력하시오 `,
+      input : 'text',
+      confirmButtonText: '확인',
+      showCancelButton: true,
+      cancelButtonText: '취소'
+    })
+        
+    if (delReult.value == delCode) {
       try {
         const response = await fetch(
           `http://localhost:5000/userinfo/put/${id}`,
@@ -53,15 +65,25 @@ export const UserInfo = () => {
         if (!response.ok) {
           throw new Error("서버에서 응답을 받을 수 없습니다");
         } else {
-          alert("회원탈퇴 완료");
           sessionStorage.removeItem("token");
-          navigate("/");
+          Swal.fire({
+            icon : 'success',
+            title : '회원탈퇴 성공',
+          }).then(()=>{navigate("/")})
         }
       } catch (error) {
-        alert("유저 삭제중 오류가 발생했습니다");
+        Swal.fire({
+          icon : 'warning',
+          title : '회원탈퇴 가이드',
+          text : '유저 삭제중 오류가 발생했습니다'
+        })
       }
     } else {
-      alert("회원탈퇴 실패");
+      Swal.fire({
+        icon : 'warning',
+        title : '회원탈퇴 가이드',
+        text : '회원탈퇴 실패'
+      })
     }
   };
 

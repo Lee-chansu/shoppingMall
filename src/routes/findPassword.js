@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../css/findPassword.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import Swal from "sweetalert2";
 
 export const FindPassword = () => {
   const navigate = useNavigate();
@@ -31,9 +32,17 @@ export const FindPassword = () => {
   const emailButton = async (e) => {
     e.preventDefault();
     if (!findPassword.userId) {
-      alert("아이디를 입력하시오");
+      Swal.fire({
+        icon : 'warning',
+        title : '비밀번호 찾기 가이드',
+        text : '아이디를 입력하시오'
+      })
     } else if (!findPassword.email) {
-      alert("이메일을 입력하시오");
+      Swal.fire({
+        icon : 'warning',
+        title : '비밀번호 찾기 가이드',
+        text : '이메일을 입력하시오'
+      })
     } else {
       try {
         const response = await fetch("http://localhost:5000/findPassword/", {
@@ -49,13 +58,25 @@ export const FindPassword = () => {
             setIsSend(result.message);
             setPassNum(result.passNum);
             setUserinfo(result.findUser);
-            alert("해당 이메일로 인증번호 발송");
+            Swal.fire({
+              icon : 'success',
+              title : '비밀번호 찾기 가이드',
+              text : '해당 이메일로 인증번호 발송'
+            })
           } else {
-            alert("아이디과 이메일이 다릅니다");
+            Swal.fire({
+              icon : 'warning',
+              title : '비밀번호 찾기 가이드',
+              text : '아이디 혹은 이메일이 다릅니다'
+            })
           }
         }
       } catch (error) {
-        alert("비밀번호 찾기 중 오류가 발생했습니다");
+        Swal.fire({
+          icon : 'warning',
+          title : '비밀번호 찾기 가이드',
+          text : '비밀번호 찾기 중 오류가 발생했습니다'
+        })
       }
     }
   };
@@ -63,10 +84,18 @@ export const FindPassword = () => {
   const numButton = (e) => {
     e.preventDefault();
     if (passNum == findPassword.number) {
-      alert("인증성공");
+      Swal.fire({
+        icon : 'success',
+        title : '비밀번호 찾기 가이드',
+        text : '인증성공'
+      })
       setPassResult(true);
     } else {
-      alert("인증번호가 일치하지않습니다");
+      Swal.fire({
+        icon : 'warning',
+        title : '비밀번호 찾기 가이드',
+        text : '인증번호가 일치하지않습니다'
+      })
     }
   };
 
@@ -75,9 +104,38 @@ export const FindPassword = () => {
     if (passResult == true) {
       navigate("/passwordEdit", { state: { id: userinfo } }); // 프롭스드릴링
     } else {
-      alert("인증을 먼저 진행해주세요");
+      Swal.fire({
+        icon : 'warning',
+        title : '비밀번호 찾기 가이드',
+        text : '인증을 먼저 진행해주세요'
+      })
     }
   };
+
+  const placeRef = useRef()
+  const placeRef2 = useRef()
+  const placeRef3 = useRef('test')
+
+  const inputFocus = (e)=>{
+    if(e.target.name === 'userId'){
+      placeRef.current.style.top = '7px';
+    }
+    else if(e.target.name === 'email'){
+      placeRef2.current.style.top = '7px';
+    }else{
+      placeRef3.current.style.top = '7px';
+    }
+  }
+
+  const inputBlur = (e)=>{
+    if(e.target.name === 'userId' && !e.target.value){
+      placeRef.current.style.top = '25px';
+    }else if(e.target.name === 'email' && !e.target.value){
+      placeRef2.current.style.top = '25px';
+    }else if(e.target.name === 'number' && !e.target.value){
+      placeRef3.current.style.top = '25px';
+    }  
+  }
 
   return (
     <div className="findPassword">
@@ -86,19 +144,25 @@ export const FindPassword = () => {
         <form className="findPasswordBox">
           <div className="inputBox">
             <div className="inputUserid">
+              <label for='userId' className="place1" ref={placeRef}>아이디</label>
               <input
+                id="userId"
                 className="textWrapper2"
-                placeholder="아이디*"
                 name="userId"
                 onChange={valueChange}
+                onFocus={inputFocus}
+                onBlur={inputBlur}
               ></input>
             </div>
             <div className="inputUserEmail">
+              <label for='email' className="place2" ref={placeRef2}>이메일</label>
               <input
+                id="email"
                 className="textWrapper3"
-                placeholder="이메일*"
                 name="email"
                 onChange={valueChange}
+                onFocus={inputFocus}
+                onBlur={inputBlur}
               ></input>
               <button className="emailButton" onClick={emailButton}>
                 인증번호 받기
@@ -106,12 +170,15 @@ export const FindPassword = () => {
             </div>
             {isSend ? (
               <div className="inputNum">
+                <label for='number' className="place3" ref={placeRef3}>인증번호</label>
                 <input
+                  id="number"
                   type="text"
-                  placeholder="인증번호*"
                   className="inputNumWrapper"
                   name="number"
                   onChange={valueChange}
+                  onFocus={inputFocus}
+                  onBlur={inputBlur}
                 ></input>
                 <button
                   className="inputNumButton"

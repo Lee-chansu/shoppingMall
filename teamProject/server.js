@@ -109,7 +109,7 @@ passport.use(
     let result = await User.findOne({ where: { userId } });
 
     if (!result) {
-      return done(null, false, { message: "이메일이 일치하지않습니다" });
+      return done(null, false, { message: "아이디가 일치하지않습니다" });
     }
     if (result.password != password) {
       return done(null, false, { message: "비밀번호가 일치하지않습니다" });

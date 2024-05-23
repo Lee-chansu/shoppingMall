@@ -1,11 +1,21 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import "../css/passwordEdit.css";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const PasswordEdit = () => {
   const navigate = useNavigate();
   const location = useLocation(); // 프롭스한거 받아오기1
-  const { id } = location.state; // 2
+  const [id,SetId] = useState();
+  
+  useEffect(()=>{
+    if(location.state){
+      SetId(location.state.id)
+    }else{
+      navigate('/')
+    }
+  },[])
+  
+
 
   const [input, setInput] = useState({
     password: "",
@@ -50,6 +60,26 @@ export const PasswordEdit = () => {
     }
   };
 
+  const placeRef = useRef(null)
+  const placeRef2 = useRef(null)
+  
+  const inputFocus = (e)=>{
+    if(e.target.name === 'password'){
+      placeRef.current.style.top = '7px';
+    }
+    else{
+      placeRef2.current.style.top = '7px';
+    }
+  }
+
+  const inputBlur = (e)=>{
+    if(e.target.name === 'password' && !e.target.value){
+      placeRef.current.style.top = '25px';
+    }else if(e.target.name === 'passwordCheck' && !e.target.value){
+      placeRef2.current.style.top = '25px';
+    }
+  }
+
   return (
     <div className="changePassword">
       <div className="div">
@@ -57,21 +87,27 @@ export const PasswordEdit = () => {
         <form className="changePasswordBox">
           <div className="inputBox">
             <div className="inputPassword">
+              <label for='password' className="place1" ref={placeRef}>새 비밀번호</label>
               <input
+                id="password"
                 className="textWrapper2"
-                placeholder="새로운 비밀번호 입력"
                 name="password"
                 onChange={valueChange}
                 type="password"
+                onFocus={inputFocus}
+                onBlur={inputBlur}
               ></input>
             </div>
             <div className="inputPasswordCheck">
+              <label for='passwordCheck' className="place2" ref={placeRef2}>새 비밀번호 확인</label>
               <input
+                id="passwordCheck"
                 className="textWrapper3"
-                placeholder="새로운 비밀번호 확인"
                 name="passwordCheck"
                 onChange={valueChange}
                 type="password"
+                onFocus={inputFocus}
+                onBlur={inputBlur}
               ></input>
             </div>
           </div>
