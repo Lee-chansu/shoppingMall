@@ -5,10 +5,14 @@ import "../css/paySuccess.css";
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
 import { PaySuccessItem } from "../components/PaySuccessItem";
+import { jwtDecode } from "jwt-decode";
+import { async } from "q";
+import axios from "axios";
 
 export const PaySuccess = () => {
   const [paidItemList, setPaidItemList] = useState([]);
   const [id, setId] = useState('');
+  const [userName, setUserName] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
   const { paySelect, list, paySelectSumPrice } = location.state;
@@ -30,6 +34,31 @@ export const PaySuccess = () => {
     setPaidItemList(list);
   }, []);
 
+  const getUser = async () => {
+    const res = await axios.get(`http://localhost:5000/userProfile/${id}`)
+    const data = res.data //user정보를 다 가져옴
+    console.log(data);
+    setUserName(data.userName);
+  }
+
+  //userId 가져오기
+  useEffect(() => {
+    //현재 token이 sessionStorage(공간)에 id를 암호화한 상태로 저장되어있음(pk 유니크)
+    const token = sessionStorage.getItem("token");
+    if (id === "" && !token) {
+      navigate("/login");
+    } else {
+      //jwt : Json Web Token
+      //Decode : 복호화(암호해독)
+      const decodeToken = jwtDecode(token);
+      setId(decodeToken.id); //화면 다시 로딩될때 바뀜
+    }
+
+    if (id !== "") {
+      getUser()
+    }
+  }, [id]);
+
   return (
     <div className="paySuccess">
       <div className="div">
@@ -45,8 +74,7 @@ export const PaySuccess = () => {
             </div>
             <div className="orderInfo">
               <div className="payInfo">
-                {/* 요기에 user Id 가져오기 */}
-                ★님의 결제내역
+                {userName}님의 결제내역
               </div>
               <div className="howToPay">결제방법</div>
               <div className="howToPayPrint">{paySelect}</div>

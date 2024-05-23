@@ -58,28 +58,20 @@ export const Login = () => {
   const placeRef = useRef()
   const placeRef2 = useRef()
   
-  const placeholderText = {
-    email : '이메일*',
-    password : '비밀번호*'
-  }
-
   const inputFocus = (e)=>{
-    e.target.placeholder = ''
-    if(e.target.name === 'username'){
-      placeRef.current.style.zIndex = 2;
+    if(e.target.name === 'username' ){
+      placeRef.current.style.top = '7px';
     }
     else{
-      placeRef2.current.style.zIndex = 2;
+      placeRef2.current.style.top = '7px';
     }
-  }
+  };
 
   const inputBlur = (e)=>{
-    if(e.target.name === 'username'){
-      e.target.placeholder = placeholderText.email
-      placeRef.current.style.zIndex = -1
-    }else{
-      e.target.placeholder = placeholderText.password
-      placeRef2.current.style.zIndex = -1;
+    if(e.target.name === 'username' && !e.target.value){
+      placeRef.current.style.top = '25px';
+    }else if(e.target.name === 'password' && !e.target.value){
+      placeRef2.current.style.top = '25px';
     }  
   }
 
@@ -90,22 +82,22 @@ export const Login = () => {
         <form className="loginBox">
           <div className="loginForm">
             <div className="inputUserId">
-              <div className="place1" ref={placeRef}>이메일</div>
+              <label for='username' className="place1" ref={placeRef}>이메일</label>
               <input
                 className="textWrapper2"
                 type="email"
-                placeholder="이메일*"
                 name="username"
+                id="username"
                 onChange={valueChange}
                 onFocus={inputFocus}
                 onBlur={inputBlur}
               />
             </div>
             <div className="inputUserpassword">
-              <div className="place1" ref={placeRef2}>비밀번호</div>
+              <label for = 'password' className="place2" ref={placeRef2}>비밀번호</label>
               <input
                 className="textWrapper2"
-                placeholder="비밀번호*"
+                id="password"
                 type="password"
                 name="password"
                 onChange={valueChange}

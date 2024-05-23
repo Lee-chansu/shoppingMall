@@ -16,6 +16,7 @@ export function FailPage() {
           <img
             width="30px"
             src="https://static.toss.im/3d-emojis/u1F6A8-apng.png"
+            alt="결제실패 이미지"
           />
           결제 실패
         </h2>

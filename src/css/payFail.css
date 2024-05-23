@@ -1,4 +1,4 @@
-.paySuccess {
+.payFail {
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -6,14 +6,14 @@
   width: 100%;
 }
 
-.paySuccess .div {
+.payFail .div {
   background-color: #ffffff;
   height: 1500px;
   position: relative;
   width: 1440px;
 }
 
-.paySuccess .overlap {
+.payFail .overlap {
   height: 1172px;
   left: 193px;
   position: absolute;
@@ -21,12 +21,12 @@
   width: 1060px;
 }
 
-.paySuccess .innerBox {
+.payFail .innerBox {
   height: 1172px;
   width: 1060px;
 }
 
-.paySuccess .overlapGroup {
+.payFail .overlapGroup {
   height: 97px;
   left: 36px;
   position: absolute;
@@ -34,7 +34,7 @@
   width: 945px;
 }
 
-.paySuccess .price {
+.payFail .price {
   background-color: #ff7d9e;
   border-radius: 10px;
   height: 97px;
@@ -48,7 +48,7 @@
   color: #aa0000;
   font-size: 44.7px;
 }
-.paySuccess .successMessage {
+.payFail .successMessage {
   color: #fff;
   font-family: "Inter-Regular", Helvetica;
   font-size: 30px;
@@ -62,7 +62,7 @@
   width: 945px;
 }
 
-.paySuccess .orderInfo {
+.payFail .orderInfo {
   background-color: #ffffff;
   height: 925px;
   left: 57px;
@@ -251,7 +251,7 @@
   width: 950px;
 }
 
-.paySuccess .payInfo {
+.payFail .payInfo {
   font-family: "Inter-Regular", Helvetica;
   font-size: 30px;
   font-weight: 600;
@@ -260,7 +260,7 @@
   margin-top: 30px;
 }
 
-.paySuccess .productName {
+.payFail .productName {
   font-family: "Inter-Regular", Helvetica;
   font-size: 24px;
   font-weight: 400;
@@ -272,7 +272,7 @@
   top: 170px;
 }
 
-.paySuccess .howToPay {
+.payFail .howToPay {
   font-family: "Inter-Regular", Helvetica;
   font-size: 24px;
   font-weight: 400;
@@ -283,7 +283,7 @@
   top: 560px;
 }
 
-.paySuccess .howToPayPrint {
+.payFail .howToPayPrint {
   font-family: "Inter-Regular", Helvetica;
   font-size: 24px;
   font-weight: 400;
@@ -294,7 +294,7 @@
   top: 560px;
 }
 
-.paySuccess .paySum {
+.payFail .paySum {
   color: #ff7d9e;
   font-family: "Inter-Regular", Helvetica;
   font-size: 28px;
@@ -307,7 +307,7 @@
   top: 640px;
 }
 
-.paySuccess .paySumText {
+.payFail .paySumText {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 24px;
@@ -320,7 +320,7 @@
   top: 640px;
 }
 
-.paySuccess .row {
+.payFail .row {
   /* 1개만 나옴 */
   margin-left: 45px;
   padding: 50px;
@@ -333,34 +333,34 @@
   word-break: keep-all;
 }
 
-.paidItem {
+.payFail .paidItem {
   flex: 0 0 calc(33.33% - 20px); /* 한 줄에 세 개의 요소가 들어가도록 설정. 여백 포함하여 총 너비의 33.33%로 설정. */
-  margin-right: 10px;
+  /* margin-right: 10px;
   margin-bottom: 80px;
-  box-sizing: border-box;
+  box-sizing: border-box; */
 }
 
-.paidItem::after {
+.payFail .paidItem::after {
   content: "결제완료";
   color: tomato;
   font-weight: 600;
 }
 
-.paidItem:last-child {
+.payFail .paidItem:last-child {
   margin-right: 0;
 }
 
-.pname {
+.payFail .pname {
   margin-top: 10px;
   margin-bottom: 0;
   font-size: 18px;
 }
 
-.poption {
+.payFail .poption {
   color: #9e9e9e;
 }
 
-.paySuccess .readMe {
+.payFail .readMe {
   font-family: "Inter-Regular", Helvetica;
   font-size: 20px;
   font-weight: 400;
@@ -370,7 +370,7 @@
 }
 
 /* button */
-.paySuccess .buttonGroup {
+.payFail .buttonGroup {
   width: 600px;
   border: none;
   margin: 700px auto 0;
@@ -378,7 +378,7 @@
   justify-content: space-between;
 }
 
-.paySuccess .button {
+.payFail .button {
   background-color: #eeeeeeee;
   height: 70px;
   width: 250px;
@@ -386,7 +386,7 @@
   position: relative;
 }
 
-.paySuccess .buttonText {
+.payFail .buttonText {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 22px;
@@ -401,7 +401,7 @@
   border: none;
 }
 
-.paySuccess .buttonBox {
+.payFail .buttonBox {
   position: absolute;
   top: 750px;
   left: -40px;

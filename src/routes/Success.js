@@ -18,23 +18,24 @@ export function SuccessPage() {
     // console.log(requestData)
 
     const findRequest = async () => {
-      const checkRequest = await fetch(`http://localhost:5000/paymentRequest?orderId=${requestData.orderId}&amount=${requestData.amount}&paymentKey=${requestData.paymentKey}`)
+      const checkRequest = await fetch(
+        `http://localhost:5000/paymentRequest?orderId=${requestData.orderId}&amount=${requestData.amount}&paymentKey=${requestData.paymentKey}`
+      );
       const body = await checkRequest.json();
       return body;
     };
-
 
     async function confirm() {
       // console.log(findRequest())
 
       const arrayResponse = await findRequest();
 
-      console.log('arrayResponse', arrayResponse)
+      console.log("arrayResponse", arrayResponse);
 
       // 서버로부터의 응답을 검사하여 결제 요청이 변조되었는지 확인
       if (arrayResponse.length === 0 || arrayResponse[0].isValid === false) {
         console.error("Error: 결제 요청이 변조되었습니다.");
-        navigate('/toss/fail?message=결제 요청이 변조되었습니다.');
+        navigate("/toss/fail?message=결제 요청이 변조되었습니다.");
         return; // 변조된 요청일 때 결제 로직을 중단
       }
 
@@ -68,6 +69,7 @@ export function SuccessPage() {
           <img
             width="35px"
             src="https://static.toss.im/3d-emojis/u1F389_apng.png"
+            alt="결제성공 이미지"
           />
           결제 성공
         </h2>
