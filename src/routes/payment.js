@@ -68,6 +68,11 @@ export const Payment = () => {
     //모달 처리 예정 , if문으로 분기처리 예정
   };
 
+  const handleAllPayment2 = () => {
+    navigate("/paysuccess", { state: { list:location.state.list, paySelectSumPrice: orderSum.paySumTotal }});
+    //모달 처리 예정 , if문으로 분기처리 예정
+  };
+
   //결제방식 선택시 실행할 함수
   const handlePaySelect = (e) => {
     setPaySelect(e.target.innerText);
@@ -312,11 +317,11 @@ export const Payment = () => {
                 handleLinkMove={handleLinkBackMove}
               />
 
-              {/* <CustomButton
+              <CustomButton
                 className="btn2"
                 buttonTitle="결제취소"
-                handleLinkMove={handleAllPayment}
-              /> */}
+                handleLinkMove={handleAllPayment2}
+              />
 
               <CustomButton
                 className="btn3"

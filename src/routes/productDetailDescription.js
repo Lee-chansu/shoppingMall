@@ -469,7 +469,6 @@ export const ProductDetailDescription = () => {
           
         </div>
       ) : (
-        // TODO error 페이지 만들어서 대체
         <div>해당 상품을 찾을 수 없습니다</div>
       )}
     </>

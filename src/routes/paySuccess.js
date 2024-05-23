@@ -77,7 +77,7 @@ export const PaySuccess = () => {
                 {userName}님의 결제내역
               </div>
               <div className="howToPay">결제방법</div>
-              <div className="howToPayPrint">{paySelect}</div>
+              {/* <div className="howToPayPrint">{paySelect}</div> */}
               <div className="paySum">{paySelectSumPrice} 원</div>
               <div className="paySumText">결제금액</div>
 

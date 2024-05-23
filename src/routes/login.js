@@ -82,7 +82,7 @@ export const Login = () => {
         <form className="loginBox">
           <div className="loginForm">
             <div className="inputUserId">
-              <label for='username' className="place1" ref={placeRef}>이메일</label>
+              <label htmlFor='username' className="place1" ref={placeRef}>이메일</label>
               <input
                 className="textWrapper2"
                 type="email"
@@ -94,7 +94,7 @@ export const Login = () => {
               />
             </div>
             <div className="inputUserpassword">
-              <label for = 'password' className="place2" ref={placeRef2}>비밀번호</label>
+              <label htmlFor = 'password' className="place2" ref={placeRef2}>비밀번호</label>
               <input
                 className="textWrapper2"
                 id="password"
@@ -109,7 +109,7 @@ export const Login = () => {
           <div className="loginButton">
             <button
               className="submitButton"
-              type="button"
+              type="submit"
               onClick={buttonClick}
             >
               제출
