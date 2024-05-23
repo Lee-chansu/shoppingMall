@@ -240,6 +240,32 @@ export const Payment = () => {
                   )}
                 </div>
               </div>
+              <div className="saleBox">
+                <div className="coupon">쿠폰 사용하기</div>
+                <div className="coupon2">
+                  <label for="agree1" class="radio_box">
+                    <input
+                      type="radio"
+                      id="agree1"
+                      name="agree"
+                      value="동의"
+                      checked="checked"
+                    />
+                    <span class="on"></span>
+                    신규고객 5,000원 할인쿠폰
+                  </label>
+                  <label for="agree2" class="radio_box">
+                    <input
+                      type="radio"
+                      id="agree2"
+                      name="agree"
+                      value="미동의"
+                    />
+                    <span class="on"></span>
+                    쿠폰선택 안함
+                  </label>
+                </div>
+              </div>
               {/* <div className="howPayBox">
                 <div className="title">
                   <div className="textWrapper2">
@@ -332,7 +358,7 @@ export const Payment = () => {
 
               <CustomButton
                 className="btn3"
-                buttonTitle="결제완료"
+                buttonTitle="결제하기"
                 handleLinkMove={handleAllPayment}
               />
             </ButtonBox>

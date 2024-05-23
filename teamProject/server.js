@@ -1,12 +1,12 @@
 /* eslint-disable no-undef */
 // 모듈
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const app = express();
 
 const nodemailer = require("nodemailer");
-require("dotenv").config();
 const { email_service, email_admin, email_password } = process.env; // env 파일 데이터가져오기
 
 // 스케줄링
@@ -701,7 +701,7 @@ app.post("/findId", async (req, res) => {
       // 이메일 발신자/수신자/내용 설정
       from: email_admin, // 작성자
       to: email, // 수신자
-      subject: "@@쇼핑몰에서 인증번호를 보냅니다", //제목
+      subject: "@@!!", //제목
       text: `인증번호 : ${randomNumber}`, // 내용
     };
     transporter.sendMail(mailOptions, (error, info) => {
@@ -804,7 +804,7 @@ app.get("/userinfo/:id", async (req, res) => {
 app.get("/paymentRequest", async (req, res) => {
   const { orderId, amount, paymentKey } = req.query;
 
-  console.log(orderId, amount)
+  console.log(orderId, amount);
 
   if (!orderId || !amount) {
     res.json([{ isValid: false }]);

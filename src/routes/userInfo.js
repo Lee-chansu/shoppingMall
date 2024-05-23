@@ -98,6 +98,9 @@ export const UserInfo = () => {
         />
         <div className="overlapGroup">
           <div className="userSelect">
+            <Link to="/cart" className="link">
+              <div className="textWrapper">장바구니</div>
+            </Link>
             <Link to="/payBuyList" className="link">
               <div className="textWrapper">구매내역</div>
             </Link>
