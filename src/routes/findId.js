@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../css/findId.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export const FindId = () => {
   const navigate = useNavigate();
@@ -73,6 +73,33 @@ export const FindId = () => {
     }
   };
 
+  const placeRef = useRef()
+  const placeRef2 = useRef()
+  const placeRef3 = useRef('test')
+
+  
+  
+  const inputFocus = (e)=>{
+    if(e.target.name === 'userName'){
+      placeRef.current.style.top = '7px';
+    }
+    else if(e.target.name === 'email'){
+      placeRef2.current.style.top = '7px';
+    }else{
+      placeRef3.current.style.top = '7px';
+    }
+  }
+
+  const inputBlur = (e)=>{
+    if(e.target.name === 'userName' && !e.target.value){
+      placeRef.current.style.top = '25px';
+    }else if(e.target.name === 'email' && !e.target.value){
+      placeRef2.current.style.top = '25px';
+    }else if(e.target.name === 'number' && !e.target.value){
+      placeRef3.current.style.top = '25px';
+    }  
+  }
+
   return (
     <div className="findId">
       <div className="div">
@@ -80,32 +107,41 @@ export const FindId = () => {
         <form className="findUserIdBox">
           <div className="inputBox">
             <div className="inputUsername">
+              <label for='userName' className="place1" ref={placeRef}>이름</label>
               <input
+                id="userName"
                 type="text"
-                placeholder="이름*"
                 className="textWrapper2"
                 onChange={valueChange}
                 name="userName"
+                onFocus={inputFocus}
+                onBlur={inputBlur}
               ></input>
             </div>
             <div className="inputUserEmail">
+              <label for='email' className="place2" ref={placeRef2}>이메일</label>
               <input
+                id="email"
                 type="email"
-                placeholder="이메일*"
                 className="textWrapper2"
                 onChange={valueChange}
                 name="email"
+                onFocus={inputFocus}
+                onBlur={inputBlur}
               ></input>
               <button className = "emailButton" onClick={emailButton}>인증번호 받기</button>
             </div>
             {isSend ? (
               <div className="inputNum">
+                <label for='inputNum' className="place3" ref={placeRef3}>인증번호</label>
                 <input
+                  id="inputNum"
                   type="text"
-                  placeholder="인증번호*"
                   className="inputNumWrapper"
                   name="number"
                   onChange={valueChange}
+                  onFocus={inputFocus}
+                  onBlur={inputBlur}
                 ></input>
                 <button
                   className="inputNumButton"

@@ -74,14 +74,32 @@ a{text-decoration:none;}
 
 .login .place1{
   position: absolute;
-  top: 2px;
+  z-index: 1;
+  top: 25px;
   left: 100px;
-  z-index:-1;
   width: 50px;
   text-align: center;
   background-color: white;
   color: #999999;
   font-size: 14px;
+  transition: 0.1s;
+  border-radius: 15px;
+  cursor: text;
+}
+
+.login .place2{
+  position: absolute;
+  z-index: 1;
+  top: 25px;
+  left: 103px;
+  width: 60px;
+  text-align: center;
+  background-color: white;
+  color: #999999;
+  font-size: 14px;
+  transition: 0.1s;
+  border-radius: 15px;
+  cursor: text;
 }
 
 .login .textWrapper2 {
