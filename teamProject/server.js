@@ -878,11 +878,14 @@ app.post("/confirm", function (req, res) {
     })
     .then(function (response) {
       // TODO: 결제 완료 비즈니스 로직을 구현하세요.
+      // 구매 내역에 해당 상품 추가
+      // 제품 옵션 테이블에서 구매 수량 만큼 재고 차감
       console.log(response.body);
       res.status(response.statusCode).json(response.body);
     })
     .catch(function (error) {
       // TODO: 결제 실패 비즈니스 로직을 구현하세요.
+      // 없음
       console.log(error.response.body);
       res.status(error.response.statusCode).json(error.response.body);
     });

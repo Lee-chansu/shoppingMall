@@ -64,7 +64,19 @@ export const Payment = () => {
   };
 
   const handleAllPayment = () => {
-    navigate("/toss", { state: { paymentList:location.state.list, orderSum }});
+    navigate("/toss", {
+      state: { paymentList: location.state.list, orderSum },
+    });
+    //모달 처리 예정 , if문으로 분기처리 예정
+  };
+
+  const handleAllPayment2 = () => {
+    navigate("/paysuccess", {
+      state: {
+        list: location.state.list,
+        paySelectSumPrice: orderSum.paySumTotal,
+      },
+    });
     //모달 처리 예정 , if문으로 분기처리 예정
   };
 
@@ -135,7 +147,7 @@ export const Payment = () => {
   //cart의 선택된 상품을 전달받아 list에 저장
   useEffect(() => {
     const { list } = location.state; //cart에서 navigate로 보낸 cartItemList를 location으로 list란 이름으로 받음
-    console.log(list);
+    console.log("list", list);
     setPaymentItemList(list); //list가 없을때 예외처리 해야함
   }, []); //의존성 배열이 비어있기때문에 값이 바뀔수없으므로 한번만 실행
 
@@ -158,9 +170,9 @@ export const Payment = () => {
                 <div className="address">배송받을 주소</div>
                 <div className="address2">
                   {/* paymentmodal에서 mainAddressRef로 input태그에 접근이 가능해짐 */}
-                  <AddressModal 
+                  <AddressModal
                     innerText="기본 배송지 수정"
-                    mainAddressRef={mainAddressRef} 
+                    mainAddressRef={mainAddressRef}
                   />
 
                   <input
@@ -315,7 +327,7 @@ export const Payment = () => {
               <CustomButton
                 className="btn2"
                 buttonTitle="결제취소"
-                handleLinkMove={handleAllPayment}
+                handleLinkMove={handleAllPayment2}
               />
 
               <CustomButton
