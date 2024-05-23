@@ -1,16 +1,17 @@
 /* eslint-disable no-undef */
 // 모듈
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const app = express();
 
 const nodemailer = require("nodemailer");
-require("dotenv").config();
 const { email_service, email_admin, email_password } = process.env; // env 파일 데이터가져오기
 
 // 스케줄링
 const cron = require("node-cron");
+
 // 회원 기간만료후 물리적삭제
 cron.schedule("0 0 * * *", async () => {
   console.log("매 정각마다 스케줄링이 실행됩니다");
@@ -32,14 +33,16 @@ cron.schedule("0 0 * * *", async () => {
 });
 
 //imgbb 활용할 때 쓸 키
-const imgbbKey = "41be9bc26229e3df57a9818ed955b889";
+const imgbbKey = process.env.IMGBBKEY;
 
 const imgbbUploader = require("imgbb-uploader");
 
 const session = require("express-session");
 const passport = require("passport");
+const passportConfig = require("./passport");
+passportConfig();
 const MySQLStore = require("express-mysql-session")(session);
-const LocalStrategy = require("passport-local");
+// const LocalStrategy = require("passport-local");
 
 const dbOption = {
   host: "127.0.0.1",
@@ -56,8 +59,10 @@ const sessionOption = {
   cookie: { maxAge: 60 * 1000 },
   store: new MySQLStore(dbOption),
 };
+
 // 토큰 비밀번호
-const JWT_SECRET_KEY = "!@#123";
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
+
 // 난수생성용모듈
 const crypto = require("crypto");
 
@@ -87,7 +92,7 @@ app.use(passport.session());
 
 //api
 app.listen(5000, () => {
-  console.log("접속성공 - http://localhost:5000");
+  console.log(`접속성공 - http://localhost:`+process.env.PORT);
 });
 
 // 회원가입
@@ -104,47 +109,48 @@ app.post("/join", async (req, res) => {
 });
 
 // 로그인검증
-passport.use(
-  new LocalStrategy(async (userId, password, done) => {
-    let result = await User.findOne({ where: { userId } });
+// passport.use(
+//   new LocalStrategy(async (userId, password, done) => {
+//     let result = await User.findOne({ where: { userId } });
 
-    if (!result) {
-      return done(null, false, { message: "이메일이 일치하지않습니다" });
-    }
-    if (result.password != password) {
-      return done(null, false, { message: "비밀번호가 일치하지않습니다" });
-    }
-    if (result.isDeleted) {
-      return done(null, false, { message: "휴면 계정입니다" });
-    } else {
-      return done(null, result);
-    }
-  })
-);
+//     if (!result) {
+//       return done(null, false, { message: "이메일이 일치하지않습니다" });
+//     }
+//     if (result.password != password) {
+//       return done(null, false, { message: "비밀번호가 일치하지않습니다" });
+//     }
+//     if (result.isDeleted) {
+//       return done(null, false, { message: "휴면 계정입니다" });
+//     } else {
+//       return done(null, result);
+//     }
+//   })
+// );
 
 // 세션생성
-passport.serializeUser((user, done) => {
-  process.nextTick(() => {
-    done(null, { id: user.id, userId: user.userId });
-  });
-});
+// passport.serializeUser((user, done) => {
+//   process.nextTick(() => {
+//     done(null, { id: user.id, userId: user.userId });
+//   });
+// });
 
 // 세션검사
-passport.deserializeUser(async (user, done) => {
-  let result = await User.findOne({ where: { id: user.id } });
+// passport.deserializeUser(async (user, done) => {
+//   let result = await User.findOne({ where: { id: user.id } });
 
-  if (result) {
-    const loginUserInfo = {
-      id: result.id,
-      userId: result.userId,
-    };
-    process.nextTick(() => {
-      return done(null, loginUserInfo);
-    });
-  }
-});
+//   if (result) {
+//     const loginUserInfo = {
+//       id: result.id,
+//       userId: result.userId,
+//     };
+//     process.nextTick(() => {
+//       return done(null, loginUserInfo);
+//     });
+//   }
+// });
 
 // 로그아웃
+
 app.get("/logout", (req, res) => {
   req.logOut();
 });
@@ -804,7 +810,7 @@ app.get("/userinfo/:id", async (req, res) => {
 app.get("/paymentRequest", async (req, res) => {
   const { orderId, amount, paymentKey } = req.query;
 
-  console.log(orderId, amount)
+  console.log(orderId, amount);
 
   if (!orderId || !amount) {
     res.json([{ isValid: false }]);
