@@ -95,7 +95,6 @@
   font-size: 24px;
   font-weight: 400;
   left: 55px;
-
   position: absolute;
   text-align: center;
   top: 560px;
@@ -219,24 +218,37 @@
 .paySuccess .readMe {
   color: #00000070;
 }
-  
+
 .paySuccess .row {
-  /* 1개만 나옴 */
-  margin-left: 45px;
-  padding: 50px;
-  overflow: hidden;
+  padding: 50px 0;
+  margin: 0px 0;
+  /* overflow: hidden; */
   white-space: normal;
   text-overflow: ellipsis;
-  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  width: 100%;
+  height: 300px;
+  gap: 20px;
+  /* display: -webkit-box; */
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   word-break: keep-all;
 }
 
+.paySuccess .p1 {
+  text-align: center;
+}
+
+.paySuccess .p2 {
+  text-align: center;
+}
+
 .paidItem {
   flex: 0 0 calc(33.33% - 20px); /* 한 줄에 세 개의 요소가 들어가도록 설정. 여백 포함하여 총 너비의 33.33%로 설정. */
-  margin-right: 10px;
-  margin-bottom: 80px;
+  /* margin-right: 10px;
+  margin-bottom: 80px; */
   box-sizing: border-box;
 }
 

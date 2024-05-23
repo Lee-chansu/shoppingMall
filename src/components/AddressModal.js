@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button, Modal } from "react-bootstrap"; //리액트 부트스트랩 사용한 모달
 import DaumPostcodeEmbed from "react-daum-postcode";
 
-const PaymentModal = ({ mainAddressRef }) => {
+const AddressModal = ({ mainAddressRef, innerText }) => {
   const [isModalOpened, setIsModalOpened] = useState(false);
 
   const MyHandleComplete = (data) => {
@@ -45,10 +45,10 @@ const PaymentModal = ({ mainAddressRef }) => {
           setIsModalOpened(!isModalOpened);
         }}
       >
-        <h6 className="carrySelectBtn">기본 배송지 수정</h6>
+        <h6 className="carrySelectBtn">{innerText}</h6>
       </Button>
     </>
   );
 };
 
-export default PaymentModal;
+export default AddressModal;

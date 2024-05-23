@@ -5,7 +5,7 @@ import "../css/payment.css";
 import { PaymentItem } from "../components/PaymentItem";
 import ButtonBox from "../components/ButtonBox";
 import { jwtDecode } from "jwt-decode";
-import PaymentModal from "../components/PaymentModal";
+import AddressModal from "../components/AddressModal";
 import CustomButton from "../components/CustomButton";
 import { Nav } from "../components/nav";
 import axios from "axios";
@@ -193,7 +193,10 @@ export const Payment = () => {
                 <div className="address">배송받을 주소</div>
                 <div className="address2">
                   {/* paymentmodal에서 mainAddressRef로 input태그에 접근이 가능해짐 */}
-                  <PaymentModal mainAddressRef={mainAddressRef} />
+                  <AddressModal 
+                    innerText="기본 배송지 수정"
+                    mainAddressRef={mainAddressRef} 
+                  />
 
                   <input
                     className="mainAddressBox"
