@@ -7,7 +7,6 @@ export const Nav = () => {
   const isLogin = sessionStorage.getItem("token");
   const [imageUrl, setImageUrl] = useState("../img/userDefaultImg.png");
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
-  
 
   // 유저프로필 이미지
   const profileImageLoad = async () => {
@@ -34,9 +33,6 @@ export const Nav = () => {
     const { innerText } = e.target;
     navigate(`/productList?category=${innerText}`);
   };
-
-
-  
 
   return (
     <header className="header">
@@ -71,11 +67,13 @@ export const Nav = () => {
               </Link>
             </>
           ) : (
-            <Link className="link" to="/login">
-              <div className="wrapper">
-                <div className="text">로그인</div>
-              </div>
-            </Link>
+            <>
+              <Link className="link" to="/login">
+                <div className="wrapper">
+                  <div className="text">로그인</div>
+                </div>
+              </Link>
+            </>
           )}
         </nav>
         <div className="category2">
