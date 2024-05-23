@@ -68,6 +68,7 @@ export const ProductDetailDescription = () => {
         color: selectedColor,
         user_id: id,
         productOption_id: selectedProductOption.id,
+        product_id: productId,
         amount: stock,
       };
 
@@ -278,18 +279,18 @@ export const ProductDetailDescription = () => {
       await fetch(`http://localhost:5000/productDelete/${productId}`, {
         method: "DELETE",
       })
-        // .then((res) => {
-        //   return res.json();
-        // })
-        // .then((res) => {
-        //   if (res) {
-        //     alert("제품을 삭제했습니다.");
-        //     navigate("/productList");
-        //   } else {
-        //     alert("제품을 삭제하는데 실패했습니다.");
-        //     console.log(res);
-        //   }
-        // });
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          if (res) {
+            alert("제품을 삭제했습니다.");
+            navigate("/productList");
+          } else {
+            alert("제품을 삭제하는데 실패했습니다.");
+            console.log(res);
+          }
+        });
     } catch (error) {
       alert("제품을 삭제하던 도중 오류가 발생했습니다.");
       console.log(error);
@@ -299,7 +300,7 @@ export const ProductDetailDescription = () => {
   return (
     <>
       {product.id ? (
-        <div>
+        <div className="parentBox">
           <Nav />
           <div className="productdetail">
             <div className="div">
@@ -444,25 +445,28 @@ export const ProductDetailDescription = () => {
               </form>
             </div>
           </div>
-          {switchBtn ? (
-            <ProductDescription
-              switchBtn={switchBtn}
-              setSwitchBtn={setSwitchBtn}
-              handleSwitchBtn={handleSwitchBtn}
-              item={item}
-              product={product}
-            />
-          ) : (
-            <ProductReview
-              switchBtn={switchBtn}
-              setSwitchBtn={setSwitchBtn}
-              handleSwitchBtn={handleSwitchBtn}
-              item={item}
-              user={user}
-              id={id}
-              product={product}
-            />
-          )}
+          <div className="componentBox">
+            {switchBtn ? (
+              <ProductDescription
+                switchBtn={switchBtn}
+                setSwitchBtn={setSwitchBtn}
+                handleSwitchBtn={handleSwitchBtn}
+                item={item}
+                product={product}
+              />
+            ) : (
+              <ProductReview
+                switchBtn={switchBtn}
+                setSwitchBtn={setSwitchBtn}
+                handleSwitchBtn={handleSwitchBtn}
+                item={item}
+                user={user}
+                id={id}
+                product={product}
+              />
+            )}
+          </div>
+          
         </div>
       ) : (
         // TODO error 페이지 만들어서 대체

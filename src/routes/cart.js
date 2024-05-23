@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import "../css/cart.css";
+import axios from "axios";
 
 //컴포넌트
 import { Nav } from "../components/nav";
@@ -37,31 +38,34 @@ export const Cart = () => {
     return body;
   };
 
+  // db조인결과를 잘가져오는데 좀 더 연산을 편하게 하기위해서 데이터 조작
   const getProducts = async (id) => {
     const result = await userFetchProducts(id);
+    // cart와 product의 조인된 결과의 속성명들이 key가 되어야하는데
+    // 조인된 결과가 Product 가 key가 되었기 때문에 속성명들이 key가 되기위한 추가연산
     const newArr = result.map((val, idx) => {
       return {
-        ...val.ProductOption.Product,
-        id: val.id,
-        amount: val.amount,
+        ...val.Product,
         size: val.size,
         color: val.color,
-        stock: val.ProductOption.stock,
-        isChecked: false,
+        amount: val.amount,
+        productOption_id: val.productOption_id,
       };
     });
     console.log(newArr);
-
     setCartItemList(newArr);
   };
 
   useEffect(() => {
+    //현재 token이 sessionStorage(공간)에 id를 암호화한 상태로 저장되어있음(pk 유니크)
     const token = sessionStorage.getItem("token");
     if (id === "" && !token) {
       navigate("/login");
     } else {
+      //jwt : Json Web Token
+      //Decode : 복호화(암호해독)
       const decodeToken = jwtDecode(token);
-      setId(decodeToken.id);
+      setId(decodeToken.id); //화면 다시 로딩될때 바뀜
     }
 
     if (id !== "") {
@@ -96,52 +100,47 @@ export const Cart = () => {
     navigate(-1);
   };
 
+  //선택상품만 결제하기
   const handlePaymentMove = () => {
-    const paymentList = cartItemList.filter((option => option.isChecked === true && true));
+    //선택된 상품 추출
+    const selectedCartItemList = cartItemList.filter(
+      (val) => val.isChecked === true
+    );
 
-    if(paymentList.length) {
-      navigate("/payment", { state: { paymentList }});
-    } else {
-      console.log(paymentList.length)
-      alert('상품을 선택하세요')
-    }
-  };
-
-  const handlePaymentRemove = () => {
-    cartItemList.map((val) => {
-      handleDeleteCart(val)
+    //payment로 선택된 상품 전달
+    navigate("/payment", {
+      state: {
+        list: selectedCartItemList,
+      },
     });
   };
 
-  const handleDeleteCart = async (val) => {
+  //선택상품 삭제버튼 클릭시 체크되어 있는 val을 삭제처리
+  const handlePaymentRemove = async () => {
+    const selectedCartItemList = cartItemList.filter(
+      (val) => val.isChecked === true
+    );
 
-    if (!val.isChecked) return
+    //서버에 보낼 정보를 담은 body 선언
+    const body = {
+      user_id: id,
+      list: selectedCartItemList,
+    };
 
     try {
-      const response = await fetch(
-        `http://localhost:5000/cart/${val.id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      //axios 에서는 data란 key값으로 우리가 원하는 객체를 보냄
+      const res = await axios.delete("http://localhost:5000/cart", {
+        data: body,
+      });
 
-      if (response.ok) {
-        // alert('삭제 완료');
-        setCartItemList((prevList) =>
-          prevList.filter((item) => item.id !== val.id)
-        );
-      } else {
-        throw new Error("서버에서 장바구니 삭제 실패");
-      }
+      const data = res.data;
+      alert(data.message);
+      getProducts();
     } catch (error) {
       console.error(error);
-      alert("장바구니 삭제 중 오류가 발생했습니다");
+      alert("삭제 실패");
     }
   };
-
-  useEffect(() => {
-    cartItemList.forEach((val) => {});
-  });
 
   return (
     <>
@@ -173,7 +172,7 @@ export const Cart = () => {
                   cartItemList={cartItemList}
                   setCartItemList={setCartItemList}
                   key={val.id}
-                ></CartItem>
+                />
               );
             })}
 

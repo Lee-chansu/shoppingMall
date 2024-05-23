@@ -1,42 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../css/paySuccess.css";
-
-import { CartItem } from "../components/CartItem";
+import ButtonBox from "../components/ButtonBox";
+import CustomButton from "../components/CustomButton";
+import { PaySuccessItem } from "../components/PaySuccessItem";
 
 export const PaySuccess = () => {
-  const [cartItemList, setCartItemList] = useState([
-    {
-      id: 1,
-      price: 50000,
-      name: "상품명인데 어디까지 괜찮나 한번 볼까",
-      carryPrice: 3000,
-      count: 3,
-      src: "/pants.jpg",
-      isChecked: false,
-    },
-    {
-      id: 2,
-      price: 20000,
-      name: "근데 상품명이 두줄이상이면 어떻하지",
-      carryPrice: 1000,
-      count: 1,
-      src: "/t-shirt.jpg",
-      isChecked: false,
-    },
-    {
-      id: 3,
-      price: 40000,
-      name: "css로 처리할 수 있었다👍🏻 ",
-      carryPrice: 2000,
-      count: 2,
-      src: "/pants.jpg",
-      isChecked: false,
-    },
-  ]);
+  const [paidItemList, setPaidItemList] = useState([]);
+  const [id, setId] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { paySelect, list, paySelectSumPrice } = location.state;
 
-  const [isCheckedAll, setIsCheckedAll] = useState(false);
+  const handleHome = () => {
+    navigate("/");
+  };
+
+  const handleProductList = () => {
+    navigate("/productList");
+  };
+
+  const handlePayBuyList = () => {
+    navigate("/payBuyList");
+  };
+
+  useEffect(() => {
+    console.log(list);
+    setPaidItemList(list);
+  }, []);
 
   return (
     <div className="paySuccess">
@@ -46,40 +38,26 @@ export const PaySuccess = () => {
             <div className="overlapGroup">
               <div className="price"></div>
               <div className="successMessage">
+                <i class="bi bi-balloon-heart-fill"></i>
                 <b>구매가 정상적으로 완료되었습니다</b>
+                <i class="bi bi-balloon-heart-fill"></i>
               </div>
             </div>
             <div className="orderInfo">
-              <div className="payInfo">결제내역</div>
-              <div className="productName">상품명</div>
+              <div className="payInfo">
+                {/* 요기에 user Id 가져오기 */}
+                ★님의 결제내역
+              </div>
               <div className="howToPay">결제방법</div>
-              <div className="howToPayPrint">신용카드</div>
-              <div className="paySum">50,000원</div>
+              <div className="howToPayPrint">{paySelect}</div>
+              <div className="paySum">{paySelectSumPrice} 원</div>
               <div className="paySumText">결제금액</div>
-              <div className="orderProduct1">
-                [category] 이름짓기 어려운 반팔1
+
+              <div className="row">
+                {paidItemList.map((val, idx) => {
+                  return <PaySuccessItem key={val.id} val={val} />;
+                })}
               </div>
-              <div className="orderProduct2">
-                [category] 이름짓기 어려운 반팔2
-              </div>
-              <div className="orderProduct3">
-                [category] 이름짓기 어려운 반팔3
-              </div>
-              <div className="optionInfo1">option / color / size / ect..</div>
-              <p className="optionInfo2">option / color / size / ect..</p>
-              <p className="optionInfo3">option / color / size / ect..</p>
-              {/* {cartItemList &&
-                cartItemList.map((val, idx) => {
-                  return (
-                    <CartItem
-                      val={val}
-                      idx={idx}
-                      cartItemList={cartItemList}
-                      setCartItemList={setCartItemList}
-                      key={val.id}
-                    ></CartItem>
-                  );
-                })} */}
 
               <div className="readMe">
                 <i>
@@ -87,18 +65,26 @@ export const PaySuccess = () => {
                   드립니다.
                 </i>
               </div>
-              <div className="buttonGroup">
-                <button className="button">
-                  <Link to="/" className="buttonText">
-                    홈으로
-                  </Link>
-                </button>
-                <button className="button">
-                  <Link to="/" className="buttonText">
-                    쇼핑 계속하기
-                  </Link>
-                </button>
-              </div>
+
+              <ButtonBox>
+                <CustomButton
+                  className="btn1"
+                  buttonTitle="홈으로"
+                  handleLinkMove={handleHome}
+                />
+
+                <CustomButton
+                  className="btn2"
+                  buttonTitle="쇼핑 계속하기"
+                  handleLinkMove={handleProductList}
+                />
+
+                <CustomButton
+                  className="btn3"
+                  buttonTitle="구매내역으로"
+                  handleLinkMove={handlePayBuyList}
+                />
+              </ButtonBox>
             </div>
           </div>
         </div>
