@@ -40,6 +40,13 @@ export const Join = () => {
     } else if (!newUser.email) {
       alert("이메일을 입력하시오");
     } else if (!newUser.phoneNumber) {
+      /* 전화번호 숫자일경우 넘기기 */
+      function checkPhoneNumber(param) {
+        const mobile = /^\d/;
+        const mobile2 = /^\d/;
+        const mobile3 = /^\d/;
+        return mobile + mobile2 + mobile3;
+      }
       alert("전화번호를 입력하시오");
     } else if (!newUser.address) {
       alert("주소를 입력하시오");
@@ -78,7 +85,7 @@ export const Join = () => {
           <div className="joinBox">
             <div className="textWrapper">회원가입</div>
             <div className="inputWrap">
-              <div className="boxId">
+              <div className="boxWrapper">
                 <input
                   className="input"
                   id="id"
@@ -87,8 +94,9 @@ export const Join = () => {
                   placeholder="아이디*"
                   onChange={valueChange}
                 />
+                <p className="inner">(영문소문자/숫자, 4~16자)</p>
               </div>
-              <div className="boxPassword">
+              <div className="boxWrapper">
                 <input
                   className="input"
                   id="password"
@@ -97,8 +105,11 @@ export const Join = () => {
                   onChange={valueChange}
                   placeholder="비밀번호*"
                 />
+                <p className="inner">
+                  (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)
+                </p>
               </div>
-              <div className="boxPasswordCheck">
+              <div className="boxWrapper">
                 <input
                   className="input"
                   id="passwordCheck"
@@ -108,7 +119,7 @@ export const Join = () => {
                   placeholder="비밀번호 확인*"
                 />
               </div>
-              <div className="boxName">
+              <div className="boxWrapper">
                 <input
                   className="input"
                   id="username"
@@ -117,7 +128,7 @@ export const Join = () => {
                   placeholder="이름*"
                 />
               </div>
-              <div className="boxEmail">
+              <div className="boxWrapper">
                 <input
                   className="input"
                   id="email"
@@ -127,20 +138,41 @@ export const Join = () => {
                   placeholder="이메일*"
                 />
               </div>
-              <div className="boxPhone">
-                <input
+              <div className="boxWrapper">
+                {/* <input
                   className="input"
                   id="phone"
                   name="phoneNumber"
                   onChange={valueChange}
                   placeholder="전화번호*"
-                />
+                /> */}
+                <select id="mobile" className="mobile" onChange={valueChange}>
+                  <option value="010">010</option>
+                  <option value="011">011</option>
+                  <option value="016">016</option>
+                  <option value="017">017</option>
+                  <option value="018">018</option>
+                  <option value="019">019</option>
+                </select>
+                -
+                <input
+                  id="mobile2"
+                  name="mobile2"
+                  className="mobile"
+                  onChange={valueChange}
+                ></input>
+                -
+                <input
+                  id="mobile3"
+                  name="mobile23"
+                  className="mobile"
+                  onChange={valueChange}
+                ></input>
               </div>
 
-              <AddressModal innerText="주소" mainAddressRef={mainAddressRef} />
-              <div className="boxMainAddress">
+              <div className="boxWrapper">
                 <input
-                  className="input"
+                  className="input width"
                   id="address"
                   name="address"
                   ref={mainAddressRef}
@@ -148,15 +180,18 @@ export const Join = () => {
                   placeholder="도로명 주소*"
                   disabled
                 />
-                <button
+                <AddressModal
+                  className="addressModal"
+                  innerText="주소 찾기"
+                  mainAddressRef={mainAddressRef}
+                />
+                {/* <button
                   onClick={() => {
                     alert("fff");
                   }}
-                >
-                  btn
-                </button>
+                ></button> */}
               </div>
-              <div className="boxDetailAddress">
+              <div className="boxWrapper">
                 <input
                   className="input"
                   id="address"
@@ -166,34 +201,34 @@ export const Join = () => {
                 />
               </div>
 
-              <div className="selectGender">
+              <div className="boxWrapper">
                 <div className="inputRadio">
-                  <label htmlFor="male" className="div">
+                  <label htmlFor="male" className="radioLabel">
                     남자
                   </label>
                   <input
                     type="radio"
                     name="gender"
                     onChange={valueChange}
-                    className="radioMale"
+                    className="radioBtn"
                     id="male"
                     value="M"
                   />
-                  <label htmlFor="female" className="textWrapper2">
+                  <label htmlFor="female" className="radioLabel">
                     여자
                   </label>
                   <input
                     type="radio"
                     name="gender"
                     onChange={valueChange}
-                    className="radioFemale"
+                    className="radioBtn"
                     id="female"
                     value="F"
                   />
                 </div>
               </div>
 
-              <div className="editForm">
+              <div className="boxWrapper">
                 <button
                   className="submitButton"
                   onClick={buttonClick}

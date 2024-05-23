@@ -2,6 +2,7 @@ import "../css/nav.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { BoxArrowInRight, PersonAdd } from "react-bootstrap-icons";
 
 export const Nav = () => {
   const isLogin = sessionStorage.getItem("token");
@@ -24,8 +25,6 @@ export const Nav = () => {
       profileImageLoad();
     }
   }, [imageUrl]);
-
-  //
 
   const navigate = useNavigate();
 
@@ -68,11 +67,26 @@ export const Nav = () => {
             </>
           ) : (
             <>
-              <Link className="link" to="/login">
-                <div className="wrapper">
-                  <div className="text">로그인</div>
-                </div>
-              </Link>
+              <div className="joinBoxWrapper">
+                <Link className="link" to="/login">
+                  <div className="joinBox">
+                    <div className="joinBoxText">
+                      로그인
+                      <BoxArrowInRight 
+                        className="boxArrowInRight"
+                      /> 
+                    </div>
+                  </div>
+                </Link>
+                <Link className="link" to="/join">
+                  <div className="joinBox">
+                    <div className="joinBoxText">
+                      회원가입
+                      <PersonAdd className="personAdd" />
+                    </div>
+                  </div>
+                </Link>
+              </div>
             </>
           )}
         </nav>

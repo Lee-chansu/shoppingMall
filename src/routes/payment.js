@@ -64,7 +64,9 @@ export const Payment = () => {
   };
 
   const handleAllPayment = () => {
-    navigate("/toss", { state: { paymentList:location.state.paymentList, orderSum }});
+    navigate("/toss", {
+      state: { paymentList: location.state.list, orderSum },
+    });
     //모달 처리 예정 , if문으로 분기처리 예정
   };
 
@@ -158,9 +160,9 @@ export const Payment = () => {
                 <div className="address">배송받을 주소</div>
                 <div className="address2">
                   {/* paymentmodal에서 mainAddressRef로 input태그에 접근이 가능해짐 */}
-                  <AddressModal 
+                  <AddressModal
                     innerText="기본 배송지 수정"
-                    mainAddressRef={mainAddressRef} 
+                    mainAddressRef={mainAddressRef}
                   />
 
                   <input
@@ -226,6 +228,32 @@ export const Payment = () => {
                       placeholder="여기에 배송요청 사항을 직접 입력하세요"
                     ></input>
                   )}
+                </div>
+              </div>
+              <div className="saleBox">
+                <div className="coupon">쿠폰 사용하기</div>
+                <div className="coupon2">
+                  <label for="agree1" class="radio_box">
+                    <input
+                      type="radio"
+                      id="agree1"
+                      name="agree"
+                      value="동의"
+                      checked="checked"
+                    />
+                    <span class="on"></span>
+                    신규고객 5,000원 할인쿠폰
+                  </label>
+                  <label for="agree2" class="radio_box">
+                    <input
+                      type="radio"
+                      id="agree2"
+                      name="agree"
+                      value="미동의"
+                    />
+                    <span class="on"></span>
+                    쿠폰선택 안함
+                  </label>
                 </div>
               </div>
               {/* <div className="howPayBox">
@@ -320,7 +348,7 @@ export const Payment = () => {
 
               <CustomButton
                 className="btn3"
-                buttonTitle="결제완료"
+                buttonTitle="결제하기"
                 handleLinkMove={handleAllPayment}
               />
             </ButtonBox>
