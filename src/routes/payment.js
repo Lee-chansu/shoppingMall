@@ -8,7 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import AddressModal from "../components/AddressModal";
 import CustomButton from "../components/CustomButton";
 import { Nav } from "../components/nav";
-import axios from "axios";
+// import axios from "axios";
 
 export const Payment = () => {
   //배송요청 직접입력
@@ -94,10 +94,6 @@ export const Payment = () => {
 
     console.log("paymentList", data);
     return data;
-
-    const response = await fetch(`http://localhost:5000/Cart/${id}`);
-    const body = await response.json();
-    return body;
   };
 
   const getProducts = async (id) => {

@@ -78,7 +78,7 @@ export const Nav = () => {
                     </div>
                   </div>
                 </Link>
-                <Link className="link" to="/join">
+                <Link className="link" to="/joinUs">
                   <div className="joinBox">
                     <div className="joinBoxText">
                       회원가입

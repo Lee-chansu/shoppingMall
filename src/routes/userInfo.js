@@ -22,7 +22,7 @@ export const UserInfo = () => {
   }, [id]);
 
   const fetchData = async () => {
-    const response = await fetch(`http://localhost:5000/userinfo/${id}`);
+    const response = await fetch(`http://localhost:5000/userInfo/${id}`);
     const body = await response.json();
     setImageUrl(body.data);
   };
