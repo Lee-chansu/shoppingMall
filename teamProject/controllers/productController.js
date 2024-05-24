@@ -1,7 +1,7 @@
 require("dotenv").config();
 //db
 const db = require("../models");
-const { Product, ProductOption, ProductDetail, Cart } = db;
+const { Product, ProductOption, ProductDetail, Cart, ReviewList } = db;
 
 //imgbb 활용할 때 쓸 키
 //env에 넣고 쓸 수 없어 여기에 적어둬야 할듯...
@@ -259,4 +259,18 @@ exports.deleteProduct = async (req, res) => {
     result = false;
   }
   res.json(result);
+};
+
+//제품 리뷰 조회
+exports.selectReviewlist = async (req, res) => {
+  const { productOption_id } = req.query;
+  let result = await ReviewList.findAll({ where: {} });
+  if (productOption_id)
+    result = await ReviewList.findAll({ where: { productOption_id } });
+  // console.log(result);
+  if (result) {
+    res.json(result);
+  } else {
+    res.json([]);
+  }
 };

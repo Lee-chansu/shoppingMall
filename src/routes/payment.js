@@ -8,7 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import AddressModal from "../components/AddressModal";
 import CustomButton from "../components/CustomButton";
 import { Nav } from "../components/nav";
-import axios from "axios";
+// import axios from "axios";
 
 export const Payment = () => {
   //배송요청 직접입력
@@ -64,7 +64,7 @@ export const Payment = () => {
   };
 
   const handleAllPayment = () => {
-    navigate("/toss", { state: { paymentList:location.state.paymentList, orderSum }});
+    navigate("/toss", { state: { paymentList:location.state.list, orderSum }});
     //모달 처리 예정 , if문으로 분기처리 예정
   };
 

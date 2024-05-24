@@ -2,7 +2,7 @@ require("dotenv").config();
 
 //db
 const db = require("../models");
-const { Cart, BuyList, Product, ProductOption, Carry } = db;
+const { Cart, BuyList, Product, ProductOption, Carry, PaymentRequest } = db;
 
 //user Id 로 장바구니 조회
 exports.selectCartByUserId = async (req, res) => {
@@ -144,4 +144,91 @@ exports.deleteBuylist = async (req, res) => {
     console.error("삭제 중 에러 발생", error);
     res.status(500).json({ message: "삭제 중 오류가 발생했습니다" });
   }
+};
+
+// 결제 api 관련
+// 결제 요청 조회
+exports.paymentRequest = async (req, res) => {
+  const { orderId, amount, paymentKey } = req.query;
+
+  console.log(orderId, amount);
+
+  if (!orderId || !amount) {
+    res.json([{ isValid: false }]);
+  }
+
+  try {
+    const result = await PaymentRequest.findAll({
+      where: { id: orderId, amount },
+    });
+    if (result.length > 0) {
+      res.json(result);
+    } else {
+      res.json([{ isValid: false }]);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "서버 오류가 발생했습니다." });
+  }
+};
+
+// 결제 요청 생성
+exports.addPaymentRequest = async (req, res) => {
+  const newRequest = req.body;
+  const { id } = req.body;
+  const result = await PaymentRequest.findOne({ where: { id } });
+  if (!result) {
+    await PaymentRequest.create(newRequest);
+    res.json({ result: false });
+  } else {
+    res.json({ result });
+  }
+};
+// const got = require("got");
+let got;
+
+(async () => {
+  got = (await import("got")).default;
+})();
+
+// TODO: 개발자센터에 로그인해서 내 결제위젯 연동 키 > 시크릿 키를 입력하세요. 시크릿 키는 외부에 공개되면 안돼요.
+// @docs https://docs.tosspayments.com/reference/using-api/api-keys
+// const widgetSecretKey = "test_sk_Ba5PzR0ArnPOg9AxQ0oN3vmYnNeD"; // 비지니스용
+const widgetSecretKey = "test_gsk_docs_OaPz8L5KdmQXkzRz3y47BMw6"; // 테스트용
+
+exports.tossPaymentRequest = function (req, res) {
+  const { paymentKey, orderId, amount } = req.body;
+
+  // 토스페이먼츠 API는 시크릿 키를 사용자 ID로 사용하고, 비밀번호는 사용하지 않습니다.
+  // 비밀번호가 없다는 것을 알리기 위해 시크릿 키 뒤에 콜론을 추가합니다.
+  // @docs https://docs.tosspayments.com/reference/using-api/authorization#%EC%9D%B8%EC%A6%9D
+  const encryptedSecretKey =
+    "Basic " + Buffer.from(widgetSecretKey + ":").toString("base64");
+
+  // 결제 승인 API를 호출하세요.
+  // 결제를 승인하면 결제수단에서 금액이 차감돼요.
+  // @docs https://docs.tosspayments.com/guides/payment-widget/integration#3-결제-승인하기
+  got
+    .post("https://api.tosspayments.com/v1/payments/confirm", {
+      headers: {
+        Authorization: encryptedSecretKey,
+        "Content-Type": "application/json",
+      },
+      json: {
+        orderId: orderId,
+        amount: amount,
+        paymentKey: paymentKey,
+      },
+      responseType: "json",
+    })
+    .then(function (response) {
+      // TODO: 결제 완료 비즈니스 로직을 구현하세요.
+      console.log(response.body);
+      res.status(response.statusCode).json(response.body);
+    })
+    .catch(function (error) {
+      // TODO: 결제 실패 비즈니스 로직을 구현하세요.
+      console.log(error.response.body);
+      res.status(error.response.statusCode).json(error.response.body);
+    });
 };
