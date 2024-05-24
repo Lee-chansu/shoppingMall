@@ -51,7 +51,7 @@ export function SuccessPage() {
       if (!response.ok) {
         // TODO: 결제 실패 비즈니스 로직을 구현하세요.
         console.log(json);
-        navigate(`/fail?message=${json.message}&code=${json.code}`);
+        navigate(`/toss/fail?message=${json.message}&code=${json.code}`);
         return;
       }
 
@@ -62,22 +62,30 @@ export function SuccessPage() {
   }, []);
 
   return (
-    <div className="result wrapper">
-      <div className="box_section">
-        <h2 style={{ padding: "20px 0px 10px 0px" }}>
-          <img
-            width="35px"
-            src="https://static.toss.im/3d-emojis/u1F389_apng.png"
-            alt="결제성공 이미지"
-          />
-          결제 성공
-        </h2>
-        <p>{`주문번호: ${searchParams.get("orderId")}`}</p>
-        <p>{`결제 금액: ${Number(
-          searchParams.get("amount")
-        ).toLocaleString()}원`}</p>
-        <p>{`paymentKey: ${searchParams.get("paymentKey")}`}</p>
-      </div>
+    <div>
+      {
+        true ? (
+          <div className="result wrapper">
+            <div className="box_section">
+              <h2 style={{ padding: "20px 0px 10px 0px" }}>
+                <img
+                  width="35px"
+                  src="https://static.toss.im/3d-emojis/u1F389_apng.png"
+                  alt="결제성공 이미지"
+                />
+                결제 성공
+              </h2>
+              <p>{`주문번호: ${searchParams.get("orderId")}`}</p>
+              <p>{`결제 금액: ${Number(
+                searchParams.get("amount")
+              ).toLocaleString()}원`}</p>
+              <p>{`paymentKey: ${searchParams.get("paymentKey")}`}</p>
+            </div>
+          </div>
+        ) : (
+          <p>로딩 중...</p>
+        )
+      }
     </div>
   );
 }
