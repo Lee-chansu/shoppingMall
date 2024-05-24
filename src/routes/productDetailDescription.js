@@ -7,6 +7,8 @@ import "../css/productDetailDescription.css";
 import { Nav } from "../components/nav";
 import { ProductDescription } from "../components/productDescription";
 import { ProductReview } from "../components/productReview";
+import { Myalter } from "../components/Myalter"
+import Swal from "sweetalert2";
 
 export const ProductDetailDescription = () => {
   const navigate = useNavigate();
@@ -38,19 +40,19 @@ export const ProductDetailDescription = () => {
     e.preventDefault();
     const isLogin = sessionStorage.getItem("token");
     if (!isLogin) {
-      alert("로그인 후 사용할 수 있습니다");
+      Myalter("warning","구매 가이드", "로그인 후 사용할 수 있습니다")
       return;
     }
     const { id } = jwtDecode(isLogin);
 
     if (selectedSize === "") {
-      alert("사이즈를 선택하세요");
+      Myalter("warning","구매 가이드", "사이즈를 선택하세요")
       return;
     } else if (selectedColor === "") {
-      alert("색상을 선택하세요");
+      Myalter("warning","구매 가이드", "색상을 선택하세요")
       return;
     } else if (stock == 0) {
-      alert("수량이 0입니다");
+      Myalter("warning","구매 가이드", "수량이 0입니다")
       return;
     } else {
       const response = await fetch(
@@ -86,19 +88,29 @@ export const ProductDetailDescription = () => {
         } else {
           let no = await response.json();
           if (no.result == false) {
-            const confirmed = window.confirm(
-              "장바구니에 상품을 추가했습니다 장바구니로 이동하시겠습니까?"
-            );
-            if (confirmed) navigate("/cart");
+            const alrterResult = await Swal.fire({
+              icon : 'question',
+              title : '구매 가이드',
+              text : '장바구니에 상품을 추가했습니다 장바구니로 이동하시겠습니까?',
+              showCancelButton : true,
+              confirmButtonText : '확인',
+              cancelButtonText : '취소'
+            })
+            if (alrterResult.isConfirmed) navigate("/cart");
           } else {
-            const confirmed = window.confirm(
-              "장바구니에 이미 해당 상품이 담겨있습니다 장바구니로 이동하시겠습니까?"
-            );
-            if (confirmed) navigate("/cart");
+            const alrterResult = await Swal.fire({
+              icon : 'question',
+              title : '구매 가이드',
+              text : '장바구니에 상품을 추가했습니다 장바구니로 이동하시겠습니까?',
+              showCancelButton : true,
+              confirmButtonText : '확인',
+              cancelButtonText : '취소'
+            })
+            if (alrterResult.isConfirmed) navigate("/cart");
           }
         }
       } catch (error) {
-        alert("오류가 발생했습니다");
+        Myalter("warning","구매 가이드", "오류가 발생했습니다")
       }
     }
   };
@@ -106,19 +118,19 @@ export const ProductDetailDescription = () => {
   const handlePayment = async (e) => {
     const isLogin = sessionStorage.getItem("token");
     if (!isLogin) {
-      alert("로그인 후 사용할 수 있습니다");
+      Myalter("warning","구매 가이드", "로그인 후 사용할 수 있습니다")
       return;
     }
     const { id } = jwtDecode(isLogin);
 
     if (selectedSize === "") {
-      alert("사이즈를 선택하세요");
+      Myalter("warning","구매 가이드", "사이즈를 선택하세요")
       return;
     } else if (selectedColor === "") {
-      alert("색상을 선택하세요");
+      Myalter("warning","구매 가이드", "색상을 선택하세요")
       return;
     } else if (stock == 0) {
-      alert("수량이 0입니다");
+      Myalter("warning","구매 가이드", "수량이 0입니다")
       return;
     } else {
       const response = await fetch(
@@ -147,7 +159,7 @@ export const ProductDetailDescription = () => {
         navigate("/payment", { state: { paymentList: [updatedFormData] } });
       } else {
         console.log(updatedFormData);
-        alert("상품을 선택하세요");
+        Myalter("warning","구매 가이드", "상품을 선택하세요")
       }
     }
   };
@@ -270,9 +282,16 @@ export const ProductDetailDescription = () => {
   };
 
   const deleteProduct = async () => {
-    const delConfirm = window.confirm("제품을 정말 삭제하시겠습니까?");
-
-    if (!delConfirm) {
+    const alrterResult = await Swal.fire({
+      icon : 'question',
+      title : '구매 가이드',
+      text : '제품을 정말 삭제하시겠습니까?',
+      showCancelButton : true,
+      confirmButtonText : '예',
+      cancelButtonText : '아니오'
+    })
+    
+    if (!alrterResult.isConfirmed) {
       return;
     }
     try {
@@ -284,16 +303,14 @@ export const ProductDetailDescription = () => {
         })
         .then((res) => {
           if (res) {
-            alert("제품을 삭제했습니다.");
+            Myalter('warning','제품수정 가이드','제품을 삭제했습니다')
             navigate("/productList");
           } else {
-            alert("제품을 삭제하는데 실패했습니다.");
-            console.log(res);
+            Myalter('warning','제품수정 가이드','제품을 삭제하는데 실패했습니다.')
           }
         });
     } catch (error) {
-      alert("제품을 삭제하던 도중 오류가 발생했습니다.");
-      console.log(error);
+      Myalter('warning','제품수정 가이드','제품을 삭제하던 도중 오류가 발생했습니다.')
     }
   };
 

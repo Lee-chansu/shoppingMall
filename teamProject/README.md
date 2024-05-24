@@ -1,3 +1,12 @@
+## router 이후 알아둘 상황
+
+- 더이상 서버에서 기능 만들 수 없습니다.(app.getX)
+- reviewList는 productController에 있습니다.
+- payment와 cart는 cartController에 같이 있으나 주석으로 분류해뒀습니다.
+(참고만 해주세요.)
+
+
+
 git remote add origin https://github.com/Lee-chansu/shoppingMall.git
 
 git init
@@ -78,5 +87,7 @@ git push -u origin main
 
 ### …or import code from another repository
 You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+
+
 
 

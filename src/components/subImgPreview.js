@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
   const [subImageFile, setSubImageFile] = useState("");

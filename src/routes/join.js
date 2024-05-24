@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/join.css";
 import { useRef, useState } from "react";
 import AddressModal from "../components/AddressModal";
+import { Myalter } from "../components/Myalter";
 
 export const Join = () => {
   const navigate = useNavigate();
@@ -35,29 +36,27 @@ export const Join = () => {
     setNewUser((pre)=>({...pre, mainAddress : mainAddressRef.current.value}))
   };
   
-  console.log(newUser)
-  
-
   const buttonClick = async (e) => {
     e.preventDefault();
+    console.log(newUser);
     if (!newUser.userId) {
-      alert("아이디를 입력하시오");
+      Myalter('warning','회원가입 가이드','아이디를 입력하시오')
     } else if (!newUser.password) {
-      alert("비밀번호를 입력하시오");
+      Myalter('warning','회원가입 가이드','비밀번호를 입력하시오')
     } else if (newUser.password !== newUser.passwordCheck) {
-      alert("비밀번호 재확인이 일치하지않습니다");
+      Myalter('warning','회원가입 가이드','비밀번호 재확인이 일치하지않습니다')
     } else if (!newUser.userName) {
-      alert("이름을 입력하시오");
+      Myalter('warning','회원가입 가이드','이름을 입력하시오')
     } else if (!newUser.email) {
-      alert("이메일을 입력하시오");
-    } else if (!newUser.phoneNumber) {
-      alert("전화번호를 입력하시오");
+      Myalter('warning','회원가입 가이드','이메일을 입력하시오')
+    } else if (newUser.phoneNumber.length < 11 ) {
+      Myalter('warning','회원가입 가이드','전화번호를 입력하시오')
     } else if (!newUser.mainAddress) {
-      alert("주소를 입력하시오");
+      Myalter('warning','회원가입 가이드','주소를 입력하시오')
     } else if (!newUser.detailAddress) {
-      alert("상세주소를 입력하시오");
+      Myalter('warning','회원가입 가이드','상세주소를 입력하시오')
     }else if (!newUser.gender) {
-      alert("성별을 선택하시오");
+      Myalter('warning','회원가입 가이드','성별을 선택하시오')
     } else {
       try {
         const response = await fetch("http://localhost:5000/join/", {
@@ -71,18 +70,18 @@ export const Join = () => {
         } else {
           let no = await response.json();
           if (no.result == false) {
-            alert("회원가입이 완료");
+            await Myalter('success','회원가입 가이드','회원가입이 완료')
             navigate("/");
           } else {
-            alert("기존에 있는 아이디입니다");
+            Myalter('warning','회원가입 가이드','기존에 있는 아이디입니다')
           }
         }
       } catch (error) {
-        alert("회원가입 중 오류가 발생했습니다");
+        Myalter('warning','회원가입 가이드','회원가입 중 오류가 발생했습니다')
       }
     }
   };
-
+  
   return (
     <div className="join">
       <div className="joinBoxWrapper">
@@ -164,6 +163,7 @@ export const Join = () => {
                   id="mobile2"
                   name="mobile2"
                   className="mobile"
+                  maxLength = '4'
                   onChange={valueChange}
                 ></input>
                 -
@@ -171,6 +171,7 @@ export const Join = () => {
                   id="mobile3"
                   name="mobile3"
                   className="mobile"
+                  maxLength = '4'
                   onChange={valueChange}
                 ></input>
               </div>
