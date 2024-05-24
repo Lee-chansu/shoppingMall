@@ -10,6 +10,7 @@ export const Join = () => {
   };
 
   const mainAddressRef = useRef(null);
+  
 
   const [newUser, setNewUser] = useState({
     userId: "",
@@ -17,15 +18,25 @@ export const Join = () => {
     passwordCheck: "",
     userName: "",
     email: "",
-    phoneNumber: "",
-    address: "",
+    mainAddress: "",
+    detailAddress: "",
     gender: "",
+    mobile : "010",
+    mobile2 : "",
+    mobile3 : "",
+    phoneNumber: ''
   });
 
   const valueChange = (e) => {
     const { name, value } = e.target;
     setNewUser({ ...newUser, [name]: value });
+    setNewUser((pre)=>({...pre, phoneNumber: pre.mobile + '-' + pre.mobile2+'-'+ pre.mobile3 }))
+    if(mainAddressRef.current.value)
+    setNewUser((pre)=>({...pre, mainAddress : mainAddressRef.current.value}))
   };
+  
+  console.log(newUser)
+  
 
   const buttonClick = async (e) => {
     e.preventDefault();
@@ -40,18 +51,12 @@ export const Join = () => {
     } else if (!newUser.email) {
       alert("이메일을 입력하시오");
     } else if (!newUser.phoneNumber) {
-      /* 전화번호 숫자일경우 넘기기 */
-      function checkPhoneNumber(param) {
-        const mobile = /^\d/;
-        const mobile2 = /^\d/;
-        const mobile3 = /^\d/;
-        return mobile + mobile2 + mobile3;
-      }
       alert("전화번호를 입력하시오");
-    } else if (!newUser.address) {
+    } else if (!newUser.mainAddress) {
       alert("주소를 입력하시오");
-    } else if (!newUser.gender) {
-      console.log(newUser.gender);
+    } else if (!newUser.detailAddress) {
+      alert("상세주소를 입력하시오");
+    }else if (!newUser.gender) {
       alert("성별을 선택하시오");
     } else {
       try {
@@ -146,7 +151,7 @@ export const Join = () => {
                   onChange={valueChange}
                   placeholder="전화번호*"
                 /> */}
-                <select id="mobile" className="mobile" onChange={valueChange}>
+                <select id="mobile" name = "mobile" className="mobile" onChange={valueChange} >
                   <option value="010">010</option>
                   <option value="011">011</option>
                   <option value="016">016</option>
@@ -164,7 +169,7 @@ export const Join = () => {
                 -
                 <input
                   id="mobile3"
-                  name="mobile23"
+                  name="mobile3"
                   className="mobile"
                   onChange={valueChange}
                 ></input>
@@ -174,7 +179,7 @@ export const Join = () => {
                 <input
                   className="input width"
                   id="address"
-                  name="address"
+                  name="mainAddress"
                   ref={mainAddressRef}
                   onChange={valueChange}
                   placeholder="도로명 주소*"
@@ -182,7 +187,7 @@ export const Join = () => {
                 />
                 <AddressModal
                   className="addressModal"
-                  innerText="주소 찾기"
+                  innerText="주소 검색"
                   mainAddressRef={mainAddressRef}
                 />
                 {/* <button
@@ -195,7 +200,7 @@ export const Join = () => {
                 <input
                   className="input"
                   id="address"
-                  name="address"
+                  name="detailAddress"
                   onChange={valueChange}
                   placeholder="상세주소*"
                 />
