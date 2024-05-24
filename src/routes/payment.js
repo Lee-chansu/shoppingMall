@@ -239,7 +239,7 @@ export const Payment = () => {
               <div className="saleBox">
                 <div className="coupon">쿠폰 사용하기</div>
                 <div className="coupon2">
-                  <label for="agree1" class="radio_box">
+                  <label for="agree1" className="radio_box">
                     <input
                       type="radio"
                       id="agree1"
@@ -247,17 +247,17 @@ export const Payment = () => {
                       value="동의"
                       checked="checked"
                     />
-                    <span class="on"></span>
+                    <span className="on"></span>
                     신규고객 5,000원 할인쿠폰
                   </label>
-                  <label for="agree2" class="radio_box">
+                  <label for="agree2" className="radio_box">
                     <input
                       type="radio"
                       id="agree2"
                       name="agree"
                       value="미동의"
                     />
-                    <span class="on"></span>
+                    <span className="on"></span>
                     쿠폰선택 안함
                   </label>
                 </div>

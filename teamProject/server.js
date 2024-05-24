@@ -41,7 +41,7 @@ app.use(session(sessionOption));
 app.use(passport.session());
 
 //api
-app.listen(5000, () => {
+app.listen(process.env.PORT, () => {
   console.log(`접속성공 - http://localhost:` + process.env.PORT);
 });
 
