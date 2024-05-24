@@ -49,7 +49,7 @@
 .payment .email {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   left: 20px;
   letter-spacing: 0;
@@ -84,7 +84,7 @@
 .payment .address {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   left: 20px;
   letter-spacing: 0;
@@ -128,7 +128,7 @@
 .payment .coupon {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   left: 20px;
   letter-spacing: 0;
@@ -141,7 +141,7 @@
 .payment .coupon2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   left: 20px;
   letter-spacing: 0;
@@ -161,6 +161,7 @@
 
 .payment .carrySelectBtn {
   transform: translate(0%, 20%);
+  font-size: 14px;
 }
 
 .payment .chooseBtn {
@@ -192,7 +193,7 @@
 .payment .carryRequest {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   left: 20px;
   letter-spacing: 0;
@@ -331,6 +332,7 @@
 }
 
 .payment .sum {
+  color: #ff114d;
   position: absolute;
   top: 5px;
   right: 20px;
@@ -386,35 +388,37 @@
 }
 
 .payment .title2 {
-  background-color: #fec9d6;
   height: 40px;
   position: absolute;
-  top: 55px;
+  top: 70px;
   width: 400px;
 }
 
 .payment .title3 {
-  background-color: #fec9d6;
   height: 40px;
   position: absolute;
-  top: 110px;
+  top: 100px;
   width: 400px;
 }
 
 .payment .title4 {
-  background-color: #fec9d6;
-  height: 40px;
+  height: 50px;
   position: absolute;
-  top: 165px;
+  top: 130px;
   width: 400px;
+  border-bottom: 1px solid #f86480;
 }
 
 .payment .title5 {
-  background-color: #fec9d6;
-  height: 40px;
+  height: 50px;
   position: absolute;
-  top: 220px;
+  top: 210px;
   width: 400px;
+  border-bottom: 3px solid #f86480;
+}
+
+.payment .orderCheckInfo {
+  border-bottom: 1px soe;
 }
 
 .payment .productBox {
@@ -546,7 +550,7 @@
 
 .radio_box {
   display: flex;
-  zoom: 1.2;
+  zoom: 1;
   position: relative;
   padding-left: 25px;
   margin-right: 10px;

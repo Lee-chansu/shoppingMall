@@ -244,18 +244,27 @@ export const Payment = () => {
                       type="radio"
                       id="agree1"
                       name="agree"
-                      value="동의"
+                      value="신규고객 5,000원 할인쿠폰"
                       checked="checked"
                     />
                     <span class="on"></span>
                     신규고객 5,000원 할인쿠폰
-                  </label>
-                  <label for="agree2" class="radio_box">
+                  </label><label for="agree2" class="radio_box">
                     <input
                       type="radio"
                       id="agree2"
                       name="agree"
-                      value="미동의"
+                      value="카카오친구 1,000원 할인쿠폰"
+                    />
+                    <span class="on"></span>
+                    카카오친구 1,000원 할인쿠폰
+                  </label>
+                  <label for="agree3" class="radio_box">
+                    <input
+                      type="radio"
+                      id="agree3"
+                      name="agree"
+                      value="쿠폰선택 안함"
                     />
                     <span class="on"></span>
                     쿠폰선택 안함
