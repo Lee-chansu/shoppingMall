@@ -30,6 +30,7 @@ module.exports = (sequelize) => {
 
   ReviewList.associate = (models) => {
     ReviewList.belongsTo(models.User, { foreignKey: "user_id" });
+    ReviewList.belongsTo(models.BuyList, { foreignKey: "buyList_id" });
   };
 
   return ReviewList;

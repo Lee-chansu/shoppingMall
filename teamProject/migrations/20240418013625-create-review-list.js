@@ -16,6 +16,13 @@ module.exports = {
           key: "id",
         },
       },
+      buyList_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "BuyLists",
+          key: "id",
+        },
+      },
       content: {
         type: Sequelize.STRING(255),
       },
