@@ -1,6 +1,6 @@
 import React from "react";
 
-const ReviewAddImage = () => {
+const ReviewImageUpload = () => {
   return (
     <>
       <div className="addImgInput">
@@ -27,4 +27,4 @@ const ReviewAddImage = () => {
   );
 };
 
-export default ReviewAddImage;
+export default ReviewImageUpload;

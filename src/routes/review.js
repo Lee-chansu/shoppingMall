@@ -5,7 +5,7 @@ import "../css/review.css";
 //컴포넌트
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
-import ReviewAddImage from "../components/ReviewAddImage";
+import ReviewImageUpload from "../components/ReviewImageUpload";
 
 export const Review = () => {
   const navigate = useNavigate();
@@ -50,14 +50,18 @@ export const Review = () => {
         </div>
 
         <div className="reviewCheckBox">
-          <span className="title">구매하신 상품의 만족도를 체크해주세요 <big>*</big></span>
+          <span className="title">
+            구매하신 상품의 만족도를 체크해주세요 <big>*</big>
+          </span>
           <div className="starBox">
             <img src="" />
           </div>
         </div>
 
         <div className="reviewColorBox">
-          <span className="title">색상은 어떤가요 <big>*</big></span>
+          <span className="title">
+            색상은 어떤가요 <big>*</big>
+          </span>
           <br />
           {colorList.map((val, idx) => {
             return (
@@ -78,7 +82,8 @@ export const Review = () => {
         </div>
 
         <div className="reviewSizeBox">
-          <span className="title">사이즈는 어떤가요? <big>*</big>
+          <span className="title">
+            사이즈는 어떤가요? <big>*</big>
           </span>
           <br />
           {sizeList.map((val, idx) => {
@@ -111,9 +116,9 @@ export const Review = () => {
           </div>
         </div>
 
-        <div className="reviewAddImage">
+        <div className="reviewImageUpload">
           <span className="title">사진 첨부하기 </span>
-          <ReviewAddImage />
+          <ReviewImageUpload />
         </div>
 
         <ButtonBox>
