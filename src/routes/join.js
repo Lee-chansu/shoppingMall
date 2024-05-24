@@ -29,6 +29,7 @@ export const Join = () => {
 
   const buttonClick = async (e) => {
     e.preventDefault();
+    console.log(newUser);
     if (!newUser.userId) {
       alert("아이디를 입력하시오");
     } else if (!newUser.password) {
