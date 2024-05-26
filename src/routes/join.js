@@ -10,6 +10,7 @@ export const Join = () => {
   };
 
   const mainAddressRef = useRef(null);
+  const formRef = useRef(null);
 
   const [newUser, setNewUser] = useState({
     userId: "",
@@ -23,8 +24,17 @@ export const Join = () => {
   });
 
   const valueChange = (e) => {
-    const { name, value } = e.target;
-    setNewUser({ ...newUser, [name]: value });
+    const { name, value, classList } = e.target;
+    if (classList.contains("mobile")) {
+      const phoneNumber =
+        "" +
+        formRef.current.mobile1.value +
+        formRef.current.mobile2.value +
+        formRef.current.mobile3.value;
+      setNewUser({ ...newUser, phoneNumber });
+    } else {
+      setNewUser({ ...newUser, [name]: value });
+    }
   };
 
   const buttonClick = async (e) => {
@@ -82,7 +92,7 @@ export const Join = () => {
   return (
     <div className="join">
       <div className="joinBoxWrapper">
-        <form>
+        <form ref={formRef}>
           <div className="joinBox">
             <div className="textWrapper">회원가입</div>
             <div className="inputWrap">
@@ -147,7 +157,12 @@ export const Join = () => {
                   onChange={valueChange}
                   placeholder="전화번호*"
                 /> */}
-                <select id="mobile" className="mobile" onChange={valueChange}>
+                <select
+                  name="mobile1"
+                  id="mobile1"
+                  className="mobile"
+                  onChange={valueChange}
+                >
                   <option value="010">010</option>
                   <option value="011">011</option>
                   <option value="016">016</option>
@@ -165,7 +180,7 @@ export const Join = () => {
                 -
                 <input
                   id="mobile3"
-                  name="mobile23"
+                  name="mobile3"
                   className="mobile"
                   onChange={valueChange}
                 ></input>

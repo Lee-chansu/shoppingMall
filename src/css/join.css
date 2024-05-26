@@ -109,7 +109,9 @@ a {
 
 .join .carrySelectBtn {
   /* 주소찾기 text가 세로가운데 정렬이 안됌 */
-  border: 1px solid #9d2a1e;
+  line-height: 100%;
+  margin-bottom: 0;
+  padding: 5px 0;
 }
 
 .join .inputRadio {

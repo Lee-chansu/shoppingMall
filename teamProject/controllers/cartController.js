@@ -35,11 +35,17 @@ exports.selectCartAll = async (req, res) => {
 //유저별 구매내역 조회
 exports.selectBuyListByUserId = async (req, res) => {
   const { user_id } = req.params;
-  const result = await BuyList.findAll({
-    where: { user_id },
-    include: [ProductOption],
-  });
-  res.json(result);
+  console.log(user_id);
+  try {
+    const result = await BuyList.findAll({
+      where: { user_id },
+      // include: [ProductOption],
+    });
+    res.json(result);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: error.message });
+  }
 };
 
 //배송리스트 조회

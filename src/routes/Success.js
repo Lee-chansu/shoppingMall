@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import "../css/toss.css";
+import ButtonBox from "../components/ButtonBox";
+import CustomButton from "../components/CustomButton";
 
 export function SuccessPage() {
   const navigate = useNavigate();
