@@ -113,8 +113,6 @@ export const PayBuyList = () => {
                 val={val}
                 idx={idx}
                 key={val.id}
-                payItemList={payItemList}
-                setPayItemList={setPayItemList}
                 handleDeleteItem={handleDeleteItem}
                 handleAddToCart={handleAddToCart}
               />

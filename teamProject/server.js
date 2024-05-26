@@ -53,7 +53,7 @@ app.get("/", async (req, res) => {
   res.json(result);
 });
 
-app.get("/user", async (req, res) => {
-  const result = await User.findAll();
-  res.json(result);
-})
+// app.get("/user", async (req, res) => {
+//   const result = await User.findAll();
+//   res.json(result);
+// })

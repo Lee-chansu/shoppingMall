@@ -86,8 +86,11 @@ exports.addBuyList = async (req, res) => {
       price: val.price,
       description: val.description ? val.description : "x",
       image: val.mainImage,
+      orderQuantity: val.amount,
       amount: val.amount,
       carryStatus: "도착완료",
+      productColor: val.color,
+      productSize: val.size,
     };
     try {
       await BuyList.create(newBuyList);

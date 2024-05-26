@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../css/review.css";
 
 //컴포넌트
@@ -9,6 +9,7 @@ import ReviewImageUpload from "../components/ReviewImageUpload";
 
 export const Review = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [reviewColor, setReviewColor] = useState("");
   const [reviewSize, setReviewSize] = useState("");
   const colorList = ["밝아요", "화면과 같아요", "어두워요"];
@@ -16,6 +17,8 @@ export const Review = () => {
   const [textarea, setTextarea] = useState(
     "다른 분들에게 도움이 될 수 있는 리뷰를 300자 이내로 작성해 주세요"
   );
+  const val = location.state.val;
+  console.log("review", val);
 
   const handleFocus = () => {
     if (
@@ -42,10 +45,12 @@ export const Review = () => {
       <div className="reviewWrap">
         <div className="reviewTitle">리뷰 작성하기</div>
         <div className="productBox">
-          <img className="productImg"></img>
+          <img className="productImg" src={val.image}></img>
           <div className="nameOptionBox">
-            <div className="productName">상품명</div>
-            <div className="productOption">상품옵션이 더 길면?</div>
+            <div className="productName">{val.productName}</div>
+            <div className="productOption">
+              {val.productColor} / {val.productSize}
+            </div>
           </div>
         </div>
 
