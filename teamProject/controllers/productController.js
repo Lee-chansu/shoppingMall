@@ -11,7 +11,6 @@ const imgbbUploader = require("imgbb-uploader");
 //nav바 버튼에 따라 카테고리별 제품 조회
 exports.loadProductByNavButton = async (req, res) => {
   const { category, detail } = req.query;
-  console.log(detail);
   let result;
   try {
     if (detail) {
@@ -67,7 +66,7 @@ exports.loadProductOne = async (req, res) => {
   }
 };
 
-//옵션들 전부 조회.
+//옵션 전부 조회.
 exports.selectProductOptionAll = async (req, res) => {
   const result = await ProductOption.findAll();
   res.json(result);
@@ -84,7 +83,7 @@ exports.loadProductOption = async (req, res) => {
   res.json(result);
 };
 
-//detail 조회
+//productDetail 조회
 exports.selectProductDetailAll = async (req, res) => {
   const result = await ProductDetail.findAll();
   res.json(result);
