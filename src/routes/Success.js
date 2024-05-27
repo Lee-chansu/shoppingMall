@@ -1,12 +1,29 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import "../css/toss.css";
+import { jwtDecode } from "jwt-decode";
 
 export function SuccessPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const [id, setId] = useState("");
+  const [stockList, setStockList] = useState([]);
   // const location = useLocation();
   // const paymentList = location.state?.paymentList;
+
+  useEffect(() => {
+    //현재 token이 sessionStorage(공간)에 id를 암호화한 상태로 저장되어있음(pk 유니크)
+    const token = sessionStorage.getItem("token");
+    if (id === "" && !token) {
+      navigate("/login");
+    } else {
+      //jwt : Json Web Token
+      //Decode : 복호화(암호해독)
+      const decodeToken = jwtDecode(token);
+      setId(decodeToken.id);
+      console.log('id', id)
+    }
+  }, [id]);
 
   useEffect(() => {
     // 데이터 변조 확인
@@ -36,16 +53,28 @@ export function SuccessPage() {
       })
 
       // const findStock = async () => {
-      //   arrayResponse[0].items.map((el) => {
-      //     console.log(el.productOption_id)
+      // //   arrayResponse[0].items.map((el) => {
+      // //     console.log(el.productOption_id)
       //     const checkStock = await fetch(
-      //       `http://localhost:5000/productOption/${arrayResponse}`
+      //       `http://localhost:5000/productOption/${id}`
       //     );
       //     const body = await checkStock.json();
       //     return body;
-      //   })
+      // //   })
       // };
       // findStock();
+
+      const findStock = async () => {
+        const response = await fetch(
+          'http://localhost:5000/productOption'
+        );
+        const stocks = await response.json();
+  
+        const selectedProductOption = stocks.find(
+          (option) =>
+            option.size === 1 && option.color === 2
+        );
+      }
 
       console.log("arrayResponse", arrayResponse);
 
