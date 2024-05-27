@@ -19,7 +19,8 @@ export const Join = () => {
     userName: "",
     email: "",
     phoneNumber: "",
-    address: "",
+    mainAddress: "",
+    detailAddress: "",
     gender: "",
   });
 
@@ -59,7 +60,7 @@ export const Join = () => {
         return mobile + mobile2 + mobile3;
       }
       alert("전화번호를 입력하시오");
-    } else if (!newUser.address) {
+    } else if (!newUser.mainAddress) {
       alert("주소를 입력하시오");
     } else if (!newUser.gender) {
       console.log(newUser.gender);
@@ -190,7 +191,7 @@ export const Join = () => {
                 <input
                   className="input width"
                   id="address"
-                  name="address"
+                  name="mainAddress"
                   ref={mainAddressRef}
                   onChange={valueChange}
                   placeholder="도로명 주소*"
@@ -200,6 +201,7 @@ export const Join = () => {
                   className="addressModal"
                   innerText="주소 찾기"
                   mainAddressRef={mainAddressRef}
+                  setNewUser={setNewUser}
                 />
                 {/* <button
                   onClick={() => {
@@ -211,7 +213,7 @@ export const Join = () => {
                 <input
                   className="input"
                   id="address"
-                  name="address"
+                  name="detailAddress"
                   onChange={valueChange}
                   placeholder="상세주소*"
                 />
