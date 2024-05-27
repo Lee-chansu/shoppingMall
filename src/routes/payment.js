@@ -158,15 +158,24 @@ export const Payment = () => {
           <div className="payBox">
             <div className="userInfoBox">
               <h3 className="carryInfo">배송지 정보</h3>
-              <div className="emailBox">
-                <div className="email">주문자 이메일</div>
-                <div className="email2">{userProfile.email}</div>
+              <div className="infoBox">
+                <div className="nameBox">
+                  <div className="name">주문자명 </div>
+                  <div className="name2">{userProfile.userName}</div>
+                </div>
+              </div>
+              <div className="box">
+              <div className="phoneBox">
+                <div className="phone">연락처 </div>
+                  <div className="phone2">{userProfile.phoneNumber}</div>
+                </div>
               </div>
               <div className="addressBox">
                 <div className="address">배송받을 주소</div>
                 <div className="address2">
                   {/* paymentmodal에서 mainAddressRef로 input태그에 접근이 가능해짐 */}
                   <AddressModal
+                    className="mainAddress"
                     innerText="기본 배송지 수정"
                     mainAddressRef={mainAddressRef}
                   />
@@ -230,7 +239,7 @@ export const Payment = () => {
                   </select>
                   {selectedOption === "carryMessage7" && (
                     <input
-                      className="carryMessage8"
+                      className="carryDirectMessage"
                       placeholder="여기에 배송요청 사항을 직접 입력하세요"
                     ></input>
                   )}
@@ -245,11 +254,11 @@ export const Payment = () => {
                       id="agree1"
                       name="agree"
                       value="신규고객 5,000원 할인쿠폰"
-                      checked="checked"
                     />
                     <span class="on"></span>
                     신규고객 5,000원 할인쿠폰
-                  </label><label for="agree2" class="radio_box">
+                  </label>
+                  <label for="agree2" class="radio_box">
                     <input
                       type="radio"
                       id="agree2"
@@ -265,6 +274,7 @@ export const Payment = () => {
                       id="agree3"
                       name="agree"
                       value="쿠폰선택 안함"
+                      defaultChecked
                     />
                     <span class="on"></span>
                     쿠폰선택 안함
