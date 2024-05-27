@@ -3,8 +3,12 @@ import "../css/productDescription.css";
 
 export const ProductDescription = (props) => {
   const { handleSwitchBtn, product } = props;
-  const description = product.description.split(",");
-  console.log(description);
+  let description;
+  if (product.description) {
+    description = product.description.split(",");
+  } else {
+    description = [];
+  }
   return (
     <div className="productInfo">
       <div className="productInfoWrapper">
@@ -21,9 +25,9 @@ export const ProductDescription = (props) => {
             {!product.description ? (
               <div className="textWrapper2">상품 정보</div>
             ) : (
-              description.map((img) => {
+              description.map((img, index) => {
                 return (
-                  <div className="textWrapper2">
+                  <div className="textWrapper2" key={index}>
                     <img src={img} alt="상세보기 대체용 이미지" />
                   </div>
                 );
