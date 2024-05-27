@@ -83,7 +83,7 @@ exports.userLogin = (req, res, next) => {
       if (err) return next(err);
 
       const token = jwt.sign(
-        { id: user.id, userId: user.userId, profileImg: user.profileImg },
+        { id: user.id, userId: user.userId, isMaster : user.isMaster},
         JWT_SECRET_KEY
       );
       res.json({ token, user });

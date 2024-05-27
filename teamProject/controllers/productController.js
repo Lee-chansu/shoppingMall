@@ -275,3 +275,14 @@ exports.selectReviewlist = async (req, res) => {
     res.json([]);
   }
 };
+
+// 리뷰 등록
+exports.addReview = async (req, res) => {
+  const { addReview } = req.body;
+  if (addReview) {
+    await ReviewList.create(addReview);
+    res.send("success");
+  } else {
+    res.send("fail");
+  }
+};

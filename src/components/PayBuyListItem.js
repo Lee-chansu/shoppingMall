@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const PayItem = ({ val, handleDeleteItem, handleAddToCart }) => {
+  const navigate = useNavigate();
   async function delBtn() {
     /* 버튼 클릭시 {val} 한개 삭제 기능 구현 */
     handleDeleteItem(val);
@@ -12,11 +13,15 @@ export const PayItem = ({ val, handleDeleteItem, handleAddToCart }) => {
     handleAddToCart(val);
   }
 
+  const moveReview = () => {
+    navigate("/review", { state: { buyList: val } });
+  };
+
   return (
     <div className="payItem">
       <div className="itemInfo">
         <div className="payDate">{val.buyDate.substring(0, 10)}</div>
-        <img className="imageBox" src={val.image} />
+        <img className="imageBox" src={val.image} alt="이미지" />
         <div className="productBox">
           <div className="productName">상품명 : {val.productName}</div>
           <div className="productName">수량 : {val.amount}</div>
@@ -46,7 +51,7 @@ export const PayItem = ({ val, handleDeleteItem, handleAddToCart }) => {
           /> */}
           구매내역 삭제
         </Link>
-        <Link to="/review" state={{ val }} className="reviewBtn">
+        <div className="reviewBtn" onClick={moveReview}>
           {/* <img
             className="trashBtn"
             width="32"
@@ -54,7 +59,7 @@ export const PayItem = ({ val, handleDeleteItem, handleAddToCart }) => {
             src="img/trashBtn.png"
           /> */}
           상품 리뷰쓰기
-        </Link>
+        </div>
       </div>
     </div>
   );

@@ -15,6 +15,12 @@ module.exports = (sequelize) => {
       starPoint: {
         type: DataTypes.INTEGER(1),
       },
+      reviewColor: {
+        type: DataTypes.INTEGER(1),
+      },
+      reviewSize: {
+        type: DataTypes.INTEGER(1),
+      },
       reviewImage: {
         type: DataTypes.TEXT,
       },

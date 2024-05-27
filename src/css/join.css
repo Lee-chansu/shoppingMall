@@ -19,6 +19,7 @@ a {
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100vh;
 }
 
 .join .joinBoxWrapper {
@@ -79,6 +80,7 @@ a {
   border-radius: 4px;
 }
 
+
 .join .mobile {
   color: #000000;
   font-size: 15px;
@@ -103,15 +105,20 @@ a {
 }
 
 .join .width {
-  width: 256px;
+  width: 266px;
   margin-right: 10px;
+  background-color: #ffffff;
 }
 
 .join .carrySelectBtn {
-  /* 주소찾기 text가 세로가운데 정렬이 안됌 */
-  line-height: 100%;
-  margin-bottom: 0;
-  padding: 5px 0;
+  margin : 6px 0;
+  color: white;
+  font-size: 14px;
+}
+
+.join .btn-info{
+  background-color: #4d4a4a;
+  border:  transparent;
 }
 
 .join .inputRadio {
