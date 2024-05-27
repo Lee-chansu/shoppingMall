@@ -24,6 +24,7 @@ router.post("/findPassword", userController.findPassword);
 
 router.put("/userEdit/:id", userController.userInfoUpdate);
 router.put("/passwordEdit/:id", userController.updatedPassword);
+//회원탈퇴
 router.put("/userinfo/put/:id", userController.deletedUser);
 
 //productController

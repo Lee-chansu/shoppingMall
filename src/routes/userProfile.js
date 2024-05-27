@@ -7,19 +7,19 @@ export const UserProfile = () => {
   const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
   const goback = () => {
-    navigate('/');
+    navigate("/");
   };
 
   const [userProfile, setUserProfile] = useState({});
   const [id, setId] = useState();
 
   const userFetch = async () => {
-    const response = await fetch(`http://localhost:5000/userProfile/${id}`)
+    const response = await fetch(`http://localhost:5000/userProfile/${id}`);
     const body = await response.json();
     return body;
   };
 
-  const getUserProfile = async (id) => {
+  const getUserProfile = async id => {
     const user = await userFetch(id);
     setUserProfile(user);
   };
@@ -43,32 +43,47 @@ export const UserProfile = () => {
             className="profileImage"
             src={userProfile.profileImg}
             onError={() => setImageUrl("../img/userDefaultImg.png")}
-            alt="유저프로필"
+            alt={"../img/userDefaultImg.png"}
           />
           <div className="userEditBox">
             <div className="boxId">
               <div className="box">
-                <p className="title">아이디  <br></br><span>{userProfile.userId}</span></p>
+                <p className="title">
+                  아이디 <br></br>
+                  <span>{userProfile.userId}</span>
+                </p>
               </div>
             </div>
             <div className="boxEmail">
               <div className="box">
-                <p className="title">이메일  <br></br><span>{userProfile.email}</span></p>
+                <p className="title">
+                  이메일 <br></br>
+                  <span>{userProfile.email}</span>
+                </p>
               </div>
             </div>
             <div className="boxPhone">
               <div className="box">
-                <p className="title">휴대폰 번호 <br></br><span>{userProfile.email}</span></p>
+                <p className="title">
+                  휴대폰 번호 <br></br>
+                  <span>{userProfile.email}</span>
+                </p>
               </div>
             </div>
             <div className="boxAddress">
               <div className="box">
-                <p className="title">주소  <br></br><span>{userProfile.email}</span></p>
+                <p className="title">
+                  주소 <br></br>
+                  <span>{userProfile.email}</span>
+                </p>
               </div>
             </div>
             <div className="boxGender">
               <div className="box">
-                <p className="title">성별  <br></br><span>{userProfile.gender === "M" ? "남자" : "여자"}</span></p>
+                <p className="title">
+                  성별 <br></br>
+                  <span>{userProfile.gender === "M" ? "남자" : "여자"}</span>
+                </p>
               </div>
             </div>
             <div className="editForm">

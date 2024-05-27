@@ -46,7 +46,8 @@ export const ProductEdit = () => {
     setCheckCategory(getProduct.category);
     setCheckDetail(getProduct.detail);
     if (getProduct.description) {
-      setDescriptionImgArray(getProduct.description.split(","));
+      const splitArr = getProduct.description.split(",");
+      setDescriptionImgArray(splitArr.slice(0, splitArr.length - 1));
     }
   };
 

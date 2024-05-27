@@ -148,3 +148,11 @@
   font-size: 32px;
   border-radius: 20px;
 }
+
+.preview {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}

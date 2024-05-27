@@ -3,8 +3,17 @@ import { Myalter } from "./Myalter";
 
 export const MyDropzone = ({ setDescriptionImgArray }) => {
   const { getRootProps, getInputProps } = useDropzone({
-    accept: "image/*",
-    onDrop: (acceptedFiles) => {
+    acceptedMimeTypes: [
+      "jpg",
+      "png",
+      "bmp",
+      "gif",
+      "tif",
+      "webp",
+      "heic",
+      "pdf",
+    ],
+    onDrop: acceptedFiles => {
       const file = acceptedFiles[0];
       const reader = new FileReader();
       if (file) {
@@ -30,7 +39,7 @@ export const MyDropzone = ({ setDescriptionImgArray }) => {
         }
         reader.readAsDataURL(file);
         reader.onloadend = () => {
-          setDescriptionImgArray((prev) => [...prev, reader.result]);
+          setDescriptionImgArray(prev => [...prev, reader.result]);
         };
       } else {
         return;
@@ -39,7 +48,7 @@ export const MyDropzone = ({ setDescriptionImgArray }) => {
   });
 
   return (
-    <div {...getRootProps()}>
+    <div {...getRootProps()} className="preview">
       <input {...getInputProps()} />
       <p>여기에 이미지를 드래그 앤 드롭하세요.</p>
     </div>

@@ -328,7 +328,7 @@ export const ProductAdd = () => {
             {descriptionImgArray.map((img, index) => {
               return (
                 <div key={index}>
-                  <img src={img} alt="이미지" style={{ width: "100%" }} />
+                  <img src={img} alt="이미지" style={{ width: "100%", margin : "20px 20px" }} />
                 </div>
               );
             })}
