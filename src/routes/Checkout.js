@@ -97,7 +97,7 @@ export function CheckoutPage() {
     const userResponse = await fetch(`http://localhost:5000/userProfile/${id}`);
     const userProfile = await userResponse.json();
 
-    const paymentRequestData = { id: orderId, amount: price, user_id: id, paymentList: location.state.paymentList };
+    const paymentRequestData = { id: orderId, amount: price, user_id: id, items: location.state.paymentList };
 
     try {
       const saveResponse = await fetch("http://localhost:5000/paymentRequest", {
@@ -130,7 +130,7 @@ export function CheckoutPage() {
       await paymentWidget?.requestPayment({
         orderId,
         orderName,
-        // amount,
+        paymentList: location.state.paymentList,
         customerName: userProfile.userName,
         customerEmail: userProfile.email,
         customerMobilePhone: cleanedPhoneNumber,

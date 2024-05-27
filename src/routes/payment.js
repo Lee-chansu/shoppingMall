@@ -65,7 +65,7 @@ export const Payment = () => {
 
   const handleAllPayment = () => {
     navigate("/toss", {
-      state: { paymentList: location.state.list, orderSum },
+      state: { paymentList: location.state.list, orderSum, paySelect: 'test' },
     });
     //모달 처리 예정 , if문으로 분기처리 예정
   };
@@ -73,8 +73,8 @@ export const Payment = () => {
   const handleAllPayment2 = () => {
     navigate("/paysuccess", {
       state: {
-        list: location.state.list,
-        paySelectSumPrice: orderSum.paySumTotal,
+        list: location.state.list, orderSum, paySelect : 'test'
+        // paySelectSumPrice: orderSum.paySumTotal,
       },
     });
     //모달 처리 예정 , if문으로 분기처리 예정

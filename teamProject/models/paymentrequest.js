@@ -1,5 +1,4 @@
 const { DataTypes } = require('sequelize');
-const { FOREIGNKEYS } = require('sequelize/lib/query-types');
 
 module.exports = (sequelize) => {
   const PaymentRequest = sequelize.define('PaymentRequest', {
@@ -13,6 +12,9 @@ module.exports = (sequelize) => {
     createdAt: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
+    },
+    items: {
+      type: DataTypes.JSON
     },
   }, {
     timestamps: false

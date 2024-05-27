@@ -37,7 +37,6 @@ exports.selectBuyListByUserId = async (req, res) => {
   const { user_id } = req.params;
   const result = await BuyList.findAll({
     where: { user_id },
-    include: [ProductOption],
   });
   res.json(result);
 };

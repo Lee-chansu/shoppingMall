@@ -5,6 +5,8 @@ import "../css/toss.css";
 export function SuccessPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  // const location = useLocation();
+  // const paymentList = location.state?.paymentList;
 
   useEffect(() => {
     // 데이터 변조 확인
@@ -29,6 +31,22 @@ export function SuccessPage() {
 
       const arrayResponse = await findRequest();
 
+      arrayResponse[0].items.map((el) => {
+        console.log(el.productOption_id)
+      })
+
+      // const findStock = async () => {
+      //   arrayResponse[0].items.map((el) => {
+      //     console.log(el.productOption_id)
+      //     const checkStock = await fetch(
+      //       `http://localhost:5000/productOption/${arrayResponse}`
+      //     );
+      //     const body = await checkStock.json();
+      //     return body;
+      //   })
+      // };
+      // findStock();
+
       console.log("arrayResponse", arrayResponse);
 
       // 서버로부터의 응답을 검사하여 결제 요청이 변조되었는지 확인
@@ -36,6 +54,11 @@ export function SuccessPage() {
         console.error("Error: 결제 요청이 변조되었습니다.");
         navigate("/toss/fail?message=결제 요청이 변조되었습니다.");
         return; // 변조된 요청일 때 결제 로직을 중단
+      }
+
+      // 재고 조사
+      if (true) {
+        console.log('wow')
       }
 
       const response = await fetch("http://localhost:5000/confirm", {
@@ -57,6 +80,7 @@ export function SuccessPage() {
 
       // TODO: 결제 성공 비즈니스 로직을 구현하세요.
       console.log(json);
+      console.log('json', json);
     }
     confirm();
   }, []);
