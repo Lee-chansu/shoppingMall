@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 
 export const PayItem = ({
   val,
@@ -8,6 +8,8 @@ export const PayItem = ({
   handleDeleteItem,
   handleAddToCart,
 }) => {
+  const navigate = useNavigate()
+
   async function delBtn() {
     /* 버튼 클릭시 {val} 한개 삭제 기능 구현 */
     handleDeleteItem(val);
@@ -16,6 +18,10 @@ export const PayItem = ({
   function basketPlus() {
     /* 버튼 클릭시 cart에 담기 */
     handleAddToCart(val)
+  }
+
+  const moveReview = ()=>{
+    navigate('/review',{state : {buyList : val}})
   }
 
   return (
@@ -52,7 +58,7 @@ export const PayItem = ({
           /> */}
           구매내역 삭제
         </Link>
-        <Link to="/review" className="reviewBtn">
+        <div className="reviewBtn" onClick={moveReview}>
           {/* <img
             className="trashBtn"
             width="32"
@@ -60,7 +66,7 @@ export const PayItem = ({
             src="img/trashBtn.png"
           /> */}
           상품 리뷰쓰기
-        </Link>
+        </div>
       </div>
     </div>
   );

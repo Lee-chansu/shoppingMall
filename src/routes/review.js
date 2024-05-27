@@ -1,42 +1,90 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../css/review.css";
 
 //컴포넌트
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
 import ReviewAddImage from "../components/ReviewAddImage";
+import Star from "../components/Star";
+import { Myalter } from "../components/Myalter";
+import { jwtDecode } from "jwt-decode";
 
 export const Review = () => {
+
+  useEffect(()=>{// 유저 고유 id 받아오기
+    const token = sessionStorage.getItem("token")
+    if(!token){
+      navigate('/');
+    } else {
+      const decodeToken = jwtDecode(token)
+      setAddReview((pre)=>({...pre, user_id : decodeToken.id}))
+    }
+  },[])
+  
+
+  const location = useLocation();
+  const {buyList} = location.state // 상품 구매id 받아오기
+  
+
   const navigate = useNavigate();
-  const [reviewColor, setReviewColor] = useState("");
-  const [reviewSize, setReviewSize] = useState("");
+  
+  const [addReview, setAddReview] = useState({
+    user_id : '',
+    buyList_id : buyList.id,
+    starPoint : 0,
+    reviewColor : 0,
+    reviewSize : 0,
+    textArea : '',
+    reviewImage : ''
+  })
+  
   const colorList = ["밝아요", "화면과 같아요", "어두워요"];
   const sizeList = ["작아요", "정사이즈예요", "커요"];
-  const [textarea, setTextarea] = useState(
-    "다른 분들에게 도움이 될 수 있는 리뷰를 300자 이내로 작성해 주세요"
-  );
+  const startList = [1,2,3,4,5] // map 돌리기위한 배열갯수
 
-  const handleFocus = () => {
-    if (
-      textarea ===
-      "다른 분들에게 도움이 될 수 있는 리뷰를 300자 이내로 작성해 주세요"
-    )
-      setTextarea(""); //초기text만 삭제
-  };
-
+  const handleClick = (i)=>()=>{ // 별점클릭시
+    setAddReview((pre)=>({...pre, starPoint : i+1}))
+  }
+  
   const handleChange = (e) => {
-    setTextarea(e.target.value); //사용자 내용 입력시마다 state update
+    setAddReview((pre)=>({
+      ...pre,
+      textArea : e.target.value
+    })); //사용자 내용 입력시마다 state update
   };
-
+  
   const handleLinkBackMove = () => {
     navigate(-1);
   };
 
-  const handleLinkReviewMove = () => {
-    navigate("/"); //리뷰등록하기 페이지 설정
-  };
+  const handleLinkReviewMove = async(e) => {
+    e.preventDefault()
+    if(addReview.starPoint === 0){
+      Myalter('warning', '리뷰 가이드', '별점을 선택해주세요')
+    }
+    else{
+      console.log(addReview)
+      try {
+        const response = await fetch(`http://localhost:5000/review`,{
+          method : "POST",
+          headers : {"Content-Type":"application/json"},
+          body : JSON.stringify({addReview})
+        })
+        if(!response.ok){
+          throw new Error("서버에서 응답을 받을 수 없습니다")
+        }else{
+          await Myalter('success','리뷰 가이드','리뷰작성 완료')
+        }
 
+      } catch (error) {
+        Myalter('warning', '리뷰 가이드', '리뷰 등록중 오류가 발생했습니다')
+      }
+    }
+    
+    // navigate("/"); //리뷰등록하기 페이지 설정
+  };
+  console.log(buyList)
   return (
     <div className="review">
       <div className="reviewWrap">
@@ -44,15 +92,24 @@ export const Review = () => {
         <div className="productBox">
           <img className="productImg"></img>
           <div className="nameOptionBox">
-            <div className="productName">상품명</div>
-            <div className="productOption">상품옵션이 더 길면?</div>
+            <div className="productName">{buyList.productName}</div>
+            <div className="productOption">{buyList.productColor} ,{buyList.productSize}</div>
           </div>
         </div>
 
         <div className="reviewCheckBox">
           <span className="title">구매하신 상품의 만족도를 체크해주세요 <big>*</big></span>
           <div className="starBox">
-            <img src="" />
+            <div className="star">
+              {
+                startList.map((e,i)=>{
+                  
+                  return(
+                    <Star key={i} i = {i} size={50} color="gold" filled={i < addReview.starPoint? true : false} handleClick = {handleClick(i)} />
+                  )
+                })
+              }
+            </div>
           </div>
         </div>
 
@@ -66,9 +123,9 @@ export const Review = () => {
                   <CustomButton
                     key={idx}
                     buttonTitle={val}
-                    className={reviewColor == idx ? "selected" : "non-selected"}
+                    className={addReview.reviewColor == idx ? "selected" : "non-selected"}
                     handleLinkMove={() => {
-                      setReviewColor(idx);
+                      setAddReview((pre)=>({...pre, reviewColor : idx}));
                     }}
                   />
                 </div>
@@ -88,9 +145,9 @@ export const Review = () => {
                   <CustomButton
                     key={idx}
                     buttonTitle={val}
-                    className={reviewSize == idx ? "selected" : "non-selected"}
+                    className={addReview.reviewSize == idx ? "selected" : "non-selected"}
                     handleLinkMove={() => {
-                      setReviewSize(idx);
+                      setAddReview((pre)=>({...pre,reviewSize : idx}));
                     }}
                   />
                 </div>
@@ -104,8 +161,7 @@ export const Review = () => {
           <div className="overlap-2">
             <textarea
               className="reviewDetail"
-              value={textarea}
-              onFocus={handleFocus}
+              placeholder="다른 분들에게 도움이 될 수 있는 리뷰를 300자 이내로 작성해 주세요"
               onChange={handleChange}
             />
           </div>
