@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const PayItem = ({
-  val,
-  payItemList,
-  setPayItemList,
-  handleDeleteItem,
-  handleAddToCart,
-}) => {
+export const PayItem = ({ val, handleDeleteItem, handleAddToCart }) => {
   async function delBtn() {
     /* 버튼 클릭시 {val} 한개 삭제 기능 구현 */
     handleDeleteItem(val);
@@ -15,7 +9,7 @@ export const PayItem = ({
 
   function basketPlus() {
     /* 버튼 클릭시 cart에 담기 */
-    handleAddToCart(val)
+    handleAddToCart(val);
   }
 
   return (
@@ -52,7 +46,7 @@ export const PayItem = ({
           /> */}
           구매내역 삭제
         </Link>
-        <Link to="/review" className="reviewBtn">
+        <Link to="/review" state={{ val }} className="reviewBtn">
           {/* <img
             className="trashBtn"
             width="32"

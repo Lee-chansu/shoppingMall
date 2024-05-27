@@ -57,7 +57,6 @@ cron.schedule =
 exports.loadProfileImage = async (req, res) => {
   const { id } = req.params;
   const { profileImg } = await User.findOne({ where: { id } });
-
   res.json(profileImg);
 };
 

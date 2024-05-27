@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../css/review.css";
 
 //컴포넌트
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
-import ReviewAddImage from "../components/ReviewAddImage";
+import ReviewImageUpload from "../components/ReviewImageUpload";
 
 export const Review = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [reviewColor, setReviewColor] = useState("");
   const [reviewSize, setReviewSize] = useState("");
   const colorList = ["밝아요", "화면과 같아요", "어두워요"];
@@ -16,6 +17,8 @@ export const Review = () => {
   const [textarea, setTextarea] = useState(
     "다른 분들에게 도움이 될 수 있는 리뷰를 300자 이내로 작성해 주세요"
   );
+  const val = location.state.val;
+  console.log("review", val);
 
   const handleFocus = () => {
     if (
@@ -42,22 +45,28 @@ export const Review = () => {
       <div className="reviewWrap">
         <div className="reviewTitle">리뷰 작성하기</div>
         <div className="productBox">
-          <img className="productImg"></img>
+          <img className="productImg" src={val.image}></img>
           <div className="nameOptionBox">
-            <div className="productName">상품명</div>
-            <div className="productOption">상품옵션이 더 길면?</div>
+            <div className="productName">{val.productName}</div>
+            <div className="productOption">
+              {val.productColor} / {val.productSize}
+            </div>
           </div>
         </div>
 
         <div className="reviewCheckBox">
-          <span className="title">구매하신 상품의 만족도를 체크해주세요 <big>*</big></span>
+          <span className="title">
+            구매하신 상품의 만족도를 체크해주세요 <big>*</big>
+          </span>
           <div className="starBox">
             <img src="" />
           </div>
         </div>
 
         <div className="reviewColorBox">
-          <span className="title">색상은 어떤가요 <big>*</big></span>
+          <span className="title">
+            색상은 어떤가요 <big>*</big>
+          </span>
           <br />
           {colorList.map((val, idx) => {
             return (
@@ -78,7 +87,8 @@ export const Review = () => {
         </div>
 
         <div className="reviewSizeBox">
-          <span className="title">사이즈는 어떤가요? <big>*</big>
+          <span className="title">
+            사이즈는 어떤가요? <big>*</big>
           </span>
           <br />
           {sizeList.map((val, idx) => {
@@ -111,9 +121,9 @@ export const Review = () => {
           </div>
         </div>
 
-        <div className="reviewAddImage">
+        <div className="reviewImageUpload">
           <span className="title">사진 첨부하기 </span>
-          <ReviewAddImage />
+          <ReviewImageUpload />
         </div>
 
         <ButtonBox>
