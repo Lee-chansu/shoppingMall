@@ -91,17 +91,19 @@ export function CheckoutPage() {
 
   const handlePaymentRequest = async () => {
     const orderId = nanoid();
-    console.log('test', price)
+    console.log("test", price);
 
     // 사용자 프로필을 가져오기
     const userResponse = await fetch(`http://localhost:5000/userProfile/${id}`);
     const userProfile = await userResponse.json();
 
+    const paymentRequestData = { id: orderId, amount: price, user_id: id, paymentList: location.state.paymentList };
+
     try {
       const saveResponse = await fetch("http://localhost:5000/paymentRequest", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: orderId, amount:price, user_id: id }),
+        body: JSON.stringify(paymentRequestData),
       });
 
       if (!saveResponse.ok) {
