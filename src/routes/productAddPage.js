@@ -319,7 +319,6 @@ export const ProductAdd = () => {
             <div className="wrap description">
               <h2 className="title">Description</h2>
               <div className="boxWrap">
-                {console.log(descriptionImgArray)}
                 <MyDropzone
                   descriptionImgArray={descriptionImgArray}
                   setDescriptionImgArray={setDescriptionImgArray}
@@ -328,8 +327,8 @@ export const ProductAdd = () => {
             </div>
             {descriptionImgArray.map((img, index) => {
               return (
-                <div>
-                  <img src={img} key={index} alt="이미지" style={{width : "100%"}} />
+                <div key={index}>
+                  <img src={img} alt="이미지" style={{ width: "100%" }} />
                 </div>
               );
             })}

@@ -57,6 +57,7 @@ exports.loadProductOne = async (req, res) => {
       subImage1: product.subImage1,
       subImage2: product.subImage2,
       subImage3: product.subImage3,
+      description: product.description,
       category: productDetail.category,
       detail: productDetail.detailCategory,
     };
