@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Myalter } from "./Myalter";
 
 export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
   const [subImageFile, setSubImageFile] = useState("");
@@ -26,7 +27,7 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
       ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
-        alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
+        Myalter(null, null, `${file.name} 파일은 허용되지 않는 확장자입니다.`);
         e.target.value = subImageFile; // 파일 선택 취소
         return; // 다음 파일 처리 중단
       }

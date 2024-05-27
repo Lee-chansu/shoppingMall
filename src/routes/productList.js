@@ -27,13 +27,13 @@ export const ProductList = () => {
 
   const loadProduct = async () => {
     let getProduct;
-    if (category) {
-      getProduct = await fetch(
-        `http://localhost:5000/product?category=${category}`
-      ).then((res) => res.json());
-    } else if (detail) {
+    if (detail) {
       getProduct = await fetch(
         `http://localhost:5000/product?detail=${detail}`
+      ).then((res) => res.json());
+    } else if (category) {
+      getProduct = await fetch(
+        `http://localhost:5000/product?category=${category}`
       ).then((res) => res.json());
     } else {
       getProduct = await fetch(`http://localhost:5000/product`).then((res) =>

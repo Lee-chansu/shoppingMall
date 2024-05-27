@@ -6,6 +6,8 @@ import "../css/productAdd.css";
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
 import { ProductOption } from "../components/productOptionAdd";
+import { MyDropzone } from "../components/DropZone";
+import { Myalter } from "../components/Myalter";
 
 export const ProductAdd = () => {
   const navigate = useNavigate();
@@ -48,7 +50,7 @@ export const ProductAdd = () => {
       ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
-        alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
+        Myalter(null, null, `${file.name} 파일은 허용되지 않는 확장자입니다.`);
         mainImgRef.value = mainImageFile; // 파일 선택 취소
         return; // 다음 파일 처리 중단
       }
@@ -126,6 +128,8 @@ export const ProductAdd = () => {
     );
   });
 
+  const [descriptionImgArray, setDescriptionImgArray] = useState([]);
+
   useEffect(() => {
     showDetailBar();
   }, [checkCategory, checkDetail]);
@@ -172,6 +176,7 @@ export const ProductAdd = () => {
       const body = {
         newProduct,
         newOption,
+        descriptionImgArray,
       };
 
       await fetch("http://localhost:5000/addProduct", {
@@ -211,9 +216,7 @@ export const ProductAdd = () => {
                 {category.map((el) => {
                   return (
                     <div className="box" key={el}>
-                      <label className="text" htmlFor={el}>
-                        {el}
-                      </label>
+                      <p className="text">{el}</p>
                       <input
                         type="checkbox"
                         className="checkBoxCategory"
@@ -314,11 +317,22 @@ export const ProductAdd = () => {
               </div>
             </div>
             <div className="wrap description">
-              <h2 className="title">상품 상세설명</h2>
+              <h2 className="title">Description</h2>
               <div className="boxWrap">
-                <input type="text" name="description" onChange={valueChange} />
+                {console.log(descriptionImgArray)}
+                <MyDropzone
+                  descriptionImgArray={descriptionImgArray}
+                  setDescriptionImgArray={setDescriptionImgArray}
+                ></MyDropzone>
               </div>
             </div>
+            {descriptionImgArray.map((img, index) => {
+              return (
+                <div>
+                  <img src={img} key={index} alt="이미지" style={{width : "100%"}} />
+                </div>
+              );
+            })}
             <div className="btnForm">
               <button>추가</button>
               <Link to="/productList">

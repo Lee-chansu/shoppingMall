@@ -32,6 +32,7 @@ import { FailPage } from "./routes/Fail.js";
 
 import { Review } from "./routes/review";
 
+/*eslint-disabled*/
 function App() {
   return (
     <Routes>

@@ -82,7 +82,8 @@
   font-size: 32px;
 }
 .productAdd .inner .wrap.stock .title .btn {
-  padding: 10px 15px; margin-left: 20px;
+  padding: 10px 15px;
+  margin-left: 20px;
   background-color: #eee;
 }
 .productAdd .inner .wrap.stock .btn {

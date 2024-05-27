@@ -187,21 +187,11 @@ export const ProductDetailDescription = () => {
     setStock(0);
   };
 
-  // useEffect(() => {
-  //   // console.log('size', size)
-  // }, [size]);
-
-  // useEffect(() => {
-  //   // console.log('color', color)
-  // }, [color]);
-
   useEffect(() => {
-    // console.log("selectedSize", selectedSize);
     getStock();
   }, [selectedSize]);
 
   useEffect(() => {
-    // console.log("selectedColor", selectedColor);
     getStock();
   }, [selectedColor]);
 
@@ -466,7 +456,6 @@ export const ProductDetailDescription = () => {
               />
             )}
           </div>
-          
         </div>
       ) : (
         <div>해당 상품을 찾을 수 없습니다</div>

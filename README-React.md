@@ -37,6 +37,7 @@
 - npm i react-bootstrap 
 - npm i react-bootstrap-icon
 - npm i axios
+- npm i react-dragzone // drag해서 이미지 파일 편하게 업로드
 
 # node
 - 설치해야할 라이브러리
@@ -46,14 +47,4 @@
 - npm i node-cron // 스케줄링 시스템
 - npm i imgbb-uploader // imgbb 로 사진업로드하기위해
 
-- env 파일 만들어야함
-- env 내부형식
-  email_service = 'naver'
-  admin = '네이버 아이디' // 본인꺼
-  pass = '네이버 비밀번호' // 본인꺼
 
-- naver 메일설정 필요함
-- 순서 : 네이버로그인 -> 메일 -> 환경설정 -> POP3/IMAP 설정 -> POP3/SMTP 사용함 체크 -> 원본저장체크란 아무거나 -> 저장
-
-- sequelize model 파일수정 => DeleteUser 테이블 조인
-- seeder 파일수정 => user 고유아이디 프라이머리값 에 맞게 carry seeder 수정

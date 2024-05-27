@@ -39,6 +39,12 @@ exports.loadProductByNavButton = async (req, res) => {
   }
 };
 
+//category 클릭 시 detailbar 불러오기
+// exports.loadDetailArray = async (req, res) => {
+//   const { category } = req.query;
+//   console.log(category);
+// };
+
 // 제품의 상세옵션 조회
 exports.loadProductOne = async (req, res) => {
   const { id } = req.params;
@@ -91,7 +97,7 @@ exports.selectProductDetailAll = async (req, res) => {
 
 // 제품 추가
 exports.addProduct = async (req, res) => {
-  const { newProduct, newOption } = req.body;
+  const { newProduct, newOption, descriptionImgArray } = req.body;
   const base64Images = [
     newProduct.mainImage.split(",")[1],
     newProduct.subImage1 ? newProduct.subImage1.split(",")[1] : null,
@@ -121,6 +127,23 @@ exports.addProduct = async (req, res) => {
     newProduct.subImage1 = productImage[1];
     newProduct.subImage2 = productImage[2];
     newProduct.subImage3 = productImage[3];
+
+    let index = 0;
+    for (let img of descriptionImgArray) {
+      options = {
+        apiKey: imgbbKey,
+        base64string: img.split(",")[1],
+      };
+      if (options.base64string) {
+        const uploadResponse = await imgbbUploader(options);
+        newProduct.description += uploadResponse.url + ",";
+        index++;
+      } else {
+        newProduct.description += ",";
+        index++;
+      }
+    }
+
     const product = await Product.create(newProduct);
     const { id } = await Product.findOne({
       order: [["id", "DESC"]],

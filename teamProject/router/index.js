@@ -32,6 +32,8 @@ router.get("/product/:id", productController.loadProductOne);
 router.get("/productOption", productController.selectProductOptionAll);
 router.get("/productOption/:id", productController.loadProductOption);
 router.get("/productDetail", productController.selectProductDetailAll);
+// router.get("/detailBar", productController.loadDetailArray);
+
 //리뷰 조회
 router.get("/ReviewList", productController.selectReviewlist);
 
