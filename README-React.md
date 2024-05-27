@@ -33,7 +33,8 @@
 
 # react
 - 설치해야할 라이브러리
-- npm i jwt-decode // 토큰암호화된거 해독하기위해
+- npm i jwt-decode   // 토큰암호화된거 해독하기위해
+- npm i sweetalert2 // alter 커스텀
 - npm i react-bootstrap 
 - npm i react-bootstrap-icon
 - npm i axios

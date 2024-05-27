@@ -32,7 +32,6 @@ router.get("/product/:id", productController.loadProductOne);
 router.get("/productOption", productController.selectProductOptionAll);
 router.get("/productOption/:id", productController.loadProductOption);
 router.get("/productDetail", productController.selectProductDetailAll);
-// router.get("/detailBar", productController.loadDetailArray);
 
 //리뷰 조회
 router.get("/ReviewList", productController.selectReviewlist);
@@ -42,6 +41,11 @@ router.post("/addProduct", productController.addProduct);
 router.put("/productEdit/:id", productController.updateProduct);
 
 router.delete("/productDelete/:id", productController.deleteProduct);
+
+//review
+router.get("/ReviewList", productController.selectReviewlist);
+
+router.post("/review", productController.addReview);
 
 //cartController
 router.get("/cart/:user_id", cartController.selectCartByUserId);

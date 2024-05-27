@@ -37,7 +37,7 @@ exports.selectBuyListByUserId = async (req, res) => {
   const { user_id } = req.params;
   const result = await BuyList.findAll({
     where: { user_id },
-    include: [ProductOption],
+    // include: [ProductOption],
   });
   res.json(result);
 };
@@ -80,8 +80,11 @@ exports.addBuyList = async (req, res) => {
       price: val.price,
       description: val.description ? val.description : "x",
       image: val.mainImage,
+      orderQuantity: val.amount,
       amount: val.amount,
       carryStatus: "도착완료",
+      productColor: val.color,
+      productSize: val.size,
     };
     try {
       await BuyList.create(newBuyList);

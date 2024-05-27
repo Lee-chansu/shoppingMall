@@ -39,12 +39,6 @@ exports.loadProductByNavButton = async (req, res) => {
   }
 };
 
-//category 클릭 시 detailbar 불러오기
-// exports.loadDetailArray = async (req, res) => {
-//   const { category } = req.query;
-//   console.log(category);
-// };
-
 // 제품의 상세옵션 조회
 exports.loadProductOne = async (req, res) => {
   const { id } = req.params;
@@ -296,5 +290,16 @@ exports.selectReviewlist = async (req, res) => {
     res.json(result);
   } else {
     res.json([]);
+  }
+};
+
+// 리뷰 등록
+exports.addReview = async (req, res) => {
+  const { addReview } = req.body;
+  if (addReview) {
+    await ReviewList.create(addReview);
+    res.send("success");
+  } else {
+    res.send("fail");
   }
 };
