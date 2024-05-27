@@ -103,12 +103,26 @@ big {
 }
 
 .upload {
-  padding: 5px 20px;
+  padding: 5px 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
   color: #ccc;
   cursor: pointer;
   font-size: 20px;
+}
+
+.upload:hover {
+  background-color: #ff6600;
+  color: #fff;
+  border: none;
+}
+
+.addFile {
+  padding-left: 5px;
+}
+
+.bi-image{
+  margin-top: -4px;
 }
 
 .review .btn1:hover {
@@ -164,7 +178,7 @@ big {
 }
 
 .review .reviewDetail {
-  color: #ddd;
+  color: #808080;
   font-family: "Inter-Regular", Helvetica;
   font-size: 16px;
   font-weight: 400;
@@ -298,10 +312,9 @@ big {
 }
 
 .review .selected {
-  background-color: #ccc;
-  color: #fff;
+  border: 3px solid #ff6600;
+  color: #ff6600;
   border-radius: 10px;
-  border: none;
   width: 250px;
   height: 70px;
   font-size: 20px;

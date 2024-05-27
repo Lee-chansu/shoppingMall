@@ -193,14 +193,14 @@ export const Cart = () => {
 
             <CustomButton
               className="btn2"
-              buttonTitle="선택상품 결제하기"
-              handleLinkMove={handlePaymentMove}
+              buttonTitle="선택상품 삭제하기"
+              handleLinkMove={handlePaymentRemove}
             />
 
             <CustomButton
               className="btn3"
-              buttonTitle="선택상품 삭제하기"
-              handleLinkMove={handlePaymentRemove}
+              buttonTitle="선택상품 결제하기"
+              handleLinkMove={handlePaymentMove}
             />
           </ButtonBox>
         </div>

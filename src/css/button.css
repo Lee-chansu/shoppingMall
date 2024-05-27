@@ -19,3 +19,18 @@
   border-radius: 5px;
   border: none;
 }
+
+/* Btn hover Style */
+.btn1,.btn2,.btn3 {
+  font-size: 18px;
+}
+
+.btn1:hover,
+.btn2:hover,
+.btn3:hover {
+  background-color: rgb(87, 87, 87);
+  color: #fff;
+}
+
+
+
