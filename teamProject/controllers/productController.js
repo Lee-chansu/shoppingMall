@@ -263,6 +263,28 @@ exports.updateProduct = async (req, res) => {
   }
 };
 
+// 제품 옵션 수정
+exports.updateProductOption = async (req, res) => {
+  const option = req.body;
+  console.log('testOption', option)
+
+  try {
+    const updatePromises = option.map(async (item) => {
+      return ProductOption.update(
+        { stock: item.stock },
+        { where: { id: item.id } }
+      );
+    });
+
+    await Promise.all(updatePromises);
+
+    res.json({ success: true, message: "제품 옵션 재고 업데이트 성공" });
+  } catch (error) {
+    console.error("제품 옵션 재고 업데이트 중 에러 발생", error);
+    res.status(500).json({ message: "제품 옵션 재고 업데이트 실패" });
+  }
+};
+
 //제품 삭제
 exports.deleteProduct = async (req, res) => {
   const { id } = req.params;
@@ -283,8 +305,7 @@ exports.deleteProduct = async (req, res) => {
 exports.selectReviewlist = async (req, res) => {
   const { buyList_id } = req.query;
   let result = await ReviewList.findAll({ where: {} });
-  if (buyList_id)
-    result = await ReviewList.findAll({ where: { buyList_id } });
+  if (buyList_id) result = await ReviewList.findAll({ where: { buyList_id } });
   // console.log(result);
   if (result) {
     res.json(result);
