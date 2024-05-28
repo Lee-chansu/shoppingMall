@@ -91,23 +91,6 @@ export function CheckoutPage() {
   }, [price]);
 
   const handlePaymentRequest = async () => {
-    const body = { list: location.state.paymentList, user_id: id };
-
-    const addingRes = await axios.post("http://localhost:5000/buyList", body);
-
-    if (!addingRes.data.success) {
-      alert("주문에 실패했습니다. 다시 시도해주세요.");
-      return;
-    }
-
-    const deletingRes = await axios.delete("http://localhost:5000/cart", {
-      data: body,
-    });
-
-    if (!deletingRes.data.success) {
-      alert("주문에 실패했습니다. 다시 시도해주세요.");
-      return;
-    }
     const orderId = nanoid();
     console.log("test", price);
 
@@ -121,7 +104,7 @@ export function CheckoutPage() {
       const saveResponse = await fetch("http://localhost:5000/paymentRequest", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: orderId, amount: price, user_id: id }),
+        body: JSON.stringify({ id: orderId, amount: price, user_id: id, items: location.state.paymentList }),
       });
 
       if (!saveResponse.ok) {

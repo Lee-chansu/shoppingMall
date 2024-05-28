@@ -96,15 +96,15 @@ export const Payment = () => {
     return data;
   };
 
-  const getProducts = async (id) => {
-    const result = await userFetchProducts(id);
-    const newArr = result.map((val, idx) => {
-      return { ...val };
-    });
-    console.log(newArr);
+  // const getProducts = async (id) => {
+  //   const result = await userFetchProducts(id);
+  //   const newArr = result.map((val, idx) => {
+  //     return { ...val };
+  //   });
+  //   console.log(newArr);
 
-    setPaymentItemList(newArr);
-  };
+  //   setPaymentItemList(newArr);
+  // };
 
   //user id 가져오기위한 useEffect
   useEffect(() => {
