@@ -99,6 +99,19 @@
   font-weight: 400;
   margin-top: 50px;
   margin-left: 80px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.review .reviewImageUpload .title{
+  width: 100%;
+
+}
+
+.review .reviewImage{
+  width: 150px;
+  height: 150px;
+  margin-right: 50px;
+  border-radius: 10px;
 }
 
 big {
@@ -332,3 +345,4 @@ big {
   height: 70px;
   font-size: 20px;
 }
+
