@@ -6,6 +6,7 @@ module.exports = {
     await queryInterface.bulkInsert('BuyLists', [
       {
         id: 99,
+        product_id: 10,
         productName: "productName10",
         category: "category10",
         price: 20000,
@@ -16,10 +17,12 @@ module.exports = {
         productSize: "L",
         orderQuantity: 0,
         amount:1,
+        isReviewed: false,
         carryStatus: '배송완료'
       },
       {
         id: 100,
+        product_id: 0,
         productName: "productName0",
         category: "category0",
         price: 10000,
@@ -30,10 +33,12 @@ module.exports = {
         productSize: "L",
         orderQuantity: 0,
         amount:1,
+        isReviewed: false,
         carryStatus: '배송중'
       },
       {
         id: 101,
+        product_id: 1,
         productName: "productName1",
         category: "category1",
         price: 10001,
@@ -44,10 +49,12 @@ module.exports = {
         productSize: 101,
         orderQuantity: 1,
         amount:2,
+        isReviewed: false,
         carryStatus: '도착완료'
       },
       {
         id: 102,
+        product_id: 2,
         productName: "productName2",
         category: "category2",
         price: 10002,
@@ -58,10 +65,12 @@ module.exports = {
         productSize: 102,
         orderQuantity: 2,
         amount:3,
+        isReviewed: false,
         carryStatus: '도착완료'
       },
       {
         id: 103,
+        product_id: 3,
         productName: "productName3",
         category: "category3",
         price: 10003,
@@ -72,10 +81,12 @@ module.exports = {
         productSize: 103,
         orderQuantity: 3,
         amount:1,
+        isReviewed: false,
         carryStatus: '도착완료'
       },
       {
         id: 104,
+        product_id: 4,
         productName: "productName4",
         category: "category4",
         price: 10004,
@@ -86,10 +97,12 @@ module.exports = {
         productSize: 104,
         orderQuantity: 4,
         amount:2,
+        isReviewed: false,
         carryStatus: '도착완료'
       },
       {
         id: 105,
+        product_id: 5,
         productName: "productName5",
         category: "category5",
         price: 10005,
@@ -100,10 +113,12 @@ module.exports = {
         productSize: "XL",
         orderQuantity: 5,
         amount:3,
+        isReviewed: false,
         carryStatus: '도착완료'
       },
       {
         id: 106,
+        product_id: 6,
         productName: "productName6",
         category: "category6",
         price: 10006,
@@ -114,10 +129,12 @@ module.exports = {
         productSize: 106,
         orderQuantity: 6,
         amount:1,
+        isReviewed: false,
         carryStatus: '도착완료'
       },
       {
         id: 107,
+        product_id: 7,
         productName: "productName7",
         category: "category7",
         price: 10007,
@@ -128,10 +145,12 @@ module.exports = {
         productSize: 107,
         orderQuantity: 7,
         amount:2,
+        isReviewed: false,
         carryStatus: '도착완료'
       },
       {
         id: 108,
+        product_id: 8,
         productName: "productName8",
         category: "category8",
         price: 10008,
@@ -142,10 +161,12 @@ module.exports = {
         productSize: 108,
         orderQuantity: 8,
         amount:3,
+        isReviewed: false,
         carryStatus: '도착완료'
       },
       {
         id: 109,
+        product_id: 9,
         productName: "productName9",
         category: "category9",
         price: 10009,
@@ -156,6 +177,7 @@ module.exports = {
         productSize: 109,
         orderQuantity: 9,
         amount:1,
+        isReviewed: false,
         carryStatus: '도착완료'
       },
     ], {});

@@ -154,7 +154,7 @@ export const ProductDetailDescription = () => {
 
       if (updatedFormData) {
         console.log(updatedFormData);
-        navigate("/payment", { state: { paymentList: [updatedFormData] } });
+        navigate("/payment", { state: { list: [updatedFormData] } });
       } else {
         console.log(updatedFormData);
         Myalter("warning", "구매 가이드", "상품을 선택하세요");

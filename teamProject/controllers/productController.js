@@ -2,7 +2,7 @@
 require("dotenv").config();
 //db
 const db = require("../models");
-const { Product, ProductOption, ProductDetail, Cart, ReviewList } = db;
+const { Product, ProductOption, ProductDetail, Cart, ReviewList, BuyList } = db;
 
 //imgbb 활용할 때 쓸 키
 //env에 넣고 쓸 수 없어 여기에 적어둬야 할듯...
@@ -298,6 +298,7 @@ exports.selectReviewlist = async (req, res) => {
 // 리뷰 등록
 exports.addReview =  async (req, res) => {
   const {addReview} = req.body
+  console.log(addReview.buyList_id)
   
   if (addReview) {
     if(addReview.reviewImage){
@@ -307,10 +308,21 @@ exports.addReview =  async (req, res) => {
       }
       const uploadResponse = await imgbbUploader(options);
       addReview.reviewImage = uploadResponse.url;
-      await ReviewList.create(addReview);
+      await ReviewList.create(addReview); // 리뷰테이블
+
+      const buyList = await BuyList.findOne({where:{id:addReview.buyList_id}}) // 리뷰등록성공하면 구매내역테이블 isReviewed 값변경
+      if(buyList){
+        buyList.isReviewed = true
+        await buyList.save()
+      }
       res.send("success");
     }else{
       await ReviewList.create(addReview);
+      const buyList = await BuyList.findOne({where:{id:addReview.buyList_id}})
+      if(buyList){
+        buyList.isReviewed = true
+        await buyList.save()
+      }
       res.send("success");
     }
   } else {

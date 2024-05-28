@@ -11,6 +11,9 @@ import { Myalter } from "../components/Myalter";
 import { jwtDecode } from "jwt-decode";
 
 export const Review = () => {
+
+  const location = useLocation();
+  const navigate = useNavigate();
   useEffect(() => {
     // 유저 고유 id 받아오기
     const token = sessionStorage.getItem("token");
@@ -19,17 +22,26 @@ export const Review = () => {
     } else {
       const decodeToken = jwtDecode(token);
       setAddReview((pre) => ({ ...pre, user_id: decodeToken.id }));
+      if(location.state){
+        setBuyList(location.state.buyList)  // 제품정보값넣기
+        setAddReview((pre)=>({...pre, buyList_id : location.state.buyList.id}))
+      }else{
+        navigate("/")
+      }
     }
   }, []);
 
-  const location = useLocation();
-  const { buyList } = location.state; // 상품 구매id 받아오기
-
-  const navigate = useNavigate();
-
+  const [buyList,setBuyList] = useState({  // 제품정보
+    id : "",
+    productName : "",
+    price : "",
+    productColor : "",
+    productSize : "",
+    image : "",
+  })
   const [addReview, setAddReview] = useState({
     user_id: "",
-    buyList_id: buyList.id,
+    buyList_id: "",
     starPoint: 0,
     reviewColor: 0,
     reviewSize: 0,
@@ -104,7 +116,7 @@ export const Review = () => {
           throw new Error("서버에서 응답을 받을 수 없습니다");
         } else {
           await Myalter("success", "리뷰 가이드", "리뷰작성 완료");
-          // navigate(`/buyList/${buyList.user_id}`);
+          navigate(`/payBuyList`);
         }
       } catch (error) {
         Myalter("warning", "리뷰 가이드", "리뷰 등록중 오류가 발생했습니다");
@@ -125,7 +137,7 @@ export const Review = () => {
           <div className="nameOptionBox">
             <div className="productName">{buyList.productName}</div>
             <div className="productOption">
-              {buyList.productColor} ,{buyList.productSize}
+              색상 : {buyList.productColor}  /  사이즈 : {buyList.productSize}
             </div>
           </div>
         </div>
