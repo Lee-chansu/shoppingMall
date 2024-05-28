@@ -66,7 +66,7 @@ exports.loadProductOne = async (req, res) => {
   }
 };
 
-//옵션 전부 조회.
+//옵션 전부 조회
 exports.selectProductOptionAll = async (req, res) => {
   const result = await ProductOption.findAll();
   res.json(result);

@@ -153,6 +153,19 @@
   width: 100%;
   min-height: 200px;
   display: flex;
-  flex-flow: column;
   align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  border: 5px #ddd dashed;
+}
+
+.descriptionImgWrap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.descriptionImg {
+  display: block;
+  width: 240px;
+  margin: 20px 20px;
 }

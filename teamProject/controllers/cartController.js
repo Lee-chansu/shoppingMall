@@ -2,7 +2,7 @@ require("dotenv").config();
 
 //db
 const db = require("../models");
-const { Cart, BuyList, Product, ProductOption, Carry, PaymentRequest } = db;
+const { Cart, BuyList, Product, Carry, PaymentRequest } = db;
 
 //user Id 로 장바구니 조회
 exports.selectCartByUserId = async (req, res) => {
