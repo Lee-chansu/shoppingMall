@@ -298,7 +298,7 @@ exports.selectReviewlist = async (req, res) => {
 // 리뷰 등록
 exports.addReview =  async (req, res) => {
   const {addReview} = req.body
-  console.log(addReview.buyList_id)
+  // console.log(addReview.buyList_id)
   
   if (addReview) {
     if(addReview.reviewImage){
