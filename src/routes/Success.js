@@ -8,17 +8,15 @@ export function SuccessPage() {
   const [searchParams] = useSearchParams();
   const [id, setId] = useState("");
   const [stockList, setStockList] = useState([]);
+  const [optionList, setOptionList] = useState([]);
   // const location = useLocation();
   // const paymentList = location.state?.paymentList;
 
   useEffect(() => {
-    //현재 token이 sessionStorage(공간)에 id를 암호화한 상태로 저장되어있음(pk 유니크)
     const token = sessionStorage.getItem("token");
     if (id === "" && !token) {
       navigate("/login");
     } else {
-      //jwt : Json Web Token
-      //Decode : 복호화(암호해독)
       const decodeToken = jwtDecode(token);
       setId(decodeToken.id);
       console.log('id', id)
@@ -50,7 +48,13 @@ export function SuccessPage() {
 
       arrayResponse[0].items.map((el) => {
         console.log(el.productOption_id)
+        const newOptionList = optionList
+        setOptionList([...newOptionList, el.productOption_id])
+        // console.log(optionList)
       })
+
+      console.log('optionList', optionList)
+
 
       // const findStock = async () => {
       // //   arrayResponse[0].items.map((el) => {
