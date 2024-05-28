@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { Myalter } from "./Myalter";
 
 export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
   const [subImageFile, setSubImageFile] = useState("");
 
   const subIamgeArray = {
-    subImage1: subImageFile,
-    subImage2: subImageFile,
-    subImage3: subImageFile,
+    subImage1: newProduct.subImage1,
+    subImage2: newProduct.subImage2,
+    subImage3: newProduct.subImage3,
   }[subImageId];
 
-  const previewImage = (e) => {
+  const previewImage = e => {
     const file = e.target.files[0];
     const reader = new FileReader();
     if (file) {
@@ -26,24 +27,24 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
       ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
-        alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
+        Myalter(null, null, `${file.name} 파일은 허용되지 않는 확장자입니다.`);
         e.target.value = subImageFile; // 파일 선택 취소
         return; // 다음 파일 처리 중단
       }
       reader.onloadend = () => {
         setSubImageFile(reader.result);
         if (subImageId === "subImage1") {
-          setNewProduct((prevState) => ({
+          setNewProduct(prevState => ({
             ...prevState,
             subImage1: reader.result,
           }));
         } else if (subImageId === "subImage2") {
-          setNewProduct((prevState) => ({
+          setNewProduct(prevState => ({
             ...prevState,
             subImage2: reader.result,
           }));
         } else if (subImageId === "subImage3") {
-          setNewProduct((prevState) => ({
+          setNewProduct(prevState => ({
             ...prevState,
             subImage3: reader.result,
           }));

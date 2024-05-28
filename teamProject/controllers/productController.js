@@ -11,7 +11,6 @@ const imgbbUploader = require("imgbb-uploader");
 //nav바 버튼에 따라 카테고리별 제품 조회
 exports.loadProductByNavButton = async (req, res) => {
   const { category, detail } = req.query;
-  console.log(detail);
   let result;
   try {
     if (detail) {
@@ -57,6 +56,7 @@ exports.loadProductOne = async (req, res) => {
       subImage1: product.subImage1,
       subImage2: product.subImage2,
       subImage3: product.subImage3,
+      description: product.description,
       category: productDetail.category,
       detail: productDetail.detailCategory,
     };
@@ -66,7 +66,7 @@ exports.loadProductOne = async (req, res) => {
   }
 };
 
-//옵션들 전부 조회.
+//옵션 전부 조회.
 exports.selectProductOptionAll = async (req, res) => {
   const result = await ProductOption.findAll();
   res.json(result);
@@ -83,7 +83,7 @@ exports.loadProductOption = async (req, res) => {
   res.json(result);
 };
 
-//detail 조회
+//productDetail 조회
 exports.selectProductDetailAll = async (req, res) => {
   const result = await ProductDetail.findAll();
   res.json(result);
@@ -91,7 +91,7 @@ exports.selectProductDetailAll = async (req, res) => {
 
 // 제품 추가
 exports.addProduct = async (req, res) => {
-  const { newProduct, newOption } = req.body;
+  const { newProduct, newOption, descriptionImgArray } = req.body;
   const base64Images = [
     newProduct.mainImage.split(",")[1],
     newProduct.subImage1 ? newProduct.subImage1.split(",")[1] : null,
@@ -121,6 +121,23 @@ exports.addProduct = async (req, res) => {
     newProduct.subImage1 = productImage[1];
     newProduct.subImage2 = productImage[2];
     newProduct.subImage3 = productImage[3];
+
+    let index = 0;
+    for (let img of descriptionImgArray) {
+      options = {
+        apiKey: imgbbKey,
+        base64string: img.split(",")[1],
+      };
+      if (options.base64string) {
+        const uploadResponse = await imgbbUploader(options);
+        newProduct.description += uploadResponse.url + ",";
+        index++;
+      } else {
+        newProduct.description += ",";
+        index++;
+      }
+    }
+
     const product = await Product.create(newProduct);
     const { id } = await Product.findOne({
       order: [["id", "DESC"]],
@@ -273,5 +290,16 @@ exports.selectReviewlist = async (req, res) => {
     res.json(result);
   } else {
     res.json([]);
+  }
+};
+
+// 리뷰 등록
+exports.addReview = async (req, res) => {
+  const { addReview } = req.body;
+  if (addReview) {
+    await ReviewList.create(addReview);
+    res.send("success");
+  } else {
+    res.send("fail");
   }
 };

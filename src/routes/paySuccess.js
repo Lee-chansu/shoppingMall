@@ -6,16 +6,15 @@ import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
 import { PaySuccessItem } from "../components/PaySuccessItem";
 import { jwtDecode } from "jwt-decode";
-import { async } from "q";
 import axios from "axios";
 
 export const PaySuccess = () => {
   const [paidItemList, setPaidItemList] = useState([]);
-  const [id, setId] = useState('');
-  const [userName, setUserName] = useState('');
+  const [id, setId] = useState("");
+  const [userName, setUserName] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-  const { paySelect, list, orderSum } = location.state;
+  const { paySelect, list, orderSum, paySelectSumPrice } = location.state;
 
   const handleHome = () => {
     navigate("/");
@@ -30,16 +29,16 @@ export const PaySuccess = () => {
   };
 
   useEffect(() => {
-    console.log(list);
+    // console.log(list);
     setPaidItemList(list);
   }, []);
 
   const getUser = async () => {
-    const res = await axios.get(`http://localhost:5000/userProfile/${id}`)
-    const data = res.data //user정보를 다 가져옴
+    const res = await axios.get(`http://localhost:5000/userProfile/${id}`);
+    const data = res.data; //user정보를 다 가져옴
     console.log(data);
     setUserName(data.userName);
-  }
+  };
 
   //userId 가져오기
   useEffect(() => {
@@ -55,7 +54,7 @@ export const PaySuccess = () => {
     }
 
     if (id !== "") {
-      getUser()
+      getUser();
     }
   }, [id]);
 
@@ -73,9 +72,7 @@ export const PaySuccess = () => {
               </div>
             </div>
             <div className="orderInfo">
-              <div className="payInfo">
-                {userName}님의 결제내역
-              </div>
+              <div className="payInfo">{userName}님의 결제내역</div>
               <div className="howToPay">결제방법</div>
               <div className="howToPayPrint">{paySelect}</div>
               <div className="paySum">{orderSum.paySumTotal} 원</div>

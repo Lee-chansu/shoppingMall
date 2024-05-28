@@ -128,7 +128,7 @@ export const UserEdit = () => {
           navigate("/userProfile");
         }
       } catch (error) {
-        Myalter('success','유저 수정 가이드',"유저 수정중 오류가 발생했습니다")
+        Myalter('warning','유저 수정 가이드',"유저 수정중 오류가 발생했습니다")
       }
     }
   };

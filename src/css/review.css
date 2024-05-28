@@ -37,13 +37,13 @@
 
 .review .productName {
   font-family: "Inter-Regular", Helvetica;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
 }
 
 .review .productOption {
   font-family: "Inter-Regular", Helvetica;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
 }
 
@@ -61,6 +61,9 @@
   width: 500px;
   height: 60px;
 }
+
+
+
 
 .review .reviewColorBox {
   color: #000000;
@@ -89,7 +92,7 @@
   margin-left: 80px;
 }
 
-.review .reviewAddImage {
+.review .reviewImageUpload {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 40px;
@@ -99,11 +102,11 @@
 }
 
 big {
-  color: #FF6600;
+  color: #ff6600;
 }
 
 .upload {
-  padding: 5px 20px;
+  padding: 5px 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
   color: #ccc;
@@ -111,22 +114,36 @@ big {
   font-size: 20px;
 }
 
+.upload:hover {
+  background-color: #ff6600;
+  color: #fff;
+  border: none;
+}
+
+.addFile {
+  padding-left: 5px;
+}
+
+.bi-image{
+  margin-top: -4px;
+}
+
 .review .btn1:hover {
-  background-color: #FF6600;
+  background-color: #ff6600;
   color: #fff;
 }
 
 .review .reviewTitle {
-  color: #FF6600;
+  color: #ff6600;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 40px;
+  font-size: 24px;
   font-weight: 600;
   padding-top: 80px;
   text-align: center;
 }
 
 .review .title {
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .review .checkBox {
@@ -164,7 +181,7 @@ big {
 }
 
 .review .reviewDetail {
-  color: #ddd;
+  color: #808080;
   font-family: "Inter-Regular", Helvetica;
   font-size: 16px;
   font-weight: 400;
@@ -297,20 +314,21 @@ big {
   color: #ccc;
 }
 
-.selected {
-  background-color: #ccc;
-  color: #fff;
+.review .selected {
+  border: 3px solid #ff6600;
+  color: #ff6600;
   border-radius: 10px;
-  border: none;
   width: 250px;
   height: 70px;
+  font-size: 20px;
 }
 
-.non-selected {
+.review .non-selected {
   border: 3px solid #ddd;
   border-radius: 10px;
   background-color: #fff;
   color: #ccc;
   width: 250px;
   height: 70px;
+  font-size: 20px;
 }

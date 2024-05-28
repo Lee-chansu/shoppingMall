@@ -6,6 +6,8 @@ import "../css/productAdd.css";
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
 import { ProductOption } from "../components/productOptionAdd";
+import { MyDropzone } from "../components/DropZone";
+import { Myalter } from "../components/Myalter";
 
 export const ProductAdd = () => {
   const navigate = useNavigate();
@@ -48,13 +50,13 @@ export const ProductAdd = () => {
       ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
-        alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
+        Myalter(null, null, `${file.name} 파일은 허용되지 않는 확장자입니다.`);
         mainImgRef.value = mainImageFile; // 파일 선택 취소
         return; // 다음 파일 처리 중단
       }
       reader.onloadend = () => {
         setMainImageFile(reader.result);
-        setNewProduct((prevState) => ({
+        setNewProduct(prevState => ({
           ...prevState,
           mainImage: reader.result,
         }));
@@ -65,25 +67,25 @@ export const ProductAdd = () => {
     }
   };
 
-  const addTag = (e) => {
+  const addTag = e => {
     e.preventDefault();
     setCount(count + 1);
   };
 
-  const checkOnlyOneCategory = (checkThis) => {
+  const checkOnlyOneCategory = checkThis => {
     checkThis.checked === false
       ? setCheckCategory("")
       : setCheckCategory(checkThis.name);
   };
 
-  const checkOnlyOneDetail = (checkThis) => {
+  const checkOnlyOneDetail = checkThis => {
     checkThis.checked === false
       ? setCheckDetail("")
       : setCheckDetail(checkThis.name);
   };
 
   const showDetailBar = () => {
-    setNewProduct((prevState) => ({
+    setNewProduct(prevState => ({
       ...prevState,
       category: checkCategory,
       detail: checkDetail,
@@ -107,7 +109,7 @@ export const ProductAdd = () => {
     description: "",
   });
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
@@ -126,13 +128,15 @@ export const ProductAdd = () => {
     );
   });
 
+  const [descriptionImgArray, setDescriptionImgArray] = useState([]);
+
   useEffect(() => {
     showDetailBar();
   }, [checkCategory, checkDetail]);
 
   useEffect(() => {}, [newOption]);
 
-  const toAddProduct = async (e) => {
+  const toAddProduct = async e => {
     e.preventDefault();
 
     try {
@@ -172,13 +176,14 @@ export const ProductAdd = () => {
       const body = {
         newProduct,
         newOption,
+        descriptionImgArray,
       };
 
       await fetch("http://localhost:5000/addProduct", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      }).then((res) => {
+      }).then(res => {
         res.json();
         if (res.ok) {
           alert("제품을 추가했습니다.");
@@ -208,19 +213,17 @@ export const ProductAdd = () => {
             <div className="wrap">
               <h2 className="title">카테고리</h2>
               <div className="boxWrap">
-                {category.map((el) => {
+                {category.map(el => {
                   return (
                     <div className="box" key={el}>
-                      <label className="text" htmlFor={el}>
-                        {el}
-                      </label>
+                      <p className="text">{el}</p>
                       <input
                         type="checkbox"
                         className="checkBoxCategory"
                         name={el}
                         value={el}
                         checked={checkCategory === el}
-                        onChange={(e) => checkOnlyOneCategory(e.target)}
+                        onChange={e => checkOnlyOneCategory(e.target)}
                       />
                     </div>
                   );
@@ -243,7 +246,7 @@ export const ProductAdd = () => {
                           name={el}
                           value={el}
                           checked={checkDetail === el}
-                          onChange={(e) => checkOnlyOneDetail(e.target)}
+                          onChange={e => checkOnlyOneDetail(e.target)}
                         />
                       </div>
                     );
@@ -314,11 +317,21 @@ export const ProductAdd = () => {
               </div>
             </div>
             <div className="wrap description">
-              <h2 className="title">상품 상세설명</h2>
+              <h2 className="title">Description</h2>
               <div className="boxWrap">
-                <input type="text" name="description" onChange={valueChange} />
+                <MyDropzone
+                  descriptionImgArray={descriptionImgArray}
+                  setDescriptionImgArray={setDescriptionImgArray}
+                />
               </div>
             </div>
+            {descriptionImgArray.map((img, index) => {
+              return (
+                <div key={index}>
+                  <img src={img} alt="이미지" style={{ width: "100%", margin : "20px 20px" }} />
+                </div>
+              );
+            })}
             <div className="btnForm">
               <button>추가</button>
               <Link to="/productList">

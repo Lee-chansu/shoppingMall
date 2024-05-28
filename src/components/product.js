@@ -22,15 +22,18 @@ export const Product = ({ product, category, detail }) => {
         />
       </div>
       <div className="infoBox">
+        {/* {product.name
+          ? console.log(product.name)
+          : console.log(product.Product.name)} */}
         <div className="productName">
-          {category || detail ? (
+          {!product.name ? (
             <p className="text"> 제품이름 : {product.Product.name}</p>
           ) : (
             <p className="text"> 제품이름 : {product.name}</p>
           )}
         </div>
         <div className="productInfo">
-          {category || detail ? (
+          {!product.price ? (
             <p className="text"> 제품가격 : {product.Product.price}</p>
           ) : (
             <p className="text"> 제품가격 : {product.price}</p>

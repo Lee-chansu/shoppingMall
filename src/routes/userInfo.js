@@ -2,8 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../css/userInfo.css";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
-import Swal from "sweetalert2"
-
+import Swal from "sweetalert2";
 
 export const UserInfo = () => {
   const [imageUrl, setImageUrl] = useState("");
@@ -27,34 +26,37 @@ export const UserInfo = () => {
     setImageUrl(body.data);
   };
 
-  const logOut = (e) => {
+  const logOut = e => {
     e.preventDefault();
     sessionStorage.removeItem("token");
-    
+
     Swal.fire({
-      icon : 'success',
-      title : '로그아웃 성공',
-    }).then(()=>{navigate("/")})
+      icon: "success",
+      title: "로그아웃 성공",
+    }).then(() => {
+      navigate("/");
+    });
   };
 
-  const deleteButton = async (e) => {
+  const deleteButton = async e => {
     e.preventDefault();
 
-    const response = await fetch(`http://localhost:5000/userProfile/${id}`);
+    const response = await fetch(`http://localhost:5000/userProfile/${id}`)
+    ;
     const body = await response.json();
 
     const delCode = `${body.userName}는 탈퇴하겠습니다`;
-    
+
     const delReult = await Swal.fire({
-      icon : 'info',
-      title : '회원탈퇴 가이드',
-      text : `회원탈퇴를 원하시면 "${body.userName}는 탈퇴하겠습니다" 입력하시오 `,
-      input : 'text',
-      confirmButtonText: '확인',
+      icon: "info",
+      title: "회원탈퇴 가이드",
+      text: `회원탈퇴를 원하시면 "${body.userName}는 탈퇴하겠습니다" 입력하시오 `,
+      input: "text",
+      confirmButtonText: "확인",
       showCancelButton: true,
-      cancelButtonText: '취소'
-    })
-        
+      cancelButtonText: "취소",
+    });
+
     if (delReult.value == delCode) {
       try {
         const response = await fetch(
@@ -67,23 +69,25 @@ export const UserInfo = () => {
         } else {
           sessionStorage.removeItem("token");
           Swal.fire({
-            icon : 'success',
-            title : '회원탈퇴 성공',
-          }).then(()=>{navigate("/")})
+            icon: "success",
+            title: "회원탈퇴 성공",
+          }).then(() => {
+            navigate("/");
+          });
         }
       } catch (error) {
         Swal.fire({
-          icon : 'warning',
-          title : '회원탈퇴 가이드',
-          text : '유저 삭제중 오류가 발생했습니다'
-        })
+          icon: "warning",
+          title: "회원탈퇴 가이드",
+          text: "유저 삭제중 오류가 발생했습니다",
+        });
       }
     } else {
       Swal.fire({
-        icon : 'warning',
-        title : '회원탈퇴 가이드',
-        text : '회원탈퇴 실패'
-      })
+        icon: "warning",
+        title: "회원탈퇴 가이드",
+        text: "회원탈퇴 실패",
+      });
     }
   };
 

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/join.css";
 import { useRef, useState } from "react";
 import AddressModal from "../components/AddressModal";
+import { Myalter } from "../components/Myalter";
 
 export const Join = () => {
   const navigate = useNavigate();
@@ -17,43 +18,54 @@ export const Join = () => {
     passwordCheck: "",
     userName: "",
     email: "",
-    phoneNumber: "",
-    address: "",
+    mainAddress: "",
+    detailAddress: "",
     gender: "",
+    mobile: "010",
+    mobile2: "",
+    mobile3: "",
+    phoneNumber: "",
   });
 
   const valueChange = (e) => {
     const { name, value } = e.target;
     setNewUser({ ...newUser, [name]: value });
+    setNewUser((pre) => ({
+      ...pre,
+      phoneNumber: pre.mobile + "-" + pre.mobile2 + "-" + pre.mobile3,
+    }));
+    if (mainAddressRef.current.value)
+      setNewUser((pre) => ({
+        ...pre,
+        mainAddress: mainAddressRef.current.value,
+      }));
   };
 
   const buttonClick = async (e) => {
     e.preventDefault();
     console.log(newUser);
     if (!newUser.userId) {
-      alert("아이디를 입력하시오");
+      Myalter("warning", "회원가입 가이드", "아이디를 입력하시오");
     } else if (!newUser.password) {
-      alert("비밀번호를 입력하시오");
+      Myalter("warning", "회원가입 가이드", "비밀번호를 입력하시오");
     } else if (newUser.password !== newUser.passwordCheck) {
-      alert("비밀번호 재확인이 일치하지않습니다");
+      Myalter(
+        "warning",
+        "회원가입 가이드",
+        "비밀번호 재확인이 일치하지않습니다"
+      );
     } else if (!newUser.userName) {
-      alert("이름을 입력하시오");
+      Myalter("warning", "회원가입 가이드", "이름을 입력하시오");
     } else if (!newUser.email) {
-      alert("이메일을 입력하시오");
-    } else if (!newUser.phoneNumber) {
-      /* 전화번호 숫자일경우 넘기기 */
-      function checkPhoneNumber(param) {
-        const mobile = /^\d/;
-        const mobile2 = /^\d/;
-        const mobile3 = /^\d/;
-        return mobile + mobile2 + mobile3;
-      }
-      alert("전화번호를 입력하시오");
-    } else if (!newUser.address) {
-      alert("주소를 입력하시오");
+      Myalter("warning", "회원가입 가이드", "이메일을 입력하시오");
+    } else if (newUser.phoneNumber.length < 11) {
+      Myalter("warning", "회원가입 가이드", "전화번호를 입력하시오");
+    } else if (!newUser.mainAddress) {
+      Myalter("warning", "회원가입 가이드", "주소를 입력하시오");
+    } else if (!newUser.detailAddress) {
+      Myalter("warning", "회원가입 가이드", "상세주소를 입력하시오");
     } else if (!newUser.gender) {
-      console.log(newUser.gender);
-      alert("성별을 선택하시오");
+      Myalter("warning", "회원가입 가이드", "성별을 선택하시오");
     } else {
       try {
         const response = await fetch("http://localhost:5000/join/", {
@@ -67,14 +79,18 @@ export const Join = () => {
         } else {
           let no = await response.json();
           if (no.result == false) {
-            alert("회원가입이 완료");
+            await Myalter("success", "회원가입 가이드", "회원가입이 완료");
             navigate("/");
           } else {
-            alert("기존에 있는 아이디입니다");
+            Myalter("warning", "회원가입 가이드", "기존에 있는 아이디입니다");
           }
         }
       } catch (error) {
-        alert("회원가입 중 오류가 발생했습니다");
+        Myalter(
+          "warning",
+          "회원가입 가이드",
+          "회원가입 중 오류가 발생했습니다"
+        );
       }
     }
   };
@@ -147,7 +163,12 @@ export const Join = () => {
                   onChange={valueChange}
                   placeholder="전화번호*"
                 /> */}
-                <select id="mobile" className="mobile" onChange={valueChange}>
+                <select
+                  id="mobile"
+                  name="mobile"
+                  className="mobile"
+                  onChange={valueChange}
+                >
                   <option value="010">010</option>
                   <option value="011">011</option>
                   <option value="016">016</option>
@@ -160,13 +181,15 @@ export const Join = () => {
                   id="mobile2"
                   name="mobile2"
                   className="mobile"
+                  maxLength="4"
                   onChange={valueChange}
                 ></input>
                 -
                 <input
                   id="mobile3"
-                  name="mobile23"
+                  name="mobile3"
                   className="mobile"
+                  maxLength="4"
                   onChange={valueChange}
                 ></input>
               </div>
@@ -175,7 +198,7 @@ export const Join = () => {
                 <input
                   className="input width"
                   id="address"
-                  name="address"
+                  name="mainAddress"
                   ref={mainAddressRef}
                   onChange={valueChange}
                   placeholder="도로명 주소*"
@@ -183,8 +206,9 @@ export const Join = () => {
                 />
                 <AddressModal
                   className="addressModal"
-                  innerText="주소 찾기"
+                  innerText="주소 검색"
                   mainAddressRef={mainAddressRef}
+                  setNewUser={setNewUser}
                 />
                 {/* <button
                   onClick={() => {
@@ -196,7 +220,7 @@ export const Join = () => {
                 <input
                   className="input"
                   id="address"
-                  name="address"
+                  name="detailAddress"
                   onChange={valueChange}
                   placeholder="상세주소*"
                 />

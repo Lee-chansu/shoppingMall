@@ -27,16 +27,16 @@ export const ProductList = () => {
 
   const loadProduct = async () => {
     let getProduct;
-    if (category) {
-      getProduct = await fetch(
-        `http://localhost:5000/product?category=${category}`
-      ).then((res) => res.json());
-    } else if (detail) {
+    if (detail) {
       getProduct = await fetch(
         `http://localhost:5000/product?detail=${detail}`
-      ).then((res) => res.json());
+      ).then(res => res.json());
+    } else if (category) {
+      getProduct = await fetch(
+        `http://localhost:5000/product?category=${category}`
+      ).then(res => res.json());
     } else {
-      getProduct = await fetch(`http://localhost:5000/product`).then((res) =>
+      getProduct = await fetch(`http://localhost:5000/product`).then(res =>
         res.json()
       );
     }
@@ -63,7 +63,7 @@ export const ProductList = () => {
             </Link>
           </div>
           <div className="productWrap">
-            {productList.map((product) => {
+            {productList.map(product => {
               return (
                 <Link
                   key={product.id}
@@ -71,7 +71,6 @@ export const ProductList = () => {
                   to={`/productList/detail/description/${product.id}`}
                 >
                   <Product
-                    key={product.id}
                     product={product}
                     category={category}
                     detail={detail}
