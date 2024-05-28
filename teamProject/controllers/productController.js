@@ -283,10 +283,10 @@ exports.deleteProduct = async (req, res) => {
 
 //제품 리뷰 조회
 exports.selectReviewlist = async (req, res) => {
-  const { productOption_id } = req.query;
+  const { buyList_id } = req.query;
   let result = await ReviewList.findAll({ where: {} });
-  if (productOption_id)
-    result = await ReviewList.findAll({ where: { productOption_id } });
+  if (buyList_id)
+    result = await ReviewList.findAll({ where: { buyList_id } });
   // console.log(result);
   if (result) {
     res.json(result);

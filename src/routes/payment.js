@@ -65,7 +65,7 @@ export const Payment = () => {
 
   const handleAllPayment = () => {
     navigate("/toss", {
-      state: { paymentList: location.state.list, orderSum },
+      state: { paymentList: location.state.list, orderSum, paySelect: 'test' },
     });
     //모달 처리 예정 , if문으로 분기처리 예정
   };
@@ -73,8 +73,8 @@ export const Payment = () => {
   const handleAllPayment2 = () => {
     navigate("/paysuccess", {
       state: {
-        list: location.state.list,
-        paySelectSumPrice: orderSum.paySumTotal,
+        list: location.state.list, orderSum, paySelect : 'test'
+        // paySelectSumPrice: orderSum.paySumTotal,
       },
     });
     //모달 처리 예정 , if문으로 분기처리 예정
@@ -248,17 +248,17 @@ export const Payment = () => {
               <div className="saleBox">
                 <div className="coupon">쿠폰 사용하기</div>
                 <div className="coupon2">
-                  <label for="agree1" class="radio_box">
+                  <label for="agree1" className="radio_box">
                     <input
                       type="radio"
                       id="agree1"
                       name="agree"
                       value="신규고객 5,000원 할인쿠폰"
                     />
-                    <span class="on"></span>
+                    <span className="on"></span>
                     신규고객 5,000원 할인쿠폰
                   </label>
-                  <label for="agree2" class="radio_box">
+                  <label for="agree2" className="radio_box">
                     <input
                       type="radio"
                       id="agree2"
@@ -276,7 +276,7 @@ export const Payment = () => {
                       value="쿠폰선택 안함"
                       defaultChecked
                     />
-                    <span class="on"></span>
+                    <span className="on"></span>
                     쿠폰선택 안함
                   </label>
                 </div>

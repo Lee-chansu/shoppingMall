@@ -15,13 +15,8 @@ export const ProductReview = (props) => {
       .then((response) => response.json())
       .then((data) => setUserList(data));
 
-    // reviewList 데이터 가져오기
-    // fetch(`http://localhost:5000/reviewList?productOption_id=${item}`)
-    //   .then((response) => response.json())
-    //   .then((data) => setReviewList(data));
-
-    // // starPoint 데이터 가져오기
-    // fetch(`http://localhost:5000/reviewList?productOption_id=${item}`)
+    // // reviewList 데이터 가져오기
+    // fetch(`http://localhost:5000/reviewList?buyList_id=${item}`)
     //   .then((response) => response.json())
     //   .then((data) => setReviewList(data));
   }, []);

@@ -25,7 +25,7 @@ export const PayItem = ({ val, handleDeleteItem, handleAddToCart }) => {
         <div className="productBox">
           <div className="productName">상품명 : {val.productName}</div>
           <div className="productName">수량 : {val.amount}</div>
-          <div className="productName">구분 : {val.category}</div>
+          <div className="productName">사이즈 : {val.productSize} / 색상: {val.productColor}</div>
           <div className="productName">배송상태 : {val.carryStatus}</div>
         </div>
 

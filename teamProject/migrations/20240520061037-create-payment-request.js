@@ -18,6 +18,9 @@ module.exports = {
           key: 'id'
         }
       },
+      items: {
+        type: Sequelize.JSON,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
