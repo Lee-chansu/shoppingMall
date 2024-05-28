@@ -40,6 +40,7 @@ exports.selectBuyListByUserId = async (req, res) => {
     // include: [ProductOption],
   });
   res.json(result);
+  console.log(result)
 };
 
 //배송리스트 조회

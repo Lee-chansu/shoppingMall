@@ -1,6 +1,6 @@
 import React from "react";
 
-const ReviewImageUpload = () => {
+const ReviewImageUpload = ({handleChange}) => {
   return (
     <>
       <div className="addImgInput">
@@ -18,7 +18,7 @@ const ReviewImageUpload = () => {
           </svg>
             <span className="addFile">파일 첨부</span>
         </label>
-        <input type="file" id="input-file" style={{ display: "none" }} />
+        <input type="file" id="input-file" style={{ display: "none" }} onChange={handleChange}/>
         <p className="subTitle">
           첨부파일은 최대 3장, 30MB까지만 등록 가능합니다.
         </p>
