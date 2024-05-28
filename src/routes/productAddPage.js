@@ -9,6 +9,7 @@ import { SubImagePreview } from "../components/subImgPreview";
 import { ProductOption } from "../components/productOptionAdd";
 import { MyDropzone } from "../components/DropZone";
 import { Myalter } from "../components/Myalter";
+import Swal from "sweetalert2";
 
 export const ProductAdd = () => {
   const navigate = useNavigate();
@@ -51,7 +52,14 @@ export const ProductAdd = () => {
       ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
-        Myalter(null, null, `${file.name} 파일은 허용되지 않는 확장자입니다.`);
+        Swal.fire({
+          icon: "error",
+          title: "이미지를 업로드하는데 실패했습니다.",
+          text: `${file.name} 파일은 허용되지 않는 확장자입니다.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         mainImgRef.value = mainImageFile; // 파일 선택 취소
         return; // 다음 파일 처리 중단
       }
@@ -282,6 +290,17 @@ export const ProductAdd = () => {
               </h2>
               {components}
             </div>
+            <p
+              style={{
+                display: "inline-block",
+                margin: "0 15px",
+                color: "#ccc",
+                fontSize: "15px",
+              }}
+            >
+              이미지파일은 ".jpg", ".png", ".bmp", ".gif", ".tif", ".webp",
+              ".heic", ".pdf"만 가능합니다.
+            </p>
             <div className="wrap img">
               <h2 className="title">메인이미지 등록</h2>
               <div className="boxWrap">
@@ -308,6 +327,7 @@ export const ProductAdd = () => {
                 />
               </div>
             </div>
+
             <div className="wrap img">
               <h2 className="title">서브이미지 등록</h2>
               <div className="boxWrap">

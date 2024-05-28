@@ -8,6 +8,7 @@ import "../css/productEdit.css";
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
 import { ProductOption, EditInfo } from "../components/productOptionAdd";
+import Swal from "sweetalert2";
 
 export const ProductEdit = () => {
   const id = useParams().id;
@@ -80,7 +81,14 @@ export const ProductEdit = () => {
       ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
-        alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
+        Swal.fire({
+          icon: "error",
+          title: "이미지를 업로드하는데 실패했습니다.",
+          text: `${file.name} 파일은 허용되지 않는 확장자입니다.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         mainImgRef.value = mainImageFile; // 파일 선택 취소
         return; // 다음 파일 처리 중단
       }
