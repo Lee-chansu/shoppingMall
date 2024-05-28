@@ -9,6 +9,9 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
+      product_id: {
+        type: DataTypes.INTEGER,
+      },
       productName: {
         type: DataTypes.STRING(255),
       },
@@ -42,6 +45,10 @@ module.exports = (sequelize) => {
       },
       orderQuantity: {
         type: DataTypes.INTEGER,
+      },
+      isReviewed: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
     },
     {

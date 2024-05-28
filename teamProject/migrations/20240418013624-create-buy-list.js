@@ -16,6 +16,9 @@ module.exports = {
           key: 'id'
         }
       },
+      product_id: {
+        type: Sequelize.INTEGER
+      },
       productName: {
         type: Sequelize.STRING(255)
       },
@@ -58,6 +61,10 @@ module.exports = {
       },
       orderQuantity: {
         type: Sequelize.INTEGER,
+      },
+      isReviewed: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
     });
   },
