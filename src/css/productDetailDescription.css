@@ -1,22 +1,21 @@
-.parentBox{
+.parentBox {
   position: relative;
 }
 
-.parentBox .header{
+.parentBox .header {
   position: relative;
   z-index: 2;
 }
-.parentBox .productdetail{
+
+.parentBox .productdetail {
   position: relative;
   z-index: 1;
 }
 
-.parentBox .componentBox{
+.parentBox .componentBox {
   position: relative;
   z-index: 0;
 }
-
-
 
 .productdetail {
   background-color: #ffffff;
@@ -24,7 +23,6 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  
 }
 
 .productdetail .div {
@@ -35,49 +33,49 @@
   top: -300px;
 }
 
-.productdetail .buttonBox {
-  background-color: #eeeeee;
+/* 장바구니, 바로결제 버튼 */
+.productdetail .buttonGroup {
   height: 144px;
   left: 758px;
   position: absolute;
-  top: 1025px;
+  top: 980px;
   width: 590px;
-  
-}
-
-.productdetail .nowPayButton {
-  background-color: #ffffff;
-  height: 96px;
-  left: 313px;
-  position: absolute;
-  top: 24px;
-  width: 255px;
 }
 
 .productdetail .textWrapper {
-  color: #000000;
-  
-  font-size: 43.2px;
+  color: #ccc;
+  background-color: none !important;
+  font-size: 24px;
   font-weight: 400;
-  left: 48px;
+  left: 47px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   top: 23px;
-  width: 194px;
+  width: 100px;
 }
 
 .productdetail .cartButton {
-  background-color: #ffffff;
-  height: 96px;
-  left: 19px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 75px;
+  left: 70px;
   position: absolute;
   top: 24px;
-  width: 255px;
+  width: 200px;
+}
+
+.productdetail .nowPayButton {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 75px;
+  left: 313px;
+  position: absolute;
+  top: 24px;
+  width: 200px;
 }
 
 .productdetail .infoBox {
-  background-color: #eeeeee;
   height: 586px;
   left: 756px;
   position: absolute;
@@ -85,20 +83,9 @@
   width: 592px;
 }
 
-.productdetail .productTotalPrice {
-  background-color: #ffffff;
-  height: 72px;
-  left: 33px;
-  position: absolute;
-  top: 494px;
-  width: 526px;
-}
-
 .productdetail .textWrapper2 {
-  color: #000000;
-  
-  font-size: 43.2px;
-  font-weight: 400;
+  color: #ccc;
+  font-size: 22px;
   left: 24px;
   letter-spacing: 0;
   line-height: normal;
@@ -106,96 +93,39 @@
   top: 9px;
 }
 
-.productdetail .productCount {
-  background-color: #ffffff;
-  height: 72px;
-  left: 33px;
+/* 사이즈, 색상, 수량 */
+.productdetail .select {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 40px;
+  left: 0;
   position: absolute;
-  top: 406px;
-  width: 526px;
+  top: 2px;
+  width: 245px;
+  font-size: 22px;
+  padding-left: 10px;
 }
 
 .productdetail .overlapGroup {
-  height: 59px;
-  left: 233px;
+  height: 50px;
+  left: 200px;
   position: absolute;
-  top: 4px;
+  top: 2px;
   width: 245px;
-}
-
-.productdetail .overlapGroup .inputMinus {
-  z-index: 1;
-  background-color: #eeeeeeee;
-  border: 0.72px solid;
-  border-color: #000000;
-  height: 48px;
-  left: 0;
-  position: absolute;
-  top: 10px;
-  width: 48px;
-  font-size: 32px;
-}
-
-.productdetail .input {
-  background-color: #eeeeeeee;
-  border: 0.72px solid;
-  border-color: #000000;
-  height: 48px;
-  left: 48px;
-  position: absolute;
-  top: 10px;
-  width: 149px;
-  font-size: 32px;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-    height: 0;
-    width: 0;
-  }
-
-.productdetail .overlapGroup .inputPlus {
-  z-index: 1;
-  background-color: #eeeeeeee;
-  border: 0.72px solid;
-  border-color: #000000;
-  height: 48px;
-  right: 0;
-  position: absolute;
-  top: 10px;
-  width: 48px;
-  font-size: 32px;
-}
-
-.productdetail .select {
-  background-color: #eeeeeeee;
-  border: 0.72px solid;
-  border-color: #000000;
-  height: 48px;
-  left: 0;
-  position: absolute;
-  top: 10px;
-  width: 245px;
-  font-size: 32px;
 }
 
 .productdetail .text {
-  /* background-color: #eeeeeeee; */
-  /* border: 0.72px solid; */
   border-color: #000000;
   height: 48px;
-  left: 0;
   position: absolute;
-  top: 10px;
-  width: 245px;
-  font-size: 32px;
+  top: 3px;
+  width: 150px;
+  font-size: 26px;
+  text-align: start;
 }
 
 .productdetail .color {
   color: #000000;
-  
   font-size: 43.2px;
   font-weight: 400;
   left: 42px;
@@ -206,6 +136,47 @@ input[type=number]::-webkit-inner-spin-button,
   top: 0;
   white-space: nowrap;
   width: 133px;
+}
+
+.productdetail .overlapGroup .inputMinus {
+  z-index: 1;
+  border: 1px solid #ccc;
+  height: 40px;
+  position: absolute;
+  width: 47px;
+  font-size: 24px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.productdetail .overlapGroup .inputPlus {
+  z-index: 1;
+  border: 1px solid #ccc;
+  height: 40px;
+  right: 0;
+  position: absolute;
+  width: 47px;
+  font-size: 24px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.productdetail .input {
+  border: 1px solid #ccc;
+  height: 40px;
+  left: 48px;
+  position: absolute;
+  width: 149px;
+  font-size: 22px;
+  text-align: center;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  height: 0;
+  width: 0;
 }
 
 .productdetail .line {
@@ -247,26 +218,16 @@ input[type=number]::-webkit-inner-spin-button,
   width: 1px;
 }
 
-.productdetail .productColor {
-  background-color: #ffffff;
-  height: 72px;
-  left: 33px;
-  position: absolute;
-  top: 318px;
-  width: 526px;
-}
-
 .productdetail .overlap {
   height: 59px;
-  left: 233px;
+  left: 200px;
   position: absolute;
-  top: -1px;
+  top: 2px;
   width: 245px;
 }
 
 .productdetail .textWrapper3 {
   color: #000000;
-  
   font-size: 43.2px;
   font-weight: 400;
   left: 42px;
@@ -286,18 +247,9 @@ input[type=number]::-webkit-inner-spin-button,
   width: 31px;
 }
 
-.productdetail .productSize {
-  background-color: #ffffff;
-  height: 72px;
-  left: 33px;
-  position: absolute;
-  top: 231px;
-  width: 526px;
-}
-
 .productdetail .overlap2 {
   height: 59px;
-  left: 233px;
+  left: 200px;
   position: absolute;
   top: 2px;
   width: 245px;
@@ -305,7 +257,6 @@ input[type=number]::-webkit-inner-spin-button,
 
 .productdetail .textWrapper4 {
   color: #000000;
-  
   font-size: 43.2px;
   font-weight: 400;
   left: 42px;
@@ -317,24 +268,64 @@ input[type=number]::-webkit-inner-spin-button,
   width: 81px;
 }
 
+/* 제품 정보 */
+.productdetail .productName {
+  height: 72px;
+  left: 33px;
+  position: absolute;
+  top: 100px;
+  width: 526px;
+}
+
 .productdetail .productPrice {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
   position: absolute;
-  top: 143px;
+  top: 160px;
   width: 526px;
+  border-bottom: 1px solid #eee;
 }
 
-.productdetail .productName {
+.productdetail .productSize {
   background-color: #ffffff;
   height: 72px;
   left: 33px;
   position: absolute;
-  top: 55px;
+  top: 260px;
   width: 526px;
 }
 
+.productdetail .productColor {
+  background-color: #ffffff;
+  height: 72px;
+  left: 33px;
+  position: absolute;
+  top: 320px;
+  width: 526px;
+}
+
+.productdetail .productCount {
+  background-color: #ffffff;
+  height: 72px;
+  left: 33px;
+  position: absolute;
+  top: 380px;
+  width: 526px;
+  border-bottom: 1px solid #eee;
+}
+
+.productdetail .productTotalPrice {
+  background-color: #ffffff;
+  height: 72px;
+  left: 33px;
+  position: absolute;
+  top: 480px;
+  width: 526px;
+  border-bottom: 2px solid #ccc;
+}
+
+/* 제품 이미지 */
 .productdetail .thumbnailBox {
   background-color: #ffffff;
   height: 817px;
@@ -346,43 +337,42 @@ input[type=number]::-webkit-inner-spin-button,
 
 .productdetail .subThmbnail0 {
   background-color: #d9d9d9;
-  height: 144px;
-  left: 120px;
+  height: 155px;
+  left: 100px;
   position: absolute;
-  top: 637px;
-  width: 144px;
+  top: 570px;
+  width: 155px;
 }
 
 .productdetail .subThmbnail1 {
   background-color: #d9d9d9;
-  height: 144px;
-  left: 278px;
+  height: 155px;
+  left: 273px;
   position: absolute;
-  top: 637px;
-  width: 144px;
+  top: 570px;
+  width: 155px;
 }
 
 .productdetail .subThmbnail2 {
   background-color: #d9d9d9;
-  height: 144px;
-  left: 438px;
+  height: 155px;
+  left: 445px;
   position: absolute;
-  top: 637px;
-  width: 144px;
+  top: 570px;
+  width: 155px;
 }
 
 .productdetail .mainThmbnailWrapper {
   background-color: #d9d9d9;
-  height: 586px;
-  left: 56px;
+  height: 500px;
+  left: 100px;
   position: absolute;
   top: 29px;
-  width: 575px;
+  width: 500px;
 }
 
 .productdetail .mainThmbnail {
   color: #000000;
-  
   font-size: 43.2px;
   font-weight: 400;
   left: 177px;
@@ -413,7 +403,6 @@ input[type=number]::-webkit-inner-spin-button,
 
 .productdetail .textWrapper5 {
   color: #000000;
-  
   font-size: 43.2px;
   font-weight: 400;
   left: 8px;
@@ -479,8 +468,6 @@ input[type=number]::-webkit-inner-spin-button,
 
 .productdetail .textWrapper6 {
   color: #000000;
-  
-  font-size: 43.2px;
   font-weight: 400;
   left: 38px;
   letter-spacing: 0;
@@ -492,7 +479,6 @@ input[type=number]::-webkit-inner-spin-button,
 
 .productdetail .textWrapper7 {
   color: #000000;
-  
   font-size: 43.2px;
   font-weight: 400;
   left: 63px;
@@ -503,10 +489,54 @@ input[type=number]::-webkit-inner-spin-button,
   width: 138px;
 }
 
-.productdetail .btn{
-  width: 50%;
-  background-color: inherit;
-  border-radius: 5px;
-  border: 1px solid black;
+.administrator {
+  font-size: 20px;
+  margin: 0 55px;
 }
 
+.productdetail .btn {
+  width: 20%;
+  background-color: inherit;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+.productdetail .clientBtn1 {
+  width: 30%;
+  height: 60px;
+  background-color: inherit;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  position: absolute;
+  top: 75px;
+  left: 18%;
+}
+
+.productdetail .clientBtn2 {
+  width: 30%;
+  height: 60px;
+  background-color: inherit;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  position: absolute;
+  top: 75px;
+  left: 52%;
+}
+
+.productdetail .btn:hover {
+  background-color: #ccc;
+  color: #ffffff;
+}
+
+.productdetail .clientBtn1:hover {
+  background-color: #ccc;
+  color: #ffffff;
+}
+
+.productdetail .clientBtn2:hover {
+  background-color: #ccc;
+  color: #ffffff;
+}

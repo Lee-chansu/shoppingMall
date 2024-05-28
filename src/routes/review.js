@@ -80,7 +80,7 @@ export const Review = () => {
       }
     }
 
-    // navigate("/"); //리뷰등록하기 페이지 설정
+    navigate("/payBuyList"); //리뷰등록하기 페이지 설정
   };
   console.log(buyList);
   return (
