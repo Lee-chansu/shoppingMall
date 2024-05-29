@@ -10,11 +10,11 @@ import { Footer } from "./components/footer";
 
 export const Main = () => {
   const [productList, setProductList] = useState([]);
-  const [limit, setLimit] = useState(5);
+  const limit = 5;
   const [productByCreatedAt, setProductByCreatedAt] = useState([]);
   const loadProduct = async () => {
     const getProducts = await fetch(
-      `http://localhost:5000/?limit${limit}`
+      `http://localhost:5000/?limit=${limit}`
     ).then((res) => res.json());
     setProductList(getProducts);
   };
