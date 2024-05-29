@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../css/review.css";
 
@@ -11,7 +11,6 @@ import { Myalter } from "../components/Myalter";
 import { jwtDecode } from "jwt-decode";
 
 export const Review = () => {
-
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -54,31 +53,35 @@ export const Review = () => {
   const colorList = ["밝아요", "화면과 같아요", "어두워요"];
   const sizeList = ["작아요", "정사이즈예요", "커요"];
   const startList = [1, 2, 3, 4, 5]; // map 돌리기위한 배열갯수
-  
+
   const handleClick = (i) => () => {
     // 별점클릭시
     setAddReview((pre) => ({ ...pre, starPoint: i + 1 }));
   };
 
   const handleChange = (e) => {
-    if(e.target.files){
+    if (e.target.files) {
       const selectFile = e.target.files[0];
       const reader = new FileReader();
       if (selectFile) {
-      const extension = selectFile.name.split(".").pop().toLowerCase();
-      const allowedExtensions = [
-        "jpg",
-        "png",
-        "bmp",
-        "gif",
-        "tif",
-        "webp",
-        "heic",
-        "pdf",
-      ]; // 허용되는 확장자 목록
+        const extension = selectFile.name.split(".").pop().toLowerCase();
+        const allowedExtensions = [
+          "jpg",
+          "png",
+          "bmp",
+          "gif",
+          "tif",
+          "webp",
+          "heic",
+          "pdf",
+        ]; // 허용되는 확장자 목록
         if (!allowedExtensions.includes(extension)) {
-          Myalter('warning','유저 수정 가이드',`${selectFile.name} 파일은 허용되지 않는 확장자입니다.`)
-          e.target.value = ''; // 파일 선택 취소
+          Myalter(
+            "warning",
+            "유저 수정 가이드",
+            `${selectFile.name} 파일은 허용되지 않는 확장자입니다.`
+          );
+          e.target.value = ""; // 파일 선택 취소
           return; // 다음 파일 처리 중단
         }
         reader.onloadend = () => {
@@ -91,18 +94,18 @@ export const Review = () => {
       //   ...pre,
       //   reviewImage : e.target.files[0]
       // }))
-    }else{
+    } else {
       setAddReview((pre) => ({
         ...pre,
         content: e.target.value,
       })); //사용자 내용 입력시마다 state update
     }
   };
-  
+
   const handleLinkBackMove = () => {
     navigate(-1);
   };
-  
+
   const handleLinkReviewMove = async (e) => {
     e.preventDefault();
     if (addReview.starPoint === 0) {
@@ -111,8 +114,8 @@ export const Review = () => {
       try {
         const response = await fetch(`http://localhost:5000/review`, {
           method: "POST",
-          headers : {"Content-Type" : "application/json"},
-          body: JSON.stringify({addReview})
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ addReview }),
         });
         if (!response.ok) {
           throw new Error("서버에서 응답을 받을 수 없습니다");
@@ -141,7 +144,7 @@ export const Review = () => {
           <div className="nameOptionBox">
             <div className="productName">{buyList.productName}</div>
             <div className="productOption">
-              색상 : {buyList.productColor}  /  사이즈 : {buyList.productSize}
+              색상 : {buyList.productColor} / 사이즈 : {buyList.productSize}
             </div>
           </div>
         </div>
@@ -231,14 +234,12 @@ export const Review = () => {
 
         <div className="reviewImageUpload">
           <span className="title">사진 첨부하기 </span>
-          <img 
+          <img
             className="reviewImage"
-            src={addReview.reviewImage || "../img/userDefaultImg.png"} 
+            src={addReview.reviewImage || "../img/userDefaultImg.png"}
             alt="리뷰사진 미리보기"
-            >
-            </img>
-          <ReviewImageUpload
-            handleChange={handleChange} />
+          ></img>
+          <ReviewImageUpload handleChange={handleChange} />
         </div>
 
         <ButtonBox>

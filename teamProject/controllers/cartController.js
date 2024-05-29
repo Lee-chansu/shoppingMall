@@ -2,7 +2,7 @@ require("dotenv").config();
 
 //db
 const db = require("../models");
-const { Cart, BuyList, Product, ProductOption, Carry, PaymentRequest } = db;
+const { Cart, BuyList, Product, Carry, PaymentRequest } = db;
 
 //user Id 로 장바구니 조회
 exports.selectCartByUserId = async (req, res) => {
@@ -47,6 +47,38 @@ exports.selectBuyListByUserId = async (req, res) => {
 exports.selectCarryAll = async (req, res) => {
   const result = await Carry.findAll();
   res.json(result);
+};
+
+//배송리스트 추가
+exports.addCarry = async (req, res) => {
+  const { list, user_id, order_id } = req.body;
+
+  const carryStartDate = new Date(list.createdAt);
+  carryStartDate.setDate(carryStartDate.getDate() + 3);
+  console.log(carryStartDate)
+  const carryEnd = carryStartDate.toISOString();
+
+  const newCarry = {
+    user_id,
+    order_id,
+    // userName,
+    // mainAddress,
+    // detailAddress,
+    progress: "배송중",
+    carryStart: list.createdAt,
+    carryEnd,
+  };
+  const result = await Carry.findOne({
+    where: { user_id, order_id },
+  });
+  // TODO: userName, address 해결해야 함
+  // console.log("result", result);
+  if (!result) {
+    await Carry.create(newCarry);
+    res.json({ result: false });
+  } else {
+    res.json({ result });
+  }
 };
 
 // 장바구니에 제품 추가

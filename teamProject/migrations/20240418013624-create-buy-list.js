@@ -63,8 +63,9 @@ module.exports = {
       productSize: {
         type: Sequelize.STRING(4),
       },
-      orderQuantity: {
-        type: Sequelize.INTEGER,
+      isReviewed: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
     });
   },

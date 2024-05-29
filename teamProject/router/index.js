@@ -40,11 +40,12 @@ router.get("/ReviewList", productController.selectReviewlist);
 router.post("/addProduct", productController.addProduct);
 
 router.put("/productEdit/:id", productController.updateProduct);
+router.put("/productOption", productController.updateProductOption);
 
 router.delete("/productDelete/:id", productController.deleteProduct);
 
 //review
-router.get("/ReviewList", productController.selectReviewlist);
+// router.get("/ReviewList", productController.selectReviewlist);
 
 router.post("/review", productController.addReview);
 
@@ -58,6 +59,7 @@ router.get("/carry", cartController.selectCarryAll);
 
 router.post("/cart", cartController.addProductToCart);
 router.post("/buyList", cartController.addBuyList);
+router.post("/carry", cartController.addCarry);
 
 router.delete("/cart", cartController.deleteProductFromCartByUserId);
 router.delete("/cart/:id", cartController.deleteCart);

@@ -14,7 +14,7 @@ export const PaySuccess = () => {
   const [userName, setUserName] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-  const { list, paySelectSumPrice } = location.state;
+  const { paySelect, list, orderSum, paySelectSumPrice } = location.state;
 
   const handleHome = () => {
     navigate("/");
@@ -74,8 +74,8 @@ export const PaySuccess = () => {
             <div className="orderInfo">
               <div className="payInfo">{userName}님의 결제내역</div>
               <div className="howToPay">결제방법</div>
-              {/* <div className="howToPayPrint">{paySelect}</div> */}
-              <div className="paySum">{paySelectSumPrice} 원</div>
+              <div className="howToPayPrint">{paySelect}</div>
+              <div className="paySum">{orderSum.paySumTotal} 원</div>
               <div className="paySumText">결제금액</div>
 
               <div className="row">

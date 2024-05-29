@@ -10,8 +10,8 @@ import { Visual } from "./components/visual";
 export const Main = () => {
   const [productList, setProductList] = useState([]);
   const loadProduct = async () => {
-    const getProducts = await fetch("http://localhost:5000/product").then(res =>
-      res.json()
+    const getProducts = await fetch("http://localhost:5000/product").then(
+      (res) => res.json()
     );
     setProductList(getProducts);
   };
@@ -30,7 +30,7 @@ export const Main = () => {
             <h1>Best!</h1>
           </Link>
           <div className="wrap">
-            {productList.slice(0, 5).map(product => {
+            {productList.slice(0, 5).map((product) => {
               return (
                 <Link
                   className="link"
@@ -49,7 +49,7 @@ export const Main = () => {
             {productList
               .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
               .slice(0, 5)
-              .map(product => {
+              .map((product) => {
                 return (
                   <Link
                     className="link"

@@ -6,6 +6,7 @@ import { BoxArrowInRight, PersonAdd } from "react-bootstrap-icons";
 
 export const Nav = () => {
   const isLogin = sessionStorage.getItem("token");
+  // const [imageUrl, setImageUrl] = useState("");
   const [imageUrl, setImageUrl] = useState("../img/userDefaultImg.png");
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
 
@@ -15,6 +16,7 @@ export const Nav = () => {
     const loadData = await fetch(`http://localhost:5000/profile/${id}`).then(
       (res) => res.json()
     );
+    console.log(loadData)
     setImageUrl(loadData);
   };
 
@@ -24,7 +26,7 @@ export const Nav = () => {
     } else {
       profileImageLoad();
     }
-  }, [imageUrl]);
+  }, []);
 
   const navigate = useNavigate();
 
@@ -60,7 +62,7 @@ export const Nav = () => {
                 <img
                   className="profileImage"
                   src={imageUrl}
-                  // onError={() => setImageUrl("../img/userDefaultImg.png")}
+                  onError={() => setImageUrl("../img/userDefaultImg.png")}
                   alt="유저프로필"
                 />
               </Link>

@@ -107,6 +107,7 @@ export const UserEdit = () => {
       reader.readAsDataURL(selectFile);
     }
   };
+  
 
   const buttonClick = async (e) => {
     e.preventDefault();

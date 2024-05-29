@@ -37,6 +37,20 @@
   right: 20px;
 }
 
+.main .inner{
+  margin: 40px 0;
+}
+
+.main .inner .link {
+  margin: 20px 0;
+}
+.main .inner .link h1 {
+  color: black;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
 .main .wrap {
   display: flex;
   justify-content: flex-start;
