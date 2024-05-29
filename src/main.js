@@ -6,11 +6,12 @@ import "./main.css";
 import { Nav } from "./components/nav";
 import { Product } from "./components/product";
 import { Visual } from "./components/visual";
+import { Footer } from "./components/footer";
 
 export const Main = () => {
   const [productList, setProductList] = useState([]);
   const loadProduct = async () => {
-    const getProducts = await fetch("http://localhost:5000/product").then(
+    const getProducts = await fetch("http://localhost:5000/").then(
       (res) => res.json()
     );
     setProductList(getProducts);
@@ -63,6 +64,7 @@ export const Main = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };

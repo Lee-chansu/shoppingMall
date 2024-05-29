@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../css/productList.css";
 
 //컴포넌트
 import { Nav } from "../components/nav";
 import { Product } from "../components/product";
 import { Detail } from "../components/detail";
+import { Footer } from "../components/footer";
 
 export const ProductList = () => {
+  const navigate = useNavigate();
   const [productList, setProductList] = useState([]);
+  const [offset, setOffset] = useState(0);
+  const limit = 8;
+  const [pagingSize, setPagingSize] = useState(0);
   // url 쿼리 문자열 받아오는 방법
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -29,23 +34,48 @@ export const ProductList = () => {
     let getProduct;
     if (detail) {
       getProduct = await fetch(
-        `http://localhost:5000/product?detail=${detail}`
-      ).then(res => res.json());
+        `http://localhost:5000/product?detail=${detail}&offset=${offset}&limit=${limit}`
+      ).then((res) => res.json());
     } else if (category) {
       getProduct = await fetch(
-        `http://localhost:5000/product?category=${category}`
-      ).then(res => res.json());
+        `http://localhost:5000/product?category=${category}&offset=${offset}&limit=${limit}`
+      ).then((res) => res.json());
     } else {
-      getProduct = await fetch(`http://localhost:5000/product`).then(res =>
-        res.json()
-      );
+      getProduct = await fetch(
+        `http://localhost:5000/product?offset=${offset}&limit=${limit}`
+      ).then((res) => res.json());
     }
-    setProductList(getProduct);
+    console.log(getProduct);
+    setProductList(getProduct.rows);
+    setPagingSize(Math.ceil(getProduct.count / limit));
+  };
+
+  const handleOffset = (index) => {
+    if (index === 0) {
+      setOffset(0);
+    } else {
+      setOffset(index + limit);
+    }
+    if (detail) {
+      navigate(`/productList?category=${category}detail=${detail}&offset=${offset}&limit=${limit}`);
+    } else if (category) {
+      navigate(
+        `/productList?category=${category}&offset=${offset}&limit=${limit}`
+      );
+    } else {
+      navigate(`/productList?offset=${offset}&limit=${limit}`);
+    }
   };
 
   useEffect(() => {
+    setOffset(0);
     loadProduct();
   }, [category, detail]);
+
+  useEffect(() => {
+    loadProduct();
+    console.log(offset);
+  }, [offset]);
 
   return (
     <>
@@ -63,7 +93,7 @@ export const ProductList = () => {
             </Link>
           </div>
           <div className="productWrap">
-            {productList.map(product => {
+            {productList.map((product) => {
               return (
                 <Link
                   key={product.id}
@@ -79,8 +109,29 @@ export const ProductList = () => {
               );
             })}
           </div>
+          <div
+            style={{
+              display: "flex",
+              flexFlow: "nowrap",
+              justifyContent: "center",
+              margin: "30px 0",
+            }}
+          >
+            {Array.from({ length: pagingSize }, (el, index) => {
+              return (
+                <div
+                  key={index}
+                  onClick={() => handleOffset(index)}
+                  style={{ padding: "0 20px", cursor:"pointer" }}
+                >
+                  {index + 1}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };
