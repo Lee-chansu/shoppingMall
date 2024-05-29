@@ -144,7 +144,7 @@ export const FindId = () => {
               <input
                 id="email"
                 type="email"
-                className="textWrapper2"
+                className="textWrapper2 email"
                 onChange={valueChange}
                 name="email"
                 onFocus={inputFocus}
