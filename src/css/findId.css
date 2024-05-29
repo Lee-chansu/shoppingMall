@@ -3,7 +3,7 @@ ul, ol, li{list-style:none;}
 a{text-decoration:none;} 
 
 .findId {
-  background-color: #f6f1eb;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -13,7 +13,7 @@ a{text-decoration:none;}
 }
 
 .findId .div {
-  background-color: #fffcf7;
+  background-color: #FFFFFF;
   height: 524px;
   position: relative;
   width: 640px;
@@ -24,14 +24,14 @@ a{text-decoration:none;}
   content: '';
   display: block;
   width: 540px;
-  border: 1px solid #f6f1eb;
+  border: 1px solid #FFFFFF;
   position: absolute;
   top: 60px;
   left: 135px;
 }
 
 .findId .textWrapper {
-  color: #524747;
+  color: black;
   font-size: 30px;
   font-weight: 400;
   height: 95px;
@@ -40,12 +40,12 @@ a{text-decoration:none;}
   position: absolute;
   text-align: center;
   top: 20px;
-  left: -90px;
+  left: 100px;
   width: 413px;
 }
 
 .findId .findUserIdBox {
-  background-color: #fffcf7;
+  background-color: #FFFFFF;
   height: 373px;
   left: 0px;
   position: absolute;
@@ -54,7 +54,7 @@ a{text-decoration:none;}
 }
 
 .findId .inputBox {
-  background-color: #fffcf7;
+  background-color: #FFFFFF;
   height: 178px;
   left: 110px;
   position: absolute;
@@ -63,7 +63,7 @@ a{text-decoration:none;}
 }
 
 .findId .inputUsername {
-  background-color: #fffcf7;
+  background-color: #FFFFFF;
   height: 90px;
   left: -70px;
   position: absolute;
@@ -75,7 +75,7 @@ a{text-decoration:none;}
   position: absolute;
   z-index: 1;
   top: 25px;
-  left: 100px;
+  left: 83px;
   width: 50px;
   text-align: center;
   background-color: white;
@@ -90,7 +90,7 @@ a{text-decoration:none;}
   position: absolute;
   z-index: 1;
   top: 25px;
-  left: 103px;
+  left: 85px;
   width: 60px;
   text-align: center;
   background-color: white;
@@ -105,7 +105,7 @@ a{text-decoration:none;}
   position: absolute;
   z-index: 1;
   top: 25px;
-  left: 103px;
+  left: 89px;
   width: 60px;
   text-align: center;
   background-color: white;
@@ -128,13 +128,41 @@ a{text-decoration:none;}
   text-align: left;
   top: 15px;
   width: 370px;
-  border: 1px solid #9d2a1e;
   padding-left: 7px;
-  border-radius: 4px;
+  border: transparent;
+  border-bottom: 1px solid #EBEBEB;
+  outline: none;
+}
+
+.findId .textWrapper2:focus{
+  border-bottom: 1px solid rgb(124, 124, 124);
+}
+
+.findId .email {
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+  height: 40px;
+  left: 96px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: left;
+  top: 15px;
+  width: 285px;
+  border: 1px solid #EBEBEB;
+  padding-left: 7px;
+  border: transparent;
+  border-bottom: 1px solid #EBEBEB;
+  outline: none;
+}
+
+.findId .email:focus{
+  border-bottom: 1px solid rgb(124, 124, 124);
 }
 
 .findId .inputUserEmail {
-  background-color: #fffcf7;
+  background-color: #FFFFFF;
   height: 70px;
   left: -70px;
   position: absolute;
@@ -146,7 +174,7 @@ a{text-decoration:none;}
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #4d4a4a;
+  background-color: #000000;
   height: 40px;
   position: absolute;
   top: 15px;
@@ -159,7 +187,7 @@ a{text-decoration:none;}
 }
 
 .findId .inputNum {
-  background-color: #fffcf7;
+  background-color: #FFFFFF;
   height: 90px;
   left: -70px;
   position: absolute;
@@ -178,17 +206,22 @@ a{text-decoration:none;}
   position: absolute;
   text-align: left;
   top: 15px;
-  width: 370px;
-  border: 1px solid #9d2a1e;
+  width: 285px;
+  border: transparent;
   padding-left: 7px;
-  border-radius: 4px;
+  border-bottom: 1px solid #EBEBEB;
+  outline: none;
+}
+
+.findId .inputNumWrapper:focus{
+  border-bottom:2px solid black ;
 }
 
 .findId .inputNumButton {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #4d4a4a;
+  background-color: black;
   height: 40px;
   position: absolute;
   top: 15px;
@@ -201,7 +234,7 @@ a{text-decoration:none;}
 }
 
 .findId .buttonBox {
-  background-color: #fffcf7;
+  background-color: #FFFFFF;
   height: 154px;
   left: 10px;
   position: absolute;
@@ -213,7 +246,7 @@ a{text-decoration:none;}
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #4d4a4a;
+  background-color: black;
   height: 40px;
   left: 150px;
   position: absolute;
@@ -231,7 +264,7 @@ a{text-decoration:none;}
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #4d4a4a;
+  background-color: black;
   height: 40px;
   left: 350px;
   position: absolute;
@@ -248,6 +281,6 @@ a{text-decoration:none;}
   position: absolute;
   top: 470px;
   left: 260px;
-  color: #9d2a1e;
+  color: black;
 }
 

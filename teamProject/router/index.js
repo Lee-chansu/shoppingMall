@@ -49,6 +49,9 @@ router.delete("/productDelete/:id", productController.deleteProduct);
 
 router.post("/review", productController.addReview);
 
+router.get("/reviewEdit/:buyList_id", productController.loadReviewForEdit)
+router.put("/reviewEdit/:buyList_id", productController.ReviewEdit)
+
 //cartController
 router.get("/cart/:user_id", cartController.selectCartByUserId);
 router.get("/cart", cartController.selectCartAll);

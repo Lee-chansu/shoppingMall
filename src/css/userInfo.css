@@ -3,7 +3,7 @@ ul, ol, li{list-style:none;}
 a{text-decoration:none;} 
 
 .userInfo {
-  background-color: #f6f1eb;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -13,12 +13,12 @@ a{text-decoration:none;}
 }
 
 .userInfo .overlapGroupWrapper {
-  background-color: #fffcf7;
+  background-color: #FFFFFF;
   position: relative;
   height: 950px;
 }
 .userInfo .profileImage {
-  background-color: #d9d9d9;
+  background-color: #FFFFFF;
   border-radius: 204.77px;
   position: absolute;
   left: 200px;
@@ -26,11 +26,12 @@ a{text-decoration:none;}
   height: 310px;
   width: 310px;
   z-index: 1;
+  border: 1px solid #EBEBEB;
 }
 
 
 .userInfo .userSelect {
-  background-color: #fffcf7;
+  background-color: #FFFFFF;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -40,26 +41,27 @@ a{text-decoration:none;}
 }
 
 .userInfo .link {
-  background-color: #f6f1eb;
+  background-color: #FFFFFF;
   width: 70%;
   margin: 20px 0;
   padding: 10px;
   border-radius: 10px;
+  border: 1px solid #EBEBEB;
 }
 
 .userInfo .deleteButton {
-  background-color: #f6f1eb;
+  background-color: #FFFFFF;
   width: 70%;
   margin: 20px 0;
   padding: 10px;
-  border: transparent;
+  border: 1px solid #EBEBEB;
   font-size: 30px;
   font-weight: 400;
   letter-spacing: 0;
   line-height: normal;
   cursor: pointer;
   border-radius: 10px;
-  color : #9d2b1eb7
+  color : black
 }
 
 .userInfo .textWrapper {
@@ -69,5 +71,5 @@ a{text-decoration:none;}
   letter-spacing: 0;
   line-height: normal;
   text-align: center;
-  color : #9d2b1eb7
+  color : black
 }
