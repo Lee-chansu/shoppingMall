@@ -36,7 +36,7 @@ export function FailPage() {
         </h2>
         <p>{`에러 코드: ${code}`}</p>
         <p>{`실패 사유: ${message}`}</p>
-        <ButtonBox>
+        <ButtonBox className="tossBtn">
           <CustomButton
             className="btn1"
             buttonTitle="홈으로"

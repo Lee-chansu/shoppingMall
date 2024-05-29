@@ -251,6 +251,6 @@ text-wrap: balance;
   pointer-events: none
 }
 
-.buttonBox {
+.buttonBox.tossBtn {
   width: inherit;
 }

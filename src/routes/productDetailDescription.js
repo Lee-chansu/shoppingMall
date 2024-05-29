@@ -11,6 +11,7 @@ import { Myalter } from "../components/Myalter";
 import Swal from "sweetalert2";
 
 export const ProductDetailDescription = () => {
+  const [vw, setVw] = useState(1);
   const navigate = useNavigate();
   const productId = useParams().id;
 
@@ -180,6 +181,21 @@ export const ProductDetailDescription = () => {
         const colorList = [...new Set(newColor)];
         setColor(colorList);
       });
+
+    const handleResize = () => {
+      // 화면 크기가 변경될 때마다 너비와 높이 상태를 업데이트합니다.
+      if (window.innerWidth > 1440) {
+        setVw(1);
+      } else {
+        setVw(window.innerWidth / 1440);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const getStock = () => {
@@ -316,163 +332,174 @@ export const ProductDetailDescription = () => {
   return (
     <>
       {product.id ? (
-        <div className="parentBox">
+        <div>
           <Nav />
-          <div className="productdetail">
-            <div className="div">
-              <div className="thumbnailBox">
-                {console.log(product.stock)}
-                <img
-                  ref={mainRef}
-                  src={photos[index]}
-                  alt="메인이미지"
-                  className="mainThmbnailWrapper"
-                />
-                {photos.map((photo, i) => (
+          <div className="parentBox">
+            <div
+              className="productdetail"
+              
+            >
+              <div className="div" style={{ transform: `scale(1)`, transformOrigin: "top left" }}>
+                <div className="thumbnailBox">
+                  {console.log(product.stock)}
                   <img
-                    key={i}
-                    onClick={() => jump(i)}
-                    className={"subThmbnail" + i}
-                    alt="제품 서브이미지"
-                    src={photo}
+                    ref={mainRef}
+                    src={photos[index]}
+                    alt="메인이미지"
+                    className="mainThmbnailWrapper"
                   />
-                ))}
-              </div>
-              <form onSubmit={handleSubmit}>
-                <div className="infoBox">
-                  <span className="administrator">관리자 권한 </span>
-                  <Link to={`/productList/edit/${productId}`}>
-                    <button type="button" className="btn">
-                      상품수정
-                    </button>
-                  </Link>
-                  <button type="button" className="btn" onClick={deleteProduct}>
-                    상품삭제
-                  </button>
-                  <div className="productName">
-                    <div className="textWrapper2">제품명</div>
-                    <div className="overlap2">
-                      <div className="text">{product.name}</div>
-                    </div>
-                  </div>
-                  <div className="productPrice">
-                    <div className="textWrapper2">가격</div>
-                    <div className="overlap2">
-                      <div className="text">{product.price}</div>
-                    </div>
-                  </div>
-                  <div className="productSize">
-                    <div className="textWrapper2">사이즈</div>
-                    <div className="overlap2">
-                      <select
-                        className="select"
-                        name="productSize"
-                        value={selectedSize}
-                        onChange={handleChangeSize}
-                      >
-                        <option value="" disabled>
-                          size
-                        </option>
-                        {size.map((el, i) => {
-                          return (
-                            <option key={i} value={el}>
-                              {el}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                  </div>
-                  <div className="productColor">
-                    <div className="textWrapper2">색상</div>
-                    <div className="overlap">
-                      <select
-                        className="select"
-                        name="productColor"
-                        value={selectedColor}
-                        onChange={handleChangeColor}
-                      >
-                        <option value="" disabled>
-                          color
-                        </option>
-                        {color.map((el, i) => {
-                          return (
-                            <option key={i} value={el}>
-                              {el}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                  </div>
-                  <div className="productCount">
-                    <div className="textWrapper2">수량</div>
-                    <div className="overlapGroup">
-                      <button
-                        type="button"
-                        onClick={decreaseStock}
-                        className="inputMinus"
-                      >
-                        -
-                      </button>
-                      <input
-                        className="input"
-                        type="number"
-                        name="number"
-                        min={0}
-                        max={product.stock}
-                        value={stock}
-                        onChange={handleInputChange}
+                  <div className="subThumbnails">
+                    {photos.map((photo, i) => (
+                      <img
+                        key={i}
+                        onClick={() => jump(i)}
+                        className={"subThumbnail" + i}
+                        alt="제품 서브이미지"
+                        src={photo}
                       />
-                      <button
-                        type="button"
-                        onClick={increaseStock}
-                        className="inputPlus"
-                      >
-                        +
+                    ))}
+                  </div>
+                </div>
+                <form onSubmit={handleSubmit}>
+                  <div className="infoBox">
+                    <span className="administrator">관리자 권한 </span>
+                    <Link to={`/productList/edit/${productId}`}>
+                      <button type="button" className="btn">
+                        상품수정
                       </button>
+                    </Link>
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={deleteProduct}
+                    >
+                      상품삭제
+                    </button>
+                    <div className="productName">
+                      <div className="textWrapper2">제품명</div>
+                      <div className="overlap2">
+                        <div className="text">{product.name}</div>
+                      </div>
+                    </div>
+                    <div className="productPrice">
+                      <div className="textWrapper2">가격</div>
+                      <div className="overlap2">
+                        <div className="text">{product.price}</div>
+                      </div>
+                    </div>
+                    <div className="productSize">
+                      <div className="textWrapper2">사이즈</div>
+                      <div className="overlap2">
+                        <select
+                          className="select"
+                          name="productSize"
+                          value={selectedSize}
+                          onChange={handleChangeSize}
+                        >
+                          <option value="" disabled>
+                            size
+                          </option>
+                          {size.map((el, i) => {
+                            return (
+                              <option key={i} value={el}>
+                                {el}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                    </div>
+                    <div className="productColor">
+                      <div className="textWrapper2">색상</div>
+                      <div className="overlap">
+                        <select
+                          className="select"
+                          name="productColor"
+                          value={selectedColor}
+                          onChange={handleChangeColor}
+                        >
+                          <option value="" disabled>
+                            color
+                          </option>
+                          {color.map((el, i) => {
+                            return (
+                              <option key={i} value={el}>
+                                {el}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                    </div>
+                    <div className="productCount">
+                      <div className="textWrapper2">수량</div>
+                      <div className="overlapGroup">
+                        <button
+                          type="button"
+                          onClick={decreaseStock}
+                          className="inputMinus"
+                        >
+                          -
+                        </button>
+                        <input
+                          className="input"
+                          type="number"
+                          name="number"
+                          min={0}
+                          max={product.stock}
+                          value={stock}
+                          onChange={handleInputChange}
+                        />
+                        <button
+                          type="button"
+                          onClick={increaseStock}
+                          className="inputPlus"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div className="productTotalPrice">
+                      <div className="textWrapper2">총액</div>
+                      <div className="overlap2">
+                        <div className="text">{product.price * stock} 원</div>
+                      </div>
                     </div>
                   </div>
-                  <div className="productTotalPrice">
-                    <div className="textWrapper2">총액</div>
-                    <div className="overlap2">
-                      <div className="text">{product.price * stock} 원</div>
-                    </div>
+                  <div className="buttonGroup">
+                    <button className="clientBtn1">장바구니</button>
+                    <button
+                      type="button"
+                      className="clientBtn2"
+                      onClick={() => handlePayment()}
+                    >
+                      바로결제
+                    </button>
                   </div>
-                </div>
-                <div className="buttonGroup">
-                  <button className="clientBtn1">장바구니</button>
-                  <button
-                    type="button"
-                    className="clientBtn2"
-                    onClick={() => handlePayment()}
-                  >
-                    바로결제
-                  </button>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
-          </div>
-          <div className="componentBox">
-            {switchBtn ? (
-              <ProductDescription
-                switchBtn={switchBtn}
-                setSwitchBtn={setSwitchBtn}
-                handleSwitchBtn={handleSwitchBtn}
-                item={item}
-                product={product}
-              />
-            ) : (
-              <ProductReview
-                switchBtn={switchBtn}
-                setSwitchBtn={setSwitchBtn}
-                handleSwitchBtn={handleSwitchBtn}
-                item={item}
-                user={user}
-                id={id}
-                product={product}
-              />
-            )}
+            <div className="componentBox">
+              {switchBtn ? (
+                <ProductDescription
+                  switchBtn={switchBtn}
+                  setSwitchBtn={setSwitchBtn}
+                  handleSwitchBtn={handleSwitchBtn}
+                  item={item}
+                  product={product}
+                />
+              ) : (
+                <ProductReview
+                  switchBtn={switchBtn}
+                  setSwitchBtn={setSwitchBtn}
+                  handleSwitchBtn={handleSwitchBtn}
+                  item={item}
+                  user={user}
+                  id={id}
+                  product={product}
+                />
+              )}
+            </div>
           </div>
         </div>
       ) : (
