@@ -15,11 +15,13 @@ export const ProductReview = (props) => {
       .then((response) => response.json())
       .then((data) => setUserList(data));
 
-    // // reviewList 데이터 가져오기
-    // fetch(`http://localhost:5000/reviewList?buyList_id=${item}`)
-    //   .then((response) => response.json())
-    //   .then((data) => setReviewList(data));
+    // reviewList 데이터 가져오기
+    fetch(`http://localhost:5000/reviewList?buyList_id=${item}`)
+      .then((response) => response.json())
+      .then((data) => setReviewList(data));
   }, []);
+
+  console.log('reviewList', reviewList)
 
   return (
     <div className="productInfoReview">
@@ -59,13 +61,14 @@ export const ProductReview = (props) => {
                       ) : null}
                     </div>
                     <div className="starRating">
-                      {starPoint.map((element, i) => {
+                      {starPoint.map((notUsed, i) => {
                         return el.starPoint > i ? (
                           <img
                             key={i}
                             src={process.env.PUBLIC_URL + "/img/fullStar.svg"}
                             alt="켜진별"
                             width={"50px"}
+                            style={{ display:"inline" }}
                           />
                         ) : (
                           <img
@@ -73,6 +76,7 @@ export const ProductReview = (props) => {
                             src={process.env.PUBLIC_URL + "/img/emptyStar.svg"}
                             alt="꺼진별"
                             width={"50px"}
+                            style={{ display:"inline" }}
                           />
                         );
                       })}

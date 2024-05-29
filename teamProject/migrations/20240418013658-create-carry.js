@@ -17,14 +17,7 @@ module.exports = {
         }
       },
       order_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'BuyLists',
-          key: 'id'
-        }
-      },
-      userName: {
-        type: Sequelize.STRING(15)
+        type: Sequelize.STRING(40),
       },
       address: {
         type: Sequelize.STRING(100)
