@@ -298,8 +298,7 @@ exports.selectReviewlist = async (req, res) => {
 // 리뷰 등록
 exports.addReview =  async (req, res) => {
   const {addReview} = req.body
-  console.log(addReview.buyList_id)
-  
+    
   if (addReview) {
     if(addReview.reviewImage){
       const options = {
@@ -329,3 +328,11 @@ exports.addReview =  async (req, res) => {
     res.send("fail");
   }
 };
+
+// 리뷰수정
+exports.loadReviewForEdit = async(req,res)=>{
+  const {buyList_id} = req.params
+  const result = await ReviewList.findOne({where : {buyList_id}})
+  console.log(result)
+  console.log('test')
+}

@@ -10,10 +10,20 @@ import Star from "../components/Star";
 import { Myalter } from "../components/Myalter";
 import { jwtDecode } from "jwt-decode";
 
-export const Review = () => {
+export const ReviewEdit = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  const reviewGet = async()=>{
+    try {
+      const response = await fetch(`http://localhost:5000/reviewEdit/${buyList.id}`)
+      const body = await response.json();
+      return body;
+    } catch (error) {
+      console.error('Error reviewGet Fetch', error)
+    }
+  }
 
   useEffect(() => {
     // 유저 고유 id 받아오기
@@ -26,6 +36,7 @@ export const Review = () => {
       if(location.state){
         setBuyList(location.state.buyList)  // 제품정보값넣기
         setAddReview((pre)=>({...pre, buyList_id : location.state.buyList.id}))
+        reviewGet()
         }else{
         navigate("/")
       }
@@ -131,7 +142,7 @@ export const Review = () => {
   return (
     <div className="review">
       <div className="reviewWrap">
-        <div className="reviewTitle">리뷰 작성하기</div>
+        <div className="reviewTitle">리뷰 수정하기</div>
         <div className="productBox">
           <img
             className="productImg"
