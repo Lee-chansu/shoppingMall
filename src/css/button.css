@@ -1,7 +1,7 @@
 .buttonBox {
   height: 65px;
   margin: 50px auto;
-  width: 1053px;
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
@@ -21,7 +21,9 @@
 }
 
 /* Btn hover Style */
-.btn1,.btn2,.btn3 {
+.btn1,
+.btn2,
+.btn3 {
   font-size: 18px;
 }
 
@@ -31,6 +33,3 @@
   background-color: rgb(87, 87, 87);
   color: #fff;
 }
-
-
-

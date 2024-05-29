@@ -2,12 +2,15 @@
   background-color: hsl(0, 0%, 100%);
 }
 
-.productList .inner{}
-.productList .inner .addBtnForm{
-  display: flex; justify-content: flex-end; align-items: center;
+.productList .inner .addBtnForm {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
-.productList .inner .addBtnForm button{
-  width: 100px; height: 50px; padding: 10px;
+.productList .inner .addBtnForm button {
+  width: 100px;
+  height: 50px;
+  padding: 10px;
   border-radius: 20px;
   box-shadow: 2px 2px gray;
   background-color: #ffffff;
@@ -22,12 +25,11 @@
   padding: 20px;
 }
 
-.productList .productWrap .link{
+.productList .productWrap .link {
   max-width: 25%;
   width: 25%;
 }
-.productList .productWrap .link  .product{
+.productList .productWrap .link .product {
   max-width: 240px;
   width: 100%;
 }
-
