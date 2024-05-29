@@ -57,7 +57,9 @@ export const ProductList = () => {
       setOffset(index + limit);
     }
     if (detail) {
-      navigate(`/productList?category=${category}detail=${detail}&offset=${offset}&limit=${limit}`);
+      navigate(
+        `/productList?category=${category}detail=${detail}&offset=${offset}&limit=${limit}`
+      );
     } else if (category) {
       navigate(
         `/productList?category=${category}&offset=${offset}&limit=${limit}`
@@ -122,7 +124,7 @@ export const ProductList = () => {
                 <div
                   key={index}
                   onClick={() => handleOffset(index)}
-                  style={{ padding: "0 20px", cursor:"pointer" }}
+                  style={{ padding: "0 20px", cursor: "pointer" }}
                 >
                   {index + 1}
                 </div>

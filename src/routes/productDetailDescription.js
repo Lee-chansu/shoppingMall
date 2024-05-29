@@ -9,6 +9,7 @@ import { ProductDescription } from "../components/productDescription";
 import { ProductReview } from "../components/productReview";
 import { Myalter } from "../components/Myalter";
 import Swal from "sweetalert2";
+import { Footer } from "../components/footer";
 
 export const ProductDetailDescription = () => {
   const navigate = useNavigate();
@@ -478,6 +479,7 @@ export const ProductDetailDescription = () => {
       ) : (
         <div>해당 상품을 찾을 수 없습니다</div>
       )}
+      <Footer></Footer>
     </>
   );
 };

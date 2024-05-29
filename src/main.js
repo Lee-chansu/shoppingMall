@@ -10,15 +10,25 @@ import { Footer } from "./components/footer";
 
 export const Main = () => {
   const [productList, setProductList] = useState([]);
+  const [limit, setLimit] = useState(5);
+  const [productByCreatedAt, setProductByCreatedAt] = useState([]);
   const loadProduct = async () => {
-    const getProducts = await fetch("http://localhost:5000/").then(
-      (res) => res.json()
-    );
+    const getProducts = await fetch(
+      `http://localhost:5000/?limit${limit}`
+    ).then((res) => res.json());
     setProductList(getProducts);
+  };
+
+  const loadProductByCreatedAt = async () => {
+    const getProducts = await fetch(
+      `http://localhost:5000/?order=createdAt&limit=${limit}`
+    ).then((res) => res.json());
+    setProductByCreatedAt(getProducts);
   };
 
   useEffect(() => {
     loadProduct();
+    loadProductByCreatedAt();
   }, []);
 
   return (
@@ -31,7 +41,7 @@ export const Main = () => {
             <h1>Best!</h1>
           </Link>
           <div className="wrap">
-            {productList.slice(0, 5).map((product) => {
+            {productList.map((product) => {
               return (
                 <Link
                   className="link"
@@ -47,20 +57,17 @@ export const Main = () => {
             <h1>New!</h1>
           </Link>
           <div className="wrap">
-            {productList
-              .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-              .slice(0, 5)
-              .map((product) => {
-                return (
-                  <Link
-                    className="link"
-                    to={`/productList/detail/description/${product.id}`}
-                    key={product.id}
-                  >
-                    <Product product={product} />
-                  </Link>
-                );
-              })}
+            {productByCreatedAt.map((product) => {
+              return (
+                <Link
+                  className="link"
+                  to={`/productList/detail/description/${product.id}`}
+                  key={product.id}
+                >
+                  <Product product={product} />
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>

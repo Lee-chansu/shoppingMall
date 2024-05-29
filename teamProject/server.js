@@ -49,6 +49,17 @@ app.use("/", require("./router"));
 
 // 메인화면
 app.get("/", async (req, res) => {
-  const result = await Product.findAll();
+  const { order, limit } = req.query;
+  let result;
+  if (!order) {
+    result = await Product.findAll({
+      limit: 5,
+    });
+  } else {
+    result = await Product.findAll({
+      order: [[order, "desc"]],
+      limit: 5,
+    });
+  }
   res.json(result);
 });
