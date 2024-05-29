@@ -7,6 +7,7 @@
 }
 
 .productInfo .productInfoWrapper {
+  margin-top: 100px;
   background-color: #ffffff;
   height: 1200px;
   width: 1440px;
@@ -40,7 +41,6 @@
 
 .productInfo .textWrapper {
   color: #000000;
-  
   font-size: 43.2px;
   font-weight: 400;
   left: 438px;
@@ -61,7 +61,7 @@
 
 .productInfo .textWrapper2 {
   color: #000000;
-  
+
   font-size: 43.2px;
   font-weight: 400;
   left: 518px;
@@ -72,13 +72,12 @@
 }
 
 .productInfo .infoSelect {
-  background-color: #ffffff;
-  height: 159px;
-  left: 2px;
-  overflow: hidden;
+  background-color: #999;
+  border-radius: 5px;
+  height: 156px;
   position: absolute;
-  top: 0;
-  width: 1328px;
+  top: 5px;
+  width: 664px;
 }
 
 .productInfo .productReview {
@@ -90,44 +89,40 @@
 }
 
 .productInfo .textWrapper3 {
-  color: #000000;
-  
-  font-size: 43.2px;
+  color: #000;
+  font-size: 28px;
   font-weight: 400;
-  left: 246px;
+  left: 270px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 68px;
+  top: 60px;
 }
 
 .productInfo .productDescription1 {
+  /* height: 156px;
+  left: 0;
+  position: absolute;
+  top: 5px;
+  width: 664px; */
+
+  z-index: 1;
+  background-color: #999;
+  border-radius: 5px;
   height: 156px;
   left: 0;
   position: absolute;
   top: 5px;
   width: 664px;
-  border-bottom-style: solid;
-  border-bottom-width: 5px;
-  border-color: #000000;
 }
 
 .productInfo .textWrapper4 {
-  color: #000000;
-  
-  font-size: 43.2px;
+  color: #eee;
+  font-size: 28px;
   font-weight: 400;
-  left: 243px;
+  left: 280px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 66px;
+  top: 60px;
 }
-
-/* .productInfo .line {
-  height: 5px;
-  left: 0;
-  position: absolute;
-  top: 149px;
-  width: 664px;
-} */

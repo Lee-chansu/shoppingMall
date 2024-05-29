@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { XCircleFill } from "react-bootstrap-icons";
+import { WindowDash, XCircleFill } from "react-bootstrap-icons";
 import { MyDropzone } from "../components/DropZone";
 import "../css/productEdit.css";
 
@@ -8,6 +8,8 @@ import "../css/productEdit.css";
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
 import { ProductOption, EditInfo } from "../components/productOptionAdd";
+import ButtonBox from "../components/ButtonBox";
+import CustomButton from "../components/CustomButton";
 import Swal from "sweetalert2";
 
 export const ProductEdit = () => {
@@ -36,6 +38,10 @@ export const ProductEdit = () => {
     하의: ["청바지", "슬랙스", "카고바지", "반바지"],
     신발: ["샌들", "런닝화", "구두"],
     악세사리: ["귀걸이", "가방", "피어싱", "모자"],
+  };
+
+  const handleCancle = () => {
+    navigate(-1);
   };
 
   const loadProduct = async () => {
@@ -264,7 +270,7 @@ export const ProductEdit = () => {
         <div className="inner">
           <form onSubmit={toEditProduct} className="formBox">
             <div className="wrap">
-              <h2 className="title">카테고리</h2>
+              <h2 className="categoryTitle">카테고리</h2>
               <div className="boxWrap">
                 {category.map((el) => {
                   return (
@@ -286,7 +292,7 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap">
-              <h2 className="title">디테일</h2>
+              <h2 className="categoryTitle">디테일</h2>
               <div className="boxWrap">
                 {detailBar.length === 0 ? (
                   <p className="text">카테고리를 선택해주세요</p>
@@ -310,9 +316,10 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap">
-              <h2 className="title">제품명</h2>
+              <h2 className="categoryTitle">제품명</h2>
               <div className="boxWrap">
                 <input
+                  className="valueInput"
                   type="text"
                   name="name"
                   defaultValue={newProduct.name}
@@ -321,9 +328,10 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap">
-              <h2 className="title">가격</h2>
+              <h2 className="categoryTitle">가격</h2>
               <div className="boxWrap">
                 <input
+                  className="valueInput"
                   type="text"
                   name="price"
                   defaultValue={newProduct.price}
@@ -332,7 +340,7 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap stock">
-              <h2 className="title">
+              <h2 className="categoryTitle">
                 옵션
                 <button className="btn" onClick={addTag}>
                   +
@@ -342,7 +350,7 @@ export const ProductEdit = () => {
               {components}
             </div>
             <div className="wrap img">
-              <h2 className="title">메인이미지 등록</h2>
+              <h2 className="categoryTitle ">메인이미지 등록</h2>
               <div className="boxWrap">
                 <label htmlFor="mainImage">
                   <div className="addImg" style={{ marginLeft: "5px" }}>
@@ -372,7 +380,7 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap img">
-              <h2 className="title">서브이미지 등록</h2>
+              <h2 className="categoryTitle">서브이미지 등록</h2>
               <div className="boxWrap">
                 {subImageCount.map((el, index) => {
                   return (
@@ -387,7 +395,7 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap description">
-              <h2 className="title">상품 상세설명</h2>
+              <h2 className="categoryTitle">상품 상세설명</h2>
               <div className="boxWrap">
                 <MyDropzone
                   descriptionImgArray={descriptionImgArray}
@@ -408,12 +416,19 @@ export const ProductEdit = () => {
                 );
               })}
             </div>
-            <div className="btnForm">
-              <button>수정완료</button>
-              <Link to={`/productList/detail/description/${id}`}>
-                <button>취소</button>
-              </Link>
-            </div>
+            <ButtonBox>
+              <CustomButton
+                className="btn1"
+                buttonTitle="취소"
+                handleLinkMove={handleCancle}
+              />
+
+              <CustomButton
+                className="btn2"
+                buttonTitle="수정완료"
+                handleLinkMove={handleCancle}
+              />
+            </ButtonBox>
           </form>
         </div>
       </div>

@@ -40,7 +40,6 @@
 
 .cart .buttonText {
   color: #000000;
-  
   font-size: 20px;
   font-weight: 600;
   left: 50px;
@@ -55,7 +54,6 @@
 
 .cart .textWrapper {
   color: #000000;
-  
   font-size: 44.2px;
   font-weight: 400;
   left: 48px;
@@ -111,7 +109,6 @@
 
 .cart .cartProductStock {
   color: #000000;
-  
   font-size: 30px;
   font-weight: 400;
   right: 20px;
@@ -133,7 +130,6 @@
 
 .cart .cartProductPrice {
   color: #000000;
-  
   font-size: 22px;
   font-weight: 600;
   left: 40px;
@@ -155,7 +151,6 @@
 
 .cart .cartProductName {
   color: #000000;
-  
   font-size: 20px;
   left: 360px;
   position: absolute;
