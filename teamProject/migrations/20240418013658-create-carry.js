@@ -17,9 +17,9 @@ module.exports = {
         }
       },
       order_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(40),
         references: {
-          model: 'BuyLists',
+          model: 'PaymentRequests',
           key: 'id'
         }
       },

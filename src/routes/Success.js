@@ -90,9 +90,9 @@ export function SuccessPage() {
       // arrayList[0].items[0].amount  A = arrayList[0].items
       // stockList[0].stock  S = stockList
 
-      console.log("vs");
-      console.log("A", arrayList[0].items);
-      console.log("S", stockList);
+      // console.log("vs");
+      // console.log("A", arrayList[0].items);
+      // console.log("S", stockList);
 
       function checkStockAndAmount(S, A) {
         if (!S || !A) return false;

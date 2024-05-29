@@ -1,7 +1,8 @@
 require("dotenv").config();
+const { Op } = require("sequelize");
 //db
 const db = require("../models");
-const { Product, ProductOption, ProductDetail, Cart, ReviewList } = db;
+const { Product, ProductOption, ProductDetail, Cart, ReviewList, BuyList } = db;
 
 //imgbb 활용할 때 쓸 키
 //env에 넣고 쓸 수 없어 여기에 적어둬야 할듯...
@@ -266,7 +267,7 @@ exports.updateProduct = async (req, res) => {
 // 제품 옵션 수정
 exports.updateProductOption = async (req, res) => {
   const option = req.body;
-  console.log('testOption', option)
+  console.log("testOption", option);
 
   try {
     const updatePromises = option.map(async (item) => {
@@ -304,8 +305,21 @@ exports.deleteProduct = async (req, res) => {
 //제품 리뷰 조회
 exports.selectReviewlist = async (req, res) => {
   const { buyList_id } = req.query;
-  let result = await ReviewList.findAll({ where: {} });
-  if (buyList_id) result = await ReviewList.findAll({ where: { buyList_id } });
+
+  const findId = await BuyList.findAll({ where: { product_id: buyList_id } });
+
+  const buyListIds = findId.map((item) => item.id);
+
+  let result = [];
+
+  if (buyListIds.length > 0) {
+    result = await ReviewList.findAll({ where: {
+      buyList_id: {
+        [Op.in]: buyListIds
+      }
+    } });
+  }
+
   // console.log(result);
   if (result) {
     res.json(result);

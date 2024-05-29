@@ -45,7 +45,7 @@ router.put("/productOption", productController.updateProductOption);
 router.delete("/productDelete/:id", productController.deleteProduct);
 
 //review
-router.get("/ReviewList", productController.selectReviewlist);
+// router.get("/ReviewList", productController.selectReviewlist);
 
 router.post("/review", productController.addReview);
 
