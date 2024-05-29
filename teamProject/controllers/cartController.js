@@ -55,6 +55,7 @@ exports.addCarry = async (req, res) => {
 
   const carryStartDate = new Date(list.createdAt);
   carryStartDate.setDate(carryStartDate.getDate() + 3);
+  console.log(carryStartDate)
   const carryEnd = carryStartDate.toISOString();
 
   const newCarry = {
