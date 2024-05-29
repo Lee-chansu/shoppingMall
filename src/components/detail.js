@@ -11,7 +11,10 @@ export const Detail = ({ category, detailArray }) => {
 
   return (
     <div className=" detail">
-      <div className="detail inner">
+      <div
+        className="detail inner"
+        style={!category || category === "악세사리" ? { display: "none" } : { display: "flex" }}
+      >
         {detailArray.map((detail, index) => {
           return (
             <div className="wrapper" key={index}>

@@ -66,7 +66,7 @@ export const UserProfile = () => {
               <div className="box">
                 <p className="title">
                   휴대폰 번호 <br></br>
-                  <span>{userProfile.email}</span>
+                  <span>{userProfile.phoneNumber}</span>
                 </p>
               </div>
             </div>
@@ -74,7 +74,7 @@ export const UserProfile = () => {
               <div className="box">
                 <p className="title">
                   주소 <br></br>
-                  <span>{userProfile.email}</span>
+                  <span>{userProfile.mainAddress}</span>
                 </p>
               </div>
             </div>

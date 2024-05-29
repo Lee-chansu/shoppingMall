@@ -59,7 +59,8 @@ export function SuccessPage() {
       setOptionList(productOptionIds);
       setArrayList(arrayResponse);
 
-      console.log("arrayList", arrayList[0]?.items);
+      console.log("arrayList", arrayList[0]);
+      // console.log("arrayList", arrayList[0]?.items);
       // console.log("arrayList[0]?.items[0].amount", arrayList[0]?.items[0].amount);
     }
 
@@ -160,7 +161,7 @@ export function SuccessPage() {
       }
 
       // 구매 내역 추가
-      const carry = { list: arrayList[0].items, user_id: id, order_id: searchParams.get("orderId") };
+      const carry = { list: arrayList[0].items, user_id: id, order_id: searchParams.get("orderId"), mainAddress: arrayList[0].mainAddress, detailAddress: arrayList[0].detailAddress };
 
       const carryRes = await axios.post("http://localhost:5000/carry", carry);
 

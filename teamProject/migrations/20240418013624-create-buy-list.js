@@ -50,6 +50,10 @@ module.exports = {
       orderQuantity: {
         type: Sequelize.INTEGER
       },
+      isReviewed: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
       carryStatus: {
         type: Sequelize.STRING(255)
       },

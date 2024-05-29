@@ -25,6 +25,12 @@ export const Payment = () => {
   const [isAddressEditable, setIsAddressEditable] = useState(true);
   const [paySelect, setPaySelect] = useState("");
   const [paymentItemList, setPaymentItemList] = useState([]);
+  const [newUser, setNewUser] = useState({
+    mainAddress: "",
+    detailAddress: "",
+  });
+
+  console.log('newUser', newUser)
 
   //결제방식 선택하기
   //총 주문 합계 보기 변수선언
@@ -34,6 +40,16 @@ export const Payment = () => {
     countTotal: 0, //총수량
     paySumTotal: 0, //총주문금액 + 배송비
   });
+
+  const valueChange = (e) => {
+    const { name, value } = e.target;
+    setNewUser({ ...newUser, [name]: value });
+    if (mainAddressRef.current.value)
+      setNewUser((pre) => ({
+        ...pre,
+        mainAddress: mainAddressRef.current.value,
+      }));
+  };
 
   const handleChange = (e) => {
     setSelectedOption(e.target.value);
@@ -65,7 +81,7 @@ export const Payment = () => {
 
   const handleAllPayment = () => {
     navigate("/toss", {
-      state: { paymentList: location.state.list, orderSum, paySelect: 'test' },
+      state: { paymentList: location.state.list, orderSum, paySelect: "test", address: newUser },
     });
     //모달 처리 예정 , if문으로 분기처리 예정
   };
@@ -73,7 +89,9 @@ export const Payment = () => {
   const handleAllPayment2 = () => {
     navigate("/paysuccess", {
       state: {
-        list: location.state.list, orderSum, paySelect : 'test'
+        list: location.state.list,
+        orderSum,
+        paySelect: "test",
         // paySelectSumPrice: orderSum.paySumTotal,
       },
     });
@@ -165,8 +183,8 @@ export const Payment = () => {
                 </div>
               </div>
               <div className="box">
-              <div className="phoneBox">
-                <div className="phone">연락처 </div>
+                <div className="phoneBox">
+                  <div className="phone">연락처 </div>
                   <div className="phone2">{userProfile.phoneNumber}</div>
                 </div>
               </div>
@@ -178,6 +196,7 @@ export const Payment = () => {
                     className="mainAddress"
                     innerText="기본 배송지 수정"
                     mainAddressRef={mainAddressRef}
+                    setNewUser={setNewUser}
                   />
 
                   <input
@@ -192,6 +211,8 @@ export const Payment = () => {
                     ref={detailAddressRef}
                     placeholder={userProfile.detailAddress}
                     // value={userProfile.detailAddress}
+                    onChange={valueChange}
+                    name="detailAddress"
                     disabled={!isAddressEditable}
                   />
                   <button

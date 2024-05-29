@@ -38,13 +38,13 @@
   font-size: 20px;
   font-weight: 600;
 }
-.productEdit .inner .wrap .box input[type="checkbox"] {
+.productEdit .inner .wrap .box input[type=checkbox] {
   margin: 0 10px;
   width: 50px;
   height: 50px;
   background-color: #eee;
 }
-.productEdit .inner .wrap input[type="text"] {
+.productEdit .inner .wrap input[type=text] {
   margin: 0 10px;
   height: 50px;
   width: 100%;
@@ -82,7 +82,8 @@
   font-size: 32px;
 }
 .productEdit .inner .wrap.stock .title .btn {
-  padding: 10px 15px; margin-left: 20px;
+  padding: 10px 15px;
+  margin-left: 20px;
   background-color: #eee;
 }
 .productEdit .inner .wrap.stock .btn {
@@ -124,7 +125,7 @@
   height: 80px;
   margin: 0 50px;
 }
-.productEdit .inner .wrap.img input[type="file"] {
+.productEdit .inner .wrap.img input[type=file] {
   display: none;
 }
 
@@ -144,4 +145,25 @@
   width: 300px;
   font-size: 32px;
   border-radius: 20px;
+}
+
+.preview {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  border: 5px #ddd dashed;
+}
+
+.descriptionImgWrap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.descriptionImg {
+  display: block;
+  width: 240px;
+  margin: 20px 20px;
 }

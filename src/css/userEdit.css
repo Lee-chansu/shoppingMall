@@ -157,9 +157,70 @@ a {
   width: 359px;
 }
 
+.userEdit .addressLabel{
+  color: #000000;
+  font-size: 12.9px;
+  font-weight: 400;
+  left: 105px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: -40px;
+  width: 190px;
+}
+
+.userEdit .mainAddress{
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+  height: 40px;
+  text-align: left;
+  width: 280px;
+  border: 1px solid #9d2a1e;
+  padding-left: 10px;
+  border-radius: 4px;
+  position: absolute;
+  top: -20px;
+  left: 103px;
+}
+
+.userEdit .detailAddress{
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+  height: 40px;
+  text-align: left;
+  width: 373px;
+  border: 1px solid #9d2a1e;
+  padding-left: 10px;
+  border-radius: 4px;
+  position: absolute;
+  top: 25px;
+  left: 103px;
+}
+
+.userEdit .btn-secondary{
+  background-color: #4d4a4a;
+  height: 40px;
+  top: -20px;
+  left: 385px;
+  position: absolute;
+  width: 90px;
+  border-radius: 5px;
+  border: transparent;
+  color: #ffffff;
+  
+}
+
+.userEdit .carrySelectBtn {
+  margin : 6px 0;
+  color: white;
+  font-size: 14px;
+}
+
 .userEdit .selectGender {
   height: 87px;
-  left: 0;
+  left: 10px;
   position: absolute;
   top: 612px;
   width: 359px;

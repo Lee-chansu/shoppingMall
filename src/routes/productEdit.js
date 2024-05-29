@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { XCircleFill } from "react-bootstrap-icons";
+import { MyDropzone } from "../components/DropZone";
 import "../css/productEdit.css";
 
 //컴포넌트
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
 import { ProductOption, EditInfo } from "../components/productOptionAdd";
-import { MyDropzone } from "../components/DropZone";
+import Swal from "sweetalert2";
 
 export const ProductEdit = () => {
   const id = useParams().id;
@@ -38,7 +40,7 @@ export const ProductEdit = () => {
 
   const loadProduct = async () => {
     const getProduct = await fetch(`http://localhost:5000/product/${id}`).then(
-      res => {
+      (res) => {
         return res.json();
       }
     );
@@ -54,7 +56,7 @@ export const ProductEdit = () => {
   const loadOption = async () => {
     const loadData = await fetch(
       `http://localhost:5000/productOption/${id}`
-    ).then(res => {
+    ).then((res) => {
       return res.json();
     });
     setOptionLength(loadData.length);
@@ -79,13 +81,20 @@ export const ProductEdit = () => {
       ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
-        alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
+        Swal.fire({
+          icon: "error",
+          title: "이미지를 업로드하는데 실패했습니다.",
+          text: `${file.name} 파일은 허용되지 않는 확장자입니다.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         mainImgRef.value = mainImageFile; // 파일 선택 취소
         return; // 다음 파일 처리 중단
       }
       reader.onloadend = () => {
         setMainImageFile(reader.result);
-        setNewProduct(prevState => ({
+        setNewProduct((prevState) => ({
           ...prevState,
           mainImage: reader.result,
         }));
@@ -95,7 +104,7 @@ export const ProductEdit = () => {
     }
   };
 
-  const checkOnlyOneCategory = checkThis => {
+  const checkOnlyOneCategory = (checkThis) => {
     if (checkThis.checked === false) {
       setCheckCategory("");
       setCheckDetail("");
@@ -104,7 +113,7 @@ export const ProductEdit = () => {
     }
   };
 
-  const checkOnlyOneDetail = checkThis => {
+  const checkOnlyOneDetail = (checkThis) => {
     if (checkThis.checked === false) {
       setCheckDetail("");
     } else {
@@ -123,9 +132,16 @@ export const ProductEdit = () => {
       : setDetailBar([]);
   };
 
-  const valueChange = e => {
+  const valueChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
+  };
+
+  const cancelPreview = (index) => {
+    let newDescriptionArray = [...descriptionImgArray];
+    newDescriptionArray.splice(index, 1);
+    setDescriptionImgArray(newDescriptionArray);
+    console.log(descriptionImgArray);
   };
 
   useEffect(() => {
@@ -137,12 +153,12 @@ export const ProductEdit = () => {
     showDetailBar();
   }, [checkCategory, checkDetail]);
 
-  const addTag = e => {
+  const addTag = (e) => {
     e.preventDefault();
     setCount(count + 1);
   };
 
-  //새로운 정보를 추가하는 컴포넌트
+  //새로운 정보(productOption)을 추가하는 컴포넌트
   const components = Array.from({ length: count }, (el, index) => {
     return (
       <ProductOption
@@ -176,7 +192,7 @@ export const ProductEdit = () => {
 
   useEffect(() => {}, [option, newOption]);
 
-  const toEditProduct = async e => {
+  const toEditProduct = async (e) => {
     e.preventDefault();
 
     try {
@@ -223,7 +239,7 @@ export const ProductEdit = () => {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      }).then(res => {
+      }).then((res) => {
         res.json();
         if (res.ok) {
           alert("제품의 정보를 수정했습니다.");
@@ -250,7 +266,7 @@ export const ProductEdit = () => {
             <div className="wrap">
               <h2 className="title">카테고리</h2>
               <div className="boxWrap">
-                {category.map(el => {
+                {category.map((el) => {
                   return (
                     <div className="box" key={el}>
                       <label className="text" htmlFor={el}>
@@ -262,7 +278,7 @@ export const ProductEdit = () => {
                         name={el}
                         value={el}
                         checked={checkCategory === el}
-                        onChange={e => checkOnlyOneCategory(e.target)}
+                        onChange={(e) => checkOnlyOneCategory(e.target)}
                       />
                     </div>
                   );
@@ -285,7 +301,7 @@ export const ProductEdit = () => {
                           name={el}
                           value={el}
                           checked={checkDetail === el}
-                          onChange={e => checkOnlyOneDetail(e.target)}
+                          onChange={(e) => checkOnlyOneDetail(e.target)}
                         />
                       </div>
                     );
@@ -379,13 +395,19 @@ export const ProductEdit = () => {
                 />
               </div>
             </div>
-            {descriptionImgArray.map((img, index) => {
-              return (
-                <div key={index}>
-                  <img src={img} alt="이미지" style={{ width: "100%" }} />
-                </div>
-              );
-            })}
+            <div className="descriptionImgWrap">
+              {descriptionImgArray.map((img, index) => {
+                return (
+                  <div key={index} style={{ display: "flex" }}>
+                    <img src={img} alt="이미지" className="descriptionImg" />
+                    <XCircleFill
+                      className="deleteDescription"
+                      onClick={() => cancelPreview(index)}
+                    ></XCircleFill>
+                  </div>
+                );
+              })}
+            </div>
             <div className="btnForm">
               <button>수정완료</button>
               <Link to={`/productList/detail/description/${id}`}>

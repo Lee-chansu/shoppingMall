@@ -104,7 +104,7 @@ export function CheckoutPage() {
       const saveResponse = await fetch("http://localhost:5000/paymentRequest", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: orderId, amount: price, user_id: id, items: location.state.paymentList }),
+        body: JSON.stringify({ id: orderId, amount: price, user_id: id, items: location.state.paymentList, mainAddress: location.state.address.mainAddress, detailAddress: location.state.address.detailAddress  }),
       });
 
       if (!saveResponse.ok) {

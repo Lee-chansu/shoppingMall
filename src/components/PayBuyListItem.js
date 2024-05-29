@@ -16,7 +16,7 @@ export const PayItem = ({ val, handleDeleteItem, handleAddToCart }) => {
   const moveReview = () => {
     navigate("/review", { state: { buyList: val } });
   };
-
+  console.log(val)
   return (
     <div className="payItem">
       <div className="itemInfo">
@@ -58,7 +58,7 @@ export const PayItem = ({ val, handleDeleteItem, handleAddToCart }) => {
             alt="trash"
             src="img/trashBtn.png"
           /> */}
-          상품 리뷰쓰기
+          {val.isReviewed ? "상품 수정하기":"상품 리뷰쓰기"}
         </div>
       </div>
     </div>

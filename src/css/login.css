@@ -1,7 +1,16 @@
-*{margin:0; padding: 0; box-sizing: border-box;}
-ul, ol, li{list-style:none;}
-a{text-decoration:none;} 
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
 
 .login {
   background-color: #f6f1eb;
@@ -20,8 +29,8 @@ a{text-decoration:none;}
   width: 640px;
   border-radius: 10px;
 }
-.login .div > .textWrapper::after{
-  content: '';
+.login .div > .textWrapper::after {
+  content: "";
   display: block;
   width: 540px;
   border: 1px solid #f6f1eb;
@@ -32,7 +41,7 @@ a{text-decoration:none;}
 
 .login .textWrapper {
   color: #524747;
-  
+
   font-size: 30px;
   font-weight: 400;
   height: 95px;
@@ -72,7 +81,7 @@ a{text-decoration:none;}
   width: 400px;
 }
 
-.login .place1{
+.login .place1 {
   position: absolute;
   z-index: 1;
   top: 25px;
@@ -87,7 +96,7 @@ a{text-decoration:none;}
   cursor: text;
 }
 
-.login .place2{
+.login .place2 {
   position: absolute;
   z-index: 1;
   top: 25px;
@@ -104,7 +113,7 @@ a{text-decoration:none;}
 
 .login .textWrapper2 {
   color: #000000;
-  
+
   font-size: 15px;
   font-weight: 400;
   height: 40px;
@@ -152,7 +161,7 @@ a{text-decoration:none;}
 
 .login .textWrapper3 {
   color: #000000;
-  
+
   font-size: 26.6px;
   font-weight: 400;
   height: 55px;
@@ -179,7 +188,7 @@ a{text-decoration:none;}
 
 .login .textWrapper4 {
   color: #000000;
-  
+
   font-size: 26.6px;
   font-weight: 400;
   height: 55px;
@@ -203,7 +212,7 @@ a{text-decoration:none;}
 
 .login .textWrapper5 {
   color: #000000;
-  
+
   font-size: 12px;
   font-weight: 400;
   height: 37px;
@@ -217,7 +226,7 @@ a{text-decoration:none;}
 }
 
 .login .etc > ::after {
-  content: '';
+  content: "";
   display: block;
   width: 1px;
   height: 60%;
@@ -233,7 +242,7 @@ a{text-decoration:none;}
 
 .login .textWrapper6 {
   color: #000000;
-  
+
   font-size: 12px;
   font-weight: 400;
   height: 35px;
@@ -248,7 +257,7 @@ a{text-decoration:none;}
 
 .login .textWrapper7 {
   color: #000000;
-  
+
   font-size: 12px;
   font-weight: 400;
   height: 37px;

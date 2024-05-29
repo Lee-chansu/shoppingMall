@@ -2,7 +2,7 @@ require("dotenv").config();
 
 //db
 const db = require("../models");
-const { Cart, BuyList, Product, ProductOption, Carry, PaymentRequest } = db;
+const { Cart, BuyList, Product, Carry, PaymentRequest } = db;
 
 //user Id 로 장바구니 조회
 exports.selectCartByUserId = async (req, res) => {
@@ -40,6 +40,7 @@ exports.selectBuyListByUserId = async (req, res) => {
     // include: [ProductOption],
   });
   res.json(result);
+  console.log(result);
 };
 
 //배송리스트 조회
@@ -50,33 +51,31 @@ exports.selectCarryAll = async (req, res) => {
 
 //배송리스트 추가
 exports.addCarry = async (req, res) => {
-  const { list, user_id, order_id } = req.body;
+  const { list, user_id, order_id, mainAddress, detailAddress } = req.body;
+  console.log("list", list);
 
-  const carryStartDate = new Date(list.createdAt);
-  carryStartDate.setDate(carryStartDate.getDate() + 3);
-  const carryEnd = carryStartDate.toISOString();
+  list.forEach(async (val, idx) => {
+    const carryStart = new Date();
+    const carryEnd = new Date(carryStart);
+    carryEnd.setDate(carryEnd.getDate() + 3);
 
-  const newCarry = {
-    user_id,
-    order_id,
-    // userName,
-    // mainAddress,
-    // detailAddress,
-    progress: "배송중",
-    carryStart: list.createdAt,
-    carryEnd,
-  };
-  const result = await Carry.findOne({
-    where: { user_id, order_id },
+    const newCarry = {
+      user_id,
+      order_id,
+      mainAddress,
+      detailAddress,
+      progress: "배송중",
+      carryStart,
+      carryEnd,
+    };
+    // TODO: address 해결해야 함
+    try {
+        await Carry.create(newCarry);
+    } catch (error) {
+      console.error("배송 내역 추가 중 에러 발생", error);
+    }
   });
-  // TODO: userName, address 해결해야 함
-  // console.log("result", result);
-  if (!result) {
-    await Carry.create(newCarry);
-    res.json({ result: false });
-  } else {
-    res.json({ result });
-  }
+  res.json({ message: "배송 내역 추가가 성공적으로 완료되었습니다", success: true });
 };
 
 // 장바구니에 제품 추가

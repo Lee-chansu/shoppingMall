@@ -1,0 +1,38 @@
+.footer {
+  background: inherit;
+  border-top: 1px solid #eee;
+}
+.wrap {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 120px;
+  padding: 0 20px;
+}
+.ul:last-of-type {
+  border-right: none;
+}
+
+.ul {
+  width: 25%;
+  height: 100%;
+  padding: 20px 10px;
+  margin: 0;
+  color: #353535;
+  border-right: 1px solid #eee;
+}
+
+.li {
+  padding: 5px 5px 5px 10px;
+  font-weight: 400;
+  font-size: 12px;
+  color: #555555;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+p {
+  margin: 0 5px 0 0;
+}
