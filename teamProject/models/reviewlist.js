@@ -16,10 +16,10 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER(1),
       },
       reviewColor: {
-        type: DataTypes.INTEGER(1),
+        type: DataTypes.STRING(255),
       },
       reviewSize: {
-        type: DataTypes.INTEGER(1),
+        type: DataTypes.STRING(255),
       },
       reviewImage: {
         type: DataTypes.TEXT,

@@ -49,6 +49,36 @@ exports.selectCarryAll = async (req, res) => {
   res.json(result);
 };
 
+//배송리스트 추가
+exports.addCarry = async (req, res) => {
+  const { list, user_id } = req.body;
+
+  const carryStartDate = new Date(list.createdAt);
+  carryStartDate.setDate(carryStartDate.getDate() + 3);
+  const carryEnd = carryStartDate.toISOString();
+
+  const newCarry = {
+    user_id,
+    order_id,
+    userName,
+    address,
+    progress: "배송중",
+    carryStart: list.createdAt,
+    carryEnd,
+  };
+  const result = await Carry.findOne({
+    where: { user_id, order_id },
+  });
+  // TODO: userName, address 해결해야 함
+  // console.log("result", result);
+  if (!result) {
+    await Carry.create(newCarry);
+    res.json({ result: false });
+  } else {
+    res.json({ result });
+  }
+};
+
 // 장바구니에 제품 추가
 exports.addProductToCart = async (req, res) => {
   const newProduct = req.body;

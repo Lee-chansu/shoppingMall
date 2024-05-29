@@ -59,7 +59,8 @@ export function SuccessPage() {
       setOptionList(productOptionIds);
       setArrayList(arrayResponse);
 
-      console.log("arrayList", arrayList[0]?.items[0].amount);
+      console.log("arrayList", arrayList[0]?.items);
+      // console.log("arrayList[0]?.items[0].amount", arrayList[0]?.items[0].amount);
     }
 
     confirm();
@@ -74,16 +75,24 @@ export function SuccessPage() {
       );
       return selectedProductOption;
     };
-
-    const checkStock = async () => {
+    const getStockList = async () => {
       const test = await findStock();
       setStockList(test);
-      console.log("test", stockList[0]?.stock);
+      console.log("test", stockList);
+    };
+    getStockList();
+  }, [navigate, searchParams, optionList]);
 
+  useEffect(() => {
+    const checkStock = async () => {
       // 재고 조사
       // arrayResponse의 amount와 test의 stock 비교
       // arrayList[0].items[0].amount  A = arrayList[0].items
       // stockList[0].stock  S = stockList
+
+      // console.log("vs");
+      // console.log("A", arrayList[0].items);
+      // console.log("S", stockList);
 
       function checkStockAndAmount(S, A) {
         if (!S || !A) return false;
@@ -114,13 +123,33 @@ export function SuccessPage() {
       const json = await response.json();
 
       if (!response.ok) {
-        // TODO: 결제 실패 비즈니스 로직을 구현하세요.
+        // 결제 실패 비즈니스 로직
         console.log(json);
         // navigate(`/toss/fail?message=${json.message}&code=${json.code}`);
         return;
       }
 
       // TODO: 결제 성공 비즈니스 로직을 구현하세요.
+
+      // 상품 옵션 재고 업데이트
+      const option = stockList.map((item, i) => ({
+        ...item,
+        stock: item.stock - arrayList[0].items[i].amount,
+      }));
+
+      console.log('editOption', option);
+
+      const updateRes = await axios.put(
+        "http://localhost:5000/productOption",
+        option
+      );
+
+      if (!updateRes.data.success) {
+        alert("주문에 실패했습니다. 다시 시도해주세요.");
+        return;
+      }
+
+      // 구매 내역 추가
       const body = { list: arrayList[0].items, user_id: id };
 
       const addingRes = await axios.post("http://localhost:5000/buyList", body);
@@ -130,6 +159,17 @@ export function SuccessPage() {
         return;
       }
 
+      // 구매 내역 추가
+      const carry = { list: arrayList[0].items, user_id: id, order_id: searchParams.get("orderId") };
+
+      const carryRes = await axios.post("http://localhost:5000/carry", carry);
+
+      if (!carryRes.data.success) {
+        alert("주문에 실패했습니다. 다시 시도해주세요.");
+        return;
+      }
+
+      // 장바구니 삭제
       const deletingRes = await axios.delete("http://localhost:5000/cart", {
         data: body,
       });
@@ -142,10 +182,10 @@ export function SuccessPage() {
       console.log(json);
       // console.log('json', json);
     };
-    if (optionList.length > 0 && arrayList.length > 0) {
+    if (stockList.length > 0 && arrayList.length > 0) {
       checkStock();
     }
-  }, [optionList, navigate, searchParams]);
+  }, [navigate, searchParams, stockList]);
 
   return (
     <div>
