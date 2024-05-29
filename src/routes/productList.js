@@ -58,7 +58,7 @@ export const ProductList = () => {
     }
     if (detail) {
       navigate(
-        `/productList?category=${category}detail=${detail}&offset=${offset}&limit=${limit}`
+        `/productList?category=${category}&detail=${detail}&offset=${offset}&limit=${limit}`
       );
     } else if (category) {
       navigate(
@@ -76,7 +76,6 @@ export const ProductList = () => {
 
   useEffect(() => {
     loadProduct();
-    console.log(offset);
   }, [offset]);
 
   return (
