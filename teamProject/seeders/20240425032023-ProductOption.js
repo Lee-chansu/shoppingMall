@@ -190,6 +190,13 @@ module.exports = {
           size: "XL",
           stock: 99,
         },
+        {
+          id: 110,
+          product_id: 110,
+          color: "화이트",
+          size: "XL",
+          stock: 99,
+        },
       ],
       {}
     );

@@ -140,6 +140,15 @@ module.exports = {
           mainImage: "imageUrl9",
           createdAt: Sequelize.literal("CURRENT_TIMESTAMP"),
         },
+        {
+          id: 110,
+          name: "흰티",
+          price: 1234,
+          mainImage: "https://i.ibb.co/hBRC72S/ac7d2322ae8b.jpg",
+          description:
+            "https://i.ibb.co/dLMSMmM/7190d19adbbe.png,https://i.ibb.co/VQXc8kx/545a6940d4ff.png,https://i.ibb.co/RYKWPY7/c42219cb0bf6.png,https://i.ibb.co/18VRTgf/322b1c6122d2.png,",
+          createdAt: Sequelize.literal("CURRENT_TIMESTAMP"),
+        },
       ],
       {}
     );

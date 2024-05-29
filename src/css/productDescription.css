@@ -9,53 +9,58 @@
 .productInfo .productInfoWrapper {
   margin-top: 100px;
   background-color: #ffffff;
-  height: 1200px;
   width: 1440px;
 }
 
-.productInfo .div {
+.productInfo .infoDescription {
   height: 1163px;
-  left: 53px;
-  position: relative;
-  top: 18px;
   width: 1330px;
+  overflow: hidden;
+}
+.productInfo .infoDescription.unhidden {
+  width: 1330px;
+  height: auto;
+  overflow: unset;
 }
 
 .productInfo .productDecription {
   background-color: inherit;
-  height: auto;
-  left: 2px;
-  position: absolute;
-  top: 175px;
   width: 1328px;
+  position: relative;
 }
 
 .productInfo .moreInfo {
   background-color: #ffffff;
   height: 117px;
-  left: 3px;
-  position: absolute;
-  top: 812px;
   width: 1322px;
 }
 
+
+.productInfo .descriptionBox {
+  display: block;
+  width: 100%;
+}
+
+.productInfo .descriptionImg {
+  display: block;
+  width: 100%;
+}
+
 .productInfo .textWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #000000;
   font-size: 43.2px;
   font-weight: 400;
-  left: 438px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
-  top: 32px;
-  width: 312px;
+  height: 100%;
+  width: 100%;
 }
 
 .productInfo .polygon {
   height: 17px;
-  left: 764px;
-  position: absolute;
-  top: 54px;
   width: 31px;
 }
 
@@ -63,39 +68,32 @@
   color: #000000;
   font-size: 43.2px;
   font-weight: 400;
-  left: 518px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
-  top: 439px;
 }
 
 .productInfo .infoSelect {
-  background-color: #999;
+  display: flex;
+  background-color: inherit;
   border-radius: 5px;
   height: 156px;
-  position: absolute;
-  top: 5px;
-  width: 664px;
+  width: 100%;
 }
 
 .productInfo .productReview {
   height: 156px;
-  left: 664px;
-  position: absolute;
-  top: 5px;
   width: 664px;
 }
 
 .productInfo .textWrapper3 {
   color: #000;
+  height: 100%;
   font-size: 28px;
   font-weight: 400;
-  left: 270px;
   letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 60px;
+  vertical-align: middle;
+  line-height: 140px;
+  text-align: center;
 }
 
 .productInfo .productDescription1 {
@@ -105,13 +103,9 @@
   top: 5px;
   width: 664px; */
 
-  z-index: 1;
   background-color: #999;
   border-radius: 5px;
   height: 156px;
-  left: 0;
-  position: absolute;
-  top: 5px;
   width: 664px;
 }
 
@@ -119,9 +113,9 @@
   color: #eee;
   font-size: 28px;
   font-weight: 400;
-  left: 280px;
   letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 60px;
+  line-height: 140px;
+  vertical-align: middle;
+  height: 100%;
+  text-align: center;
 }
