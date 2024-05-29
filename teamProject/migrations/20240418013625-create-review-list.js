@@ -30,10 +30,10 @@ module.exports = {
         type: Sequelize.INTEGER(1),
       },
       reviewColor: {
-        type: Sequelize.STRING(255),
+        type: Sequelize.INTEGER(1),
       },
       reviewSize: {
-        type: Sequelize.STRING(255),
+        type: Sequelize.INTEGER(1),
       },
       reviewImage: {
         type: Sequelize.STRING(255),
