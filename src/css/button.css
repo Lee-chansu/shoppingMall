@@ -4,6 +4,7 @@
   height: 60px;
   width: inherit;
   box-sizing: border-box;
+  margin-top: 50px;
 }
 
 .buttonBox > * {
