@@ -68,7 +68,6 @@ exports.addCarry = async (req, res) => {
       carryStart,
       carryEnd,
     };
-    // TODO: address 해결해야 함
     try {
         await Carry.create(newCarry);
     } catch (error) {

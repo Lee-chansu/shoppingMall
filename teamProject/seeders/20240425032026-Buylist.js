@@ -5,22 +5,6 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('BuyLists', [
       {
-        id: 99,
-        product_id: 10,
-        productName: "productName10",
-        category: "category10",
-        price: 20000,
-        description: "description10",
-        image: "image10",
-        user_id: 100,
-        productColor: "color0",
-        productSize: "L",
-        orderQuantity: 0,
-        amount:1,
-        isReviewed: false,
-        carryStatus: '배송완료'
-      },
-      {
         id: 100,
         product_id: 0,
         productName: "productName0",

@@ -83,19 +83,6 @@ export const Payment = () => {
     navigate("/toss", {
       state: { paymentList: location.state.list, orderSum, paySelect: "test", address: newUser },
     });
-    //모달 처리 예정 , if문으로 분기처리 예정
-  };
-
-  const handleAllPayment2 = () => {
-    navigate("/paysuccess", {
-      state: {
-        list: location.state.list,
-        orderSum,
-        paySelect: "test",
-        // paySelectSumPrice: orderSum.paySumTotal,
-      },
-    });
-    //모달 처리 예정 , if문으로 분기처리 예정
   };
 
   //결제방식 선택시 실행할 함수
@@ -389,7 +376,7 @@ export const Payment = () => {
               <CustomButton
                 className="btn2"
                 buttonTitle="결제취소"
-                handleLinkMove={handleAllPayment2}
+                handleLinkMove={handleLinkBackMove}
               />
 
               <CustomButton
