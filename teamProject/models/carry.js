@@ -10,7 +10,10 @@ module.exports = (sequelize) => {
     order_id: {
       type: DataTypes.STRING(40)
     },
-    address: {
+    mainAddress: {
+      type: DataTypes.STRING(100)
+    },
+    detailAddress: {
       type: DataTypes.STRING(100)
     },
     progress: {
