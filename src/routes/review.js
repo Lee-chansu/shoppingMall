@@ -78,7 +78,7 @@ export const Review = () => {
         if (!allowedExtensions.includes(extension)) {
           Myalter(
             "warning",
-            "유저 수정 가이드",
+            "리뷰 수정 가이드",
             `${selectFile.name} 파일은 허용되지 않는 확장자입니다.`
           );
           e.target.value = ""; // 파일 선택 취소

@@ -360,14 +360,48 @@ exports.addReview =  async (req, res) => {
       res.send("success");
     }
   } else {
-    res.send("fail");
+    res.status(500).send({ message: "제품 옵션 재고 업데이트 실패" });
   }
 };
 
-// 리뷰수정
+// 리뷰수정페이지에서 기존 리뷰정보 받아오기
 exports.loadReviewForEdit = async(req,res)=>{
   const {buyList_id} = req.params
+  
   const result = await ReviewList.findOne({where : {buyList_id}})
-  console.log(result)
-  console.log('test')
+  if(result){
+    res.json(result)
+  }else{
+    res.send({message : "실패"})
+  }
+}
+
+// 리뷰수정
+exports.ReviewEdit = async(req,res)=>{
+  const {buyList_id} = req.params
+  const {editReview} = req.body
+
+  const options = {
+    apiKey: imgbbKey,
+    base64string: editReview.reviewImage.split(",")[1],
+  }
+
+  const result = await ReviewList.findOne({where : {buyList_id}})
+
+  if(result){
+    for(let key in editReview){
+      result[key] = editReview[key]
+    }
+    if(options.base64string){
+      const uploadResponse = await imgbbUploader(options);
+      result.reviewImage = uploadResponse.url;
+    }
+    await result.save()
+    res.send({message : '성공'})
+  }
+  
+    
+
+    
+  
 }

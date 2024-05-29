@@ -15,34 +15,6 @@ export const ReviewEdit = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const reviewGet = async()=>{
-    try {
-      const response = await fetch(`http://localhost:5000/reviewEdit/${buyList.id}`)
-      const body = await response.json();
-      return body;
-    } catch (error) {
-      console.error('Error reviewGet Fetch', error)
-    }
-  }
-
-  useEffect(() => {
-    // 유저 고유 id 받아오기
-    const token = sessionStorage.getItem("token");
-    if (!token) {
-      navigate("/");
-    } else {
-      const decodeToken = jwtDecode(token);
-      setAddReview((pre) => ({ ...pre, user_id: decodeToken.id }));
-      if(location.state){
-        setBuyList(location.state.buyList)  // 제품정보값넣기
-        setAddReview((pre)=>({...pre, buyList_id : location.state.buyList.id}))
-        reviewGet()
-        }else{
-        navigate("/")
-      }
-    }
-  }, []);
-
   const [buyList,setBuyList] = useState({  // 제품정보
     id : "",
     productName : "",
@@ -52,7 +24,7 @@ export const ReviewEdit = () => {
     image : "",
     isReviewed: ""
   })
-  const [addReview, setAddReview] = useState({
+  const [editReview, setEditReview] = useState({
     user_id: "",
     buyList_id: "",
     starPoint: 0,
@@ -65,10 +37,41 @@ export const ReviewEdit = () => {
   const colorList = ["밝아요", "화면과 같아요", "어두워요"];
   const sizeList = ["작아요", "정사이즈예요", "커요"];
   const startList = [1, 2, 3, 4, 5]; // map 돌리기위한 배열갯수
+
+  useEffect(() => {
+    // 유저 고유 id 받아오기
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      navigate("/");
+    } else {
+      const decodeToken = jwtDecode(token);
+      setEditReview((pre) => ({ ...pre, user_id: decodeToken.id }));
+      if(location.state){
+        setBuyList(location.state.buyList)  // 제품정보값넣기
+        setEditReview((pre)=>({...pre, buyList_id : location.state.buyList.id}))
+        }else{
+        navigate("/")
+      }
+    }
+  }, []);
+
+  useEffect(()=>{
+    reviewGet()
+  },[buyList.id])
+
+  const reviewGet = async()=>{
+    try {
+      const response = await fetch(`http://localhost:5000/reviewEdit/${buyList.id}`)
+      const body = await response.json();
+      setEditReview(body)
+    } catch (error) {
+      console.error('Error reviewGet Fetch', error)
+    }
+  }
   
   const handleClick = (i) => () => {
     // 별점클릭시
-    setAddReview((pre) => ({ ...pre, starPoint: i + 1 }));
+    setEditReview((pre) => ({ ...pre, starPoint: i + 1 }));
   };
 
   const handleChange = (e) => {
@@ -88,22 +91,17 @@ export const ReviewEdit = () => {
         "pdf",
       ]; // 허용되는 확장자 목록
         if (!allowedExtensions.includes(extension)) {
-          Myalter('warning','유저 수정 가이드',`${selectFile.name} 파일은 허용되지 않는 확장자입니다.`)
+          Myalter('warning','리뷰 수정 가이드',`${selectFile.name} 파일은 허용되지 않는 확장자입니다.`)
           e.target.value = ''; // 파일 선택 취소
           return; // 다음 파일 처리 중단
         }
         reader.onloadend = () => {
-          setAddReview((pre) => ({ ...pre, reviewImage: reader.result }));
+          setEditReview((pre) => ({ ...pre, reviewImage: reader.result }));
         };
         reader.readAsDataURL(selectFile);
       }
-
-      // setAddReview((pre)=>({
-      //   ...pre,
-      //   reviewImage : e.target.files[0]
-      // }))
     }else{
-      setAddReview((pre) => ({
+      setEditReview((pre) => ({
         ...pre,
         content: e.target.value,
       })); //사용자 내용 입력시마다 state update
@@ -116,29 +114,26 @@ export const ReviewEdit = () => {
   
   const handleLinkReviewMove = async (e) => {
     e.preventDefault();
-    if (addReview.starPoint === 0) {
+    if (editReview.starPoint === 0) {
       Myalter("warning", "리뷰 가이드", "별점을 선택해주세요");
     } else {
       try {
-        const response = await fetch(`http://localhost:5000/review`, {
-          method: "POST",
+        const response = await fetch(`http://localhost:5000/reviewEdit/${buyList.id}`, {
+          method: "PUT",
           headers : {"Content-Type" : "application/json"},
-          body: JSON.stringify({addReview})
+          body: JSON.stringify({editReview})
         });
         if (!response.ok) {
           throw new Error("서버에서 응답을 받을 수 없습니다");
         } else {
-          await Myalter("success", "리뷰 가이드", "리뷰작성 완료");
+          await Myalter("success", "리뷰 가이드", "리뷰수정 완료");
           navigate(`/payBuyList`);
         }
       } catch (error) {
-        Myalter("warning", "리뷰 가이드", "리뷰 등록중 오류가 발생했습니다");
+        Myalter("warning", "리뷰 가이드", "리뷰 수정중 오류가 발생했습니다");
       }
     }
   };
-
-  
-  
   return (
     <div className="review">
       <div className="reviewWrap">
@@ -170,7 +165,7 @@ export const ReviewEdit = () => {
                     i={i}
                     size={50}
                     color="gold"
-                    filled={i < addReview.starPoint ? true : false}
+                    filled={i < editReview.starPoint ? true : false}
                     handleClick={handleClick(i)}
                   />
                 );
@@ -192,10 +187,10 @@ export const ReviewEdit = () => {
                     key={idx}
                     buttonTitle={val}
                     className={
-                      addReview.reviewColor == idx ? "selected" : "non-selected"
+                      editReview.reviewColor == idx ? "selected" : "non-selected"
                     }
                     handleLinkMove={() => {
-                      setAddReview((pre) => ({ ...pre, reviewColor: idx }));
+                      setEditReview((pre) => ({ ...pre, reviewColor: idx }));
                     }}
                   />
                 </div>
@@ -217,10 +212,10 @@ export const ReviewEdit = () => {
                     key={idx}
                     buttonTitle={val}
                     className={
-                      addReview.reviewSize == idx ? "selected" : "non-selected"
+                      editReview.reviewSize == idx ? "selected" : "non-selected"
                     }
                     handleLinkMove={() => {
-                      setAddReview((pre) => ({ ...pre, reviewSize: idx }));
+                      setEditReview((pre) => ({ ...pre, reviewSize: idx }));
                     }}
                   />
                 </div>
@@ -235,6 +230,7 @@ export const ReviewEdit = () => {
             <textarea
               className="reviewDetail"
               placeholder="다른 분들에게 도움이 될 수 있는 리뷰를 300자 이내로 작성해 주세요"
+              value={editReview.content}
               onChange={handleChange}
             />
           </div>
@@ -244,7 +240,7 @@ export const ReviewEdit = () => {
           <span className="title">사진 첨부하기 </span>
           <img 
             className="reviewImage"
-            src={addReview.reviewImage || "../img/userDefaultImg.png"} 
+            src={editReview.reviewImage || "../img/userDefaultImg.png"} 
             alt="리뷰사진 미리보기"
             >
             </img>
