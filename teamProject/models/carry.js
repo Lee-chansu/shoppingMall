@@ -7,6 +7,12 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true
     },
+    order_id: {
+      type: DataTypes.STRING(40)
+    },
+    address: {
+      type: DataTypes.STRING(100)
+    },
     progress: {
       type: DataTypes.STRING(30)
     },
@@ -22,7 +28,6 @@ module.exports = (sequelize) => {
 
   Carry.associate = (models) => {
     Carry.belongsTo(models.User, { foreignKey: 'user_id' });
-    Carry.belongsTo(models.BuyList, { foreignKey: 'order_id' });
   };
 
   return Carry;

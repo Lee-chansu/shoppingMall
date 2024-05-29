@@ -27,6 +27,10 @@
   text-align: center;
 }
 
+.header .inner .category .text:hover button {
+  color: #ff7d9e;
+}
+
 .header .inner .category2 {
   background-color: inherit;
   display: none;
@@ -48,15 +52,35 @@
   border: none;
 }
 
-.header .inner .text {
-  display: inline-block;
-  padding: 10px;
-  color: #000000;
-  font-size: 32px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: normal;
+.nav .joinBoxWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
 }
+
+.nav .joinBoxText {
+  color: gray;
+  font-weight: 400;
+  width: 110px;
+  display: flex;
+  justify-content: center;
+}
+
+.nav .joinBoxText:hover {
+  color: #ff7d9e;
+  font-weight: 600;
+  border-radius: 2px;
+  border: 1px solid #ff7d9e;
+  padding: 10px;
+}
+
+.nav .boxArrowInRight,
+.nav .personAdd {
+  margin-top: 3px;
+  width: 30px;
+}
+
 .header .inner .text.logo {
   display: none;
 }
@@ -80,10 +104,12 @@
 }
 
 .header .inner .nav .linkProfile .profileImage {
+  margin: 25% auto;
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   border-radius: 50%;
+  border: 1px solid #4d4a4a;
 }
 
 @media screen and (max-width: 1500px) {

@@ -25,6 +25,7 @@ export const PayBuyList = () => {
   };
 
   const getPayItemList = async () => {
+    // console.log(id);
     const response = await fetch(`http://localhost:5000/buyList/${id}`);
     const payOrderList = await response.json();
     setPayItemList(payOrderList);
@@ -33,7 +34,7 @@ export const PayBuyList = () => {
   //로그인한 유저의 id 가져오기
   useEffect(() => {
     const token = sessionStorage.getItem("token");
-    if (id === "" && !token) {
+    if (!token) {
       navigate("/login");
     } else {
       const decodeToken = jwtDecode(token);
@@ -75,9 +76,9 @@ export const PayBuyList = () => {
   };
 
   const handleAddToCart = async (val) => {
-    let newItem = payItemList.find((item) => item.id === val.id)
+    let newItem = payItemList.find((item) => item.id === val.id);
 
-    console.log(newItem.ProductOption)
+    
 
     const addItem = {
       size: newItem.ProductOption.productSize,
@@ -86,7 +87,7 @@ export const PayBuyList = () => {
       price: newItem.price,
       user_id: id,
       productOption_id: newItem.ProductOption.id,
-    }
+    };
 
     try {
       const response = await fetch("http://localhost:5000/cart", {
@@ -111,8 +112,6 @@ export const PayBuyList = () => {
                 val={val}
                 idx={idx}
                 key={val.id}
-                payItemList={payItemList}
-                setPayItemList={setPayItemList}
                 handleDeleteItem={handleDeleteItem}
                 handleAddToCart={handleAddToCart}
               />

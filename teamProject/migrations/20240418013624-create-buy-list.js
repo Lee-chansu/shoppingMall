@@ -16,6 +16,9 @@ module.exports = {
           key: 'id'
         }
       },
+      product_id: {
+        type: Sequelize.INTEGER
+      },
       productName: {
         type: Sequelize.STRING(255)
       },
@@ -31,12 +34,25 @@ module.exports = {
       image: {
         type: Sequelize.STRING(255)
       },
+      productColor: {
+        type: Sequelize.STRING(255)
+      },
+      productSize: {
+        type: Sequelize.STRING(255)
+      },
       buyDate: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now')
       },
       amount: {
         type: Sequelize.INTEGER
+      },
+      orderQuantity: {
+        type: Sequelize.INTEGER
+      },
+      isReviewed: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       carryStatus: {
         type: Sequelize.STRING(255)
@@ -47,8 +63,9 @@ module.exports = {
       productSize: {
         type: Sequelize.STRING(4),
       },
-      orderQuantity: {
-        type: Sequelize.INTEGER,
+      isReviewed: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
     });
   },

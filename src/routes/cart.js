@@ -102,15 +102,16 @@ export const Cart = () => {
 
   //선택상품만 결제하기
   const handlePaymentMove = () => {
-    //선택된 상품 추출
-    const selectedCartItemList = cartItemList.filter(
-      (val) => val.isChecked === true
-      );
-      if(selectedCartItemList.length === 0){
-        alert('결제하실 상품을 골라주세요')
-        return;
-      }
-      
+    //선택된 상품 추출 및 id 순으로 정렬
+    const selectedCartItemList = cartItemList
+      .filter((val) => val.isChecked === true)
+      .sort((a, b) => a.id - b.id);
+
+    if (selectedCartItemList.length === 0) {
+      alert("결제하실 상품을 골라주세요");
+      return;
+    }
+
     //payment로 선택된 상품 전달
     navigate("/payment", {
       state: {
@@ -123,11 +124,11 @@ export const Cart = () => {
   const handlePaymentRemove = async () => {
     const selectedCartItemList = cartItemList.filter(
       (val) => val.isChecked === true
-      );
-      if(selectedCartItemList.length === 0){
-        alert('삭제하실 상품을 골라주세요')
-        return;
-      }
+    );
+    if (selectedCartItemList.length === 0) {
+      alert("삭제하실 상품을 골라주세요");
+      return;
+    }
 
     //서버에 보낼 정보를 담은 body 선언
     const body = {
@@ -193,14 +194,14 @@ export const Cart = () => {
 
             <CustomButton
               className="btn2"
-              buttonTitle="선택상품 결제하기"
-              handleLinkMove={handlePaymentMove}
+              buttonTitle="선택상품 삭제하기"
+              handleLinkMove={handlePaymentRemove}
             />
 
             <CustomButton
               className="btn3"
-              buttonTitle="선택상품 삭제하기"
-              handleLinkMove={handlePaymentRemove}
+              buttonTitle="선택상품 결제하기"
+              handleLinkMove={handlePaymentMove}
             />
           </ButtonBox>
         </div>

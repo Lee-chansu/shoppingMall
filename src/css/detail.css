@@ -7,16 +7,19 @@
 }
 
 .detail .inner {
-  background-color: #eee;
   width: 100%;
   overflow: hidden;
 }
 
 .detail .wrapper {
-  padding: 10px;
   background-color: #fff;
+  border-radius: 7px;
 }
 
-.detail .div-wrapper .text {
+.detail .wrapper .text {
   padding: 10px;
+}
+
+.detail .wrapper .text:hover {
+  color: #ff7d9e;
 }

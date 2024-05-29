@@ -1,11 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/productAdd.css";
+import { XCircleFill } from "react-bootstrap-icons";
 
 //컴포넌트
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
 import { ProductOption } from "../components/productOptionAdd";
+import { MyDropzone } from "../components/DropZone";
+import { Myalter } from "../components/Myalter";
+import Swal from "sweetalert2";
 
 export const ProductAdd = () => {
   const navigate = useNavigate();
@@ -48,7 +52,14 @@ export const ProductAdd = () => {
       ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
-        alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
+        Swal.fire({
+          icon: "error",
+          title: "이미지를 업로드하는데 실패했습니다.",
+          text: `${file.name} 파일은 허용되지 않는 확장자입니다.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         mainImgRef.value = mainImageFile; // 파일 선택 취소
         return; // 다음 파일 처리 중단
       }
@@ -126,6 +137,14 @@ export const ProductAdd = () => {
     );
   });
 
+  const [descriptionImgArray, setDescriptionImgArray] = useState([]);
+
+  const cancelPreview = (index) => {
+    let newDescriptionArray = [...descriptionImgArray];
+    newDescriptionArray.splice(index, 1);
+    setDescriptionImgArray(newDescriptionArray);
+  };
+
   useEffect(() => {
     showDetailBar();
   }, [checkCategory, checkDetail]);
@@ -172,6 +191,7 @@ export const ProductAdd = () => {
       const body = {
         newProduct,
         newOption,
+        descriptionImgArray,
       };
 
       await fetch("http://localhost:5000/addProduct", {
@@ -211,9 +231,7 @@ export const ProductAdd = () => {
                 {category.map((el) => {
                   return (
                     <div className="box" key={el}>
-                      <label className="text" htmlFor={el}>
-                        {el}
-                      </label>
+                      <p className="text">{el}</p>
                       <input
                         type="checkbox"
                         className="checkBoxCategory"
@@ -272,6 +290,17 @@ export const ProductAdd = () => {
               </h2>
               {components}
             </div>
+            <p
+              style={{
+                display: "inline-block",
+                margin: "0 15px",
+                color: "#ccc",
+                fontSize: "15px",
+              }}
+            >
+              이미지파일은 ".jpg", ".png", ".bmp", ".gif", ".tif", ".webp",
+              ".heic", ".pdf"만 가능합니다.
+            </p>
             <div className="wrap img">
               <h2 className="title">메인이미지 등록</h2>
               <div className="boxWrap">
@@ -298,6 +327,7 @@ export const ProductAdd = () => {
                 />
               </div>
             </div>
+
             <div className="wrap img">
               <h2 className="title">서브이미지 등록</h2>
               <div className="boxWrap">
@@ -314,10 +344,26 @@ export const ProductAdd = () => {
               </div>
             </div>
             <div className="wrap description">
-              <h2 className="title">상품 상세설명</h2>
+              <h2 className="title">Description</h2>
               <div className="boxWrap">
-                <input type="text" name="description" onChange={valueChange} />
+                <MyDropzone
+                  descriptionImgArray={descriptionImgArray}
+                  setDescriptionImgArray={setDescriptionImgArray}
+                />
               </div>
+            </div>
+            <div className="descriptionImgWrap">
+              {descriptionImgArray.map((img, index) => {
+                return (
+                  <div key={index} style={{ display: "flex" }}>
+                    <img src={img} alt="이미지" className="descriptionImg" />
+                    <XCircleFill
+                      className="deleteDescription"
+                      onClick={() => cancelPreview(index)}
+                    ></XCircleFill>
+                  </div>
+                );
+              })}
             </div>
             <div className="btnForm">
               <button>추가</button>

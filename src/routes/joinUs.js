@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../css/joinUs.css";
 import { useEffect, useState } from "react";
+import { Myalter } from "../components/Myalter";
 
 export const JoinUs = () => {
   const navigate = useNavigate()
@@ -35,7 +36,7 @@ export const JoinUs = () => {
   const joinButton = (e)=>{
     e.preventDefault()
     if(!checkList.firstCheck){
-      alert('개인정보 수집동의는 필수입니다')
+      Myalter('warning', '이용약관','개인정보 수집동의는 필수입니다')
     }else{
       navigate('/join')
     }

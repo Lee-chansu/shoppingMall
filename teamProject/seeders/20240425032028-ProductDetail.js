@@ -23,8 +23,8 @@ module.exports = {
         },
         { id: 4, 
           product_id: 4, 
-          category: "상의" ,
-          detailCategory : "블라우스"
+          category: "하의" ,
+          detailCategory : "청바지"
         },
         { id: 5, 
           product_id: 5, 

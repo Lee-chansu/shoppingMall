@@ -7,6 +7,9 @@ import "../css/productDetailDescription.css";
 import { Nav } from "../components/nav";
 import { ProductDescription } from "../components/productDescription";
 import { ProductReview } from "../components/productReview";
+import { Myalter } from "../components/Myalter";
+import Swal from "sweetalert2";
+import { Footer } from "../components/footer";
 
 export const ProductDetailDescription = () => {
   const navigate = useNavigate();
@@ -38,19 +41,19 @@ export const ProductDetailDescription = () => {
     e.preventDefault();
     const isLogin = sessionStorage.getItem("token");
     if (!isLogin) {
-      alert("로그인 후 사용할 수 있습니다");
+      Myalter("warning", "구매 가이드", "로그인 후 사용할 수 있습니다");
       return;
     }
     const { id } = jwtDecode(isLogin);
 
     if (selectedSize === "") {
-      alert("사이즈를 선택하세요");
+      Myalter("warning", "구매 가이드", "사이즈를 선택하세요");
       return;
     } else if (selectedColor === "") {
-      alert("색상을 선택하세요");
+      Myalter("warning", "구매 가이드", "색상을 선택하세요");
       return;
     } else if (stock == 0) {
-      alert("수량이 0입니다");
+      Myalter("warning", "구매 가이드", "수량이 0입니다");
       return;
     } else {
       const response = await fetch(
@@ -86,19 +89,29 @@ export const ProductDetailDescription = () => {
         } else {
           let no = await response.json();
           if (no.result == false) {
-            const confirmed = window.confirm(
-              "장바구니에 상품을 추가했습니다 장바구니로 이동하시겠습니까?"
-            );
-            if (confirmed) navigate("/cart");
+            const alrterResult = await Swal.fire({
+              icon: "question",
+              title: "구매 가이드",
+              text: "장바구니에 상품을 추가했습니다 장바구니로 이동하시겠습니까?",
+              showCancelButton: true,
+              confirmButtonText: "확인",
+              cancelButtonText: "취소",
+            });
+            if (alrterResult.isConfirmed) navigate("/cart");
           } else {
-            const confirmed = window.confirm(
-              "장바구니에 이미 해당 상품이 담겨있습니다 장바구니로 이동하시겠습니까?"
-            );
-            if (confirmed) navigate("/cart");
+            const alrterResult = await Swal.fire({
+              icon: "question",
+              title: "구매 가이드",
+              text: "장바구니에 상품을 추가했습니다 장바구니로 이동하시겠습니까?",
+              showCancelButton: true,
+              confirmButtonText: "확인",
+              cancelButtonText: "취소",
+            });
+            if (alrterResult.isConfirmed) navigate("/cart");
           }
         }
       } catch (error) {
-        alert("오류가 발생했습니다");
+        Myalter("warning", "구매 가이드", "오류가 발생했습니다");
       }
     }
   };
@@ -106,19 +119,19 @@ export const ProductDetailDescription = () => {
   const handlePayment = async (e) => {
     const isLogin = sessionStorage.getItem("token");
     if (!isLogin) {
-      alert("로그인 후 사용할 수 있습니다");
+      Myalter("warning", "구매 가이드", "로그인 후 사용할 수 있습니다");
       return;
     }
     const { id } = jwtDecode(isLogin);
 
     if (selectedSize === "") {
-      alert("사이즈를 선택하세요");
+      Myalter("warning", "구매 가이드", "사이즈를 선택하세요");
       return;
     } else if (selectedColor === "") {
-      alert("색상을 선택하세요");
+      Myalter("warning", "구매 가이드", "색상을 선택하세요");
       return;
     } else if (stock == 0) {
-      alert("수량이 0입니다");
+      Myalter("warning", "구매 가이드", "수량이 0입니다");
       return;
     } else {
       const response = await fetch(
@@ -144,10 +157,10 @@ export const ProductDetailDescription = () => {
 
       if (updatedFormData) {
         console.log(updatedFormData);
-        navigate("/payment", { state: { paymentList: [updatedFormData] } });
+        navigate("/payment", { state: { list: [updatedFormData] } });
       } else {
         console.log(updatedFormData);
-        alert("상품을 선택하세요");
+        Myalter("warning", "구매 가이드", "상품을 선택하세요");
       }
     }
   };
@@ -187,21 +200,11 @@ export const ProductDetailDescription = () => {
     setStock(0);
   };
 
-  // useEffect(() => {
-  //   // console.log('size', size)
-  // }, [size]);
-
-  // useEffect(() => {
-  //   // console.log('color', color)
-  // }, [color]);
-
   useEffect(() => {
-    // console.log("selectedSize", selectedSize);
     getStock();
   }, [selectedSize]);
 
   useEffect(() => {
-    // console.log("selectedColor", selectedColor);
     getStock();
   }, [selectedColor]);
 
@@ -210,6 +213,7 @@ export const ProductDetailDescription = () => {
       `http://localhost:5000/product/${productId}`
     ).then((res) => res.json());
     setProduct(getProduct);
+    console.log(getProduct);
   };
 
   const loadUser = async () => {
@@ -270,9 +274,16 @@ export const ProductDetailDescription = () => {
   };
 
   const deleteProduct = async () => {
-    const delConfirm = window.confirm("제품을 정말 삭제하시겠습니까?");
+    const alrterResult = await Swal.fire({
+      icon: "question",
+      title: "구매 가이드",
+      text: "제품을 정말 삭제하시겠습니까?",
+      showCancelButton: true,
+      confirmButtonText: "예",
+      cancelButtonText: "아니오",
+    });
 
-    if (!delConfirm) {
+    if (!alrterResult.isConfirmed) {
       return;
     }
     try {
@@ -284,16 +295,22 @@ export const ProductDetailDescription = () => {
         })
         .then((res) => {
           if (res) {
-            alert("제품을 삭제했습니다.");
+            Myalter("warning", "제품수정 가이드", "제품을 삭제했습니다");
             navigate("/productList");
           } else {
-            alert("제품을 삭제하는데 실패했습니다.");
-            console.log(res);
+            Myalter(
+              "warning",
+              "제품수정 가이드",
+              "제품을 삭제하는데 실패했습니다."
+            );
           }
         });
     } catch (error) {
-      alert("제품을 삭제하던 도중 오류가 발생했습니다.");
-      console.log(error);
+      Myalter(
+        "warning",
+        "제품수정 가이드",
+        "제품을 삭제하던 도중 오류가 발생했습니다."
+      );
     }
   };
 
@@ -305,6 +322,7 @@ export const ProductDetailDescription = () => {
           <div className="productdetail">
             <div className="div">
               <div className="thumbnailBox">
+                {console.log(product.stock)}
                 <img
                   ref={mainRef}
                   src={photos[index]}
@@ -323,13 +341,14 @@ export const ProductDetailDescription = () => {
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="infoBox">
+                  <span className="administrator">관리자 권한 </span>
                   <Link to={`/productList/edit/${productId}`}>
                     <button type="button" className="btn">
-                      수정
+                      상품수정
                     </button>
                   </Link>
                   <button type="button" className="btn" onClick={deleteProduct}>
-                    삭제
+                    상품삭제
                   </button>
                   <div className="productName">
                     <div className="textWrapper2">제품명</div>
@@ -422,25 +441,15 @@ export const ProductDetailDescription = () => {
                     </div>
                   </div>
                 </div>
-                <div className="buttonBox">
-                  <div className="cartButton">
-                    <button
-                      style={{ border: "none", backgroundColor: "white" }}
-                      className="textWrapper"
-                    >
-                      장바구니
-                    </button>
-                  </div>
-                  <div className="nowPayButton">
-                    <button
-                      type="button"
-                      style={{ border: "none", backgroundColor: "white" }}
-                      className="textWrapper"
-                      onClick={() => handlePayment()}
-                    >
-                      바로결제
-                    </button>
-                  </div>
+                <div className="buttonGroup">
+                  <button className="clientBtn1">장바구니</button>
+                  <button
+                    type="button"
+                    className="clientBtn2"
+                    onClick={() => handlePayment()}
+                  >
+                    바로결제
+                  </button>
                 </div>
               </form>
             </div>
@@ -466,12 +475,11 @@ export const ProductDetailDescription = () => {
               />
             )}
           </div>
-          
         </div>
       ) : (
-        // TODO error 페이지 만들어서 대체
         <div>해당 상품을 찾을 수 없습니다</div>
       )}
+      <Footer></Footer>
     </>
   );
 };

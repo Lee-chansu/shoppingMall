@@ -1,12 +1,14 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { Myalter } from "./Myalter";
+import Swal from "sweetalert2";
 
 export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
   const [subImageFile, setSubImageFile] = useState("");
 
   const subIamgeArray = {
-    subImage1: subImageFile,
-    subImage2: subImageFile,
-    subImage3: subImageFile,
+    subImage1: newProduct.subImage1,
+    subImage2: newProduct.subImage2,
+    subImage3: newProduct.subImage3,
   }[subImageId];
 
   const previewImage = (e) => {
@@ -26,7 +28,14 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
       ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
-        alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
+        Swal.fire({
+          icon: "error",
+          title: "이미지를 업로드하는데 실패했습니다.",
+          text: `${file.name} 파일은 허용되지 않는 확장자입니다.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         e.target.value = subImageFile; // 파일 선택 취소
         return; // 다음 파일 처리 중단
       }

@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import "../css/userEdit.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { Myalter } from "../components/Myalter";
+import AddressModal from "../components/AddressModal";
 
 export const UserEdit = () => {
   const navigate = useNavigate();
@@ -12,6 +14,7 @@ export const UserEdit = () => {
   const [id, setId] = useState();
   const [editUser, setEditUser] = useState({});
   const [checkToggle, setCheckToggle] = useState("false");
+  const mainAddressRef = useRef(null)
 
   // 해당유저 정보받아오는 패치
   const getUserFetch = async () => {
@@ -43,7 +46,8 @@ export const UserEdit = () => {
       passwordCheck: "",
       email: getUser.email,
       phoneNumber: getUser.phoneNumber,
-      address: getUser.address,
+      mainAddress: getUser.mainAddress,
+      detailAddress : getUser.detailAddress,
       gender: getUser.gender,
     };
     setEditUser(editDefault);
@@ -93,7 +97,7 @@ export const UserEdit = () => {
       ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
-        alert(`${selectFile.name} 파일은 허용되지 않는 확장자입니다.`);
+        Myalter('warning','유저 수정 가이드',`${selectFile.name} 파일은 허용되지 않는 확장자입니다.`)
         e.target.value = ''; // 파일 선택 취소
         return; // 다음 파일 처리 중단
       }
@@ -103,18 +107,18 @@ export const UserEdit = () => {
       reader.readAsDataURL(selectFile);
     }
   };
+  
 
   const buttonClick = async (e) => {
     e.preventDefault();
     if (!editUser.password) {
-      alert("변경할 비밀번호를 입력하시오");
+      Myalter('warning','유저 수정 가이드',"변경할 비밀번호를 입력하시오")
     } else if (!editUser.passwordCheck) {
-      alert("비밀번호 재확인을 입력하시오");
+      Myalter('warning','유저 수정 가이드',"비밀번호 재확인을 입력하시오")
     } else if (editUser.password !== editUser.passwordCheck) {
-      alert("비밀번호 재확인이 일치하지 않습니다");
+      Myalter('warning','유저 수정 가이드',"비밀번호 재확인이 일치하지 않습니다")
     } else {
       try {
-        // console.log(editUser);
         const response = await fetch(`http://localhost:5000/userEdit/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -124,12 +128,11 @@ export const UserEdit = () => {
         if (!response.ok) {
           throw new Error("서버에서 응답을 받을 수 없습니다");
         } else {
-          alert("유저수정 완료");
+          await Myalter('success','유저 수정 가이드',"유저수정 완료")
           navigate("/userProfile");
         }
       } catch (error) {
-        alert("유저 수정중 오류가 발생했습니다");
-        console.log(error);
+        Myalter('warning','유저 수정 가이드',"유저 수정중 오류가 발생했습니다")
       }
     }
   };
@@ -243,7 +246,33 @@ export const UserEdit = () => {
               />
             </div>
             <div className="boxAddress">
-              <label htmlFor="address" className="txt">
+              <label for="address" className="addressLabel">주소를 입력해주세요</label>
+              <input
+                className="mainAddress"
+                id="address"
+                name="mainAddress"
+                ref={mainAddressRef}
+                onChange={valueChange}
+                value={editUser.mainAddress}
+                disabled
+              />
+              <AddressModal
+                className="addressModal"
+                innerText="주소 검색"
+                mainAddressRef={mainAddressRef}
+                setNewUser={setEditUser}
+              />
+              <div className="boxWrapper">
+                <input
+                  className="detailAddress"
+                  id="address"
+                  name="detailAddress"
+                  onChange={valueChange}
+                  value={editUser.detailAddress}
+                />
+              </div>
+
+              {/* <label htmlFor="address" className="txt">
                 주소를 입력해주세요
               </label>
               <input
@@ -252,7 +281,7 @@ export const UserEdit = () => {
                 name="address"
                 onChange={valueChange}
                 value={editUser.address}
-              />
+              /> */}
             </div>
             <div className="selectGender">
               <div className="txt">성별을 선택해주세요</div>

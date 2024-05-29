@@ -8,7 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import AddressModal from "../components/AddressModal";
 import CustomButton from "../components/CustomButton";
 import { Nav } from "../components/nav";
-import axios from "axios";
+// import axios from "axios";
 
 export const Payment = () => {
   //배송요청 직접입력
@@ -63,44 +63,21 @@ export const Payment = () => {
     navigate(-1);
   };
 
-  const handleAllPayment = async () => {
-    if (paySelect == "") {
-      alert("결제방식을 선택해주세요");
-      return;
-    }
-    //결제정보
-    const body = {
-      user_id: id,
-      list: paymentItemList,
-    };
-    //결제목록에 추가하는 코드
-    const postRes = await axios.post("http://localhost:5000/buyList", body);
-    const postData = postRes.data;
-
-    if (!postData.success) {
-      alert("상품 결제 중 오류 발생");
-      return;
-    }
-
-    //cart에서 결제된 항목 삭제
-    const deleteRes = await axios.delete("http://localhost:5000/cart", {
-      data: body,
+  const handleAllPayment = () => {
+    navigate("/toss", {
+      state: { paymentList: location.state.list, orderSum, paySelect: 'test' },
     });
-    const deleteData = deleteRes.data;
+    //모달 처리 예정 , if문으로 분기처리 예정
+  };
 
-    if (!deleteData.success) {
-      alert("상품 결제 중 오류 발생");
-      return;
-    }
-
-    alert(postData.message);
-    navigate("/paySuccess", {
+  const handleAllPayment2 = () => {
+    navigate("/paysuccess", {
       state: {
-        list: paymentItemList,
-        paySelect,
-        paySelectSumPrice: orderSum.paySumTotal,
+        list: location.state.list, orderSum, paySelect : 'test'
+        // paySelectSumPrice: orderSum.paySumTotal,
       },
     });
+    //모달 처리 예정 , if문으로 분기처리 예정
   };
 
   //결제방식 선택시 실행할 함수
@@ -117,21 +94,17 @@ export const Payment = () => {
 
     console.log("paymentList", data);
     return data;
-
-    const response = await fetch(`http://localhost:5000/Cart/${id}`);
-    const body = await response.json();
-    return body;
   };
 
-  const getProducts = async (id) => {
-    const result = await userFetchProducts(id);
-    const newArr = result.map((val, idx) => {
-      return { ...val };
-    });
-    console.log(newArr);
+  // const getProducts = async (id) => {
+  //   const result = await userFetchProducts(id);
+  //   const newArr = result.map((val, idx) => {
+  //     return { ...val };
+  //   });
+  //   console.log(newArr);
 
-    setPaymentItemList(newArr);
-  };
+  //   setPaymentItemList(newArr);
+  // };
 
   //user id 가져오기위한 useEffect
   useEffect(() => {
@@ -170,7 +143,7 @@ export const Payment = () => {
   //cart의 선택된 상품을 전달받아 list에 저장
   useEffect(() => {
     const { list } = location.state; //cart에서 navigate로 보낸 cartItemList를 location으로 list란 이름으로 받음
-    console.log(list);
+    console.log("list", list);
     setPaymentItemList(list); //list가 없을때 예외처리 해야함
   }, []); //의존성 배열이 비어있기때문에 값이 바뀔수없으므로 한번만 실행
 
@@ -185,17 +158,26 @@ export const Payment = () => {
           <div className="payBox">
             <div className="userInfoBox">
               <h3 className="carryInfo">배송지 정보</h3>
-              <div className="emailBox">
-                <div className="email">주문자 이메일</div>
-                <div className="email2">{userProfile.email}</div>
+              <div className="infoBox">
+                <div className="nameBox">
+                  <div className="name">주문자명 </div>
+                  <div className="name2">{userProfile.userName}</div>
+                </div>
+              </div>
+              <div className="box">
+              <div className="phoneBox">
+                <div className="phone">연락처 </div>
+                  <div className="phone2">{userProfile.phoneNumber}</div>
+                </div>
               </div>
               <div className="addressBox">
                 <div className="address">배송받을 주소</div>
                 <div className="address2">
                   {/* paymentmodal에서 mainAddressRef로 input태그에 접근이 가능해짐 */}
-                  <AddressModal 
+                  <AddressModal
+                    className="mainAddress"
                     innerText="기본 배송지 수정"
-                    mainAddressRef={mainAddressRef} 
+                    mainAddressRef={mainAddressRef}
                   />
 
                   <input
@@ -257,13 +239,49 @@ export const Payment = () => {
                   </select>
                   {selectedOption === "carryMessage7" && (
                     <input
-                      className="carryMessage8"
+                      className="carryDirectMessage"
                       placeholder="여기에 배송요청 사항을 직접 입력하세요"
                     ></input>
                   )}
                 </div>
               </div>
-              <div className="howPayBox">
+              <div className="saleBox">
+                <div className="coupon">쿠폰 사용하기</div>
+                <div className="coupon2">
+                  <label for="agree1" className="radio_box">
+                    <input
+                      type="radio"
+                      id="agree1"
+                      name="agree"
+                      value="신규고객 5,000원 할인쿠폰"
+                    />
+                    <span className="on"></span>
+                    신규고객 5,000원 할인쿠폰
+                  </label>
+                  <label for="agree2" className="radio_box">
+                    <input
+                      type="radio"
+                      id="agree2"
+                      name="agree"
+                      value="카카오친구 1,000원 할인쿠폰"
+                    />
+                    <span class="on"></span>
+                    카카오친구 1,000원 할인쿠폰
+                  </label>
+                  <label for="agree3" class="radio_box">
+                    <input
+                      type="radio"
+                      id="agree3"
+                      name="agree"
+                      value="쿠폰선택 안함"
+                      defaultChecked
+                    />
+                    <span className="on"></span>
+                    쿠폰선택 안함
+                  </label>
+                </div>
+              </div>
+              {/* <div className="howPayBox">
                 <div className="title">
                   <div className="textWrapper2">
                     결제방식 선택
@@ -304,7 +322,7 @@ export const Payment = () => {
                   있습니다
                   <br />위 내용을 확인하였으며 결제에 동의합니다
                 </span>
-              </div>
+              </div> */}
             </div>
 
             <div className="payList">
@@ -350,12 +368,12 @@ export const Payment = () => {
               <CustomButton
                 className="btn2"
                 buttonTitle="결제취소"
-                handleLinkMove={handleAllPayment}
+                handleLinkMove={handleAllPayment2}
               />
 
               <CustomButton
                 className="btn3"
-                buttonTitle="결제완료"
+                buttonTitle="결제하기"
                 handleLinkMove={handleAllPayment}
               />
             </ButtonBox>

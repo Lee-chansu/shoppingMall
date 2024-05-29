@@ -17,14 +17,10 @@ module.exports = {
         }
       },
       order_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'BuyLists',
-          key: 'id'
-        }
+        type: Sequelize.STRING(40),
       },
-      userId: {
-        type: Sequelize.STRING(15)
+      address: {
+        type: Sequelize.STRING(100)
       },
       progress: {
         type: Sequelize.STRING(30)

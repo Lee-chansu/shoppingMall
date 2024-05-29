@@ -2,12 +2,13 @@ import "../css/nav.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { BoxArrowInRight, PersonAdd } from "react-bootstrap-icons";
 
 export const Nav = () => {
   const isLogin = sessionStorage.getItem("token");
+  // const [imageUrl, setImageUrl] = useState("");
   const [imageUrl, setImageUrl] = useState("../img/userDefaultImg.png");
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
-  
 
   // 유저프로필 이미지
   const profileImageLoad = async () => {
@@ -24,9 +25,7 @@ export const Nav = () => {
     } else {
       profileImageLoad();
     }
-  }, [imageUrl]);
-
-  //
+  }, []);
 
   const navigate = useNavigate();
 
@@ -34,9 +33,6 @@ export const Nav = () => {
     const { innerText } = e.target;
     navigate(`/productList?category=${innerText}`);
   };
-
-
-  
 
   return (
     <header className="header">
@@ -65,17 +61,34 @@ export const Nav = () => {
                 <img
                   className="profileImage"
                   src={imageUrl}
-                  // onError={() => setImageUrl("../img/userDefaultImg.png")}
+                  onError={() => setImageUrl("../img/userDefaultImg.png")}
                   alt="유저프로필"
                 />
               </Link>
             </>
           ) : (
-            <Link className="link" to="/login">
-              <div className="wrapper">
-                <div className="text">로그인</div>
+            <>
+              <div className="joinBoxWrapper">
+                <Link className="link" to="/login">
+                  <div className="joinBox">
+                    <div className="joinBoxText">
+                      로그인
+                      <BoxArrowInRight 
+                        className="boxArrowInRight"
+                      /> 
+                    </div>
+                  </div>
+                </Link>
+                <Link className="link" to="/joinUs">
+                  <div className="joinBox">
+                    <div className="joinBoxText">
+                      회원가입
+                      <PersonAdd className="personAdd" />
+                    </div>
+                  </div>
+                </Link>
               </div>
-            </Link>
+            </>
           )}
         </nav>
         <div className="category2">

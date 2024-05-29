@@ -1,10 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 //컴포넌트
 import { Main } from "./main";
+
 import { ProductList } from "./routes/productList";
 import { ProductDetailDescription } from "./routes/productDetailDescription";
 import { ProductAdd } from "./routes/productAddPage";
@@ -26,12 +26,13 @@ import { Payment } from "./routes/payment";
 import { PaySuccess } from "./routes/paySuccess";
 import { PayFail } from "./routes/payFail";
 import { PayBuyList } from "./routes/payBuyList";
-import { CheckoutPage } from "./components/Checkout.js";
-import { SuccessPage } from "./components/Success.js";
-import { FailPage } from "./components/Fail.js";
+import { CheckoutPage } from "./routes/Checkout.js";
+import { SuccessPage } from "./routes/Success.js";
+import { FailPage } from "./routes/Fail.js";
 
 import { Review } from "./routes/review";
 
+/*eslint-disabled*/
 function App() {
   return (
     <Routes>

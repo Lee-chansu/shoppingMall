@@ -1,11 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { WindowDash, XCircleFill } from "react-bootstrap-icons";
+import { MyDropzone } from "../components/DropZone";
 import "../css/productEdit.css";
 
 //컴포넌트
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
 import { ProductOption, EditInfo } from "../components/productOptionAdd";
+import ButtonBox from "../components/ButtonBox";
+import CustomButton from "../components/CustomButton";
+import Swal from "sweetalert2";
 
 export const ProductEdit = () => {
   const id = useParams().id;
@@ -22,6 +27,7 @@ export const ProductEdit = () => {
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
   const [count, setCount] = useState(0);
+  const [descriptionImgArray, setDescriptionImgArray] = useState([]);
 
   const subImageCount = [0, 1, 2];
   const subImageId = ["subImage1", "subImage2", "subImage3"];
@@ -34,6 +40,10 @@ export const ProductEdit = () => {
     악세사리: ["귀걸이", "가방", "피어싱", "모자"],
   };
 
+  const handleCancle = () => {
+    navigate(-1);
+  };
+
   const loadProduct = async () => {
     const getProduct = await fetch(`http://localhost:5000/product/${id}`).then(
       (res) => {
@@ -43,6 +53,10 @@ export const ProductEdit = () => {
     setNewProduct(getProduct);
     setCheckCategory(getProduct.category);
     setCheckDetail(getProduct.detail);
+    if (getProduct.description) {
+      const splitArr = getProduct.description.split(",");
+      setDescriptionImgArray(splitArr.slice(0, splitArr.length - 1));
+    }
   };
 
   const loadOption = async () => {
@@ -73,7 +87,14 @@ export const ProductEdit = () => {
       ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
-        alert(`${file.name} 파일은 허용되지 않는 확장자입니다.`);
+        Swal.fire({
+          icon: "error",
+          title: "이미지를 업로드하는데 실패했습니다.",
+          text: `${file.name} 파일은 허용되지 않는 확장자입니다.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         mainImgRef.value = mainImageFile; // 파일 선택 취소
         return; // 다음 파일 처리 중단
       }
@@ -122,6 +143,13 @@ export const ProductEdit = () => {
     setNewProduct({ ...newProduct, [name]: value });
   };
 
+  const cancelPreview = (index) => {
+    let newDescriptionArray = [...descriptionImgArray];
+    newDescriptionArray.splice(index, 1);
+    setDescriptionImgArray(newDescriptionArray);
+    console.log(descriptionImgArray);
+  };
+
   useEffect(() => {
     loadProduct();
     loadOption();
@@ -136,7 +164,7 @@ export const ProductEdit = () => {
     setCount(count + 1);
   };
 
-  //새로운 정보를 추가하는 컴포넌트
+  //새로운 정보(productOption)을 추가하는 컴포넌트
   const components = Array.from({ length: count }, (el, index) => {
     return (
       <ProductOption
@@ -242,7 +270,7 @@ export const ProductEdit = () => {
         <div className="inner">
           <form onSubmit={toEditProduct} className="formBox">
             <div className="wrap">
-              <h2 className="title">카테고리</h2>
+              <h2 className="categoryTitle">카테고리</h2>
               <div className="boxWrap">
                 {category.map((el) => {
                   return (
@@ -264,7 +292,7 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap">
-              <h2 className="title">디테일</h2>
+              <h2 className="categoryTitle">디테일</h2>
               <div className="boxWrap">
                 {detailBar.length === 0 ? (
                   <p className="text">카테고리를 선택해주세요</p>
@@ -288,9 +316,10 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap">
-              <h2 className="title">제품명</h2>
+              <h2 className="categoryTitle">제품명</h2>
               <div className="boxWrap">
                 <input
+                  className="valueInput"
                   type="text"
                   name="name"
                   defaultValue={newProduct.name}
@@ -299,9 +328,10 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap">
-              <h2 className="title">가격</h2>
+              <h2 className="categoryTitle">가격</h2>
               <div className="boxWrap">
                 <input
+                  className="valueInput"
                   type="text"
                   name="price"
                   defaultValue={newProduct.price}
@@ -310,7 +340,7 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap stock">
-              <h2 className="title">
+              <h2 className="categoryTitle">
                 옵션
                 <button className="btn" onClick={addTag}>
                   +
@@ -320,7 +350,7 @@ export const ProductEdit = () => {
               {components}
             </div>
             <div className="wrap img">
-              <h2 className="title">메인이미지 등록</h2>
+              <h2 className="categoryTitle ">메인이미지 등록</h2>
               <div className="boxWrap">
                 <label htmlFor="mainImage">
                   <div className="addImg" style={{ marginLeft: "5px" }}>
@@ -350,7 +380,7 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap img">
-              <h2 className="title">서브이미지 등록</h2>
+              <h2 className="categoryTitle">서브이미지 등록</h2>
               <div className="boxWrap">
                 {subImageCount.map((el, index) => {
                   return (
@@ -365,17 +395,40 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap description">
-              <h2 className="title">상품 상세설명</h2>
+              <h2 className="categoryTitle">상품 상세설명</h2>
               <div className="boxWrap">
-                <input type="text" name="description" onChange={valueChange} />
+                <MyDropzone
+                  descriptionImgArray={descriptionImgArray}
+                  setDescriptionImgArray={setDescriptionImgArray}
+                />
               </div>
             </div>
-            <div className="btnForm">
-              <button>수정완료</button>
-              <Link to={`/productList/detail/description/${id}`}>
-                <button>취소</button>
-              </Link>
+            <div className="descriptionImgWrap">
+              {descriptionImgArray.map((img, index) => {
+                return (
+                  <div key={index} style={{ display: "flex" }}>
+                    <img src={img} alt="이미지" className="descriptionImg" />
+                    <XCircleFill
+                      className="deleteDescription"
+                      onClick={() => cancelPreview(index)}
+                    ></XCircleFill>
+                  </div>
+                );
+              })}
             </div>
+            <ButtonBox>
+              <CustomButton
+                className="btn1"
+                buttonTitle="취소"
+                handleLinkMove={handleCancle}
+              />
+
+              <CustomButton
+                className="btn2"
+                buttonTitle="수정완료"
+                handleLinkMove={handleCancle}
+              />
+            </ButtonBox>
           </form>
         </div>
       </div>

@@ -1,8 +1,9 @@
 
 import { useNavigate } from "react-router-dom";
 import "../css/passwordCheck.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { Myalter } from "../components/Myalter";
 
 export const PasswordCheck = () => {
   const navigate = useNavigate()
@@ -34,13 +35,13 @@ export const PasswordCheck = () => {
   const submitButton = async(e)=>{
     e.preventDefault()
     if(!typeingPassword.password){
-      alert('비밀번호를 입력하시오')
+      Myalter('warning','인증 가이드','비밀번호를 입력하시오')
     }
     else if(!typeingPassword.passwordCheck){
-      alert('비밀번호 재확인을 입력하시오')
+      Myalter('warning','인증 가이드','비밀번호 재확인을 입력하시오')
     }
     else if(typeingPassword.password != typeingPassword.passwordCheck){
-      alert('비밀번호 재확인이 일치하지 않습니다')
+      Myalter('warning','인증 가이드','비밀번호 재확인이 일치하지 않습니다')
     }
     else{
       try {
@@ -58,13 +59,33 @@ export const PasswordCheck = () => {
             throw new Error('서버에서 응답을 받을 수 없습니다')
           }
         }else{
-          alert('비밀번호 일치 / 수정페이지로 이동합니다')
+          await Myalter('success','인증 가이드','비밀번호 일치 / 수정페이지로 이동합니다')
           navigate('/userEdit')
         }
 
       } catch (error) {
-        alert('비밀번호 확인중 오류가 발생했습니다')
+        Myalter('warning','인증 가이드','비밀번호 확인중 오류가 발생했습니다')
       }
+    }
+  }
+
+  const placeRef = useRef(null)
+  const placeRef2 = useRef(null)
+  
+  const inputFocus = (e)=>{
+    if(e.target.name === 'password'){
+      placeRef.current.style.top = '7px';
+    }
+    else{
+      placeRef2.current.style.top = '7px';
+    }
+  }
+
+  const inputBlur = (e)=>{
+    if(e.target.name === 'password' && !e.target.value){
+      placeRef.current.style.top = '25px';
+    }else if(e.target.name === 'passwordCheck' && !e.target.value){
+      placeRef2.current.style.top = '25px';
     }
   }
 
@@ -77,10 +98,12 @@ export const PasswordCheck = () => {
         <form className="loginBox">
           <div className="inputBox">
             <div className="inputUserpassword">
-              <input type="password" className="textWrapper4" placeholder="비밀번호*" name="password" onChange={valueChange}></input>
+              <label for='password' className="place1" ref={placeRef}>비밀번호</label>
+              <input id='password' type="password" className="textWrapper4" name="password" onChange={valueChange} onFocus={inputFocus} onBlur={inputBlur}></input>
             </div>
             <div className="divWrapper">
-              <input type="password" className="textWrapper4" placeholder="비밀번호 재확인*" name="passwordCheck" onChange={valueChange}></input>
+              <label for='passwordCheck' className="place2" ref={placeRef2}>비밀번호 확인</label>
+              <input id='passwordCheck' type="password" className="textWrapper4" name="passwordCheck" onChange={valueChange} onFocus={inputFocus} onBlur={inputBlur}></input>
             </div>
           </div>
           <div className="buttonBox">

@@ -46,13 +46,13 @@ a {
 .payBuyList .productName {
   padding-top: 8px;
   font-size: 16px;
-  
+
   font-weight: 400;
 }
 
 .payBuyList .productTotal {
   color: #ff7d9e;
-  
+
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 0;
@@ -102,6 +102,8 @@ a {
   border: 2px solid #ddd;
   right: 110px;
   top: 200px;
+  color: #0D6EFD;
+  cursor: pointer;
 }
 
 .payBuyList .selectBox {
@@ -114,13 +116,10 @@ a {
 
 .payBuyList .title {
   color: #000000;
-  
   font-size: 30px;
   font-weight: 600;
-  letter-spacing: 0;
-  line-height: normal;
   text-align: center;
   margin: 40px auto;
   white-space: nowrap;
-  width: 357px;
+  width: 350px;
 }

@@ -37,36 +37,65 @@
   font-weight: 600;
 }
 
-.payment .emailBox {
+.payment .infoBox {
   border: 1px solid #ddd;
   border-radius: 10px;
   height: 111px;
   position: absolute;
   top: 60px;
-  width: 100%;
+  width: 49%;
 }
 
-.payment .email {
+.payment .box {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  height: 111px;
+  position: absolute;
+  top: 60px;
+  left: 200px;
+  width: 49%;
+  margin-left: 5px;
+}
+
+.payment .name {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   left: 20px;
-  letter-spacing: 0;
-  line-height: normal;
   position: absolute;
-  top: 35px;
+  top: 30px;
   width: 360px;
 }
 
-.payment .email2 {
+.payment .name2 {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
   font-size: 18px;
   font-weight: 600;
   left: 20px;
-  letter-spacing: 0;
-  line-height: normal;
+  position: absolute;
+  top: 60px;
+  width: 360px;
+}
+
+.payment .phone {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  left: 20px;
+  position: absolute;
+  top: 30px;
+  width: 360px;
+}
+
+.payment .phone2 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 18px;
+  font-weight: 600;
+  left: 20px;
   position: absolute;
   top: 60px;
   width: 360px;
@@ -75,7 +104,7 @@
 .payment .addressBox {
   border: 1px solid #ddd;
   border-radius: 10px;
-  height: 135px;
+  height: 170px;
   position: absolute;
   top: 180px;
   width: 100%;
@@ -84,13 +113,13 @@
 .payment .address {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   left: 20px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 17px;
+  top: 28px;
   width: 360px;
 }
 
@@ -112,8 +141,8 @@
   height: 30px;
   border-radius: 5px;
   position: absolute;
-  font-size: 16px;
-  top: -5px;
+  font-size: 14px;
+  top: 15px;
 }
 
 .payment .detailAddressBox {
@@ -122,48 +151,84 @@
   border-radius: 5px;
   position: absolute;
   font-size: 16px;
-  top: 30px;
+  top: 55px;
+}
+
+.payment .coupon {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  left: 20px;
+  position: absolute;
+  top: 20px;
+  width: 360px;
+}
+
+.payment .coupon2 {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 600;
+  left: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 50px;
+  width: 360px;
 }
 
 .payment .btn-secondary {
-  /* display: inline-block; */
   position: absolute;
-  right: 50px;
-  top: -47px;
+  right: 60px;
+  top: -40px;
   padding: 0 5px;
 }
 
 .payment .carrySelectBtn {
   transform: translate(0%, 20%);
+  font-size: 14px;
+  color: #fff;
+  padding: 3px 8px;
 }
 
 .payment .chooseBtn {
   display: inline-block;
   position: absolute;
   right: 0;
-  top: -47px;
+  top: -40px;
   padding: 0 5px;
+  color: #fff;
 }
 
 .payment .carryBox {
   border: 1px solid #ddd;
   border-radius: 10px;
-  height: 130px;
+  height: 140px;
   position: absolute;
-  top: 325px;
+  top: 365px;
+  width: 100%;
+}
+
+.payment .saleBox {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  height: 160px;
+  position: absolute;
+  top: 520px;
   width: 100%;
 }
 
 .payment .carryRequest {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   left: 20px;
   letter-spacing: 0;
   line-height: normal;
   position: relative;
-  top: 16px;
+  top: 18px;
   width: 360px;
 }
 
@@ -176,20 +241,22 @@
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 30px;
+  top: 33px;
   width: 360px;
   height: 30px;
   border-radius: 5px;
 }
 
-.payment .carryMessage8 {
+.payment .carryDirectMessage {
   position: absolute;
-  top: 65px;
+  top: 70px;
   left: 0;
   border: none;
   width: 360px;
-  height: 28px;
-  text-decoration: underline;
+  height: 30px;
+  /* text-decoration: underline; */
+  border: 2px solid #0dcaf0;
+  border-radius: 5px;
   font-size: 14px;
   font-weight: 400;
   padding-left: 5px;
@@ -296,6 +363,7 @@
 }
 
 .payment .sum {
+  color: #ff114d;
   position: absolute;
   top: 5px;
   right: 20px;
@@ -304,7 +372,7 @@
 }
 
 .payment .title5 .total {
-  color: #ff7d9e;
+  color: #ff114d;
   font-weight: 600;
   font-size: 20px;
   top: 5px;
@@ -348,47 +416,40 @@
   text-align: center;
   font-size: 20px;
   font-weight: 600;
-  left: 40px;
 }
 
 .payment .title2 {
-  border: 1px solid #ccc;
   height: 40px;
   position: absolute;
-  top: 55px;
+  top: 70px;
   width: 400px;
-  border-radius: 5px;
-  left: 40px;
 }
 
 .payment .title3 {
-  border: 1px solid #ccc;
   height: 40px;
   position: absolute;
-  top: 110px;
+  top: 100px;
   width: 400px;
-  border-radius: 5px;
-  left: 40px;
 }
 
 .payment .title4 {
-  border: 1px solid #ccc;
-  height: 40px;
+  height: 50px;
   position: absolute;
-  top: 165px;
+  top: 130px;
   width: 400px;
-  border-radius: 5px;
-  left: 40px;
+  border-bottom: 1px solid #f86480;
 }
 
 .payment .title5 {
-  border: 1px solid #ccc;
-  height: 40px;
+  height: 50px;
   position: absolute;
-  top: 220px;
+  top: 210px;
   width: 400px;
-  border-radius: 5px;
-  left: 40px;
+  border-bottom: 3px solid #f86480;
+}
+
+.payment .orderCheckInfo {
+  border-bottom: 1px soe;
 }
 
 .payment .productBox {
@@ -396,6 +457,7 @@
   position: absolute;
   top: 420px;
   width: 400px;
+  left: 40px;
 }
 
 .payment .moreButton {
@@ -515,4 +577,57 @@
   position: absolute;
   top: 740px;
   left: -80px;
+}
+
+.radio_box {
+  display: flex;
+  zoom: 1;
+  position: relative;
+  padding-left: 25px;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* 기본 라디오 버튼 숨기기 */
+.radio_box input[type="radio"] {
+  display: none;
+}
+
+/* 선택되지 않은 라디오 버튼 스타일 꾸미기 */
+.on {
+  width: 20px;
+  height: 20px;
+  background: #ddd;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* 선택된 라디오 버튼 스타일 꾸미기 */
+.radio_box input[type="radio"]:checked + .on {
+  background: #f86480;
+}
+.on:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.radio_box input[type="radio"]:checked + .on:after {
+  display: block;
+}
+.on:after {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  left: 5px;
+  top: 5px;
 }

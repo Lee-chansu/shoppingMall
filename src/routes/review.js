@@ -1,40 +1,134 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../css/review.css";
 
 //컴포넌트
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
-import ReviewAddImage from "../components/ReviewAddImage";
+import ReviewImageUpload from "../components/ReviewImageUpload";
+import Star from "../components/Star";
+import { Myalter } from "../components/Myalter";
+import { jwtDecode } from "jwt-decode";
 
 export const Review = () => {
+  const location = useLocation();
   const navigate = useNavigate();
-  const [reviewColor, setReviewColor] = useState("");
-  const [reviewSize, setReviewSize] = useState("");
+  useEffect(() => {
+    // 유저 고유 id 받아오기
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      navigate("/");
+    } else {
+      const decodeToken = jwtDecode(token);
+      setAddReview((pre) => ({ ...pre, user_id: decodeToken.id }));
+      if (location.state) {
+        setBuyList(location.state.buyList); // 제품정보값넣기
+        setAddReview((pre) => ({
+          ...pre,
+          buyList_id: location.state.buyList.id,
+        }));
+      } else {
+        navigate("/");
+      }
+    }
+  }, []);
+
+  const [buyList, setBuyList] = useState({
+    // 제품정보
+    id: "",
+    productName: "",
+    price: "",
+    productColor: "",
+    productSize: "",
+    image: "",
+  });
+  const [addReview, setAddReview] = useState({
+    user_id: "",
+    buyList_id: "",
+    starPoint: 0,
+    reviewColor: 0,
+    reviewSize: 0,
+    content: "",
+    reviewImage: null,
+  });
+
   const colorList = ["밝아요", "화면과 같아요", "어두워요"];
   const sizeList = ["작아요", "정사이즈예요", "커요"];
-  const [textarea, setTextarea] = useState(
-    "다른 분들에게 도움이 될 수 있는 리뷰를 300자 이내로 작성해 주세요"
-  );
+  const startList = [1, 2, 3, 4, 5]; // map 돌리기위한 배열갯수
 
-  const handleFocus = () => {
-    if (
-      textarea ===
-      "다른 분들에게 도움이 될 수 있는 리뷰를 300자 이내로 작성해 주세요"
-    )
-      setTextarea(""); //초기text만 삭제
+  const handleClick = (i) => () => {
+    // 별점클릭시
+    setAddReview((pre) => ({ ...pre, starPoint: i + 1 }));
   };
 
   const handleChange = (e) => {
-    setTextarea(e.target.value); //사용자 내용 입력시마다 state update
+    if (e.target.files) {
+      const selectFile = e.target.files[0];
+      const reader = new FileReader();
+      if (selectFile) {
+        const extension = selectFile.name.split(".").pop().toLowerCase();
+        const allowedExtensions = [
+          "jpg",
+          "png",
+          "bmp",
+          "gif",
+          "tif",
+          "webp",
+          "heic",
+          "pdf",
+        ]; // 허용되는 확장자 목록
+        if (!allowedExtensions.includes(extension)) {
+          Myalter(
+            "warning",
+            "유저 수정 가이드",
+            `${selectFile.name} 파일은 허용되지 않는 확장자입니다.`
+          );
+          e.target.value = ""; // 파일 선택 취소
+          return; // 다음 파일 처리 중단
+        }
+        reader.onloadend = () => {
+          setAddReview((pre) => ({ ...pre, reviewImage: reader.result }));
+        };
+        reader.readAsDataURL(selectFile);
+      }
+
+      // setAddReview((pre)=>({
+      //   ...pre,
+      //   reviewImage : e.target.files[0]
+      // }))
+    } else {
+      setAddReview((pre) => ({
+        ...pre,
+        content: e.target.value,
+      })); //사용자 내용 입력시마다 state update
+    }
   };
 
   const handleLinkBackMove = () => {
     navigate(-1);
   };
 
-  const handleLinkReviewMove = () => {
-    navigate("/"); //리뷰등록하기 페이지 설정
+  const handleLinkReviewMove = async (e) => {
+    e.preventDefault();
+    if (addReview.starPoint === 0) {
+      Myalter("warning", "리뷰 가이드", "별점을 선택해주세요");
+    } else {
+      try {
+        const response = await fetch(`http://localhost:5000/review`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ addReview }),
+        });
+        if (!response.ok) {
+          throw new Error("서버에서 응답을 받을 수 없습니다");
+        } else {
+          await Myalter("success", "리뷰 가이드", "리뷰작성 완료");
+          navigate(`/payBuyList`);
+        }
+      } catch (error) {
+        Myalter("warning", "리뷰 가이드", "리뷰 등록중 오류가 발생했습니다");
+      }
+    }
   };
 
   return (
@@ -42,22 +136,45 @@ export const Review = () => {
       <div className="reviewWrap">
         <div className="reviewTitle">리뷰 작성하기</div>
         <div className="productBox">
-          <img className="productImg"></img>
+          <img
+            className="productImg"
+            src={buyList.image}
+            alt="구매한 상품의 이미지"
+          ></img>
           <div className="nameOptionBox">
-            <div className="productName">상품명</div>
-            <div className="productOption">상품옵션이 더 길면?</div>
+            <div className="productName">{buyList.productName}</div>
+            <div className="productOption">
+              색상 : {buyList.productColor} / 사이즈 : {buyList.productSize}
+            </div>
           </div>
         </div>
 
         <div className="reviewCheckBox">
-          <span className="title">구매하신 상품의 만족도를 체크해주세요 <big>*</big></span>
+          <span className="title">
+            구매하신 상품의 만족도를 체크해주세요 <big>*</big>
+          </span>
           <div className="starBox">
-            <img src="" />
+            <div className="star">
+              {startList.map((e, i) => {
+                return (
+                  <Star
+                    key={i}
+                    i={i}
+                    size={50}
+                    color="gold"
+                    filled={i < addReview.starPoint ? true : false}
+                    handleClick={handleClick(i)}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
 
         <div className="reviewColorBox">
-          <span className="title">색상은 어떤가요 <big>*</big></span>
+          <span className="title">
+            색상은 어떤가요 <big>*</big>
+          </span>
           <br />
           {colorList.map((val, idx) => {
             return (
@@ -66,9 +183,11 @@ export const Review = () => {
                   <CustomButton
                     key={idx}
                     buttonTitle={val}
-                    className={reviewColor == idx ? "selected" : "non-selected"}
+                    className={
+                      addReview.reviewColor == idx ? "selected" : "non-selected"
+                    }
                     handleLinkMove={() => {
-                      setReviewColor(idx);
+                      setAddReview((pre) => ({ ...pre, reviewColor: idx }));
                     }}
                   />
                 </div>
@@ -78,7 +197,8 @@ export const Review = () => {
         </div>
 
         <div className="reviewSizeBox">
-          <span className="title">사이즈는 어떤가요? <big>*</big>
+          <span className="title">
+            사이즈는 어떤가요? <big>*</big>
           </span>
           <br />
           {sizeList.map((val, idx) => {
@@ -88,9 +208,11 @@ export const Review = () => {
                   <CustomButton
                     key={idx}
                     buttonTitle={val}
-                    className={reviewSize == idx ? "selected" : "non-selected"}
+                    className={
+                      addReview.reviewSize == idx ? "selected" : "non-selected"
+                    }
                     handleLinkMove={() => {
-                      setReviewSize(idx);
+                      setAddReview((pre) => ({ ...pre, reviewSize: idx }));
                     }}
                   />
                 </div>
@@ -104,16 +226,20 @@ export const Review = () => {
           <div className="overlap-2">
             <textarea
               className="reviewDetail"
-              value={textarea}
-              onFocus={handleFocus}
+              placeholder="다른 분들에게 도움이 될 수 있는 리뷰를 300자 이내로 작성해 주세요"
               onChange={handleChange}
             />
           </div>
         </div>
 
-        <div className="reviewAddImage">
+        <div className="reviewImageUpload">
           <span className="title">사진 첨부하기 </span>
-          <ReviewAddImage />
+          <img
+            className="reviewImage"
+            src={addReview.reviewImage || "../img/userDefaultImg.png"}
+            alt="리뷰사진 미리보기"
+          ></img>
+          <ReviewImageUpload handleChange={handleChange} />
         </div>
 
         <ButtonBox>

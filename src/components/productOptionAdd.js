@@ -103,8 +103,6 @@ export function EditInfo({
   optionLength,
   setOptionLength,
   idx,
-  count,
-  setCount,
 }) {
   const delTag = (e) => {
     e.preventDefault();
@@ -129,21 +127,13 @@ export function EditInfo({
     <div className="boxWrap">
       <div className="box">
         <label htmlFor="color">color</label>
-        <select
-          defaultValue=""
-          className="select"
-          name="color"
-        >
+        <select defaultValue="" className="select" name="color">
           <option value={newOption[idx].color}>{newOption[idx].color}</option>
         </select>
       </div>
       <div className="box">
         <label htmlFor="size">size</label>
-        <select
-          defaultValue=""
-          className="select"
-          name="size"
-        >
+        <select defaultValue="" className="select" name="size">
           <option value={newOption[idx].size}>{newOption[idx].size}</option>
         </select>
       </div>

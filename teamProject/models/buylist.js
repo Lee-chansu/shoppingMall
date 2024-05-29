@@ -9,6 +9,9 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
+      product_id: {
+        type: DataTypes.INTEGER,
+      },
       productName: {
         type: DataTypes.STRING(255),
       },
@@ -43,6 +46,10 @@ module.exports = (sequelize) => {
       orderQuantity: {
         type: DataTypes.INTEGER,
       },
+      isReviewed: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
     {
       timestamps: false,
@@ -51,6 +58,7 @@ module.exports = (sequelize) => {
 
   BuyList.associate = (models) => {
     BuyList.belongsTo(models.User, { foreignKey: "user_id" });
+    
   };
 
   return BuyList;

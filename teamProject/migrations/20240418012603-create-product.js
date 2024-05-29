@@ -27,6 +27,9 @@ module.exports = {
       subImage3: {
         type: Sequelize.STRING(255),
       },
+      description: {
+        type: Sequelize.STRING(255),
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

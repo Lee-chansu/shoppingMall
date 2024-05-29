@@ -16,10 +16,23 @@ module.exports = {
           key: "id",
         },
       },
+      buyList_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "BuyLists",
+          key: "id",
+        },
+      },
       content: {
         type: Sequelize.STRING(255),
       },
       starPoint: {
+        type: Sequelize.INTEGER(1),
+      },
+      reviewColor: {
+        type: Sequelize.INTEGER(1),
+      },
+      reviewSize: {
         type: Sequelize.INTEGER(1),
       },
       reviewImage: {

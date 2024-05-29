@@ -1,6 +1,16 @@
-*{margin:0; padding: 0; box-sizing: border-box;}
-ul, ol, li{list-style:none;}
-a{text-decoration:none;} 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
 
 .join {
   background-color: #f6f1eb;
@@ -9,243 +19,173 @@ a{text-decoration:none;}
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100vh;
 }
 
 .join .joinBoxWrapper {
   background-color: #f6f1eb;
-  width: 1440px;
-  height: 120vh;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .join .joinBox {
   background-color: #fffcf7;
-  height: 1200px;
+  height: 1000px;
   width: 574px;
   position: relative;
 }
 
 .join .textWrapper {
   color: #000000;
-  
   font-size: 30px;
   font-weight: 400;
-  left: 218px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 30px;
-  width: 200px;
+  width: 100%px;
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
 }
 
-.join .textWrapper::after{
-  content: '';
+.join .inner {
+  margin-top: 5px;
+  text-align: left;
+  color: gray;
+  font-size: 12px;
+}
+
+.join .textWrapper::after {
+  content: "";
   display: block;
-  width: 518px;
+  margin-top: 15px;
+  width: 100%;
   height: 2px;
   background-color: #f6f1eb;
-  position: absolute;
-  left: -190px;
-  top: 80px;
+  text-align: center;
 }
 
-.join .inputWrap {
-  position: absolute;
-  top: 80px;
-  left: 80px;
+.join .boxWrapper {
+  height: 90px;
+  text-align: center;
 }
-
-.join .boxId {
-  height: 92px;
-  left: -70px;
-  position: absolute;
-  top: 60px;
-  width: 377px;
-}
-
-
 
 .join .input {
   color: #000000;
-  
   font-size: 15px;
   font-weight: 400;
   height: 40px;
-  left: 96px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
   text-align: left;
-  top: 15px;
-  width: 370px;
+  width: 350px;
   border: 1px solid #9d2a1e;
-  padding-left: 7px;
+  padding-left: 10px;
   border-radius: 4px;
 }
 
-.join .boxPassword {
-  height: 92px;
-  left: -70px;
-  position: absolute;
-  top: 160px;
-  width: 377px;
+
+.join .mobile {
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+  height: 40px;
+  text-align: left;
+  width: 112px;
+  border: 1px solid #9d2a1e;
+  padding-left: 10px;
+  border-radius: 4px;
 }
 
-.join .boxPasswordCheck {
-  height: 92px;
-  left: -70px;
-  position: absolute;
-  top: 260px;
-  width: 377px;
+.displayBlock {
+  display: block;
 }
 
-.join .boxName {
-  height: 92px;
-  left: -70px;
-  position: absolute;
-  top: 360px;
-  width: 377px;
+.join .title {
+  text-align: left;
+  margin-right: 30px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
-.join .boxEmail {
-  height: 92px;
-  left: -70px;
-  position: absolute;
-  top: 460px;
-  width: 377px;
+.join .width {
+  width: 266px;
+  margin-right: 10px;
+  background-color: #ffffff;
 }
 
-.join .boxPhone {
-  height: 92px;
-  left: -70px;
-  position: absolute;
-  top: 560px;
-  width: 377px;
+.join .carrySelectBtn {
+  margin : 6px 0;
+  color: white;
+  font-size: 14px;
 }
 
-.join .boxMainAddress {
-  height: 92px;
-  left: -70px;
-  position: absolute;
-  top: 660px;
-  width: 377px;
-}
-
-.join .boxMainAddress .input {
-  width: 300px;
-}
-
-.join .boxDetailAddress {
-  height: 92px;
-  left: -70px;
-  position: absolute;
-  top: 760px;
-  width: 377px;
-}
-
-.join .selectGender {
-  height: 92px;
-  left: 14px;
-  position: absolute;
-  top: 770px;
-  width: 377px;
+.join .btn-info{
+  background-color: #4d4a4a;
+  border:  transparent;
 }
 
 .join .inputRadio {
+  position: relative;
+  left: 110px;
   height: 46px;
-  left: 13px;
-  position: absolute;
-  top: 110px;
-  width: 373px;
-  border: 1px solid #9d2a1e;;
+  text-align: center;
+  border: 1px solid #9d2a1e;
   border-radius: 4px;
   background-color: #ffffff;
-}
-
-.join .inputRadio::after{
-  content: '';
-  display: block;
-  height: 100%;
-  width: 1px;
-  background-color: #9d2a1e;
-  position: absolute;
-  left: 186px;
-}
-
-.join .div {
-  color: #999;
-  
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 400;
-  left: 50px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 14px;
-  width: 38px;
+  width: 350px;
+  padding-left: 15px;
+  border-radius: 4px;
 }
 
-.join .radioMale {
-  background-color: #ffffff;
-  height: 26px;
-  left: 100px;
-  position: absolute;
-  top: 10px;
-  width: 37px;
+.join .radioLabel {
+  /* 남자 label text */
+  color: #999;
+  font-size: 14px;
+  font-weight: 400;
+  width: 40px;
+  position: relative;
+  top: -2px;
 }
 
 .join .textWrapper2 {
   color: #999;
-  
   font-size: 13.5px;
   font-weight: 400;
-  left: 230px;
-  letter-spacing: 0;
-  line-height: normal;
+  /* left: 230px;
   position: absolute;
-  top: 14px;
+  top: 14px; */
   width: 38px;
 }
 
-.join .radioFemale {
+.join .radioBtn {
   background-color: #ffffff;
-  height: 26px;
-  left: 290px;
-  position: absolute;
-  top: 10px;
-  width: 37px;
-}
-
-.join .editForm {
-  height: 63px;
-  left: -105px;
-  position: absolute;
-  top: 900px;
-  width: 369px;
+  margin-right: 40px;
+  height: 30px;
+  width: 24px;
+  position: relative;
+  top: 8px;
 }
 
 .join .submitButton {
   background-color: #4d4a4a;
   height: 40px;
-  left: 150px;
+  /* left: 150px;
   position: absolute;
-  top: 100px;
+  top: 100px; */
   width: 120px;
   border-radius: 5px;
   border: transparent;
   color: #ffffff;
+  margin-right: 40px;
 }
 
 .join .cancelButton {
   background-color: #4d4a4a;
   height: 40px;
-  left: 350px;
+  /* left: 350px;
   position: absolute;
-  top: 100px;
+  top: 100px; */
   width: 120px;
   border-radius: 5px;
   border: transparent;
   color: #ffffff;
 }
-
