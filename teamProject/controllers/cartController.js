@@ -105,7 +105,7 @@ exports.addBuyList = async (req, res) => {
   list.forEach(async (val, idx) => {
     const newBuyList = {
       user_id,
-      productOption_id: val.id,
+      product_id: val.id,
       productName: val.name,
       category: val.category ? val.category : "x",
       price: val.price,
