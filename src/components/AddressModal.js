@@ -50,5 +50,4 @@ const AddressModal = ({ mainAddressRef, innerText }) => {
     </>
   );
 };
-
 export default AddressModal;
