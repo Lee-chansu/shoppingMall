@@ -51,7 +51,7 @@ exports.selectCarryAll = async (req, res) => {
 
 //배송리스트 추가
 exports.addCarry = async (req, res) => {
-  const { list, user_id } = req.body;
+  const { list, user_id, order_id } = req.body;
 
   const carryStartDate = new Date(list.createdAt);
   carryStartDate.setDate(carryStartDate.getDate() + 3);
@@ -60,8 +60,9 @@ exports.addCarry = async (req, res) => {
   const newCarry = {
     user_id,
     order_id,
-    userName,
-    address,
+    // userName,
+    // mainAddress,
+    // detailAddress,
     progress: "배송중",
     carryStart: list.createdAt,
     carryEnd,

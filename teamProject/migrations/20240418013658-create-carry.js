@@ -18,13 +18,6 @@ module.exports = {
       },
       order_id: {
         type: Sequelize.STRING(40),
-        references: {
-          model: 'PaymentRequests',
-          key: 'id'
-        }
-      },
-      userName: {
-        type: Sequelize.STRING(15)
       },
       address: {
         type: Sequelize.STRING(100)

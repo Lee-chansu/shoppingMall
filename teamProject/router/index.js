@@ -57,7 +57,7 @@ router.get("/carry", cartController.selectCarryAll);
 
 router.post("/cart", cartController.addProductToCart);
 router.post("/buyList", cartController.addBuyList);
-// router.post("/carry", cartController.addCarry);
+router.post("/carry", cartController.addCarry);
 
 router.delete("/cart", cartController.deleteProductFromCartByUserId);
 router.delete("/cart/:id", cartController.deleteCart);
