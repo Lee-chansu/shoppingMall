@@ -1,28 +1,41 @@
 .productEdit {
-  background-color: hsl(0, 0%, 100%);
+  display: flex;
+  justify-content: center;
 }
+
 .productEdit .inner {
+  display: flex;
+  justify-content: center;
 }
+
 .productEdit .inner .wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0 20px;
-  margin: 20px 0;
+  margin: 10px 0;
+  border-bottom: 1px solid #ccc;
 }
-.productEdit .inner .wrap .title {
+
+.productEdit .inner .wrap .categoryTitle {
   width: 20%;
-  font-size: 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0d6efd;
+  border-right: 1px solid #ccc;
+  padding: 15px;
 }
+
 .productEdit .inner .wrap .boxWrap {
-  width: 80%;
+  width: 75%;
   min-height: 57px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: 32px;
+  font-size: 18px;
 }
+
 .productEdit .inner .wrap .boxWrap .box:first-of-type {
   margin-left: 5px;
 }
@@ -34,104 +47,150 @@
   width: 15%;
   margin-left: 20px;
 }
+
 .productEdit .inner .wrap .box .text {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 600;
 }
-.productEdit .inner .wrap .box input[type=checkbox] {
+
+.productEdit .inner .wrap .box input[type="checkbox"] {
   margin: 0 10px;
   width: 50px;
   height: 50px;
-  background-color: #eee;
 }
-.productEdit .inner .wrap input[type=text] {
-  margin: 0 10px;
-  height: 50px;
+
+.productEdit .inner .wrap input[type="text"] {
+  margin: 0 20px;
+  height: 35px;
   width: 100%;
-  background-color: #eee;
 }
 
 .productEdit .inner .wrap.stock {
-  justify-content: flex-end;
+  display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
+
 .productEdit .inner .wrap.stock .boxWrap {
   justify-content: space-between;
   margin: 0 0 10px 0;
 }
+
 .productEdit .inner .wrap.stock .boxWrap .box {
   margin: 0 10px;
   width: 30%;
   height: 50px;
-  background-color: #fff;
 }
 
 .productEdit .inner .wrap.stock select {
-  margin: 0 10px;
+  margin-left: 15px;
   width: 100%;
-  height: 50px;
-  background-color: #fff;
+  height: 35px;
+  font-size: 14px;
 }
+
 .productEdit .inner .wrap.stock input {
-  margin: 0 10px;
-  height: 50px;
+  margin-left: 15px;
+  height: 35px;
   width: 100%;
-  background-color: #fff;
 }
+
 .productEdit .inner .wrap.stock label {
-  font-size: 32px;
+  margin-left: 10px;
+  font-size: 18px;
 }
-.productEdit .inner .wrap.stock .title .btn {
-  padding: 10px 15px;
+
+.valueInput {
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.productEdit .inner .wrap.stock .categoryTitle .btn {
+  padding: 2px 8px;
   margin-left: 20px;
-  background-color: #eee;
+  background-color: #d4e5ff;
+  color: #0d6efd;
+  font-weight: 600;
 }
+
+.productEdit .inner .wrap.stock .categoryTitle .btn:hover {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
 .productEdit .inner .wrap.stock .btn {
-  padding: 10px 15px;
-  background-color: #eee;
+  padding: 2px 8px;
+  background-color: #d4e5ff;
+  color: #0d6efd;
+  font-weight: 600;
 }
+
+.productEdit .inner .wrap.stock .btn:hover {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
 .productEdit .inner .wrap.img {
   justify-content: flex-start;
 }
+
 .productEdit .inner .wrap.img .boxWrap {
   justify-content: flex-start;
   flex-flow: wrap;
+  margin-left: 60px;
+  margin-bottom: 10px;
 }
+
 .productEdit .inner .wrap.img .boxWrap .addImg {
-  padding: 20px;
-  margin-left: 100px;
-  background-color: #eee;
+  padding: 2px 8px;
+  margin-left: 200px;
+  border-radius: 5px;
+  background-color: #d4e5ff;
+  color: #0d6efd;
+  font-weight: 600;
+}
+
+.productEdit .inner .wrap.img .boxWrap .addImg:hover {
+  padding: 2px 8px;
+  margin-left: 200px;
+  border-radius: 5px;
+  background-color: #0d6efd;
+  color: #fff;
 }
 
 .productEdit .inner .wrap.img .addImg:hover {
-  background-color: #ddd;
   cursor: pointer;
 }
+
 .productEdit .inner .wrap.img .previewImg {
   display: block;
   width: 100px;
   height: 100px;
   margin: 0 50px;
 }
+
 .productEdit .inner .wrap.img .previewImg.main {
   display: block;
   width: 150px;
   height: 150px;
   margin: 0 50px;
 }
+
 .productEdit .inner .wrap.img .previewImg.subImage {
   display: block;
   width: 80px;
   height: 80px;
   margin: 0 50px;
 }
-.productEdit .inner .wrap.img input[type=file] {
+
+.productEdit .inner .wrap.img input[type="file"] {
   display: none;
 }
 
 .productEdit .inner .wrap.description input {
   height: 300px;
 }
+
 .productEdit .inner .btnForm {
   display: flex;
   justify-content: center;
@@ -139,6 +198,7 @@
   width: 100%;
   height: 200px;
 }
+
 .productEdit .inner .btnForm button {
   margin: 0 100px;
   padding: 10px;
@@ -154,7 +214,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  border: 5px #ddd dashed;
+  border: 3px #ddd dashed;
+  margin-bottom: 10px;
 }
 
 .descriptionImgWrap {
@@ -166,4 +227,35 @@
   display: block;
   width: 240px;
   margin: 20px 20px;
+}
+
+input[type="checkbox"] {
+  zoom: 0.5;
+  border-radius: 5px;
+}
+
+.btn1 {
+  border: 1px solid #0d6efd !important;
+  background-color: #fff !important;
+  color: #0d6efd !important;
+  font-weight: 600 !important;
+}
+
+.btn2 {
+  border: 1px solid #0d6efd !important;
+  background-color: #fff !important;
+  color: #0d6efd !important;
+  font-weight: 600 !important;
+}
+
+.btn1:hover {
+  background-color: #0d6efd !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.btn2:hover {
+  background-color: #0d6efd !important;
+  color: #fff !important;
+  border: none !important;
 }
