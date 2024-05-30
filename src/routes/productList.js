@@ -45,7 +45,6 @@ export const ProductList = () => {
         `http://localhost:5000/product?offset=${offset}&limit=${limit}`
       ).then((res) => res.json());
     }
-    console.log(getProduct);
     setProductList(getProduct.rows);
     setPagingSize(Math.ceil(getProduct.count / limit));
   };
@@ -54,7 +53,7 @@ export const ProductList = () => {
     if (index === 0) {
       setOffset(0);
     } else {
-      setOffset(index + limit);
+      setOffset(index * limit);
     }
     if (detail) {
       navigate(

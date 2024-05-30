@@ -31,6 +31,7 @@ import { SuccessPage } from "./routes/Success.js";
 import { FailPage } from "./routes/Fail.js";
 
 import { Review } from "./routes/review";
+import { ReviewEdit } from "./routes/reviewEdit.js";
 
 /*eslint-disabled*/
 function App() {
@@ -72,6 +73,7 @@ function App() {
         <Route path="fail" element={<FailPage />}></Route>
       </Route>
       <Route path="review" element={<Review />}></Route>
+      <Route path="reviewEdit" element={<ReviewEdit />}></Route>
     </Routes>
   );
 }

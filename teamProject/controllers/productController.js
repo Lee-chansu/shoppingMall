@@ -323,6 +323,13 @@ exports.deleteProduct = async (req, res) => {
 //제품 리뷰 조회
 exports.selectReviewlist = async (req, res) => {
   const { buyList_id } = req.query;
+  let offset, limit;
+  if (req.query.offset) {
+    offset = parseInt(req.query.offset);
+  }
+  if (req.query.limit) {
+    limit = parseInt(req.query.limit);
+  }
 
   const findId = await BuyList.findAll({ where: { product_id: buyList_id } });
 
@@ -337,6 +344,8 @@ exports.selectReviewlist = async (req, res) => {
           [Op.in]: buyListIds,
         },
       },
+      offset,
+      limit,
     });
   }
 
@@ -351,7 +360,6 @@ exports.selectReviewlist = async (req, res) => {
 // 리뷰 등록
 exports.addReview = async (req, res) => {
   const { addReview } = req.body;
-  // console.log(addReview.buyList_id)
 
   if (addReview) {
     if (addReview.reviewImage) {
@@ -383,6 +391,43 @@ exports.addReview = async (req, res) => {
       res.send("success");
     }
   } else {
-    res.send("fail");
+    res.status(500).send({ message: "제품 옵션 재고 업데이트 실패" });
+  }
+};
+
+// 리뷰수정페이지에서 기존 리뷰정보 받아오기
+exports.loadReviewForEdit = async (req, res) => {
+  const { buyList_id } = req.params;
+
+  const result = await ReviewList.findOne({ where: { buyList_id } });
+  if (result) {
+    res.json(result);
+  } else {
+    res.send({ message: "실패" });
+  }
+};
+
+// 리뷰수정
+exports.ReviewEdit = async (req, res) => {
+  const { buyList_id } = req.params;
+  const { editReview } = req.body;
+
+  const options = {
+    apiKey: imgbbKey,
+    base64string: editReview.reviewImage.split(",")[1],
+  };
+
+  const result = await ReviewList.findOne({ where: { buyList_id } });
+
+  if (result) {
+    for (let key in editReview) {
+      result[key] = editReview[key];
+    }
+    if (options.base64string) {
+      const uploadResponse = await imgbbUploader(options);
+      result.reviewImage = uploadResponse.url;
+    }
+    await result.save();
+    res.send({ message: "성공" });
   }
 };

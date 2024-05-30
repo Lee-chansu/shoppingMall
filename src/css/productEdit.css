@@ -229,7 +229,7 @@
   margin: 20px 20px;
 }
 
-input[type="checkbox"] {
+.productEdit input[type="checkbox"] {
   zoom: 0.5;
   border-radius: 5px;
 }
