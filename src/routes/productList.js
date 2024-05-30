@@ -53,7 +53,7 @@ export const ProductList = () => {
     if (index === 0) {
       setOffset(0);
     } else {
-      setOffset(index + limit);
+      setOffset(index * limit);
     }
     if (detail) {
       navigate(

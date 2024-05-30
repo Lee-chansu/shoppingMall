@@ -7,13 +7,19 @@ const productController = require("../controllers/productController");
 const cartController = require("../controllers/cartController");
 
 //userController
+<<<<<<< HEAD
 router.get("/user", userController.loadUser);
 router.get("/deleteUser", userController.loadDeleteUser);
 router.get("/logout", userController.logout);
+=======
+router.get("/User", userController.loadUser);
+router.get("/DeleteUser", userController.loadDeleteUser);
+>>>>>>> chansu
 router.get("/profile/:id", userController.loadProfileImage);
 router.get("/userEdit/:id", userController.loadUserForEdit);
 router.get("/userProfile/:id", userController.loadUserForEdit);
 router.get("/userInfo/:id", userController.loadProfileImageForInfo);
+router.get("/logout", userController.logout);
 
 router.post("/join", userController.userCreate);
 router.post("/login", userController.userLogin);

@@ -21,7 +21,8 @@ export const ProductDetailDescription = () => {
   const [index, setIndex] = useState(0);
   const [item, setItem] = useState(0);
   const [id, setId] = useState();
-  const [user, setUser] = useState(0);
+  const [isMaster, setIsMaster] = useState(false);
+  const [user, setUser] = useState({});
   const [switchBtn, setSwitchBtn] = useState(!true);
   const [color, setColor] = useState([]);
   const [size, setSize] = useState([]);
@@ -81,8 +82,6 @@ export const ProductDetailDescription = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedFormData),
         });
-
-        console.log(updatedFormData);
 
         if (!response.ok) {
           throw new Error("서버에서 응답을 받을 수 없습니다");
@@ -156,7 +155,6 @@ export const ProductDetailDescription = () => {
       };
 
       if (updatedFormData) {
-        console.log(updatedFormData);
         navigate("/payment", { state: { list: [updatedFormData] } });
       } else {
         console.log(updatedFormData);
@@ -213,20 +211,33 @@ export const ProductDetailDescription = () => {
       `http://localhost:5000/product/${productId}`
     ).then((res) => res.json());
     setProduct(getProduct);
-    console.log(getProduct);
   };
 
-  const loadUser = async () => {
-    const getUsers = await fetch(`http://localhost:5000/user`).then((res) =>
-      res.json()
+  // 받아온패치 실행해서 getUser에 담기
+  const getUserTry = async () => {
+    const getUser = await fetch(`http://localhost:5000/userEdit/${id}`).then(
+      (response) => {
+        response.json();
+      }
     );
-    setUser(getUsers);
+    setUser(getUser);
   };
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      const decodeToken = jwtDecode(token);
+      console.log("second", decodeToken);
+      setId(decodeToken.id);
+      setIsMaster(decodeToken.isMaster);
+      getUserTry();
+    }
+  }, [id]);
 
   useEffect(() => {
     setItem(productId);
     loadProduct();
-    loadUser();
+    getUserTry();
     const token = sessionStorage.getItem("token");
     if (!token) {
       setId(999);
@@ -322,7 +333,6 @@ export const ProductDetailDescription = () => {
           <div className="productdetail">
             <div className="div">
               <div className="thumbnailBox">
-                {console.log(product.stock)}
                 <img
                   ref={mainRef}
                   src={photos[index]}
@@ -341,15 +351,25 @@ export const ProductDetailDescription = () => {
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="infoBox">
-                  <span className="administrator">관리자 권한 </span>
-                  <Link to={`/productList/edit/${productId}`}>
-                    <button type="button" className="btn">
-                      상품수정
-                    </button>
-                  </Link>
-                  <button type="button" className="btn" onClick={deleteProduct}>
-                    상품삭제
-                  </button>
+                  {isMaster ? (
+                    <>
+                      <span className="administrator">관리자 권한 </span>
+                      <Link to={`/productList/edit/${productId}`}>
+                        <button type="button" className="btn">
+                          상품수정
+                        </button>
+                      </Link>
+                      <button
+                        type="button"
+                        className="btn"
+                        onClick={deleteProduct}
+                      >
+                        상품삭제
+                      </button>
+                    </>
+                  ) : (
+                    <span className="administrator"> ProductInfo </span>
+                  )}
                   <div className="productName">
                     <div className="textWrapper2">제품명</div>
                     <div className="overlap2">
@@ -475,11 +495,11 @@ export const ProductDetailDescription = () => {
               />
             )}
           </div>
+          <Footer></Footer>
         </div>
       ) : (
         <div>해당 상품을 찾을 수 없습니다</div>
       )}
-      <Footer></Footer>
     </>
   );
 };
