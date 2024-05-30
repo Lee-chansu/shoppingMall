@@ -3,6 +3,7 @@ import "../css/findId.css";
 import { useRef, useState } from "react";
 import Swal from "sweetalert2";
 import { Myalter } from "../components/Myalter";
+import { Footer } from "../components/footer";
 
 export const FindId = () => {
   const navigate = useNavigate();
@@ -144,7 +145,7 @@ export const FindId = () => {
               <input
                 id="email"
                 type="email"
-                className="textWrapper2"
+                className="textWrapper2 email"
                 onChange={valueChange}
                 name="email"
                 onFocus={inputFocus}
@@ -185,6 +186,7 @@ export const FindId = () => {
         </form>
         {passResult ? <div className="result">아이디 : {userId}</div> : <div></div>}
       </div>
+      <Footer></Footer>
     </div>
   );
 };

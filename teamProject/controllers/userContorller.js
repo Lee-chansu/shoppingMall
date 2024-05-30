@@ -83,7 +83,7 @@ exports.userLogin = (req, res, next) => {
       if (err) return next(err);
 
       const token = jwt.sign(
-        { id: user.id, userId: user.userId, isMaster : user.isMaster},
+        { id: user.id, userId: user.userId, isMaster: user.isMaster },
         JWT_SECRET_KEY
       );
       res.json({ token, user });
@@ -100,6 +100,7 @@ exports.loadUserForEdit = async (req, res) => {
   const { id } = req.params;
   const result = await User.findOne({ where: { id } });
   if (result) {
+    console.log(result);
     res.json(result);
   }
 };
@@ -124,9 +125,7 @@ exports.userInfoUpdate = async (req, res) => {
     if (options.base64string) {
       const uploadResponse = await imgbbUploader(options);
       result.profileImg = uploadResponse.url;
-      console.log("url", uploadResponse.url);
     }
-
     await result.save();
     res.json(result);
   }

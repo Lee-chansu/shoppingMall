@@ -6,46 +6,19 @@ module.exports = {
     await queryInterface.bulkInsert(
       "ProductDetails",
       [
-        { id: 1, 
-          product_id: 1, 
-          category: "상의" ,
-          detailCategory : "티셔츠"
+        { id: 1, product_id: 1, category: "상의", detailCategory: "티셔츠" },
+        { id: 2, product_id: 2, category: "하의", detailCategory: "청바지" },
+        { id: 3, product_id: 3, category: "악세사리", detailCategory: "벨트" },
+        { id: 4, product_id: 4, category: "하의", detailCategory: "청바지" },
+        {
+          id: 5,
+          product_id: 5,
+          category: "악세사리",
+          detailCategory: "선글라스",
         },
-        { id: 2, 
-          product_id: 2, 
-          category: "하의" ,
-          detailCategory : "청바지"
-        },
-        { id: 3, 
-          product_id: 3, 
-          category: "악세사리" ,
-          detailCategory : "벨트"
-        },
-        { id: 4, 
-          product_id: 4, 
-          category: "하의" ,
-          detailCategory : "청바지"
-        },
-        { id: 5, 
-          product_id: 5, 
-          category: "악세사리" ,
-          detailCategory : "선글라스"
-        },
-        { id: 6, 
-          product_id: 6, 
-          category: "하의" ,
-          detailCategory : "반바지"
-        },
-        { id: 7, 
-          product_id: 7, 
-          category: "아우터" ,
-          detailCategory : "코트"
-        },
-        { id: 8, 
-          product_id: 8, 
-          category: "악세사리" ,
-          detailCategory : "양말"
-        },
+        { id: 6, product_id: 6, category: "하의", detailCategory: "반바지" },
+        { id: 7, product_id: 7, category: "아우터", detailCategory: "코트" },
+        { id: 8, product_id: 8, category: "악세사리", detailCategory: "양말" },
         {
           id: 100,
           category: "상의",
@@ -105,6 +78,12 @@ module.exports = {
           category: "상의",
           detailCategory: "티셔츠",
           product_id: 109,
+        },
+        {
+          id: 110,
+          category: "상의",
+          detailCategory: "반팔",
+          product_id: 110,
         },
       ],
       {}

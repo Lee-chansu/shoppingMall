@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { XCircleFill } from "react-bootstrap-icons";
 import { MyDropzone } from "../components/DropZone";
 import "../css/productEdit.css";
@@ -8,6 +8,8 @@ import "../css/productEdit.css";
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
 import { ProductOption, EditInfo } from "../components/productOptionAdd";
+import ButtonBox from "../components/ButtonBox";
+import CustomButton from "../components/CustomButton";
 import Swal from "sweetalert2";
 
 export const ProductEdit = () => {
@@ -36,6 +38,10 @@ export const ProductEdit = () => {
     하의: ["청바지", "슬랙스", "카고바지", "반바지"],
     신발: ["샌들", "런닝화", "구두"],
     악세사리: ["귀걸이", "가방", "피어싱", "모자"],
+  };
+
+  const handleCancle = () => {
+    navigate(-1);
   };
 
   const loadProduct = async () => {
@@ -153,11 +159,6 @@ export const ProductEdit = () => {
     showDetailBar();
   }, [checkCategory, checkDetail]);
 
-  const addTag = (e) => {
-    e.preventDefault();
-    setCount(count + 1);
-  };
-
   //새로운 정보(productOption)을 추가하는 컴포넌트
   const components = Array.from({ length: count }, (el, index) => {
     return (
@@ -197,36 +198,109 @@ export const ProductEdit = () => {
 
     try {
       if (newProduct.category === "") {
-        alert("카테고리를 선택해주세요.");
+        Swal.fire({
+          icon: "warning",
+          title: "카테고리 란이 비어있습니다.",
+          text: ` 카테고리를 선택해주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
       if (newProduct.detail === "") {
-        alert("디테일을 선택해주세요.");
+        Swal.fire({
+          icon: "warning",
+          title: "디테일 란이 비어있습니다.",
+          text: ` 디테일을 선택해주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
       if (newProduct.name === "" || newProduct.name === null) {
-        alert("이름을 입력해주세요.");
+        Swal.fire({
+          icon: "warning",
+          title: "이름 란이 비어있습니다.",
+          text: ` 상품의 이름을 입력해주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
-      if (newProduct.mainImage === null) {
-        alert("메인 이미지를 선택 해주세요.");
+      if (newProduct.price <= 0) {
+        Swal.fire({
+          icon: "warning",
+          title: "가격을 입력하지 않았거나 올바르게 입력하지 않았습니다.",
+          text: ` 가격을 입력해주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
-      if (newProduct.color === "" || newProduct.color === "") {
-        alert("제품의 색상을 입력해주세요.");
+      if (newProduct.mainImage === "") {
+        Swal.fire({
+          icon: "warning",
+          title: "이미지를 선택하지 않았습니다.",
+          text: ` 상품의 메인이미지를 선택주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
-      if (newProduct.price === null || newProduct.price === 0) {
-        alert("제품의 가격을 입력해주세요.");
-        return;
+      for (let index of newOption) {
+        console.log(index.size);
+        if (index.color === "") {
+          Swal.fire({
+            icon: "warning",
+            title: "색상이 비어있습니다.",
+            text: ` 상품의 색상을 입력해주세요.`,
+            showConfirmButton: true,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#007bff",
+          });
+          return;
+        }
+        if (index.stock < 1) {
+          Swal.fire({
+            icon: "warning",
+            title: "해당 옵션의 재고란이 비어있습니다.",
+            text: ` 재고를 입력해주세요.`,
+            showConfirmButton: true,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#007bff",
+          });
+          return;
+        }
+        if (index.size === undefined) {
+          Swal.fire({
+            icon: "warning",
+            title: "선택하지 않은 사이즈가 있습니다.",
+            text: ` 해당 옵션의 사이즈를 입력해주세요.`,
+            showConfirmButton: true,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#007bff",
+          });
+          return;
+        }
       }
-      if (newProduct.size === "" || newProduct.size === null) {
-        alert("제품의 사이즈를 선택해주세요.");
-        return;
-      }
-      if (newProduct.stock === null || newProduct.stock === "") {
-        alert("제품의 재고수량을 입력해주세요.");
-        return;
+
+      for (let index of option) {
+        if (index.stock < 1) {
+          Swal.fire({
+            icon: "warning",
+            title: "해당 옵션의 재고란이 비어있습니다.",
+            text: ` 재고를 입력해주세요.`,
+            showConfirmButton: true,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#007bff",
+          });
+          return;
+        }
       }
 
       const body = {
@@ -264,7 +338,7 @@ export const ProductEdit = () => {
         <div className="inner">
           <form onSubmit={toEditProduct} className="formBox">
             <div className="wrap">
-              <h2 className="title">카테고리</h2>
+              <h2 className="categoryTitle">카테고리</h2>
               <div className="boxWrap">
                 {category.map((el) => {
                   return (
@@ -286,7 +360,7 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap">
-              <h2 className="title">디테일</h2>
+              <h2 className="categoryTitle">디테일</h2>
               <div className="boxWrap">
                 {detailBar.length === 0 ? (
                   <p className="text">카테고리를 선택해주세요</p>
@@ -310,9 +384,10 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap">
-              <h2 className="title">제품명</h2>
+              <h2 className="categoryTitle">제품명</h2>
               <div className="boxWrap">
                 <input
+                  className="valueInput"
                   type="text"
                   name="name"
                   defaultValue={newProduct.name}
@@ -321,9 +396,10 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap">
-              <h2 className="title">가격</h2>
+              <h2 className="categoryTitle">가격</h2>
               <div className="boxWrap">
                 <input
+                  className="valueInput"
                   type="text"
                   name="price"
                   defaultValue={newProduct.price}
@@ -332,17 +408,11 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap stock">
-              <h2 className="title">
-                옵션
-                <button className="btn" onClick={addTag}>
-                  +
-                </button>
-              </h2>
               {editComponents}
               {components}
             </div>
             <div className="wrap img">
-              <h2 className="title">메인이미지 등록</h2>
+              <h2 className="categoryTitle ">메인이미지 등록</h2>
               <div className="boxWrap">
                 <label htmlFor="mainImage">
                   <div className="addImg" style={{ marginLeft: "5px" }}>
@@ -368,11 +438,12 @@ export const ProductEdit = () => {
                   onChange={previewMainImg}
                   ref={mainImgRef}
                   accept="image/*"
+                  defaultValue={newProduct.mainImage}
                 />
               </div>
             </div>
             <div className="wrap img">
-              <h2 className="title">서브이미지 등록</h2>
+              <h2 className="categoryTitle">서브이미지 등록</h2>
               <div className="boxWrap">
                 {subImageCount.map((el, index) => {
                   return (
@@ -387,7 +458,7 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap description">
-              <h2 className="title">상품 상세설명</h2>
+              <h2 className="categoryTitle">상품 상세설명</h2>
               <div className="boxWrap">
                 <MyDropzone
                   descriptionImgArray={descriptionImgArray}
@@ -408,12 +479,15 @@ export const ProductEdit = () => {
                 );
               })}
             </div>
-            <div className="btnForm">
-              <button>수정완료</button>
-              <Link to={`/productList/detail/description/${id}`}>
-                <button>취소</button>
-              </Link>
-            </div>
+            <ButtonBox>
+              <CustomButton
+                className="btn1"
+                buttonTitle="취소"
+                handleLinkMove={handleCancle}
+              />
+
+              <CustomButton className="btn2" buttonTitle="수정완료" />
+            </ButtonBox>
           </form>
         </div>
       </div>

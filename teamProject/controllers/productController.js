@@ -1,6 +1,6 @@
-
 require("dotenv").config();
 const { Op } = require("sequelize");
+
 //db
 const db = require("../models");
 const { Product, ProductOption, ProductDetail, Cart, ReviewList, BuyList } = db;
@@ -10,29 +10,45 @@ const { Product, ProductOption, ProductDetail, Cart, ReviewList, BuyList } = db;
 const imgbbKey = "41be9bc26229e3df57a9818ed955b889";
 const imgbbUploader = require("imgbb-uploader");
 
-
-//nav바 버튼에 따라 카테고리별 제품 조회
+//category, detail 버튼에 따라 카테고리별 제품 조회
 exports.loadProductByNavButton = async (req, res) => {
   const { category, detail } = req.query;
+  let offset, limit;
+  if (req.query.offset && req.query.limit) {
+    offset = parseInt(req.query.offset);
+    limit = parseInt(req.query.limit);
+  } else {
+    offset = 0;
+    limit = 8;
+  }
+  console.log(detail);
+
   let result;
   try {
     if (detail) {
-      result = await ProductDetail.findAll({
+      result = await ProductDetail.findAndCountAll({
         include: [Product],
         where: {
           detailCategory: detail,
         },
+        offset,
+        limit,
       });
     } else {
       if (category) {
-        result = await ProductDetail.findAll({
+        result = await ProductDetail.findAndCountAll({
           include: [Product],
           where: {
             category: category,
           },
+          offset,
+          limit,
         });
       } else {
-        result = await Product.findAll();
+        result = await Product.findAndCountAll({
+          offset,
+          limit,
+        });
       }
     }
     res.json(result);
@@ -315,11 +331,13 @@ exports.selectReviewlist = async (req, res) => {
   let result = [];
 
   if (buyListIds.length > 0) {
-    result = await ReviewList.findAll({ where: {
-      buyList_id: {
-        [Op.in]: buyListIds
-      }
-    } });
+    result = await ReviewList.findAll({
+      where: {
+        buyList_id: {
+          [Op.in]: buyListIds,
+        },
+      },
+    });
   }
 
   // console.log(result);
@@ -333,34 +351,79 @@ exports.selectReviewlist = async (req, res) => {
 // 리뷰 등록
 exports.addReview =  async (req, res) => {
   const {addReview} = req.body
-  // console.log(addReview.buyList_id)
-  
+    
   if (addReview) {
-    if(addReview.reviewImage){
+    if (addReview.reviewImage) {
       const options = {
         apiKey: imgbbKey,
         base64string: addReview.reviewImage.split(",")[1],
-      }
+      };
       const uploadResponse = await imgbbUploader(options);
       addReview.reviewImage = uploadResponse.url;
       await ReviewList.create(addReview); // 리뷰테이블
 
-      const buyList = await BuyList.findOne({where:{id:addReview.buyList_id}}) // 리뷰등록성공하면 구매내역테이블 isReviewed 값변경
-      if(buyList){
-        buyList.isReviewed = true
-        await buyList.save()
+      const buyList = await BuyList.findOne({
+        where: { id: addReview.buyList_id },
+      }); // 리뷰등록성공하면 구매내역테이블 isReviewed 값변경
+      if (buyList) {
+        buyList.isReviewed = true;
+        await buyList.save();
       }
       res.send("success");
-    }else{
+    } else {
       await ReviewList.create(addReview);
-      const buyList = await BuyList.findOne({where:{id:addReview.buyList_id}})
-      if(buyList){
-        buyList.isReviewed = true
-        await buyList.save()
+      const buyList = await BuyList.findOne({
+        where: { id: addReview.buyList_id },
+      });
+      if (buyList) {
+        buyList.isReviewed = true;
+        await buyList.save();
       }
       res.send("success");
     }
   } else {
-    res.send("fail");
+    res.status(500).send({ message: "제품 옵션 재고 업데이트 실패" });
   }
 };
+
+// 리뷰수정페이지에서 기존 리뷰정보 받아오기
+exports.loadReviewForEdit = async(req,res)=>{
+  const {buyList_id} = req.params
+  
+  const result = await ReviewList.findOne({where : {buyList_id}})
+  if(result){
+    res.json(result)
+  }else{
+    res.send({message : "실패"})
+  }
+}
+
+// 리뷰수정
+exports.ReviewEdit = async(req,res)=>{
+  const {buyList_id} = req.params
+  const {editReview} = req.body
+
+  const options = {
+    apiKey: imgbbKey,
+    base64string: editReview.reviewImage.split(",")[1],
+  }
+
+  const result = await ReviewList.findOne({where : {buyList_id}})
+
+  if(result){
+    for(let key in editReview){
+      result[key] = editReview[key]
+    }
+    if(options.base64string){
+      const uploadResponse = await imgbbUploader(options);
+      result.reviewImage = uploadResponse.url;
+    }
+    await result.save()
+    res.send({message : '성공'})
+  }
+  
+    
+
+    
+  
+}

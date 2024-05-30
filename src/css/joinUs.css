@@ -3,7 +3,7 @@ ul, ol, li{list-style:none;}
 a{text-decoration:none;} 
 
 .joinUs {
-  background-color: #f6f1eb;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -13,7 +13,7 @@ a{text-decoration:none;}
 }
 
 .joinUs .joinBoxWrapper {
-  background-color: #f6f1eb;
+  background-color: #FFFFFF;
   width: 1440px;
   height: 100vh;
   display: flex;
@@ -22,7 +22,7 @@ a{text-decoration:none;}
 }
 
 .joinUs .joinBox {
-  background-color: #fffcf7;
+  background-color: #FFFFFF;
   height: 900px;
   width: 574px;
   position: relative;
@@ -30,7 +30,6 @@ a{text-decoration:none;}
 
 .joinUs .txt {
   color: #000000;
-  
   font-size: 30px;
   font-weight: 400;
   left: 218px;
@@ -68,7 +67,6 @@ a{text-decoration:none;}
 
 .joinUs .textWrapper {
   color: #000000;
-  
   font-size: 18.9px;
   font-weight: 400;
   left: 51px;
@@ -85,7 +83,7 @@ a{text-decoration:none;}
   position: absolute;
   top: 82px;
   width: 518px;
-  background-color: #f6f1eb;
+  background-color: #EBEBEB;
 }
 
 .joinUs .check {
@@ -98,7 +96,6 @@ a{text-decoration:none;}
 
 .joinUs .div {
   color: #000000;
-  
   font-size: 18.9px;
   font-weight: 400;
   left: 48px;
@@ -112,7 +109,7 @@ a{text-decoration:none;}
 .joinUs .subtxt1{
   position: absolute;
   top: 2px;
-  left: 280px;
+  left: 260px;
   color: #9d2a1e;
 }
 
@@ -124,7 +121,7 @@ a{text-decoration:none;}
   height: 150px;
   border-radius: 10px;
   padding: 15px;
-  background-color: #f6f1eb;
+  background-color: #EBEBEB;
 }
 
 
@@ -152,11 +149,11 @@ a{text-decoration:none;}
   height: 150px;
   border-radius: 10px;
   padding: 15px;
-  background-color: #f6f1eb;
+  background-color: #EBEBEB;
 }
 
 .joinUs .submitButton {
-  background-color: #4d4a4a;
+  background-color: black;
   height: 64px;
   left: 50px;
   position: absolute;
@@ -168,7 +165,7 @@ a{text-decoration:none;}
 }
 
 .joinUs .cancleButton {
-  background-color: #4d4a4a;
+  background-color: black;
   height: 64px;
   left: 340px;
   position: absolute;
@@ -198,12 +195,12 @@ textarea{
 /* 스크롤바 전체 */
 textarea::-webkit-scrollbar {
   width: 10px;
-  background-color: #f6f1eb;
+  background-color: #EBEBEB;
 }
 
 /* 스크롤바 막대 */
 textarea::-webkit-scrollbar-thumb{
-  background-color: #4d4a4a;
+  background-color: black;
   border-radius: 5px;
 }
 

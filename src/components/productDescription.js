@@ -1,18 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/productDescription.css";
 
 export const ProductDescription = (props) => {
   const { handleSwitchBtn, product } = props;
+  const [more, setMore] = useState(false);
   let description;
   if (product.description) {
     description = product.description.split(",");
+    description.splice(description.length - 1, 1);
   } else {
     description = [];
   }
+
+  useEffect(() => {
+    if (more) {
+      document.querySelector(".infoDescription").classList.add("unhidden");
+    } else {
+      document.querySelector(".infoDescription").classList.remove("unhidden");
+    }
+  }, [more]);
+
+  const handleMore = () => {
+    setMore(!more);
+  };
+
   return (
     <div className="productInfo">
       <div className="productInfoWrapper">
-        <div className="div">
+        <div className="infoDescription">
           <div className="infoSelect">
             <div className="productDescription1">
               <div className="textWrapper4">상품 상세</div>
@@ -27,18 +42,28 @@ export const ProductDescription = (props) => {
             ) : (
               description.map((img, index) => {
                 return (
-                  <div className="textWrapper2" key={index}>
-                    <img src={img} alt="상세보기 대체용 이미지" />
+                  <div className="descriptionBox" key={index}>
+                    <img
+                      className="descriptionImg"
+                      src={img}
+                      alt="상세보기 대체용 이미지"
+                    />
                   </div>
                 );
               })
             )}
-            <div className="moreInfo">
-              <div className="textWrapper" style={{ textWrap: "nowrap" }}>
-                상품정보 더 보기 ▼
-              </div>
-            </div>
           </div>
+        </div>
+        <div className="moreInfo" onClick={handleMore}>
+          {more ? (
+            <div className="textWrapper" onClick={handleMore}>
+              상품정보 접기 ▲
+            </div>
+          ) : (
+            <div className="textWrapper" onClick={handleMore}>
+              상품정보 더 보기 ▼
+            </div>
+          )}
         </div>
       </div>
     </div>
