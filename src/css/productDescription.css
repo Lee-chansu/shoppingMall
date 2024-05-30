@@ -22,8 +22,8 @@
 }
 
 .productInfo .productDecription {
-  background-color: #eeeeee;
-  height: 931px;
+  background-color: inherit;
+  height: auto;
   left: 2px;
   position: absolute;
   top: 175px;
@@ -61,7 +61,6 @@
 
 .productInfo .textWrapper2 {
   color: #000000;
-
   font-size: 43.2px;
   font-weight: 400;
   left: 518px;

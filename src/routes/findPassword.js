@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/findPassword.css";
 import { useRef, useState } from "react";
 import Swal from "sweetalert2";
+import { Footer } from "../components/footer";
 
 export const FindPassword = () => {
   const navigate = useNavigate();
@@ -202,6 +203,7 @@ export const FindPassword = () => {
           </div>
         </form>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

@@ -124,9 +124,7 @@ exports.userInfoUpdate = async (req, res) => {
     if (options.base64string) {
       const uploadResponse = await imgbbUploader(options);
       result.profileImg = uploadResponse.url;
-      console.log("url", uploadResponse.url);
     }
-
     await result.save();
     res.json(result);
   }

@@ -27,8 +27,8 @@ export const ProductDescription = (props) => {
             ) : (
               description.map((img, index) => {
                 return (
-                  <div className="textWrapper2" key={index}>
-                    <img src={img} alt="상세보기 대체용 이미지" />
+                  <div style={{display : "block", width : "100%"}} key={index}>
+                    <img style={{display : "block", width : "100%"}} src={img} alt="상세보기 대체용 이미지" />
                   </div>
                 );
               })

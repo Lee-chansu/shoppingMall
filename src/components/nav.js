@@ -16,7 +16,6 @@ export const Nav = () => {
     const loadData = await fetch(`http://localhost:5000/profile/${id}`).then(
       (res) => res.json()
     );
-    console.log(loadData)
     setImageUrl(loadData);
   };
 
