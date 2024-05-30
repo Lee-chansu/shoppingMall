@@ -538,3 +538,43 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: #ccc;
   color: #ffffff;
 }
+
+.productdetail.productReview {
+  background-color: #999;
+  border-radius: 5px;
+  height: 156px;
+  left: 664px;
+  position: absolute;
+  top: 5px;
+  width: 664px;
+}
+
+.productdetail .textWrapper5 {
+  color: #eee;
+  font-size: 28px;
+  font-weight: 400;
+  left: 270px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 66px;
+}
+
+.productdetail .productDescription {
+  height: 156px;
+  left: 0;
+  position: absolute;
+  top: 5px;
+  width: 664px;
+}
+
+.productdetail .textWrapper6 {
+  color: #000000;
+  font-size: 28px;
+  font-weight: 400;
+  left: 280px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 66px;
+}

@@ -3,11 +3,22 @@ import "../css/productReview.css";
 import { Link } from "react-router-dom";
 
 export const ProductReview = (props) => {
-  const { switchBtn, setSwitchBtn, handleSwitchBtn, id, item } = props;
+  const { handleSwitchBtn, id, item } = props;
 
   const [userList, setUserList] = useState([]);
   const [reviewList, setReviewList] = useState([]);
   const starPoint = [0, 1, 2, 3, 4];
+  const [pagingSize, setPagingSize] = useState(0);
+  const [offset, setOffset] = useState(0);
+  const limit = 5;
+
+  const handleOffset = (index) => {
+    if (index === 0) {
+      setOffset(0);
+    } else {
+      setOffset(index * limit);
+    }
+  };
 
   useEffect(() => {
     // user 데이터 가져오기
@@ -16,23 +27,25 @@ export const ProductReview = (props) => {
       .then((data) => setUserList(data));
 
     // reviewList 데이터 가져오기
-    fetch(`http://localhost:5000/reviewList?buyList_id=${item}`)
+    fetch(
+      `http://localhost:5000/reviewList?buyList_id=${item}&offset=${offset}&limit=${limit}`
+    )
       .then((response) => response.json())
-      .then((data) => setReviewList(data));
+      .then((data) => {
+        setReviewList(data);
+      });
   }, []);
 
   return (
     <div className="productInfoReview">
       <div className="productInfoWrapper">
         <div className="productInfo">
-          {/* <div className="infoSelect"> */}
           <div className="productDescription" onClick={handleSwitchBtn}>
             <div className="textWrapper6">상품 상세</div>
           </div>
           <div className="productReview">
             <div className="textWrapper5">상품 리뷰</div>
           </div>
-          {/* </div> */}
           <div className="reviewBox">
             <div className="reviewAddBtnForm">
               <Link to="/payBuyList" className="divWrapper">
@@ -94,6 +107,19 @@ export const ProductReview = (props) => {
                       alt="reviewImage"
                     />
                   </div>
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ display: "flex" }}>
+            {Array.from({ length: pagingSize }, (el, index) => {
+              return (
+                <div
+                  key={index}
+                  onClick={() => handleOffset(index)}
+                  style={{ padding: "0 20px", cursor: "pointer" }}
+                >
+                  {index + 1}
                 </div>
               );
             })}

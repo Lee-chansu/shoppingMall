@@ -15,10 +15,12 @@
 .productInfo .infoDescription {
   height: 1163px;
   width: 1330px;
+  transform: translate(50px, 23px);
   overflow: hidden;
 }
 .productInfo .infoDescription.unhidden {
   width: 1330px;
+  min-height: 1163px;
   height: auto;
   overflow: unset;
 }
@@ -92,7 +94,7 @@
   font-weight: 400;
   letter-spacing: 0;
   vertical-align: middle;
-  line-height: 140px;
+  line-height: 155px;
   text-align: center;
 }
 
@@ -114,7 +116,7 @@
   font-size: 28px;
   font-weight: 400;
   letter-spacing: 0;
-  line-height: 140px;
+  line-height: 156px;
   vertical-align: middle;
   height: 100%;
   text-align: center;

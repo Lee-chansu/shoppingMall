@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import "../css/productDetailDescription.css";
 
 //컴포넌트
@@ -8,7 +9,6 @@ import { Nav } from "../components/nav";
 import { ProductDescription } from "../components/productDescription";
 import { ProductReview } from "../components/productReview";
 import { Myalter } from "../components/Myalter";
-import Swal from "sweetalert2";
 import { Footer } from "../components/footer";
 
 export const ProductDetailDescription = () => {
@@ -200,10 +200,6 @@ export const ProductDetailDescription = () => {
 
   useEffect(() => {
     getStock();
-  }, [selectedSize]);
-
-  useEffect(() => {
-    getStock();
   }, [selectedColor]);
 
   const loadProduct = async () => {
@@ -224,17 +220,6 @@ export const ProductDetailDescription = () => {
   };
 
   useEffect(() => {
-    const token = sessionStorage.getItem("token");
-    if (token) {
-      const decodeToken = jwtDecode(token);
-      console.log("second", decodeToken);
-      setId(decodeToken.id);
-      setIsMaster(decodeToken.isMaster);
-      getUserTry();
-    }
-  }, [id]);
-
-  useEffect(() => {
     setItem(productId);
     loadProduct();
     getUserTry();
@@ -244,8 +229,9 @@ export const ProductDetailDescription = () => {
     } else {
       const decodeToken = jwtDecode(token);
       setId(decodeToken.id);
+      setIsMaster(decodeToken.isMaster);
     }
-  }, []);
+  }, [id]);
 
   const increaseStock = () => {
     if (stock < maxStock) {
