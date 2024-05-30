@@ -92,7 +92,7 @@ export const ProductReview = (props) => {
                     <div className="productDetail">{el.content}</div>
                     <img
                       className="reviewImage"
-                      src="https://asset.m-gs.kr/prod/93220173/1/550"
+                      src={el.reviewImage}
                       alt="reviewImage"
                     />
                   </div>

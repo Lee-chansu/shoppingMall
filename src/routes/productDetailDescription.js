@@ -21,7 +21,7 @@ export const ProductDetailDescription = () => {
   const [index, setIndex] = useState(0);
   const [item, setItem] = useState(0);
   const [id, setId] = useState();
-  const [user, setUser] = useState(0);
+  const [user, setUser] = useState([]); /* 원래 0으로 되어있었음 */
   const [switchBtn, setSwitchBtn] = useState(!true);
   const [color, setColor] = useState([]);
   const [size, setSize] = useState([]);
@@ -221,6 +221,7 @@ export const ProductDetailDescription = () => {
       res.json()
     );
     setUser(getUsers);
+    console.log(getUsers[0].isMaster);
   };
 
   useEffect(() => {
@@ -341,15 +342,26 @@ export const ProductDetailDescription = () => {
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="infoBox">
-                  <span className="administrator">관리자 권한 </span>
-                  <Link to={`/productList/edit/${productId}`}>
-                    <button type="button" className="btn">
-                      상품수정
-                    </button>
-                  </Link>
-                  <button type="button" className="btn" onClick={deleteProduct}>
-                    상품삭제
-                  </button>
+                  {/* {isMaster === 0 ? (
+                    <>
+                      <span className="administrator">관리자 권한 </span>
+                      <Link to={`/productList/edit/${productId}`}>
+                        <button type="button" className="btn">
+                          상품수정
+                        </button>
+                      </Link>
+                      <button
+                        type="button"
+                        className="btn"
+                        onClick={deleteProduct}
+                      >
+                        상품삭제
+                      </button>
+                    </>
+                  ) : (
+                    <span className="administrator">상품 정보 </span>
+                  )} */}
+
                   <div className="productName">
                     <div className="textWrapper2">제품명</div>
                     <div className="overlap2">

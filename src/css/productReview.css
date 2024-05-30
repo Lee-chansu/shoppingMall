@@ -85,6 +85,7 @@
   -webkit-line-clamp: 2.5;
   -webkit-box-orient: vertical;
   word-break: keep-all;
+  word-wrap: break-word; /* 단어위주 줄바꿈 */
 }
 
 .productInfoReview .userName {
