@@ -3,7 +3,7 @@ ul, ol, li{list-style:none;}
 a{text-decoration:none;} 
 
 .userProfile {
-  background-color: #f6f1eb;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -12,7 +12,7 @@ a{text-decoration:none;}
 }
 
 .userProfile .overlapGroupWrapper {
-  background-color: #f6f1eb;
+  background-color: #FFFFFF;
   width: 1440px;
   height: 120vh;
   display: flex;
@@ -26,7 +26,7 @@ a{text-decoration:none;}
 }
 
 .userProfile .profileImage {
-  background-color: #d9d9d9;
+  background-color: #FFFFFF;
   border-radius: 121.63px;
   height: 243px;
   left: 94px;
@@ -34,10 +34,11 @@ a{text-decoration:none;}
   top: 0;
   width: 243px;
   z-index: 1;
+  border: 1px solid #EBEBEB;
 }
 
 .userProfile .userEditBox {
-  background-color: #fffcf7;
+  background-color: #FFFFFF;
   left: 0;
   position: absolute;
   top: 210px;
@@ -57,27 +58,48 @@ a{text-decoration:none;}
   position: relative;
 }
 
-.userProfile .userEditBox .title::after{
+/* .userProfile .userEditBox .title::after{
   content: '';
   display: block;
   width: 90%;
   height: 2px;
-  background-color: #fffcf7;
+  background-color: #EBEBEB;
   position: absolute;
-  top: 45px;
+  top: -5px;
   left: 20px;
-}
+} */
 
 .userProfile .userEditBox .title > span{
-  color: #9d2b1eb7;
+  color: #afafaf;
 }
 
 .userProfile .box {
-  background-color: #f6f1eb;
+  background-color: #FFFFFF;
   height: 97px;
   width: 399px;
   border-radius: 5px;
-  
+}
+
+.userProfile .box::before{
+  content: '';
+  display: block;
+  width: 90%;
+  height: 2px;
+  background-color: #EBEBEB;
+  position: absolute;
+  top: 50px;
+  left: 30px;
+}
+
+.userProfile .box::after{
+  content: '';
+  display: block;
+  width: 90%;
+  height: 2px;
+  background-color: #EBEBEB;
+  position: absolute;
+  top: 800px;
+  left: 30px;
 }
 
 .userProfile .textWrapper {
@@ -100,7 +122,7 @@ a{text-decoration:none;}
   margin: 20px;
 }
 .userProfile .cancelButton {
-  background-color: #4d4a4a;
+  background-color: black;
   height: 40px;
   left: 250px;
   position: absolute;
@@ -112,7 +134,7 @@ a{text-decoration:none;}
 }
 
 .userProfile .toSubmitButton {
-  background-color: #4d4a4a;
+  background-color: black;
   height: 40px;
   left: 60px;
   position: absolute;

@@ -13,7 +13,7 @@ a {
 }
 
 .userEdit {
-  background-color: #f6f1eb;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -34,7 +34,7 @@ a {
 }
 
 .userEdit .userEditBox {
-  background-color: #fffcf7;
+  background-color: #FFFFFF;
   height: 830px;
   width: 574px;
   position: absolute;
@@ -72,6 +72,7 @@ a {
   top: 21px;
   width: 219px;
   z-index: 1;
+  border: 1px solid #EBEBEB;
 }
 
 .userEdit .boxPassword {
@@ -106,7 +107,7 @@ a {
   text-align: left;
   top: 15px;
   width: 373px;
-  border: 1px solid #9d2a1e;
+  border: 1px solid #EBEBEB;
   padding-left: 7px;
   border-radius: 4px;
 }
@@ -175,7 +176,7 @@ a {
   height: 40px;
   text-align: left;
   width: 280px;
-  border: 1px solid #9d2a1e;
+  border: 1px solid #EBEBEB;
   padding-left: 10px;
   border-radius: 4px;
   position: absolute;
@@ -190,7 +191,7 @@ a {
   height: 40px;
   text-align: left;
   width: 373px;
-  border: 1px solid #9d2a1e;
+  border: 1px solid #EBEBEB;
   padding-left: 10px;
   border-radius: 4px;
   position: absolute;
@@ -199,7 +200,7 @@ a {
 }
 
 .userEdit .btn-secondary{
-  background-color: #4d4a4a;
+  background-color: black;
   height: 40px;
   top: -20px;
   left: 385px;
@@ -231,7 +232,7 @@ a {
   position: absolute;
   top: 19px;
   width: 373px;
-  border: 1px solid #9d2a1e;
+  border: 1px solid #EBEBEB;
   border-radius: 4px;
   background-color: #ffffff;
 }
@@ -241,14 +242,13 @@ a {
   display: block;
   height: 100%;
   width: 1px;
-  background-color: #9d2a1e;
+  background-color: #EBEBEB;
   position: absolute;
   left: 176px;
 }
 
 .userEdit .textWrapper {
   color: #000000;
-
   font-size: 12.9px;
   font-weight: 400;
   left: 192px;
@@ -261,7 +261,6 @@ a {
 
 .userEdit .textWrapper2 {
   color: #000000;
-
   font-size: 12.9px;
   font-weight: 400;
   left: 18px;
@@ -299,7 +298,7 @@ a {
 }
 
 .userEdit .submitButton {
-  background-color: #4d4a4a;
+  background-color: black;
   height: 40px;
   left: 120px;
   position: absolute;
@@ -312,7 +311,6 @@ a {
 
 .userEdit .textWrapper3 {
   color: #000000;
-
   font-size: 12.9px;
   font-weight: 400;
   left: 21px;
@@ -324,7 +322,7 @@ a {
 }
 
 .userEdit .cancelButton {
-  background-color: #4d4a4a;
+  background-color: black;
   height: 40px;
   left: 310px;
   position: absolute;
