@@ -2,7 +2,7 @@ require("dotenv").config();
 
 //db
 const db = require("../models");
-const { Cart, BuyList, Product, Carry, PaymentRequest } = db;
+const { Cart, BuyList, Product, Carry, PaymentRequest, ReviewList } = db;
 
 //user Id 로 장바구니 조회
 exports.selectCartByUserId = async (req, res) => {
@@ -172,6 +172,7 @@ exports.deleteBuylist = async (req, res) => {
   try {
     await Carry.destroy({ where: { order_id: id } });
     //이거 왜 Carry?
+    await ReviewList.destroy({where : {buyList_id : id}})
     await BuyList.destroy({ where: { id } });
 
     res.status(200).json({ message: "삭제 완료" });
