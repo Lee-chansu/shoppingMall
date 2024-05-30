@@ -21,7 +21,8 @@ export const ProductDetailDescription = () => {
   const [index, setIndex] = useState(0);
   const [item, setItem] = useState(0);
   const [id, setId] = useState();
-  const [user, setUser] = useState([]);
+  const [isMaster, setIsMaster] = useState(false);
+  const [user, setUser] = useState({});
   const [switchBtn, setSwitchBtn] = useState(!true);
   const [color, setColor] = useState([]);
   const [size, setSize] = useState([]);
@@ -213,26 +214,25 @@ export const ProductDetailDescription = () => {
   };
 
   // 받아온패치 실행해서 getUser에 담기
-  const getUserTry = async (user_id) => {
-    console.log(user_id)
-    const get = await fetch(`http://localhost:5000/userEdit/${user_id}`).then(
+  const getUserTry = async () => {
+    const getUser = await fetch(`http://localhost:5000/userEdit/${id}`).then(
       (response) => {
         response.json();
       }
     );
-    console.log(get)
+    setUser(getUser);
   };
 
   useEffect(() => {
     const token = sessionStorage.getItem("token");
-    if (!token) {
-      navigate("/");
-    } else {
+    if (token) {
       const decodeToken = jwtDecode(token);
-      const user_id = decodeToken.id;
-      getUserTry(user_id);
+      console.log("second", decodeToken);
+      setId(decodeToken.id);
+      setIsMaster(decodeToken.isMaster);
+      getUserTry();
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     setItem(productId);
@@ -351,15 +351,25 @@ export const ProductDetailDescription = () => {
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="infoBox">
-                  <span className="administrator">관리자 권한 </span>
-                  <Link to={`/productList/edit/${productId}`}>
-                    <button type="button" className="btn">
-                      상품수정
-                    </button>
-                  </Link>
-                  <button type="button" className="btn" onClick={deleteProduct}>
-                    상품삭제
-                  </button>
+                  {isMaster ? (
+                    <>
+                      <span className="administrator">관리자 권한 </span>
+                      <Link to={`/productList/edit/${productId}`}>
+                        <button type="button" className="btn">
+                          상품수정
+                        </button>
+                      </Link>
+                      <button
+                        type="button"
+                        className="btn"
+                        onClick={deleteProduct}
+                      >
+                        상품삭제
+                      </button>
+                    </>
+                  ) : (
+                    <span className="administrator"> ProductInfo </span>
+                  )}
                   <div className="productName">
                     <div className="textWrapper2">제품명</div>
                     <div className="overlap2">
