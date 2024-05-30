@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export const PayItem = ({ val, handleDeleteItem, handleAddToCart }) => {
+
   const navigate = useNavigate();
   async function delBtn() {
     /* 버튼 클릭시 {val} 한개 삭제 기능 구현 */
@@ -16,7 +17,9 @@ export const PayItem = ({ val, handleDeleteItem, handleAddToCart }) => {
   const moveReview = () => {
     navigate("/review", { state: { buyList: val } });
   };
+
   console.log(val)
+
   return (
     <div className="payItem">
       <div className="itemInfo">

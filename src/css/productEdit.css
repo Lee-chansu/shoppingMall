@@ -105,6 +105,10 @@
   font-size: 14px;
 }
 
+.input {
+  font-size: 16px;
+}
+
 .productEdit .inner .wrap.stock .categoryTitle .btn {
   padding: 2px 8px;
   margin-left: 20px;
@@ -232,6 +236,12 @@
 input[type="checkbox"] {
   zoom: 0.5;
   border-radius: 5px;
+}
+
+input[type="number"] {
+  zoom: .8;
+  border-radius: 3px;
+  padding: 20px 10px;
 }
 
 .btn1 {
