@@ -1,18 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../css/productAdd.css";
 import { XCircleFill } from "react-bootstrap-icons";
+import Swal from "sweetalert2";
 
 //컴포넌트
 import { Nav } from "../components/nav";
 import { SubImagePreview } from "../components/subImgPreview";
 import { ProductOption } from "../components/productOptionAdd";
 import { MyDropzone } from "../components/DropZone";
-import { Myalter } from "../components/Myalter";
-import Swal from "sweetalert2";
+import ButtonBox from "../components/ButtonBox";
+import CustomButton from "../components/CustomButton";
 
 export const ProductAdd = () => {
   const navigate = useNavigate();
+  const handleCancle = () => {
+    navigate(-1);
+  };
 
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
@@ -54,7 +58,7 @@ export const ProductAdd = () => {
       if (!allowedExtensions.includes(extension)) {
         Swal.fire({
           icon: "error",
-          title: "이미지를 업로드하는데 실패했습니다.",
+          categoryTitle: "이미지를 업로드하는데 실패했습니다.",
           text: `${file.name} 파일은 허용되지 않는 확장자입니다.`,
           showConfirmButton: true,
           confirmButtonText: "확인",
@@ -74,11 +78,6 @@ export const ProductAdd = () => {
     } else {
       return;
     }
-  };
-
-  const addTag = (e) => {
-    e.preventDefault();
-    setCount(count + 1);
   };
 
   const checkOnlyOneCategory = (checkThis) => {
@@ -127,12 +126,12 @@ export const ProductAdd = () => {
     return (
       <ProductOption
         key={index}
-        checkCategory={checkCategory}
-        newOption={newOption}
         idx={index}
         count={count}
         setCount={setCount}
+        newOption={newOption}
         setNewOption={setNewOption}
+        checkCategory={checkCategory}
       />
     );
   });
@@ -153,39 +152,110 @@ export const ProductAdd = () => {
 
   const toAddProduct = async (e) => {
     e.preventDefault();
+    console.log("newOption", newOption);
 
     try {
       if (newProduct.category === "") {
-        alert("카테고리를 선택해주세요.");
+        Swal.fire({
+          icon: "warning",
+          categoryTitle: "카테고리 란이 비어있습니다.",
+          text: ` 카테고리를 선택해주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
       if (newProduct.detail === "") {
-        alert("디테일을 선택해주세요.");
+        Swal.fire({
+          icon: "warning",
+          categoryTitle: "디테일 란이 비어있습니다.",
+          text: ` 디테일을 선택해주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
       if (newProduct.name === "" || newProduct.name === null) {
-        alert("이름을 입력해주세요.");
+        Swal.fire({
+          icon: "warning",
+          categoryTitle: "이름 란이 비어있습니다.",
+          text: ` 상품의 이름을 입력해주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
-      if (newProduct.mainImage === null) {
-        alert("메인 이미지를 선택 해주세요.");
+      if (newProduct.price <= 0) {
+        Swal.fire({
+          icon: "warning",
+          categoryTitle:
+            "가격을 입력하지 않았거나 올바르게 입력하지 않았습니다.",
+          text: ` 가격을 입력해주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
-      if (newProduct.color === null || newProduct.color === "") {
-        alert("제품의 색상을 입력해주세요.");
+      if (newProduct.mainImage === null || newProduct.mainImage === "") {
+        Swal.fire({
+          icon: "warning",
+          categoryTitle: "이미지를 선택하지 않았습니다.",
+          text: ` 상품의 메인이미지를 선택주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
-      if (newProduct.price === null || newProduct.price === 0) {
-        alert("제품의 가격을 입력해주세요.");
+      if (newOption[0] === undefined) {
+        Swal.fire({
+          icon: "warning",
+          categoryTitle: "옵션 Error.",
+          text: ` 옵션을 추가해주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
-      if (newProduct.size === null || newProduct.size === null) {
-        alert("제품의 사이즈를 선택해주세요.");
-        return;
-      }
-      if (newProduct.stock === null || newProduct.stock === "") {
-        alert("제품의 재고수량을 입력해주세요.");
-        return;
+      for (let index of newOption) {
+        if (index.color == null) {
+          Swal.fire({
+            icon: "warning",
+            categoryTitle: "색상이 비어있습니다.",
+            text: ` 상품의 색상을 입력해주세요.`,
+            showConfirmButton: true,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#007bff",
+          });
+          return;
+        }
+        if (index.size === undefined) {
+          Swal.fire({
+            icon: "warning",
+            categoryTitle: "선택하지 않은 사이즈가 있습니다.",
+            text: ` 해당 옵션의 사이즈를 입력해주세요.`,
+            showConfirmButton: true,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#007bff",
+          });
+          return;
+        }
+        if (index.stock < 1) {
+          Swal.fire({
+            icon: "warning",
+            categoryTitle: "옵션의 수량 오류.",
+            text: ` 재고를 올바르게 입력했는지 확인해주세요.`,
+            showConfirmButton: true,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#007bff",
+          });
+          return;
+        }
       }
 
       const body = {
@@ -226,7 +296,7 @@ export const ProductAdd = () => {
             onSubmit={toAddProduct}
           >
             <div className="wrap">
-              <h2 className="title">카테고리</h2>
+              <h2 className="categoryTitle">카테고리</h2>
               <div className="boxWrap">
                 {category.map((el) => {
                   return (
@@ -246,7 +316,7 @@ export const ProductAdd = () => {
               </div>
             </div>
             <div className="wrap">
-              <h2 className="title">디테일</h2>
+              <h2 className="categoryTitle">디테일</h2>
               <div className="boxWrap">
                 {detailBar.length === 0 ? (
                   <p className="text">카테고리를 선택해주세요</p>
@@ -270,39 +340,31 @@ export const ProductAdd = () => {
               </div>
             </div>
             <div className="wrap">
-              <h2 className="title">제품명</h2>
+              <h2 className="categoryTitle">제품명</h2>
               <div className="boxWrap">
-                <input type="text" name="name" onChange={valueChange} />
+                <input
+                  className="input"
+                  type="text"
+                  name="name"
+                  onChange={valueChange}
+                />
               </div>
             </div>
             <div className="wrap">
-              <h2 className="title">가격</h2>
+              <h2 className="categoryTitle">가격</h2>
               <div className="boxWrap">
-                <input type="text" name="price" onChange={valueChange} />
+                <input
+                  className="input"
+                  type="number"
+                  name="price"
+                  onChange={valueChange}
+                />
               </div>
             </div>
-            <div className="wrap stock">
-              <h2 className="title">
-                옵션
-                <button className="btn" onClick={addTag}>
-                  +
-                </button>
-              </h2>
-              {components}
-            </div>
-            <p
-              style={{
-                display: "inline-block",
-                margin: "0 15px",
-                color: "#ccc",
-                fontSize: "15px",
-              }}
-            >
-              이미지파일은 ".jpg", ".png", ".bmp", ".gif", ".tif", ".webp",
-              ".heic", ".pdf"만 가능합니다.
-            </p>
+            <div className="wrap stock">{components}</div>
+
             <div className="wrap img">
-              <h2 className="title">메인이미지 등록</h2>
+              <h2 className="categoryTitle">메인이미지 등록</h2>
               <div className="boxWrap">
                 <label htmlFor="mainImage">
                   <div className="addImg" style={{ marginLeft: "5px" }}>
@@ -325,11 +387,22 @@ export const ProductAdd = () => {
                   ref={mainImgRef}
                   accept="image/*"
                 />
+                <p
+                  style={{
+                    display: "inline-block",
+                    margin: "0 15px",
+                    color: "#ccc",
+                    fontSize: "15px",
+                  }}
+                >
+                  이미지파일은 ".jpg", ".png", ".bmp", ".gif", ".tif", ".webp",
+                  ".heic", ".pdf"만 가능합니다.
+                </p>
               </div>
             </div>
 
             <div className="wrap img">
-              <h2 className="title">서브이미지 등록</h2>
+              <h2 className="categoryTitle">서브이미지 등록</h2>
               <div className="boxWrap">
                 {subImageCount.map((el, index) => {
                   return (
@@ -344,7 +417,7 @@ export const ProductAdd = () => {
               </div>
             </div>
             <div className="wrap description">
-              <h2 className="title">Description</h2>
+              <h2 className="categoryTitle">Description</h2>
               <div className="boxWrap">
                 <MyDropzone
                   descriptionImgArray={descriptionImgArray}
@@ -365,12 +438,15 @@ export const ProductAdd = () => {
                 );
               })}
             </div>
-            <div className="btnForm">
-              <button>추가</button>
-              <Link to="/productList">
-                <button>취소</button>
-              </Link>
-            </div>
+            <ButtonBox>
+              <CustomButton
+                className="btn1"
+                buttonTitle="취소"
+                handleLinkMove={handleCancle}
+              />
+
+              <CustomButton className="btn2" buttonTitle="수정완료" />
+            </ButtonBox>
           </form>
         </div>
       </div>

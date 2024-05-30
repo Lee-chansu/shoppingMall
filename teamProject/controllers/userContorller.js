@@ -101,6 +101,7 @@ exports.loadUserForEdit = async (req, res) => {
   const { id } = req.params;
   const result = await User.findOne({ where: { id } });
   if (result) {
+    console.log(result);
     res.json(result);
   }
 };

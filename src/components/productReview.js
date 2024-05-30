@@ -21,8 +21,6 @@ export const ProductReview = (props) => {
       .then((data) => setReviewList(data));
   }, []);
 
-  console.log("reviewList", reviewList);
-
   return (
     <div className="productInfoReview">
       <div className="productInfoWrapper">

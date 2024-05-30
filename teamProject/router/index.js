@@ -7,13 +7,14 @@ const productController = require("../controllers/productController");
 const cartController = require("../controllers/cartController");
 
 //userController
-router.get("/User", userController.loadUser);
-router.get("/DeleteUser", userController.loadDeleteUser);
+router.get("/user", userController.loadUser);
+router.get("/deleteUser", userController.loadDeleteUser);
 router.get("/logout", userController.logout);
 router.get("/profile/:id", userController.loadProfileImage);
 router.get("/userEdit/:id", userController.loadUserForEdit);
 router.get("/userProfile/:id", userController.loadUserForEdit);
 router.get("/userInfo/:id", userController.loadProfileImageForInfo);
+router.get("/logout", userController.logout);
 
 router.post("/join", userController.userCreate);
 router.post("/login", userController.userLogin);
@@ -49,8 +50,8 @@ router.delete("/productDelete/:id", productController.deleteProduct);
 
 router.post("/review", productController.addReview);
 
-router.get("/reviewEdit/:buyList_id", productController.loadReviewForEdit)
-router.put("/reviewEdit/:buyList_id", productController.ReviewEdit)
+router.get("/reviewEdit/:buyList_id", productController.loadReviewForEdit);
+router.put("/reviewEdit/:buyList_id", productController.ReviewEdit);
 
 //cartController
 router.get("/cart/:user_id", cartController.selectCartByUserId);
