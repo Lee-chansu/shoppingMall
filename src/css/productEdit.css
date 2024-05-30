@@ -105,6 +105,10 @@
   font-size: 14px;
 }
 
+.input {
+  font-size: 16px;
+}
+
 .productEdit .inner .wrap.stock .categoryTitle .btn {
   padding: 2px 8px;
   margin-left: 20px;
