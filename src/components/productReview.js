@@ -33,6 +33,7 @@ export const ProductReview = (props) => {
       .then((response) => response.json())
       .then((data) => {
         setReviewList(data);
+        setPagingSize(Math.ceil(data.length / limit));
       });
   }, []);
 

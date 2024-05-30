@@ -38,7 +38,13 @@ export const ProductDescription = (props) => {
           </div>
           <div className="productDecription">
             {!product.description ? (
-              <div className="textWrapper2">상품 정보</div>
+              <div className="descriptionBox">
+                <img
+                  className="descriptionImg"
+                  src="/img/readyForPhoto.jpg"
+                  alt="descriptionImage가 없을 경우 대체하는 이미지"
+                />
+              </div>
             ) : (
               description.map((img, index) => {
                 return (
