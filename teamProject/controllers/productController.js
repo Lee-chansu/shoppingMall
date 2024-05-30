@@ -306,12 +306,12 @@ exports.updateProductOption = async (req, res) => {
 //제품 삭제
 exports.deleteProduct = async (req, res) => {
   const { id } = req.params;
-  const cartDel = await Cart.destroy({ where: { product_id: id } });
-  const optionDel = await ProductOption.destroy({ where: { product_id: id } });
-  const detailDel = await ProductDetail.destroy({ where: { product_id: id } });
+  await Cart.destroy({ where: { product_id: id } });
+  await ProductOption.destroy({ where: { product_id: id } });
+  await ProductDetail.destroy({ where: { product_id: id } });
+  const delProduct = await Product.destroy({ where: { id } });
   let result;
-  if (cartDel && detailDel && optionDel) {
-    await Product.destroy({ where: { id } });
+  if (delProduct) {
     result = true;
   } else {
     result = false;

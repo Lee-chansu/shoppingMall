@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "../css/productReview.css";
 import { Link } from "react-router-dom";
+import "../css/productReview.css";
 
 export const ProductReview = props => {
   const { handleSwitchBtn, id, item } = props;
@@ -33,8 +33,10 @@ export const ProductReview = props => {
     )
       .then(response => response.json())
       .then(data => {
-        setReviewList(data.rows);
-        setPagingSize(Math.ceil(data.count / limit));
+        if (data) {
+          setReviewList(data.rows);
+          setPagingSize(Math.ceil(data.count / limit));
+        }
       });
   }, [offset]);
 
@@ -57,61 +59,67 @@ export const ProductReview = props => {
               </button>
             </Link>
           </div>
-          {reviewList.map((el, i) => {
-            const user = userList.find(user => user.id === el.user_id);
-            return (
-              <div className="reviewerInfoWrapper" key={el.id}>
-                <div className="reviewerInfo2">
-                  <div className="overlap">
-                    <div className="userName">{user.userName} 님의 리뷰</div>
-                    {id === user.id ? (
-                      <div className="editBtnForm">
-                        <button className="reviewEditBtn">리뷰 수정하기</button>
-                      </div>
-                    ) : null}
+          {reviewList === 0 ? (
+            reviewList.map((el, i) => {
+              const user = userList.find(user => user.id === el.user_id);
+              return (
+                <div className="reviewerInfoWrapper" key={el.id}>
+                  <div className="reviewerInfo2">
+                    <div className="overlap">
+                      <div className="userName">{user.userName} 님의 리뷰</div>
+                      {id === user.id ? (
+                        <div className="editBtnForm">
+                          <button className="reviewEditBtn">
+                            리뷰 수정하기
+                          </button>
+                        </div>
+                      ) : null}
+                    </div>
+                    <div className="starRating">
+                      {starPoint.map((notUsed, i) => {
+                        return el.starPoint > i ? (
+                          <img
+                            className="star"
+                            key={i}
+                            src={process.env.PUBLIC_URL + "/img/fullStar.svg"}
+                            alt="켜진별"
+                            width={"100px"}
+                            style={{ display: "inline" }}
+                          />
+                        ) : (
+                          <img
+                            className="star"
+                            key={i}
+                            src={process.env.PUBLIC_URL + "/img/emptyStar.svg"}
+                            alt="꺼진별"
+                            width={"100px"}
+                            style={{ display: "inline" }}
+                          />
+                        );
+                      })}
+                    </div>
+                    <span className="evaluation">별점 5.0 / 매우 만족해요</span>
+                    <div className="reviewCreatedAt">
+                      {el.reviewDate.substring(0, 10)}
+                    </div>
+                    <div className="productOption">
+                      {el.reviewColor} / {el.reviewSize}
+                    </div>
+                    <div className="productDetail">{el.content}</div>
                   </div>
-                  <div className="starRating">
-                    {starPoint.map((notUsed, i) => {
-                      return el.starPoint > i ? (
-                        <img
-                          className="star"
-                          key={i}
-                          src={process.env.PUBLIC_URL + "/img/fullStar.svg"}
-                          alt="켜진별"
-                          width={"100px"}
-                          style={{ display: "inline" }}
-                        />
-                      ) : (
-                        <img
-                          className="star"
-                          key={i}
-                          src={process.env.PUBLIC_URL + "/img/emptyStar.svg"}
-                          alt="꺼진별"
-                          width={"100px"}
-                          style={{ display: "inline" }}
-                        />
-                      );
-                    })}
+                  <div className="reviewImageBox">
+                    <img
+                      className="reviewImage"
+                      src="https://asset.m-gs.kr/prod/93220173/1/550"
+                      alt="reviewImage"
+                    />
                   </div>
-                  <span className="evaluation">별점 5.0 / 매우 만족해요</span>
-                  <div className="reviewCreatedAt">
-                    {el.reviewDate.substring(0, 10)}
-                  </div>
-                  <div className="productOption">
-                    {el.reviewColor} / {el.reviewSize}
-                  </div>
-                  <div className="productDetail">{el.content}</div>
                 </div>
-                <div className="reviewImageBox">
-                  <img
-                    className="reviewImage"
-                    src="https://asset.m-gs.kr/prod/93220173/1/550"
-                    alt="reviewImage"
-                  />
-                </div>
-              </div>
-            );
-          })}
+              );
+            })
+          ) : (
+            <></>
+          )}
           <div className="paging">
             {Array.from({ length: pagingSize }, (el, index) => {
               return (
