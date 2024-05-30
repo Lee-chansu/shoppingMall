@@ -12,7 +12,7 @@ import { Nav } from "../components/nav";
 
 export const Payment = () => {
   //배송요청 직접입력
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("선택해주세요");
   const [userProfile, setUserProfile] = useState({ address: "" });
   const [id, setId] = useState("");
   const navigate = useNavigate();
@@ -29,8 +29,10 @@ export const Payment = () => {
     mainAddress: "",
     detailAddress: "",
   });
+  const [carryMessage, setCarryMessage] = useState("carryMessage1");
 
-  console.log('newUser', newUser)
+  console.log("newUser", newUser);
+  console.log("carryMessage", carryMessage);
 
   //결제방식 선택하기
   //총 주문 합계 보기 변수선언
@@ -53,7 +55,14 @@ export const Payment = () => {
 
   const handleChange = (e) => {
     setSelectedOption(e.target.value);
+    const newMessage = carryMessage
+    setCarryMessage(e.target.value);
+    console.log("selectedOption", e.target.value);
   };
+
+  const handleCarryMessage = (e) => {
+    setCarryMessage(e.target.value);
+  }
 
   const userFetch = async () => {
     const response = await fetch(`http://localhost:5000/userProfile/${id}`);
@@ -81,7 +90,13 @@ export const Payment = () => {
 
   const handleAllPayment = () => {
     navigate("/toss", {
-      state: { paymentList: location.state.list, orderSum, paySelect: "test", address: newUser },
+      state: {
+        paymentList: location.state.list,
+        orderSum,
+        paySelect: "test",
+        address: newUser,
+        carryMessage,
+      },
     });
   };
 
@@ -233,24 +248,22 @@ export const Payment = () => {
                     value={selectedOption}
                     onChange={handleChange}
                   >
-                    <option value="carryMessage1">선택해주세요</option>
-                    <option value="carryMessage2">문 앞에 놔주세요</option>
-                    <option value="carryMessage3">직접 받을게요</option>
-                    <option value="carryMessage4">우편함에 놔주세요</option>
-                    <option value="carryMessage5">
-                      문 앞 배송 후 문자주세요
-                    </option>
-                    <option value="carryMessage6">
-                      부재시 경비실에 맡겨주세요
-                    </option>
-                    <option value="carryMessage7">직접입력</option>
+                    <option value="선택해주세요">선택해주세요</option>
+                    <option value="문 앞에 놔주세요">문 앞에 놔주세요</option>
+                    <option value="직접 받을게요">직접 받을게요</option>
+                    <option value="우편함에 놔주세요">우편함에 놔주세요</option>
+                    <option value="문 앞 배송 후 문자주세요">문 앞 배송 후 문자주세요</option>
+                    <option value="부재시 경비실에 맡겨주세요">부재시 경비실에 맡겨주세요</option>
+                    <option value="">직접입력</option>
                   </select>
-                  {selectedOption === "carryMessage7" && (
                     <input
                       className="carryDirectMessage"
                       placeholder="여기에 배송요청 사항을 직접 입력하세요"
-                    ></input>
-                  )}
+                      maxLength="100"
+                      hidden={selectedOption !== ""}
+                      value={carryMessage}
+                      onChange={handleCarryMessage}
+                    />
                 </div>
               </div>
               <div className="saleBox">
