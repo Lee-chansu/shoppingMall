@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { WindowDash, XCircleFill } from "react-bootstrap-icons";
+import { useNavigate, useParams } from "react-router-dom";
+import { XCircleFill } from "react-bootstrap-icons";
 import { MyDropzone } from "../components/DropZone";
 import "../css/productEdit.css";
 
@@ -159,11 +159,6 @@ export const ProductEdit = () => {
     showDetailBar();
   }, [checkCategory, checkDetail]);
 
-  const addTag = (e) => {
-    e.preventDefault();
-    setCount(count + 1);
-  };
-
   //새로운 정보(productOption)을 추가하는 컴포넌트
   const components = Array.from({ length: count }, (el, index) => {
     return (
@@ -203,36 +198,109 @@ export const ProductEdit = () => {
 
     try {
       if (newProduct.category === "") {
-        alert("카테고리를 선택해주세요.");
+        Swal.fire({
+          icon: "warning",
+          title: "카테고리 란이 비어있습니다.",
+          text: ` 카테고리를 선택해주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
       if (newProduct.detail === "") {
-        alert("디테일을 선택해주세요.");
+        Swal.fire({
+          icon: "warning",
+          title: "디테일 란이 비어있습니다.",
+          text: ` 디테일을 선택해주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
       if (newProduct.name === "" || newProduct.name === null) {
-        alert("이름을 입력해주세요.");
+        Swal.fire({
+          icon: "warning",
+          title: "이름 란이 비어있습니다.",
+          text: ` 상품의 이름을 입력해주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
-      if (newProduct.mainImage === null) {
-        alert("메인 이미지를 선택 해주세요.");
+      if (newProduct.price <= 0) {
+        Swal.fire({
+          icon: "warning",
+          title: "가격을 입력하지 않았거나 올바르게 입력하지 않았습니다.",
+          text: ` 가격을 입력해주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
-      if (newProduct.color === "" || newProduct.color === "") {
-        alert("제품의 색상을 입력해주세요.");
+      if (newProduct.mainImage === "") {
+        Swal.fire({
+          icon: "warning",
+          title: "이미지를 선택하지 않았습니다.",
+          text: ` 상품의 메인이미지를 선택주세요.`,
+          showConfirmButton: true,
+          confirmButtonText: "확인",
+          confirmButtonColor: "#007bff",
+        });
         return;
       }
-      if (newProduct.price === null || newProduct.price === 0) {
-        alert("제품의 가격을 입력해주세요.");
-        return;
+      for (let index of newOption) {
+        console.log(index.size);
+        if (index.color === "") {
+          Swal.fire({
+            icon: "warning",
+            title: "색상이 비어있습니다.",
+            text: ` 상품의 색상을 입력해주세요.`,
+            showConfirmButton: true,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#007bff",
+          });
+          return;
+        }
+        if (index.stock < 1) {
+          Swal.fire({
+            icon: "warning",
+            title: "해당 옵션의 재고란이 비어있습니다.",
+            text: ` 재고를 입력해주세요.`,
+            showConfirmButton: true,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#007bff",
+          });
+          return;
+        }
+        if (index.size === undefined) {
+          Swal.fire({
+            icon: "warning",
+            title: "선택하지 않은 사이즈가 있습니다.",
+            text: ` 해당 옵션의 사이즈를 입력해주세요.`,
+            showConfirmButton: true,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#007bff",
+          });
+          return;
+        }
       }
-      if (newProduct.size === "" || newProduct.size === null) {
-        alert("제품의 사이즈를 선택해주세요.");
-        return;
-      }
-      if (newProduct.stock === null || newProduct.stock === "") {
-        alert("제품의 재고수량을 입력해주세요.");
-        return;
+
+      for (let index of option) {
+        if (index.stock < 1) {
+          Swal.fire({
+            icon: "warning",
+            title: "해당 옵션의 재고란이 비어있습니다.",
+            text: ` 재고를 입력해주세요.`,
+            showConfirmButton: true,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#007bff",
+          });
+          return;
+        }
       }
 
       const body = {
@@ -340,12 +408,6 @@ export const ProductEdit = () => {
               </div>
             </div>
             <div className="wrap stock">
-              <h2 className="categoryTitle">
-                옵션
-                <button className="btn" onClick={addTag}>
-                  +
-                </button>
-              </h2>
               {editComponents}
               {components}
             </div>
@@ -376,6 +438,7 @@ export const ProductEdit = () => {
                   onChange={previewMainImg}
                   ref={mainImgRef}
                   accept="image/*"
+                  defaultValue={newProduct.mainImage}
                 />
               </div>
             </div>
@@ -423,11 +486,7 @@ export const ProductEdit = () => {
                 handleLinkMove={handleCancle}
               />
 
-              <CustomButton
-                className="btn2"
-                buttonTitle="수정완료"
-                handleLinkMove={handleCancle}
-              />
+              <CustomButton className="btn2" buttonTitle="수정완료" />
             </ButtonBox>
           </form>
         </div>

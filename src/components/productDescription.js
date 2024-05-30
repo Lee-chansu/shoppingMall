@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../css/productDescription.css";
-import { Footer } from "./footer";
 
-export const ProductDescription = props => {
+export const ProductDescription = (props) => {
   const { handleSwitchBtn, product } = props;
   const [more, setMore] = useState(false);
   let description;
@@ -56,11 +55,14 @@ export const ProductDescription = props => {
           </div>
         </div>
         <div className="moreInfo" onClick={handleMore}>
-          {console.log(more)}
           {more ? (
-            <div className="textWrapper">상품정보 접기 ▲</div>
+            <div className="textWrapper" onClick={handleMore}>
+              상품정보 접기 ▲
+            </div>
           ) : (
-            <div className="textWrapper">상품정보 더 보기 ▼</div>
+            <div className="textWrapper" onClick={handleMore}>
+              상품정보 더 보기 ▼
+            </div>
           )}
         </div>
       </div>
