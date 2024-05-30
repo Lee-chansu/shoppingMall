@@ -21,7 +21,6 @@ exports.loadProductByNavButton = async (req, res) => {
     offset = 0;
     limit = 8;
   }
-  console.log(detail);
 
   let result;
   try {
@@ -288,7 +287,7 @@ exports.updateProductOption = async (req, res) => {
   console.log("testOption", option);
 
   try {
-    const updatePromises = option.map(async (item) => {
+    const updatePromises = option.map(async item => {
       return ProductOption.update(
         { stock: item.stock },
         { where: { id: item.id } }
@@ -333,12 +332,12 @@ exports.selectReviewlist = async (req, res) => {
 
   const findId = await BuyList.findAll({ where: { product_id: buyList_id } });
 
-  const buyListIds = findId.map((item) => item.id);
+  const buyListIds = findId.map(item => item.id);
 
   let result = [];
 
   if (buyListIds.length > 0) {
-    result = await ReviewList.findAll({
+    result = await ReviewList.findAndCountAll({
       where: {
         buyList_id: {
           [Op.in]: buyListIds,

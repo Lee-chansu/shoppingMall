@@ -18,7 +18,7 @@ module.exports = {
           detailAddress: "detail address 0",
           profileImg:
             "https://image.idus.com/image/files/ed8ab38a7e6f41f0b19a039b76c75069_1440.jpg",
-          isMaster: false,
+          isMaster: true,
           isDeleted: false,
         },
         {
@@ -157,7 +157,7 @@ module.exports = {
           isDeleted: false,
         },
       ],
-      {}
+      {order : 3}
     );
   },
 

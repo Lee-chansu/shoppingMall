@@ -30,15 +30,15 @@ export const ProductDetailDescription = () => {
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
 
-  const handleChangeSize = (event) => {
+  const handleChangeSize = event => {
     setSelectedSize(event.target.value);
   };
 
-  const handleChangeColor = (event) => {
+  const handleChangeColor = event => {
     setSelectedColor(event.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const isLogin = sessionStorage.getItem("token");
     if (!isLogin) {
@@ -63,8 +63,7 @@ export const ProductDetailDescription = () => {
       const productOptions = await response.json();
 
       const selectedProductOption = productOptions.find(
-        (option) =>
-          option.size === selectedSize && option.color === selectedColor
+        option => option.size === selectedSize && option.color === selectedColor
       );
 
       const updatedFormData = {
@@ -115,7 +114,7 @@ export const ProductDetailDescription = () => {
     }
   };
 
-  const handlePayment = async (e) => {
+  const handlePayment = async e => {
     const isLogin = sessionStorage.getItem("token");
     if (!isLogin) {
       Myalter("warning", "구매 가이드", "로그인 후 사용할 수 있습니다");
@@ -139,8 +138,7 @@ export const ProductDetailDescription = () => {
       const productOptions = await response.json();
 
       const selectedProductOption = productOptions.find(
-        (option) =>
-          option.size === selectedSize && option.color === selectedColor
+        option => option.size === selectedSize && option.color === selectedColor
       );
 
       const updatedFormData = {
@@ -166,16 +164,16 @@ export const ProductDetailDescription = () => {
   useEffect(() => {
     // productOption 데이터 가져오기
     fetch("http://localhost:5000/productOption")
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
         const productDetail = data.filter(
-          (product) => product.product_id == productId
+          product => product.product_id == productId
         );
         setOption(productDetail);
-        const newSize = productDetail.map((product) => product.size);
+        const newSize = productDetail.map(product => product.size);
         const sizeList = [...new Set(newSize)];
         setSize(sizeList.sort((a, b) => a - b));
-        const newColor = productDetail.map((product) => product.color);
+        const newColor = productDetail.map(product => product.color);
         const colorList = [...new Set(newColor)];
         setColor(colorList);
       });
@@ -185,7 +183,7 @@ export const ProductDetailDescription = () => {
     let newStock = [{ productStock: 0 }];
     if (selectedSize && selectedColor) {
       newStock = option.filter(
-        (product) =>
+        product =>
           product.size == selectedSize && product.color == selectedColor
       );
     }
@@ -205,14 +203,14 @@ export const ProductDetailDescription = () => {
   const loadProduct = async () => {
     const getProduct = await fetch(
       `http://localhost:5000/product/${productId}`
-    ).then((res) => res.json());
+    ).then(res => res.json());
     setProduct(getProduct);
   };
 
   // 받아온패치 실행해서 getUser에 담기
   const getUserTry = async () => {
     const getUser = await fetch(`http://localhost:5000/userEdit/${id}`).then(
-      (response) => {
+      response => {
         response.json();
       }
     );
@@ -245,7 +243,7 @@ export const ProductDetailDescription = () => {
     }
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const number = Number(e.target.value);
     if (!number) {
       setStock(0);
@@ -287,10 +285,10 @@ export const ProductDetailDescription = () => {
       await fetch(`http://localhost:5000/productDelete/${productId}`, {
         method: "DELETE",
       })
-        .then((res) => {
+        .then(res => {
           return res.json();
         })
-        .then((res) => {
+        .then(res => {
           if (res) {
             Myalter("warning", "제품수정 가이드", "제품을 삭제했습니다");
             navigate("/productList");

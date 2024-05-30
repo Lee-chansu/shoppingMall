@@ -198,7 +198,7 @@ module.exports = {
           stock: 99,
         },
       ],
-      {}
+      {order : 2}
     );
   },
 

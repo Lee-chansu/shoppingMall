@@ -85,6 +85,7 @@
 .productInfo .productReview {
   height: 156px;
   width: 664px;
+  cursor: pointer;
 }
 
 .productInfo .textWrapper3 {
@@ -109,6 +110,7 @@
   border-radius: 5px;
   height: 156px;
   width: 664px;
+  cursor: pointer;
 }
 
 .productInfo .textWrapper4 {

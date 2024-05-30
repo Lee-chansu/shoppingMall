@@ -86,7 +86,7 @@ module.exports = {
           product_id: 110,
         },
       ],
-      {}
+      {order : 2}
     );
   },
 

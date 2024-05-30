@@ -64,7 +64,7 @@ module.exports = {
         progress: "progress9",
         order_id: 109,
       },
-    ], {});
+    ], {order : 2});
   },
 
   async down (queryInterface, Sequelize) {

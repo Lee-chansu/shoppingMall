@@ -150,7 +150,7 @@ module.exports = {
           createdAt: Sequelize.literal("CURRENT_TIMESTAMP"),
         },
       ],
-      {}
+      {order : 3}
     );
   },
 
