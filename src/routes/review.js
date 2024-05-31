@@ -244,12 +244,12 @@ export const Review = () => {
 
         <ButtonBox>
           <CustomButton
-            className="btn1"
+            className="button1"
             buttonTitle="취소"
             handleLinkMove={handleLinkBackMove}
           />
           <CustomButton
-            className="btn1"
+            className="button1"
             buttonTitle="리뷰 등록하기"
             handleLinkMove={handleLinkReviewMove}
           />

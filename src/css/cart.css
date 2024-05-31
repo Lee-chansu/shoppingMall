@@ -13,121 +13,6 @@
   width: 1440px;
 }
 
-.cart .overlapGroup {
-  height: 90px;
-  width: 1004px;
-  border: none;
-  margin: 40px auto 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.cart .buttonGroup {
-  width: 600px;
-  border: none;
-  margin: 100px auto 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.cart .button {
-  background-color: #eeeeeeee;
-  height: 70px;
-  width: 250px;
-  border: none;
-  position: relative;
-}
-
-.cart .buttonText {
-  color: #000000;
-  font-size: 20px;
-  font-weight: 600;
-  left: 50px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 20px;
-  white-space: nowrap;
-  width: 150px;
-  border: none;
-}
-
-.cart .textWrapper {
-  color: #000000;
-  font-size: 44.2px;
-  font-weight: 400;
-  left: 48px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 15px;
-  white-space: nowrap;
-  width: 185px;
-  border: none;
-}
-
-.cart .cartItem {
-  background-color: #eeeeeeee;
-  height: 241px;
-  overflow: hidden;
-  width: 1377px;
-  margin: 40px auto 0;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.cart .productImgBox {
-  background-color: #ffffff;
-  height: 191px;
-  left: 121px;
-  position: absolute;
-  top: 25px;
-  width: 191px;
-}
-
-.cart .inner {
-  height: 56px;
-  left: 549px;
-  position: absolute;
-  top: 101px;
-  width: 352px;
-}
-
-.cart .group1 {
-  background-color: #ffffff;
-  border: 1px solid;
-  border-color: #000000;
-  height: 48px;
-  left: 215px;
-  position: absolute;
-  top: -5px;
-  width: 120px;
-}
-
-.cart .cartProductStock {
-  color: #000000;
-  font-size: 30px;
-  font-weight: 400;
-  right: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 7px;
-  width: 42px;
-  text-align: right;
-}
-
-.cart .image-box-3 {
-  height: 28px;
-  left: 0;
-  position: absolute;
-  top: 28px;
-  width: 45px;
-}
-
 .cart .cartProductPrice {
   color: #000000;
   font-size: 22px;
@@ -138,15 +23,6 @@
   position: absolute;
   width: auto;
   top: 5px;
-}
-
-.cart .isBuyCheckBox {
-  background-color: #ffffff;
-  height: 30px;
-  left: 41px;
-  position: absolute;
-  top: 95px;
-  width: 30px;
 }
 
 .cart .cartProductName {
@@ -165,43 +41,8 @@
   word-break: keep-all;
 }
 
-.cart .group2 {
-  height: 56px;
-  left: 959px;
-  position: absolute;
-  top: 102px;
-  width: 428px;
-}
-
-.cart .cartCarryPrice {
-  color: #000000;
-  
-  font-size: 22px;
-  font-weight: 600;
-  left: 18px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 5px;
-  width: 200px;
-}
-
-.cart .cartSumPrice {
-  color: #000000;
-  
-  font-size: 22px;
-  font-weight: 600;
-  left: 150px;
-  text-align: center;
-  line-height: normal;
-  position: absolute;
-  top: 5px;
-  width: 225px;
-}
-
 .cart .title {
   color: #ff7d9e;
-  
   font-size: 40px;
   font-weight: 600;
   padding-top: 80px;
@@ -217,68 +58,74 @@
   align-items: center;
   box-sizing: border-box;
   position: relative;
-  border-top: 3px solid #ddd;
-  border-bottom: 3px solid #ddd;
+  border-top: 2px solid #999;
+  border-bottom: 2px solid #999;
 }
 
 .cart .cartBar .productImage {
   font-family: "Inter-Light", Helvetica;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 400;
   position: absolute;
   top: 17px;
   left: 170px;
+  color: #999;
 }
 
 .cart .productName {
   font-family: "Inter-Light", Helvetica;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 400;
   position: absolute;
   top: 17px;
   left: 395px;
+  color: #999;
 }
 
 .cart .productPrice {
   font-family: "Inter-Light", Helvetica;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 400;
   position: absolute;
   top: 17px;
   left: 600px;
+  color: #999;
 }
 
 .cart .productStock {
   font-family: "Inter-Light", Helvetica;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 400;
   position: absolute;
   top: 17px;
   left: 800px;
+  color: #999;
 }
 
 .cart .productSizeColor {
   font-family: "Inter-Light", Helvetica;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 400;
   position: absolute;
   top: 17px;
   left: 980px;
+  color: #999;
 }
 
 .cart .sumPay {
   font-family: "Inter-Light", Helvetica;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 400;
   position: absolute;
   top: 17px;
   left: 1230px;
+  color: #999;
 }
 
 .cart .buyCheckBox {
   background-color: #ffffff;
-  height: 30px;
+  height: 25px;
   left: 42px;
   position: absolute;
-  width: 30px;
+  width: 25px;
 }

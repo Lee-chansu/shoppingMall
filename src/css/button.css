@@ -54,3 +54,85 @@
 .btn3:hover {
   color: #fff;
 }
+
+
+/* button style 2*/
+.button1 {
+  margin-right: 30px;
+  width: 180px;
+  font-size: 18px;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 5px;
+}
+
+.button1 {
+  border: 1px solid #ff6600;
+  color: #ff6600;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.button1:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -20%;
+  width: 0;
+  height: 100%;
+  background-color: #ff6600;
+  transform: skew(50deg);
+  z-index: -1;
+  transition: .4s ease-in;
+}
+
+.button1:hover:after {
+  width: 140%;
+}
+
+.button1:hover {
+  color: #fff;
+}
+
+
+/* button style 2*/
+.button2 {
+  margin-right: 30px;
+  width: 180px;
+  font-size: 18px;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 5px;
+}
+
+.button2 {
+  border: 1px solid #ff7d9e;
+  color: #ff7d9e;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.button2:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -20%;
+  width: 0;
+  height: 100%;
+  background-color: #ff7d9e;
+  transform: skew(50deg);
+  z-index: -1;
+  transition: .4s ease-in;
+}
+
+.button2:hover:after {
+  width: 140%;
+}
+
+.button2:hover {
+  color: #fff;
+}
