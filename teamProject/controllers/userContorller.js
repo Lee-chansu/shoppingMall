@@ -24,6 +24,7 @@ const { email_service, email_admin, email_password } = process.env; // env íŒŒì
 exports.loadUser = async (req, res) => {
   const result = await User.findAll();
   res.json(result);
+  console.log(result[0].isMaster);
 };
 
 exports.loadDeleteUser = async (req, res) => {
@@ -248,7 +249,8 @@ exports.deletedUser = async (req, res) => {
       userName: result.userName,
       email: result.email,
       phoneNumber: result.phoneNumber,
-      address: result.address,
+      mainAddress: result.mainAddress,
+      detailAddress: result.detailAddress,
       isMaster: result.isMaster,
       deleteDate: deleteDate,
     });

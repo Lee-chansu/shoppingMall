@@ -38,7 +38,10 @@ module.exports = {
       phoneNumber: {
         type: Sequelize.STRING(255),
       },
-      address: {
+      mainAddress: {
+        type: Sequelize.STRING(255),
+      },
+      detailAddress: {
         type: Sequelize.STRING(255),
       },
       isMaster: {

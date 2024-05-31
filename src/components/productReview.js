@@ -22,7 +22,7 @@ export const ProductReview = (props) => {
   };
 
   const handleNavigate = () => {
-    navigate(`/payBuyList`);
+    navigate("/payBuyList");
   };
 
   useEffect(() => {
@@ -91,7 +91,7 @@ export const ProductReview = (props) => {
                             key={i}
                             src={process.env.PUBLIC_URL + "/img/fullStar.svg"}
                             alt="켜진별"
-                            width={"100px"}
+                            width={"50px"}
                             style={{ display: "inline" }}
                           />
                         ) : (
@@ -100,32 +100,48 @@ export const ProductReview = (props) => {
                             key={i}
                             src={process.env.PUBLIC_URL + "/img/emptyStar.svg"}
                             alt="꺼진별"
-                            width={"100px"}
+                            width={"50px"}
                             style={{ display: "inline" }}
                           />
                         );
                       })}
                     </div>
-                    <span className="evaluation">별점 : {el.starPoint} / 
-                    {el.starPoint === 1 ? "매우 별로에요":
-                      el.starPoint === 2 ? "별로에요" :
-                        el.starPoint === 3 ? "보통이에요" :
-                          el.starPoint === 4 ? "만족해요" :
-                            el.starPoint === 5 ? "매우 만족해요" : ""
-                    }</span>
+                    <span className="evaluation">
+                      별점 : {el.starPoint} /
+                      {el.starPoint === 1
+                        ? "매우 별로에요"
+                        : el.starPoint === 2
+                        ? "별로에요"
+                        : el.starPoint === 3
+                        ? "보통이에요"
+                        : el.starPoint === 4
+                        ? "만족해요"
+                        : el.starPoint === 5
+                        ? "매우 만족해요"
+                        : ""}
+                    </span>
                     <div className="reviewCreatedAt">
                       {el.reviewDate.substring(0, 10)}
                     </div>
-                    <div className="productColor">{
-                      el.reviewColor===0?"밝아요":
-                        el.reviewColor===1?"화면과 같아요":
-                          el.reviewColor===2?"어두워요" : ""
-                    } / {console.log(el.reviewColor)}</div>
-                    <div className="productSize">{
-                      el.reviewSize===0?"작아요":
-                        el.reviewSize===1?"정사이즈에요":
-                          el.reviewSize===2?"커요":""
-                    }</div>
+                    <div className="productColor">
+                      {el.reviewColor === 0
+                        ? "밝아요"
+                        : el.reviewColor === 1
+                        ? "화면과 같아요"
+                        : el.reviewColor === 2
+                        ? "어두워요"
+                        : ""}{" "}
+                      / {console.log(el.reviewColor)}
+                    </div>
+                    <div className="productSize">
+                      {el.reviewSize === 0
+                        ? "작아요"
+                        : el.reviewSize === 1
+                        ? "정사이즈에요"
+                        : el.reviewSize === 2
+                        ? "커요"
+                        : ""}
+                    </div>
                     <div className="productDetail">{el.content}</div>
                   </div>
                   <div className="reviewImageBox">

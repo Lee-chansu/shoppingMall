@@ -8,6 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import AddressModal from "../components/AddressModal";
 import CustomButton from "../components/CustomButton";
 import { Nav } from "../components/nav";
+import { Myalter } from "../components/Myalter";
 // import axios from "axios";
 
 export const Payment = () => {
@@ -31,8 +32,8 @@ export const Payment = () => {
   });
   const [carryMessage, setCarryMessage] = useState("carryMessage1");
 
-  console.log("newUser", newUser);
-  console.log("carryMessage", carryMessage);
+  // console.log("newUser", newUser);
+  // console.log("carryMessage", carryMessage);
 
   //결제방식 선택하기
   //총 주문 합계 보기 변수선언
@@ -57,7 +58,7 @@ export const Payment = () => {
     setSelectedOption(e.target.value);
     const newMessage = carryMessage
     setCarryMessage(e.target.value);
-    console.log("selectedOption", e.target.value);
+    // console.log("selectedOption", e.target.value);
   };
 
   const handleCarryMessage = (e) => {
@@ -89,6 +90,11 @@ export const Payment = () => {
   };
 
   const handleAllPayment = () => {
+    console.log(selectedOption);
+    if (selectedOption === "") {
+      Myalter("waning", "error", "배송요청 메세지를 선택해 주세요");
+      return;
+    }
     navigate("/toss", {
       state: {
         paymentList: location.state.list,
@@ -112,19 +118,9 @@ export const Payment = () => {
       data = location.state.paymentList;
     }
 
-    console.log("paymentList", data);
+    // console.log("paymentList", data);
     return data;
   };
-
-  // const getProducts = async (id) => {
-  //   const result = await userFetchProducts(id);
-  //   const newArr = result.map((val, idx) => {
-  //     return { ...val };
-  //   });
-  //   console.log(newArr);
-
-  //   setPaymentItemList(newArr);
-  // };
 
   //user id 가져오기위한 useEffect
   useEffect(() => {
@@ -149,21 +145,19 @@ export const Payment = () => {
       let temp = { ...orderSum };
       // console.log(paymentItemList.length);
       paymentItemList.forEach((val, idx) => {
-        console.log(val.price);
+        // console.log(val.price);
         temp.orderTotal += val.price * val.amount;
         temp.countTotal = temp.countTotal + val.amount;
       });
       temp.paySumTotal += temp.orderTotal + temp.carryTotal;
       setOrderSum(temp);
-    } else {
-      console.log(paymentItemList.length);
     }
   }, [paymentItemList]);
 
   //cart의 선택된 상품을 전달받아 list에 저장
   useEffect(() => {
     const { list } = location.state; //cart에서 navigate로 보낸 cartItemList를 location으로 list란 이름으로 받음
-    console.log("list", list);
+    // console.log("list", list);
     setPaymentItemList(list); //list가 없을때 예외처리 해야함
   }, []); //의존성 배열이 비어있기때문에 값이 바뀔수없으므로 한번만 실행
 
@@ -269,7 +263,7 @@ export const Payment = () => {
               <div className="saleBox">
                 <div className="coupon">쿠폰 사용하기</div>
                 <div className="coupon2">
-                  <label for="agree1" className="radio_box">
+                  <label htmlFor="agree1" className="radio_box">
                     <input
                       type="radio"
                       id="agree1"
@@ -279,17 +273,17 @@ export const Payment = () => {
                     <span className="on"></span>
                     신규고객 5,000원 할인쿠폰
                   </label>
-                  <label for="agree2" className="radio_box">
+                  <label htmlFor="agree2" className="radio_box">
                     <input
                       type="radio"
                       id="agree2"
                       name="agree"
                       value="카카오친구 1,000원 할인쿠폰"
                     />
-                    <span class="on"></span>
+                    <span className="on"></span>
                     카카오친구 1,000원 할인쿠폰
                   </label>
-                  <label for="agree3" class="radio_box">
+                  <label htmlFor="agree3" className="radio_box">
                     <input
                       type="radio"
                       id="agree3"
@@ -302,48 +296,6 @@ export const Payment = () => {
                   </label>
                 </div>
               </div>
-              {/* <div className="howPayBox">
-                <div className="title">
-                  <div className="textWrapper2">
-                    결제방식 선택
-                    <br />
-                    <div className="paySelect">
-                      {paySelect == "" ? "결제방법을 골라주세요" : paySelect}
-                    </div>
-                  </div>
-                </div>
-                <div className="paymentBox">
-                  <div className="item">
-                    <span className="center" onClick={handlePaySelect}>
-                      네이버페이
-                    </span>
-                  </div>
-                  <div className="item">
-                    <span className="center" onClick={handlePaySelect}>
-                      카카오페이
-                    </span>
-                  </div>
-                  <div className="item">
-                    <span className="center" onClick={handlePaySelect}>
-                      신용카드
-                    </span>
-                  </div>
-                  <div className="item">
-                    <span className="center" onClick={handlePaySelect}>
-                      휴대폰결제
-                    </span>
-                  </div>
-                </div>
-                <span className="underline">
-                  * 만 14세 이상 이용자, 개인정보 제공 동의
-                </span>
-                <br />
-                <span className="smaller">
-                  해당 상품의 거래 전반에 관한 의무와 책임은 각 입점 판매자에게
-                  있습니다
-                  <br />위 내용을 확인하였으며 결제에 동의합니다
-                </span>
-              </div> */}
             </div>
 
             <div className="payList">

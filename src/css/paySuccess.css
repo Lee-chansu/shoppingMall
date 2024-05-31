@@ -27,7 +27,7 @@
 }
 
 .paySuccess .overlapGroup {
-  height: 97px;
+  height: 70px;
   left: 36px;
   position: absolute;
   top: 58px;
@@ -35,33 +35,29 @@
 }
 
 .paySuccess .price {
-  background-color: #ff7d9e;
   border-radius: 10px;
-  height: 97px;
-  left: 20px;
+  height: 70px;
+  left: 265px;
   position: absolute;
   top: 0;
-  width: 950px;
+  width: 50%;
 }
 
 .paySuccess .successMessage {
-  color: #fff;
+  color: tomato;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 400;
   left: 30px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 28px;
+  top: 20px;
   width: 945px;
 }
 
 .paySuccess .orderInfo {
-  background-color: #ffffff;
-  border: 5px dashed #ff7d9e;
-  border-radius: 10px;
   height: 918px;
   left: 56px;
   position: absolute;
@@ -71,11 +67,12 @@
 
 .paySuccess .payInfo {
   font-family: "Inter-Regular", Helvetica;
-  font-size: 30px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 400;
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: -20px;
+  margin-bottom: 10px;
 }
 
 .paySuccess .productName {
@@ -92,54 +89,53 @@
 
 .paySuccess .howToPay {
   font-family: "Inter-Regular", Helvetica;
-  font-size: 24px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 600;
   left: 55px;
   position: absolute;
   text-align: center;
-  top: 560px;
+  top: 525px;
 }
 
 .paySuccess .howToPayPrint {
   font-family: "Inter-Regular", Helvetica;
-  font-size: 24px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 600;
   left: 256px;
-
   position: absolute;
   text-align: center;
-  top: 560px;
+  top: 525px;
+  color: tomato;
 }
 
 .paySuccess .paySum {
-  color: #ff7d9e;
+  color: tomato;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 600;
   left: 256px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 640px;
+  top: 600px;
 }
 
 .paySuccess .paySumText {
   color: #000000;
   font-family: "Inter-Regular", Helvetica;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   left: 55px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 640px;
+  top: 600px;
 }
 
 .paySuccess .orderProduct1 {
   color: #000000;
-  
   font-size: 28px;
   font-weight: 400;
   left: 256px;
@@ -152,7 +148,6 @@
 
 .paySuccess .orderProduct2 {
   color: #000000;
-  
   font-size: 28px;
   font-weight: 400;
   left: 256px;
@@ -165,7 +160,6 @@
 
 .paySuccess .orderProduct3 {
   color: #000000;
-  
   font-size: 28px;
   font-weight: 400;
   left: 256px;
@@ -178,7 +172,6 @@
 
 .paySuccess .optionInfo1 {
   color: #00000070;
-  
   font-size: 25px;
   font-weight: 400;
   left: 268px;
@@ -191,7 +184,6 @@
 
 .paySuccess .optionInfo2 {
   color: #00000070;
-  
   font-size: 25px;
   font-weight: 400;
   left: 268px;
@@ -204,7 +196,6 @@
 
 .paySuccess .optionInfo3 {
   color: #00000070;
-  
   font-size: 25px;
   font-weight: 400;
   left: 268px;
@@ -215,23 +206,19 @@
   top: 480px;
 }
 
-.paySuccess .readMe {
-  color: #00000070;
-}
-
 .paySuccess .row {
   padding: 50px 0;
   margin: 0px 0;
-  /* overflow: hidden; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
   white-space: normal;
   text-overflow: ellipsis;
   display: flex;
   flex-wrap: wrap;
   overflow-y: scroll;
   width: 100%;
-  height: 300px;
+  height: 400px;
   gap: 20px;
-  /* display: -webkit-box; */
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   word-break: keep-all;
@@ -247,8 +234,6 @@
 
 .paidItem {
   flex: 0 0 calc(33.33% - 20px); /* 한 줄에 세 개의 요소가 들어가도록 설정. 여백 포함하여 총 너비의 33.33%로 설정. */
-  /* margin-right: 10px;
-  margin-bottom: 80px; */
   box-sizing: border-box;
 }
 
@@ -274,11 +259,11 @@
 
 .paySuccess .readMe {
   font-family: "Inter-Regular", Helvetica;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
-  position: absolute;
-  top: 720px;
-  left: 200px;
+  text-align: center;
+  margin-top: 10px;
+  color: #ccc;
 }
 
 /* button */
@@ -300,7 +285,6 @@
 
 .paySuccess .buttonText {
   color: #000000;
-  
   font-size: 22px;
   font-weight: 600;
   left: 50px;
@@ -315,6 +299,32 @@
 
 .paySuccess .buttonBox {
   position: absolute;
-  top: 750px;
-  left: -40px;
+  top: 700px;
+}
+
+.paySuccess .text {
+  width: 100%;
+  height: 80px;
+  border-bottom: 3px solid #ccc;
+}
+
+.paySuccess .text2 {
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid #ccc;
+}
+
+.paySuccess .text3 {
+  width: 100%;
+  height: 70px;
+  border-bottom: 3px solid #ccc;
+}
+
+.paySuccess .okImg{
+  position: absolute;
+  left: 490px;
+  top: -30px;
+  background-color: tomato;
+  border-radius: 50%;
+  padding: 8px;
 }

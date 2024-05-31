@@ -128,33 +128,41 @@
 .productInfoReview .reviewerInfoWrapper .reviewerInfo2 .overlap .editBtnForm {
   margin: 0 40px;
 }
-.productInfoReview
-  .reviewerInfoWrapper
-  .reviewerInfo2
-  .overlap
-  .editBtnForm
-  .reviewEditBtn {
-  padding: 20px;
-  border: 1px solid #eee;
-  border-radius: 10px;
+.productInfoReview .reviewerInfoWrapper .reviewerInfo2 .overlap .editBtnForm .reviewEditBtn {
+  padding: 8px 15px;
+  border: 1px solid #000;
+  border-radius: 5px;
 }
 
-.productInfoReview .starRating,
-.productInfoReview .evaluation,
+.productInfoReview .evaluation {
+  margin-top: 50px;
+  font-size: 22px;
+}
+
+.productInfoReview .reviewCreatedAt {
+  margin-top: 20px;
+}
+
+.productInfoReview .star {
+  margin-left: -5px;
+}
+
 .productInfoReview .reviewCreatedAt,
 .productInfoReview .productOption,
 .productInfoReview .productDetail {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   color: #000;
 }
+
 .productInfoReview .reviewImageBox {
-  display: block;
-  width: 400px;
-  padding: 20px;
+  
+  width: 20%;
+  height: 20%;
 }
 
 .productInfoReview .reviewImage {
+  margin-top: 20px;
   width: 100%;
 }
 .productInfoReview .paging {

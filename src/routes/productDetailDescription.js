@@ -155,7 +155,6 @@ export const ProductDetailDescription = () => {
       if (updatedFormData) {
         navigate("/payment", { state: { list: [updatedFormData] } });
       } else {
-        console.log(updatedFormData);
         Myalter("warning", "구매 가이드", "상품을 선택하세요");
       }
     }
@@ -352,7 +351,7 @@ export const ProductDetailDescription = () => {
                       </button>
                     </>
                   ) : (
-                    <span className="administrator"> ProductInfo </span>
+                    <span className="administrator"> PRODUCT INFO </span>
                   )}
                   <div className="productName">
                     <div className="textWrapper2">제품명</div>

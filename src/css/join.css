@@ -49,6 +49,24 @@
   color: red;
 }
 
+.join .inner .checkPw {
+  margin: 0 20px;
+  color: blue;
+}
+.join .inner .checkPw.not {
+  margin: 0 20px;
+  color: red;
+}
+
+.join .inner .checkEmail {
+  margin: 0 20px;
+  color: blue;
+}
+.join .inner .checkEmail.not {
+  margin: 0 20px;
+  color: red;
+}
+
 /* .join .textWrapper::after {
   content: "";
   display: block;
