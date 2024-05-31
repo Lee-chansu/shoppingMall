@@ -51,16 +51,19 @@ app.use("/", require("./router"));
 app.get("/", async (req, res) => {
   const { order, sort } = req.query;
   let limit = parseInt(req.query.limit);
-  console.log(sort);
   let result;
-  if (sort) {
+  if (order && sort === "asc") {
     result = await Product.findAll({
       order: [[order, "asc"]],
       limit,
     });
-  } else {
+  } else if (order) {
     result = await Product.findAll({
       order: [[order, "desc"]],
+      limit,
+    });
+  } else {
+    result = await Product.findAll({
       limit,
     });
   }

@@ -7,52 +7,40 @@ import { Nav } from "./components/nav";
 import { Product } from "./components/product";
 import { Visual } from "./components/visual";
 import { Footer } from "./components/footer";
-import { Display } from "react-bootstrap-icons";
 
 export const Main = () => {
   const [order, setOrder] = useState("createdAt");
   const [sort, setSort] = useState("asc");
   const [productList, setProductList] = useState([]);
-  const limit = 10;
-  const [productByCreatedAt, setProductByCreatedAt] = useState([]);
-  const [productByPrice, setProductByPrice] = useState([]);
+  const limit = 15;
 
   const loadProduct = async () => {
+    console.log(sort);
     const getProducts = await fetch(
-      `http://localhost:5000/?order=${order}&limit=${limit}&sort${sort}`
+      `http://localhost:5000/?order=${order}&limit=${limit}&sort=${sort}`
     ).then((res) => res.json());
     setProductList(getProducts);
   };
 
-  // const loadProductByCreatedAt = async () => {
-  //   const getProducts = await fetch(
-  //     `http://localhost:5000/?order=createdAt&limit=${limit}`
-  //   ).then((res) => res.json());
-  //   setProductByCreatedAt(getProducts);
-  // };
-
   const changeCondition = (e) => {
     const { innerText } = e.target;
 
-    console.log(innerText);
-    if (innerText !== "정렬순" || innerText !== "역정렬순") {
-      setOrder(innerText);
+    if (innerText === "정렬순" || innerText === "역정렬순") {
+      if (innerText === "정렬순") {
+        setSort("asc");
+      } else {
+        setSort("desc");
+      }
     } else {
-      innerText === "정렬순" ? setSort("asc") : setSort("desc");
+      if (innerText === "날짜순") setOrder("createdAt");
+      else if (innerText === "가격순") setOrder("price");
+      else if (innerText === "이름순") setOrder("name");
     }
   };
 
-  // const loadProductByPrice = async () => {
-  //   const getProducts = await fetch(
-  //     `http://localhost:5000/?order=price&limit=${limit}&sort=${sort}`
-  //   ).then((res) => res.json());
-  //   setProductByPrice(getProducts);
-  // };
-
   useEffect(() => {
     loadProduct();
-    // loadProductByCreatedAt();
-  }, []);
+  }, [order, sort]);
 
   return (
     <>
@@ -61,7 +49,7 @@ export const Main = () => {
         <Visual />
         <div className="inner">
           <Link className="link" to="/productList">
-            <h1>toProduct!</h1>
+            <h1>상품 조회</h1>
           </Link>
           <div className="div" style={{ display: "flex" }}>
             <div className="order">
@@ -73,8 +61,8 @@ export const Main = () => {
             </div>
             <div className="sort">
               <p>
-                <span onClick={changeCondition}>정렬</span>
-                <span onClick={changeCondition}>역정렬</span>
+                <span onClick={changeCondition}>정렬순</span>
+                <span onClick={changeCondition}>역정렬순</span>
               </p>
             </div>
           </div>
@@ -91,39 +79,6 @@ export const Main = () => {
               );
             })}
           </div>
-          {/* <Link className="link" to="/productList">
-            <h1>New!</h1>
-          </Link> */}
-          {/* <div className="wrap">
-            {productByCreatedAt.map((product) => {
-              return (
-                <Link
-                  className="link"
-                  to={`/productList/detail/description/${product.id}`}
-                  key={product.id}
-                >
-                  <Product product={product} />
-                </Link>
-              );
-            })}
-          </div> */}
-          {/* <Link className="link" to="/productList">
-            <h1>Price</h1>
-          </Link>
-          <p onClick={changeSort}>낮은 / 높은</p>
-          <div className="wrap">
-            {productByPrice.map((product) => {
-              return (
-                <Link
-                  className="link"
-                  to={`/productList/detail/description/${product.id}`}
-                  key={product.id}
-                >
-                  <Product product={product} />
-                </Link>
-              );
-            })}
-          </div> */}
         </div>
       </div>
       <Footer></Footer>
