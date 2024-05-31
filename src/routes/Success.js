@@ -167,6 +167,7 @@ export function SuccessPage() {
         order_id: searchParams.get("orderId"),
         mainAddress: arrayList[0].mainAddress,
         detailAddress: arrayList[0].detailAddress,
+        carryMessage: arrayList[0].carryMessage,
       };
 
       const carryRes = await axios.post("http://localhost:5000/carry", carry);
