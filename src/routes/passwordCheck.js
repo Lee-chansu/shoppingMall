@@ -98,11 +98,11 @@ export const PasswordCheck = () => {
         <form className="loginBox">
           <div className="inputBox">
             <div className="inputUserpassword">
-              <label for='password' className="place1" ref={placeRef}>비밀번호</label>
+              <label htmlFor='password' className="place1" ref={placeRef}>비밀번호</label>
               <input id='password' type="password" className="textWrapper4" name="password" onChange={valueChange} onFocus={inputFocus} onBlur={inputBlur}></input>
             </div>
             <div className="divWrapper">
-              <label for='passwordCheck' className="place2" ref={placeRef2}>비밀번호 확인</label>
+              <label htmlFor='passwordCheck' className="place2" ref={placeRef2}>비밀번호 확인</label>
               <input id='passwordCheck' type="password" className="textWrapper4" name="passwordCheck" onChange={valueChange} onFocus={inputFocus} onBlur={inputBlur}></input>
             </div>
           </div>

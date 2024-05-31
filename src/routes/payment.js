@@ -160,8 +160,10 @@ export const Payment = () => {
 
   //cart의 선택된 상품을 전달받아 list에 저장
   useEffect(() => {
-    const { list } = location.state; //cart에서 navigate로 보낸 cartItemList를 location으로 list란 이름으로 받음
-    // console.log("list", list);
+    const list = location.state?.list; //cart에서 navigate로 보낸 cartItemList를 location으로 list란 이름으로 받음
+    if (!list) {
+    navigate('/')
+    }
     setPaymentItemList(list); //list가 없을때 예외처리 해야함
   }, []); //의존성 배열이 비어있기때문에 값이 바뀔수없으므로 한번만 실행
 

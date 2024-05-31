@@ -99,7 +99,7 @@ export const Join = () => {
     const isMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
       value
     );
-    console.log("isEmail", isEmail);
+    // console.log("isEmail", isEmail);
     if (!isMail) {
       setIsEmail(false);
       setEmailMessage("이메일의 형식이 맞지 않습니다.");

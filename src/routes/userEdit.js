@@ -10,9 +10,9 @@ export const UserEdit = () => {
   const goback = () => {
     navigate(-1);
   };
-  const [getUser, setGetUser] = useState({});
+  const [getUser, setGetUser] = useState({ email: "", phoneNumber: "", mainAddress: "", detailAddress: "" });
   const [id, setId] = useState();
-  const [editUser, setEditUser] = useState({});
+  const [editUser, setEditUser] = useState({ password: "", passwordCheck: "", email: "", phoneNumber: "", mainAddress: "", detailAddress: "" });
   const [checkToggle, setCheckToggle] = useState("false");
   const mainAddressRef = useRef(null)
 
@@ -73,7 +73,7 @@ export const UserEdit = () => {
       }));
     }
   };
-  console.log(editUser.profileImg);
+  // console.log('editUser', editUser);
 
   const valueChange = (e) => {
     const { name, value } = e.target;
@@ -164,12 +164,12 @@ export const UserEdit = () => {
             </div>
             <div className="boxPassword">
               <div className="checkBox">
-                <label htmlFor="passwordCheck" className="txt">
+                <label htmlFor="passwordCheckbox" className="txt">
                   비밀번호 변경하지않음
                 </label>
                 <input
                   type="checkbox"
-                  id="passwordCheck"
+                  id="passwordCheckbox"
                   className="checkPass"
                   onClick={checkClick}
                   value={checkToggle}
@@ -246,10 +246,10 @@ export const UserEdit = () => {
               />
             </div>
             <div className="boxAddress">
-              <label for="address" className="addressLabel">주소를 입력해주세요</label>
+              <label htmlFor="address" className="addressLabel">주소를 입력해주세요</label>
               <input
                 className="mainAddress"
-                id="address"
+                id="mainAddress"
                 name="mainAddress"
                 ref={mainAddressRef}
                 onChange={valueChange}
@@ -265,23 +265,12 @@ export const UserEdit = () => {
               <div className="boxWrapper">
                 <input
                   className="detailAddress"
-                  id="address"
+                  id="detailAddress"
                   name="detailAddress"
                   onChange={valueChange}
                   value={editUser.detailAddress}
                 />
               </div>
-
-              {/* <label htmlFor="address" className="txt">
-                주소를 입력해주세요
-              </label>
-              <input
-                id="address"
-                className="input"
-                name="address"
-                onChange={valueChange}
-                value={editUser.address}
-              /> */}
             </div>
             <div className="selectGender">
               <div className="txt">성별을 선택해주세요</div>

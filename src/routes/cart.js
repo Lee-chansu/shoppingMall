@@ -126,7 +126,7 @@ export const Cart = () => {
       (val) => val.isChecked === true
     );
     if (selectedCartItemList.length === 0) {
-      Myalter("waring","체크된 상품 없음","삭제하실 상품을 골라주세요");
+      Myalter("warning","체크된 상품 없음","삭제하실 상품을 골라주세요");
       return;
     }
 
@@ -180,7 +180,7 @@ export const Cart = () => {
                   idx={idx}
                   cartItemList={cartItemList}
                   setCartItemList={setCartItemList}
-                  key={val.id}
+                  key={idx}
                 />
               );
             })}

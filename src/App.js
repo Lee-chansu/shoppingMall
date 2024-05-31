@@ -65,7 +65,6 @@ function App() {
       <Route path="cart" element={<Cart />}></Route>
       <Route path="payment" element={<Payment />}></Route>
       <Route path="paySuccess" element={<PaySuccess />}></Route>
-      <Route path="payFail" element={<PayFail />}></Route>
       <Route path="payBuyList" element={<PayBuyList />}></Route>
       <Route path="toss">
         <Route index element={<CheckoutPage />}></Route>
