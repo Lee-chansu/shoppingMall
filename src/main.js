@@ -15,7 +15,6 @@ export const Main = () => {
   const limit = 15;
 
   const loadProduct = async (order, sort) => {
-    console.log(sort);
     const getProducts = await fetch(
       `http://localhost:5000/?order=${order}&limit=${limit}&sort=${sort}`
     ).then((res) => res.json());
@@ -25,16 +24,16 @@ export const Main = () => {
   const changeCondition = (e) => {
     const { innerText } = e.target;
 
-    if (innerText === "정렬순" || innerText === "역정렬순") {
-      if (innerText === "정렬순") {
+    if (innerText === "최신순" || innerText === "오래된 순") {
+      if (innerText === "최신순") {
         setSort("asc");
       } else {
         setSort("desc");
       }
     } else {
-      if (innerText === "날짜순") setOrder("createdAt");
-      else if (innerText === "가격순") setOrder("price");
-      else if (innerText === "이름순") setOrder("name");
+      if (innerText === "날짜") setOrder("createdAt");
+      else if (innerText === "가격") setOrder("price");
+      else if (innerText === "이름") setOrder("name");
     }
   };
 
@@ -54,15 +53,15 @@ export const Main = () => {
           <div className="div" style={{ display: "flex" }}>
             <div className="order">
               <p>
-                <span onClick={changeCondition}>날짜순</span>
-                <span onClick={changeCondition}>가격순</span>
-                <span onClick={changeCondition}>이름순</span>
+                <span onClick={changeCondition}>날짜</span>
+                <span onClick={changeCondition}>가격</span>
+                <span onClick={changeCondition}>이름</span>
               </p>
             </div>
             <div className="sort">
               <p>
-                <span onClick={changeCondition}>정렬순</span>
-                <span onClick={changeCondition}>역정렬순</span>
+                <span onClick={changeCondition}>최신순</span>
+                <span onClick={changeCondition}>오래된 순</span>
               </p>
             </div>
           </div>
