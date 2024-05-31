@@ -187,20 +187,20 @@ export const Cart = () => {
 
           <ButtonBox>
             <CustomButton
-              className="btn1"
+              className="button2"
               buttonTitle="뒤로가기"
               handleLinkMove={handleLinkBackMove}
             />
 
             <CustomButton
-              className="btn2"
-              buttonTitle="선택상품 삭제하기"
+              className="button2"
+              buttonTitle="선택상품 삭제"
               handleLinkMove={handlePaymentRemove}
             />
 
             <CustomButton
-              className="btn3"
-              buttonTitle="선택상품 결제하기"
+              className="button2"
+              buttonTitle="선택상품 결제"
               handleLinkMove={handlePaymentMove}
             />
           </ButtonBox>

@@ -141,11 +141,6 @@ big {
   margin-top: -4px;
 }
 
-.review .btn1:hover {
-  background-color: #ff6600;
-  color: #fff;
-}
-
 .review .reviewTitle {
   color: #ff6600;
   font-family: "Inter-Regular", Helvetica;
