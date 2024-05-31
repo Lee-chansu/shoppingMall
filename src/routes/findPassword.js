@@ -145,7 +145,7 @@ export const FindPassword = () => {
         <form className="findPasswordBox">
           <div className="inputBox">
             <div className="inputUserid">
-              <label for='userId' className="place1" ref={placeRef}>아이디</label>
+              <label htmlFor='userId' className="place1" ref={placeRef}>아이디</label>
               <input
                 id="userId"
                 className="textWrapper2"
@@ -156,7 +156,7 @@ export const FindPassword = () => {
               ></input>
             </div>
             <div className="inputUserEmail">
-              <label for='email' className="place2" ref={placeRef2}>이메일</label>
+              <label htmlFor='email' className="place2" ref={placeRef2}>이메일</label>
               <input
                 id="email"
                 className="textWrapper3"
@@ -171,7 +171,7 @@ export const FindPassword = () => {
             </div>
             {isSend ? (
               <div className="inputNum">
-                <label for='number' className="place3" ref={placeRef3}>인증번호</label>
+                <label htmlFor='number' className="place3" ref={placeRef3}>인증번호</label>
                 <input
                   id="number"
                   type="text"
@@ -203,7 +203,6 @@ export const FindPassword = () => {
           </div>
         </form>
       </div>
-      <Footer></Footer>
     </div>
   );
 };

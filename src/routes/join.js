@@ -12,6 +12,8 @@ export const Join = () => {
   };
 
   const mainAddressRef = useRef(null);
+  const mobileRef2 = useRef(null);
+  const mobileRef3 = useRef(null);
 
   const [newUser, setNewUser] = useState({
     userId: "",
@@ -28,7 +30,11 @@ export const Join = () => {
     phoneNumber: "",
   });
   const [message, setMessage] = useState();
-  const [isId, setIsId] = useState();
+  const [pwMessage, setPwMessage] = useState();
+  const [emailMessage, setEmailMessage] = useState();
+  const [isId, setIsId] = useState(false);
+  const [isPw, setIsPw] = useState(false);
+  const [isEmail, setIsEmail] = useState(false);
 
   const idCheck = async (e) => {
     const { value } = e.target;
@@ -39,18 +45,83 @@ export const Join = () => {
         setMessage("이미 사용중인 아이디입니다.");
         document.querySelector(".checkId").classList.add("not");
         return;
-      } else {
-        setIsId(true);
-        setMessage("사용 가능한 아이디입니다.");
-        document.querySelector(".checkId").classList.remove("not");
-        return;
       }
+    }
+    if (value.length < 4 || value.length > 16) {
+      setIsId(false);
+      setMessage("아이디는 4~16자입니다.");
+      document.querySelector(".checkId").classList.add("not");
+      return;
+    } else if (/[^a-zA-Z0-9]/.test(value)) {
+      setIsId(false);
+      setMessage("아이디는 영문 대소문자와 숫자만 사용할 수 있습니다.");
+      document.querySelector(".checkId").classList.add("not");
+      return;
+    } else {
+      setIsId(true);
+      setMessage("사용 가능한 아이디입니다.");
+      document.querySelector(".checkId").classList.remove("not");
+      return;
+    }
+  };
+
+  const pwCheck = async (e) => {
+    const { value } = e.target;
+    const isAlphabet = /[a-zA-Z]/.test(value);
+    const isNumber = /[0-9]/.test(value);
+    const isSymbol = /[!@#$%^&*()\-_=+{}\/:;"',.]/.test(value);
+    if (value.length < 8 || value.length > 16) {
+      setIsPw(false);
+      setPwMessage("비밀번호는 8~16자입니다.");
+      document.querySelector(".checkPw").classList.add("not");
+      return;
+    } else if (
+      !(
+        (isAlphabet && isNumber) ||
+        (isAlphabet && isSymbol) ||
+        (isNumber && isSymbol)
+      )
+    ) {
+      setIsPw(false);
+      setPwMessage("비밀번호의 형식이 맞지 않습니다.");
+      document.querySelector(".checkPw").classList.add("not");
+      return;
+    } else {
+      setIsPw(true);
+      setPwMessage("사용 가능한 비밀번호입니다.");
+      document.querySelector(".checkPw").classList.remove("not");
+      return;
+    }
+  };
+
+  const emailCheck = async (e) => {
+    const { value } = e.target;
+    const isMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
+      value
+    );
+    console.log("isEmail", isEmail);
+    if (!isMail) {
+      setIsEmail(false);
+      setEmailMessage("이메일의 형식이 맞지 않습니다.");
+      document.querySelector(".checkEmail").classList.add("not");
+      return;
+    } else {
+      setIsEmail(true);
+      setEmailMessage("");
+      document.querySelector(".checkEmail").classList.remove("not");
+      return;
     }
   };
 
   const valueChange = (e) => {
     const { name, value } = e.target;
-    setNewUser({ ...newUser, [name]: value });
+    if (name === "mobile2" || name === "mobile3") {
+      if (value === "" || (value.length <= 4 && /^[0-9]+$/.test(value))) {
+        setNewUser({ ...newUser, [name]: value });
+      }
+    } else {
+      setNewUser({ ...newUser, [name]: value });
+    }
     setNewUser((pre) => ({
       ...pre,
       phoneNumber: pre.mobile + "-" + pre.mobile2 + "-" + pre.mobile3,
@@ -60,15 +131,24 @@ export const Join = () => {
         ...pre,
         mainAddress: mainAddressRef.current.value,
       }));
+    if (name === "mobile") {
+      mobileRef2.current.focus();
+    } else if (name === "mobile2" && value.length > 3) {
+      mobileRef3.current.focus();
+    }
   };
 
   const buttonClick = async (e) => {
     e.preventDefault();
-    console.log(newUser);
+    // console.log(newUser);
     if (!newUser.userId) {
       Myalter("warning", "회원가입 가이드", "아이디를 입력하시오");
+    } else if (!isId) {
+      Myalter("warning", "회원가입 가이드", "아이디의 형식이 맞지 않습니다");
     } else if (!newUser.password) {
       Myalter("warning", "회원가입 가이드", "비밀번호를 입력하시오");
+    } else if (!isPw) {
+      Myalter("warning", "회원가입 가이드", "비밀번호의 형식이 맞지 않습니다");
     } else if (newUser.password !== newUser.passwordCheck) {
       Myalter(
         "warning",
@@ -134,7 +214,7 @@ export const Join = () => {
                   onBlur={idCheck}
                 />
                 <p className="inner">
-                  (영문소문자/숫자, 4~16자)
+                  (영문 대소문자/숫자, 4~16자)
                   <span className="checkId">{message}</span>
                 </p>
               </div>
@@ -145,10 +225,13 @@ export const Join = () => {
                   type="password"
                   name="password"
                   onChange={valueChange}
+                  onBlur={pwCheck}
                   placeholder="비밀번호*"
                 />
                 <p className="inner">
                   (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)
+                  <br />
+                  <span className="checkPw">{pwMessage}</span>
                 </p>
               </div>
               <div className="boxWrapper">
@@ -177,8 +260,12 @@ export const Join = () => {
                   type="email"
                   name="email"
                   onChange={valueChange}
+                  onBlur={emailCheck}
                   placeholder="이메일*"
                 />
+                <p className="inner">
+                  <span className="checkEmail">{emailMessage}</span>
+                </p>
               </div>
               <div className="boxWrapper">
                 <select
@@ -200,22 +287,26 @@ export const Join = () => {
                   name="mobile2"
                   className="mobile"
                   maxLength="4"
+                  value={newUser.mobile2}
                   onChange={valueChange}
-                ></input>
+                  ref={mobileRef2}
+                />
                 -
                 <input
                   id="mobile3"
                   name="mobile3"
                   className="mobile"
                   maxLength="4"
+                  value={newUser.mobile3}
                   onChange={valueChange}
-                ></input>
+                  ref={mobileRef3}
+                />
               </div>
 
               <div className="boxWrapper">
                 <input
                   className="input width"
-                  id="address"
+                  id="MainAddress"
                   name="mainAddress"
                   ref={mainAddressRef}
                   onChange={valueChange}
@@ -232,7 +323,7 @@ export const Join = () => {
               <div className="boxWrapper">
                 <input
                   className="input"
-                  id="address"
+                  id="detailAddress"
                   name="detailAddress"
                   onChange={valueChange}
                   placeholder="상세주소*"

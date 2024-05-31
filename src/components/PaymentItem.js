@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export const PaymentItem = ({ val }) => {
-  console.log("val", val);
+  // console.log("val", val);
   return (
     <>
       <div className="product">

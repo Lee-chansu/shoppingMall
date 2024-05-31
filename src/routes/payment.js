@@ -32,8 +32,8 @@ export const Payment = () => {
   });
   const [carryMessage, setCarryMessage] = useState("carryMessage1");
 
-  console.log("newUser", newUser);
-  console.log("carryMessage", carryMessage);
+  // console.log("newUser", newUser);
+  // console.log("carryMessage", carryMessage);
 
   //결제방식 선택하기
   //총 주문 합계 보기 변수선언
@@ -58,7 +58,7 @@ export const Payment = () => {
     setSelectedOption(e.target.value);
     const newMessage = carryMessage
     setCarryMessage(e.target.value);
-    console.log("selectedOption", e.target.value);
+    // console.log("selectedOption", e.target.value);
   };
 
   const handleCarryMessage = (e) => {
@@ -118,7 +118,7 @@ export const Payment = () => {
       data = location.state.paymentList;
     }
 
-    console.log("paymentList", data);
+    // console.log("paymentList", data);
     return data;
   };
 
@@ -145,21 +145,19 @@ export const Payment = () => {
       let temp = { ...orderSum };
       // console.log(paymentItemList.length);
       paymentItemList.forEach((val, idx) => {
-        console.log(val.price);
+        // console.log(val.price);
         temp.orderTotal += val.price * val.amount;
         temp.countTotal = temp.countTotal + val.amount;
       });
       temp.paySumTotal += temp.orderTotal + temp.carryTotal;
       setOrderSum(temp);
-    } else {
-      console.log(paymentItemList.length);
     }
   }, [paymentItemList]);
 
   //cart의 선택된 상품을 전달받아 list에 저장
   useEffect(() => {
     const { list } = location.state; //cart에서 navigate로 보낸 cartItemList를 location으로 list란 이름으로 받음
-    console.log("list", list);
+    // console.log("list", list);
     setPaymentItemList(list); //list가 없을때 예외처리 해야함
   }, []); //의존성 배열이 비어있기때문에 값이 바뀔수없으므로 한번만 실행
 
@@ -265,7 +263,7 @@ export const Payment = () => {
               <div className="saleBox">
                 <div className="coupon">쿠폰 사용하기</div>
                 <div className="coupon2">
-                  <label for="agree1" className="radio_box">
+                  <label htmlFor="agree1" className="radio_box">
                     <input
                       type="radio"
                       id="agree1"
@@ -275,17 +273,17 @@ export const Payment = () => {
                     <span className="on"></span>
                     신규고객 5,000원 할인쿠폰
                   </label>
-                  <label for="agree2" className="radio_box">
+                  <label htmlFor="agree2" className="radio_box">
                     <input
                       type="radio"
                       id="agree2"
                       name="agree"
                       value="카카오친구 1,000원 할인쿠폰"
                     />
-                    <span class="on"></span>
+                    <span className="on"></span>
                     카카오친구 1,000원 할인쿠폰
                   </label>
-                  <label for="agree3" class="radio_box">
+                  <label htmlFor="agree3" className="radio_box">
                     <input
                       type="radio"
                       id="agree3"
