@@ -78,7 +78,7 @@ export const PayBuyList = () => {
   const handleAddToCart = async (val) => {
     let newItem = payItemList.find((item) => item.id === val.id);
 
-    console.log('newItem', newItem)
+    console.log("newItem", newItem);
 
     const addItem = {
       size: newItem.productSize,
