@@ -69,7 +69,7 @@ export const ProductAdd = () => {
       }
       reader.onloadend = () => {
         setMainImageFile(reader.result);
-        setNewProduct((prevState) => ({
+        setNewProduct(prevState => ({
           ...prevState,
           mainImage: reader.result,
         }));
@@ -80,20 +80,20 @@ export const ProductAdd = () => {
     }
   };
 
-  const checkOnlyOneCategory = (checkThis) => {
+  const checkOnlyOneCategory = checkThis => {
     checkThis.checked === false
       ? setCheckCategory("")
       : setCheckCategory(checkThis.name);
   };
 
-  const checkOnlyOneDetail = (checkThis) => {
+  const checkOnlyOneDetail = checkThis => {
     checkThis.checked === false
       ? setCheckDetail("")
       : setCheckDetail(checkThis.name);
   };
 
   const showDetailBar = () => {
-    setNewProduct((prevState) => ({
+    setNewProduct(prevState => ({
       ...prevState,
       category: checkCategory,
       detail: checkDetail,
@@ -117,7 +117,7 @@ export const ProductAdd = () => {
     description: "",
   });
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
@@ -138,7 +138,7 @@ export const ProductAdd = () => {
 
   const [descriptionImgArray, setDescriptionImgArray] = useState([]);
 
-  const cancelPreview = (index) => {
+  const cancelPreview = index => {
     let newDescriptionArray = [...descriptionImgArray];
     newDescriptionArray.splice(index, 1);
     setDescriptionImgArray(newDescriptionArray);
@@ -150,7 +150,7 @@ export const ProductAdd = () => {
 
   useEffect(() => {}, [newOption]);
 
-  const toAddProduct = async (e) => {
+  const toAddProduct = async e => {
     e.preventDefault();
     console.log("newOption", newOption);
 
@@ -268,14 +268,27 @@ export const ProductAdd = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      }).then((res) => {
+      }).then(res => {
         res.json();
         if (res.ok) {
-          alert("제품을 추가했습니다.");
-          navigate("/productList");
+          Swal.fire({
+            icon: "success",
+            title: "성공",
+            text: "제품 추가하는데 성공했습니다.",
+            showConfirmButton: true,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#007bff",
+          });
+          navigate(`/productList`);
         } else {
-          alert("제품을 추가하는데 실패했습니다.");
-          return;
+          Swal.fire({
+            icon: "warning",
+            title: "실패",
+            text: "제품의 추가하는데 실패했습니다.",
+            showConfirmButton: true,
+            confirmButtonText: "확인",
+            confirmButtonColor: "#007bff",
+          });
         }
       });
     } catch (error) {
@@ -298,7 +311,7 @@ export const ProductAdd = () => {
             <div className="wrap">
               <h2 className="categoryTitle">카테고리</h2>
               <div className="boxWrap">
-                {category.map((el) => {
+                {category.map(el => {
                   return (
                     <div className="box" key={el}>
                       <p className="text">{el}</p>
@@ -308,7 +321,7 @@ export const ProductAdd = () => {
                         name={el}
                         value={el}
                         checked={checkCategory === el}
-                        onChange={(e) => checkOnlyOneCategory(e.target)}
+                        onChange={e => checkOnlyOneCategory(e.target)}
                       />
                     </div>
                   );
@@ -331,7 +344,7 @@ export const ProductAdd = () => {
                           name={el}
                           value={el}
                           checked={checkDetail === el}
-                          onChange={(e) => checkOnlyOneDetail(e.target)}
+                          onChange={e => checkOnlyOneDetail(e.target)}
                         />
                       </div>
                     );
@@ -445,7 +458,7 @@ export const ProductAdd = () => {
                 handleLinkMove={handleCancle}
               />
 
-              <CustomButton className="btn2" buttonTitle="수정완료" />
+              <CustomButton className="btn2" buttonTitle="상품추가" />
             </ButtonBox>
           </form>
         </div>

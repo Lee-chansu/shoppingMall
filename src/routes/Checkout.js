@@ -4,7 +4,6 @@ import { nanoid } from "nanoid";
 import "../css/toss.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import axios from "axios";
 
 const selector = "#payment-widget";
 

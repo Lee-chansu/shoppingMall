@@ -164,7 +164,7 @@ module.exports = {
         isReviewed: false,
         carryStatus: '도착완료'
       },
-    ], {});
+    ], {order : 1});
   },
 
   async down(queryInterface, Sequelize) {
