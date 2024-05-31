@@ -108,7 +108,7 @@ export const Cart = () => {
       .sort((a, b) => a.id - b.id);
 
     if (selectedCartItemList.length === 0) {
-      alert("결제하실 상품을 골라주세요");
+      Myalter("warning","장바구니 가이드","결제하실 상품을 골라주세요");
       return;
     }
 
@@ -126,7 +126,7 @@ export const Cart = () => {
       (val) => val.isChecked === true
     );
     if (selectedCartItemList.length === 0) {
-      Myalter("waring","체크된 상품 없음","삭제하실 상품을 골라주세요");
+      Myalter("warning","장바구니 가이드","삭제하실 상품을 골라주세요");
       return;
     }
 
@@ -143,11 +143,11 @@ export const Cart = () => {
       });
 
       const data = res.data;
-      alert(data.message);
+      Myalter("warning","장바구니 가이드",data.message);
       getProducts();
     } catch (error) {
       console.error(error);
-      alert("삭제 실패");
+      Myalter("warning","장바구니 가이드","삭제 실패");
     }
   };
 

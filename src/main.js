@@ -14,7 +14,7 @@ export const Main = () => {
   const [productList, setProductList] = useState([]);
   const limit = 15;
 
-  const loadProduct = async () => {
+  const loadProduct = async (order, sort) => {
     console.log(sort);
     const getProducts = await fetch(
       `http://localhost:5000/?order=${order}&limit=${limit}&sort=${sort}`
@@ -39,7 +39,7 @@ export const Main = () => {
   };
 
   useEffect(() => {
-    loadProduct();
+    loadProduct(order, sort);
   }, [order, sort]);
 
   return (
@@ -49,7 +49,7 @@ export const Main = () => {
         <Visual />
         <div className="inner">
           <Link className="link" to="/productList">
-            <h1>상품 조회</h1>
+            <h1>Pick & Fit</h1>
           </Link>
           <div className="div" style={{ display: "flex" }}>
             <div className="order">
