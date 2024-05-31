@@ -181,13 +181,6 @@ export const Join = () => {
                 />
               </div>
               <div className="boxWrapper">
-                {/* <input
-                  className="input"
-                  id="phone"
-                  name="phoneNumber"
-                  onChange={valueChange}
-                  placeholder="전화번호*"
-                /> */}
                 <select
                   id="mobile"
                   name="mobile"
@@ -235,11 +228,6 @@ export const Join = () => {
                   mainAddressRef={mainAddressRef}
                   setNewUser={setNewUser}
                 />
-                {/* <button
-                  onClick={() => {
-                    alert("fff");
-                  }}
-                ></button> */}
               </div>
               <div className="boxWrapper">
                 <input

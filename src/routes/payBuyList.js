@@ -78,15 +78,16 @@ export const PayBuyList = () => {
   const handleAddToCart = async (val) => {
     let newItem = payItemList.find((item) => item.id === val.id);
 
-    
+    console.log("newItem", newItem);
 
     const addItem = {
-      size: newItem.ProductOption.productSize,
-      color: newItem.ProductOption.productColor,
+      size: newItem.productSize,
+      color: newItem.productColor,
       amount: newItem.amount,
       price: newItem.price,
       user_id: id,
-      productOption_id: newItem.ProductOption.id,
+      product_id: newItem.product_id,
+      productOption_id: newItem.product_id, // 이 친구 받아오기
     };
 
     try {

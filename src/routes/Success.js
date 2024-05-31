@@ -59,7 +59,8 @@ export function SuccessPage() {
       setOptionList(productOptionIds);
       setArrayList(arrayResponse);
 
-      console.log("arrayList", arrayList[0]?.items);
+      console.log("arrayList", arrayList[0]);
+      // console.log("arrayList", arrayList[0]?.items);
       // console.log("arrayList[0]?.items[0].amount", arrayList[0]?.items[0].amount);
     }
 
@@ -125,11 +126,11 @@ export function SuccessPage() {
       if (!response.ok) {
         // 결제 실패 비즈니스 로직
         console.log(json);
-        // navigate(`/toss/fail?message=${json.message}&code=${json.code}`);
+        navigate(`/toss/fail?message=${json.message}&code=${json.code}`);
         return;
       }
 
-      // TODO: 결제 성공 비즈니스 로직을 구현하세요.
+      // 결제 성공 비즈니스 로직
 
       // 상품 옵션 재고 업데이트
       const option = stockList.map((item, i) => ({
@@ -137,7 +138,7 @@ export function SuccessPage() {
         stock: item.stock - arrayList[0].items[i].amount,
       }));
 
-      console.log('editOption', option);
+      console.log("editOption", option);
 
       const updateRes = await axios.put(
         "http://localhost:5000/productOption",
@@ -160,7 +161,14 @@ export function SuccessPage() {
       }
 
       // 구매 내역 추가
-      const carry = { list: arrayList[0].items, user_id: id, order_id: searchParams.get("orderId") };
+      const carry = {
+        list: arrayList[0].items,
+        user_id: id,
+        order_id: searchParams.get("orderId"),
+        mainAddress: arrayList[0].mainAddress,
+        detailAddress: arrayList[0].detailAddress,
+        carryMessage: arrayList[0].carryMessage,
+      };
 
       const carryRes = await axios.post("http://localhost:5000/carry", carry);
 
@@ -180,7 +188,14 @@ export function SuccessPage() {
       }
 
       console.log(json);
-      // console.log('json', json);
+      console.log("json.easyPay.provider", json.easyPay.provider);
+      navigate("/paysuccess", {
+        state: {
+          list: arrayList[0].items,
+          orderSum: {paySumTotal: searchParams.get("amount")},
+          paySelect: json.easyPay.provider,
+        },
+      });
     };
     if (stockList.length > 0 && arrayList.length > 0) {
       checkStock();
@@ -189,7 +204,7 @@ export function SuccessPage() {
 
   return (
     <div>
-      {true ? (
+      {false ? (
         <div className="result wrapper">
           <div className="box_section">
             <h2 style={{ padding: "20px 0px 10px 0px" }}>
@@ -208,7 +223,24 @@ export function SuccessPage() {
           </div>
         </div>
       ) : (
-        <p>로딩 중...</p>
+        <div className="result wrapper">
+          <div className="box_section">
+            <h2 style={{ padding: "20px 0px 10px 0px" }}>
+              {/* <img
+                width="35px"
+                src="https://static.toss.im/3d-emojis/u1F389_apng.png"
+                alt="결제성공 이미지"
+              /> */}
+              로딩 중...
+            </h2>
+            {/* <p>{`주문번호: ${searchParams.get("orderId")}`}</p>
+            <p>{`결제 금액: ${Number(
+              searchParams.get("amount")
+            ).toLocaleString()}원`}</p>
+            <p>{`paymentKey: ${searchParams.get("paymentKey")}`}</p> */}
+          </div>
+        </div>
+        // <p>로딩 중...</p>
       )}
     </div>
   );

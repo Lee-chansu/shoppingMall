@@ -24,78 +24,10 @@
   cursor: pointer;
 }
 
-/* 리뷰작성 */
-.productInfoReview .productSize {
-  color: #999;
-  font-size: 24px;
-  font-weight: 400;
-  left: 755px;
-  position: absolute;
-  top: -55px;
-  width: 200px;
-}
-
-.productInfoReview .productColor {
-  color: #999;
-  font-size: 24px;
-  font-weight: 400;
-  left: 580px;
-  position: absolute;
-  top: -55px;
-  white-space: nowrap;
-  width: 160px;
-}
-
-.productInfoReview .productDetail {
-  color: #000;
-  font-size: 20px;
-  font-weight: 400;
-  left: 580px;
-  position: absolute;
-  top: 0px;
-  height: 130px;
-  width: 440px;
-  overflow: hidden;
-  white-space: normal;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2.5;
-  -webkit-box-orient: vertical;
-  word-break: keep-all;
-  word-wrap: break-word; /* 단어위주 줄바꿈 */
-}
-
-.productInfoReview .userName {
-  color: #000;
-  font-size: 24px;
-  font-weight: 400;
-  left: 580px;
-  position: absolute;
-  top: -90px;
-  width: 250px;
-}
-
-.productInfoReview .reviewImage {
-  position: absolute;
-  top: -130px;
-  right: 40px;
-  width: 250px;
-  height: 250px;
-  border-radius: 10px;
-}
-
-.productInfoReview .reviewCreatedAt {
-  color: #999;
-  font-size: 20px;
-  font-weight: 400;
-  left: 580px;
-  position: absolute;
-  top: -120px;
-  white-space: nowrap;
-  width: 200px;
-}
-
-.productInfoReview .div {
+.productInfoReview .textWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #000000;
   font-size: 43.2px;
   font-weight: 400;
@@ -103,84 +35,6 @@
   line-height: normal;
   height: 100%;
   width: 100%;
-  border-left: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  border-right: 1px solid #eee;
-  margin-top: -178px;
-}
-
-.productInfoReview .overlap {
-  margin-top: 20px;
-  width: 40%;
-  height: 90%;
-  border-right: 1px solid #ccc;
-}
-
-.productInfoReview .editBtnForm {
-  height: 62px;
-  left: 224px;
-  position: absolute;
-  top: 0;
-  width: 268px;
-}
-
-.productInfoReview .overlapGroup {
-  border: 1px solid pink;
-  height: 48px;
-  left: 17px;
-  position: relative;
-  top: 300px;
-  width: 233px;
-}
-
-.productInfoReview .reviewEditBtn {
-  color: #fff;
-  font-size: 30px;
-  position: absolute;
-  left: -95px;
-  top: 70px;
-  white-space: nowrap;
-  width: 100%;
-  padding: 10px 0;
-  background-color: #000;
-  border-radius: 5px;
-}
-
-.evaluation {
-  font-size: 24px;
-  color: #999;
-  position: absolute;
-  top: 20px;
-  left: 150px;
-}
-
-.productInfoReview .reviewAddBtnForm {
-  background-color: none;
-  border-bottom: 5px solid #999;
-  height: 1px;
-  position: absolute;
-  left: 2px;
-  width: 1331px;
-}
-
-.productInfoReview .divWrapper {
-  z-index: 1;
-  height: 70px;
-  left: 961px;
-  position: relative;
-  top: 20px;
-  width: 343px;
-}
-
-.productInfoReview .textWrapper4 {
-  color: #000000;
-  font-size: 26px;
-  font-weight: 400;
-  left: -830px;
-  position: absolute;
-  top: 10px;
-  white-space: nowrap;
-  width: 251px;
 }
 
 .productInfoReview .infoSelect {
@@ -274,33 +128,41 @@
 .productInfoReview .reviewerInfoWrapper .reviewerInfo2 .overlap .editBtnForm {
   margin: 0 40px;
 }
-.productInfoReview
-  .reviewerInfoWrapper
-  .reviewerInfo2
-  .overlap
-  .editBtnForm
-  .reviewEditBtn {
-  padding: 20px;
-  border: 1px solid #eee;
-  border-radius: 10px;
+.productInfoReview .reviewerInfoWrapper .reviewerInfo2 .overlap .editBtnForm .reviewEditBtn {
+  padding: 8px 15px;
+  border: 1px solid #000;
+  border-radius: 5px;
 }
 
-.productInfoReview .starRating,
-.productInfoReview .evaluation,
+.productInfoReview .evaluation {
+  margin-top: 50px;
+  font-size: 22px;
+}
+
+.productInfoReview .reviewCreatedAt {
+  margin-top: 20px;
+}
+
+.productInfoReview .star {
+  margin-left: -5px;
+}
+
 .productInfoReview .reviewCreatedAt,
 .productInfoReview .productOption,
 .productInfoReview .productDetail {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   color: #000;
 }
+
 .productInfoReview .reviewImageBox {
-  display: block;
-  width: 400px;
-  padding: 20px;
+  
+  width: 20%;
+  height: 20%;
 }
 
 .productInfoReview .reviewImage {
+  margin-top: 20px;
   width: 100%;
 }
 .productInfoReview .paging {

@@ -9,12 +9,21 @@ module.exports = (sequelize) => {
     amount: {
       type: DataTypes.INTEGER
     },
+    items: {
+      type: DataTypes.JSON
+    },
+    mainAddress: {
+      type: DataTypes.STRING(100),
+    },
+    detailAddress: {
+      type: DataTypes.STRING(100),
+    },
+    carryMessage: {
+      type: DataTypes.STRING(100),
+    },
     createdAt: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
-    },
-    items: {
-      type: DataTypes.JSON
     },
   }, {
     timestamps: false

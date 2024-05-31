@@ -19,7 +19,13 @@ module.exports = {
       order_id: {
         type: Sequelize.STRING(40),
       },
-      address: {
+      mainAddress: {
+        type: Sequelize.STRING(100)
+      },
+      detailAddress: {
+        type: Sequelize.STRING(100)
+      },
+      carryMessage: {
         type: Sequelize.STRING(100)
       },
       progress: {

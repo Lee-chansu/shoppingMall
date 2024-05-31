@@ -24,12 +24,15 @@
   width: 100%;
 }
 
-.productdetail .div {
+.productdetail > .div {
   background-color: #ffffff;
   height: 855px;
   position: relative;
   width: 1440px;
-  top: -300px;
+  /* top: -300px; */
+  transform: scale(1);
+  /* transform: scale(1); */
+  transform-origin: top left;
 }
 
 /* 장바구니, 바로결제 버튼 */
@@ -37,7 +40,7 @@
   height: 144px;
   left: 758px;
   position: absolute;
-  top: 980px;
+  top: 680px;
   width: 590px;
 }
 
@@ -78,7 +81,7 @@
   height: 586px;
   left: 756px;
   position: absolute;
-  top: 417px;
+  top: 117px;
   width: 592px;
 }
 
@@ -329,11 +332,11 @@ input[type="number"]::-webkit-outer-spin-button {
   height: 817px;
   left: 25px;
   position: absolute;
-  top: 388px;
+  top: 88px;
   width: 722px;
 }
 
-.productdetail .subThmbnail0 {
+.productdetail .subThumbnail0 {
   background-color: #d9d9d9;
   height: 155px;
   left: 100px;
@@ -342,7 +345,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 155px;
 }
 
-.productdetail .subThmbnail1 {
+.productdetail .subThumbnail1 {
   background-color: #d9d9d9;
   height: 155px;
   left: 273px;
@@ -351,7 +354,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 155px;
 }
 
-.productdetail .subThmbnail2 {
+.productdetail .subThumbnail2 {
   background-color: #d9d9d9;
   height: 155px;
   left: 445px;
@@ -360,7 +363,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 155px;
 }
 
-.productdetail .mainThmbnailWrapper {
+.productdetail .mainThumbnailWrapper {
   background-color: #d9d9d9;
   height: 500px;
   left: 100px;
@@ -369,7 +372,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 500px;
 }
 
-.productdetail .mainThmbnail {
+.productdetail .mainThumbnail {
   color: #000000;
   font-size: 43.2px;
   font-weight: 400;

@@ -28,8 +28,8 @@ export const ProductReview = (props) => {
   useEffect(() => {
     // user 데이터 가져오기
     fetch("http://localhost:5000/user")
-      .then((response) => response.json())
-      .then((data) => setUserList(data));
+      .then(response => response.json())
+      .then(data => setUserList(data));
 
     // reviewList 데이터 가져오기
     fetch(
@@ -92,7 +92,7 @@ export const ProductReview = (props) => {
                             key={i}
                             src={process.env.PUBLIC_URL + "/img/fullStar.svg"}
                             alt="켜진별"
-                            width={"100px"}
+                            width={"50px"}
                             style={{ display: "inline" }}
                           />
                         ) : (
@@ -101,13 +101,13 @@ export const ProductReview = (props) => {
                             key={i}
                             src={process.env.PUBLIC_URL + "/img/emptyStar.svg"}
                             alt="꺼진별"
-                            width={"100px"}
+                            width={"50px"}
                             style={{ display: "inline" }}
                           />
                         );
                       })}
                     </div>
-                    <span className="evaluation">별점 5.0 / 매우 만족해요</span>
+                    <div className="evaluation">별점 5.0 / 매우 만족해요</div>
                     <div className="reviewCreatedAt">
                       {el.reviewDate.substring(0, 10)}
                     </div>
