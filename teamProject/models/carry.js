@@ -16,6 +16,9 @@ module.exports = (sequelize) => {
     detailAddress: {
       type: DataTypes.STRING(100)
     },
+    carryMessage: {
+      type: DataTypes.STRING(100)
+    },
     progress: {
       type: DataTypes.STRING(30)
     },

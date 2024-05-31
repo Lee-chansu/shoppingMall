@@ -27,6 +27,9 @@ module.exports = {
       detailAddress: {
         type: Sequelize.STRING(100),
       },
+      carryMessage: {
+        type: Sequelize.STRING(100),
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
