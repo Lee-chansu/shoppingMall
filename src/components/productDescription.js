@@ -15,8 +15,10 @@ export const ProductDescription = (props) => {
   useEffect(() => {
     if (more) {
       document.querySelector(".infoDescription").classList.add("unhidden");
+      document.querySelector(".moreInfo").classList.add("more");
     } else {
       document.querySelector(".infoDescription").classList.remove("unhidden");
+      document.querySelector(".moreInfo").classList.remove("more");
     }
   }, [more]);
 
@@ -62,12 +64,16 @@ export const ProductDescription = (props) => {
         </div>
         <div className="moreInfo" onClick={handleMore}>
           {more ? (
-            <div className="textWrapper" onClick={handleMore}>
-              상품정보 접기 ▲
+            <div className="textWrapper">
+              <button className="moreButton" onClick={handleMore}>
+                상품정보 접기 ▲
+              </button>
             </div>
           ) : (
-            <div className="textWrapper" onClick={handleMore}>
-              상품정보 더 보기 ▼
+            <div className="textWrapper">
+              <button className="moreButton" onClick={handleMore}>
+                상품정보 더 보기 ▼
+              </button>
             </div>
           )}
         </div>

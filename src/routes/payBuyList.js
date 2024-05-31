@@ -78,8 +78,6 @@ export const PayBuyList = () => {
   const handleAddToCart = async (val) => {
     let newItem = payItemList.find((item) => item.id === val.id);
 
-    
-
     const addItem = {
       size: newItem.ProductOption.productSize,
       color: newItem.ProductOption.productColor,

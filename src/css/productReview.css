@@ -163,3 +163,11 @@
   justify-content: center;
   margin: 20px 0;
 }
+
+.productInfoReview .noReivew {
+  height: 300px;
+  text-align: center;
+  margin: 150px 0;
+  font-size: 48px;
+  color: #1b1d24;
+}
