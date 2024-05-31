@@ -321,13 +321,13 @@ export const ProductDetailDescription = () => {
                   ref={mainRef}
                   src={photos[index]}
                   alt="메인이미지"
-                  className="mainThmbnailWrapper"
+                  className="mainThumbnailWrapper"
                 />
                 {photos.map((photo, i) => (
                   <img
                     key={i}
                     onClick={() => jump(i)}
-                    className={"subThmbnail" + i}
+                    className={"subThumbnail" + i}
                     alt="제품 서브이미지"
                     src={photo}
                   />

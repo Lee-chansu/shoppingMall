@@ -21,6 +21,15 @@ module.exports = {
       items: {
         type: Sequelize.JSON,
       },
+      mainAddress: {
+        type: Sequelize.STRING(100),
+      },
+      detailAddress: {
+        type: Sequelize.STRING(100),
+      },
+      carryMessage: {
+        type: Sequelize.STRING(100),
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

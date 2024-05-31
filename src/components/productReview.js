@@ -22,7 +22,7 @@ export const ProductReview = (props) => {
   };
 
   const handleNavigate = () => {
-    navigate('/payBuyList');
+    navigate(`/payBuyList`);
   };
 
   useEffect(() => {
@@ -64,7 +64,6 @@ export const ProductReview = (props) => {
               </button>
             </Link>
           </div>
-          {console.log(reviewList)}
           {reviewList.length !== 0 ? (
             reviewList.map((el, i) => {
               const user = userList.find((user) => user.id === el.user_id);
@@ -140,7 +139,14 @@ export const ProductReview = (props) => {
               );
             })
           ) : (
-            <></>
+            <div className="reviewerInfoWrapper">
+              <div className="reviewImageBox" style={{ width: "100%" }}>
+                <p className="noReivew">
+                  등록된 리뷰가 없습니다.
+                  <p>상품을 구매하고 리뷰를 남겨주세요 .</p>
+                </p>
+              </div>
+            </div>
           )}
           <div className="paging">
             {Array.from({ length: pagingSize }, (el, index) => {

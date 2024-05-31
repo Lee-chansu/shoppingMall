@@ -26,16 +26,22 @@
 }
 
 .productInfo .productDecription {
+  margin-top: 80px;
   background-color: inherit;
   width: 1328px;
   position: relative;
 }
 
 .productInfo .moreInfo {
-  background-color: #ffffff;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), white);
   height: 117px;
   width: 1322px;
   cursor: pointer;
+  transform: translate(73px, 0px);
+}
+
+.productInfo .moreInfo.more {
+  background: white;
 }
 
 .productInfo .descriptionBox {
@@ -52,13 +58,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.productInfo .moreButton {
+  width: 250px;
+  border-radius: 150px;
+  padding: 10px;
+  background-color: white;
   color: #000000;
-  font-size: 43.2px;
+  font-size: 24px;
   font-weight: 400;
   letter-spacing: 0;
   line-height: normal;
-  height: 100%;
-  width: 100%;
 }
 
 .productInfo .polygon {
@@ -100,12 +113,6 @@
 }
 
 .productInfo .productDescription1 {
-  /* height: 156px;
-  left: 0;
-  position: absolute;
-  top: 5px;
-  width: 664px; */
-
   background-color: #999;
   border-radius: 5px;
   height: 156px;
