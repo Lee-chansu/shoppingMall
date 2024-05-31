@@ -1,9 +1,19 @@
-*{margin:0; padding: 0; box-sizing: border-box;}
-ul, ol, li{list-style:none;}
-a{text-decoration:none;} 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
 
 .userInfo {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -13,63 +23,60 @@ a{text-decoration:none;}
 }
 
 .userInfo .overlapGroupWrapper {
-  background-color: #FFFFFF;
   position: relative;
   height: 950px;
 }
 .userInfo .profileImage {
-  background-color: #FFFFFF;
-  border-radius: 204.77px;
+  border-radius: 50%;
   position: absolute;
-  left: 200px;
-  top: 30px;
-  height: 310px;
-  width: 310px;
+  left: 260px;
+  top: 100px;
+  height: 200px;
+  width: 200px;
   z-index: 1;
-  border: 1px solid #EBEBEB;
+  border: 1px solid #ebebeb;
 }
 
-
 .userInfo .userSelect {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   flex-flow: column;
   align-items: center;
   padding: 20px;
-  margin-top: 380px;
+  margin-top: 300px;
   width: 731px;
 }
 
 .userInfo .link {
-  background-color: #FFFFFF;
-  width: 70%;
-  margin: 20px 0;
+  width: 60%;
+  margin: 10px 0;
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid #EBEBEB;
+  border: 2px solid #ebebeb;
 }
 
 .userInfo .deleteButton {
-  background-color: #FFFFFF;
-  width: 70%;
+  width: 60%;
   margin: 20px 0;
   padding: 10px;
-  border: 1px solid #EBEBEB;
-  font-size: 30px;
+  border: 2px solid #ebebeb;
+  font-size: 26px;
   font-weight: 400;
   letter-spacing: 0;
   line-height: normal;
   cursor: pointer;
   border-radius: 10px;
-  color : black
+  color: black;
 }
 
 .userInfo .textWrapper {
   color: #000000;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 400;
-  letter-spacing: 0;
-  line-height: normal;
   text-align: center;
-  color : black
+}
+
+.userInfo .link:hover,
+.userInfo .deleteButton:hover {
+  border: 2px solid #000;
 }

@@ -3,6 +3,7 @@ import "../css/join.css";
 import { useRef, useState } from "react";
 import AddressModal from "../components/AddressModal";
 import { Myalter } from "../components/Myalter";
+import axios from "axios";
 
 export const Join = () => {
   const navigate = useNavigate();
@@ -26,6 +27,26 @@ export const Join = () => {
     mobile3: "",
     phoneNumber: "",
   });
+  const [message, setMessage] = useState();
+  const [isId, setIsId] = useState();
+
+  const idCheck = async (e) => {
+    const { value } = e.target;
+    const checkId = await axios.get("http://localhost:5000/user");
+    for (let check of checkId.data) {
+      if (check.userId === value) {
+        setIsId(false);
+        setMessage("이미 사용중인 아이디입니다.");
+        document.querySelector(".checkId").classList.add("not");
+        return;
+      } else {
+        setIsId(true);
+        setMessage("사용 가능한 아이디입니다.");
+        document.querySelector(".checkId").classList.remove("not");
+        return;
+      }
+    }
+  };
 
   const valueChange = (e) => {
     const { name, value } = e.target;
@@ -110,8 +131,12 @@ export const Join = () => {
                   name="userId"
                   placeholder="아이디*"
                   onChange={valueChange}
+                  onBlur={idCheck}
                 />
-                <p className="inner">(영문소문자/숫자, 4~16자)</p>
+                <p className="inner">
+                  (영문소문자/숫자, 4~16자)
+                  <span className="checkId">{message}</span>
+                </p>
               </div>
               <div className="boxWrapper">
                 <input

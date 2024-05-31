@@ -21,7 +21,6 @@ exports.loadProductByNavButton = async (req, res) => {
     offset = 0;
     limit = 8;
   }
-  console.log(detail);
 
   let result;
   try {
@@ -288,7 +287,7 @@ exports.updateProductOption = async (req, res) => {
   console.log("testOption", option);
 
   try {
-    const updatePromises = option.map(async (item) => {
+    const updatePromises = option.map(async item => {
       return ProductOption.update(
         { stock: item.stock },
         { where: { id: item.id } }
@@ -307,12 +306,12 @@ exports.updateProductOption = async (req, res) => {
 //제품 삭제
 exports.deleteProduct = async (req, res) => {
   const { id } = req.params;
-  const cartDel = await Cart.destroy({ where: { product_id: id } });
-  const optionDel = await ProductOption.destroy({ where: { product_id: id } });
-  const detailDel = await ProductDetail.destroy({ where: { product_id: id } });
+  await Cart.destroy({ where: { product_id: id } });
+  await ProductOption.destroy({ where: { product_id: id } });
+  await ProductDetail.destroy({ where: { product_id: id } });
+  const delProduct = await Product.destroy({ where: { id } });
   let result;
-  if (cartDel && detailDel && optionDel) {
-    await Product.destroy({ where: { id } });
+  if (delProduct) {
     result = true;
   } else {
     result = false;
@@ -323,20 +322,29 @@ exports.deleteProduct = async (req, res) => {
 //제품 리뷰 조회
 exports.selectReviewlist = async (req, res) => {
   const { buyList_id } = req.query;
+  let offset, limit;
+  if (req.query.offset) {
+    offset = parseInt(req.query.offset);
+  }
+  if (req.query.limit) {
+    limit = parseInt(req.query.limit);
+  }
 
   const findId = await BuyList.findAll({ where: { product_id: buyList_id } });
 
-  const buyListIds = findId.map((item) => item.id);
+  const buyListIds = findId.map(item => item.id);
 
   let result = [];
 
   if (buyListIds.length > 0) {
-    result = await ReviewList.findAll({
+    result = await ReviewList.findAndCountAll({
       where: {
         buyList_id: {
           [Op.in]: buyListIds,
         },
       },
+      offset,
+      limit,
     });
   }
 
@@ -349,9 +357,9 @@ exports.selectReviewlist = async (req, res) => {
 };
 
 // 리뷰 등록
-exports.addReview =  async (req, res) => {
-  const {addReview} = req.body
-    
+exports.addReview = async (req, res) => {
+  const { addReview } = req.body;
+
   if (addReview) {
     if (addReview.reviewImage) {
       const options = {
@@ -387,43 +395,38 @@ exports.addReview =  async (req, res) => {
 };
 
 // 리뷰수정페이지에서 기존 리뷰정보 받아오기
-exports.loadReviewForEdit = async(req,res)=>{
-  const {buyList_id} = req.params
-  
-  const result = await ReviewList.findOne({where : {buyList_id}})
-  if(result){
-    res.json(result)
-  }else{
-    res.send({message : "실패"})
+exports.loadReviewForEdit = async (req, res) => {
+  const { buyList_id } = req.params;
+
+  const result = await ReviewList.findOne({ where: { buyList_id } });
+  if (result) {
+    res.json(result);
+  } else {
+    res.send({ message: "실패" });
   }
-}
+};
 
 // 리뷰수정
-exports.ReviewEdit = async(req,res)=>{
-  const {buyList_id} = req.params
-  const {editReview} = req.body
+exports.ReviewEdit = async (req, res) => {
+  const { buyList_id } = req.params;
+  const { editReview } = req.body;
 
   const options = {
     apiKey: imgbbKey,
     base64string: editReview.reviewImage.split(",")[1],
-  }
+  };
 
-  const result = await ReviewList.findOne({where : {buyList_id}})
+  const result = await ReviewList.findOne({ where: { buyList_id } });
 
-  if(result){
-    for(let key in editReview){
-      result[key] = editReview[key]
+  if (result) {
+    for (let key in editReview) {
+      result[key] = editReview[key];
     }
-    if(options.base64string){
+    if (options.base64string) {
       const uploadResponse = await imgbbUploader(options);
       result.reviewImage = uploadResponse.url;
     }
-    await result.save()
-    res.send({message : '성공'})
+    await result.save();
+    res.send({ message: "성공" });
   }
-  
-    
-
-    
-  
-}
+};

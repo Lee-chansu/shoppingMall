@@ -7,6 +7,7 @@ import { Nav } from "../components/nav";
 import { Product } from "../components/product";
 import { Detail } from "../components/detail";
 import { Footer } from "../components/footer";
+import { jwtDecode } from "jwt-decode";
 
 export const ProductList = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ export const ProductList = () => {
   const [offset, setOffset] = useState(0);
   const limit = 8;
   const [pagingSize, setPagingSize] = useState(0);
+  const [isMaster, setIsMaster] = useState();
   // url 쿼리 문자열 받아오는 방법
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -35,21 +37,21 @@ export const ProductList = () => {
     if (detail) {
       getProduct = await fetch(
         `http://localhost:5000/product?detail=${detail}&offset=${offset}&limit=${limit}`
-      ).then((res) => res.json());
+      ).then(res => res.json());
     } else if (category) {
       getProduct = await fetch(
         `http://localhost:5000/product?category=${category}&offset=${offset}&limit=${limit}`
-      ).then((res) => res.json());
+      ).then(res => res.json());
     } else {
       getProduct = await fetch(
         `http://localhost:5000/product?offset=${offset}&limit=${limit}`
-      ).then((res) => res.json());
+      ).then(res => res.json());
     }
     setProductList(getProduct.rows);
     setPagingSize(Math.ceil(getProduct.count / limit));
   };
 
-  const handleOffset = (index) => {
+  const handleOffset = index => {
     if (index === 0) {
       setOffset(0);
     } else {
@@ -67,6 +69,14 @@ export const ProductList = () => {
       navigate(`/productList?offset=${offset}&limit=${limit}`);
     }
   };
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      const decodeToken = jwtDecode(token);
+      setIsMaster(decodeToken.isMaster);
+    }
+  }, []);
 
   useEffect(() => {
     setOffset(0);
@@ -87,13 +97,13 @@ export const ProductList = () => {
       ></Detail>
       <div className="productList">
         <div className="inner">
-          <div className="addBtnForm">
+          {isMaster ? <div className="addBtnForm">
             <Link to="/productList/add">
               <button>상품 추가</button>
             </Link>
-          </div>
+          </div> : <></>}
           <div className="productWrap">
-            {productList.map((product) => {
+            {productList.map(product => {
               return (
                 <Link
                   key={product.id}

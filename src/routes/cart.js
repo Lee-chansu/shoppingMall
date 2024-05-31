@@ -9,6 +9,7 @@ import { Nav } from "../components/nav";
 import { CartItem } from "../components/CartItem";
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
+import { Myalter } from "../components/Myalter";
 
 export const Cart = () => {
   //장바구니에 담길 내용
@@ -52,7 +53,6 @@ export const Cart = () => {
         productOption_id: val.productOption_id,
       };
     });
-    console.log(newArr);
     setCartItemList(newArr);
   };
 
@@ -126,7 +126,7 @@ export const Cart = () => {
       (val) => val.isChecked === true
     );
     if (selectedCartItemList.length === 0) {
-      alert("삭제하실 상품을 골라주세요");
+      Myalter("waring","체크된 상품 없음","삭제하실 상품을 골라주세요");
       return;
     }
 

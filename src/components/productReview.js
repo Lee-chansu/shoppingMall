@@ -1,13 +1,29 @@
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/productReview.css";
-import { Link } from "react-router-dom";
 
 export const ProductReview = (props) => {
-  const { switchBtn, setSwitchBtn, handleSwitchBtn, id, item } = props;
+  const navigate = useNavigate();
+  const { handleSwitchBtn, id, item } = props;
 
   const [userList, setUserList] = useState([]);
   const [reviewList, setReviewList] = useState([]);
   const starPoint = [0, 1, 2, 3, 4];
+  const [pagingSize, setPagingSize] = useState(0);
+  const [offset, setOffset] = useState(0);
+  const limit = 5;
+
+  const handleOffset = (index) => {
+    if (index === 0) {
+      setOffset(0);
+    } else {
+      setOffset(index * limit);
+    }
+  };
+
+  const handleNavigate = (reviewId) => {
+    navigate(`http://localhost:5000/reviewEdit/${reviewId}`);
+  };
 
   useEffect(() => {
     // user 데이터 가져오기
@@ -16,43 +32,53 @@ export const ProductReview = (props) => {
       .then((data) => setUserList(data));
 
     // reviewList 데이터 가져오기
-    fetch(`http://localhost:5000/reviewList?buyList_id=${item}`)
+    fetch(
+      //item = productId
+      `http://localhost:5000/reviewList?buyList_id=${item}&offset=${offset}&limit=${limit}`
+    )
       .then((response) => response.json())
-      .then((data) => setReviewList(data));
-  }, []);
+      .then((data) => {
+        if (data.rows?.length > 0) {
+          setReviewList(data.rows);
+          setPagingSize(Math.ceil(data.count / limit));
+        }
+      });
+  }, [offset]);
 
   return (
     <div className="productInfoReview">
       <div className="productInfoWrapper">
         <div className="productInfo">
-          {/* <div className="infoSelect"> */}
           <div className="productDescription" onClick={handleSwitchBtn}>
-            <div className="textWrapper6">상품 상세</div>
+            <div className="textWrapper4">상품 상세</div>
           </div>
           <div className="productReview">
-            <div className="textWrapper5">상품 리뷰</div>
+            <div className="textWrapper3">상품 리뷰</div>
           </div>
-          {/* </div> */}
-          <div className="reviewBox">
-            <div className="reviewAddBtnForm">
-              <Link to="/payBuyList" className="divWrapper">
-                <div className="textWrapper4">리뷰 작성하기 / REVIEW ()</div>
-              </Link>
-            </div>
-            {reviewList.map((el, i) => {
+        </div>
+        <div className="reviewBox">
+          <div className="reviewAddBtnForm">
+            <Link to="/payBuyList" className="link">
+              <button className="reviewAddBtn">
+                리뷰 작성하기 / REVIEW ()
+              </button>
+            </Link>
+          </div>
+          {console.log(reviewList)}
+          {reviewList.length !== 0 ? (
+            reviewList.map((el, i) => {
               const user = userList.find((user) => user.id === el.user_id);
               return (
-                <div
-                  className="reviewerInfoWrapper"
-                  key={el.id}
-                  style={{ top: `${183 + i * 382}px` }}
-                >
+                <div className="reviewerInfoWrapper" key={el.id}>
                   <div className="reviewerInfo2">
                     <div className="overlap">
                       <div className="userName">{user.userName} 님의 리뷰</div>
                       {id === user.id ? (
                         <div className="editBtnForm">
-                          <button className="reviewEditBtn">
+                          <button
+                            className="reviewEditBtn"
+                            onClick={() => handleNavigate(el.id)}
+                          >
                             리뷰 수정하기
                           </button>
                         </div>
@@ -85,15 +111,33 @@ export const ProductReview = (props) => {
                     <div className="reviewCreatedAt">
                       {el.reviewDate.substring(0, 10)}
                     </div>
-                    <div className="productColor">{el.reviewColor}/</div>
-                    <div className="productSize">{el.reviewSize}</div>
+                    <div className="productOption">
+                      {el.reviewColor} / {el.reviewSize}
+                    </div>
                     <div className="productDetail">{el.content}</div>
+                  </div>
+                  <div className="reviewImageBox">
                     <img
                       className="reviewImage"
                       src={el.reviewImage}
                       alt="reviewImage"
                     />
                   </div>
+                </div>
+              );
+            })
+          ) : (
+            <></>
+          )}
+          <div className="paging">
+            {Array.from({ length: pagingSize }, (el, index) => {
+              return (
+                <div
+                  key={index}
+                  onClick={() => handleOffset(index)}
+                  style={{ padding: "0 20px", cursor: "pointer" }}
+                >
+                  {index + 1}
                 </div>
               );
             })}
