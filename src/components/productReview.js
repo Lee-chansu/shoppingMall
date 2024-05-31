@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/productReview.css";
 
-export const ProductReview = props => {
+export const ProductReview = (props) => {
+  const navigate = useNavigate();
   const { handleSwitchBtn, id, item } = props;
 
   const [userList, setUserList] = useState([]);
@@ -12,12 +13,16 @@ export const ProductReview = props => {
   const [offset, setOffset] = useState(0);
   const limit = 5;
 
-  const handleOffset = index => {
+  const handleOffset = (index) => {
     if (index === 0) {
       setOffset(0);
     } else {
       setOffset(index * limit);
     }
+  };
+
+  const handleNavigate = (reviewId) => {
+    navigate(`http://localhost:5000/reviewEdit/${reviewId}`);
   };
 
   useEffect(() => {
@@ -31,9 +36,9 @@ export const ProductReview = props => {
       //item = productId
       `http://localhost:5000/reviewList?buyList_id=${item}&offset=${offset}&limit=${limit}`
     )
-      .then(response => response.json())
-      .then(data => {
-        if (data) {
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.rows?.length > 0) {
           setReviewList(data.rows);
           setPagingSize(Math.ceil(data.count / limit));
         }
@@ -59,9 +64,10 @@ export const ProductReview = props => {
               </button>
             </Link>
           </div>
-          {reviewList === 0 ? (
+          {console.log(reviewList)}
+          {reviewList.length !== 0 ? (
             reviewList.map((el, i) => {
-              const user = userList.find(user => user.id === el.user_id);
+              const user = userList.find((user) => user.id === el.user_id);
               return (
                 <div className="reviewerInfoWrapper" key={el.id}>
                   <div className="reviewerInfo2">
@@ -69,7 +75,10 @@ export const ProductReview = props => {
                       <div className="userName">{user.userName} 님의 리뷰</div>
                       {id === user.id ? (
                         <div className="editBtnForm">
-                          <button className="reviewEditBtn">
+                          <button
+                            className="reviewEditBtn"
+                            onClick={() => handleNavigate(el.id)}
+                          >
                             리뷰 수정하기
                           </button>
                         </div>
