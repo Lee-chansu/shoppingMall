@@ -352,7 +352,7 @@ export const ProductDetailDescription = () => {
                       </button>
                     </>
                   ) : (
-                    <span className="administrator"> ProductInfo </span>
+                    <span className="administrator"> PRODUCT INFO </span>
                   )}
                   <div className="productName">
                     <div className="textWrapper2">제품명</div>
