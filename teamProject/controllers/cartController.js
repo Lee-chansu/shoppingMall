@@ -50,30 +50,33 @@ exports.selectCarryAll = async (req, res) => {
 
 //배송리스트 추가
 exports.addCarry = async (req, res) => {
-  const { list, user_id, order_id, mainAddress, detailAddress } = req.body;
+  const { list, user_id, order_id, mainAddress, detailAddress, carryMessage } =
+    req.body;
   console.log("list", list);
 
-  list.forEach(async (val, idx) => {
-    const carryStart = new Date();
-    const carryEnd = new Date(carryStart);
-    carryEnd.setDate(carryEnd.getDate() + 3);
+  const carryStart = new Date();
+  const carryEnd = new Date(carryStart);
+  carryEnd.setDate(carryEnd.getDate() + 3);
 
-    const newCarry = {
-      user_id,
-      order_id,
-      mainAddress,
-      detailAddress,
-      progress: "배송중",
-      carryStart,
-      carryEnd,
-    };
-    try {
-        await Carry.create(newCarry);
-    } catch (error) {
-      console.error("배송 내역 추가 중 에러 발생", error);
-    }
+  const newCarry = {
+    user_id,
+    order_id,
+    mainAddress,
+    detailAddress,
+    carryMessage,
+    progress: "배송중",
+    carryStart,
+    carryEnd,
+  };
+  try {
+    await Carry.create(newCarry);
+  } catch (error) {
+    console.error("배송 내역 추가 중 에러 발생", error);
+  }
+  res.json({
+    message: "배송 내역 추가가 성공적으로 완료되었습니다",
+    success: true,
   });
-  res.json({ message: "배송 내역 추가가 성공적으로 완료되었습니다", success: true });
 };
 
 // 장바구니에 제품 추가
@@ -103,6 +106,7 @@ exports.addBuyList = async (req, res) => {
     const newBuyList = {
       user_id,
       product_id: val.id,
+      productOption_id: val.productOption_id,
       productName: val.name,
       category: val.category ? val.category : "x",
       price: val.price,
