@@ -21,8 +21,8 @@ export const ProductDetailDescription = () => {
   const [index, setIndex] = useState(0);
   const [item, setItem] = useState(0);
   const [id, setId] = useState();
-  const [user, setUser] = useState([]); /* 원래 0으로 되어있었음 */
   const [isMaster, setIsMaster] = useState(false);
+  const [user, setUser] = useState({});
   const [switchBtn, setSwitchBtn] = useState(!true);
   const [color, setColor] = useState([]);
   const [size, setSize] = useState([]);
