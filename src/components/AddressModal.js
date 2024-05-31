@@ -53,5 +53,4 @@ const AddressModal = ({ mainAddressRef, innerText, setNewUser }) => {
     </>
   );
 };
-
 export default AddressModal;
