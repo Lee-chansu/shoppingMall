@@ -87,7 +87,7 @@ export const PasswordEdit = () => {
         <form className="changePasswordBox">
           <div className="inputBox">
             <div className="inputPassword">
-              <label for='password' className="place1" ref={placeRef}>새 비밀번호</label>
+              <label htmlFor='password' className="place1" ref={placeRef}>새 비밀번호</label>
               <input
                 id="password"
                 className="textWrapper2"
@@ -99,7 +99,7 @@ export const PasswordEdit = () => {
               ></input>
             </div>
             <div className="inputPasswordCheck">
-              <label for='passwordCheck' className="place2" ref={placeRef2}>새 비밀번호 확인</label>
+              <label htmlFor='passwordCheck' className="place2" ref={placeRef2}>새 비밀번호 확인</label>
               <input
                 id="passwordCheck"
                 className="textWrapper3"

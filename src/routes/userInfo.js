@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 export const UserInfo = () => {
   const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
-  const [id, setId] = useState("");
+  const [id, setId] = useState(0);
 
   useEffect(() => {
     const token = sessionStorage.getItem("token");

@@ -64,7 +64,6 @@ export const ProductReview = (props) => {
               </button>
             </Link>
           </div>
-          {console.log(reviewList)}
           {reviewList.length !== 0 ? (
             reviewList.map((el, i) => {
               const user = userList.find((user) => user.id === el.user_id);
