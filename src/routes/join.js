@@ -311,7 +311,7 @@ export const Join = () => {
               <div className="boxWrapper">
                 <input
                   className="input width"
-                  id="address"
+                  id="MainAddress"
                   name="mainAddress"
                   ref={mainAddressRef}
                   onChange={valueChange}
@@ -333,7 +333,7 @@ export const Join = () => {
               <div className="boxWrapper">
                 <input
                   className="input"
-                  id="address"
+                  id="detailAddress"
                   name="detailAddress"
                   onChange={valueChange}
                   placeholder="상세주소*"

@@ -7,6 +7,9 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true
     },
+    user_id: {
+      type: DataTypes.INTEGER
+    },
     userId: {
       type: DataTypes.STRING(255)
     },
@@ -29,7 +32,10 @@ module.exports = (sequelize) => {
     phoneNumber: {
       type: DataTypes.STRING(255)
     },
-    address: {
+    mainAddress: {
+      type: DataTypes.STRING(255)
+    },
+    detailAddress: {
       type: DataTypes.STRING(255)
     },
     isMaster: {

@@ -248,7 +248,8 @@ exports.deletedUser = async (req, res) => {
       userName: result.userName,
       email: result.email,
       phoneNumber: result.phoneNumber,
-      address: result.address,
+      mainAddress: result.mainAddress,
+      detailAddress: result.detailAddress,
       isMaster: result.isMaster,
       deleteDate: deleteDate,
     });
