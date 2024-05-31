@@ -4,6 +4,7 @@
 }
 
 .productAdd .inner {
+  width: 1190px;
   display: flex;
   justify-content: center;
 }

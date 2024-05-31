@@ -7,8 +7,8 @@ const productController = require("../controllers/productController");
 const cartController = require("../controllers/cartController");
 
 //userController
-router.get("/User", userController.loadUser);
-router.get("/DeleteUser", userController.loadDeleteUser);
+router.get("/user", userController.loadUser);
+router.get("/deleteUser", userController.loadDeleteUser);
 router.get("/profile/:id", userController.loadProfileImage);
 router.get("/userEdit/:id", userController.loadUserForEdit);
 router.get("/userProfile/:id", userController.loadUserForEdit);

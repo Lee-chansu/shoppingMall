@@ -203,7 +203,7 @@ export const FindPassword = () => {
           </div>
         </form>
       </div>
-      <Footer></Footer>
+      
     </div>
   );
 };

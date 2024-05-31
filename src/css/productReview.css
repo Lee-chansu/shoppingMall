@@ -9,278 +9,157 @@
 .productInfoReview .productInfoWrapper {
   margin-top: 100px;
   background-color: #ffffff;
-  height: 1200px;
   width: 1440px;
 }
 
 .productInfoReview .productInfo {
-  height: 1163px;
-  left: 53px;
-  position: relative;
-  top: 18px;
   width: 1330px;
+  transform: translate(50px, 23px);
 }
 
-.productInfoReview .reviewBox {
-  height: 527px;
-  position: absolute;
-  top: 170px;
+.productInfoReview .productDescription {
+  background-color: inherit;
   width: 1328px;
-}
-
-.productInfoReview .review {
-  background-color: #ffffff;
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-color: #eeeeeeee;
-  height: 425px;
-  left: -2px;
-  position: absolute;
-  top: 565px;
-  width: 1331px;
-}
-
-.productInfoReview .reviewerInfo {
-  height: 425px;
-  left: 2px;
   position: relative;
-  width: 665px;
+  cursor: pointer;
 }
 
-/* 리뷰작성 */
-.productInfoReview .productSize {
-  color: #999;
-  font-size: 24px;
-  font-weight: 400;
-  left: 670px;
-  position: absolute;
-  top: -55px;
-  width: 200px;
-}
-
-.productInfoReview .productColor {
-  color: #999;
-  font-size: 24px;
-  font-weight: 400;
-  left: 580px;
-  position: absolute;
-  top: -55px;
-  white-space: nowrap;
-  width: 100px;
-}
-
-.productInfoReview .productDetail {
-  color: #000;
-  font-size: 20px;
-  font-weight: 400;
-  left: 580px;
-  position: absolute;
-  top: 0px;
-  height: 130px;
-  width: 440px;
-  overflow: hidden;
-  white-space: normal;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2.5;
-  -webkit-box-orient: vertical;
-  word-break: keep-all;
-}
-
-.productInfoReview .userName {
-  color: #000;
-  font-size: 24px;
-  font-weight: 400;
-  left: 580px;
-  position: absolute;
-  top: -90px;
-  width: 250px;
-}
-
-.productInfoReview .reviewImage {
-  position: absolute;
-  top: -130px;
-  right: 40px;
-  width: 250px;
-  height: 250px;
-  border-radius: 10px;
-}
-
-.productInfoReview .reviewCreatedAt {
-  color: #999;
-  font-size: 20px;
-  font-weight: 400;
-  left: 580px;
-  position: absolute;
-  top: -120px;
-  white-space: nowrap;
-  width: 200px;
-}
-
-.productInfoReview .div {
+.productInfoReview .textWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #000000;
   font-size: 43.2px;
   font-weight: 400;
-  left: 15px;
   letter-spacing: 0;
   line-height: normal;
-  position: absolute;
-  top: 43px;
-  white-space: nowrap;
-  width: 275px;
-}
-
-.productInfoReview .starRating {
-  left: 60px;
-  line-height: normal;
-  position: absolute;
-  top: -100px;
-  white-space: nowrap;
-  width: 275px;
-}
-
-.productInfoReview .star {
-  margin-left: -15px;
-}
-
-.productInfoReview .reviewerInfoWrapper {
-  height: 382px;
-  left: 2px;
-  position: absolute;
-  top: 183px;
-  width: 1331px;
-}
-
-.productInfoReview .reviewerInfo2 {
-  display: flex;
-  height: 355px;
+  height: 100%;
   width: 100%;
-  border-left: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  border-right: 1px solid #eee;
-  margin-top: -178px;
-}
-
-.productInfoReview .overlap {
-  margin-top: 20px;
-  width: 40%;
-  height: 90%;
-  border-right: 1px solid #ccc;
-}
-
-.productInfoReview .editBtnForm {
-  height: 62px;
-  left: 224px;
-  position: absolute;
-  top: 0;
-  width: 268px;
-}
-
-.productInfoReview .overlapGroup {
-  border: 1px solid pink;
-  height: 48px;
-  left: 17px;
-  position: relative;
-  top: 300px;
-  width: 233px;
-}
-
-.productInfoReview .reviewEditBtn {
-  color: #fff;
-  font-size: 30px;
-  position: absolute;
-  left: -95px;
-  top: 70px;
-  white-space: nowrap;
-  width: 100%;
-  padding: 10px 0;
-  background-color: #000;
-  border-radius: 5px;
-}
-
-.evaluation {
-  font-size: 24px;
-  color: #999;
-  position: absolute;
-  top: 20px;
-  left: 150px;
-}
-
-.productInfoReview .reviewAddBtnForm {
-  background-color: none;
-  border-bottom: 5px solid #999;
-  height: 1px;
-  position: absolute;
-  left: 2px;
-  width: 1331px;
-}
-
-.productInfoReview .divWrapper {
-  z-index: 1;
-  height: 70px;
-  left: 961px;
-  position: relative;
-  top: 20px;
-  width: 343px;
-}
-
-.productInfoReview .textWrapper4 {
-  color: #000000;
-  font-size: 26px;
-  font-weight: 400;
-  left: -830px;
-  position: absolute;
-  top: 20px;
-  white-space: nowrap;
-  width: 251px;
 }
 
 .productInfoReview .infoSelect {
-  background-color: #ffffff;
-  height: 159px;
-  left: 2px;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  width: 1328px;
-}
-
-.productInfoReview .productReview {
-  background-color: #999;
+  display: flex;
+  background-color: inherit;
   border-radius: 5px;
   height: 156px;
-  left: 664px;
-  position: absolute;
-  top: 5px;
-  width: 664px;
-}
-
-.productInfoReview .textWrapper5 {
-  color: #eee;
-  font-size: 28px;
-  font-weight: 400;
-  left: 270px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 66px;
+  width: 100%;
 }
 
 .productInfoReview .productDescription {
   height: 156px;
-  left: 0;
-  position: absolute;
-  top: 5px;
   width: 664px;
 }
 
-.productInfoReview .textWrapper6 {
-  color: #000000;
+.productInfoReview .textWrapper3 {
+  color: #eee;
+  height: 100%;
   font-size: 28px;
   font-weight: 400;
-  left: 280px;
   letter-spacing: 0;
-  line-height: normal;
+  vertical-align: middle;
+  line-height: 155px;
+  text-align: center;
+}
+
+.productInfoReview .productReview {
+  /* height: 156px;
+  left: 0;
   position: absolute;
-  top: 66px;
+  top: 5px;
+  width: 664px; */
+
+  background-color: #999;
+  border-radius: 5px;
+  height: 156px;
+  width: 664px;
+  cursor: pointer;
+}
+
+.productInfoReview .textWrapper4 {
+  color: #000;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 156px;
+  vertical-align: middle;
+  height: 100%;
+  text-align: center;
+}
+
+.productInfoReview .reviewBox {
+  width: 1440px;
+  height: 100%;
+  margin-top: 40px;
+  border-top: 5px solid #999;
+}
+.productInfoReview .reviewAddBtnForm {
+  display: flex;
+  justify-content: flex-end;
+  width: 1440px;
+  height: 100px;
+  margin: 50px 0;
+}
+
+.productInfoReview .reviewAddBtn {
+  padding: 32px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.productInfoReview .reviewerInfoWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0;
+  border-bottom: #eee 1px solid;
+}
+.productInfoReview .reviewerInfoWrapper .reviewerInfo2 {
+  padding: 20px 20px;
+}
+.productInfoReview .reviewerInfoWrapper .reviewerInfo2 .overlap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.productInfoReview .reviewerInfoWrapper .reviewerInfo2 .overlap .userName {
+  font-size: 32px;
+}
+.productInfoReview .reviewerInfoWrapper .reviewerInfo2 .overlap .editBtnForm {
+  margin: 0 40px;
+}
+.productInfoReview
+  .reviewerInfoWrapper
+  .reviewerInfo2
+  .overlap
+  .editBtnForm
+  .reviewEditBtn {
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+
+.productInfoReview .starRating,
+.productInfoReview .evaluation,
+.productInfoReview .reviewCreatedAt,
+.productInfoReview .productOption,
+.productInfoReview .productDetail {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+.productInfoReview .reviewImageBox {
+  display: block;
+  width: 400px;
+  padding: 20px;
+}
+
+.productInfoReview .reviewImage {
+  width: 100%;
+}
+.productInfoReview .paging {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }

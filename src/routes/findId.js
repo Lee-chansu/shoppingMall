@@ -186,7 +186,7 @@ export const FindId = () => {
         </form>
         {passResult ? <div className="result">아이디 : {userId}</div> : <div></div>}
       </div>
-      <Footer></Footer>
+      
     </div>
   );
 };
