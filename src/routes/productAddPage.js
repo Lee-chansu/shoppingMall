@@ -14,7 +14,8 @@ import CustomButton from "../components/CustomButton";
 
 export const ProductAdd = () => {
   const navigate = useNavigate();
-  const handleCancle = () => {
+  const handleCancle = e => {
+    e.preventDefault();
     navigate(-1);
   };
 
@@ -152,7 +153,6 @@ export const ProductAdd = () => {
 
   const toAddProduct = async e => {
     e.preventDefault();
-    console.log("newOption", newOption);
 
     try {
       if (newProduct.category === "") {
@@ -305,7 +305,7 @@ export const ProductAdd = () => {
         <div className="inner">
           <form
             className="formBox"
-            encType="multipart/form-data"
+            // encType="multipart/form-data"
             onSubmit={toAddProduct}
           >
             <div className="wrap">

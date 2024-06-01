@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap"; //리액트 부트스트랩 사용한 모달
 import DaumPostcodeEmbed from "react-daum-postcode";
 

@@ -128,7 +128,7 @@ export const ProductEdit = () => {
     }
   };
 
-  const showDetailBar = () => {
+  const showDetailBar = (checkCategory, checkDetail) => {
     setNewProduct({
       ...newProduct,
       category: checkCategory,
@@ -157,7 +157,7 @@ export const ProductEdit = () => {
   }, []);
 
   useEffect(() => {
-    showDetailBar();
+    showDetailBar(checkCategory, checkDetail);
   }, [checkCategory, checkDetail]);
 
   //새로운 정보(productOption)을 추가하는 컴포넌트

@@ -21,25 +21,29 @@ export const Review = () => {
       navigate("/");
     } else {
       const decodeToken = jwtDecode(token);
-      setAddReview((pre) => ({ ...pre, user_id: decodeToken.id }));
-      if(location.state){
-        setBuyList(location.state.buyList)  // 제품정보값넣기
-        setAddReview((pre)=>({...pre, buyList_id : location.state.buyList.id}))
-        }else{
-        navigate("/")
+      setAddReview(pre => ({ ...pre, user_id: decodeToken.id }));
+      if (location.state) {
+        setBuyList(location.state.buyList); // 제품정보값넣기
+        setAddReview(pre => ({
+          ...pre,
+          buyList_id: location.state.buyList.id,
+        }));
+      } else {
+        navigate("/");
       }
     }
   }, []);
 
-  const [buyList,setBuyList] = useState({  // 제품정보
-    id : "",
-    productName : "",
-    price : "",
-    productColor : "",
-    productSize : "",
-    image : "",
-    isReviewed: ""
-  })
+  const [buyList, setBuyList] = useState({
+    // 제품정보
+    id: "",
+    productName: "",
+    price: "",
+    productColor: "",
+    productSize: "",
+    image: "",
+    isReviewed: "",
+  });
   const [addReview, setAddReview] = useState({
     user_id: "",
     buyList_id: "",
@@ -54,12 +58,12 @@ export const Review = () => {
   const sizeList = ["작아요", "정사이즈예요", "커요"];
   const startList = [1, 2, 3, 4, 5]; // map 돌리기위한 배열갯수
 
-  const handleClick = (i) => () => {
+  const handleClick = i => () => {
     // 별점클릭시
-    setAddReview((pre) => ({ ...pre, starPoint: i + 1 }));
+    setAddReview(pre => ({ ...pre, starPoint: i + 1 }));
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     if (e.target.files) {
       const selectFile = e.target.files[0];
       const reader = new FileReader();
@@ -85,7 +89,7 @@ export const Review = () => {
           return; // 다음 파일 처리 중단
         }
         reader.onloadend = () => {
-          setAddReview((pre) => ({ ...pre, reviewImage: reader.result }));
+          setAddReview(pre => ({ ...pre, reviewImage: reader.result }));
         };
         reader.readAsDataURL(selectFile);
       }
@@ -95,7 +99,7 @@ export const Review = () => {
       //   reviewImage : e.target.files[0]
       // }))
     } else {
-      setAddReview((pre) => ({
+      setAddReview(pre => ({
         ...pre,
         content: e.target.value,
       })); //사용자 내용 입력시마다 state update
@@ -106,7 +110,7 @@ export const Review = () => {
     navigate(-1);
   };
 
-  const handleLinkReviewMove = async (e) => {
+  const handleLinkReviewMove = async e => {
     e.preventDefault();
     if (addReview.starPoint === 0) {
       Myalter("warning", "리뷰 가이드", "별점을 선택해주세요");
@@ -129,8 +133,6 @@ export const Review = () => {
     }
   };
 
-  
-  
   return (
     <div className="review">
       <div className="reviewWrap">
@@ -187,7 +189,7 @@ export const Review = () => {
                       addReview.reviewColor == idx ? "selected" : "non-selected"
                     }
                     handleLinkMove={() => {
-                      setAddReview((pre) => ({ ...pre, reviewColor: idx }));
+                      setAddReview(pre => ({ ...pre, reviewColor: idx }));
                     }}
                   />
                 </div>
@@ -212,7 +214,7 @@ export const Review = () => {
                       addReview.reviewSize == idx ? "selected" : "non-selected"
                     }
                     handleLinkMove={() => {
-                      setAddReview((pre) => ({ ...pre, reviewSize: idx }));
+                      setAddReview(pre => ({ ...pre, reviewSize: idx }));
                     }}
                   />
                 </div>

@@ -1,10 +1,9 @@
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../css/toss.css";
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
 
 export function FailPage() {
-  const [searchParams] = useSearchParams();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const code = params.get("code");

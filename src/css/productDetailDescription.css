@@ -336,7 +336,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 722px;
 }
 
-.productdetail .subThumbnail0 {
+.productdetail .subThumbnail1 {
   background-color: #d9d9d9;
   height: 155px;
   left: 100px;
@@ -345,7 +345,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 155px;
 }
 
-.productdetail .subThumbnail1 {
+.productdetail .subThumbnail2 {
   background-color: #d9d9d9;
   height: 155px;
   left: 273px;
@@ -354,7 +354,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 155px;
 }
 
-.productdetail .subThumbnail2 {
+.productdetail .subThumbnail3 {
   background-color: #d9d9d9;
   height: 155px;
   left: 445px;

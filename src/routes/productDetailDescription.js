@@ -18,7 +18,7 @@ export const ProductDetailDescription = () => {
   const [product, setProduct] = useState([]);
   const [stock, setStock] = useState(0);
   const [maxStock, setMaxStock] = useState(0);
-  const [index, setIndex] = useState(0);
+  const [indexArray, setIndexArray] = useState([0, 1, 2, 3]);
   const [item, setItem] = useState(0);
   const [id, setId] = useState();
   const [isMaster, setIsMaster] = useState(false);
@@ -257,10 +257,18 @@ export const ProductDetailDescription = () => {
 
   const mainRef = useRef(null);
 
-  let photos = [product.mainImage, product.subImage1, product.subImage2];
+  let photos = [
+    product.mainImage,
+    product.subImage1,
+    product.subImage2,
+    product.subImage3,
+  ];
 
-  function jump(index) {
-    setIndex(index);
+  function jump(i) {
+    const prevIndexArray = [...indexArray];
+    const targetIndex = prevIndexArray.splice(i, 1)[0];
+    prevIndexArray.splice(0, 0, targetIndex);
+    setIndexArray(prevIndexArray);
   }
 
   const handleSwitchBtn = () => {
@@ -316,21 +324,26 @@ export const ProductDetailDescription = () => {
           <div className="productdetail">
             <div className="div">
               <div className="thumbnailBox">
-                <img
-                  ref={mainRef}
-                  src={photos[index]}
-                  alt="메인이미지"
-                  className="mainThumbnailWrapper"
-                />
-                {photos.map((photo, i) => (
-                  <img
-                    key={i}
-                    onClick={() => jump(i)}
-                    className={"subThumbnail" + i}
-                    alt="제품 서브이미지"
-                    src={photo}
-                  />
-                ))}
+                {photos.map((photo, i) =>
+                  i === 0 ? (
+                    <img
+                      key={i}
+                      ref={mainRef}
+                      src={photos[indexArray[i]]}
+                      alt="메인이미지"
+                      className="mainThumbnailWrapper"
+                    />
+                  ) : (
+                    <img
+                      key={i}
+                      onClick={() => jump(i)}
+                      className={"subThumbnail" + i}
+                      alt="제품 서브이미지"
+                      src={photos[indexArray[i]]}
+                      // src={photo}
+                    />
+                  )
+                )}
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="infoBox">
