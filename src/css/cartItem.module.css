@@ -52,27 +52,27 @@
 }
 
 .countUp {
-  color: #ff7d9e;
+  color: #000;
   font-size: 16px;
   font-weight: 400;
   left: 5px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 5px;
+  top: 8px;
   width: 30px;
   border: none;
 }
 
 .countDown {
-  color: #ff7d9e;
+  color: #000;
   font-size: 16px;
   font-weight: 400;
   left: 5px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 22px;
+  top: 24px;
   width: 30px;
   border: none;
 }
@@ -125,7 +125,7 @@
 .cartCarryPrice {
   color: #000000;
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 400;
   left: 18px;
   letter-spacing: 0;
   line-height: normal;
@@ -137,7 +137,7 @@
 .cartProductSizeColor {
   color: #000000;
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 400;
   left: 380px;
   text-align: center;
   line-height: normal;
@@ -147,8 +147,8 @@
 }
 
 .cartSumPrice {
-  color: #ff7d9e;
-  font-size: 28px;
+  color: #000;
+  font-size: 22px;
   font-weight: 600;
   left: 190px;
   text-align: center;
