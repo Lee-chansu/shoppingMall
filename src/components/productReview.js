@@ -131,7 +131,6 @@ export const ProductReview = props => {
                         : el.reviewColor === 2
                         ? "어두워요"
                         : ""}{" "}
-                      / {console.log(el.reviewColor)}
                     </div>
                     <div className="productSize">
                       {el.reviewSize === 0

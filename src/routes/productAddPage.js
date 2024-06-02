@@ -24,11 +24,11 @@ export const ProductAdd = () => {
   const [count, setCount] = useState(1);
 
   const detail = {
-    아우터: ["코트", "블레이저", "패딩"],
-    상의: ["반팔", "긴팔", "티셔츠", "후드", "러닝"],
+    아우터: ["코트", "블레이저", "패딩", "자켓", "가디건"],
+    상의: ["반팔", "긴팔", "티셔츠", "니트", "나시"],
     하의: ["청바지", "슬랙스", "카고바지", "반바지"],
-    신발: ["샌들", "런닝화", "구두"],
-    악세사리: ["귀걸이", "가방", "피어싱", "모자"],
+    신발: ["샌들/슬리퍼", "운동화/단화", "구두/워커"],
+    악세사리: ["양말", "가방", "피어싱", "헤어", "기타"],
   };
 
   const [detailBar, setDetailBar] = useState([]);
@@ -303,11 +303,7 @@ export const ProductAdd = () => {
       <Nav></Nav>
       <div className="productAdd">
         <div className="inner">
-          <form
-            className="formBox"
-            // encType="multipart/form-data"
-            onSubmit={toAddProduct}
-          >
+          <form className="formBox" onSubmit={toAddProduct}>
             <div className="wrap">
               <h2 className="categoryTitle">카테고리</h2>
               <div className="boxWrap">

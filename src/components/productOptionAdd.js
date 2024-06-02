@@ -6,11 +6,11 @@ export function ProductOption({
   count,
   setCount,
 }) {
-  const addTag = (e) => {
+  const addTag = e => {
     e.preventDefault();
     setCount(count + 1);
   };
-  const valueChange = (e) => {
+  const valueChange = e => {
     const newOptions = [...newOption];
     const { name, value } = e.target;
     const updateOption = { ...newOptions[idx], [name]: value };
@@ -18,7 +18,7 @@ export function ProductOption({
     setNewOption(newOptions);
   };
 
-  const delTag = (e) => {
+  const delTag = e => {
     e.preventDefault();
     if (count > 1) {
       setCount(count - 1);
@@ -73,6 +73,18 @@ export function ProductOption({
               <option value="285">285</option>
               <option value="290">290</option>
             </select>
+          ) : checkCategory === "악세사리" ? (
+            <select
+              id={`size` + idx}
+              name="size"
+              defaultValue={""}
+              onChange={valueChange}
+            >
+              <option value="" disabled>
+                size
+              </option>
+              <option value="acc">acc</option>
+            </select>
           ) : (
             <select
               id={`size` + idx}
@@ -116,11 +128,11 @@ export function EditInfo({
   count,
   idx,
 }) {
-  const addTag = (e) => {
+  const addTag = e => {
     e.preventDefault();
     setCount(count + 1);
   };
-  const delTag = (e) => {
+  const delTag = e => {
     e.preventDefault();
     if (optionLength > 1) {
       setOptionLength(optionLength - 1);
@@ -132,7 +144,7 @@ export function EditInfo({
       return;
     }
   };
-  const valueChange = (e) => {
+  const valueChange = e => {
     const newOptions = [...newOption];
     const { name, value } = e.target;
     const updateOption = { ...newOptions[idx], [name]: value };

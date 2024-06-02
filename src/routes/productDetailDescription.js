@@ -271,6 +271,10 @@ export const ProductDetailDescription = () => {
     setIndexArray(prevIndexArray);
   }
 
+  const imgError = event => {
+    event.target.src = "/img/readyProduct.png";
+  };
+
   const handleSwitchBtn = () => {
     setSwitchBtn(!switchBtn);
   };
@@ -329,18 +333,27 @@ export const ProductDetailDescription = () => {
                     <img
                       key={i}
                       ref={mainRef}
-                      src={photos[indexArray[i]]}
-                      alt="메인이미지"
+                      src={
+                        photos[indexArray[i]]
+                          ? photos[indexArray[i]]
+                          : "/img/readyProduct.png"
+                      }
+                      onError={imgError}
+                      alt="제품 메인이미지"
                       className="mainThumbnailWrapper"
                     />
                   ) : (
                     <img
                       key={i}
+                      onError={imgError}
+                      src={
+                        photos[indexArray[i]]
+                          ? photos[indexArray[i]]
+                          : "/img/readyProduct.png"
+                      }
+                      alt="제품 서브이미지"
                       onClick={() => jump(i)}
                       className={"subThumbnail" + i}
-                      alt="제품 서브이미지"
-                      src={photos[indexArray[i]]}
-                      // src={photo}
                     />
                   )
                 )}
