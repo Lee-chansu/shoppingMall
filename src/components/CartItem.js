@@ -10,7 +10,7 @@ export const CartItem = ({
 }) => {
   //수량 up btn
   const handleUpCount = () => {
-    // console.log(val.stock)
+    // val.stock 이 수량이 제한되어 있어서 유효성 검사 코드 추가
     if (val.amount >= val.stock) return;
     const listCopy = cartItemList;
     listCopy[idx].amount = val.amount + 1;

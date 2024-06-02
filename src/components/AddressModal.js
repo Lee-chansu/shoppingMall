@@ -5,15 +5,15 @@ import DaumPostcodeEmbed from "react-daum-postcode";
 const AddressModal = ({ mainAddressRef, innerText, setNewUser }) => {
   const [isModalOpened, setIsModalOpened] = useState(false);
 
-  const MyHandleComplete = data => {
-    // console.log(data);
+  const MyHandleComplete = (data) => {
+    console.log(data);
     mainAddressRef.current.value = data.address;
-    setNewUser(prev => {
+    setNewUser((prev) => {
       return { ...prev, mainAddress: data.address };
     });
   };
 
-  const closeHandler = state => {
+  const closeHandler = (state) => {
     console.log(state);
     setIsModalOpened(!isModalOpened);
   };
