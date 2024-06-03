@@ -12,9 +12,9 @@ export const UserEdit = () => {
   const goback = () => {
     navigate(-1);
   };
-  const [getUser, setGetUser] = useState({});
+  const [getUser, setGetUser] = useState({ email: "", phoneNumber: "", mainAddress: "", detailAddress: "" });
   const [id, setId] = useState();
-  const [editUser, setEditUser] = useState({});
+  const [editUser, setEditUser] = useState({ password: "", passwordCheck: "", email: "", phoneNumber: "", mainAddress: "", detailAddress: "" });
   const [checkToggle, setCheckToggle] = useState("false");
   const mainAddressRef = useRef(null);
 
@@ -176,12 +176,12 @@ export const UserEdit = () => {
             </div>
             <div className="boxPassword">
               <div className="checkBox">
-                <label htmlFor="passwordCheck" className="txt">
+                <label htmlFor="passwordCheckbox" className="txt">
                   비밀번호 변경하지않음
                 </label>
                 <input
                   type="checkbox"
-                  id="passwordCheck"
+                  id="passwordCheckbox"
                   className="checkPass"
                   onClick={checkClick}
                   value={checkToggle}
@@ -263,7 +263,7 @@ export const UserEdit = () => {
               </label>
               <input
                 className="mainAddress"
-                id="address"
+                id="mainAddress"
                 name="mainAddress"
                 ref={mainAddressRef}
                 onChange={valueChange}
