@@ -7,7 +7,7 @@ import { BoxArrowInRight, PersonAdd } from "react-bootstrap-icons";
 export const Nav = () => {
   const isLogin = sessionStorage.getItem("token");
   // const [imageUrl, setImageUrl] = useState("");
-  const [imageUrl, setImageUrl] = useState("../img/userDefaultImg.png");
+  const [imageUrl, setImageUrl] = useState("/img/userDefaultImg.png");
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
 
   // 유저프로필 이미지
@@ -60,8 +60,8 @@ export const Nav = () => {
               <Link className="linkProfile" to="/userInfo">
                 <img
                   className="profileImage"
-                  src={imageUrl}
-                  onError={() => setImageUrl("../img/userDefaultImg.png")}
+                  src={imageUrl ? imageUrl : "/img/userDefaultImg.png"}
+                  onError={() => setImageUrl("/img/userDefaultImg.png")}
                   alt="유저프로필"
                 />
               </Link>
@@ -73,9 +73,7 @@ export const Nav = () => {
                   <div className="joinBox">
                     <div className="joinBoxText">
                       로그인
-                      <BoxArrowInRight 
-                        className="boxArrowInRight"
-                      /> 
+                      <BoxArrowInRight className="boxArrowInRight" />
                     </div>
                   </div>
                 </Link>
