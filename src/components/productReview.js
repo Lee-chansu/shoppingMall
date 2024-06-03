@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/productReview.css";
 
-export const ProductReview = (props) => {
+export const ProductReview = props => {
   const navigate = useNavigate();
   const { handleSwitchBtn, id, item } = props;
 
@@ -13,7 +13,7 @@ export const ProductReview = (props) => {
   const [offset, setOffset] = useState(0);
   const limit = 5;
 
-  const handleOffset = (index) => {
+  const handleOffset = index => {
     if (index === 0) {
       setOffset(0);
     } else {
@@ -28,16 +28,16 @@ export const ProductReview = (props) => {
   useEffect(() => {
     // user 데이터 가져오기
     fetch("http://localhost:5000/user")
-      .then((response) => response.json())
-      .then((data) => setUserList(data));
+      .then(response => response.json())
+      .then(data => setUserList(data));
 
     // reviewList 데이터 가져오기
     fetch(
       //item = productId
       `http://localhost:5000/reviewList?buyList_id=${item}&offset=${offset}&limit=${limit}`
     )
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
         if (data.rows?.length > 0) {
           setReviewList(data.rows);
           setPagingSize(Math.ceil(data.count / limit));
@@ -66,7 +66,7 @@ export const ProductReview = (props) => {
           </div>
           {reviewList.length !== 0 ? (
             reviewList.map((el, i) => {
-              const user = userList.find((user) => user.id === el.user_id);
+              const user = userList.find(user => user.id === el.user_id);
               return (
                 <div className="reviewerInfoWrapper" key={el.id}>
                   <div className="reviewerInfo2">
@@ -131,7 +131,6 @@ export const ProductReview = (props) => {
                         : el.reviewColor === 2
                         ? "어두워요"
                         : ""}{" "}
-                      / {console.log(el.reviewColor)}
                     </div>
                     <div className="productSize">
                       {el.reviewSize === 0
@@ -159,7 +158,8 @@ export const ProductReview = (props) => {
               <div className="reviewImageBox" style={{ width: "100%" }}>
                 <p className="noReivew">
                   등록된 리뷰가 없습니다.
-                  <p>상품을 구매하고 리뷰를 남겨주세요 .</p>
+                  <br />
+                  상품을 구매하고 리뷰를 남겨주세요
                 </p>
               </div>
             </div>

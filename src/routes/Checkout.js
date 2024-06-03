@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { loadPaymentWidget, ANONYMOUS } from "@tosspayments/payment-widget-sdk";
+import { loadPaymentWidget } from "@tosspayments/payment-widget-sdk";
 import { nanoid } from "nanoid";
 import "../css/toss.css";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -97,13 +97,26 @@ export function CheckoutPage() {
     const userResponse = await fetch(`http://localhost:5000/userProfile/${id}`);
     const userProfile = await userResponse.json();
 
-    const paymentRequestData = { id: orderId, amount: price, user_id: id, items: location.state.paymentList };
+    const paymentRequestData = {
+      id: orderId,
+      amount: price,
+      user_id: id,
+      items: location.state.paymentList,
+    };
 
     try {
       const saveResponse = await fetch("http://localhost:5000/paymentRequest", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: orderId, amount: price, user_id: id, items: location.state.paymentList, mainAddress: location.state.address.mainAddress, detailAddress: location.state.address.detailAddress, carryMessage: location.state.carryMessage }),
+        body: JSON.stringify({
+          id: orderId,
+          amount: price,
+          user_id: id,
+          items: location.state.paymentList,
+          mainAddress: location.state.address.mainAddress,
+          detailAddress: location.state.address.detailAddress,
+          carryMessage: location.state.carryMessage,
+        }),
       });
 
       if (!saveResponse.ok) {
@@ -160,7 +173,7 @@ export function CheckoutPage() {
                 className="checkable__input"
                 type="checkbox"
                 aria-checked="true"
-                onChange={(event) => {
+                onChange={event => {
                   setPrice(
                     event.target.checked ? price - 5_000 : price + 5_000
                   );

@@ -136,7 +136,8 @@ module.exports = {
           phoneNumber: "8",
           mainAddress: "main address 8",
           detailAddress: "detail address 8",
-          profileImg: "https://image.idus.com/image/files/39de64edfbf1423795cead9cfc85c7ad_1440.jpg",
+          profileImg:
+            "https://image.idus.com/image/files/39de64edfbf1423795cead9cfc85c7ad_1440.jpg",
           isMaster: false,
           isDeleted: false,
         },
@@ -156,7 +157,7 @@ module.exports = {
           isDeleted: false,
         },
       ],
-      {order : 3}
+      {}
     );
   },
 

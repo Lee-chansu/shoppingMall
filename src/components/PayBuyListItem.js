@@ -41,30 +41,28 @@ export const PayItem = ({ val, handleDeleteItem, handleAddToCart }) => {
         </div>
       </div>
       <div className="btnBox">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/7541/7541102.png"
+          alt="basketPlus"
+          className="basketPlusImage"
+        />
         <div className="basketPlus" onClick={basketPlus}>
-          {/* <img className="basketBtn"
-          width="38"
-          alt="basket"
-          src="img/basket.png"
-          /> */}
           장바구니 담기
         </div>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHZj_GzidfEyhlUZG_bdzoT6wNr74LkwCWeQ&s"
+          alt="delBtn"
+          className="delBtnImage"
+        />
         <Link className="delBtn" onClick={delBtn}>
-          {/* <img
-            className="trashBtn"
-            width="32"
-            alt="trash"
-            src="img/trashBtn.png"
-          /> */}
           구매내역 삭제
         </Link>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbp7Tc3RvRRgt373z90fSm8HDHEfrtTCHQsA&s"
+          alt="reviewBtn"
+          className="reviewBtnImage"
+        />
         <div className="reviewBtn" onClick={moveReview}>
-          {/* <img
-            className="trashBtn"
-            width="32"
-            alt="trash"
-            src="img/trashBtn.png"
-          /> */}
           {val.isReviewed ? "리뷰 수정하기" : "상품 리뷰쓰기"}
         </div>
       </div>

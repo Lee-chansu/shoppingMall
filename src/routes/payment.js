@@ -56,14 +56,14 @@ export const Payment = () => {
 
   const handleChange = (e) => {
     setSelectedOption(e.target.value);
-    const newMessage = carryMessage
+    const newMessage = carryMessage;
     setCarryMessage(e.target.value);
     // console.log("selectedOption", e.target.value);
   };
 
   const handleCarryMessage = (e) => {
     setCarryMessage(e.target.value);
-  }
+  };
 
   const userFetch = async () => {
     const response = await fetch(`http://localhost:5000/userProfile/${id}`);
@@ -156,9 +156,14 @@ export const Payment = () => {
 
   //cart의 선택된 상품을 전달받아 list에 저장
   useEffect(() => {
+    if (!location.state) {
+      alert("잘못된 접근입니다 !");
+      navigate("/cart");
+      return;
+    }
     const { list } = location.state; //cart에서 navigate로 보낸 cartItemList를 location으로 list란 이름으로 받음
-    // console.log("list", list);
-    setPaymentItemList(list); //list가 없을때 예외처리 해야함
+
+    setPaymentItemList(list);
   }, []); //의존성 배열이 비어있기때문에 값이 바뀔수없으므로 한번만 실행
 
   return (
@@ -246,18 +251,22 @@ export const Payment = () => {
                     <option value="문 앞에 놔주세요">문 앞에 놔주세요</option>
                     <option value="직접 받을게요">직접 받을게요</option>
                     <option value="우편함에 놔주세요">우편함에 놔주세요</option>
-                    <option value="문 앞 배송 후 문자주세요">문 앞 배송 후 문자주세요</option>
-                    <option value="부재시 경비실에 맡겨주세요">부재시 경비실에 맡겨주세요</option>
+                    <option value="문 앞 배송 후 문자주세요">
+                      문 앞 배송 후 문자주세요
+                    </option>
+                    <option value="부재시 경비실에 맡겨주세요">
+                      부재시 경비실에 맡겨주세요
+                    </option>
                     <option value="">직접입력</option>
                   </select>
-                    <input
-                      className="carryDirectMessage"
-                      placeholder="여기에 배송요청 사항을 직접 입력하세요"
-                      maxLength="100"
-                      hidden={selectedOption !== ""}
-                      value={carryMessage}
-                      onChange={handleCarryMessage}
-                    />
+                  <input
+                    className="carryDirectMessage"
+                    placeholder="여기에 배송요청 사항을 직접 입력하세요"
+                    maxLength="100"
+                    hidden={selectedOption !== ""}
+                    value={carryMessage}
+                    onChange={handleCarryMessage}
+                  />
                 </div>
               </div>
               <div className="saleBox">

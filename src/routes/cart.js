@@ -108,7 +108,7 @@ export const Cart = () => {
       .sort((a, b) => a.id - b.id);
 
     if (selectedCartItemList.length === 0) {
-      Myalter("warning","장바구니 가이드","결제하실 상품을 골라주세요");
+      Myalter("warning", "장바구니 가이드", "결제하실 상품을 골라주세요");
       return;
     }
 
@@ -126,7 +126,7 @@ export const Cart = () => {
       (val) => val.isChecked === true
     );
     if (selectedCartItemList.length === 0) {
-      Myalter("warning","장바구니 가이드","삭제하실 상품을 골라주세요");
+      Myalter("warning", "장바구니 가이드", "삭제하실 상품을 골라주세요");
       return;
     }
 
@@ -143,11 +143,11 @@ export const Cart = () => {
       });
 
       const data = res.data;
-      Myalter("warning","장바구니 가이드",data.message);
+      Myalter("warning", "장바구니 가이드", data.message);
       getProducts();
     } catch (error) {
       console.error(error);
-      Myalter("warning","장바구니 가이드","삭제 실패");
+      Myalter("warning", "장바구니 가이드", "삭제 실패");
     }
   };
 
@@ -187,20 +187,20 @@ export const Cart = () => {
 
           <ButtonBox>
             <CustomButton
-              className="btn1"
+              className="button2"
               buttonTitle="뒤로가기"
               handleLinkMove={handleLinkBackMove}
             />
 
             <CustomButton
-              className="btn2"
-              buttonTitle="선택상품 삭제하기"
+              className="button2"
+              buttonTitle="선택상품 삭제"
               handleLinkMove={handlePaymentRemove}
             />
 
             <CustomButton
-              className="btn3"
-              buttonTitle="선택상품 결제하기"
+              className="button2"
+              buttonTitle="선택상품 결제"
               handleLinkMove={handlePaymentMove}
             />
           </ButtonBox>
