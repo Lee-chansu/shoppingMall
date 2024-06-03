@@ -39,6 +39,8 @@ export const Join = () => {
   const idCheck = async (e) => {
     const { value } = e.target;
     const checkId = await axios.get("http://localhost:5000/user");
+    const isAlphabet = /[a-zA-Z]/.test(value);
+    const isNumber = /[0-9]/.test(value);
     for (let check of checkId.data) {
       if (check.userId === value) {
         setIsId(false);
@@ -52,7 +54,8 @@ export const Join = () => {
       setMessage("아이디는 4~16자입니다.");
       document.querySelector(".checkId").classList.add("not");
       return;
-    } else if (/[^a-zA-Z0-9]/.test(value)) {
+    } else if (!isAlphabet || !isNumber) {
+    // } else if (/[^a-zA-Z0-9]/.test(value)) {
       setIsId(false);
       setMessage("아이디는 영문 대소문자와 숫자만 사용할 수 있습니다.");
       document.querySelector(".checkId").classList.add("not");
