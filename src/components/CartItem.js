@@ -34,7 +34,7 @@ export const CartItem = ({
   };
 
   useEffect(() => {
-    console.log("item rerender", val);
+    // console.log("item rerender", val);
   }, [cartItemList]);
 
   return (

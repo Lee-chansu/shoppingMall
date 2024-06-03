@@ -180,7 +180,7 @@ export const Cart = () => {
                   idx={idx}
                   cartItemList={cartItemList}
                   setCartItemList={setCartItemList}
-                  key={val.id}
+                  key={idx}
                 />
               );
             })}

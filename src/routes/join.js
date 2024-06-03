@@ -39,6 +39,9 @@ export const Join = () => {
   const idCheck = async (e) => {
     const { value } = e.target;
     const checkId = await axios.get("http://localhost:5000/user");
+    const isAlphabet = /[a-zA-Z]/.test(value);
+    const isNumber = /[0-9]/.test(value);
+    const isSymbol = /[!@#$%^&*()\-_=+{}\/:;"',.]/.test(value);
     for (let check of checkId.data) {
       if (check.userId === value) {
         setIsId(false);
@@ -52,11 +55,16 @@ export const Join = () => {
       setMessage("아이디는 4~16자입니다.");
       document.querySelector(".checkId").classList.add("not");
       return;
-    } else if (/[^a-zA-Z0-9]/.test(value)) {
+    } else if (!isAlphabet || !isNumber) {
+      setIsId(false);
+      setMessage("아이디는 영문과 숫자를 조합해야합니다.");
+      document.querySelector(".checkId").classList.add("not");
+      return;
+    }
+    if (isSymbol) {
       setIsId(false);
       setMessage("아이디는 영문 대소문자와 숫자만 사용할 수 있습니다.");
       document.querySelector(".checkId").classList.add("not");
-      return;
     } else {
       setIsId(true);
       setMessage("사용 가능한 아이디입니다.");
@@ -99,7 +107,6 @@ export const Join = () => {
     const isMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
       value
     );
-    console.log("isEmail", isEmail);
     if (!isMail) {
       setIsEmail(false);
       setEmailMessage("이메일의 형식이 맞지 않습니다.");
@@ -140,7 +147,6 @@ export const Join = () => {
 
   const buttonClick = async (e) => {
     e.preventDefault();
-    // console.log(newUser);
     if (!newUser.userId) {
       Myalter("warning", "회원가입 가이드", "아이디를 입력하시오");
     } else if (!isId) {
