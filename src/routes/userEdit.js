@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import "../css/userEdit.css";
 import { useEffect, useRef, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { Myalter } from "../components/Myalter";
+import "../css/userEdit.css";
+
+//컴포넌트
 import AddressModal from "../components/AddressModal";
 
 export const UserEdit = () => {
@@ -14,7 +16,7 @@ export const UserEdit = () => {
   const [id, setId] = useState();
   const [editUser, setEditUser] = useState({ password: "", passwordCheck: "", email: "", phoneNumber: "", mainAddress: "", detailAddress: "" });
   const [checkToggle, setCheckToggle] = useState("false");
-  const mainAddressRef = useRef(null)
+  const mainAddressRef = useRef(null);
 
   // 해당유저 정보받아오는 패치
   const getUserFetch = async () => {
@@ -47,17 +49,17 @@ export const UserEdit = () => {
       email: getUser.email,
       phoneNumber: getUser.phoneNumber,
       mainAddress: getUser.mainAddress,
-      detailAddress : getUser.detailAddress,
+      detailAddress: getUser.detailAddress,
       gender: getUser.gender,
     };
     setEditUser(editDefault);
   }, [getUser]);
 
-  const checkClick = (e) => {
+  const checkClick = e => {
     const { value } = e.target;
     if (value == "false") {
       setCheckToggle("true");
-      setEditUser((pre) => ({
+      setEditUser(pre => ({
         ...pre,
         password: getUser.password,
         passwordCheck: getUser.password,
@@ -65,7 +67,7 @@ export const UserEdit = () => {
       }));
     } else {
       setCheckToggle("false");
-      setEditUser((pre) => ({
+      setEditUser(pre => ({
         ...pre,
         password: "",
         passwordCheck: "",
@@ -73,14 +75,13 @@ export const UserEdit = () => {
       }));
     }
   };
-  // console.log('editUser', editUser);
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
-    setEditUser((pre) => ({ ...pre, [name]: value }));
+    setEditUser(pre => ({ ...pre, [name]: value }));
   };
 
-  const imageChange = (e) => {
+  const imageChange = e => {
     const selectFile = e.target.files[0];
     const reader = new FileReader();
     if (selectFile) {
@@ -97,26 +98,33 @@ export const UserEdit = () => {
       ]; // 허용되는 확장자 목록
 
       if (!allowedExtensions.includes(extension)) {
-        Myalter('warning','유저 수정 가이드',`${selectFile.name} 파일은 허용되지 않는 확장자입니다.`)
-        e.target.value = ''; // 파일 선택 취소
+        Myalter(
+          "warning",
+          "유저 수정 가이드",
+          `${selectFile.name} 파일은 허용되지 않는 확장자입니다.`
+        );
+        e.target.value = ""; // 파일 선택 취소
         return; // 다음 파일 처리 중단
       }
       reader.onloadend = () => {
-        setEditUser((pre) => ({ ...pre, profileImg: reader.result }));
+        setEditUser(pre => ({ ...pre, profileImg: reader.result }));
       };
       reader.readAsDataURL(selectFile);
     }
   };
-  
 
-  const buttonClick = async (e) => {
+  const buttonClick = async e => {
     e.preventDefault();
     if (!editUser.password) {
-      Myalter('warning','유저 수정 가이드',"변경할 비밀번호를 입력하시오")
+      Myalter("warning", "유저 수정 가이드", "변경할 비밀번호를 입력하시오");
     } else if (!editUser.passwordCheck) {
-      Myalter('warning','유저 수정 가이드',"비밀번호 재확인을 입력하시오")
+      Myalter("warning", "유저 수정 가이드", "비밀번호 재확인을 입력하시오");
     } else if (editUser.password !== editUser.passwordCheck) {
-      Myalter('warning','유저 수정 가이드',"비밀번호 재확인이 일치하지 않습니다")
+      Myalter(
+        "warning",
+        "유저 수정 가이드",
+        "비밀번호 재확인이 일치하지 않습니다"
+      );
     } else {
       try {
         const response = await fetch(`http://localhost:5000/userEdit/${id}`, {
@@ -128,11 +136,15 @@ export const UserEdit = () => {
         if (!response.ok) {
           throw new Error("서버에서 응답을 받을 수 없습니다");
         } else {
-          await Myalter('success','유저 수정 가이드',"유저수정 완료")
+          await Myalter("success", "유저 수정 가이드", "유저수정 완료");
           navigate("/userProfile");
         }
       } catch (error) {
-        Myalter('warning','유저 수정 가이드',"유저 수정중 오류가 발생했습니다")
+        Myalter(
+          "warning",
+          "유저 수정 가이드",
+          "유저 수정중 오류가 발생했습니다"
+        );
       }
     }
   };
@@ -246,7 +258,9 @@ export const UserEdit = () => {
               />
             </div>
             <div className="boxAddress">
-              <label htmlFor="address" className="addressLabel">주소를 입력해주세요</label>
+              <label htmlFor="address" className="addressLabel">
+                주소를 입력해주세요
+              </label>
               <input
                 className="mainAddress"
                 id="mainAddress"
@@ -265,7 +279,6 @@ export const UserEdit = () => {
               <div className="boxWrapper">
                 <input
                   className="detailAddress"
-                  id="detailAddress"
                   name="detailAddress"
                   onChange={valueChange}
                   value={editUser.detailAddress}

@@ -186,7 +186,6 @@ exports.addProduct = async (req, res) => {
     } else {
       result = true;
     }
-    // console.log(result);
     res.json(result);
   } catch (error) {
     console.log(error);
@@ -273,7 +272,6 @@ exports.updateProduct = async (req, res) => {
     } else {
       result = true;
     }
-    // console.log(result);
     res.json(result);
   } catch (error) {
     console.log(error);
@@ -284,7 +282,6 @@ exports.updateProduct = async (req, res) => {
 // 제품 옵션 수정
 exports.updateProductOption = async (req, res) => {
   const option = req.body;
-  console.log("testOption", option);
 
   try {
     const updatePromises = option.map(async item => {
@@ -348,7 +345,6 @@ exports.selectReviewlist = async (req, res) => {
     });
   }
 
-  // console.log(result);
   if (result) {
     res.json(result);
   } else {

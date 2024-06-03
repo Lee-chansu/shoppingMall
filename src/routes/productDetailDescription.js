@@ -18,7 +18,7 @@ export const ProductDetailDescription = () => {
   const [product, setProduct] = useState([]);
   const [stock, setStock] = useState(0);
   const [maxStock, setMaxStock] = useState(0);
-  const [index, setIndex] = useState(0);
+  const [indexArray, setIndexArray] = useState([0, 1, 2, 3]);
   const [item, setItem] = useState(0);
   const [id, setId] = useState();
   const [isMaster, setIsMaster] = useState(false);
@@ -257,11 +257,23 @@ export const ProductDetailDescription = () => {
 
   const mainRef = useRef(null);
 
-  let photos = [product.mainImage, product.subImage1, product.subImage2];
+  let photos = [
+    product.mainImage,
+    product.subImage1,
+    product.subImage2,
+    product.subImage3,
+  ];
 
-  function jump(index) {
-    setIndex(index);
+  function jump(i) {
+    const prevIndexArray = [...indexArray];
+    const targetIndex = prevIndexArray.splice(i, 1)[0];
+    prevIndexArray.splice(0, 0, targetIndex);
+    setIndexArray(prevIndexArray);
   }
+
+  const imgError = event => {
+    event.target.src = "/img/readyProduct.png";
+  };
 
   const handleSwitchBtn = () => {
     setSwitchBtn(!switchBtn);
@@ -316,21 +328,35 @@ export const ProductDetailDescription = () => {
           <div className="productdetail">
             <div className="div">
               <div className="thumbnailBox">
-                <img
-                  ref={mainRef}
-                  src={photos[index]}
-                  alt="메인이미지"
-                  className="mainThumbnailWrapper"
-                />
-                {photos.map((photo, i) => (
-                  <img
-                    key={i}
-                    onClick={() => jump(i)}
-                    className={"subThumbnail" + i}
-                    alt="제품 서브이미지"
-                    src={photo}
-                  />
-                ))}
+                {photos.map((photo, i) =>
+                  i === 0 ? (
+                    <img
+                      key={i}
+                      ref={mainRef}
+                      src={
+                        photos[indexArray[i]]
+                          ? photos[indexArray[i]]
+                          : "/img/readyProduct.png"
+                      }
+                      onError={imgError}
+                      alt="제품 메인이미지"
+                      className="mainThumbnailWrapper"
+                    />
+                  ) : (
+                    <img
+                      key={i}
+                      onError={imgError}
+                      src={
+                        photos[indexArray[i]]
+                          ? photos[indexArray[i]]
+                          : "/img/readyProduct.png"
+                      }
+                      alt="제품 서브이미지"
+                      onClick={() => jump(i)}
+                      className={"subThumbnail" + i}
+                    />
+                  )
+                )}
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="infoBox">
@@ -351,7 +377,7 @@ export const ProductDetailDescription = () => {
                       </button>
                     </>
                   ) : (
-                    <span className="administrator"> ProductInfo </span>
+                    <span className="administrator"> PRODUCT INFO </span>
                   )}
                   <div className="productName">
                     <div className="textWrapper2">제품명</div>

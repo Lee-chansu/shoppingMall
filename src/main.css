@@ -37,7 +37,7 @@
   right: 20px;
 }
 
-.main .inner{
+.main .inner {
   margin: 40px 0;
 }
 
@@ -51,11 +51,40 @@
   text-align: center;
 }
 
+.main .inner .div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.main .inner .div p {
+  margin: 0 10px;
+}
+.main .inner .div .order {
+  border-right: 1px solid black;
+}
+.main .inner .div .order p {
+  margin-right: 25px;
+}
+
+.main .inner .div .sort {
+  margin-right: 140px;
+}
+
+.main .inner .div .sort p {
+  margin-left: 25px;
+}
+
+.main .inner .div p span {
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+}
 .main .wrap {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   overflow-x: hidden;
   padding: 20px;
   margin: 0 5px;

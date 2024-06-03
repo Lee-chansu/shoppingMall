@@ -23,13 +23,15 @@ export const ProductList = () => {
   const detail = searchParams.get("detail");
   const detailArray =
     category === "아우터"
-      ? ["코트", "블레이저", "패딩"]
+      ? ["코트", "블레이저", "패딩", "자켓", "가디건"]
       : category === "상의"
-      ? ["반팔", "긴팔", "티셔츠", "후드", "러닝"]
+      ? ["반팔", "긴팔", "티셔츠", "니트", "나시"]
       : category === "하의"
       ? ["청바지", "슬랙스", "카고바지", "반바지"]
       : category === "신발"
-      ? ["샌들", "런닝화", "구두"]
+      ? ["샌들/슬리퍼", "운동화/단화", "구두/워커"]
+      : category === "악세사리"
+      ? ["양말", "가방", "피어싱", "헤어", "기타"]
       : [];
 
   const loadProduct = async () => {
@@ -97,27 +99,35 @@ export const ProductList = () => {
       ></Detail>
       <div className="productList">
         <div className="inner">
-          {isMaster ? <div className="addBtnForm">
-            <Link to="/productList/add">
-              <button>상품 추가</button>
-            </Link>
-          </div> : <></>}
+          {isMaster ? (
+            <div className="addBtnForm">
+              <Link to="/productList/add">
+                <button>상품 추가</button>
+              </Link>
+            </div>
+          ) : (
+            <></>
+          )}
           <div className="productWrap">
-            {productList.map(product => {
-              return (
-                <Link
-                  key={product.id}
-                  className="link"
-                  to={`/productList/detail/description/${product.id}`}
-                >
-                  <Product
-                    product={product}
-                    category={category}
-                    detail={detail}
-                  ></Product>
-                </Link>
-              );
-            })}
+            {productList.length !== 0 ? (
+              productList.map(product => {
+                return (
+                  <Link
+                    key={product.id}
+                    className="link"
+                    to={`/productList/detail/description/${product.id}`}
+                  >
+                    <Product
+                      product={product}
+                      category={category}
+                      detail={detail}
+                    ></Product>
+                  </Link>
+                );
+              })
+            ) : (
+              <p className="guide">해당 카테고리의 상품이 준비중입니다.<br/> 기다려주세요 ㅠㅠ</p>
+            )}
           </div>
           <div
             style={{

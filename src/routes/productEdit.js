@@ -33,11 +33,11 @@ export const ProductEdit = () => {
   const subImageId = ["subImage1", "subImage2", "subImage3"];
 
   const detail = {
-    아우터: ["코트", "블레이저", "패딩"],
-    상의: ["반팔", "긴팔", "티셔츠", "후드", "러닝"],
+    아우터: ["코트", "블레이저", "패딩", "자켓", "가디건"],
+    상의: ["반팔", "긴팔", "티셔츠", "니트", "나시"],
     하의: ["청바지", "슬랙스", "카고바지", "반바지"],
-    신발: ["샌들", "런닝화", "구두"],
-    악세사리: ["귀걸이", "가방", "피어싱", "모자"],
+    신발: ["샌들/슬리퍼", "운동화/단화", "구두/워커"],
+    악세사리: ["양말", "가방", "피어싱", "헤어", "기타"],
   };
 
   const handleCancle = () => {
@@ -128,7 +128,7 @@ export const ProductEdit = () => {
     }
   };
 
-  const showDetailBar = () => {
+  const showDetailBar = (checkCategory, checkDetail) => {
     setNewProduct({
       ...newProduct,
       category: checkCategory,
@@ -157,7 +157,7 @@ export const ProductEdit = () => {
   }, []);
 
   useEffect(() => {
-    showDetailBar();
+    showDetailBar(checkCategory, checkDetail);
   }, [checkCategory, checkDetail]);
 
   //새로운 정보(productOption)을 추가하는 컴포넌트

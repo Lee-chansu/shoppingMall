@@ -64,19 +64,14 @@ export const PaySuccess = () => {
         <div className="overlap">
           <div className="innerBox">
             <div className="overlapGroup">
+              <img src="https://cdn-icons-png.flaticon.com/512/6217/6217772.png" alt="구매완료" width="30px" height="30px" className="okImg"/>
               <div className="price"></div>
               <div className="successMessage">
-                <i class="bi bi-balloon-heart-fill"></i>
                 <b>구매가 정상적으로 완료되었습니다</b>
-                <i class="bi bi-balloon-heart-fill"></i>
               </div>
             </div>
             <div className="orderInfo">
               <div className="payInfo">{userName}님의 결제내역</div>
-              <div className="howToPay">결제방법</div>
-              <div className="howToPayPrint">{paySelect}</div>
-              <div className="paySum">{orderSum.paySumTotal} 원</div>
-              <div className="paySumText">결제금액</div>
 
               <div className="row">
                 {paidItemList.map((val, idx) => {
@@ -84,11 +79,20 @@ export const PaySuccess = () => {
                 })}
               </div>
 
+              <div className="text">
+                <div className="howToPay">결제방법</div>
+                <div className="howToPayPrint">{paySelect}</div>
+              </div>
+              <div className="text2">
+                <div className="paySum">{orderSum.paySumTotal} 원</div>
+                <div className="paySumText">결제금액</div>
+              </div>
+              <div className="text3"></div>
               <div className="readMe">
-                <i>
+                <div className="check">
                   카드사 즉시 할인 및 포인트 사용내역은 카드사에서 확인 부탁
                   드립니다.
-                </i>
+                </div>
               </div>
 
               <ButtonBox>

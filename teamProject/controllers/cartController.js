@@ -2,7 +2,7 @@ require("dotenv").config();
 
 //db
 const db = require("../models");
-const { Cart, BuyList, Product, Carry, PaymentRequest } = db;
+const { Cart, BuyList, Product, Carry, PaymentRequest, ReviewList } = db;
 
 //user Id 로 장바구니 조회
 exports.selectCartByUserId = async (req, res) => {
@@ -11,7 +11,7 @@ exports.selectCartByUserId = async (req, res) => {
   try {
     const result = await Cart.findAll({
       where: { user_id },
-      include: [{ model: Product }], // Product 모app.post("/cart델을 include하여 조인
+      include: [{ model: Product }], // Product 모델을 include (조인)
     });
 
     if (result) {
@@ -172,6 +172,7 @@ exports.deleteBuylist = async (req, res) => {
   try {
     await Carry.destroy({ where: { order_id: id } });
     //이거 왜 Carry?
+    await ReviewList.destroy({ where: { buyList_id: id } });
     await BuyList.destroy({ where: { id } });
 
     res.status(200).json({ message: "삭제 완료" });

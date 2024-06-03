@@ -9,27 +9,37 @@ import { Visual } from "./components/visual";
 import { Footer } from "./components/footer";
 
 export const Main = () => {
+  const [order, setOrder] = useState("createdAt");
+  const [sort, setSort] = useState("asc");
   const [productList, setProductList] = useState([]);
-  const limit = 5;
-  const [productByCreatedAt, setProductByCreatedAt] = useState([]);
-  const loadProduct = async () => {
+  const limit = 15;
+
+  const loadProduct = async (order, sort) => {
     const getProducts = await fetch(
-      `http://localhost:5000/?limit=${limit}`
+      `http://localhost:5000/?order=${order}&limit=${limit}&sort=${sort}`
     ).then((res) => res.json());
     setProductList(getProducts);
   };
 
-  const loadProductByCreatedAt = async () => {
-    const getProducts = await fetch(
-      `http://localhost:5000/?order=createdAt&limit=${limit}`
-    ).then((res) => res.json());
-    setProductByCreatedAt(getProducts);
+  const changeCondition = (e) => {
+    const { innerText } = e.target;
+
+    if (innerText === "최신순" || innerText === "오래된 순") {
+      if (innerText === "최신순") {
+        setSort("asc");
+      } else {
+        setSort("desc");
+      }
+    } else {
+      if (innerText === "날짜") setOrder("createdAt");
+      else if (innerText === "가격") setOrder("price");
+      else if (innerText === "이름") setOrder("name");
+    }
   };
 
   useEffect(() => {
-    loadProduct();
-    loadProductByCreatedAt();
-  }, []);
+    loadProduct(order, sort);
+  }, [order, sort]);
 
   return (
     <>
@@ -38,8 +48,23 @@ export const Main = () => {
         <Visual />
         <div className="inner">
           <Link className="link" to="/productList">
-            <h1>Best!</h1>
+            <h1>Pick & Fit</h1>
           </Link>
+          <div className="div" style={{ display: "flex" }}>
+            <div className="order">
+              <p>
+                <span onClick={changeCondition}>날짜</span>
+                <span onClick={changeCondition}>가격</span>
+                <span onClick={changeCondition}>이름</span>
+              </p>
+            </div>
+            <div className="sort">
+              <p>
+                <span onClick={changeCondition}>최신순</span>
+                <span onClick={changeCondition}>오래된 순</span>
+              </p>
+            </div>
+          </div>
           <div className="wrap">
             {productList.map((product) => {
               return (
@@ -47,22 +72,6 @@ export const Main = () => {
                   className="link"
                   key={product.id}
                   to={`/productList/detail/description/${product.id}`}
-                >
-                  <Product product={product} />
-                </Link>
-              );
-            })}
-          </div>
-          <Link className="link" to="/productList">
-            <h1>New!</h1>
-          </Link>
-          <div className="wrap">
-            {productByCreatedAt.map((product) => {
-              return (
-                <Link
-                  className="link"
-                  to={`/productList/detail/description/${product.id}`}
-                  key={product.id}
                 >
                   <Product product={product} />
                 </Link>

@@ -51,7 +51,7 @@ export const PayBuyList = () => {
     }
   }, [id]);
 
-  const handleDeleteItem = async (val) => {
+  const handleDeleteItem = async val => {
     try {
       //구매내역 삭제 코드
       const response = await fetch(
@@ -63,9 +63,7 @@ export const PayBuyList = () => {
 
       if (response.ok) {
         // alert('삭제 완료');
-        setPayItemList((prevList) =>
-          prevList.filter((item) => item.id !== val.id)
-        );
+        setPayItemList(prevList => prevList.filter(item => item.id !== val.id));
       } else {
         throw new Error("서버에서 아이템 삭제 실패");
       }
@@ -75,8 +73,8 @@ export const PayBuyList = () => {
     }
   };
 
-  const handleAddToCart = async (val) => {
-    let newItem = payItemList.find((item) => item.id === val.id);
+  const handleAddToCart = async val => {
+    let newItem = payItemList.find(item => item.id === val.id);
 
     console.log("newItem", newItem);
 
@@ -91,7 +89,7 @@ export const PayBuyList = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/cart", {
+      await fetch("http://localhost:5000/cart", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(addItem),

@@ -8,6 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import AddressModal from "../components/AddressModal";
 import CustomButton from "../components/CustomButton";
 import { Nav } from "../components/nav";
+import { Myalter } from "../components/Myalter";
 // import axios from "axios";
 
 export const Payment = () => {
@@ -55,14 +56,14 @@ export const Payment = () => {
 
   const handleChange = (e) => {
     setSelectedOption(e.target.value);
-    const newMessage = carryMessage
+    const newMessage = carryMessage;
     setCarryMessage(e.target.value);
     // console.log("selectedOption", e.target.value);
   };
 
   const handleCarryMessage = (e) => {
     setCarryMessage(e.target.value);
-  }
+  };
 
   const userFetch = async () => {
     const response = await fetch(`http://localhost:5000/userProfile/${id}`);
@@ -89,6 +90,11 @@ export const Payment = () => {
   };
 
   const handleAllPayment = () => {
+    console.log(selectedOption);
+    if (selectedOption === "") {
+      Myalter("waning", "error", "배송요청 메세지를 선택해 주세요");
+      return;
+    }
     navigate("/toss", {
       state: {
         paymentList: location.state.list,
@@ -115,16 +121,6 @@ export const Payment = () => {
     // console.log("paymentList", data);
     return data;
   };
-
-  // const getProducts = async (id) => {
-  //   const result = await userFetchProducts(id);
-  //   const newArr = result.map((val, idx) => {
-  //     return { ...val };
-  //   });
-  //   console.log(newArr);
-
-  //   setPaymentItemList(newArr);
-  // };
 
   //user id 가져오기위한 useEffect
   useEffect(() => {
@@ -160,11 +156,14 @@ export const Payment = () => {
 
   //cart의 선택된 상품을 전달받아 list에 저장
   useEffect(() => {
-    const list = location.state?.list; //cart에서 navigate로 보낸 cartItemList를 location으로 list란 이름으로 받음
-    if (!list) {
-    navigate('/')
+    if (!location.state) {
+      alert("잘못된 접근입니다 !");
+      navigate("/cart");
+      return;
     }
-    setPaymentItemList(list); //list가 없을때 예외처리 해야함
+    const { list } = location.state; //cart에서 navigate로 보낸 cartItemList를 location으로 list란 이름으로 받음
+
+    setPaymentItemList(list);
   }, []); //의존성 배열이 비어있기때문에 값이 바뀔수없으므로 한번만 실행
 
   return (
@@ -252,18 +251,22 @@ export const Payment = () => {
                     <option value="문 앞에 놔주세요">문 앞에 놔주세요</option>
                     <option value="직접 받을게요">직접 받을게요</option>
                     <option value="우편함에 놔주세요">우편함에 놔주세요</option>
-                    <option value="문 앞 배송 후 문자주세요">문 앞 배송 후 문자주세요</option>
-                    <option value="부재시 경비실에 맡겨주세요">부재시 경비실에 맡겨주세요</option>
+                    <option value="문 앞 배송 후 문자주세요">
+                      문 앞 배송 후 문자주세요
+                    </option>
+                    <option value="부재시 경비실에 맡겨주세요">
+                      부재시 경비실에 맡겨주세요
+                    </option>
                     <option value="">직접입력</option>
                   </select>
-                    <input
-                      className="carryDirectMessage"
-                      placeholder="여기에 배송요청 사항을 직접 입력하세요"
-                      maxLength="100"
-                      hidden={selectedOption !== ""}
-                      value={carryMessage}
-                      onChange={handleCarryMessage}
-                    />
+                  <input
+                    className="carryDirectMessage"
+                    placeholder="여기에 배송요청 사항을 직접 입력하세요"
+                    maxLength="100"
+                    hidden={selectedOption !== ""}
+                    value={carryMessage}
+                    onChange={handleCarryMessage}
+                  />
                 </div>
               </div>
               <div className="saleBox">
@@ -302,48 +305,6 @@ export const Payment = () => {
                   </label>
                 </div>
               </div>
-              {/* <div className="howPayBox">
-                <div className="title">
-                  <div className="textWrapper2">
-                    결제방식 선택
-                    <br />
-                    <div className="paySelect">
-                      {paySelect == "" ? "결제방법을 골라주세요" : paySelect}
-                    </div>
-                  </div>
-                </div>
-                <div className="paymentBox">
-                  <div className="item">
-                    <span className="center" onClick={handlePaySelect}>
-                      네이버페이
-                    </span>
-                  </div>
-                  <div className="item">
-                    <span className="center" onClick={handlePaySelect}>
-                      카카오페이
-                    </span>
-                  </div>
-                  <div className="item">
-                    <span className="center" onClick={handlePaySelect}>
-                      신용카드
-                    </span>
-                  </div>
-                  <div className="item">
-                    <span className="center" onClick={handlePaySelect}>
-                      휴대폰결제
-                    </span>
-                  </div>
-                </div>
-                <span className="underline">
-                  * 만 14세 이상 이용자, 개인정보 제공 동의
-                </span>
-                <br />
-                <span className="smaller">
-                  해당 상품의 거래 전반에 관한 의무와 책임은 각 입점 판매자에게
-                  있습니다
-                  <br />위 내용을 확인하였으며 결제에 동의합니다
-                </span>
-              </div> */}
             </div>
 
             <div className="payList">

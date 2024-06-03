@@ -106,6 +106,10 @@
   font-size: 14px;
 }
 
+.input {
+  font-size: 16px;
+}
+
 .productEdit .inner .wrap.stock .categoryTitle .btn {
   padding: 2px 8px;
   margin-left: 20px;
@@ -230,30 +234,4 @@
 .productEdit input[type="checkbox"] {
   zoom: 0.5;
   border-radius: 5px;
-}
-
-.btn1 {
-  border: 1px solid #0d6efd !important;
-  background-color: #fff !important;
-  color: #0d6efd !important;
-  font-weight: 600 !important;
-}
-
-.btn2 {
-  border: 1px solid #0d6efd !important;
-  background-color: #fff !important;
-  color: #0d6efd !important;
-  font-weight: 600 !important;
-}
-
-.btn1:hover {
-  background-color: #0d6efd !important;
-  color: #fff !important;
-  border: none !important;
-}
-
-.btn2:hover {
-  background-color: #0d6efd !important;
-  color: #fff !important;
-  border: none !important;
 }

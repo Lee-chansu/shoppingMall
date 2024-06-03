@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import "../css/userInfo.css";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import "../css/userInfo.css";
 
 export const UserInfo = () => {
   const [imageUrl, setImageUrl] = useState("");
@@ -16,11 +16,11 @@ export const UserInfo = () => {
     } else {
       const decodeToken = jwtDecode(token);
       setId(decodeToken.id);
-      fetchData();
+      fetchData(id);
     }
   }, [id]);
 
-  const fetchData = async () => {
+  const fetchData = async id => {
     const response = await fetch(`http://localhost:5000/userInfo/${id}`);
     const body = await response.json();
     setImageUrl(body.data);
@@ -41,8 +41,7 @@ export const UserInfo = () => {
   const deleteButton = async e => {
     e.preventDefault();
 
-    const response = await fetch(`http://localhost:5000/userProfile/${id}`)
-    ;
+    const response = await fetch(`http://localhost:5000/userProfile/${id}`);
     const body = await response.json();
 
     const delCode = `${body.userName}는 탈퇴하겠습니다`;
