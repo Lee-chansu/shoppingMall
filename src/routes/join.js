@@ -41,6 +41,7 @@ export const Join = () => {
     const checkId = await axios.get("http://localhost:5000/user");
     const isAlphabet = /[a-zA-Z]/.test(value);
     const isNumber = /[0-9]/.test(value);
+    const isSymbol = /[!@#$%^&*()\-_=+{}\/:;"',.]/.test(value);
     for (let check of checkId.data) {
       if (check.userId === value) {
         setIsId(false);
@@ -54,8 +55,7 @@ export const Join = () => {
       setMessage("아이디는 4~16자입니다.");
       document.querySelector(".checkId").classList.add("not");
       return;
-    } else if (!isAlphabet || !isNumber) {
-    // } else if (/[^a-zA-Z0-9]/.test(value)) {
+    } else if (!isAlphabet || !isNumber || isSymbol) {
       setIsId(false);
       setMessage("아이디는 영문 대소문자와 숫자만 사용할 수 있습니다.");
       document.querySelector(".checkId").classList.add("not");
@@ -102,7 +102,6 @@ export const Join = () => {
     const isMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
       value
     );
-    // console.log("isEmail", isEmail);
     if (!isMail) {
       setIsEmail(false);
       setEmailMessage("이메일의 형식이 맞지 않습니다.");
