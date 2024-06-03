@@ -124,6 +124,8 @@
   width: 150px;
   font-size: 26px;
   text-align: start;
+  overflow: unset;
+  text-overflow: unset;
 }
 
 .productdetail .color {
