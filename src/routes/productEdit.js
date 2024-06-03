@@ -23,17 +23,11 @@ export const ProductEdit = () => {
   const [optionLength, setOptionLength] = useState(0);
   const [detailBar, setDetailBar] = useState([]);
   const [checkDetail, setCheckDetail] = useState("");
-<<<<<<< HEAD
   const [mainImageFile, setMainImageFile] = useState();
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
-=======
-  const [mainImageFile, setMainImageFile] = useState("");
->>>>>>> chansu
   const [count, setCount] = useState(0);
   const [descriptionImgArray, setDescriptionImgArray] = useState([]);
-  const [checkCategory, setCheckCategory] = useState();
-  const category = ["아우터", "상의", "하의", "신발", "악세사리"];
 
   const subImageCount = [0, 1, 2];
   const subImageId = ["subImage1", "subImage2", "subImage3"];

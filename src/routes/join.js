@@ -55,7 +55,6 @@ export const Join = () => {
       setMessage("아이디는 4~16자입니다.");
       document.querySelector(".checkId").classList.add("not");
       return;
-<<<<<<< HEAD
     } else if (!isAlphabet || !isNumber) {
       setIsId(false);
       setMessage("아이디는 영문과 숫자를 조합해야합니다.");
@@ -63,9 +62,6 @@ export const Join = () => {
       return;
     }
     if (isSymbol) {
-=======
-    } else if (!isAlphabet || !isNumber || isSymbol) {
->>>>>>> origin/hyoguen
       setIsId(false);
       setMessage("아이디는 영문 대소문자와 숫자만 사용할 수 있습니다.");
       document.querySelector(".checkId").classList.add("not");
