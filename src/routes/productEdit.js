@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { XCircleFill } from "react-bootstrap-icons";
 import { MyDropzone } from "../components/DropZone";
+import Swal from "sweetalert2";
 import "../css/productEdit.css";
 
 //컴포넌트
@@ -10,7 +11,6 @@ import { SubImagePreview } from "../components/subImgPreview";
 import { ProductOption, EditInfo } from "../components/productOptionAdd";
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
-import Swal from "sweetalert2";
 
 export const ProductEdit = () => {
   const id = useParams().id;
@@ -23,7 +23,7 @@ export const ProductEdit = () => {
   const [optionLength, setOptionLength] = useState(0);
   const [detailBar, setDetailBar] = useState([]);
   const [checkDetail, setCheckDetail] = useState("");
-  const [mainImageFile, setMainImageFile] = useState("");
+  const [mainImageFile, setMainImageFile] = useState();
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
   const [count, setCount] = useState(0);
