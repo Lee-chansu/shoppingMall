@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Myalter } from "./Myalter";
 import Swal from "sweetalert2";
 
 export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
@@ -66,31 +65,33 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
 
   return (
     <>
-      <label htmlFor={subImageId}>
-        <div
-          className="addImg"
-          style={subImageId === "subImage1" ? { marginLeft: "5px" } : {}}
-        >
-          +
-        </div>
-      </label>
-      <input
-        id={subImageId}
-        type="file"
-        name={subImageId}
-        onChange={previewImage}
-        accept="image/*"
-      />
-      {subIamgeArray && (
-        <img
-          style={{
-            display: subIamgeArray ? "block" : subImageFile ? "block" : "none",
-          }}
-          className="previewImg subImage"
-          src={subIamgeArray ? subIamgeArray : subImageFile}
-          alt="상품 이미지"
+      <div className="div">
+        <label htmlFor={subImageId}>
+          <div className="addImg">+</div>
+        </label>
+        <input
+          id={subImageId}
+          type="file"
+          name={subImageId}
+          onChange={previewImage}
+          accept="image/*"
         />
-      )}
+
+        {subIamgeArray && (
+          <img
+            style={{
+              display: subIamgeArray
+                ? "block"
+                : subImageFile
+                ? "block"
+                : "none",
+            }}
+            className="previewImg subImage"
+            src={subIamgeArray ? subIamgeArray : subImageFile}
+            alt="상품 이미지"
+          />
+        )}
+      </div>
     </>
   );
 };
