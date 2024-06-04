@@ -55,11 +55,16 @@ export const Join = () => {
       setMessage("아이디는 4~16자입니다.");
       document.querySelector(".checkId").classList.add("not");
       return;
-    } else if (!isAlphabet || !isNumber || isSymbol) {
+    } else if (!isAlphabet || !isNumber) {
+      setIsId(false);
+      setMessage("아이디는 영문과 숫자를 조합해야합니다.");
+      document.querySelector(".checkId").classList.add("not");
+      return;
+    }
+    if (isSymbol) {
       setIsId(false);
       setMessage("아이디는 영문 대소문자와 숫자만 사용할 수 있습니다.");
       document.querySelector(".checkId").classList.add("not");
-      return;
     } else {
       setIsId(true);
       setMessage("사용 가능한 아이디입니다.");
@@ -142,7 +147,6 @@ export const Join = () => {
 
   const buttonClick = async (e) => {
     e.preventDefault();
-    // console.log(newUser);
     if (!newUser.userId) {
       Myalter("warning", "회원가입 가이드", "아이디를 입력하시오");
     } else if (!isId) {

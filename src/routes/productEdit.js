@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { XCircleFill } from "react-bootstrap-icons";
 import { MyDropzone } from "../components/DropZone";
+import Swal from "sweetalert2";
 import "../css/productEdit.css";
 
 //컴포넌트
@@ -10,7 +11,6 @@ import { SubImagePreview } from "../components/subImgPreview";
 import { ProductOption, EditInfo } from "../components/productOptionAdd";
 import ButtonBox from "../components/ButtonBox";
 import CustomButton from "../components/CustomButton";
-import Swal from "sweetalert2";
 
 export const ProductEdit = () => {
   const id = useParams().id;
@@ -23,7 +23,7 @@ export const ProductEdit = () => {
   const [optionLength, setOptionLength] = useState(0);
   const [detailBar, setDetailBar] = useState([]);
   const [checkDetail, setCheckDetail] = useState("");
-  const [mainImageFile, setMainImageFile] = useState("");
+  const [mainImageFile, setMainImageFile] = useState();
   const category = ["아우터", "상의", "하의", "신발", "악세사리"];
   const [checkCategory, setCheckCategory] = useState("");
   const [count, setCount] = useState(0);
@@ -46,7 +46,7 @@ export const ProductEdit = () => {
 
   const loadProduct = async () => {
     const getProduct = await fetch(`http://localhost:5000/product/${id}`).then(
-      res => {
+      (res) => {
         return res.json();
       }
     );
@@ -63,7 +63,7 @@ export const ProductEdit = () => {
   const loadOption = async () => {
     const loadData = await fetch(
       `http://localhost:5000/productOption/${id}`
-    ).then(res => {
+    ).then((res) => {
       return res.json();
     });
     setOptionLength(loadData.length);
@@ -101,7 +101,7 @@ export const ProductEdit = () => {
       }
       reader.onloadend = () => {
         setMainImageFile(reader.result);
-        setNewProduct(prevState => ({
+        setNewProduct((prevState) => ({
           ...prevState,
           mainImage: reader.result,
         }));
@@ -111,7 +111,7 @@ export const ProductEdit = () => {
     }
   };
 
-  const checkOnlyOneCategory = checkThis => {
+  const checkOnlyOneCategory = (checkThis) => {
     if (checkThis.checked === false) {
       setCheckCategory("");
       setCheckDetail("");
@@ -120,7 +120,7 @@ export const ProductEdit = () => {
     }
   };
 
-  const checkOnlyOneDetail = checkThis => {
+  const checkOnlyOneDetail = (checkThis) => {
     if (checkThis.checked === false) {
       setCheckDetail("");
     } else {
@@ -139,16 +139,15 @@ export const ProductEdit = () => {
       : setDetailBar([]);
   };
 
-  const valueChange = e => {
+  const valueChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
 
-  const cancelPreview = index => {
+  const cancelPreview = (index) => {
     let newDescriptionArray = [...descriptionImgArray];
     newDescriptionArray.splice(index, 1);
     setDescriptionImgArray(newDescriptionArray);
-    console.log(descriptionImgArray);
   };
 
   useEffect(() => {
@@ -194,7 +193,7 @@ export const ProductEdit = () => {
 
   useEffect(() => {}, [option, newOption]);
 
-  const toEditProduct = async e => {
+  const toEditProduct = async (e) => {
     e.preventDefault();
 
     try {
@@ -314,7 +313,7 @@ export const ProductEdit = () => {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      }).then(res => {
+      }).then((res) => {
         res.json();
         if (res.ok) {
           Swal.fire({
@@ -355,7 +354,7 @@ export const ProductEdit = () => {
             <div className="wrap">
               <h2 className="categoryTitle">카테고리</h2>
               <div className="boxWrap">
-                {category.map(el => {
+                {category.map((el) => {
                   return (
                     <div className="box" key={el}>
                       <label className="text" htmlFor={el}>
@@ -367,7 +366,7 @@ export const ProductEdit = () => {
                         name={el}
                         value={el}
                         checked={checkCategory === el}
-                        onChange={e => checkOnlyOneCategory(e.target)}
+                        onChange={(e) => checkOnlyOneCategory(e.target)}
                       />
                     </div>
                   );
@@ -390,7 +389,7 @@ export const ProductEdit = () => {
                           name={el}
                           value={el}
                           checked={checkDetail === el}
-                          onChange={e => checkOnlyOneDetail(e.target)}
+                          onChange={(e) => checkOnlyOneDetail(e.target)}
                         />
                       </div>
                     );
@@ -429,32 +428,34 @@ export const ProductEdit = () => {
             <div className="wrap img">
               <h2 className="categoryTitle ">메인이미지 등록</h2>
               <div className="boxWrap">
-                <label htmlFor="mainImage">
-                  <div className="addImg" style={{ marginLeft: "5px" }}>
-                    +
-                  </div>
-                </label>
-                <img
-                  style={{
-                    display: newProduct.mainImage
-                      ? "block"
-                      : mainImageFile
-                      ? "block"
-                      : "none",
-                  }}
-                  className="previewImg main"
-                  src={!mainImageFile ? newProduct.mainImage : mainImageFile}
-                  alt="메인이미지"
-                />
-                <input
-                  id="mainImage"
-                  type="file"
-                  name="mainImage"
-                  onChange={previewMainImg}
-                  ref={mainImgRef}
-                  accept="image/*"
-                  defaultValue={newProduct.mainImage}
-                />
+                <div className="div">
+                  <label htmlFor="mainImage">
+                    <div className="addImg" style={{ marginLeft: "5px" }}>
+                      +
+                    </div>
+                  </label>
+                  <img
+                    style={{
+                      display: newProduct.mainImage
+                        ? "block"
+                        : mainImageFile
+                        ? "block"
+                        : "none",
+                    }}
+                    className="previewImg main"
+                    src={!mainImageFile ? newProduct.mainImage : mainImageFile}
+                    alt="메인이미지"
+                  />
+                  <input
+                    id="mainImage"
+                    type="file"
+                    name="mainImage"
+                    onChange={previewMainImg}
+                    ref={mainImgRef}
+                    accept="image/*"
+                    defaultValue={newProduct.mainImage}
+                  />
+                </div>
               </div>
             </div>
             <div className="wrap img">

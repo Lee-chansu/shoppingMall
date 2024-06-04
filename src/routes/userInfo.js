@@ -20,13 +20,13 @@ export const UserInfo = () => {
     }
   }, [id]);
 
-  const fetchData = async id => {
+  const fetchData = async (id) => {
     const response = await fetch(`http://localhost:5000/userInfo/${id}`);
     const body = await response.json();
     setImageUrl(body.data);
   };
 
-  const logOut = e => {
+  const logOut = (e) => {
     e.preventDefault();
     sessionStorage.removeItem("token");
 
@@ -38,7 +38,7 @@ export const UserInfo = () => {
     });
   };
 
-  const deleteButton = async e => {
+  const deleteButton = async (e) => {
     e.preventDefault();
 
     const response = await fetch(`http://localhost:5000/userProfile/${id}`);
@@ -95,8 +95,8 @@ export const UserInfo = () => {
       <div className="overlapGroupWrapper">
         <img
           className="profileImage"
-          src={imageUrl}
-          onError={() => setImageUrl("../img/userDefaultImg.png")}
+          src={imageUrl ? imageUrl : "/img/userDefaultImg.png"}
+          onError={() => setImageUrl("/img/userDefaultImg.png")}
           alt="프로필 이미지"
         />
         <div className="overlapGroup">
