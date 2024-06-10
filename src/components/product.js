@@ -22,9 +22,6 @@ export const Product = ({ product, category, detail }) => {
         />
       </div>
       <div className="infoBox">
-        {/* {product.name
-          ? console.log(product.name)
-          : console.log(product.Product.name)} */}
         <div className="productName">
           {!product.name ? (
             <p className="text"> 제품이름 : {product.Product.name}</p>

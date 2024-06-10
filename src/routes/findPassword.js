@@ -25,12 +25,12 @@ export const FindPassword = () => {
   // 유저 정보
   const [userinfo, setUserinfo] = useState();
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
     setFindPassword({ ...findPassword, [name]: value });
   };
 
-  const emailButton = async (e) => {
+  const emailButton = async e => {
     e.preventDefault();
     if (!findPassword.userId) {
       Swal.fire({
@@ -82,7 +82,7 @@ export const FindPassword = () => {
     }
   };
 
-  const numButton = (e) => {
+  const numButton = e => {
     e.preventDefault();
     if (passNum == findPassword.number) {
       Swal.fire({
@@ -100,7 +100,7 @@ export const FindPassword = () => {
     }
   };
 
-  const linkButton = (e) => {
+  const linkButton = e => {
     e.preventDefault();
     if (passResult == true) {
       navigate("/passwordEdit", { state: { id: userinfo } }); // 프롭스드릴링
@@ -117,7 +117,7 @@ export const FindPassword = () => {
   const placeRef2 = useRef();
   const placeRef3 = useRef("test");
 
-  const inputFocus = (e) => {
+  const inputFocus = e => {
     if (e.target.name === "userId") {
       placeRef.current.style.top = "7px";
     } else if (e.target.name === "email") {
@@ -127,7 +127,7 @@ export const FindPassword = () => {
     }
   };
 
-  const inputBlur = (e) => {
+  const inputBlur = e => {
     if (e.target.name === "userId" && !e.target.value) {
       placeRef.current.style.top = "25px";
     } else if (e.target.name === "email" && !e.target.value) {

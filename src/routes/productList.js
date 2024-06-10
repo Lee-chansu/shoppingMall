@@ -126,7 +126,10 @@ export const ProductList = () => {
                 );
               })
             ) : (
-              <p className="guide">해당 카테고리의 상품이 준비중입니다.<br/> 기다려주세요 ㅠㅠ</p>
+              <p className="guide">
+                해당 카테고리의 상품이 준비중입니다.
+                <br /> 기다려주세요 ㅠㅠ
+              </p>
             )}
           </div>
           <div

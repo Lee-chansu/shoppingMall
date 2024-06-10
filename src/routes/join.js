@@ -36,7 +36,7 @@ export const Join = () => {
   const [isPw, setIsPw] = useState(false);
   const [isEmail, setIsEmail] = useState(false);
 
-  const idCheck = async (e) => {
+  const idCheck = async e => {
     const { value } = e.target;
     const checkId = await axios.get("http://localhost:5000/user");
     const isAlphabet = /[a-zA-Z]/.test(value);
@@ -73,7 +73,7 @@ export const Join = () => {
     }
   };
 
-  const pwCheck = async (e) => {
+  const pwCheck = async e => {
     const { value } = e.target;
     const isAlphabet = /[a-zA-Z]/.test(value);
     const isNumber = /[0-9]/.test(value);
@@ -102,7 +102,7 @@ export const Join = () => {
     }
   };
 
-  const emailCheck = async (e) => {
+  const emailCheck = async e => {
     const { value } = e.target;
     const isMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
       value
@@ -120,7 +120,7 @@ export const Join = () => {
     }
   };
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
     if (name === "mobile2" || name === "mobile3") {
       if (value === "" || (value.length <= 4 && /^[0-9]+$/.test(value))) {
@@ -129,12 +129,12 @@ export const Join = () => {
     } else {
       setNewUser({ ...newUser, [name]: value });
     }
-    setNewUser((pre) => ({
+    setNewUser(pre => ({
       ...pre,
       phoneNumber: pre.mobile + "-" + pre.mobile2 + "-" + pre.mobile3,
     }));
     if (mainAddressRef.current.value)
-      setNewUser((pre) => ({
+      setNewUser(pre => ({
         ...pre,
         mainAddress: mainAddressRef.current.value,
       }));
@@ -145,7 +145,7 @@ export const Join = () => {
     }
   };
 
-  const buttonClick = async (e) => {
+  const buttonClick = async e => {
     e.preventDefault();
     if (!newUser.userId) {
       Myalter("warning", "회원가입 가이드", "아이디를 입력하시오");

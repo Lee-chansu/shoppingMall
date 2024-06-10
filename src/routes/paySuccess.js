@@ -29,14 +29,12 @@ export const PaySuccess = () => {
   };
 
   useEffect(() => {
-    // console.log(list);
     setPaidItemList(list);
   }, []);
 
   const getUser = async () => {
     const res = await axios.get(`http://localhost:5000/userProfile/${id}`);
     const data = res.data; //user정보를 다 가져옴
-    console.log(data);
     setUserName(data.userName);
   };
 
@@ -64,7 +62,13 @@ export const PaySuccess = () => {
         <div className="overlap">
           <div className="innerBox">
             <div className="overlapGroup">
-              <img src="https://cdn-icons-png.flaticon.com/512/6217/6217772.png" alt="구매완료" width="30px" height="30px" className="okImg"/>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/6217/6217772.png"
+                alt="구매완료"
+                width="30px"
+                height="30px"
+                className="okImg"
+              />
               <div className="price"></div>
               <div className="successMessage">
                 <b>구매가 정상적으로 완료되었습니다</b>

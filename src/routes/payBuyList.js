@@ -25,7 +25,6 @@ export const PayBuyList = () => {
   };
 
   const getPayItemList = async () => {
-    // console.log(id);
     const response = await fetch(`http://localhost:5000/buyList/${id}`);
     const payOrderList = await response.json();
     setPayItemList(payOrderList);
@@ -75,8 +74,6 @@ export const PayBuyList = () => {
 
   const handleAddToCart = async val => {
     let newItem = payItemList.find(item => item.id === val.id);
-
-    console.log("newItem", newItem);
 
     const addItem = {
       size: newItem.productSize,

@@ -40,7 +40,7 @@ export const ProductEdit = () => {
     악세사리: ["양말", "가방", "피어싱", "헤어", "기타"],
   };
 
-  const handleCancle = (e) => {
+  const handleCancle = e => {
     e.preventDefault();
     navigate(-1);
   };
@@ -254,7 +254,6 @@ export const ProductEdit = () => {
         return;
       }
       for (let index of newOption) {
-        console.log(index.size);
         if (index.color === "") {
           Swal.fire({
             icon: "warning",
@@ -335,7 +334,6 @@ export const ProductEdit = () => {
             confirmButtonText: "확인",
             confirmButtonColor: "#007bff",
           });
-          console.log(newProduct);
           return;
         }
       });

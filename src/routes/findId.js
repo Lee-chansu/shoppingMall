@@ -10,7 +10,6 @@ export const FindId = () => {
   const goback = () => {
     navigate(-1);
   };
-  console.log();
 
   const [findUser, setFindUser] = useState({
     userName: "",
@@ -27,12 +26,12 @@ export const FindId = () => {
   // 유저 아이디
   const [userId, setUserId] = useState("");
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
     setFindUser({ ...findUser, [name]: value });
   };
 
-  const emailButton = async (e) => {
+  const emailButton = async e => {
     e.preventDefault();
 
     if (!findUser.userName) {
@@ -77,7 +76,7 @@ export const FindId = () => {
     }
   };
 
-  const numButton = (e) => {
+  const numButton = e => {
     e.preventDefault();
     if (passNum == findUser.number) {
       Swal.fire({
@@ -99,7 +98,7 @@ export const FindId = () => {
   const placeRef2 = useRef();
   const placeRef3 = useRef("test");
 
-  const inputFocus = (e) => {
+  const inputFocus = e => {
     if (e.target.name === "userName") {
       placeRef.current.style.top = "7px";
     } else if (e.target.name === "email") {
@@ -109,7 +108,7 @@ export const FindId = () => {
     }
   };
 
-  const inputBlur = (e) => {
+  const inputBlur = e => {
     if (e.target.name === "userName" && !e.target.value) {
       placeRef.current.style.top = "25px";
     } else if (e.target.name === "email" && !e.target.value) {

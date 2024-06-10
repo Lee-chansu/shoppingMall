@@ -14,7 +14,7 @@ export const MyDropzone = ({ setDescriptionImgArray }) => {
       "heic",
       "pdf",
     ],
-    onDrop: (acceptedFiles) => {
+    onDrop: acceptedFiles => {
       const file = acceptedFiles[0];
       const reader = new FileReader();
       if (file) {
@@ -43,7 +43,7 @@ export const MyDropzone = ({ setDescriptionImgArray }) => {
         }
         reader.readAsDataURL(file);
         reader.onloadend = () => {
-          setDescriptionImgArray((prev) => [...prev, reader.result]);
+          setDescriptionImgArray(prev => [...prev, reader.result]);
         };
       } else {
         return;

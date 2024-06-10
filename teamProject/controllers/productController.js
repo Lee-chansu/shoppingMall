@@ -221,7 +221,6 @@ exports.updateProduct = async (req, res) => {
   let productImage = [];
   let idx = 0;
   for (let img of base64Images) {
-    console.log(img);
     if (img && !img.includes("https")) {
       options = {
         apiKey: imgbbKey,

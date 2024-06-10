@@ -14,7 +14,7 @@ export const Nav = () => {
   const profileImageLoad = async () => {
     const { id } = jwtDecode(isLogin);
     const loadData = await fetch(`http://localhost:5000/profile/${id}`).then(
-      (res) => res.json()
+      res => res.json()
     );
     setImageUrl(loadData);
   };
@@ -29,7 +29,7 @@ export const Nav = () => {
 
   const navigate = useNavigate();
 
-  const categoryButton = (e) => {
+  const categoryButton = e => {
     const { innerText } = e.target;
     navigate(`/productList?category=${innerText}`);
   };
@@ -90,7 +90,7 @@ export const Nav = () => {
           )}
         </nav>
         <div className="category2">
-          {category.map((el) => {
+          {category.map(el => {
             return (
               <ul className="wrapper" key={el}>
                 <li className="text">

@@ -33,9 +33,7 @@ export const CartItem = ({
     setCartItemList([...listCopy]);
   };
 
-  useEffect(() => {
-    // console.log("item rerender", val);
-  }, [cartItemList]);
+  useEffect(() => {}, [cartItemList]);
 
   return (
     <div className={styles.cartItem}>

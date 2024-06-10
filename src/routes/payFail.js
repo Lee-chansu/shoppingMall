@@ -26,7 +26,6 @@ export const PayFail = () => {
   };
 
   useEffect(() => {
-    console.log(list);
     setPaidItemList(list);
   }, []);
 

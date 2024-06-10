@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../css/productDescription.css";
 
-export const ProductDescription = (props) => {
+export const ProductDescription = props => {
   const { handleSwitchBtn, product } = props;
   const [more, setMore] = useState(false);
   let description;

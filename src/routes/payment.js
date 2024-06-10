@@ -32,9 +32,6 @@ export const Payment = () => {
   });
   const [carryMessage, setCarryMessage] = useState("carryMessage1");
 
-  // console.log("newUser", newUser);
-  // console.log("carryMessage", carryMessage);
-
   //결제방식 선택하기
   //총 주문 합계 보기 변수선언
   const [orderSum, setOrderSum] = useState({
@@ -44,24 +41,23 @@ export const Payment = () => {
     paySumTotal: 0, //총주문금액 + 배송비
   });
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
     setNewUser({ ...newUser, [name]: value });
     if (mainAddressRef.current.value)
-      setNewUser((pre) => ({
+      setNewUser(pre => ({
         ...pre,
         mainAddress: mainAddressRef.current.value,
       }));
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setSelectedOption(e.target.value);
     const newMessage = carryMessage;
     setCarryMessage(e.target.value);
-    // console.log("selectedOption", e.target.value);
   };
 
-  const handleCarryMessage = (e) => {
+  const handleCarryMessage = e => {
     setCarryMessage(e.target.value);
   };
 
@@ -71,7 +67,7 @@ export const Payment = () => {
     return body;
   };
 
-  const getUserProfile = async (id) => {
+  const getUserProfile = async id => {
     const user = await userFetch(id);
     setUserProfile(user);
   };
@@ -90,7 +86,6 @@ export const Payment = () => {
   };
 
   const handleAllPayment = () => {
-    console.log(selectedOption);
     if (selectedOption === "") {
       Myalter("waning", "error", "배송요청 메세지를 선택해 주세요");
       return;
@@ -107,7 +102,7 @@ export const Payment = () => {
   };
 
   //결제방식 선택시 실행할 함수
-  const handlePaySelect = (e) => {
+  const handlePaySelect = e => {
     setPaySelect(e.target.innerText);
   };
 
@@ -118,7 +113,6 @@ export const Payment = () => {
       data = location.state.paymentList;
     }
 
-    // console.log("paymentList", data);
     return data;
   };
 
@@ -143,9 +137,7 @@ export const Payment = () => {
     //총 주문 합계 보기
     if (paymentItemList.length !== 0) {
       let temp = { ...orderSum };
-      // console.log(paymentItemList.length);
       paymentItemList.forEach((val, idx) => {
-        // console.log(val.price);
         temp.orderTotal += val.price * val.amount;
         temp.countTotal = temp.countTotal + val.amount;
       });

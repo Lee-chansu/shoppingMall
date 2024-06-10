@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/productAdd.css";
 import { XCircleFill } from "react-bootstrap-icons";
 import Swal from "sweetalert2";
+import "../css/productAdd.css";
 
 //컴포넌트
 import { Nav } from "../components/nav";
@@ -14,7 +14,7 @@ import CustomButton from "../components/CustomButton";
 
 export const ProductAdd = () => {
   const navigate = useNavigate();
-  const handleCancle = (e) => {
+  const handleCancle = e => {
     e.preventDefault();
     navigate(-1);
   };
@@ -70,7 +70,7 @@ export const ProductAdd = () => {
       }
       reader.onloadend = () => {
         setMainImageFile(reader.result);
-        setNewProduct((prevState) => ({
+        setNewProduct(prevState => ({
           ...prevState,
           mainImage: reader.result,
         }));
@@ -81,20 +81,20 @@ export const ProductAdd = () => {
     }
   };
 
-  const checkOnlyOneCategory = (checkThis) => {
+  const checkOnlyOneCategory = checkThis => {
     checkThis.checked === false
       ? setCheckCategory("")
       : setCheckCategory(checkThis.name);
   };
 
-  const checkOnlyOneDetail = (checkThis) => {
+  const checkOnlyOneDetail = checkThis => {
     checkThis.checked === false
       ? setCheckDetail("")
       : setCheckDetail(checkThis.name);
   };
 
   const showDetailBar = () => {
-    setNewProduct((prevState) => ({
+    setNewProduct(prevState => ({
       ...prevState,
       category: checkCategory,
       detail: checkDetail,
@@ -118,7 +118,7 @@ export const ProductAdd = () => {
     description: "",
   });
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
@@ -139,7 +139,7 @@ export const ProductAdd = () => {
 
   const [descriptionImgArray, setDescriptionImgArray] = useState([]);
 
-  const cancelPreview = (index) => {
+  const cancelPreview = index => {
     let newDescriptionArray = [...descriptionImgArray];
     newDescriptionArray.splice(index, 1);
     setDescriptionImgArray(newDescriptionArray);
@@ -151,7 +151,7 @@ export const ProductAdd = () => {
 
   useEffect(() => {}, [newOption]);
 
-  const toAddProduct = async (e) => {
+  const toAddProduct = async e => {
     e.preventDefault();
 
     try {
@@ -268,7 +268,7 @@ export const ProductAdd = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      }).then((res) => {
+      }).then(res => {
         res.json();
         if (res.ok) {
           Swal.fire({
@@ -307,7 +307,7 @@ export const ProductAdd = () => {
             <div className="wrap">
               <h2 className="categoryTitle">카테고리</h2>
               <div className="boxWrap">
-                {category.map((el) => {
+                {category.map(el => {
                   return (
                     <div className="box" key={el}>
                       <p className="text">{el}</p>
@@ -317,7 +317,7 @@ export const ProductAdd = () => {
                         name={el}
                         value={el}
                         checked={checkCategory === el}
-                        onChange={(e) => checkOnlyOneCategory(e.target)}
+                        onChange={e => checkOnlyOneCategory(e.target)}
                       />
                     </div>
                   );
@@ -340,7 +340,7 @@ export const ProductAdd = () => {
                           name={el}
                           value={el}
                           checked={checkDetail === el}
-                          onChange={(e) => checkOnlyOneDetail(e.target)}
+                          onChange={e => checkOnlyOneDetail(e.target)}
                         />
                       </div>
                     );

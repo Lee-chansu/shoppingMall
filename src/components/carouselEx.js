@@ -5,7 +5,6 @@ function CarouselFadeExample() {
   return (
     <Carousel fade>
       <Carousel.Item>
-        {/* <ExampleCarouselImage text="First slide" /> */}
         <Image
           src="../img/banner1.png"
           alt="배너1"

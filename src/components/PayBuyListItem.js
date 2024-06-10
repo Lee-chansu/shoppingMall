@@ -22,7 +22,6 @@ export const PayItem = ({ val, handleDeleteItem, handleAddToCart }) => {
       navigate("/review", { state: { buyList: val } });
     }
   };
-  console.log(val);
   return (
     <div className="payItem">
       <div className="itemInfo">

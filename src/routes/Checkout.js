@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { loadPaymentWidget } from "@tosspayments/payment-widget-sdk";
 import { nanoid } from "nanoid";
-import "../css/toss.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import "../css/toss.css";
 
 const selector = "#payment-widget";
 
@@ -51,12 +51,9 @@ export function CheckoutPage() {
     } else {
       const decodeToken = jwtDecode(token);
       setId(decodeToken.id);
-      console.log(decodeToken);
     }
 
     if (id !== "") {
-      console.log("location", location?.state.paymentList);
-      console.log("paySumTotal", location?.state.orderSum.paySumTotal);
       setPrice(location.state.orderSum.paySumTotal);
     }
   }, [id]);
@@ -84,14 +81,11 @@ export function CheckoutPage() {
       return;
     }
 
-    console.log("price", price);
-
     paymentMethodsWidget.updateAmount(price);
   }, [price]);
 
   const handlePaymentRequest = async () => {
     const orderId = nanoid();
-    console.log("test", price);
 
     // 사용자 프로필을 가져오기
     const userResponse = await fetch(`http://localhost:5000/userProfile/${id}`);

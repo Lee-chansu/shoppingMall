@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import "../css/passwordEdit.css";
 import { useEffect, useRef, useState } from "react";
 import { Myalter } from "../components/Myalter";
+import "../css/passwordEdit.css";
 
 export const PasswordEdit = () => {
   const navigate = useNavigate();
@@ -21,12 +21,12 @@ export const PasswordEdit = () => {
     passwordCheck: "",
   });
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
   };
 
-  const submitButton = async (e) => {
+  const submitButton = async e => {
     e.preventDefault();
     const isAlphabet = /[a-zA-Z]/.test(input.password);
     const isNumber = /[0-9]/.test(input.password);
@@ -40,11 +40,19 @@ export const PasswordEdit = () => {
         (isNumber && isSymbol)
       )
     ) {
-      Myalter("warning", "비밀변호 변경 가이드", "비밀 번호는 영문 대소문자/숫자/특수문자 중 2가지 이상을 조합해야 합니다");
+      Myalter(
+        "warning",
+        "비밀변호 변경 가이드",
+        "비밀 번호는 영문 대소문자/숫자/특수문자 중 2가지 이상을 조합해야 합니다"
+      );
     } else if (!input.passwordCheck) {
       Myalter("warning", "비밀변호 변경 가이드", "비밀번호 확인을 입력하시오");
     } else if (input.password != input.passwordCheck) {
-      Myalter("warning", "비밀변호 변경 가이드", "비밀번호와 비밀번호확인이 일치하지않습니다");
+      Myalter(
+        "warning",
+        "비밀변호 변경 가이드",
+        "비밀번호와 비밀번호확인이 일치하지않습니다"
+      );
     } else {
       try {
         const response = await fetch(
@@ -65,7 +73,11 @@ export const PasswordEdit = () => {
           }
         }
       } catch (error) {
-        Myalter("warning", "비밀변호 변경 가이드", "비밀번호 변경 중 오류가 발생했습니다");
+        Myalter(
+          "warning",
+          "비밀변호 변경 가이드",
+          "비밀번호 변경 중 오류가 발생했습니다"
+        );
       }
     }
   };
@@ -73,7 +85,7 @@ export const PasswordEdit = () => {
   const placeRef = useRef(null);
   const placeRef2 = useRef(null);
 
-  const inputFocus = (e) => {
+  const inputFocus = e => {
     if (e.target.name === "password") {
       placeRef.current.style.top = "7px";
     } else {
@@ -81,7 +93,7 @@ export const PasswordEdit = () => {
     }
   };
 
-  const inputBlur = (e) => {
+  const inputBlur = e => {
     if (e.target.name === "password" && !e.target.value) {
       placeRef.current.style.top = "25px";
     } else if (e.target.name === "passwordCheck" && !e.target.value) {

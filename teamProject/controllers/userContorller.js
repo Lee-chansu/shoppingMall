@@ -147,7 +147,8 @@ exports.passwordCheck = async (req, res) => {
 // 이메일 인증을 위한 호출
 const transporter = nodemailer.createTransport({
   // 이메일 설정
-  service: email_service, // naver smtp 사용한다는 기능 / service 로 'naver' 정해두면 port 와 host 생략가능
+  service: email_service, 
+  // naver smtp 사용한다는 기능 / service 로 'naver' 정해두면 port 와 host 생략가능
   auth: {
     user: email_admin, // 작성자 이메일
     pass: email_password, // 비밀번호
@@ -237,7 +238,8 @@ exports.deletedUser = async (req, res) => {
     res.send({ message: "삭제성공" });
 
     const deleteDate = new Date();
-    deleteDate.setDate(deleteDate.getDate() + 30); // 물리적삭제 날짜기간정함
+    // 물리적삭제 날짜기간정함
+    deleteDate.setDate(deleteDate.getDate() + 30);
 
     await DeleteUser.create({
       user_id: result.id,

@@ -67,11 +67,11 @@ export const UserEdit = () => {
     setEditUser(editDefault);
   }, [getUser]);
 
-  const checkClick = (e) => {
+  const checkClick = e => {
     const { value } = e.target;
     if (value == "false") {
       setCheckToggle("true");
-      setEditUser((pre) => ({
+      setEditUser(pre => ({
         ...pre,
         password: getUser.password,
         passwordCheck: getUser.password,
@@ -79,7 +79,7 @@ export const UserEdit = () => {
       }));
     } else {
       setCheckToggle("false");
-      setEditUser((pre) => ({
+      setEditUser(pre => ({
         ...pre,
         password: "",
         passwordCheck: "",
@@ -88,12 +88,12 @@ export const UserEdit = () => {
     }
   };
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
-    setEditUser((pre) => ({ ...pre, [name]: value }));
+    setEditUser(pre => ({ ...pre, [name]: value }));
   };
 
-  const imageChange = (e) => {
+  const imageChange = e => {
     const selectFile = e.target.files[0];
     const reader = new FileReader();
     if (selectFile) {
@@ -119,13 +119,13 @@ export const UserEdit = () => {
         return; // 다음 파일 처리 중단
       }
       reader.onloadend = () => {
-        setEditUser((pre) => ({ ...pre, profileImg: reader.result }));
+        setEditUser(pre => ({ ...pre, profileImg: reader.result }));
       };
       reader.readAsDataURL(selectFile);
     }
   };
 
-  const buttonClick = async (e) => {
+  const buttonClick = async e => {
     e.preventDefault();
     if (!editUser.password) {
       Myalter("warning", "유저 수정 가이드", "변경할 비밀번호를 입력하시오");

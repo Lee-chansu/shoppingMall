@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import "../css/passwordCheck.css";
 import { useEffect, useRef, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { Myalter } from "../components/Myalter";
+import "../css/passwordCheck.css";
 
 export const PasswordCheck = () => {
   const navigate = useNavigate();

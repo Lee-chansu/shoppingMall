@@ -1,6 +1,5 @@
 const passport = require("passport");
 const local = require("./local");
-
 const db = require("../models");
 const { User } = db;
 

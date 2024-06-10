@@ -11,12 +11,12 @@ exports.selectCartByUserId = async (req, res) => {
   try {
     const result = await Cart.findAll({
       where: { user_id },
-      include: [{ model: Product }], // Product 모델을 include (조인)
+      include: [{ model: Product }],
+      // Product 모델을 include (조인)
     });
 
     if (result) {
       res.json(result);
-      console.log(result);
     } else {
       res.status(404).json({ message: "Cart not found for the user." });
     }
@@ -37,7 +37,6 @@ exports.selectBuyListByUserId = async (req, res) => {
   const { user_id } = req.params;
   const result = await BuyList.findAll({
     where: { user_id },
-    // include: [ProductOption],
   });
   res.json(result);
 };
@@ -52,7 +51,6 @@ exports.selectCarryAll = async (req, res) => {
 exports.addCarry = async (req, res) => {
   const { list, user_id, order_id, mainAddress, detailAddress, carryMessage } =
     req.body;
-  console.log("list", list);
 
   const carryStart = new Date();
   const carryEnd = new Date(carryStart);
@@ -87,7 +85,6 @@ exports.addProductToCart = async (req, res) => {
   const result = await Cart.findOne({
     where: { user_id, productOption_id, size, color },
   });
-  // console.log("result", result);
   if (!result) {
     await Cart.create(newProduct);
     res.json({ result: false });
@@ -100,7 +97,6 @@ exports.addProductToCart = async (req, res) => {
 // 구매내역 추가 (cart의 리스트를 payBuyList에 추가)
 exports.addBuyList = async (req, res) => {
   const { list, user_id } = req.body;
-  console.log(list);
 
   list.forEach(async (val, idx) => {
     const newBuyList = {
@@ -130,13 +126,10 @@ exports.addBuyList = async (req, res) => {
 
 // user Id 별 장바구니 상품삭제
 exports.deleteProductFromCartByUserId = async (req, res) => {
-  // const { user_id } = req.params;
   const { list, user_id } = req.body;
-  console.log("list", list);
-  console.log("user_id", user_id);
 
   try {
-    await list.forEach((val) => {
+    await list.forEach(val => {
       Cart.destroy({
         where: {
           productOption_id: val.productOption_id,
@@ -167,11 +160,9 @@ exports.deleteCart = async (req, res) => {
 
 //구매 내역 삭제
 exports.deleteBuylist = async (req, res) => {
-  //여기서 가져오는 data 뭔지?
   const { id } = req.params;
   try {
     await Carry.destroy({ where: { order_id: id } });
-    //이거 왜 Carry?
     await ReviewList.destroy({ where: { buyList_id: id } });
     await BuyList.destroy({ where: { id } });
 
@@ -186,8 +177,6 @@ exports.deleteBuylist = async (req, res) => {
 // 결제 요청 조회
 exports.paymentRequest = async (req, res) => {
   const { orderId, amount, paymentKey } = req.query;
-
-  console.log(orderId, amount);
 
   if (!orderId || !amount) {
     res.json([{ isValid: false }]);
@@ -220,7 +209,6 @@ exports.addPaymentRequest = async (req, res) => {
     res.json({ result });
   }
 };
-// const got = require("got");
 let got;
 
 (async () => {
@@ -259,12 +247,10 @@ exports.tossPaymentRequest = function (req, res) {
     })
     .then(function (response) {
       // TODO: 결제 완료 비즈니스 로직을 구현하세요.
-      console.log(response.body);
       res.status(response.statusCode).json(response.body);
     })
     .catch(function (error) {
       // TODO: 결제 실패 비즈니스 로직을 구현하세요.
-      console.log(error.response.body);
       res.status(error.response.statusCode).json(error.response.body);
     });
 };

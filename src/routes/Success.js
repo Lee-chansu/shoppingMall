@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import "../css/toss.css";
 import { jwtDecode } from "jwt-decode";
-import ButtonBox from "../components/ButtonBox";
-import CustomButton from "../components/CustomButton";
 import axios from "axios";
 
 export function SuccessPage() {
@@ -53,15 +51,11 @@ export function SuccessPage() {
       }
 
       const productOptionIds = arrayResponse[0].items.map(
-        (el) => el.productOption_id
+        el => el.productOption_id
       );
 
       setOptionList(productOptionIds);
       setArrayList(arrayResponse);
-
-      console.log("arrayList", arrayList[0]);
-      // console.log("arrayList", arrayList[0]?.items);
-      // console.log("arrayList[0]?.items[0].amount", arrayList[0]?.items[0].amount);
     }
 
     confirm();
@@ -71,7 +65,7 @@ export function SuccessPage() {
     const findStock = async () => {
       const response = await fetch("http://localhost:5000/productOption");
       const stocks = await response.json();
-      const selectedProductOption = stocks.filter((option) =>
+      const selectedProductOption = stocks.filter(option =>
         optionList.includes(option.id)
       );
       return selectedProductOption;
@@ -79,7 +73,6 @@ export function SuccessPage() {
     const getStockList = async () => {
       const test = await findStock();
       setStockList(test);
-      console.log("test", stockList);
     };
     getStockList();
   }, [navigate, searchParams, optionList]);
@@ -90,10 +83,6 @@ export function SuccessPage() {
       // arrayResponse의 amount와 test의 stock 비교
       // arrayList[0].items[0].amount  A = arrayList[0].items
       // stockList[0].stock  S = stockList
-
-      // console.log("vs");
-      // console.log("A", arrayList[0].items);
-      // console.log("S", stockList);
 
       function checkStockAndAmount(S, A) {
         if (!S || !A) return false;
@@ -125,7 +114,6 @@ export function SuccessPage() {
 
       if (!response.ok) {
         // 결제 실패 비즈니스 로직
-        console.log(json);
         navigate(`/toss/fail?message=${json.message}&code=${json.code}`);
         return;
       }
@@ -137,8 +125,6 @@ export function SuccessPage() {
         ...item,
         stock: item.stock - arrayList[0].items[i].amount,
       }));
-
-      console.log("editOption", option);
 
       const updateRes = await axios.put(
         "http://localhost:5000/productOption",
@@ -187,12 +173,10 @@ export function SuccessPage() {
         return;
       }
 
-      console.log(json);
-      console.log("json.easyPay.provider", json.easyPay.provider);
       navigate("/paysuccess", {
         state: {
           list: arrayList[0].items,
-          orderSum: {paySumTotal: searchParams.get("amount")},
+          orderSum: { paySumTotal: searchParams.get("amount") },
           paySelect: json.easyPay.provider,
         },
       });
