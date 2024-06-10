@@ -10,7 +10,7 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
     subImage3: newProduct.subImage3,
   }[subImageId];
 
-  const previewImage = (e) => {
+  const previewImage = e => {
     const file = e.target.files[0];
     const reader = new FileReader();
     if (file) {
@@ -41,17 +41,17 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
       reader.onloadend = () => {
         setSubImageFile(reader.result);
         if (subImageId === "subImage1") {
-          setNewProduct((prevState) => ({
+          setNewProduct(prevState => ({
             ...prevState,
             subImage1: reader.result,
           }));
         } else if (subImageId === "subImage2") {
-          setNewProduct((prevState) => ({
+          setNewProduct(prevState => ({
             ...prevState,
             subImage2: reader.result,
           }));
         } else if (subImageId === "subImage3") {
-          setNewProduct((prevState) => ({
+          setNewProduct(prevState => ({
             ...prevState,
             subImage3: reader.result,
           }));
@@ -75,6 +75,7 @@ export const SubImagePreview = ({ newProduct, subImageId, setNewProduct }) => {
           name={subImageId}
           onChange={previewImage}
           accept="image/*"
+          defaultValue={newProduct.subImageId}
         />
 
         {subIamgeArray && (

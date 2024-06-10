@@ -40,13 +40,14 @@ export const ProductEdit = () => {
     악세사리: ["양말", "가방", "피어싱", "헤어", "기타"],
   };
 
-  const handleCancle = () => {
+  const handleCancle = (e) => {
+    e.preventDefault();
     navigate(-1);
   };
 
   const loadProduct = async () => {
     const getProduct = await fetch(`http://localhost:5000/product/${id}`).then(
-      (res) => {
+      res => {
         return res.json();
       }
     );
@@ -63,7 +64,7 @@ export const ProductEdit = () => {
   const loadOption = async () => {
     const loadData = await fetch(
       `http://localhost:5000/productOption/${id}`
-    ).then((res) => {
+    ).then(res => {
       return res.json();
     });
     setOptionLength(loadData.length);
@@ -101,7 +102,7 @@ export const ProductEdit = () => {
       }
       reader.onloadend = () => {
         setMainImageFile(reader.result);
-        setNewProduct((prevState) => ({
+        setNewProduct(prevState => ({
           ...prevState,
           mainImage: reader.result,
         }));
@@ -111,7 +112,7 @@ export const ProductEdit = () => {
     }
   };
 
-  const checkOnlyOneCategory = (checkThis) => {
+  const checkOnlyOneCategory = checkThis => {
     if (checkThis.checked === false) {
       setCheckCategory("");
       setCheckDetail("");
@@ -120,7 +121,7 @@ export const ProductEdit = () => {
     }
   };
 
-  const checkOnlyOneDetail = (checkThis) => {
+  const checkOnlyOneDetail = checkThis => {
     if (checkThis.checked === false) {
       setCheckDetail("");
     } else {
@@ -139,12 +140,12 @@ export const ProductEdit = () => {
       : setDetailBar([]);
   };
 
-  const valueChange = (e) => {
+  const valueChange = e => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
 
-  const cancelPreview = (index) => {
+  const cancelPreview = index => {
     let newDescriptionArray = [...descriptionImgArray];
     newDescriptionArray.splice(index, 1);
     setDescriptionImgArray(newDescriptionArray);
@@ -174,7 +175,7 @@ export const ProductEdit = () => {
     );
   });
 
-  //기존의 정보를 불러오는 컴포넌트
+  //기존의 정보(productOption)를 불러오는 컴포넌트
   const editComponents = Array.from({ length: optionLength }, (el, index) => {
     // const currentOption = newOption[index];
     return (
@@ -193,7 +194,7 @@ export const ProductEdit = () => {
 
   useEffect(() => {}, [option, newOption]);
 
-  const toEditProduct = async (e) => {
+  const toEditProduct = async e => {
     e.preventDefault();
 
     try {
@@ -313,7 +314,7 @@ export const ProductEdit = () => {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      }).then((res) => {
+      }).then(res => {
         res.json();
         if (res.ok) {
           Swal.fire({
@@ -354,7 +355,7 @@ export const ProductEdit = () => {
             <div className="wrap">
               <h2 className="categoryTitle">카테고리</h2>
               <div className="boxWrap">
-                {category.map((el) => {
+                {category.map(el => {
                   return (
                     <div className="box" key={el}>
                       <label className="text" htmlFor={el}>
@@ -366,7 +367,7 @@ export const ProductEdit = () => {
                         name={el}
                         value={el}
                         checked={checkCategory === el}
-                        onChange={(e) => checkOnlyOneCategory(e.target)}
+                        onChange={e => checkOnlyOneCategory(e.target)}
                       />
                     </div>
                   );
@@ -389,7 +390,7 @@ export const ProductEdit = () => {
                           name={el}
                           value={el}
                           checked={checkDetail === el}
-                          onChange={(e) => checkOnlyOneDetail(e.target)}
+                          onChange={e => checkOnlyOneDetail(e.target)}
                         />
                       </div>
                     );

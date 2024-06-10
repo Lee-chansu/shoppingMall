@@ -255,7 +255,7 @@ export const ProductDetailDescription = () => {
     }
   };
 
-  const mainRef = useRef(null);
+  const mainRef = useRef();
 
   let photos = [
     product.mainImage,

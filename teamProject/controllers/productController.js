@@ -116,7 +116,6 @@ exports.addProduct = async (req, res) => {
     newProduct.subImage2 ? newProduct.subImage2.split(",")[1] : null,
     newProduct.subImage3 ? newProduct.subImage3.split(",")[1] : null,
   ];
-  let result;
   try {
     let options;
     let productImage = [];
@@ -156,6 +155,7 @@ exports.addProduct = async (req, res) => {
       }
     }
 
+    let result;
     const product = await Product.create(newProduct);
     const { id } = await Product.findOne({
       order: [["id", "DESC"]],
@@ -198,26 +198,43 @@ exports.updateProduct = async (req, res) => {
   const { id } = req.params;
   const { newProduct, newOption, option } = req.body;
   const base64Images = [
-    newProduct.mainImage.split(",")[1],
-    newProduct.subImage1 ? newProduct.subImage1.split(",")[1] : null,
-    newProduct.subImage2 ? newProduct.subImage2.split(",")[1] : null,
-    newProduct.subImage3 ? newProduct.subImage3.split(",")[1] : null,
+    newProduct.mainImage.includes("https")
+      ? newProduct.mainImage
+      : newProduct.mainImage.split(",")[1],
+    newProduct.subImage1
+      ? newProduct.subImage1.includes("https")
+        ? newProduct.subImage1
+        : newProduct.subImage1.split(",")[1]
+      : null,
+    newProduct.subImage2
+      ? newProduct.subImage2.includes("https")
+        ? newProduct.subImage2
+        : newProduct.subImage2.split(",")[1]
+      : null,
+    newProduct.subImage3
+      ? newProduct.subImage3.includes("https")
+        ? newProduct.subImage3
+        : newProduct.subImage3.split(",")[1]
+      : null,
   ];
   let options;
   let productImage = [];
   let idx = 0;
   for (let img of base64Images) {
-    options = {
-      apiKey: imgbbKey,
-      base64string: img,
-    };
-    if (options.base64string) {
-      const uploadResponse = await imgbbUploader(options);
-      productImage[idx] = uploadResponse.url;
-      idx++;
-    } else {
-      productImage[idx] = "";
-      idx++;
+    console.log(img);
+    if (img && !img.includes("https")) {
+      options = {
+        apiKey: imgbbKey,
+        base64string: img,
+      };
+      if (options.base64string) {
+        const uploadResponse = await imgbbUploader(options);
+        productImage[idx] = uploadResponse.url;
+        idx++;
+      } else {
+        productImage[idx] = "";
+        idx++;
+      }
     }
   }
   newProduct.mainImage = productImage[0];
