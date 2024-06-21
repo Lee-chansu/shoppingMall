@@ -38,7 +38,7 @@
 - npm i react-bootstrap 
 - npm i react-bootstrap-icon
 - npm i axios
-- npm i react-dragzone // drag해서 이미지 파일 편하게 업로드
+- npm i react-dropzone // drag해서 이미지 파일 편하게 업로드
 
 # node
 - 설치해야할 라이브러리
